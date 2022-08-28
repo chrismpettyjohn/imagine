@@ -1,0 +1,32 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/**/*",
+    "demo/**/*"
+  ],
+  "scripts": {
+    "fix": "gts fix",
+    "build": "lerna run build",
+    "deploy": "yarn run build && lerna publish",
+    "purge": "lerna exec -- rm -rf node_modules && lerna exec -- rm -rf dist && rm -rf yarn.lock && rm -rf node_modules && rm -rf yarn.lock"
+  },
+  "devDependencies": {
+    "@types/node": "16.11.56",
+    "@typescript-eslint/eslint-plugin": "5.35.1",
+    "babel-eslint": "10.1.0",
+    "eslint-plugin-flowtype": "8.0.3",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-react": "7.31.1",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "gts": "3.1.0",
+    "lerna": "5.4.3",
+    "tsconfig-paths-webpack-plugin": "4.0.0",
+    "typescript": "4.8.2"
+  },
+  "name": "imagine",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

@@ -1,0 +1,124 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type RankModel {
+  id: ID!
+  name: String
+  description: String
+  badgeCode: String
+  users: [UserModel!]
+}
+
+type SessionModel {
+  id: ID!
+  userID: Float!
+}
+
+type UserModel {
+  id: ID!
+  username: String
+  email: String
+  gameSSO: String
+  rankID: ID
+  rank: RankModel
+  rankVipID: String
+  rankVip: RankModel
+  credits: Float
+  vipPoints: Float
+  activityPoints: Float
+  look: String
+  gender: UserGender
+  motto: String
+  accountCreatedAt: String
+  lastOnline: String
+  onlineStatus: UserOnlineStatus
+  ipRegisteredWith: String
+  homeRoomID: String
+  muteStatus: UserMuteStatus
+  allowingNewFriends: UserAllowingNewFriendsStatus
+  showOnlineStatus: UserShowOnlineStatus
+  vipStatus: UserVipStatus
+  sessions: [SessionModel!]
+}
+
+enum UserGender {
+  Male
+  Female
+}
+
+enum UserOnlineStatus {
+  Online
+  Offline
+}
+
+enum UserMuteStatus {
+  IsMuted
+  NotMuted
+}
+
+enum UserAllowingNewFriendsStatus {
+  Yes
+  No
+}
+
+enum UserShowOnlineStatus {
+  Hidden
+  Visible
+}
+
+enum UserVipStatus {
+  Yes
+  No
+}
+
+type Query {
+  sessionCurrent: SessionModel!
+  session(id: Float!): SessionModel!
+  sessions: [SessionModel!]!
+  user(id: Float!): UserModel!
+  users: [UserModel!]!
+  rank(id: Float!): RankModel!
+  ranks: [RankModel!]!
+}
+
+type Mutation {
+  sessionCreate(username: String!, password: String!): String!
+  userCreate(newUser: UserCreateInput!): UserModel!
+  userUpdate(id: Float!, userChanges: UserUpdateInput!): Boolean!
+  userDelete(id: Float!): Boolean!
+  rankCreate(newRank: RankCreateInput!): RankModel!
+  rankUpdate(id: Float!, rankChanges: RankUpdateInput!): Boolean!
+  rankDelete(id: Float!): Boolean!
+}
+
+input UserCreateInput {
+  username: String!
+  password: String!
+  email: String!
+}
+
+input UserUpdateInput {
+  password: String
+  email: String
+}
+
+input RankCreateInput {
+  name: String!
+  description: String!
+  badgeCode: String!
+}
+
+input RankUpdateInput {
+  name: String!
+  description: String!
+  badgeCode: String!
+}
+
+type Subscription {
+  sessionCreated: SessionModel!
+  userCreated: UserModel!
+  userDeleted: UserModel!
+  rankCreated: RankModel!
+  rankDeleted: RankModel!
+}

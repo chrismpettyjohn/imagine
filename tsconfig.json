@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@imagine-cms/api": ["packages/imagine-api/src"],
+      "@imagine-cms/web": ["packages/imagine-web/src"],
+      "@imagine-cms/theme": ["packages/imagine-theme/src"]
+    },
+    "noEmit": true
+  },
+  "include": [
+    "demo",
+    "packages"
+  ]
+}
