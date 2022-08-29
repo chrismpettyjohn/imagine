@@ -14,15 +14,15 @@ export class UserModel {
   @Field(() => ID)
   id!: string;
 
-  @Field({nullable: true})
+  @Field(() => String, {nullable: true})
   username!: string;
 
   // TODO: Add Privacy Guard
-  @Field({nullable: true})
+  @Field(() => String, {nullable: true})
   email!: string;
 
   // TODO: Add Privacy Guard
-  @Field({nullable: true})
+  @Field(() => String, {nullable: true})
   gameSSO!: string;
 
   @Field(() => ID, {nullable: true})
@@ -31,44 +31,44 @@ export class UserModel {
   @Field(() => RankModel, {nullable: true})
   rank?: RankModel;
 
-  @Field({nullable: true})
+  @Field(() => String, {nullable: true})
   rankVipID!: string;
 
   @Field(() => RankModel, {nullable: true})
   rankVip?: RankModel;
 
-  @Field({nullable: true})
+  @Field(() => Number, {nullable: true})
   credits!: number;
 
-  @Field({nullable: true})
+  @Field(() => Number, {nullable: true})
   vipPoints!: number;
 
-  @Field({nullable: true})
+  @Field(() => Number, {nullable: true})
   activityPoints!: number;
 
-  @Field({nullable: true})
+  @Field(() => String, {nullable: true})
   look!: string;
 
   @Field(() => UserGender, {nullable: true})
   gender!: UserGender;
 
-  @Field({nullable: true})
+  @Field(() => String, {nullable: true})
   motto!: string;
 
-  @Field({nullable: true})
+  @Field(() => String, {nullable: true})
   accountCreatedAt!: string;
 
-  @Field({nullable: true})
+  @Field(() => String, {nullable: true})
   lastOnline!: string;
 
   @Field(() => UserOnlineStatus, {nullable: true})
   onlineStatus!: UserOnlineStatus;
 
-  @Field({nullable: true})
+  @Field(() => String, {nullable: true})
   ipRegisteredWith!: string;
 
-  @Field({nullable: true})
-  homeRoomID!: string;
+  @Field(() => Number, {nullable: true})
+  homeRoomID!: number;
 
   @Field(() => UserMuteStatus, {nullable: true})
   muteStatus!: UserMuteStatus;

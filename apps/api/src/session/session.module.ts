@@ -20,6 +20,6 @@ import {IMAGINE_JWT_EXPIRATION_IN_MS, IMAGINE_JWT_SECRET} from '../imagine.const
     DatabaseModule,
   ],
   providers: [SessionService, SessionDataloaderService, SessionResolver, JwtAuthenticationGuard],
-  exports: [SessionService, SessionDataloaderService, SessionResolver, JwtAuthenticationGuard],
+  exports: [SessionService, SessionDataloaderService, SessionResolver, JwtAuthenticationGuard, JwtModule],
 })
 export class SessionModule {}

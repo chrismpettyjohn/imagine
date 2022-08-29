@@ -29,30 +29,30 @@ export class UserResolver {
     private readonly userDataloaderService: UserDataloaderService
   ) {}
 
-  @ResolveField(() => String)
-  @HasSession()
-  email(@Parent() user: UserModel, @GetUser() authenticatedUser: UserEntity): string {
-    this.ownsResource(user.id! as any, authenticatedUser.id!);
-    return user.email;
-  }
-
-  @ResolveField(() => String)
-  @HasSession()
-  gameSSO(@Parent() user: UserModel, @GetUser() authenticatedUser: UserEntity): string {
-    this.ownsResource(user.id! as any, authenticatedUser.id!);
-    return user.gameSSO;
-  }
-
-  @ResolveField(() => RankModel)
-  async rank(@Parent() user: UserModel): Promise<RankEntity> {
-    return this.rankRepo.findOneOrFail({id: user.rankID});
-  }
-
-  @ResolveField(() => RankModel)
-  async sessions(@Parent() user: UserModel): Promise<SessionEntity[]> {
-    // @ts-ignore
-    return this.sessionRepo.find({userID: user.id!});
-  }
+  // @ResolveField(() => String)
+  // @HasSession()
+  // email(@Parent() user: UserModel, @GetUser() authenticatedUser: UserEntity): string {
+  //   this.ownsResource(user.id! as any, authenticatedUser.id!);
+  //   return user.email;
+  // }
+  //
+  // @ResolveField(() => String)
+  // @HasSession()
+  // gameSSO(@Parent() user: UserModel, @GetUser() authenticatedUser: UserEntity): string {
+  //   this.ownsResource(user.id! as any, authenticatedUser.id!);
+  //   return user.gameSSO;
+  // }
+  //
+  // @ResolveField(() => RankModel)
+  // async rank(@Parent() user: UserModel): Promise<RankEntity> {
+  //   return this.rankRepo.findOneOrFail({id: user.rankID});
+  // }
+  //
+  // @ResolveField(() => RankModel)
+  // async sessions(@Parent() user: UserModel): Promise<SessionEntity[]> {
+  //   // @ts-ignore
+  //   return this.sessionRepo.find({userID: user.id!});
+  // }
 
   @Query(() => UserModel)
   async user(@Args('id') id: number): Promise<UserEntity> {

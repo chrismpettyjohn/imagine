@@ -1,4 +1,5 @@
 import {RankEntity} from './rank.entity';
+import {ObjectType} from '@nestjs/graphql';
 import {SessionEntity} from './session.entity';
 import {Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
 import {
@@ -21,6 +22,7 @@ import {
 } from './user.types';
 
 @Entity('users')
+@ObjectType()
 export class UserEntity {
   @PrimaryGeneratedColumn()
   id?: number;

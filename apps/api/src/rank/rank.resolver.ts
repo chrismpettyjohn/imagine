@@ -23,13 +23,13 @@ export class RankResolver {
     private readonly rankDataloaderService: RankDataloaderService
   ) {}
 
-  @ResolveField(() => [UserModel])
-  async users(@Parent() rank: RankModel): Promise<UserEntity[]> {
-    const assignedUsers: number[] = await this.userRepo
-      .getInstance()
-      .query('SELECT id FROM users WHERE rank = ?', [rank.id!]);
-    return this.userRepo.find({id: In(assignedUsers)});
-  }
+  // @ResolveField(() => [UserModel])
+  // async users(@Parent() rank: RankModel): Promise<UserEntity[]> {
+  //   const assignedUsers: number[] = await this.userRepo
+  //     .getInstance()
+  //     .query('SELECT id FROM users WHERE rank = ?', [rank.id!]);
+  //   return this.userRepo.find({id: In(assignedUsers)});
+  // }
 
   @Query(() => RankModel)
   async rank(@Args('id') id: number): Promise<RankEntity> {

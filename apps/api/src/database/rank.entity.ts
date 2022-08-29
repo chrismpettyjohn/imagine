@@ -1,7 +1,9 @@
 import {UserEntity} from './user.entity';
+import {ObjectType} from '@nestjs/graphql';
 import {Column, Entity, PrimaryGeneratedColumn, OneToMany} from 'typeorm';
 
 @Entity('ranks')
+@ObjectType()
 export class RankEntity {
   @PrimaryGeneratedColumn()
   id?: number;
