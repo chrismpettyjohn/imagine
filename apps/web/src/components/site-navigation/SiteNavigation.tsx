@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavDropdown} from 'react-bootstrap';
 
 export function SiteNavigation() {
   return (
@@ -11,19 +12,22 @@ export function SiteNavigation() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto ml-2 ml-lg-0">
             <li className="nav-item">
-              <a href="https://www.habboon.pw/gallery" className="nav-link ">Home</a>
+              <a href="" className="nav-link ">Homepage <span className="sr-only">(current)</span></a>
+            </li>
+            <NavDropdown title="Community">
+              <NavDropdown.Item href="/community">Community</NavDropdown.Item>
+              <NavDropdown.Item href="/community/staff">Staff</NavDropdown.Item>
+              <NavDropdown.Item href="/community/leaderboards">Leaderboards</NavDropdown.Item>
+              <NavDropdown.Item href="/community/online-players">Online Players</NavDropdown.Item>
+            </NavDropdown>
+            <li className="nav-item">
+              <a href="/gallery" className="nav-link ">Gallery</a>
             </li>
             <li className="nav-item">
-              <a href="https://www.habboon.pw/gallery" className="nav-link ">Community</a>
+              <a href="/marketplace" className="nav-link ">Marketplace</a>
             </li>
-          </ul>
-          <ul className="navbar-nav ml-lg-auto navbar-user-dropdown ml-2 ml-lg-0">
-            <li className="nav-item">
-              <a href="https://www.habboon.pw/help" className="btn btn-success my-2 my-sm-0 d-none d-lg-block">Help</a>
-            </li>
-            <li className="nav-item">
-              <a href="https://www.habboon.pw/registration"
-                 className="btn btn-primary my-2 my-sm-0 ml-2 d-none d-lg-block" id="ga-navbar-register">Register</a>
+            <li className="nav-item ">
+              <a href="/store" className="nav-link ">Store</a>
             </li>
           </ul>
         </div>

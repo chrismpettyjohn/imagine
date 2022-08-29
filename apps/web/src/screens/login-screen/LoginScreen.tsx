@@ -5,7 +5,7 @@ export function LoginScreen() {
     <main className="position-relative container justify-content-center py-4">
       <div className="row justify-content-center">
         <div className="col-lg-11 mb-4">
-          <div className="w-full d-flex align-items-center justify-content-center flex-column rounded-lg py-4 px-4" style={{backgroundImage: 'url(https://cdn.discordapp.com/attachments/361693054744133642/977198815209730119/unknown.png) no-repeat center center / cover', boxShadow: 'inset 0 0 0 1000px rgba(0, 0, 0, .6)' }}>
+          <div className="w-full d-flex align-items-center justify-content-center flex-column rounded-lg py-4 px-4" style={{background: 'url(https://cdn.discordapp.com/attachments/361693054744133642/977198815209730119/unknown.png) no-repeat center center / cover', boxShadow: 'inset 0 0 0 1000px rgba(0, 0, 0, .6)' }}>
 
             <h4 className="text-white mb-2">We're putting the weekly rare rotations in your hands!</h4>
             <p className="text-white mb-1">You can now vote for 5 items you'd like to see in the catalog for a week. <a
