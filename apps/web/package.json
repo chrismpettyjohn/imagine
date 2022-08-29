@@ -9,7 +9,14 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "wouter": "2.8.0-alpha.2",
-    "react-bootstrap": "2.5.0"
+    "react-bootstrap": "2.5.0",
+    "@apollo/react-hooks": "4.0.0",
+    "apollo-client": "2.6.10",
+    "apollo-boost": "0.4.9",
+    "graphql": "16.6.0",
+    "graphql-tag": "2.12.6",
+    "apollo-cache-inmemory": "1.6.6",
+    "apollo-link-ws": "1.0.20"
   },
   "devDependencies": {
     "@types/node": "16.11.56",

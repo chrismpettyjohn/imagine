@@ -1,7 +1,7 @@
 import {In} from 'typeorm';
-import {RankEntity} from './rank.entity';
 import {Injectable} from '@nestjs/common';
-import {RankRepository} from './rank.repository';
+import {RankEntity} from '../database/rank.entity';
+import {RankRepository} from '../database/rank.repository';
 import {BaseDataloaderService} from '../utility/base.dataloader';
 
 @Injectable()

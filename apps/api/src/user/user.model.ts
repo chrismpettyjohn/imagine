@@ -1,5 +1,6 @@
-import {Field, ID, ObjectType} from '@nestjs/graphql';
 import {RankModel} from '../rank/rank.model';
+import {Field, ID, ObjectType} from '@nestjs/graphql';
+import {SessionModel} from '../session/session.model';
 import {
   UserAllowingNewFriendsStatus,
   UserGender,
@@ -7,9 +8,7 @@ import {
   UserOnlineStatus,
   UserShowOnlineStatus,
   UserVipStatus,
-} from './user.types';
-import {SessionModel} from '../session/session.model';
-
+} from '../database/user.types';
 @ObjectType()
 export class UserModel {
   @Field(() => ID)

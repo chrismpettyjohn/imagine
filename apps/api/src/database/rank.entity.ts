@@ -1,4 +1,4 @@
-import {UserEntity} from '../user/user.entity';
+import {UserEntity} from './user.entity';
 import {Column, Entity, PrimaryGeneratedColumn, OneToMany} from 'typeorm';
 
 @Entity('ranks')

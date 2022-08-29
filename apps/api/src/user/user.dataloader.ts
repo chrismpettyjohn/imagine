@@ -1,7 +1,7 @@
 import {In} from 'typeorm';
-import {UserEntity} from './user.entity';
 import {Injectable} from '@nestjs/common';
-import {UserRepository} from './user.repository';
+import {UserEntity} from '../database/user.entity';
+import {UserRepository} from '../database/user.repository';
 import {BaseDataloaderService} from '../utility/base.dataloader';
 
 @Injectable()

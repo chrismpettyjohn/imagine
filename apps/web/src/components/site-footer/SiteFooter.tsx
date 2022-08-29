@@ -2,7 +2,7 @@ import React from 'react';
 
 export function SiteFooter() {
   return (
-    <footer className="position-relative mt-5">
+    <footer>
       <div className="christmas-trees"></div>
       <div id="footer" className="py-4">
         <div className="container">

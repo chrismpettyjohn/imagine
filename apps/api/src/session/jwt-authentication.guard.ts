@@ -1,5 +1,5 @@
 import {JwtService} from '@nestjs/jwt';
-import {UserRepository} from '../user/user.repository';
+import {UserRepository} from '../database/user.repository';
 import {RawRequest, SessionContents} from './session.types';
 import {getRequestFromExecutionContext} from '../utility/get-request';
 import {Injectable, CanActivate, ExecutionContext} from '@nestjs/common';

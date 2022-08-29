@@ -12,7 +12,7 @@ export function SiteNavigation() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto ml-2 ml-lg-0">
             <li className="nav-item">
-              <a href="" className="nav-link ">Homepage <span className="sr-only">(current)</span></a>
+              <a href="/me" className="nav-link ">Homepage <span className="sr-only">(current)</span></a>
             </li>
             <NavDropdown title="Community">
               <NavDropdown.Item href="/community">Community</NavDropdown.Item>

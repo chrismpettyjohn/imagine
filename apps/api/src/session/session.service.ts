@@ -1,8 +1,8 @@
 import {JwtService} from '@nestjs/jwt';
 import {SessionContents} from './session.types';
 import {HashService} from '../common/hash.service';
-import {SessionRepository} from './session.repository';
-import {UserRepository} from '../user/user.repository';
+import {UserRepository} from '../database/user.repository';
+import {SessionRepository} from '../database/session.repository';
 import {forwardRef, Inject, Injectable, UnauthorizedException} from '@nestjs/common';
 
 @Injectable()

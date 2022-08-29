@@ -1,21 +1,13 @@
-import {UserEntity} from './user.entity';
+import {Module} from '@nestjs/common';
 import {UserResolver} from './user.resolver';
-import {TypeOrmModule} from '@nestjs/typeorm';
-import {RankModule} from '../rank/rank.module';
-import {UserRepository} from './user.repository';
-import {forwardRef, Module} from '@nestjs/common';
 import {CommonModule} from '../common/common.module';
 import {SessionModule} from '../session/session.module';
 import {UserDataloaderService} from './user.dataloader';
+import {DatabaseModule} from '../database/database.module';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([UserEntity]),
-    CommonModule,
-    forwardRef(() => SessionModule),
-    forwardRef(() => RankModule),
-  ],
-  providers: [UserRepository, UserResolver, UserDataloaderService],
-  exports: [TypeOrmModule, UserRepository, UserDataloaderService],
+  imports: [CommonModule, DatabaseModule, SessionModule],
+  providers: [UserResolver, UserDataloaderService],
+  exports: [UserDataloaderService],
 })
 export class UserModule {}

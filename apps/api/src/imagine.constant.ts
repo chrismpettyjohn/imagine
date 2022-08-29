@@ -1,9 +1,4 @@
-import {UserEntity} from './user/user.entity';
-import {RankEntity} from './rank/rank.entity';
-import {SessionEntity} from './session/session.entity';
-import {UserVipStatus} from './user/user.types';
-
-export const imagineDatabaseEntities = [SessionEntity, UserEntity, RankEntity];
+import {UserVipStatus} from './database/user.types';
 
 export function getEnvOrFail(key: string): string {
   const value = process.env[key];

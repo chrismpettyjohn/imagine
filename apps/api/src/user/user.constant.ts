@@ -8,7 +8,7 @@ import {
   IMAGINE_DEFAULT_VIP_POINTS,
   IMAGINE_DEFAULT_VIP_RANK,
   IMAGINE_DEFAULT_VIP_STATUS,
-} from '@imagine-cms/api';
+} from '../imagine.constant';
 import {
   UserAllowingNewFriendsStatus,
   UserGender,
@@ -16,7 +16,7 @@ import {
   UserOnlineStatus,
   UserShowOnlineStatus,
   UserShowRoomStatus,
-} from './user.types';
+} from '../database/user.types';
 
 export const DEFAULT_USER_VALUES = {
   gameSSO: '',

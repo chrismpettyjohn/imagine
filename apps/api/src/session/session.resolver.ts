@@ -1,12 +1,12 @@
 import {SessionArgs} from './session.args';
 import {PubSub} from 'graphql-subscriptions';
 import {SessionModel} from './session.model';
-import {SessionEntity} from './session.entity';
 import {SessionService} from './session.service';
 import {GetSession} from './get-session.decorator';
 import {HasSession} from './has-session.decorator';
-import {SessionRepository} from './session.repository';
+import {SessionEntity} from '../database/session.entity';
 import {SessionDataloaderService} from './session.dataloader';
+import {SessionRepository} from '../database/session.repository';
 import {Args, Mutation, Query, Resolver, Subscription} from '@nestjs/graphql';
 
 const pubSub = new PubSub();

@@ -1,19 +1,15 @@
+import {Module} from '@nestjs/common';
 import {JwtModule} from '@nestjs/jwt';
-import {TypeOrmModule} from '@nestjs/typeorm';
-import {UserModule} from '../user/user.module';
-import {SessionEntity} from './session.entity';
 import {SessionService} from './session.service';
-import {forwardRef, Module} from '@nestjs/common';
 import {SessionResolver} from './session.resolver';
 import {CommonModule} from '../common/common.module';
-import {SessionRepository} from './session.repository';
+import {DatabaseModule} from '../database/database.module';
 import {SessionDataloaderService} from './session.dataloader';
 import {JwtAuthenticationGuard} from './jwt-authentication.guard';
 import {IMAGINE_JWT_EXPIRATION_IN_MS, IMAGINE_JWT_SECRET} from '../imagine.constant';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([SessionEntity]),
     JwtModule.register({
       secret: IMAGINE_JWT_SECRET,
       signOptions: {
@@ -21,17 +17,9 @@ import {IMAGINE_JWT_EXPIRATION_IN_MS, IMAGINE_JWT_SECRET} from '../imagine.const
       },
     }),
     CommonModule,
-    forwardRef(() => UserModule),
+    DatabaseModule,
   ],
-  providers: [SessionService, SessionDataloaderService, SessionRepository, SessionResolver, JwtAuthenticationGuard],
-  exports: [
-    TypeOrmModule,
-    SessionService,
-    SessionDataloaderService,
-    SessionRepository,
-    SessionResolver,
-    JwtAuthenticationGuard,
-    JwtModule,
-  ],
+  providers: [SessionService, SessionDataloaderService, SessionResolver, JwtAuthenticationGuard],
+  exports: [SessionService, SessionDataloaderService, SessionResolver, JwtAuthenticationGuard],
 })
 export class SessionModule {}

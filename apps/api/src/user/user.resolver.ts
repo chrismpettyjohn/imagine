@@ -1,18 +1,18 @@
 import {UserArgs} from './user.args';
 import {UserModel} from './user.model';
-import {UserEntity} from './user.entity';
 import {PubSub} from 'graphql-subscriptions';
 import {RankModel} from '../rank/rank.model';
-import {RankEntity} from '../rank/rank.entity';
-import {UserRepository} from './user.repository';
+import {RankEntity} from '../database/rank.entity';
+import {UserEntity} from '../database/user.entity';
 import {DEFAULT_USER_VALUES} from './user.constant';
 import {GetUser} from '../session/get-user.decorator';
-import {RankRepository} from '../rank/rank.repository';
 import {UserDataloaderService} from './user.dataloader';
-import {SessionEntity} from '../session/session.entity';
+import {SessionEntity} from '../database/session.entity';
+import {UserRepository} from '../database/user.repository';
 import {HasSession} from '../session/has-session.decorator';
+import {RankRepository} from '../database/rank.repository';
 import {UserCreateInput, UserUpdateInput} from './user.input';
-import {SessionRepository} from '../session/session.repository';
+import {SessionRepository} from '../database/session.repository';
 import {forwardRef, Inject, UnauthorizedException} from '@nestjs/common';
 import {Args, Mutation, Parent, Query, ResolveField, Resolver, Subscription} from '@nestjs/graphql';
 

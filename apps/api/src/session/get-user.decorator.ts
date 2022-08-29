@@ -1,5 +1,5 @@
 import {RawRequest} from './session.types';
-import {UserEntity} from '../user/user.entity';
+import {UserEntity} from '../database/user.entity';
 import {getRequestFromExecutionContext} from '../utility/get-request';
 import {createParamDecorator, ExecutionContext, UnauthorizedException} from '@nestjs/common';
 

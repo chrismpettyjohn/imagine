@@ -1,5 +1,5 @@
-import {RankEntity} from '../rank/rank.entity';
-import {SessionEntity} from '../session/session.entity';
+import {RankEntity} from './rank.entity';
+import {SessionEntity} from './session.entity';
 import {Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
 import {
   IMAGINE_DEFAULT_ACTIVITY_POINTS,
@@ -9,7 +9,7 @@ import {
   IMAGINE_DEFAULT_MOTTO,
   IMAGINE_DEFAULT_VIP_POINTS,
   IMAGINE_DEFAULT_VIP_STATUS,
-} from '@imagine-cms/api';
+} from '../imagine.constant';
 import {
   UserAllowingNewFriendsStatus,
   UserGender,

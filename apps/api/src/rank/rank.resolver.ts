@@ -1,14 +1,14 @@
 import {In} from 'typeorm';
 import {RankArgs} from './rank.args';
 import {RankModel} from './rank.model';
-import {RankEntity} from './rank.entity';
 import {PubSub} from 'graphql-subscriptions';
 import {UserModel} from '../user/user.model';
-import {UserEntity} from '../user/user.entity';
-import {RankRepository} from './rank.repository';
 import {Inject, forwardRef} from '@nestjs/common';
-import {UserRepository} from '../user/user.repository';
+import {RankEntity} from '../database/rank.entity';
+import {UserEntity} from '../database/user.entity';
 import {RankDataloaderService} from './rank.dataloader';
+import {RankRepository} from '../database/rank.repository';
+import {UserRepository} from '../database/user.repository';
 import {RankCreateInput, RankUpdateInput} from './rank.input';
 import {Args, Mutation, Query, Resolver, ResolveField, Parent, Subscription} from '@nestjs/graphql';
 
