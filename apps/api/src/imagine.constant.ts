@@ -22,7 +22,6 @@ export const IMAGINE_DATABASE_USER = process.env.DATABASE_USER;
 
 export const IMAGINE_GRAPHQL_PLAYGROUND = !!process.env.GRAPHQL_PLAYGROUND;
 
-
 export const IMAGINE_JWT_SECRET: string = getEnvOrFail('JWT_SECRET');
 export const IMAGINE_JWT_EXPIRATION_IN_MS = Number(getEnvOrFail('JWT_EXPIRATION_IN_MS'));
 
