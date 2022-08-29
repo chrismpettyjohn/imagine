@@ -14,7 +14,7 @@ import {RankRepository} from '../database/rank.repository';
 import {UserCreateInput, UserUpdateInput} from './user.input';
 import {SessionRepository} from '../database/session.repository';
 import {forwardRef, Inject, UnauthorizedException} from '@nestjs/common';
-import {Args, Mutation, Parent, Query, ResolveField, Resolver, Subscription} from '@nestjs/graphql';
+import {Args, Mutation, Parent, Query, ResolveProperty, Resolver, Subscription} from '@nestjs/graphql';
 
 const pubSub = new PubSub();
 
@@ -29,13 +29,13 @@ export class UserResolver {
     private readonly userDataloaderService: UserDataloaderService
   ) {}
 
-  // @ResolveField(() => String)
+  // @ResolveProperty(() => String)
   // @HasSession()
   // email(@Parent() user: UserModel, @GetUser() authenticatedUser: UserEntity): string {
   //   this.ownsResource(user.id! as any, authenticatedUser.id!);
   //   return user.email;
   // }
-  //
+
   // @ResolveField(() => String)
   // @HasSession()
   // gameSSO(@Parent() user: UserModel, @GetUser() authenticatedUser: UserEntity): string {

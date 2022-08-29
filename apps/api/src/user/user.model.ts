@@ -18,7 +18,7 @@ export class UserModel {
   username!: string;
 
   // TODO: Add Privacy Guard
-  @Field(() => String, {nullable: true})
+  @Field({nullable: true})
   email!: string;
 
   // TODO: Add Privacy Guard

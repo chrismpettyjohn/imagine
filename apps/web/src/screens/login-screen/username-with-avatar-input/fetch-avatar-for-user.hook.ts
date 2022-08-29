@@ -1,15 +1,20 @@
 import gql from 'graphql-tag';
-import {useEffect} from 'react';
 import {useLazyQuery} from '@apollo/react-hooks';
 
 const FETCH_AVATAR_FOR_USER = gql`
 query($username: String!) {
-  user
+  user {
+    username(username: $username),
+    look
 }
 `
 
-export function fetchAvatarForUserHook(username: string): {loading: boolean, avatar?: string} {
-  const  [getAvatar, { loading, error, data }]  = useLazyQuery(SEARCH_POSTS, {
-    variables: { query: `%${query}%` },
+export function useFetchAvatarForUserHook(username: string): {loading: boolean, avatar?: string} {
+  const  [getAvatar, { loading, error, data }]  = useLazyQuery(FETCH_AVATAR_FOR_USER, {
+    variables: { username },
   });
+  return {
+    loading,
+    avatar: data?.look,
+  }
 }

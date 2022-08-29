@@ -1,0 +1,7 @@
+{
+    query($username: String!) {
+        user(username: $username) {
+
+        }
+    }
+}

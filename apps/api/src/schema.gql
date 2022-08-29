@@ -77,7 +77,7 @@ type Query {
   session(id: Float!): SessionModel!
   sessions: [SessionModel!]!
   user(id: Float!): UserModel!
-  users: [UserModel!]!
+  users(username: String): [UserModel!]!
   rank(id: Float!): RankModel!
   ranks: [RankModel!]!
 }
