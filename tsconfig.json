@@ -3,9 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@imagine-cms/api": ["packages/imagine-api/src"],
-      "@imagine-cms/web": ["packages/imagine-web/src"],
-      "@imagine-cms/theme": ["packages/imagine-theme/src"]
+      "@imagine-cms/api": ["apps/api/src"],
+      "@imagine-cms/web": ["apps/web/src"]
     },
     "noEmit": true
   },

@@ -1,5 +1,5 @@
 {
-  "name": "demo-api",
+  "name": "@imagine-cms/api",
   "version": "1.0.0",
   "scripts": {
     "start": "node_modules/.bin/ts-node -r tsconfig-paths/register src/index.ts"

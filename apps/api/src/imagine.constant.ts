@@ -15,6 +15,14 @@ export function getEnvOrFail(key: string): string {
   return value;
 }
 
+export const IMAGINE_DATABASE_HOST = process.env.DATABASE_HOST;
+export const IMAGINE_DATABASE_NAME = process.env.DATABASE_NAME;
+export const IMAGINE_DATABASE_PASS = process.env.DATABASE_PASS;
+export const IMAGINE_DATABASE_USER = process.env.DATABASE_USER;
+
+export const IMAGINE_GRAPHQL_PLAYGROUND = !!process.env.GRAPHQL_PLAYGROUND;
+
+
 export const IMAGINE_JWT_SECRET: string = getEnvOrFail('JWT_SECRET');
 export const IMAGINE_JWT_EXPIRATION_IN_MS = Number(getEnvOrFail('JWT_EXPIRATION_IN_MS'));
 

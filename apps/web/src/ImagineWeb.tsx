@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function ImagineTheme() {
+export function ImagineWeb() {
   return (
     <>Imagine Theme</>
   )

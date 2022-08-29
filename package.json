@@ -1,8 +1,7 @@
 {
   "private": true,
   "workspaces": [
-    "packages/**/*",
-    "demo/**/*"
+    "apps/**/*"
   ],
   "scripts": {
     "fix": "gts fix",
@@ -22,7 +21,6 @@
     "eslint-plugin-react-hooks": "4.6.0",
     "gts": "3.1.0",
     "lerna": "5.4.3",
-    "tsconfig-paths-webpack-plugin": "4.0.0",
     "typescript": "4.8.2"
   },
   "name": "imagine",
