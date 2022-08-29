@@ -1,6 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {UsernameWithAvatarInput} from './username-with-avatar-input/UsernameWithAvatarInput';
 
 export function LoginScreen() {
+  const [username, setUsername] = useState('');
+
   return (
     <main className="position-relative container justify-content-center py-4">
       <div className="row justify-content-center">
@@ -64,11 +67,7 @@ export function LoginScreen() {
             <div className="card-body">
               <h5 className="silver">Login to Habboon!</h5>
               <form method="POST" className="form" noValidate>
-                <div className="form-group">
-                  <label htmlFor="username">Username</label>
-                  <input type="text" name="username" className="form-control" id="username" placeholder="Username" autoComplete="username" required />
-                  <div id="preview-user" style={{backgroundImage: 'url(https://www.habboon.pw/img/ghost.png)' }} />
-                </div>
+                <UsernameWithAvatarInput username={username} onChange={setUsername} />
                 <div className="form-group">
                   <label htmlFor="password">Password</label>
                   <input type="password" name="password" className="form-control" id="password" placeholder="Password" autoComplete="current-password" required />

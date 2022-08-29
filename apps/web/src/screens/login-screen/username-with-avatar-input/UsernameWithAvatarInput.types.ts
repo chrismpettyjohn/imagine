@@ -1,4 +1,4 @@
 export interface UsernameWithAvatarInputProps {
   username?: string;
-  onChange(newUsername?: string): void;
+  onChange(newUsername: string): void;
 }

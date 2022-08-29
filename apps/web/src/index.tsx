@@ -1,5 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {ImagineWeb} from './ImagineWeb';
+import { createRoot } from 'react-dom/client';
 
-ReactDOM.render(<ImagineWeb />, document.getElementById('root'));
+// @ts-ignore
+const container = document.getElementById('root');
+const root = createRoot(container);
+
+root.render(<ImagineWeb />);
