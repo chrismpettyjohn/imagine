@@ -72,6 +72,15 @@ enum UserVipStatus {
   No
 }
 
+type ArticleModel {
+  id: ID!
+  name: String
+  description: String
+  content: String
+  image: String
+  user: UserModel
+}
+
 type Query {
   sessionCurrent: SessionModel!
   session(id: Float!): SessionModel!
@@ -80,6 +89,8 @@ type Query {
   users(username: String): [UserModel!]!
   rank(id: Float!): RankModel!
   ranks: [RankModel!]!
+  article(id: Float!): ArticleModel!
+  articles: [ArticleModel!]!
 }
 
 type Mutation {
@@ -90,6 +101,9 @@ type Mutation {
   rankCreate(newRank: RankCreateInput!): RankModel!
   rankUpdate(id: Float!, rankChanges: RankUpdateInput!): Boolean!
   rankDelete(id: Float!): Boolean!
+  articleCreate(newArticle: ArticleCreateInput!): ArticleModel!
+  articleUpdate(id: Float!, articleChanges: ArticleUpdateInput!): Boolean!
+  articleDelete(id: Float!): Boolean!
 }
 
 input UserCreateInput {
@@ -115,10 +129,26 @@ input RankUpdateInput {
   badgeCode: String!
 }
 
+input ArticleCreateInput {
+  name: String!
+  description: String!
+  content: String!
+  image: String!
+}
+
+input ArticleUpdateInput {
+  name: String!
+  description: String!
+  content: String!
+  image: String!
+}
+
 type Subscription {
   sessionCreated: SessionModel!
   userCreated: UserModel!
   userDeleted: UserModel!
   rankCreated: RankModel!
   rankDeleted: RankModel!
+  articleCreated: ArticleModel!
+  articleDeleted: ArticleModel!
 }

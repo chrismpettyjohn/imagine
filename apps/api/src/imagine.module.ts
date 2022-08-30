@@ -16,6 +16,7 @@ import {
   IMAGINE_DATABASE_USER,
   IMAGINE_GRAPHQL_PLAYGROUND,
 } from './imagine.constant';
+import {ArticleModule} from './article/article.module';
 
 @Module({
   imports: [
@@ -41,6 +42,7 @@ import {
     SessionModule,
     UserModule,
     RankModule,
+    ArticleModule,
   ],
 })
 export class ImagineModule {}

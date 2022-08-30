@@ -20,6 +20,7 @@ import {
   UserShowRoomStatus,
   UserVipStatus,
 } from './user.types';
+import {ArticleEntity} from './article.entity';
 
 @Entity('users')
 @ObjectType()
@@ -106,4 +107,7 @@ export class UserEntity {
 
   @OneToMany(() => SessionEntity, session => session.user)
   sessions?: SessionEntity[];
+
+  @OneToMany(() => ArticleEntity, article => article.user)
+  articles?: ArticleEntity[];
 }
