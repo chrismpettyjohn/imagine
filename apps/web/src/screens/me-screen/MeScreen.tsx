@@ -1,4 +1,5 @@
 import React from 'react';
+import {UserContainer} from './user-container/UserContainer';
 
 export function MeScreen() {
   return (
@@ -16,39 +17,7 @@ export function MeScreen() {
       </div>
       <div className="row">
         <div className="col-lg-9 col-12">
-          <div id="me" className="mb-3">
-            <div className="row align-items-center">
-              <div className="col-lg-2 col-3 text-center">
-                <div className="avatar">
-                  <img
-                    src="https://imager.habboon.pw?figure=ea-1403-63.ch-3077-1325-110.hr-125-61.lg-285-89.fa-1201-0.sh-3027-110-1408.hd-3103-1.he-8394-110.wa-2009-1325&amp;direction=2&amp;head_direction=3&amp;gesture=sml&amp;action=wav"
-                    alt="Leader" loading="lazy" />
-                </div>
-              </div>
-              <div className="col-xl-10 col-lg-9 offset-lg-1 offset-xl-0 offset-0 col-9">
-                <div className="row align-items-center details">
-                  <div className="col-xl-6 col-lg-6 offset-lg-0 col-10">
-                    <h4>Leader</h4>
-                    <h6 className="mb-0">
-                      [UPD] Officer I [HA]
-                    </h6>
-                  </div>
-                  <div className="col-xl-6 col-lg-6 text-right d-none d-lg-block">
-                    <div className="d-flex  justify-content-between  w-100">
-                      <div>
-                        <a href="https://www.habboon.pw/client" target="_blank" className="btn btn-primary px-3" rel="noreferrer"><i
-                          className="fas fa-sign-in-alt mr-1"></i> Enter (Flash)</a>
-                      </div>
-                      <div>
-                        <a href="https://www.habboon.pw/nitro" target="_blank" className="btn btn-primary px-3" rel="noreferrer"><i
-                          className="fas fa-sign-in-alt mr-1"></i> Enter (HTML5)</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <UserContainer />
           <div id="articles-carousel" className="carousel slide mb-3 mb-lg-0" data-ride="carousel">
             <ol className="carousel-indicators">
               <li data-target="#articles-carousel" data-slide-to="0" className=""></li>

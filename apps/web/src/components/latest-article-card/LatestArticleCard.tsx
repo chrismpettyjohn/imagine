@@ -1,5 +1,5 @@
 import DayJS from 'dayjs';
-import {Link} from 'wouter';
+import {Link} from 'react-router-dom';
 import gql from 'graphql-tag';
 import React, {useEffect} from 'react';
 import {ArticleWire} from '@imagine-cms/types';
