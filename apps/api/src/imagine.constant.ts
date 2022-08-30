@@ -1,4 +1,4 @@
-import {UserVipStatus} from './database/user.types';
+import {UserVipStatus} from '@imagine-cms/types';
 
 export function getEnvOrFail(key: string): string {
   const value = process.env[key];

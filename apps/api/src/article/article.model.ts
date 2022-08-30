@@ -1,11 +1,12 @@
 import {UserModel} from '../user/user.model';
+import {ArticleWire} from '@imagine-cms/types';
 import {Field, ID, ObjectType} from '@nestjs/graphql';
 import {ArticleCommentModel} from './article-comment/article-comment.model';
 
 @ObjectType()
-export class ArticleModel {
+export class ArticleModel implements ArticleWire {
   @Field(() => ID)
-  id!: string;
+  id!: number;
 
   @Field({nullable: true})
   name?: string;
@@ -17,7 +18,7 @@ export class ArticleModel {
   content?: string;
 
   @Field({nullable: true})
-  image?: string;
+  imageURL?: string;
 
   @Field({nullable: true})
   userID?: number;

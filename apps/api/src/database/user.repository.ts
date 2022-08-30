@@ -14,7 +14,7 @@ export class UserRepository extends BaseRepository<UserEntity> {
     super(profileRepo);
   }
 
-  async create(newEntity: UserEntity): Promise<UserEntity> {
+  async create(newEntity: Omit<UserEntity, 'id'>): Promise<UserEntity> {
     return super.create({
       ...newEntity,
       password: this.hashService.generate(newEntity.password),

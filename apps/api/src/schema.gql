@@ -12,7 +12,15 @@ type RankModel {
 
 type SessionModel {
   id: ID!
-  userID: Float!
+  userID: Float
+  createdAt: String
+  updatedAt: String
+}
+
+type SessionCreatedModel {
+  id: ID!
+  userID: Float
+  accessToken: String
 }
 
 type UserModel {
@@ -22,7 +30,7 @@ type UserModel {
   gameSSO: String
   rankID: ID
   rank: RankModel
-  rankVipID: String
+  rankVipID: ID
   rankVip: RankModel
   credits: Float
   vipPoints: Float
@@ -72,16 +80,6 @@ enum UserVipStatus {
   No
 }
 
-type ArticleModel {
-  id: ID!
-  name: String
-  description: String
-  content: String
-  image: String
-  userID: Float
-  user: UserModel
-}
-
 type ArticleCommentModel {
   id: ID!
   articleID: Float
@@ -89,6 +87,19 @@ type ArticleCommentModel {
   userID: Float
   user: UserModel
   comment: String
+  createdAt: String
+  updatedAt: String
+}
+
+type ArticleModel {
+  id: ID!
+  name: String
+  description: String
+  content: String
+  imageURL: String
+  userID: Float
+  user: UserModel
+  comments: [ArticleCommentModel!]
 }
 
 type Query {
@@ -106,7 +117,7 @@ type Query {
 }
 
 type Mutation {
-  sessionCreate(username: String!, password: String!): String!
+  sessionCreate(sessionCreateInput: SessionCreateInput!): SessionCreatedModel!
   userCreate(newUser: UserCreateInput!): UserModel!
   userUpdate(id: Float!, userChanges: UserUpdateInput!): Boolean!
   userDelete(id: Float!): Boolean!
@@ -119,6 +130,11 @@ type Mutation {
   articleCommentCreate(newArticleComment: ArticleCommentCreateInput!): ArticleCommentModel!
   articleCommentUpdate(id: Float!, articleChanges: ArticleCommentUpdateInput!): Boolean!
   articleCommentDelete(id: Float!): Boolean!
+}
+
+input SessionCreateInput {
+  username: String!
+  password: String!
 }
 
 input UserCreateInput {
@@ -148,14 +164,14 @@ input ArticleCreateInput {
   name: String!
   description: String!
   content: String!
-  image: String!
+  imageURL: String!
 }
 
 input ArticleUpdateInput {
   name: String!
   description: String!
   content: String!
-  image: String!
+  imageURL: String!
 }
 
 input ArticleCommentCreateInput {

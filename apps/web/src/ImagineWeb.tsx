@@ -5,14 +5,17 @@ import {graphqlClient} from './graphql/graphql.client';
 import {SiteFooter} from './components/site-footer/SiteFooter';
 import {SiteHeader} from './components/site-header/SiteHeader';
 import {SiteNavigation} from './components/site-navigation/SiteNavigation';
+import {SessionContextProvider} from './context/session/SessionContextProvider';
 
 export function ImagineWeb() {
   return (
     <ApolloProvider client={graphqlClient as any}>
-    <SiteHeader />
-      <SiteNavigation />
-      <Router />
-      <SiteFooter />
+      <SessionContextProvider>
+        <SiteHeader />
+        <SiteNavigation />
+        <Router />
+        <SiteFooter />
+      </SessionContextProvider>
     </ApolloProvider>
   )
 }

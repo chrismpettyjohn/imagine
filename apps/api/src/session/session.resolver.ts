@@ -1,12 +1,13 @@
 import {SessionArgs} from './session.args';
 import {PubSub} from 'graphql-subscriptions';
-import {SessionModel} from './session.model';
 import {SessionService} from './session.service';
+import {SessionCreateInput} from './session.input';
 import {GetSession} from './get-session.decorator';
 import {HasSession} from './has-session.decorator';
 import {SessionEntity} from '../database/session.entity';
 import {SessionDataloaderService} from './session.dataloader';
 import {SessionRepository} from '../database/session.repository';
+import {SessionCreatedModel, SessionModel} from './session.model';
 import {Args, Mutation, Query, Resolver, Subscription} from '@nestjs/graphql';
 
 const pubSub = new PubSub();
@@ -35,9 +36,14 @@ export class SessionResolver {
     return this.sessionRepo.find(sessionArgs);
   }
 
-  @Mutation(() => String)
-  async sessionCreate(@Args('username') username: string, @Args('password') password: string): Promise<string> {
-    const newSession = await this.sessionService.loginWithUsernameAndPassword(username, password);
+  @Mutation(() => SessionCreatedModel)
+  async sessionCreate(
+    @Args('sessionCreateInput') sessionCreateInput: SessionCreateInput
+  ): Promise<SessionCreatedModel> {
+    const newSession = await this.sessionService.loginWithUsernameAndPassword(
+      sessionCreateInput.username,
+      sessionCreateInput.password
+    );
     pubSub.publish('sessionCreated', {sessionCreated: newSession});
     return newSession;
   }

@@ -8,79 +8,81 @@ import {
   UserOnlineStatus,
   UserShowOnlineStatus,
   UserVipStatus,
-} from '../database/user.types';
+  UserWire,
+} from '@imagine-cms/types';
+
 @ObjectType()
-export class UserModel {
+export class UserModel implements UserWire {
   @Field(() => ID)
-  id!: string;
+  id!: number;
 
   @Field(() => String, {nullable: true})
-  username!: string;
+  username?: string;
 
   // TODO: Add Privacy Guard
   @Field({nullable: true})
-  email!: string;
+  email?: string;
 
   // TODO: Add Privacy Guard
   @Field(() => String, {nullable: true})
-  gameSSO!: string;
+  gameSSO?: string;
 
   @Field(() => ID, {nullable: true})
-  rankID!: number;
+  rankID?: number;
 
   @Field(() => RankModel, {nullable: true})
   rank?: RankModel;
 
-  @Field(() => String, {nullable: true})
-  rankVipID!: string;
+  @Field(() => ID, {nullable: true})
+  rankVipID?: number;
 
   @Field(() => RankModel, {nullable: true})
   rankVip?: RankModel;
 
   @Field(() => Number, {nullable: true})
-  credits!: number;
+  credits?: number;
 
   @Field(() => Number, {nullable: true})
-  vipPoints!: number;
+  vipPoints?: number;
 
   @Field(() => Number, {nullable: true})
-  activityPoints!: number;
+  activityPoints?: number;
 
   @Field(() => String, {nullable: true})
-  look!: string;
+  look?: string;
 
   @Field(() => UserGender, {nullable: true})
-  gender!: UserGender;
+  gender?: UserGender;
 
   @Field(() => String, {nullable: true})
-  motto!: string;
+  motto?: string;
 
   @Field(() => String, {nullable: true})
-  accountCreatedAt!: string;
+  accountCreatedAt?: string;
 
   @Field(() => String, {nullable: true})
-  lastOnline!: string;
+  lastOnline?: string;
 
   @Field(() => UserOnlineStatus, {nullable: true})
-  onlineStatus!: UserOnlineStatus;
+  onlineStatus?: UserOnlineStatus;
 
   @Field(() => String, {nullable: true})
-  ipRegisteredWith!: string;
+  ipRegisteredWith?: string;
 
   @Field(() => Number, {nullable: true})
-  homeRoomID!: number;
+  homeRoomID?: number;
 
   @Field(() => UserMuteStatus, {nullable: true})
-  muteStatus!: UserMuteStatus;
+  muteStatus?: UserMuteStatus;
 
   @Field(() => UserAllowingNewFriendsStatus, {nullable: true})
-  allowingNewFriends!: UserAllowingNewFriendsStatus;
+  allowingNewFriends?: UserAllowingNewFriendsStatus;
 
   @Field(() => UserShowOnlineStatus, {nullable: true})
-  showOnlineStatus!: UserShowOnlineStatus;
+  showOnlineStatus?: UserShowOnlineStatus;
 
   @Field(() => UserVipStatus, {nullable: true})
-  vipStatus!: UserVipStatus;
+  vipStatus?: UserVipStatus;
 
   @Field(() => [SessionModel], {nullable: true})
   sessions?: SessionModel[];

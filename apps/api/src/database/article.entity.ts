@@ -1,4 +1,5 @@
 import {UserEntity} from './user.entity';
+import {ArticleWire} from '@imagine-cms/types';
 import {ArticleCommentEntity} from './article-comment.entity';
 import {
   Column,
@@ -12,9 +13,9 @@ import {
 } from 'typeorm';
 
 @Entity('imagine_articles')
-export class ArticleEntity {
+export class ArticleEntity implements ArticleWire {
   @PrimaryGeneratedColumn()
-  id?: number;
+  id!: number;
 
   @Column({name: 'user_id'})
   userID!: number;
@@ -33,7 +34,7 @@ export class ArticleEntity {
   content!: string;
 
   @Column({name: 'image_url'})
-  image!: string;
+  imageURL!: string;
 
   @CreateDateColumn({name: 'created_at'})
   createdAt?: string;

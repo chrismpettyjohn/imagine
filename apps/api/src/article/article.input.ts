@@ -1,8 +1,9 @@
 import {Field, InputType} from '@nestjs/graphql';
-import {MaxLength, IsAlphanumeric, IsNotEmpty, IsOptional} from 'class-validator';
+import {ArticleCreateInputDTO, ArticleUpdateInputDTO} from '@imagine-cms/types';
+import {MaxLength, IsAlphanumeric, IsNotEmpty, IsOptional, IsUrl} from 'class-validator';
 
 @InputType()
-export class ArticleCreateInput {
+export class ArticleCreateInput implements ArticleCreateInputDTO {
   @Field()
   @MaxLength(30)
   @IsNotEmpty()
@@ -18,12 +19,12 @@ export class ArticleCreateInput {
   content!: string;
 
   @Field()
-  @IsNotEmpty()
-  image!: string;
+  @IsUrl()
+  imageURL!: string;
 }
 
 @InputType()
-export class ArticleUpdateInput {
+export class ArticleUpdateInput implements ArticleUpdateInputDTO {
   @Field()
   @MaxLength(30)
   @IsNotEmpty()
@@ -42,7 +43,7 @@ export class ArticleUpdateInput {
   content?: string;
 
   @Field()
-  @IsNotEmpty()
+  @IsUrl()
   @IsOptional()
-  image?: string;
+  imageURL?: string;
 }

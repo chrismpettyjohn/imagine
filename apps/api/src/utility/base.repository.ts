@@ -6,8 +6,8 @@ export abstract class BaseRepository<Entity> {
     readonly repo: Repository<Entity>
   ) {}
 
-  async create(newEntity: Entity): Promise<Entity> {
-    const newObject = await this.repo.save(newEntity);
+  async create(newEntity: Omit<Entity, 'id'>): Promise<Entity> {
+    const newObject = await this.repo.save(newEntity as any);
 
     // @ts-ignore
     if (!newObject.id) {

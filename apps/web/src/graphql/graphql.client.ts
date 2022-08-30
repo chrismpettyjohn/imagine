@@ -1,7 +1,6 @@
-import {ApolloClient} from "@apollo/client";
+import {ApolloClient, InMemoryCache} from "@apollo/client";
 import {GRAPHQL_URL} from '../app.constant';
 import { WebSocketLink } from "apollo-link-ws";
-import { InMemoryCache } from "apollo-cache-inmemory";
 
 let graphqlAccessToken = '';
 

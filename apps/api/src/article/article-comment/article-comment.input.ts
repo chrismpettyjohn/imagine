@@ -1,8 +1,9 @@
 import {Field, InputType} from '@nestjs/graphql';
 import {MaxLength, IsNumber, IsNotEmpty} from 'class-validator';
+import {ArticleCommentCreateInputDTO, ArticleCommentUpdateInputDTO} from '@imagine-cms/types';
 
 @InputType()
-export class ArticleCommentCreateInput {
+export class ArticleCommentCreateInput implements ArticleCommentCreateInputDTO {
   @Field()
   @IsNumber()
   articleID!: number;
@@ -14,7 +15,7 @@ export class ArticleCommentCreateInput {
 }
 
 @InputType()
-export class ArticleCommentUpdateInput {
+export class ArticleCommentUpdateInput implements ArticleCommentUpdateInputDTO {
   @Field()
   @MaxLength(255)
   @IsNotEmpty()

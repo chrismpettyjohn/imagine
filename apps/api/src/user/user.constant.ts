@@ -16,7 +16,7 @@ import {
   UserOnlineStatus,
   UserShowOnlineStatus,
   UserShowRoomStatus,
-} from '../database/user.types';
+} from '@imagine-cms/types';
 
 export const DEFAULT_USER_VALUES = {
   gameSSO: '',

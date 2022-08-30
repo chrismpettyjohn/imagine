@@ -1,6 +1,6 @@
 import React from 'react';
 import {UsernameWithAvatarInputProps} from './UsernameWithAvatarInput.types';
-import {useFetchAvatarForUserHook} from './fetch-avatar-for-user.hook';
+import {useFetchAvatarForUserHook} from '../../../graphql/fetch-avatar-for-user.hook';
 
 export function UsernameWithAvatarInput({username, onChange}: UsernameWithAvatarInputProps) {
   const {loading, avatar} = useFetchAvatarForUserHook(username);

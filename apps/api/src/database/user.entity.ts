@@ -1,6 +1,8 @@
 import {RankEntity} from './rank.entity';
-import {ObjectType} from '@nestjs/graphql';
 import {SessionEntity} from './session.entity';
+import {ArticleEntity} from './article.entity';
+import {registerEnumType} from '@nestjs/graphql';
+import {UserWire} from '@imagine-cms/types/src/user/User';
 import {Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
 import {
   IMAGINE_DEFAULT_ACTIVITY_POINTS,
@@ -19,14 +21,40 @@ import {
   UserShowOnlineStatus,
   UserShowRoomStatus,
   UserVipStatus,
-} from './user.types';
-import {ArticleEntity} from './article.entity';
+} from '@imagine-cms/types';
+
+registerEnumType(UserGender, {
+  name: 'UserGender',
+});
+
+registerEnumType(UserOnlineStatus, {
+  name: 'UserOnlineStatus',
+});
+
+registerEnumType(UserMuteStatus, {
+  name: 'UserMuteStatus',
+});
+
+registerEnumType(UserAllowingNewFriendsStatus, {
+  name: 'UserAllowingNewFriendsStatus',
+});
+
+registerEnumType(UserShowOnlineStatus, {
+  name: 'UserShowOnlineStatus',
+});
+
+registerEnumType(UserShowRoomStatus, {
+  name: 'UserShowRoomStatus',
+});
+
+registerEnumType(UserVipStatus, {
+  name: 'UserVipStatus',
+});
 
 @Entity('users')
-@ObjectType()
-export class UserEntity {
+export class UserEntity implements UserWire {
   @PrimaryGeneratedColumn()
-  id?: number;
+  id!: number;
 
   @Column({unique: true})
   username!: string;
