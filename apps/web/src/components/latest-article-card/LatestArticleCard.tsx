@@ -1,9 +1,8 @@
-import DayJS from 'dayjs';
-import {Link} from 'wouter';
 import gql from 'graphql-tag';
 import React, {useEffect} from 'react';
 import {ArticleWire} from '@imagine-cms/types';
 import {useRunQuery} from '../../graphql/run-query';
+import {ArticleCard} from '../article-card/ArticleCard';
 
 const FETCH_LATEST_ARTICLE = gql`
   query {
@@ -43,45 +42,7 @@ export function LatestArticleCard() {
         )
       }
       {
-        latestArticle && (
-          <div id="articles-strip">
-            <div className="row">
-              <div className="col-12">
-                <div className="card">
-                  <Link to={`/community/news/${latestArticle?.id}`} aria-label={latestArticle?.name}>
-                    <div className="card-body" style={{backgroundImage: `url(${latestArticle?.imageURL})`}}>
-                      <div className="avatar">
-                        <img
-                          src={`https://imager.habboon.pw?figure=${latestArticle?.user?.look}&size=m&direction=2&head_direction=2&gesture=sml&headonly=1`}
-                          alt={latestArticle?.user?.username} data-toggle="tooltip" data-placement="top" data-title={latestArticle?.user?.username} loading="lazy"
-                          data-original-title="" title="" />
-                      </div>
-                    </div>
-                  </Link>
-                  <div className="card-footer">
-                    <h6>
-                      <Link to={`/community/news/${latestArticle?.id}`} aria-label={latestArticle?.name}>
-                        {latestArticle?.name}
-                      </Link>
-                    </h6>
-                    <p>{latestArticle?.description}<br/><br/></p>
-                    <div className="info">
-                      <div className="initial">
-                        <span className="username">{latestArticle?.user?.username}</span>
-                        <span className="published"><i className="fas fa-clock" /> {DayJS(latestArticle?.createdAt).fromNow()}</span>
-                      </div>
-                      <div className="audience">
-                        <span className="comments"><i className="fas fa-comments" /> 0</span>
-                        <span className="views"><i className="fas fa-eye" /> 16</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        )
+        latestArticle && <ArticleCard article={latestArticle} />
       }
     </>
   )

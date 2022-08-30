@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import React, {useEffect} from 'react';
 import {Carousel} from 'react-bootstrap';
 import {ArticleWire} from '@imagine-cms/types';
-import {useRunQuery} from '../../../graphql/run-query';
+import {useRunQuery} from '../../graphql/run-query';
 
 const FETCH_LATEST_ARTICLES = gql`
     query {

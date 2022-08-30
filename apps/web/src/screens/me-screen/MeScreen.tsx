@@ -1,6 +1,6 @@
 import React from 'react';
 import {UserContainer} from './user-container/UserContainer';
-import {LatestArticlesSlider} from './latest-articles-slider/LatestArticlesSlider';
+import {LatestArticlesSlider} from '../../components/latest-articles-slider/LatestArticlesSlider';
 
 export function MeScreen() {
   return (
