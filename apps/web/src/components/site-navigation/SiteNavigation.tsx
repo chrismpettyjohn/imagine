@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'wouter';
 import {NavDropdown} from 'react-bootstrap';
 
 export function SiteNavigation() {
@@ -12,22 +13,30 @@ export function SiteNavigation() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto ml-2 ml-lg-0">
             <li className="nav-item">
-              <a href="/me" className="nav-link ">Homepage <span className="sr-only">(current)</span></a>
+              <Link to="/me" className="nav-link ">Homepage <span className="sr-only">(current)</span></Link>
             </li>
             <NavDropdown title="Community">
-              <NavDropdown.Item href="/community">Community</NavDropdown.Item>
-              <NavDropdown.Item href="/community/staff">Staff</NavDropdown.Item>
-              <NavDropdown.Item href="/community/leaderboards">Leaderboards</NavDropdown.Item>
-              <NavDropdown.Item href="/community/online-players">Online Players</NavDropdown.Item>
+              <Link to="/community">
+                <NavDropdown.Item>Community</NavDropdown.Item>
+              </Link>
+              <Link to="/community/staff">
+                <NavDropdown.Item>Staff</NavDropdown.Item>
+              </Link>
+              <Link to="/community/leaderboards">
+                <NavDropdown.Item>Leaderboards</NavDropdown.Item>
+              </Link>
+              <Link to="/community/online-players">
+                <NavDropdown.Item>Online Players</NavDropdown.Item>
+              </Link>
             </NavDropdown>
             <li className="nav-item">
-              <a href="/gallery" className="nav-link ">Gallery</a>
+              <Link to="/gallery" className="nav-link ">Gallery</Link>
             </li>
             <li className="nav-item">
-              <a href="/marketplace" className="nav-link ">Marketplace</a>
+              <Link to="/marketplace" className="nav-link ">Marketplace</Link>
             </li>
             <li className="nav-item ">
-              <a href="/store" className="nav-link ">Store</a>
+              <Link to="/store" className="nav-link ">Store</Link>
             </li>
           </ul>
         </div>
