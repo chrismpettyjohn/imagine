@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import {Link} from 'wouter';
 import gql from 'graphql-tag';
 import React, {useEffect} from 'react';
 import {UserWire} from '@imagine-cms/types';

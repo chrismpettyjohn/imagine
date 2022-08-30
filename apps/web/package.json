@@ -14,7 +14,7 @@
   "dependencies": {
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-router-dom": "6.3.0",
+    "wouter": "2.8.0-alpha.2",
     "react-bootstrap": "2.5.0",
     "@apollo/react-hooks": "4.0.0",
     "@apollo/client": "3.6.9",
@@ -23,9 +23,7 @@
     "graphql-tag": "2.12.6",
     "apollo-link-ws": "1.0.20",
     "@imagine-cms/types": "*",
-    "dayjs": "1.11.5",
-    "react-toastify": "9.0.8",
-    "react-loading-overlay": "1.0.1"
+    "dayjs": "1.11.5"
   },
   "devDependencies": {
     "@types/node": "16.11.56",
