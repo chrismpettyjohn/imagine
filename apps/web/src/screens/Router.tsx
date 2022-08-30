@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'wouter';
 import {MeScreen} from './me-screen/MeScreen';
 import {LoginScreen} from './login-screen/LoginScreen';
+import {LogoutScreen} from './logout-screen/LogoutScreen';
 import {UserGuard} from '../components/user-guard/UserGuard';
 import {GuestGuard} from '../components/guest-guard/GuestGuard';
 import {RegisterScreen} from './register-screen/RegisterScreen';
@@ -23,6 +24,11 @@ export function Router() {
         <GuestGuard>
           <RegisterScreen />
         </GuestGuard>
+      </Route>
+      <Route path="/logout">
+        <UserGuard>
+          <LogoutScreen />
+        </UserGuard>
       </Route>
       <Route path="/me">
         <UserGuard>

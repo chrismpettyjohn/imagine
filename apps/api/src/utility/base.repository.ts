@@ -18,7 +18,7 @@ export abstract class BaseRepository<Entity> {
     return this.findOneOrFail({id: newObject.id!});
   }
 
-  find(where?: FindOptionsWhere<Entity>, options?: FindOneOptions<Entity>): Promise<Entity[]> {
+  find(where?: FindOptionsWhere<Entity>, options?: FindManyOptions<Entity>): Promise<Entity[]> {
     return this.repo.find({
       where,
       ...options,

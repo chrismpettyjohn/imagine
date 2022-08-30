@@ -1,3 +1,4 @@
+import {omit} from 'lodash';
 import {PubSub} from 'graphql-subscriptions';
 import {Inject, forwardRef} from '@nestjs/common';
 import {UserEntity} from '../../database/user.entity';
@@ -30,7 +31,7 @@ export class ArticleCommentResolver {
 
   @Query(() => [ArticleCommentModel])
   articleComments(@Args() articleCommentArgs: ArticleCommentArgs): Promise<ArticleCommentEntity[]> {
-    return this.articleCommentRepo.find(articleCommentArgs);
+    return this.articleCommentRepo.find(omit(articleCommentArgs, 'other'), articleCommentArgs.other);
   }
 
   @Mutation(() => ArticleCommentModel)

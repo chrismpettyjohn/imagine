@@ -1,20 +1,16 @@
+import {omit} from 'lodash';
 import {UserArgs} from './user.args';
 import {UserModel} from './user.model';
 import {PubSub} from 'graphql-subscriptions';
-import {RankModel} from '../rank/rank.model';
-import {RankEntity} from '../database/rank.entity';
 import {UserEntity} from '../database/user.entity';
 import {DEFAULT_USER_VALUES} from './user.constant';
-import {GetUser} from '../session/get-user.decorator';
 import {UserDataloaderService} from './user.dataloader';
-import {SessionEntity} from '../database/session.entity';
 import {UserRepository} from '../database/user.repository';
-import {HasSession} from '../session/has-session.decorator';
 import {RankRepository} from '../database/rank.repository';
 import {UserCreateInput, UserUpdateInput} from './user.input';
 import {SessionRepository} from '../database/session.repository';
 import {forwardRef, Inject, UnauthorizedException} from '@nestjs/common';
-import {Args, Mutation, Parent, Query, ResolveProperty, Resolver, Subscription} from '@nestjs/graphql';
+import {Args, Mutation, Query, Resolver, Subscription} from '@nestjs/graphql';
 
 const pubSub = new PubSub();
 
@@ -29,31 +25,6 @@ export class UserResolver {
     private readonly userDataloaderService: UserDataloaderService
   ) {}
 
-  // @ResolveProperty(() => String)
-  // @HasSession()
-  // email(@Parent() user: UserModel, @GetUser() authenticatedUser: UserEntity): string {
-  //   this.ownsResource(user.id! as any, authenticatedUser.id!);
-  //   return user.email;
-  // }
-
-  // @ResolveField(() => String)
-  // @HasSession()
-  // gameSSO(@Parent() user: UserModel, @GetUser() authenticatedUser: UserEntity): string {
-  //   this.ownsResource(user.id! as any, authenticatedUser.id!);
-  //   return user.gameSSO;
-  // }
-  //
-  // @ResolveField(() => RankModel)
-  // async rank(@Parent() user: UserModel): Promise<RankEntity> {
-  //   return this.rankRepo.findOneOrFail({id: user.rankID});
-  // }
-  //
-  // @ResolveField(() => RankModel)
-  // async sessions(@Parent() user: UserModel): Promise<SessionEntity[]> {
-  //   // @ts-ignore
-  //   return this.sessionRepo.find({userID: user.id!});
-  // }
-
   @Query(() => UserModel)
   async user(@Args('id') id: number): Promise<UserEntity> {
     return this.userDataloaderService.loadById(id);
@@ -61,7 +32,7 @@ export class UserResolver {
 
   @Query(() => [UserModel])
   users(@Args() userArgs: UserArgs): Promise<UserEntity[]> {
-    return this.userRepo.find(userArgs);
+    return this.userRepo.find(omit(userArgs, 'other'), userArgs.other);
   }
 
   @Mutation(() => UserModel)
@@ -104,7 +75,6 @@ export class UserResolver {
   }
 
   private ownsResource(userID: number, authenticatedUser: number) {
-    console.log(userID, authenticatedUser);
     if (Number(userID) !== Number(authenticatedUser)) {
       throw new UnauthorizedException();
     }

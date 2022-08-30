@@ -6,6 +6,7 @@ import {SessionCreatedWire, UserWire} from '@imagine-cms/types';
 import {setGraphqlAccessToken} from '../../graphql/graphql.client';
 import {sessionContext} from '../../context/session/SessionContext';
 import React, {SyntheticEvent, useContext, useEffect, useState} from 'react';
+import {LatestArticleCard} from '../../components/latest-article-card/LatestArticleCard';
 import {UsernameWithAvatarInput} from './username-with-avatar-input/UsernameWithAvatarInput';
 
 const LOGIN_WITH_USERNAME_AND_PASSWORD = gql`
@@ -70,9 +71,6 @@ export function LoginScreen() {
     setLocation('/me');
   }, [fetchUserBySessionID.data]);
 
-  console.log(loginWithUsernameAndPassword.data);
-  console.log(fetchUserBySessionID.data);
-
   return (
     <main className="position-relative container justify-content-center py-4">
       <div className="row justify-content-center">
@@ -88,48 +86,7 @@ export function LoginScreen() {
       </div>
       <div className="row justify-content-center">
         <div className="col-lg-3 d-lg-block d-none">
-          <h5 className="silver">Latest Article <span className="float-right"><i
-            className="fas fa-newspaper"></i></span></h5>
-          <div id="articles-strip">
-            <div className="row">
-              <div className="col-12">
-                <a href="https://www.habboon.pw/articles/4947-gamer-of-the-week-177"
-                   aria-label="Gamer of the Week #177">
-                </a>
-                <div className="card"><a href="https://www.habboon.pw/articles/4947-gamer-of-the-week-177"
-                                         aria-label="Gamer of the Week #177">
-                  <div className="card-body" style={{backgroundImage: 'url(https://www.habboon.pw/web-gallery/web_promos/promo_hlmpc12.png)'}}>
-                    <div className="avatar">
-                      <img
-                        src="https://imager.habboon.pw?figure=hd-600-10.lg-4375-64.fa-3276-1329.sh-4064-1325.hr-4182-1405-61.cc-4137-1325.he-3999-1325-64.ha-4192-1408.ch-4392-64-1422.ca-50062-1422-110&amp;size=m&amp;direction=2&amp;head_direction=2&amp;gesture=sml&amp;headonly=1"
-                        alt="Michaela" data-toggle="tooltip" data-placement="top" data-title="Michaela" loading="lazy"
-                        data-original-title="" title="" />
-                    </div>
-                  </div>
-                </a>
-                  <div className="card-footer"><a href="https://www.habboon.pw/articles/4947-gamer-of-the-week-177"
-                                                  aria-label="Gamer of the Week #177">
-                  </a><h6><a href="https://www.habboon.pw/articles/4947-gamer-of-the-week-177"
-                             aria-label="Gamer of the Week #177"></a><a
-                    href="https://www.habboon.pw/articles/4947-gamer-of-the-week-177"
-                    aria-label="Gamer of the Week #177">Gamer of the Week #177</a></h6>
-                    <p>Now that's epic!<br/><br/></p>
-                    <div className="info">
-                      <div className="initial">
-                        <span className="username">Michaela</span>
-                        <span className="published"><i className="fas fa-clock"></i> 3 hours ago</span>
-                      </div>
-                      <div className="audience">
-                        <span className="comments"><i className="fas fa-comments"></i> 0</span>
-                        <span className="views"><i className="fas fa-eye"></i> 16</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
+          <LatestArticleCard />
         </div>
         <div className="col-lg-4 col-12">
           <div className="card">

@@ -1,5 +1,6 @@
 import {resolve} from 'path';
 import {Module} from '@nestjs/common';
+import GraphQLJSON from 'graphql-type-json';
 import {GraphQLModule} from '@nestjs/graphql';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import {UserModule} from './user/user.module';
@@ -36,6 +37,7 @@ import {ArticleModule} from './article/article.module';
       autoSchemaFile: resolve(__dirname, './schema.gql'),
       fieldResolverEnhancers: ['guards'],
       installSubscriptionHandlers: true,
+      resolvers: {JSON: GraphQLJSON},
     }),
     CommonModule,
     DatabaseModule,

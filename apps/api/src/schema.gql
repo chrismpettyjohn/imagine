@@ -105,16 +105,26 @@ type ArticleModel {
 type Query {
   sessionCurrent: SessionModel!
   session(id: Float!): SessionModel!
-  sessions: [SessionModel!]!
+  sessions(other: ExtraArgs): [SessionModel!]!
   user(id: Float!): UserModel!
-  users(username: String): [UserModel!]!
+  users(other: ExtraArgs, username: String): [UserModel!]!
   rank(id: Float!): RankModel!
-  ranks: [RankModel!]!
+  ranks(other: ExtraArgs): [RankModel!]!
   article(id: Float!): ArticleModel!
-  articles: [ArticleModel!]!
+  articles(other: ExtraArgs): [ArticleModel!]!
   articleComment(id: Float!): ArticleCommentModel!
-  articleComments: [ArticleCommentModel!]!
+  articleComments(other: ExtraArgs): [ArticleCommentModel!]!
 }
+
+input ExtraArgs {
+  take: Float
+  order: JSON
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
 
 type Mutation {
   sessionCreate(sessionCreateInput: SessionCreateInput!): SessionCreatedModel!

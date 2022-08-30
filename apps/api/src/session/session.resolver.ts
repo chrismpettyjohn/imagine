@@ -1,6 +1,8 @@
+import {omit} from 'lodash';
 import {SessionArgs} from './session.args';
 import {PubSub} from 'graphql-subscriptions';
 import {SessionService} from './session.service';
+import {CommonArgs} from '../utility/common.args';
 import {SessionCreateInput} from './session.input';
 import {GetSession} from './get-session.decorator';
 import {HasSession} from './has-session.decorator';
@@ -33,7 +35,7 @@ export class SessionResolver {
 
   @Query(() => [SessionModel])
   sessions(@Args() sessionArgs: SessionArgs): Promise<SessionEntity[]> {
-    return this.sessionRepo.find(sessionArgs);
+    return this.sessionRepo.find(omit(sessionArgs, 'other'), sessionArgs.other);
   }
 
   @Mutation(() => SessionCreatedModel)
