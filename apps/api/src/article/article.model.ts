@@ -1,5 +1,6 @@
 import {UserModel} from '../user/user.model';
 import {Field, ID, ObjectType} from '@nestjs/graphql';
+import {ArticleCommentModel} from './article-comment/article-comment.model';
 
 @ObjectType()
 export class ArticleModel {
@@ -23,4 +24,7 @@ export class ArticleModel {
 
   @Field(() => UserModel, {nullable: true})
   user?: UserModel;
+
+  @Field(() => [ArticleCommentModel], {nullable: true})
+  comments?: ArticleCommentModel[];
 }

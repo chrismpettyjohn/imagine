@@ -6,7 +6,15 @@ import {UserRepository} from './user.repository';
 import {RankRepository} from './rank.repository';
 import {SessionRepository} from './session.repository';
 import {ArticleRepository} from './article.repository';
+import {ArticleCommentEntity} from './article-comment.entity';
+import {ArticleCommentRepository} from './article-comment.repository';
 
-export const databaseEntities = [ArticleEntity, RankEntity, SessionEntity, UserEntity];
+export const databaseEntities = [ArticleEntity, RankEntity, SessionEntity, UserEntity, ArticleCommentEntity];
 
-export const databaseRepositories = [RankRepository, SessionRepository, UserRepository, ArticleRepository];
+export const databaseRepositories = [
+  RankRepository,
+  SessionRepository,
+  UserRepository,
+  ArticleRepository,
+  ArticleCommentRepository,
+];

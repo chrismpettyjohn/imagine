@@ -1,4 +1,5 @@
 import {UserEntity} from './user.entity';
+import {ArticleCommentEntity} from './article-comment.entity';
 import {
   Column,
   Entity,
@@ -7,6 +8,7 @@ import {
   JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
 
 @Entity('imagine_articles')
@@ -38,4 +40,7 @@ export class ArticleEntity {
 
   @UpdateDateColumn({name: 'updated_at'})
   updatedAt?: string;
+
+  @OneToMany(() => ArticleCommentEntity, articleComment => articleComment.article)
+  comments?: ArticleCommentEntity[];
 }
