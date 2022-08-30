@@ -2,6 +2,8 @@ export * from './article/Article';
 export * from './article/ArticleInput';
 export * from './article/ArticleComment';
 export * from './article/ArticleCommentInput';
+export * from './badge/Badge';
+export * from './badge/BadgeInput';
 export * from './rank/Rank';
 export * from './rank/RankInput';
 export * from './session/Session';

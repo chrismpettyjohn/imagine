@@ -11,9 +11,11 @@ export function ImagineWeb() {
   return (
     <ApolloProvider client={graphqlClient as any}>
       <SessionContextProvider>
-        <SiteHeader />
-        <SiteNavigation />
-        <Router />
+        <div style={{height: '100%'}}>
+          <SiteHeader />
+          <SiteNavigation />
+          <Router />
+        </div>
         <SiteFooter />
       </SessionContextProvider>
     </ApolloProvider>

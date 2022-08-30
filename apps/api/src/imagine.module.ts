@@ -5,7 +5,9 @@ import {GraphQLModule} from '@nestjs/graphql';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import {UserModule} from './user/user.module';
 import {RankModule} from './rank/rank.module';
+import {BadgeModule} from './badge/badge.module';
 import {CommonModule} from './common/common.module';
+import {ArticleModule} from './article/article.module';
 import {SessionModule} from './session/session.module';
 import {DatabaseModule} from './database/database.module';
 import {databaseEntities} from './database/database.const';
@@ -17,7 +19,6 @@ import {
   IMAGINE_DATABASE_USER,
   IMAGINE_GRAPHQL_PLAYGROUND,
 } from './imagine.constant';
-import {ArticleModule} from './article/article.module';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import {ArticleModule} from './article/article.module';
       installSubscriptionHandlers: true,
       resolvers: {JSON: GraphQLJSON},
     }),
+    BadgeModule,
     CommonModule,
     DatabaseModule,
     SessionModule,

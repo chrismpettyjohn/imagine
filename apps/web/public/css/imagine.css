@@ -1,9 +1,3 @@
 .nav-item.dropdown:hover .dropdown-menu {
     display: block;
 }
-
-footer {
-    position: absolute !important;
-    bottom: 0;
-    width: 100%;
-}
