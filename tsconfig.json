@@ -5,7 +5,7 @@
     "paths": {
       "@imagine-cms/api": ["apps/api/src"],
       "@imagine-cms/web": ["apps/web/src"],
-      "@imagine-cms/types": ["apps/types/src"]
+      "@imagine-cms/types": ["libs/types/src"]
     },
     "noEmit": true
   },

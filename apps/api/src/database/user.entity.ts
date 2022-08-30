@@ -2,7 +2,6 @@ import {RankEntity} from './rank.entity';
 import {SessionEntity} from './session.entity';
 import {ArticleEntity} from './article.entity';
 import {registerEnumType} from '@nestjs/graphql';
-import {UserWire} from '@imagine-cms/types/src/user/User';
 import {Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
 import {
   IMAGINE_DEFAULT_ACTIVITY_POINTS,
@@ -14,6 +13,7 @@ import {
   IMAGINE_DEFAULT_VIP_STATUS,
 } from '../imagine.constant';
 import {
+  UserWire,
   UserAllowingNewFriendsStatus,
   UserGender,
   UserMuteStatus,

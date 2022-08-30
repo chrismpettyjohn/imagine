@@ -1,5 +1,5 @@
 import {Field, ID, ObjectType} from '@nestjs/graphql';
-import {SessionCreatedWire, SessionWire} from '../../../types/src';
+import {SessionCreatedWire, SessionWire} from '@imagine-cms/types';
 
 @ObjectType()
 export class SessionModel implements SessionWire {
