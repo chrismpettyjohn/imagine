@@ -10,6 +10,9 @@ export class CommonArgs {
 @InputType()
 export class ExtraArgs {
   @Field({nullable: true})
+  skip?: number;
+
+  @Field({nullable: true})
   take?: number;
 
   @Field(() => GraphQLJSON, {nullable: true})
