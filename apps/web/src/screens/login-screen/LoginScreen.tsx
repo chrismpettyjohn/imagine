@@ -1,25 +1,77 @@
+import gql from 'graphql-tag';
+import {useLocation} from 'wouter';
+import {useRunQuery} from '../../graphql/run-query';
+import {useRunMutation} from '../../graphql/run-mutation';
+import {SessionCreatedWire, UserWire} from '@imagine-cms/types';
 import {setGraphqlAccessToken} from '../../graphql/graphql.client';
 import {sessionContext} from '../../context/session/SessionContext';
 import React, {SyntheticEvent, useContext, useEffect, useState} from 'react';
 import {UsernameWithAvatarInput} from './username-with-avatar-input/UsernameWithAvatarInput';
-import {useLoginWithUsernameAndPassword} from '../../graphql/login-with-username-and-password.hook';
+
+const LOGIN_WITH_USERNAME_AND_PASSWORD = gql`
+    mutation($username: String!, $password: String!) {
+        sessionCreate(sessionCreateInput: { username: $username, password: $password }) {
+            id,
+            userID,
+            accessToken
+        }
+    }
+`
+
+const FIND_USER_BY_ID = gql`
+    query($userID: Float!) {
+        user(id: $userID) {
+            id,
+            username,
+            email,
+            rankID,
+            rankVipID,
+            credits,
+            vipPoints,
+            activityPoints,
+            look,
+            gender,
+            motto,
+            accountCreatedAt,
+            lastOnline,
+            onlineStatus,
+            ipRegisteredWith,
+            homeRoomID,
+            muteStatus,
+            allowingNewFriends,
+            showOnlineStatus,
+            vipStatus,
+        }
+    }
+`
 
 export function LoginScreen() {
+  const [location, setLocation] = useLocation();
   const {setSession} = useContext(sessionContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const {tryLogin, jwt} = useLoginWithUsernameAndPassword(username, password)
+  const loginWithUsernameAndPassword = useRunMutation<{sessionCreate: SessionCreatedWire}>(LOGIN_WITH_USERNAME_AND_PASSWORD, { username, password })
+  const fetchUserBySessionID = useRunQuery<UserWire>(FIND_USER_BY_ID, { userID: loginWithUsernameAndPassword?.data?.sessionCreate?.userID })
 
   const onLogin = async (event?: SyntheticEvent) => {
     event?.preventDefault();
-    tryLogin();
+    loginWithUsernameAndPassword.runQuery();
   }
 
   useEffect(() => {
-    if (jwt) {
-      setGraphqlAccessToken(jwt);
+    if (loginWithUsernameAndPassword.data) {
+      setGraphqlAccessToken(loginWithUsernameAndPassword.data.sessionCreate.accessToken!);
+      fetchUserBySessionID.runQuery();
     }
-  }, [jwt]);
+  }, [loginWithUsernameAndPassword.data]);
+
+  useEffect(() => {
+    setSession(fetchUserBySessionID.data);
+    setLocation('/me');
+  }, [fetchUserBySessionID.data]);
+
+  console.log(loginWithUsernameAndPassword.data);
+  console.log(fetchUserBySessionID.data);
 
   return (
     <main className="position-relative container justify-content-center py-4">
