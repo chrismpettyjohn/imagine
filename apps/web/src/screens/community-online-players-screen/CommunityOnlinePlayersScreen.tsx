@@ -28,6 +28,14 @@ export function CommunityOnlinePlayersScreen() {
         <div className="col-lg-8 col-md-6 col-12">
           <h5 className="silver">Online Players</h5>
           {
+            loading && (
+              <>
+                <i className="fa fa-spinner fa-spin fa-2x" />
+                <h2>Loading...</h2>
+              </>
+            )
+          }
+          {
             data?.users?.map(user => (
               <div className="col-4" key={`online_players_screen_${user.id}`}>
                 <div className="card" style={{marginBottom: '0.75rem'}}>
