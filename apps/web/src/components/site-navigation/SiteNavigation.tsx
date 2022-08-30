@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Link} from 'wouter';
-import {NavDropdown} from 'react-bootstrap';
+import {sessionContext} from '../../context/session/SessionContext';
 
 export function SiteNavigation() {
+  const {session} = useContext(sessionContext);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark habboon-nav">
       <div className="container">
@@ -13,30 +14,19 @@ export function SiteNavigation() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto ml-2 ml-lg-0">
             <li className="nav-item">
-              <Link to="/me" className="nav-link ">Homepage <span className="sr-only">(current)</span></Link>
-            </li>
-            <NavDropdown title="Community">
-              <Link to="/community">
-                <NavDropdown.Item>Community</NavDropdown.Item>
-              </Link>
-              <Link to="/community/staff">
-                <NavDropdown.Item>Staff</NavDropdown.Item>
-              </Link>
-              <Link to="/community/leaderboards">
-                <NavDropdown.Item>Leaderboards</NavDropdown.Item>
-              </Link>
-              <Link to="/community/online-players">
-                <NavDropdown.Item>Online Players</NavDropdown.Item>
-              </Link>
-            </NavDropdown>
-            <li className="nav-item">
-              <Link to="/gallery" className="nav-link ">Gallery</Link>
+              <Link to="/me" className="nav-link">{session?.username ?? 'Home'}</Link>
             </li>
             <li className="nav-item">
-              <Link to="/marketplace" className="nav-link ">Marketplace</Link>
+              <Link to="/community" className="nav-link">Community</Link>
             </li>
-            <li className="nav-item ">
-              <Link to="/store" className="nav-link ">Store</Link>
+            <li className="nav-item">
+              <Link to="/community/staff" className="nav-link">Staff</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/community/leaderboards" className="nav-link">Leaderboards</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/community/online-players" className="nav-link">Online Players</Link>
             </li>
           </ul>
         </div>

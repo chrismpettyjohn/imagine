@@ -8,8 +8,6 @@ export function CommunityScreen() {
       <div className="row">
         <div className="col-lg-9 col-12">
           <LatestArticlesGrid />
-          <h5 className="silver">Latest Photos <span className="float-right"><i className="fas fa-camera"></i></span>
-          </h5>
         </div>
         <div className="col-lg-3 col-12">
           <LatestBadgesCard />

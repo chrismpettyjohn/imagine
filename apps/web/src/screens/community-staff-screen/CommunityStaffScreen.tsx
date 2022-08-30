@@ -24,6 +24,13 @@ export function CommunityStaffScreen() {
     <main className="position-relative container justify-content-center py-4">
       <div className="row">
         <div className="col-lg-8 col-12">
+          <div className="col-12">
+            <div id="staff-banner">
+              <img
+                src="https://imager.habboon.pw/?figure=sh-3035-92.hr-5347-31.ch-3013-92.ca-4037-68-92.hd-629-3.lg-720-77.he-3974-1408.ha-3298-77-92&size=m&direction=3&head_direction=3&gesture=sml&headonly=1"
+                className="staff" />
+            </div>
+          </div>
           { loading && (
             <>
               <i className="fa fa-spinner fa-spin fa-2x" />
@@ -33,13 +40,6 @@ export function CommunityStaffScreen() {
           {
             data?.ranks?.map(rank => (
               <div className="row" key={`staff_rank_${rank.id}`}>
-                <div className="col-12">
-                  <div id="staff-banner">
-                    <img
-                      src="https://imager.habboon.pw/?figure=sh-3035-92.hr-5347-31.ch-3013-92.ca-4037-68-92.hd-629-3.lg-720-77.he-3974-1408.ha-3298-77-92&size=m&direction=3&head_direction=3&gesture=sml&headonly=1"
-                      className="staff" />
-                  </div>
-                </div>
                 <div className="col-lg-12">
                   <div className="card">
                     <div className="card-body">
