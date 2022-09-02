@@ -1,5 +1,5 @@
 {
-  "name": "@imagine-cms/bobba-web",
+  "name": "@imagine-cms/boon-web",
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/types",
@@ -23,6 +23,7 @@
     "graphql-tag": "2.12.6",
     "apollo-link-ws": "1.0.20",
     "@imagine-cms/types": "*",
+    "@imagine-cms/web": "*",
     "dayjs": "1.11.5",
     "react-loading-overlay": "1.0.1",
     "react-toastify": "9.0.8"
