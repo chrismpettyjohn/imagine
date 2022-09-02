@@ -1,19 +1,8 @@
-import gql from 'graphql-tag';
 import React, {useEffect} from 'react';
-import {BadgeWire} from '@imagine-cms/types';
-import {useRunQuery} from '../../graphql/run-query';
-
-const FETCH_LATEST_BADGES = gql`
-    query {
-        badges(other: { take: 16, order: { id: "DESC" } }) {
-            id,
-            code,
-        }
-    }
-`
+import {useFetchLatestBadges} from '../../hooks/fetch-latest-badges.hook';
 
 export function LatestBadgesCard() {
-  const {runQuery, loading, data} = useRunQuery<{badges: BadgeWire[]}>(FETCH_LATEST_BADGES)
+  const {runQuery, loading, data} = useFetchLatestBadges();
 
   useEffect(() => {
     runQuery();

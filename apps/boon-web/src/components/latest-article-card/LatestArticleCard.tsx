@@ -1,28 +1,9 @@
-import gql from 'graphql-tag';
 import React, {useEffect} from 'react';
-import {ArticleWire} from '@imagine-cms/types';
-import {useRunQuery} from '../../graphql/run-query';
 import {ArticleCard} from '../article-card/ArticleCard';
-
-const FETCH_LATEST_ARTICLE = gql`
-  query {
-      articles(other: { take: 1, order: { id: "DESC" } }) {
-          id,
-          name,
-          description,
-          content,
-          imageURL,
-          user {
-              id,
-              username,
-              look,
-          },
-      }
-  }
-`
+import {useFetchLatestArticle} from '../../hooks/fetch-latest-article.hook';
 
 export function LatestArticleCard() {
-  const {runQuery, loading, data} = useRunQuery<{articles: ArticleWire[]}>(FETCH_LATEST_ARTICLE)
+  const {runQuery, loading, data} = useFetchLatestArticle();
   const latestArticle = data?.articles?.[0];
 
   useEffect(() => {

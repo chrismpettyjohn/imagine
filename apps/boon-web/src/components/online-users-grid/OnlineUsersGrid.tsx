@@ -1,21 +1,9 @@
 import {Link} from 'wouter';
-import gql from 'graphql-tag';
 import React, {useEffect} from 'react';
-import {UserWire} from '@imagine-cms/types';
-import {useRunQuery} from '../../graphql/run-query';
-
-const FETCH_ONLINE_USERS = gql`
-    query {
-        users {
-            id,
-            username,
-            look,
-        }
-    }
-`
+import {useFetchOnlineUsers} from '../../hooks/fetch-online-users.hook';
 
 export function OnlineUsersGrid() {
-  const {runQuery, loading, data} = useRunQuery<{users: UserWire[]}>(FETCH_ONLINE_USERS)
+  const {runQuery, loading, data} = useFetchOnlineUsers();
 
   useEffect(() => {
     runQuery();

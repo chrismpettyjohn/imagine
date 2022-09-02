@@ -14,7 +14,7 @@ export function SocialMediaButtons() {
       }
       {
         config?.instagramURL && (
-          <a href={config.instagramURL} target="_blank" className="instagram-banner" rel="noopener noreferrer">
+          <a href={config.instagramURL} target="_blank" className="facebook-banner" style={{background: '#405DE6'}} rel="noopener noreferrer">
             <i className="fab fa-instagram" /> <span>Like us on Instagram!</span>
           </a>
         )
@@ -35,8 +35,8 @@ export function SocialMediaButtons() {
       }
       {
         config?.snapchatURL && (
-          <a href={config.snapchatURL} target="_blank" className="snapchat-banner" rel="noopener noreferrer">
-            <i className="fab fa-snapchat-ghost" /> <span>Subscribe to our Snapchat</span>
+          <a href={config.snapchatURL} target="_blank" className="facebook-banner" style={{background: '#000000'}} rel="noopener noreferrer">
+            <i className="fab fa-snapchat-ghost" /> <span>Subscribe on Snapchat</span>
           </a>
         )
       }

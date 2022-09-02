@@ -1,20 +1,8 @@
-import gql from 'graphql-tag';
 import React, {useEffect} from 'react';
-import {RankWire} from '@imagine-cms/types';
-import {useRunQuery} from '../../graphql/run-query';
-
-const FETCH_STAFF_RANKS = gql`
-  query {
-      ranks {
-          id,
-          name,
-          badgeCode
-      }
-  }
-`
+import {useFetchStaffRanks} from '../../hooks/fetch-staff-ranks.hook';
 
 export function CommunityStaffScreen() {
-  const {runQuery, loading, data} = useRunQuery<{ranks: RankWire[]}>(FETCH_STAFF_RANKS)
+  const {runQuery, loading, data} = useFetchStaffRanks();
 
   useEffect(() => {
     runQuery()
