@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {ArticleCard} from '../article-card/ArticleCard';
-import {useFetchLatestArticles} from '../../hooks/fetch-latest-articles.hook';
+import {useFetchLatestArticles} from '@imagine-cms/web';
 
 export function LatestArticlesGrid() {
   const {runQuery, loading, data} = useFetchLatestArticles();

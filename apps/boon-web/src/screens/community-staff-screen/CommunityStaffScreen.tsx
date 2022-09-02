@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {useFetchStaffRanks} from '../../hooks/fetch-staff-ranks.hook';
+import {useFetchStaffRanks} from '@imagine-cms/web';
 
 export function CommunityStaffScreen() {
   const {runQuery, loading, data} = useFetchStaffRanks();

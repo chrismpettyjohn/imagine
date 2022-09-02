@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {configContext} from '../../context/config/ConfigContext';
+import {configContext} from '@imagine-cms/web';
 
 export function SocialMediaButtons() {
   const {config} = useContext(configContext);

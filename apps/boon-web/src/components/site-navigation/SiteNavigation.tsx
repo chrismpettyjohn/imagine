@@ -1,7 +1,7 @@
 import {Link} from 'wouter';
 import React, {useContext} from 'react';
 import {NavDropdown} from 'react-bootstrap';
-import {sessionContext} from '../../context/session/SessionContext';
+import {sessionContext} from '@imagine-cms/web';
 
 export function SiteNavigation() {
   const {session} = useContext(sessionContext);

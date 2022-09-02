@@ -1,7 +1,7 @@
 import {Link} from 'wouter';
 import React, {useEffect} from 'react';
 import {UserWire} from '@imagine-cms/types';
-import {useRunQuery} from '../../graphql/run-query';
+import {useRunQuery} from '@imagine-cms/web';
 import {LeaderboardsCardProps} from './LeaderboardsCard.types';
 
 export function LeaderboardsCard({title, value, query}: LeaderboardsCardProps) {

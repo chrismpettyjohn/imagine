@@ -1,8 +1,7 @@
 import React, {SyntheticEvent, useEffect, useState} from 'react';
 import {GuestGuard} from '../../components/guest-guard/GuestGuard';
-import {useUserCreateMutation} from '../../hooks/user-create.hook';
 import {LoadingOverlay} from '../../components/loading-overlay/LoadingOverlay';
-import {useSignInWithUsernameAndPassword} from '../../hooks/sign-in-with-username-and-password.hook';
+import {useSignInWithUsernameAndPassword, useUserCreateMutation} from '@imagine-cms/web';
 
 export function RegisterScreen() {
   const [email, setEmail] = useState('');

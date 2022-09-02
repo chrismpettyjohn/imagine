@@ -31,5 +31,4 @@ class LocalStorageService {
   }
 }
 
-export const localStorageService: LocalStorageService =
-  new LocalStorageService();
+export const localStorageService: LocalStorageService = new LocalStorageService();

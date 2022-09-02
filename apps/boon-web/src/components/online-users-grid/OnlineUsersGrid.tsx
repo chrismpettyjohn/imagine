@@ -1,6 +1,6 @@
 import {Link} from 'wouter';
 import React, {useEffect} from 'react';
-import {useFetchOnlineUsers} from '../../hooks/fetch-online-users.hook';
+import {useFetchOnlineUsers} from '@imagine-cms/web';
 
 export function OnlineUsersGrid() {
   const {runQuery, loading, data} = useFetchOnlineUsers();

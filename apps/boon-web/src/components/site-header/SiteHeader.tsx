@@ -1,7 +1,6 @@
 import {Link} from 'wouter';
 import React, {useContext} from 'react';
-import {configContext} from '../../context/config/ConfigContext';
-import {sessionContext} from '../../context/session/SessionContext';
+import {configContext, sessionContext} from '@imagine-cms/web';
 
 export function SiteHeader() {
   const {config} = useContext(configContext);

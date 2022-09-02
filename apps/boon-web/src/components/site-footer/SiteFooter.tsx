@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {configContext} from '../../context/config/ConfigContext';
+import {configContext} from '@imagine-cms/web';
 import {SocialMediaIcons} from '../social-media/SocialMediaIcons';
 import {OnlineUsersGrid} from '../online-users-grid/OnlineUsersGrid';
 

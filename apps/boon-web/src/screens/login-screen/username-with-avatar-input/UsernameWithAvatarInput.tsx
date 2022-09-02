@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
 import gql from 'graphql-tag';
+import React, {useEffect} from 'react';
 import {UserWire} from '@imagine-cms/types';
-import {useRunQuery} from '../../../graphql/run-query';
+import {useRunQuery} from '@imagine-cms/web';
 import {UsernameWithAvatarInputProps} from './UsernameWithAvatarInput.types';
 
 const FETCH_AVATAR_FOR_USER = gql`

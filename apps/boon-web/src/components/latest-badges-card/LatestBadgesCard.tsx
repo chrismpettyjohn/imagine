@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {useFetchLatestBadges} from '../../hooks/fetch-latest-badges.hook';
+import {useFetchLatestBadges} from '@imagine-cms/web';
 
 export function LatestBadgesCard() {
   const {runQuery, loading, data} = useFetchLatestBadges();

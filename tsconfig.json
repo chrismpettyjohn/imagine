@@ -6,7 +6,6 @@
       "@imagine-cms/api": ["apps/api/src"],
       "@imagine-cms/admin-web": ["apps/admin-web/src"],
       "@imagine-cms/bobba-web": ["apps/bobba-web/src"],
-      "@imagine-cms/web": ["apps/web/src"],
       "@imagine-cms/types": ["libs/types/src"],
       "@imagine-cms/web": ["libs/web/src"]
     },

@@ -1,8 +1,7 @@
 import {Link} from 'wouter';
 import React, {useEffect} from 'react';
 import {Carousel} from 'react-bootstrap';
-import {useFetchLatestArticles} from '../../hooks/fetch-latest-articles.hook';
-
+import {useFetchLatestArticles} from '@imagine-cms/web';
 
 export function LatestArticlesSlider() {
   const {runQuery, data} = useFetchLatestArticles();

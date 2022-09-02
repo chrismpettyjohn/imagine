@@ -1,6 +1,6 @@
 import {Link} from 'wouter';
 import React, {useContext} from 'react';
-import {sessionContext} from '../../../context/session/SessionContext';
+import {sessionContext} from '@imagine-cms/web';
 
 export function UserContainer() {
   const {session} = useContext(sessionContext);

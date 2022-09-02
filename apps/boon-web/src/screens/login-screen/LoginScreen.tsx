@@ -1,10 +1,9 @@
 import {toast} from 'react-toastify';
-import {configContext} from '../../context/config/ConfigContext';
 import React, {SyntheticEvent, useContext, useState} from 'react';
 import {GuestGuard} from '../../components/guest-guard/GuestGuard';
+import {configContext, useSignInWithUsernameAndPassword} from '@imagine-cms/web';
 import {LatestArticleCard} from '../../components/latest-article-card/LatestArticleCard';
 import {UsernameWithAvatarInput} from './username-with-avatar-input/UsernameWithAvatarInput';
-import {useSignInWithUsernameAndPassword} from '../../hooks/sign-in-with-username-and-password.hook';
 
 export function LoginScreen() {
   const {config} = useContext(configContext);
