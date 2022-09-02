@@ -41,9 +41,11 @@ export function SessionContextProvider({
   }, [fetchSessionByJwt?.data, fetchSessionByJwt?.error]);
 
   useEffect(() => {
-    setSession(fetchUserBySessionID?.data?.user);
-    setIsLoading(false);
-    setLocation('/me');
+    if (fetchUserBySessionID?.data?.user) {
+      setSession(fetchUserBySessionID?.data?.user);
+      setIsLoading(false);
+      setLocation('/me');
+    }
   }, [fetchUserBySessionID?.data?.user]);
 
   const setSession = (newSession?: any) => {

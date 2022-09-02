@@ -48,7 +48,7 @@ export function SiteHeader() {
                 }
                 <div className="col-12">
                   <div className="online">
-                    <i className="fas fa-users" /> <span className="count">0</span> Users Online
+                    <i className="fas fa-users" /> <span className="count">2</span> Users Online
                   </div>
                 </div>
               </div>

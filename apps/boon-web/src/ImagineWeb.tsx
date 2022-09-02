@@ -14,7 +14,7 @@ export function ImagineWeb() {
     <ApolloProvider client={graphqlClient as any}>
       <ConfigContextProvider>
         <SessionContextProvider>
-          <div style={{height: '100%'}}>
+          <div style={{minHeight: 'calc(100% - 200px)'}}>
             <ToastContainer />
             <SiteHeader />
             <SiteNavigation />
