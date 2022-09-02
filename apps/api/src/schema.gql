@@ -124,6 +124,7 @@ type Query {
 }
 
 input ExtraArgs {
+  skip: Float
   take: Float
   order: JSON
 }
