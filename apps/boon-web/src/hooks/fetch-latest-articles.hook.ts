@@ -3,7 +3,7 @@ import {ArticleWire} from '@imagine-cms/types';
 import {UseQueryResponse, useRunQuery} from '../graphql/run-query';
 
 const FETCH_LATEST_ARTICLES = gql`
-    query($limit: Int!) {
+    query($limit: Float!) {
         articles(other: { take: $limit, order: { id: "DESC" } }) {
             id,
             name,

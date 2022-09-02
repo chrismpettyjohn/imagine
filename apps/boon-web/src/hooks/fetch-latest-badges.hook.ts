@@ -3,7 +3,7 @@ import {BadgeWire} from '@imagine-cms/types';
 import {UseQueryResponse, useRunQuery} from '../graphql/run-query';
 
 const FETCH_LATEST_BADGES = gql`
-    query($limit: Int!) {
+    query($limit: Float!) {
         badges(other: { take: $limit, order: { id: "DESC" } }) {
             id,
             code,
