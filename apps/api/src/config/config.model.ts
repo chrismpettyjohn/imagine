@@ -16,8 +16,17 @@ export class ConfigModel implements ConfigWire {
   discordURL?: string;
 
   @Field({nullable: true})
+  discordWidget?: string;
+
+  @Field({nullable: true})
   facebookURL?: string;
 
   @Field({nullable: true})
+  instagramURL?: string;
+
+  @Field({nullable: true})
   twitterURL?: string;
+
+  @Field({nullable: true})
+  snapchatURL?: string;
 }

@@ -90,8 +90,11 @@ type ConfigModel {
   logoURL: String
   nitroURL: String
   discordURL: String
+  discordWidget: String
   facebookURL: String
+  instagramURL: String
   twitterURL: String
+  snapchatURL: String
 }
 
 type ArticleCommentModel {
@@ -220,12 +223,15 @@ input ArticleCommentUpdateInput {
 }
 
 input ConfigUpdateInput {
-  siteName: String!
-  logoURL: String!
-  nitroURL: String!
-  discordURL: String!
-  facebookURL: String!
-  twitterURL: String!
+  siteName: String
+  logoURL: String
+  nitroURL: String
+  discordURL: String
+  discordWidget: String
+  facebookURL: String
+  instagramURL: String
+  twitterURL: String
+  snapchatURL: String
 }
 
 type Subscription {

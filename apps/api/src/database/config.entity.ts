@@ -17,9 +17,18 @@ export class ConfigEntity {
   @Column({name: 'discord_url'})
   discordURL!: string;
 
+  @Column({name: 'discord_widget'})
+  discordWidget!: string;
+
   @Column({name: 'twitter_url'})
   twitterURL!: string;
 
   @Column({name: 'facebook_url'})
   facebookURL!: string;
+
+  @Column({name: 'instagram_url'})
+  instagramURL!: string;
+
+  @Column({name: 'snapchat_url'})
+  snapchatURL!: string;
 }

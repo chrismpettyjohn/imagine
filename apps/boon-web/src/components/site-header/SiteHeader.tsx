@@ -1,6 +1,10 @@
-import React from 'react';
+import {Link} from 'wouter';
+import React, {useContext} from 'react';
+import {configContext} from '../../context/config/ConfigContext';
 
 export function SiteHeader() {
+  const {config} = useContext(configContext);
+
   return (
     <>
       <header className="position-relative">
@@ -9,18 +13,19 @@ export function SiteHeader() {
             className="row justify-content-center justify-content-md-between justify-content-lg-between align-items-center">
             <div className="col-lg-3 col-md-6 d-lg-block d-md-block d-none">
               <a href="/">
-                <img src="https://www.habboon.pw/img/logo-pride.png" alt="Hotel Logo" loading="lazy" />
+                <img src={config?.logoURL} alt="Hotel Logo" loading="lazy" />
               </a>
             </div>
             <div className="col-lg-3 col-md-4 col-8">
               <div className="row">
                 <div className="col-12">
-                  <a href="https://www.habboon.pw/registration" className="enter" id="ga-header-registration-button"
-                     aria-label="Register">
-                    <div>
-                      <i className="fas fa-plus" /> Register now!
-                    </div>
-                  </a>
+                  <Link to="/register">
+                    <a className="enter" aria-label="Register">
+                      <div>
+                        <i className="fas fa-plus" /> Register now!
+                      </div>
+                    </a>
+                  </Link>
                 </div>
                 <div className="col-12">
                   <div className="online">

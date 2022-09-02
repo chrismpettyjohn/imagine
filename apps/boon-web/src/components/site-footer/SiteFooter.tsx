@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {configContext} from '../../context/config/ConfigContext';
+import {SocialMediaIcons} from '../social-media/SocialMediaIcons';
 import {OnlineUsersGrid} from '../online-users-grid/OnlineUsersGrid';
 
 export function SiteFooter() {
+  const {config} = useContext(configContext);
+
   return (
     <footer>
-      <div className="christmas-trees"></div>
       <div id="footer" className="py-4">
         <div className="container">
           <div className="row">
@@ -43,24 +46,13 @@ export function SiteFooter() {
             </div>
             <div className="col-lg-3 col-6">
               <h4 className="mb-3">Social</h4>
-              <ul className="social">
-                <li><a href="https://www.facebook.com/habboonltd" target="_blank" rel="noopener noreferrer"
-                       aria-label="Facebook"><i className="fab fa-facebook-square"></i></a></li>
-                <li><a href="https://twitter.com/habboonpw" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i
-                  className="fab fa-twitter-square"></i></a></li>
-                <li><a href="https://www.snapchat.com/add/boonltd" target="_blank" rel="noopener noreferrer" aria-label="Snapchat"><i
-                  className="fab fa-snapchat-square"></i></a></li>
-                <li><a href="https://www.instagram.com/officialhabboon/" target="_blank" rel="noopener noreferrer"
-                       aria-label="Instagram"><i className="fab fa-instagram"></i></a></li>
-                <li><a href="https://discord.gg/habboon" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i
-                  className="fab fa-discord"></i></a></li>
-              </ul>
+              <SocialMediaIcons />
             </div>
           </div>
         </div>
       </div>
       <div id="legal-footer">
-        <p>Habboon is a not for profit educational project.</p>
+        <p>{config?.siteName} is a not for profit educational project.</p>
       </div>
     </footer>
   )

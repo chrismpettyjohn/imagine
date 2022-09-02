@@ -5,6 +5,7 @@ import { WebSocketLink } from "apollo-link-ws";
 let graphqlAccessToken = '';
 
 export const graphqlClient = new ApolloClient({
+  // @ts-ignore
   link: new WebSocketLink({
     uri: GRAPHQL_URL,
     options: {
