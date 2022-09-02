@@ -1,5 +1,5 @@
 {
-  "name": "@imagine-cms/web",
+  "name": "@imagine-cms/bobba-web",
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/types",
