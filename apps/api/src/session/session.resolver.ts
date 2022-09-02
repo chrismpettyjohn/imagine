@@ -1,11 +1,9 @@
 import {omit} from 'lodash';
+import {JwtService} from '@nestjs/jwt';
 import {SessionArgs} from './session.args';
 import {PubSub} from 'graphql-subscriptions';
 import {SessionService} from './session.service';
-import {CommonArgs} from '../utility/common.args';
 import {SessionCreateInput} from './session.input';
-import {GetSession} from './get-session.decorator';
-import {HasSession} from './has-session.decorator';
 import {SessionEntity} from '../database/session.entity';
 import {SessionDataloaderService} from './session.dataloader';
 import {SessionRepository} from '../database/session.repository';
@@ -17,15 +15,16 @@ const pubSub = new PubSub();
 @Resolver(() => SessionModel)
 export class SessionResolver {
   constructor(
+    private readonly jwtService: JwtService,
     private readonly sessionRepo: SessionRepository,
     private readonly sessionService: SessionService,
     private readonly sessionDataLoaderService: SessionDataloaderService
   ) {}
 
-  @HasSession()
   @Query(() => SessionModel)
-  async sessionCurrent(@GetSession() sessionID: number): Promise<SessionEntity> {
-    return this.sessionDataLoaderService.loadById(sessionID);
+  async sessionByJWT(@Args('jwt') jwt: string): Promise<SessionEntity> {
+    const parsedJWT: {sessionID: number} = this.jwtService.decode(jwt) as any;
+    return this.sessionRepo.findOneOrFail({id: parsedJWT.sessionID});
   }
 
   @Query(() => SessionModel)

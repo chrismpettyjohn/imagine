@@ -4,6 +4,7 @@ import {useFindUserByID} from './find-user-by-id.hook';
 import {useSessionCreateMutation} from './session-create.hook';
 import {setGraphqlAccessToken} from '../graphql/graphql.client';
 import {sessionContext} from '../context/session/SessionContext';
+import {localStorageService} from '../utility/local-storage.service';
 
 export function useSignInWithUsernameAndPassword(username: string, password: string): { tryLogin(): void } {
   const {setSession} = useContext(sessionContext);
@@ -13,6 +14,7 @@ export function useSignInWithUsernameAndPassword(username: string, password: str
   useEffect(() => {
     if (createSession.data) {
       setGraphqlAccessToken(createSession.data.sessionCreate.accessToken!);
+      localStorageService.set('SESSION', createSession.data.sessionCreate.accessToken)
       fetchUserBySessionID.runQuery();
     }
   }, [createSession.data]);

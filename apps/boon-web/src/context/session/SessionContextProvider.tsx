@@ -1,35 +1,50 @@
+import {useLocation} from 'wouter';
 import {sessionContext} from './SessionContext';
 import React, {useEffect, useState} from 'react';
+import {useFindUserByID} from '../../hooks/find-user-by-id.hook';
 import {SessionContextProviderProps} from './SessionContext.types';
 import {setGraphqlAccessToken} from '../../graphql/graphql.client';
 import {localStorageService} from '../../utility/local-storage.service';
+import {useFetchSessionByJwt} from '../../hooks/fetch-session-by-jwt.hook';
 
 export function SessionContextProvider({
   children,
 }: SessionContextProviderProps) {
+  const [location, setLocation] = useLocation();
+  const existingJwt = localStorageService.get('SESSION', true);
   const [loading, setIsLoading] = useState(true);
   const [session, setSessionState] = useState<any>();
+  const fetchSessionByJwt = useFetchSessionByJwt(existingJwt ?? '');
+  const fetchUserBySessionID = useFindUserByID(fetchSessionByJwt?.data?.sessionByJWT?.userID ?? 0)
 
   useEffect(() => {
     const checkForPreviousSession = async () => {
-      const userAlreadyLoggedIn = localStorageService.exists('SESSION');
-
-      if (userAlreadyLoggedIn) {
-        const jwt = localStorageService.get('SESSION');
-        try {
-          setGraphqlAccessToken(jwt);
-          // TODO Implement auto reusing session
-          setIsLoading(false);
-        } catch {
-          // Do nothing
-        }
+      if (!existingJwt) {
+        setIsLoading(false);
+        return;
       }
 
-      setIsLoading(false);
+      setGraphqlAccessToken(existingJwt);
+      fetchSessionByJwt.runQuery();
     };
 
     checkForPreviousSession();
   }, []);
+
+  useEffect(() => {
+    if (fetchSessionByJwt.error) {
+      setIsLoading(false);
+      return;
+    }
+
+    fetchUserBySessionID.runQuery();
+  }, [fetchSessionByJwt?.data, fetchSessionByJwt?.error]);
+
+  useEffect(() => {
+    setSession(fetchUserBySessionID?.data?.user);
+    setIsLoading(false);
+    setLocation('/me');
+  }, [fetchUserBySessionID?.data?.user]);
 
   const setSession = (newSession?: any) => {
     setSessionState(newSession);

@@ -122,7 +122,7 @@ type ArticleModel {
 type Query {
   badge(id: Float!): BadgeModel!
   badges(other: ExtraArgs): [BadgeModel!]!
-  sessionCurrent: SessionModel!
+  sessionByJWT(jwt: String!): SessionModel!
   session(id: Float!): SessionModel!
   sessions(other: ExtraArgs): [SessionModel!]!
   user(id: Float!): UserModel!

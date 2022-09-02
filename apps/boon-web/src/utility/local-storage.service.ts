@@ -6,10 +6,10 @@ class LocalStorageService {
 
   // Fetches value from localStorage
   // Throws exception upon undefined
-  get(index: string): string {
+  get(index: string, nullable = false): string | null {
     const value: string | null = localStorage.getItem(index);
 
-    if (value === null) {
+    if (value === null && !nullable) {
       throw new Error('Item not found');
     }
 

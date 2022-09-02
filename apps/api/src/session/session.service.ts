@@ -4,7 +4,6 @@ import {HashService} from '../common/hash.service';
 import {UserRepository} from '../database/user.repository';
 import {SessionRepository} from '../database/session.repository';
 import {forwardRef, Inject, Injectable, UnauthorizedException} from '@nestjs/common';
-import {SessionEntity} from '../database/session.entity';
 import {SessionCreatedModel} from './session.model';
 
 @Injectable()
