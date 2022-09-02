@@ -7,33 +7,32 @@
     "dist"
   ],
   "scripts": {
-    "start": "PORT=3001 SKIP_PREFLIGHT_CHECK=true react-scripts start",
+    "start": "PORT=3001 SKIP_PREFLIGHT_CHECK=true react-app-rewired start",
     "build": "rimraf dist && rimraf ./build && SKIP_PREFLIGHT_CHECK=true react-scripts build && mv build dist && cp dist/index.html dist/404.html && yarn types",
     "types": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "wouter": "2.8.0-alpha.2",
-    "react-bootstrap": "2.5.0",
-    "@apollo/react-hooks": "4.0.0",
-    "@apollo/client": "3.6.9",
-    "apollo-boost": "0.4.9",
-    "graphql": "16.6.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "wouter": "2.7.4",
     "graphql-tag": "2.12.6",
-    "apollo-link-ws": "1.0.20",
+    "react-bootstrap": "2.5.0",
     "@imagine-cms/types": "*",
     "@imagine-cms/web": "*",
     "dayjs": "1.11.5",
     "react-loading-overlay": "1.0.1",
-    "react-toastify": "9.0.8"
+    "react-toastify": "7.0.4"
   },
   "devDependencies": {
-    "@types/node": "16.11.56",
-    "@types/react": "18.0.17",
-    "@types/react-dom": "18.0.6",
-    "react-scripts": "5.0.1",
-    "typescript": "4.8.2"
+    "@types/node": "15.12.4",
+    "@types/react": "17.0.11",
+    "@types/react-dom": "17.0.8",
+    "react-scripts": "3.4.3",
+    "typescript": "4.8.2",
+    "react-app-rewired": "2.1.8",
+    "react-refresh": "0.14.0",
+    "tsconfig-paths-webpack-plugin": "3.5.1",
+    "@pmmmwh/react-refresh-webpack-plugin": "0.5.7"
   },
   "eslintConfig": {
     "extends": "react-app"

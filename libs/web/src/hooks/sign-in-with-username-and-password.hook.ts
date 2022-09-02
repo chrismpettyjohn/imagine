@@ -5,7 +5,7 @@ import {useFindUserByID} from './find-user-by-id.hook';
 import {useSessionCreateMutation} from './session-create.hook';
 import {setGraphqlAccessToken} from '../app/graphql.client';
 import {sessionContext} from '../context/session/SessionContext';
-import {localStorageService} from '../utility/local-storage.service';
+import {localStorageService} from '../service/local-storage.service';
 
 export function useSignInWithUsernameAndPassword(username: string, password: string): {tryLogin(): void} {
   const [location, setLocation] = useLocation();
