@@ -13,7 +13,7 @@ export function SiteNavigation() {
               Dashboard
             </Nav.Link>
           </Link>
-          <NavDropdown title={<><i className="fas fa-laptop mr-2" /> Site</>}>
+          <NavDropdown id="site-dropdown" title={<><i className="fas fa-laptop mr-2" /> Site</>}>
             <Link to="/site/settings">
               <NavDropdown.Item>Edit Settings</NavDropdown.Item>
             </Link>
@@ -21,7 +21,7 @@ export function SiteNavigation() {
               <NavDropdown.Item>News Articles</NavDropdown.Item>
             </Link>
           </NavDropdown>
-          <NavDropdown title={<><i className="fas fa-users mr-2" /> Users</>}>
+          <NavDropdown id="user-dropdown" title={<><i className="fas fa-users mr-2" /> Users</>}>
             <Link to="/users/list">
               <NavDropdown.Item>Users</NavDropdown.Item>
             </Link>

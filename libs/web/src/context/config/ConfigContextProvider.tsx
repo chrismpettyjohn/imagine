@@ -4,6 +4,7 @@ import {ConfigWire} from '@imagine-cms/types';
 import {configContext} from './ConfigContext';
 import {useRunQuery} from '../../hooks/run-query.hook';
 import {ConfigContextProviderProps} from './ConfigContext.types';
+import {LoadingScreen} from '../../components/loading-screen/LoadingScreen';
 
 const FETCH_SITE_CONFIG = gql`
   query {
@@ -38,12 +39,7 @@ export function ConfigContextProvider({children}: ConfigContextProviderProps) {
   };
 
   if (loading) {
-    return (
-      <>
-        <i className="fa fa-spinner fa-spin fa-2x" />
-        <h2>Loading...</h2>
-      </>
-    );
+    return <LoadingScreen />
   }
 
   return <configContext.Provider value={{config, setConfig: updateConfig}}>{children}</configContext.Provider>;
