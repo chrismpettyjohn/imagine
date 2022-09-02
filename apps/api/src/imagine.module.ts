@@ -6,6 +6,7 @@ import {TypeOrmModule} from '@nestjs/typeorm';
 import {UserModule} from './user/user.module';
 import {RankModule} from './rank/rank.module';
 import {BadgeModule} from './badge/badge.module';
+import {ConfigModule} from './config/config.module';
 import {CommonModule} from './common/common.module';
 import {ArticleModule} from './article/article.module';
 import {SessionModule} from './session/session.module';
@@ -47,6 +48,7 @@ import {
     UserModule,
     RankModule,
     ArticleModule,
+    ConfigModule,
   ],
 })
 export class ImagineModule {}

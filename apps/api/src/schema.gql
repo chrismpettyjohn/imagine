@@ -85,6 +85,15 @@ type BadgeModel {
   code: String
 }
 
+type ConfigModel {
+  siteName: String
+  logoURL: String
+  nitroURL: String
+  discordURL: String
+  facebookURL: String
+  twitterURL: String
+}
+
 type ArticleCommentModel {
   id: ID!
   articleID: Float
@@ -121,6 +130,7 @@ type Query {
   articles(other: ExtraArgs): [ArticleModel!]!
   articleComment(id: Float!): ArticleCommentModel!
   articleComments(other: ExtraArgs): [ArticleCommentModel!]!
+  config: ConfigModel!
 }
 
 input ExtraArgs {
@@ -151,6 +161,7 @@ type Mutation {
   articleCommentCreate(newArticleComment: ArticleCommentCreateInput!): ArticleCommentModel!
   articleCommentUpdate(id: Float!, articleChanges: ArticleCommentUpdateInput!): Boolean!
   articleCommentDelete(id: Float!): Boolean!
+  configUpdate(configUpdateInput: ConfigUpdateInput!): Boolean!
 }
 
 input BadgeInput {
@@ -208,6 +219,15 @@ input ArticleCommentUpdateInput {
   comment: String!
 }
 
+input ConfigUpdateInput {
+  siteName: String!
+  logoURL: String!
+  nitroURL: String!
+  discordURL: String!
+  facebookURL: String!
+  twitterURL: String!
+}
+
 type Subscription {
   badgeCreated: BadgeModel!
   badgeDeleted: BadgeModel!
@@ -220,4 +240,5 @@ type Subscription {
   articleDeleted: ArticleModel!
   articleCommentCreated: ArticleCommentModel!
   articleCommentDeleted: ArticleCommentModel!
+  configUpdated: ConfigModel!
 }
