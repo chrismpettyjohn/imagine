@@ -24,7 +24,8 @@
     "apollo-link-ws": "1.0.20",
     "@imagine-cms/types": "*",
     "dayjs": "1.11.5",
-    "react-loading-overlay": "1.0.1"
+    "react-loading-overlay": "1.0.1",
+    "react-toastify": "9.0.8"
   },
   "devDependencies": {
     "@types/node": "16.11.56",

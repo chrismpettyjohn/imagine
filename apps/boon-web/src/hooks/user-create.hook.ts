@@ -8,10 +8,31 @@ const CREATE_NEW_USER = gql`
             email: $email
             username: $username
             password: $password
-        }), { id }
+        }), {
+            id,
+            username,
+            email,
+            rankID,
+            rankVipID,
+            credits,
+            vipPoints,
+            activityPoints,
+            look,
+            gender,
+            motto,
+            accountCreatedAt,
+            lastOnline,
+            onlineStatus,
+            ipRegisteredWith,
+            homeRoomID,
+            muteStatus,
+            allowingNewFriends,
+            showOnlineStatus,
+            vipStatus,
+        }
     }
 `
 
-export const useUserCreateMutation = (username: string, email: string, password: string): UseMutationResponse<{user: UserWire}> => {
+export const useUserCreateMutation = (username: string, email: string, password: string): UseMutationResponse<{userCreate: UserWire}> => {
   return useRunMutation(CREATE_NEW_USER, { username, email, password });
 }

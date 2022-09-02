@@ -1,33 +1,27 @@
+import {toast} from 'react-toastify';
 import {configContext} from '../../context/config/ConfigContext';
-import {setGraphqlAccessToken} from '../../graphql/graphql.client';
+import React, {SyntheticEvent, useContext, useState} from 'react';
 import {GuestGuard} from '../../components/guest-guard/GuestGuard';
-import {useFindUserByID} from '../../hooks/find-user-by-id.hook';
-import React, {SyntheticEvent, useContext, useEffect, useState} from 'react';
-import {useSessionCreateMutation} from '../../hooks/session-create.hook';
 import {LatestArticleCard} from '../../components/latest-article-card/LatestArticleCard';
 import {UsernameWithAvatarInput} from './username-with-avatar-input/UsernameWithAvatarInput';
+import {useSignInWithUsernameAndPassword} from '../../hooks/sign-in-with-username-and-password.hook';
 
 export function LoginScreen() {
   const {config} = useContext(configContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const loginWithUsernameAndPassword = useSessionCreateMutation(username, password);
-  const fetchUserBySessionID = useFindUserByID(loginWithUsernameAndPassword?.data?.sessionCreate?.userID ?? 0)
+  const {tryLogin} = useSignInWithUsernameAndPassword(username, password);
 
   const onLogin = async (event?: SyntheticEvent) => {
     event?.preventDefault();
-    loginWithUsernameAndPassword.runMutation();
+    if (!username || !password) {
+      toast.error('You must provide a username and password');
+    }
+    tryLogin();
   }
 
-  useEffect(() => {
-    if (loginWithUsernameAndPassword.data) {
-      setGraphqlAccessToken(loginWithUsernameAndPassword.data.sessionCreate.accessToken!);
-      fetchUserBySessionID.runQuery();
-    }
-  }, [loginWithUsernameAndPassword.data]);
-
   return (
-    <GuestGuard>
+    <GuestGuard redirect>
       <main className="position-relative container justify-content-center py-4">
         <div className="row justify-content-center">
           <div className="col-lg-3 d-lg-block d-none">

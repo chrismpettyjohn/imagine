@@ -7,7 +7,7 @@ const CREATE_NEW_SESSION = gql`
         sessionCreate(sessionCreateInput: {
             username: $username
             password: $password
-        }), { id }
+        }), { id, accessToken, userID }
     }
 `
 

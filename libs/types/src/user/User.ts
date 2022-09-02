@@ -51,8 +51,8 @@ export interface UserWire {
   look?: string;
   gender?: UserGender;
   motto?: string;
-  accountCreatedAt?: string;
-  lastOnline?: string;
+  accountCreatedAt?: number;
+  lastOnline?: number;
   onlineStatus?: UserOnlineStatus;
   ipLast?: string;
   ipRegisteredWith?: string;

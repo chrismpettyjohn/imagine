@@ -1,5 +1,6 @@
 import React from 'react';
 import {Router} from './screens/Router';
+import {ToastContainer} from 'react-toastify';
 import { ApolloProvider } from "@apollo/react-hooks";
 import {graphqlClient} from './graphql/graphql.client';
 import {SiteFooter} from './components/site-footer/SiteFooter';
@@ -14,6 +15,7 @@ export function ImagineWeb() {
       <ConfigContextProvider>
         <SessionContextProvider>
           <div style={{height: '100%'}}>
+            <ToastContainer />
             <SiteHeader />
             <SiteNavigation />
             <Router />

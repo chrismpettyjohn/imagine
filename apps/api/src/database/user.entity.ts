@@ -93,10 +93,10 @@ export class UserEntity implements UserWire {
   motto: string = IMAGINE_DEFAULT_MOTTO;
 
   @Column({name: 'account_created'})
-  accountCreatedAt!: string; // ISO timestamp
+  accountCreatedAt!: number;
 
-  @Column({name: 'account_created'})
-  lastOnline!: string; // ISO timestamp
+  @Column({name: 'last_online'})
+  lastOnline!: number;
 
   @Column({name: 'online'})
   onlineStatus: UserOnlineStatus = UserOnlineStatus.Offline;

@@ -1,4 +1,4 @@
-import {omit} from 'lodash';
+import {omit, now} from 'lodash';
 import {UserArgs} from './user.args';
 import {UserModel} from './user.model';
 import {PubSub} from 'graphql-subscriptions';
@@ -37,12 +37,14 @@ export class UserResolver {
 
   @Mutation(() => UserModel)
   async userCreate(@Args('newUser') userCreateInput: UserCreateInput): Promise<UserEntity> {
-    const createdAt = new Date().toISOString();
+    const secondsSinceEpoch = parseInt(`${now() / 1000}`);
+    console.log(secondsSinceEpoch);
     const newUser = await this.userRepo.create({
       ...DEFAULT_USER_VALUES,
       ...userCreateInput,
       gameSSO: '',
-      accountCreatedAt: createdAt,
+      accountCreatedAt: secondsSinceEpoch,
+      lastOnline: secondsSinceEpoch,
       ipLast: '', // TODO: Add support for IPs,
       ipRegisteredWith: '', // TODO: Add support for IPs
     });

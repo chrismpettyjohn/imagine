@@ -38,8 +38,8 @@ type UserModel {
   look: String
   gender: UserGender
   motto: String
-  accountCreatedAt: String
-  lastOnline: String
+  accountCreatedAt: Float
+  lastOnline: Float
   onlineStatus: UserOnlineStatus
   ipRegisteredWith: String
   homeRoomID: Float

@@ -1,25 +1,23 @@
-import gql from 'graphql-tag';
-import React, {SyntheticEvent, useState} from 'react';
-import {useRunMutation} from '../../graphql/run-mutation';
+import React, {SyntheticEvent, useEffect, useState} from 'react';
 import {GuestGuard} from '../../components/guest-guard/GuestGuard';
+import {useUserCreateMutation} from '../../hooks/user-create.hook';
 import {LoadingOverlay} from '../../components/loading-overlay/LoadingOverlay';
-
-const CREATE_NEW_USER = gql`
-  mutation($username: String!, $email: String!, $password: String!) {
-      userCreate(newUser: {
-          email: $email
-          username: $username
-          password: $password
-      }), { id }
-  }
-`
+import {useSignInWithUsernameAndPassword} from '../../hooks/sign-in-with-username-and-password.hook';
 
 export function RegisterScreen() {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordAgain, setPasswordAgain] = useState('');
-  const createUser = useRunMutation<{ user: { id: number } }>(CREATE_NEW_USER, { username, password, email });
+  const createUser = useUserCreateMutation(username, email, password);
+  const {tryLogin} = useSignInWithUsernameAndPassword(username, password);
+
+  // When user is created, attempt to login
+  useEffect(() => {
+    if (createUser?.data?.userCreate?.id) {
+      tryLogin();
+    }
+  }, [createUser?.data?.userCreate?.id]);
 
   const canCreateUser = email !== '' && username !== '' && password !== '' && passwordAgain === password;
 
@@ -45,28 +43,22 @@ export function RegisterScreen() {
                   <form className="form" onSubmit={onCreateUser}>
                     <div className="form-group">
                       <label htmlFor="username">Username</label>
-                      <input type="text" name="username" value="" className="form-control" id="username"
-                             placeholder="Username"
-                             data-parsley-required-message="Please enter the username you would like!" required />
+                      <input type="text" name="username" value={username} onChange={e => setUsername(e?.currentTarget?.value ?? '')} className="form-control" id="username" placeholder="Username" />
                     </div>
                     <div className="form-group">
                       <label htmlFor="email">Email</label>
-                      <input type="text" name="email" value="" className="form-control" id="email" placeholder="Email"
-                             data-parsley-required-message="Please enter your email address!" required />
+                      <input type="text" name="email" value={email} onChange={e => setEmail(e?.currentTarget?.value ?? '')} className="form-control" id="email" placeholder="Email" />
                     </div>
                     <div className="form-group">
                       <label htmlFor="password">Password</label>
-                      <input type="password" name="password" className="form-control" placeholder="Password" id="password"
-                             data-parsley-required-message="Please enter a password!" required />
+                      <input type="password" name="password" value={password} onChange={e => setPassword(e?.currentTarget?.value ?? '')} className="form-control" placeholder="Password" id="password" />
                     </div>
                     <div className="form-group">
                       <label htmlFor="password-confirmation">Confirm Password</label>
-                      <input type="password" name="password_confirmation" className="form-control"
-                             id="password-confirmation" placeholder="Password again"
-                             data-parsley-required-message="Re-type your chosen password!" required />
+                      <input type="password" name="password_confirmation" value={passwordAgain} onChange={e => setPasswordAgain(e?.currentTarget?.value ?? '')} className="form-control" id="password-confirmation" placeholder="Password again"  />
                     </div>
                     <div className="form-group mb-0">
-                      <button className="btn btn-primary btn-block" type="submit">Join now</button>
+                      <button className="btn btn-primary btn-block" disabled={!canCreateUser} type="submit">Join now</button>
                     </div>
                   </form>
                 </LoadingOverlay>

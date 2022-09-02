@@ -57,11 +57,11 @@ export class UserModel implements UserWire {
   @Field(() => String, {nullable: true})
   motto?: string;
 
-  @Field(() => String, {nullable: true})
-  accountCreatedAt?: string;
+  @Field(() => Number, {nullable: true})
+  accountCreatedAt?: number;
 
-  @Field(() => String, {nullable: true})
-  lastOnline?: string;
+  @Field(() => Number, {nullable: true})
+  lastOnline?: number;
 
   @Field(() => UserOnlineStatus, {nullable: true})
   onlineStatus?: UserOnlineStatus;
