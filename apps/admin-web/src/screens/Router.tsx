@@ -5,6 +5,7 @@ import {LandingScreen} from './landing-screen/LandingScreen';
 import {DashboardScreen} from './dashboard-screen/DashboardScreen';
 import {UsersListScreen} from './users-list-screen/UsersListScreen';
 import {NotAllowedScreen} from './not-allowed-screen/NotAllowedScreen';
+import {ArticlesListScreen} from './articles-list-screen/ArticlesListScreen';
 import {PageNotFoundScreen} from './page-not-found-screen/PageNotFoundScreen';
 
 const SITE_ROUTES: Array<{path: string, view: any, }> = [
@@ -27,6 +28,10 @@ const SITE_ROUTES: Array<{path: string, view: any, }> = [
   {
     path: '/users/list',
     view: UsersListScreen,
+  },
+  {
+    path: '/articles/list',
+    view: ArticlesListScreen,
   },
 ]
 
