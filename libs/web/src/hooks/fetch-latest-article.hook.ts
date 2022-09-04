@@ -10,11 +10,6 @@ const FETCH_LATEST_ARTICLE = gql`
       description
       content
       imageURL
-      user {
-        id
-        username
-        look
-      }
     }
   }
 `;

@@ -9,7 +9,7 @@ export function ArticleCard({article}: ArticleCardProps) {
       <div className="row">
         <div className="col-12">
           <div className="card">
-            <Link to={`/community/news/${article?.id}`} aria-label={article?.name}>
+            <Link to={`/community/articles/${article?.id}`} aria-label={article?.name}>
               <div className="card-body" style={{backgroundImage: `url(${article?.imageURL})`}}>
                 <div className="avatar">
                   <img
@@ -21,7 +21,7 @@ export function ArticleCard({article}: ArticleCardProps) {
             </Link>
             <div className="card-footer">
               <h6>
-                <Link to={`/community/news/${article?.id}`} aria-label={article?.name}>
+                <Link to={`/community/articles/${article?.id}`} aria-label={article?.name}>
                   {article?.name}
                 </Link>
               </h6>

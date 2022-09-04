@@ -1,5 +1,11 @@
-import {ArgsType} from '@nestjs/graphql';
+import {ArgsType, Field} from '@nestjs/graphql';
 import {CommonArgs} from '../../utility/common.args';
 
 @ArgsType()
-export class ArticleCommentArgs extends CommonArgs {}
+export class ArticleCommentArgs extends CommonArgs {
+  @Field({nullable: true})
+  articleID?: number;
+
+  @Field({nullable: true})
+  userID?: number;
+}

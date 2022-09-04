@@ -8,6 +8,7 @@ import {RegisterScreen} from './register-screen/RegisterScreen';
 import {CommunityScreen} from './community-screen/CommunityScreen';
 import {PageNotFoundScreen} from './page-not-found-screen/PageNotFoundScreen';
 import {CommunityStaffScreen} from './community-staff-screen/CommunityStaffScreen';
+import {CommunityArticleScreen} from './community-article-screen/CommunityArticleScreen';
 import {CommunityLeaderboardsScreen} from './community-leaderboards-screen/CommunityLeaderboardsScreen';
 import {CommunityOnlinePlayersScreen} from './community-online-players-screen/CommunityOnlinePlayersScreen';
 
@@ -51,6 +52,10 @@ const SITE_ROUTES: Array<{path: string, view: any, }> = [
   {
     path: '/community/leaderboards',
     view: CommunityLeaderboardsScreen,
+  },
+  {
+    path: '/community/articles/:articleID',
+    view: CommunityArticleScreen,
   },
 ]
 

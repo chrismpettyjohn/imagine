@@ -160,7 +160,7 @@ type Query {
   article(id: Float!): ArticleModel!
   articles(other: ExtraArgs): [ArticleModel!]!
   articleComment(id: Float!): ArticleCommentModel!
-  articleComments(other: ExtraArgs): [ArticleCommentModel!]!
+  articleComments(other: ExtraArgs, articleID: Float, userID: Float): [ArticleCommentModel!]!
   config: ConfigModel!
   ban(id: Float!): BanModel!
   bans(other: ExtraArgs): [BanModel!]!

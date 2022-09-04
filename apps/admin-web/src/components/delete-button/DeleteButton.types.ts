@@ -1,6 +1,6 @@
 import {UseMutationResponse} from '@imagine-cms/web';
 
-export interface DeleteModalProps<Resource> {
+export interface DeleteButtonProps<Resource> {
   resource: string;
   mutation: UseMutationResponse<Resource>
   onDelete(): void;

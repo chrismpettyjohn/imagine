@@ -1,8 +1,8 @@
 import {toast} from 'react-toastify';
 import React, {useEffect, useState} from 'react';
-import {DeleteModalProps} from './DeleteModal.types';
+import {DeleteButtonProps} from './DeleteButton.types';
 
-export function DeleteModal<Resource>({resource, mutation, onDelete}: DeleteModalProps<Resource>) {
+export function DeleteButton<Resource>({resource, mutation, onDelete}: DeleteButtonProps<Resource>) {
   const [showConfirm, setShowConfirm] = useState(false);
 
   useEffect(() => {

@@ -17,7 +17,7 @@ export function LatestArticlesSlider() {
       {
         latestArticles?.map(article => (
           <Carousel.Item key={`latest_article_${article.id}`}>
-            <Link to={`/community/news/${article.id}`}>
+            <Link to={`/community/articles/${article.id}`}>
               <img
                 className="d-block w-100"
                 src={article.imageURL}
