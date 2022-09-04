@@ -130,6 +130,14 @@ type ArticleModel {
   comments: [ArticleCommentModel!]
 }
 
+type ChatlogModel {
+  id: ID!
+  userID: Float
+  roomID: Float
+  message: String
+  createdAt: String
+}
+
 type WordFilterModel {
   id: ID!
   word: String
@@ -158,6 +166,8 @@ type Query {
   bans(other: ExtraArgs): [BanModel!]!
   wordFilter(id: Float!): WordFilterModel!
   wordFilters(other: ExtraArgs): [WordFilterModel!]!
+  chatlog(id: Float!): ChatlogModel!
+  chatlogs(other: ExtraArgs): [ChatlogModel!]!
 }
 
 input ExtraArgs {
@@ -195,6 +205,7 @@ type Mutation {
   wordFilterCreate(newWordFilter: WordFilterCreateInput!): WordFilterModel!
   wordFilterUpdate(id: Float!, wordFilterChanges: WordFilterUpdateInput!): Boolean!
   wordFilterDelete(id: Float!): Boolean!
+  chatlogDelete(id: Float!): Boolean!
 }
 
 input BadgeInput {
@@ -308,4 +319,5 @@ type Subscription {
   banDeleted: BanModel!
   wordFilterCreated: WordFilterModel!
   wordFilterDeleted: WordFilterModel!
+  chatlogDeleted: ChatlogModel!
 }

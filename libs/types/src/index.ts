@@ -6,6 +6,7 @@ export * from './badge/Badge';
 export * from './badge/BadgeInput';
 export * from './ban/Ban';
 export * from './ban/BanInput';
+export * from './chatlog/Chatlog';
 export * from './config/Config';
 export * from './config/ConfigInput';
 export * from './rank/Rank';

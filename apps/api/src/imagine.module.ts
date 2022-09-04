@@ -11,6 +11,7 @@ import {ConfigModule} from './config/config.module';
 import {CommonModule} from './common/common.module';
 import {ArticleModule} from './article/article.module';
 import {SessionModule} from './session/session.module';
+import {ChatlogModule} from './chatlog/chatlog.module';
 import {DatabaseModule} from './database/database.module';
 import {databaseEntities} from './database/database.const';
 import {ApolloDriver, ApolloDriverConfig} from '@nestjs/apollo';
@@ -53,6 +54,7 @@ import {
     ConfigModule,
     BanModule,
     WordFilterModule,
+    ChatlogModule,
   ],
 })
 export class ImagineModule {}
