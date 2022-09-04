@@ -4,6 +4,7 @@ export * from './fetch-latest-badges.hook';
 export * from './fetch-online-users.hook';
 export * from './fetch-session-by-jwt.hook';
 export * from './fetch-staff-ranks.hook';
+export * from './fetch-users.hook';
 export * from './find-user-by-id.hook';
 export * from './run-mutation.hook';
 export * from './run-query.hook';

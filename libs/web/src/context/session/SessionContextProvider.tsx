@@ -1,4 +1,3 @@
-import {useLocation} from 'wouter';
 import {sessionContext} from './SessionContext';
 import React, {useEffect, useState} from 'react';
 import {useFindUserByID} from '../../hooks/find-user-by-id.hook';
@@ -8,7 +7,6 @@ import {localStorageService} from '../../service/local-storage.service';
 import {useFetchSessionByJwt} from '../../hooks/fetch-session-by-jwt.hook';
 
 export function SessionContextProvider({children}: SessionContextProviderProps) {
-  const [location, setLocation] = useLocation();
   const existingJwt = localStorageService.get('SESSION', true);
   const [loading, setIsLoading] = useState(true);
   const [session, setSessionState] = useState<any>();
@@ -42,7 +40,6 @@ export function SessionContextProvider({children}: SessionContextProviderProps) 
     if (fetchUserBySessionID?.data?.user) {
       setSession(fetchUserBySessionID?.data?.user);
       setIsLoading(false);
-      setLocation('/me');
     }
   }, [fetchUserBySessionID?.data?.user]);
 
