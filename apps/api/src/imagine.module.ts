@@ -14,6 +14,7 @@ import {SessionModule} from './session/session.module';
 import {DatabaseModule} from './database/database.module';
 import {databaseEntities} from './database/database.const';
 import {ApolloDriver, ApolloDriverConfig} from '@nestjs/apollo';
+import {WordFilterModule} from './word-filter/word-filter.module';
 import {
   IMAGINE_DATABASE_HOST,
   IMAGINE_DATABASE_NAME,
@@ -51,6 +52,7 @@ import {
     ArticleModule,
     ConfigModule,
     BanModule,
+    WordFilterModule,
   ],
 })
 export class ImagineModule {}

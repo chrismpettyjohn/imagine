@@ -10,8 +10,10 @@ import {UserRepository} from './user.repository';
 import {RankRepository} from './rank.repository';
 import {BadgeRepository} from './badge.repository';
 import {ConfigRepository} from './config.repository';
+import {WordFilterEntity} from './word-filter.entity';
 import {SessionRepository} from './session.repository';
 import {ArticleRepository} from './article.repository';
+import {WordFilterRepository} from './word-filter.repository';
 import {ArticleCommentEntity} from './article-comment.entity';
 import {ArticleCommentRepository} from './article-comment.repository';
 
@@ -24,6 +26,7 @@ export const databaseEntities = [
   BadgeEntity,
   ConfigEntity,
   BanEntity,
+  WordFilterEntity,
 ];
 
 export const databaseRepositories = [
@@ -35,4 +38,5 @@ export const databaseRepositories = [
   BadgeRepository,
   ConfigRepository,
   BanRepository,
+  WordFilterRepository,
 ];

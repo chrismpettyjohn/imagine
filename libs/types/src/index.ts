@@ -14,3 +14,5 @@ export * from './session/Session';
 export * from './session/SessionInput';
 export * from './user/User';
 export * from './user/UserInput';
+export * from './word-filter/WordFilter';
+export * from './word-filter/WordFilterInput';

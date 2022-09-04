@@ -130,6 +130,15 @@ type ArticleModel {
   comments: [ArticleCommentModel!]
 }
 
+type WordFilterModel {
+  id: ID!
+  word: String
+  replacement: String
+  strict: String
+  bannable: String
+  addedByUserID: Float
+}
+
 type Query {
   badge(id: Float!): BadgeModel!
   badges(other: ExtraArgs): [BadgeModel!]!
@@ -147,6 +156,8 @@ type Query {
   config: ConfigModel!
   ban(id: Float!): BanModel!
   bans(other: ExtraArgs): [BanModel!]!
+  wordFilter(id: Float!): WordFilterModel!
+  wordFilters(other: ExtraArgs): [WordFilterModel!]!
 }
 
 input ExtraArgs {
@@ -181,6 +192,9 @@ type Mutation {
   banCreate(newBan: BanCreateInput!): BanModel!
   banUpdate(id: Float!, banChanges: BanUpdateInput!): Boolean!
   banDelete(id: Float!): Boolean!
+  wordFilterCreate(newWordFilter: WordFilterCreateInput!): WordFilterModel!
+  wordFilterUpdate(id: Float!, wordFilterChanges: WordFilterUpdateInput!): Boolean!
+  wordFilterDelete(id: Float!): Boolean!
 }
 
 input BadgeInput {
@@ -263,6 +277,20 @@ input BanUpdateInput {
   expiresAt: String!
 }
 
+input WordFilterCreateInput {
+  word: String!
+  replacement: String!
+  strict: String!
+  bannable: String!
+}
+
+input WordFilterUpdateInput {
+  word: String!
+  replacement: String!
+  strict: String!
+  bannable: String!
+}
+
 type Subscription {
   badgeCreated: BadgeModel!
   badgeDeleted: BadgeModel!
@@ -278,4 +306,6 @@ type Subscription {
   configUpdated: ConfigModel!
   banCreated: BanModel!
   banDeleted: BanModel!
+  wordFilterCreated: WordFilterModel!
+  wordFilterDeleted: WordFilterModel!
 }
