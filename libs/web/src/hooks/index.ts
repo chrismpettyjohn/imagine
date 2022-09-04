@@ -8,6 +8,7 @@ export * from './fetch-users.hook';
 export * from './find-user-by-id.hook';
 export * from './run-mutation.hook';
 export * from './run-query.hook';
+export * from './search-data.hook';
 export * from './session-create.hook';
 export * from './sign-in-with-username-and-password.hook';
 export * from './user-create.hook';

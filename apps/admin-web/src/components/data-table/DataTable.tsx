@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import {DataTableProps} from './DataTable.types';
 import { useTable, useSortBy } from 'react-table'
 
 export function DataTable<Record>({ columns, data }: DataTableProps<Record>) {
   // @ts-ignore
-  const {getTableProps, getTableBodyProps, headerGroups, rows, prepareRow,} = useTable({columns, data,}, useSortBy)
+  const {getTableProps, getTableBodyProps, headerGroups, rows, prepareRow,} = useTable({columns, data }, useSortBy)
 
   return (
     <table className="table" {...getTableProps()}>

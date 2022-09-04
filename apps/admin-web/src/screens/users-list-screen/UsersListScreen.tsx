@@ -1,11 +1,13 @@
-import React, {useEffect} from 'react';
-import {useFetchUsers} from '@imagine-cms/web';
+import React, {useEffect, useState} from 'react';
+import {useFetchUsers, useSearchData} from '@imagine-cms/web';
 import {UserOnlineStatus, UserWire} from '@imagine-cms/types';
 import {DataTable} from '../../components/data-table/DataTable';
 import {LoadingOverlay} from '../../components/loading-overlay/LoadingOverlay';
 
 export function UsersListScreen() {
   const {runQuery, data, loading} = useFetchUsers();
+  const [searchTerm, setSearchTerm ] = useState('');
+  const filteredUsers = useSearchData(data?.users, searchTerm);
 
   useEffect(() => {
     runQuery();
@@ -20,6 +22,8 @@ export function UsersListScreen() {
               <h4 className="card-title">Users</h4>
               <div className="table-responsive">
                 <LoadingOverlay loading={loading}>
+                  <input className="form-control" value={searchTerm} onChange={e => setSearchTerm(e?.target?.value ?? '')} placeholder="Search..." />
+                  <br />
                   <DataTable<UserWire>
                     columns={[
                       {
@@ -47,7 +51,7 @@ export function UsersListScreen() {
                         accessor: 'lastOnline',
                       },
                     ]}
-                    data={data?.users ?? []}
+                    data={filteredUsers}
                   />
                 </LoadingOverlay>
               </div>

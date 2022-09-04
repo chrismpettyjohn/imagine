@@ -7,5 +7,5 @@ export interface DataTableColumn<Record> {
 
 export interface DataTableProps<Record> {
   columns: DataTableColumn<Record>[];
-  data?: Record[];
+  data: Record[];
 }
