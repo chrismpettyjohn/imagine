@@ -9,6 +9,7 @@ export enum WordFilterBannableStatus {
 }
 
 export interface WordFilterWire {
+  id?: number;
   word?: string;
   replacement?: string;
   strict?: WordFilterStrictStatus;

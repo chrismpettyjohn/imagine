@@ -139,7 +139,7 @@ type ChatlogModel {
 }
 
 type WordFilterModel {
-  id: ID!
+  id: Float
   word: String
   replacement: String
   strict: String

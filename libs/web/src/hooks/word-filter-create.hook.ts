@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import {useRunMutation, UseMutationResponse} from '@imagine-cms/web';
+import {useRunMutation, UseMutationResponse} from './run-mutation.hook';
 import {WordFilterCreateInputDTO, WordFilterWire} from '@imagine-cms/types';
 
 const CREATE_WORD_FILTER = gql`
@@ -15,7 +15,6 @@ const CREATE_WORD_FILTER = gql`
     }
 `
 
-export function useCreateWordFilter(wordFilterCreateInput: WordFilterCreateInputDTO): UseMutationResponse<WordFilterWire> {
-    console.log(wordFilterCreateInput);
+export function useWordFilterCreate(wordFilterCreateInput: WordFilterCreateInputDTO): UseMutationResponse<WordFilterWire> {
   return useRunMutation(CREATE_WORD_FILTER, {wordFilterCreateInput})
 }

@@ -5,6 +5,7 @@ import {LoadingOverlay} from '../../components/loading-overlay/LoadingOverlay';
 import {CreateWordFilterModal} from './create-word-filter-modal/CreateWordFilterModal';
 import {WordFilterBannableStatus, WordFilterStrictStatus, WordFilterWire} from '@imagine-cms/types';
 import {EditWordFilterModal} from './edit-word-filter-modal/EditWordFilterModal';
+import {DeleteWordFilterModal} from './delete-word-filter-modal/DeleteWordFilterModal';
 
 export function WordFilterSettingsScreen() {
   const {runQuery, data, loading} = useFetchWordFilter();
@@ -63,10 +64,10 @@ export function WordFilterSettingsScreen() {
                       header: 'Tools',
                       render: wordFilter => (
                         <>
-                        <EditWordFilterModal wordFilter={wordFilter} onSave={() => console.log('woo')} />
-                          <button className="btn btn-danger">
-                            <i className="fas fa-trash" />
-                          </button>
+                          <span className="mr-2">
+                            <EditWordFilterModal wordFilter={wordFilter} onSave={() => console.log('woo')} />
+                          </span>
+                          <DeleteWordFilterModal wordFilter={wordFilter} onDelete={() => console.log('trashed')} />
                         </>
                       )
 

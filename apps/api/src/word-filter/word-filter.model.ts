@@ -7,8 +7,8 @@ import {
 
 @ObjectType()
 export class WordFilterModel implements WordFilterWire {
-  @Field(() => ID)
-  id!: number;
+  @Field({nullable: true})
+  id?: number;
 
   @Field({nullable: true})
   word?: string;

@@ -1,4 +1,3 @@
-export * from './create-word-filter.hook';
 export * from './fetch-articles.hook';
 export * from './fetch-bans.hook';
 export * from './fetch-chatlog.hook';
@@ -19,3 +18,6 @@ export * from './session-create.hook';
 export * from './sign-in-with-username-and-password.hook';
 export * from './update-config.hook';
 export * from './user-create.hook';
+export * from './word-filter-create.hook';
+export * from './word-filter-update.hook';
+export * from './word-filter-delete.hook';
