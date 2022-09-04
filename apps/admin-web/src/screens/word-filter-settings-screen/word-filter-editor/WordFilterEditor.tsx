@@ -1,6 +1,7 @@
-import {Button, Modal} from 'react-bootstrap';
+import {Button, Form, Modal} from 'react-bootstrap';
 import React, {SyntheticEvent, useState} from 'react';
 import {WordFilterEditorProps} from './WordFilterEditor.types';
+import {WordFilterBannableStatus, WordFilterStrictStatus} from '@imagine-cms/types';
 
 export function WordFilterEditor({children, wordFilterDTO, onEdit, onSave}: WordFilterEditorProps) {
   const isValidWordFilterDTO = wordFilterDTO.word !== '' && wordFilterDTO.replacement !== ''
@@ -9,6 +10,22 @@ export function WordFilterEditor({children, wordFilterDTO, onEdit, onSave}: Word
 
   const onToggle = () => {
     setIsOpen(_ => !_);
+  }
+
+  const onToggleStrict= () => {
+    onEdit({
+      strict: wordFilterDTO.strict !== WordFilterStrictStatus.Strict
+        ? WordFilterStrictStatus.Strict
+        : WordFilterStrictStatus.NotStrict
+    })
+  }
+
+  const onToggleBannable = () => {
+    onEdit({
+      bannable: wordFilterDTO.bannable !== WordFilterBannableStatus.Bannable
+        ? WordFilterBannableStatus.Bannable
+        : WordFilterBannableStatus.NotBannable
+    })
   }
 
   const onSubmit = (event: SyntheticEvent) => {
@@ -39,6 +56,20 @@ export function WordFilterEditor({children, wordFilterDTO, onEdit, onSave}: Word
                 <div className="form-group">
                   <label>Replacement</label>
                   <input type="text" className="form-control" placeholder="word" name="replacement" onChange={e => onEdit({replacement: e.target.value ?? ''})} value={wordFilterDTO.replacement} />
+                </div>
+                <div className="row">
+                  <div className="form-group col-6">
+                    <label>Strict</label>
+                    <span style={{cursor: 'pointer'}} onClick={onToggleStrict}>
+                      <Form.Check checked={wordFilterDTO.strict === WordFilterStrictStatus.Strict} type="switch" />
+                    </span>
+                  </div>
+                  <div className="form-group col-6">
+                    <label>Bannable</label>
+                    <span style={{cursor: 'pointer'}} onClick={onToggleBannable}>
+                      <Form.Check checked={wordFilterDTO.bannable === WordFilterBannableStatus.Bannable} type="switch" />
+                    </span>
+                  </div>
                 </div>
               </Modal.Body>
               <Modal.Footer className="text-right">
