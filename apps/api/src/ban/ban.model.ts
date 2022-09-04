@@ -1,10 +1,10 @@
 import {BanWire} from '@imagine-cms/types';
-import {Field, ID, ObjectType} from '@nestjs/graphql';
+import {Field, ObjectType} from '@nestjs/graphql';
 
 @ObjectType()
 export class BanModel implements BanWire {
-  @Field(() => ID)
-  id!: number;
+  @Field({nullable: true})
+  id?: number;
 
   @Field({nullable: true})
   bannedUserID?: number;

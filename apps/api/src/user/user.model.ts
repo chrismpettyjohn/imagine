@@ -1,5 +1,5 @@
 import {RankModel} from '../rank/rank.model';
-import {Field, ID, ObjectType} from '@nestjs/graphql';
+import {Field, ObjectType} from '@nestjs/graphql';
 import {SessionModel} from '../session/session.model';
 import {
   UserAllowingNewFriendsStatus,
@@ -13,8 +13,8 @@ import {
 
 @ObjectType()
 export class UserModel implements UserWire {
-  @Field(() => ID)
-  id!: number;
+  @Field({nullable: true})
+  id?: number;
 
   @Field(() => String, {nullable: true})
   username?: string;
@@ -27,13 +27,13 @@ export class UserModel implements UserWire {
   @Field(() => String, {nullable: true})
   gameSSO?: string;
 
-  @Field(() => ID, {nullable: true})
+  @Field({nullable: true})
   rankID?: number;
 
   @Field(() => RankModel, {nullable: true})
   rank?: RankModel;
 
-  @Field(() => ID, {nullable: true})
+  @Field({nullable: true})
   rankVipID?: number;
 
   @Field(() => RankModel, {nullable: true})

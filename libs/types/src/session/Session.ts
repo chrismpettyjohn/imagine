@@ -1,5 +1,5 @@
 export interface SessionWire {
-  id: number;
+  id?: number;
   userID?: number;
   accessToken?: string;
   createdAt?: string;
@@ -7,7 +7,7 @@ export interface SessionWire {
 }
 
 export interface SessionCreatedWire {
-  id: number;
+  id?: number;
   userID?: number;
   accessToken?: string;
 }

@@ -1,4 +1,4 @@
 export interface BadgeWire {
-  id: number;
+  id?: number;
   code?: string;
 }

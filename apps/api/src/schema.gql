@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 type BanModel {
-  id: ID!
+  id: Float
   bannedUserID: Float
   addedByUserID: Float
   type: String
@@ -13,20 +13,20 @@ type BanModel {
 }
 
 type SessionModel {
-  id: ID!
+  id: Float
   userID: Float
   createdAt: String
   updatedAt: String
 }
 
 type SessionCreatedModel {
-  id: ID!
+  id: Float
   userID: Float
   accessToken: String
 }
 
 type RankModel {
-  id: ID!
+  id: Float
   name: String
   description: String
   badgeCode: String
@@ -34,13 +34,13 @@ type RankModel {
 }
 
 type UserModel {
-  id: ID!
+  id: Float
   username: String
   email: String
   gameSSO: String
-  rankID: ID
+  rankID: Float
   rank: RankModel
-  rankVipID: ID
+  rankVipID: Float
   rankVip: RankModel
   credits: Float
   vipPoints: Float
@@ -91,7 +91,7 @@ enum UserVipStatus {
 }
 
 type BadgeModel {
-  id: ID!
+  id: Float
   code: String
 }
 
@@ -109,7 +109,7 @@ type ConfigModel {
 }
 
 type ArticleCommentModel {
-  id: ID!
+  id: Float
   articleID: Float
   article: ArticleModel
   userID: Float
@@ -120,7 +120,7 @@ type ArticleCommentModel {
 }
 
 type ArticleModel {
-  id: ID!
+  id: Float
   name: String
   description: String
   content: String
@@ -131,7 +131,7 @@ type ArticleModel {
 }
 
 type ChatlogModel {
-  id: ID!
+  id: Float
   userID: Float
   roomID: Float
   message: String

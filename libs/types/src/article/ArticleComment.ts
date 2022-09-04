@@ -1,5 +1,5 @@
 export interface ArticleCommentWire {
-  id: number;
+  id?: number;
   articleID?: number;
   userID?: number;
   comment?: string;

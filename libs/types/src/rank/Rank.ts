@@ -1,7 +1,7 @@
 import {UserWire} from '../user/User';
 
 export interface RankWire {
-  id: number;
+  id?: number;
   name?: string;
   description?: string;
   badgeCode?: string;

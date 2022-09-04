@@ -38,7 +38,7 @@ export enum UserVipStatus {
 }
 
 export interface UserWire {
-  id: number;
+  id?: number;
   username?: string;
   password?: string;
   email?: string;

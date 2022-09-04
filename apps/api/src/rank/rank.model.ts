@@ -1,11 +1,11 @@
 import {UserModel} from '../user/user.model';
 import {RankWire} from '@imagine-cms/types';
-import {Field, ID, ObjectType} from '@nestjs/graphql';
+import {Field, ObjectType} from '@nestjs/graphql';
 
 @ObjectType()
 export class RankModel implements RankWire {
-  @Field(() => ID)
-  id!: number;
+  @Field({nullable: true})
+  id?: number;
 
   @Field({nullable: true})
   name?: string;
