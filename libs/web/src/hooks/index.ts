@@ -1,5 +1,6 @@
 export * from './fetch-articles.hook';
 export * from './fetch-bans.hook';
+export * from './fetch-chatlog.hook';
 export * from './fetch-config.hook';
 export * from './fetch-latest-article.hook';
 export * from './fetch-latest-articles.hook';
@@ -8,6 +9,7 @@ export * from './fetch-online-users.hook';
 export * from './fetch-session-by-jwt.hook';
 export * from './fetch-staff-ranks.hook';
 export * from './fetch-users.hook';
+export * from './fetch-word-filter.hook';
 export * from './find-user-by-id.hook';
 export * from './run-mutation.hook';
 export * from './run-query.hook';

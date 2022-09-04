@@ -32,6 +32,10 @@ export function SiteSidebar() {
               label: 'Site Settings',
               path: '/settings/site',
             },
+            {
+              label: 'Word Filter',
+              path: '/settings/word-filter',
+            },
           ]}
         />
         <NavDropdown
@@ -39,11 +43,11 @@ export function SiteSidebar() {
           label="Articles"
           links={[
             {
-              label: 'View Articles',
+              label: 'Articles',
               path: '/articles/list',
             },
             {
-              label: 'Create Articles',
+              label: 'Create',
               path: '/articles/create',
             },
           ]}
@@ -53,13 +57,17 @@ export function SiteSidebar() {
           label="Users"
           links={[
             {
-              label: 'View Users',
+              label: 'Users',
               path: '/users/list',
             },
             {
-              label: 'View Bans',
+              label: 'Bans',
               path: '/bans/list',
-            }
+            },
+            {
+              label: 'Chatlog',
+              path: '/chatlog/list',
+            },
           ]}
         />
       </ul>
