@@ -30,7 +30,7 @@ export function SiteSidebar() {
           links={[
             {
               label: 'Site Settings',
-              path: '/users/list',
+              path: '/settings/site',
             },
           ]}
         />

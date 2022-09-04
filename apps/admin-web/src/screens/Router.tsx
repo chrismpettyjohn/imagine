@@ -5,6 +5,7 @@ import {LandingScreen} from './landing-screen/LandingScreen';
 import {DashboardScreen} from './dashboard-screen/DashboardScreen';
 import {UsersListScreen} from './users-list-screen/UsersListScreen';
 import {NotAllowedScreen} from './not-allowed-screen/NotAllowedScreen';
+import {SiteSettingsScreen} from './site-settings-screen/SiteSettingsScreen';
 import {ArticlesListScreen} from './articles-list-screen/ArticlesListScreen';
 import {PageNotFoundScreen} from './page-not-found-screen/PageNotFoundScreen';
 
@@ -32,6 +33,10 @@ const SITE_ROUTES: Array<{path: string, view: any, }> = [
   {
     path: '/articles/list',
     view: ArticlesListScreen,
+  },
+  {
+    path: '/settings/site',
+    view: SiteSettingsScreen,
   },
 ]
 
