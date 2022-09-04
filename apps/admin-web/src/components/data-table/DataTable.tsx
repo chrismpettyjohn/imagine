@@ -1,41 +1,42 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useSearchData} from '@imagine-cms/web';
 import {DataTableProps} from './DataTable.types';
-import { useTable, useSortBy } from 'react-table'
 
-export function DataTable<Record>({ columns, data }: DataTableProps<Record>) {
-  // @ts-ignore
-  const {getTableProps, getTableBodyProps, headerGroups, rows, prepareRow,} = useTable({columns, data }, useSortBy)
-
+export function DataTable<Record>({ columns, data = [] }: DataTableProps<Record>) {
+  const [searchTerm, setSearchTerm ] = useState('');
+  const filteredData = useSearchData(data, searchTerm);
   return (
-    <table className="table" {...getTableProps()}>
-      <thead>
-      {headerGroups.map(headerGroup => (
-        <tr {...headerGroup.getHeaderGroupProps()}>
-          {headerGroup.headers.map((column: any) => (
-            <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-              {column.render('Header')}
-              <span>
-                  {column.isSorted && <i className={`fas ${column.isSortedDesc ? 'fa-caret-down' : 'fa-caret-up'}`} />}
-                </span>
-            </th>
-          ))}
-        </tr>
-      ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-      {rows.map(row => {
-        prepareRow(row);
-        return (
-          <tr {...row.getRowProps()}>
-            {row.cells.map(cell => {
-              return (
-                <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-              )
-            })}
+    <>
+      <input className="form-control" value={searchTerm} onChange={e => setSearchTerm(e?.target?.value ?? '')} placeholder="Search..." />
+      <br />
+      <table className="table">
+        <thead>
+          <tr>
+            {
+              columns.map(column => (
+                <th key={`column_${column.header}`}>
+                  {column.header}
+                </th>
+              ))
+            }
           </tr>
-        )}
-      )}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+        {
+          filteredData.map((row, rowIndex) => (
+            <tr key={`row_${rowIndex}`}>
+              {
+                columns.map(column => (
+                  <td key={`row_${rowIndex}_${column.header}`}>
+                    {column.render(row)}
+                  </td>
+                ))
+              }
+            </tr>
+          ))
+        }
+        </tbody>
+      </table>
+    </>
   )
 }

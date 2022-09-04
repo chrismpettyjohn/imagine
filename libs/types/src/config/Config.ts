@@ -8,4 +8,5 @@ export interface ConfigWire {
   instagramURL?: string;
   twitterURL?: string;
   snapchatURL?: string;
+  dateFormat?: string;
 }

@@ -31,4 +31,7 @@ export class ConfigEntity {
 
   @Column({name: 'snapchat_url'})
   snapchatURL!: string;
+
+  @Column({name: 'date_format'})
+  dateFormat!: string;
 }

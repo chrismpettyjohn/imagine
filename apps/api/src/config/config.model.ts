@@ -29,4 +29,7 @@ export class ConfigModel implements ConfigWire {
 
   @Field({nullable: true})
   snapchatURL?: string;
+
+  @Field({nullable: true})
+  dateFormat?: string;
 }

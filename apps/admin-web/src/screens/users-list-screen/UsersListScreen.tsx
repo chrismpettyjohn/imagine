@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import {useFetchUsers, useSearchData} from '@imagine-cms/web';
+import DayJS from 'dayjs';
+import React, {useContext, useEffect} from 'react';
 import {UserOnlineStatus, UserWire} from '@imagine-cms/types';
 import {DataTable} from '../../components/data-table/DataTable';
+import {configContext, useFetchUsers} from '@imagine-cms/web';
 import {LoadingOverlay} from '../../components/loading-overlay/LoadingOverlay';
 
 export function UsersListScreen() {
+  const {config} = useContext(configContext);
   const {runQuery, data, loading} = useFetchUsers();
-  const [searchTerm, setSearchTerm ] = useState('');
-  const filteredUsers = useSearchData(data?.users, searchTerm);
 
   useEffect(() => {
     runQuery();
@@ -22,36 +22,39 @@ export function UsersListScreen() {
               <h4 className="card-title">Users</h4>
               <div className="table-responsive">
                 <LoadingOverlay loading={loading}>
-                  <input className="form-control" value={searchTerm} onChange={e => setSearchTerm(e?.target?.value ?? '')} placeholder="Search..." />
-                  <br />
                   <DataTable<UserWire>
                     columns={[
                       {
-                        Header: 'Username',
-                        accessor: 'username',
+                        header: 'Username',
+                        render: user => user.username,
                       },
                       {
-                        Header: 'Email',
-                        accessor: 'email',
+                        header: 'Email',
+                        render: user => user.email,
                       },
                       {
-                        Header: 'Motto',
-                        accessor: 'motto',
+                        header: 'Motto',
+                        render: user => user.motto,
                       },
                       {
-                        Header: 'IP Address',
-                        accessor: 'ipLast',
+                        header: 'IP Address',
+                        render: user => user.ipLast,
                       },
                       {
-                        Header: 'Status',
-                        accessor: 'onlineStatus',
+                        header: 'Status',
+                        render: user => {
+                          const [color, label] = user.onlineStatus === UserOnlineStatus.Online
+                            ? ['success', 'Online']
+                            : ['danger', 'Offline']
+                          return <span className={`badge badge-${color}`}>{label}</span>
+                        }
                       },
                       {
-                        Header: 'Last Online',
-                        accessor: 'lastOnline',
+                        header: 'Last Online',
+                        render: user => DayJS(user.lastOnline).format(config!.dateFormat),
                       },
                     ]}
-                    data={filteredUsers}
+                    data={data?.users}
                   />
                 </LoadingOverlay>
               </div>

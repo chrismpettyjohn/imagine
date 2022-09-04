@@ -47,4 +47,8 @@ export class ConfigUpdateInput implements ConfigUpdateInputDTO {
   @IsUrl()
   @IsOptional()
   snapchatURL?: string;
+
+  @Field({nullable: true})
+  @IsOptional()
+  dateFormat?: string;
 }
