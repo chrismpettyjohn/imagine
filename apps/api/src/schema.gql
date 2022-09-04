@@ -167,7 +167,7 @@ type Query {
   wordFilter(id: Float!): WordFilterModel!
   wordFilters(other: ExtraArgs): [WordFilterModel!]!
   chatlog(id: Float!): ChatlogModel!
-  chatlogs(other: ExtraArgs): [ChatlogModel!]!
+  chatlogs(other: ExtraArgs, userID: Float, roomID: Float): [ChatlogModel!]!
 }
 
 input ExtraArgs {

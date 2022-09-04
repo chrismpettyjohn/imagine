@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import {WordFilterBannableStatus, WordFilterStrictStatus, WordFilterWire} from '@imagine-cms/types';
 import {useFetchWordFilter} from '@imagine-cms/web';
 import {DataTable} from '../../components/data-table/DataTable';
 import {LoadingOverlay} from '../../components/loading-overlay/LoadingOverlay';
+import {WordFilterBannableStatus, WordFilterStrictStatus, WordFilterWire} from '@imagine-cms/types';
 
 export function WordFilterSettingsScreen() {
   const {runQuery, data, loading} = useFetchWordFilter();

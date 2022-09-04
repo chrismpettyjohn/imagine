@@ -17,6 +17,9 @@ export class ChatlogEntity implements ChatlogWire {
   @JoinColumn({name: 'user_id'})
   user?: UserEntity;
 
+  @Column({name: 'room_id'})
+  roomID!: number;
+
   @Column({name: 'timestamp'})
   createdAt!: string;
 }
