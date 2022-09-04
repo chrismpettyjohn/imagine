@@ -10,7 +10,7 @@ export function LatestArticlesSlider() {
 
   useEffect(() => {
     runQuery();
-  }, []);
+  }, [runQuery]);
 
   return (
     <Carousel>

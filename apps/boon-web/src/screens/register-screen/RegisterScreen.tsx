@@ -22,8 +22,8 @@ export function RegisterScreen() {
 
   const isLoading = createUser.loading;
 
-  const onCreateUser = (event?: SyntheticEvent) => {
-    event?.preventDefault();
+  const onCreateUser = (event: SyntheticEvent) => {
+    event.preventDefault();
     if (!canCreateUser || createUser.loading) {
       return;
     }

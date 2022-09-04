@@ -46,10 +46,6 @@ export function SiteSidebar() {
               label: 'Articles',
               path: '/articles/list',
             },
-            {
-              label: 'Create',
-              path: '/articles/create',
-            },
           ]}
         />
         <NavDropdown

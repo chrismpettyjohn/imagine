@@ -1,9 +1,12 @@
 import DayJS from 'dayjs';
-import React, {useContext, useEffect} from 'react';
 import {ArticleWire} from '@imagine-cms/types';
+import React, {useContext, useEffect} from 'react';
 import {DataTable} from '../../components/data-table/DataTable';
 import {configContext, useFetchArticles} from '@imagine-cms/web';
+import {CreateArticleModal} from './create-article-modal/CreateArticleModal';
 import {LoadingOverlay} from '../../components/loading-overlay/LoadingOverlay';
+import {EditArticleModal} from './edit-article-modal/EditArticleModal';
+import {DeleteArticleModal} from './delete-article-modal/DeleteArticleModal';
 
 export function ArticlesListScreen() {
   const {config} = useContext(configContext);
@@ -11,7 +14,7 @@ export function ArticlesListScreen() {
 
   useEffect(() => {
     runQuery();
-  }, []);
+  }, [runQuery]);
 
   return (
     <>
@@ -19,7 +22,14 @@ export function ArticlesListScreen() {
         <div className="col-12 grid-margin stretch-card">
           <div className="card">
             <div className="card-body">
-              <h4 className="card-title">Articles</h4>
+              <div className="row">
+                <div className="col-6">
+                  <h4 className="card-title">Articles</h4>
+                </div>
+                <div className="col-6 text-right">
+                  <CreateArticleModal onCreate={() => console.log('woo')} />
+                </div>
+              </div>
               <div className="table-responsive">
                 <LoadingOverlay loading={loading}>
                   <DataTable<ArticleWire>
@@ -40,12 +50,10 @@ export function ArticlesListScreen() {
                         header: 'Tools',
                         render: article => (
                           <>
-                            <button className="btn btn-primary mr-2">
-                              <i className="fas fa-pencil" />
-                            </button>
-                            <button className="btn btn-danger">
-                              <i className="fas fa-trash" />
-                            </button>
+                            <span className="mr-2">
+                              <EditArticleModal article={article} onUpdate={updatedArticle => console.log(updatedArticle)} />
+                            </span>
+                            <DeleteArticleModal article={article} onDelete={() => console.log('deleted')} />
                           </>
                         )
 

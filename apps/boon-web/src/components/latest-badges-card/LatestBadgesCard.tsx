@@ -6,7 +6,7 @@ export function LatestBadgesCard() {
 
   useEffect(() => {
     runQuery();
-  }, []);
+  }, [runQuery]);
 
   return (
     <>

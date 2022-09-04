@@ -11,7 +11,7 @@ export function ConfigContextProvider({children}: ConfigContextProviderProps) {
 
   useEffect(() => {
     runQuery();
-  }, []);
+  }, [runQuery]);
 
   useEffect(() => {
     setConfig(data?.config);

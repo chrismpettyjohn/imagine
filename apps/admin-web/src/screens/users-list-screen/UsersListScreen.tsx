@@ -11,7 +11,7 @@ export function UsersListScreen() {
 
   useEffect(() => {
     runQuery();
-  }, []);
+  }, [runQuery]);
 
   return (
     <>

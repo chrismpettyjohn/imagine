@@ -11,7 +11,7 @@ export function BansListScreen() {
 
   useEffect(() => {
     runQuery();
-  }, []);
+  }, [runQuery]);
 
   return (
     <>

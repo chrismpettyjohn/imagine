@@ -1,7 +1,6 @@
 import {resolve} from 'path';
 import {Module} from '@nestjs/common';
 import {BanModule} from './ban/ban.module';
-import GraphQLJSON from 'graphql-type-json';
 import {GraphQLModule} from '@nestjs/graphql';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import {UserModule} from './user/user.module';
@@ -15,6 +14,7 @@ import {ChatlogModule} from './chatlog/chatlog.module';
 import {DatabaseModule} from './database/database.module';
 import {databaseEntities} from './database/database.const';
 import {ApolloDriver, ApolloDriverConfig} from '@nestjs/apollo';
+import {GraphQLJSONObject} from 'graphql-type-json';
 import {WordFilterModule} from './word-filter/word-filter.module';
 import {
   IMAGINE_DATABASE_HOST,
@@ -42,7 +42,7 @@ import {
       autoSchemaFile: resolve(__dirname, './schema.gql'),
       fieldResolverEnhancers: ['guards'],
       installSubscriptionHandlers: true,
-      resolvers: {JSON: GraphQLJSON},
+      resolvers: {JSONObject: GraphQLJSONObject},
     }),
     BadgeModule,
     CommonModule,

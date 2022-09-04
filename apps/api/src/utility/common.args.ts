@@ -1,4 +1,4 @@
-import {GraphQLJSON} from 'graphql-type-json';
+import {GraphQLJSONObject} from 'graphql-type-json';
 import {ArgsType, Field, InputType} from '@nestjs/graphql';
 
 @ArgsType()
@@ -15,6 +15,6 @@ export class ExtraArgs {
   @Field({nullable: true})
   take?: number;
 
-  @Field(() => GraphQLJSON, {nullable: true})
+  @Field(() => GraphQLJSONObject, {nullable: true})
   order?: object;
 }

@@ -8,7 +8,7 @@ export function LatestArticleCard() {
 
   useEffect(() => {
     runQuery();
-  }, []);
+  }, [runQuery]);
 
   return (
     <>

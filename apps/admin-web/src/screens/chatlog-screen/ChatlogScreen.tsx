@@ -11,7 +11,7 @@ export function ChatlogScreen() {
 
   useEffect(() => {
     runQuery();
-  }, []);
+  }, [runQuery]);
 
   console.log(error);
 

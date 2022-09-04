@@ -7,7 +7,7 @@ export function CommunityOnlinePlayersScreen() {
 
   useEffect(() => {
     runQuery();
-  }, []);
+  }, [runQuery]);
 
   return (
     <main className="position-relative container justify-content-center py-4">

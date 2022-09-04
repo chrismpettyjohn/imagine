@@ -9,7 +9,7 @@ export function LeaderboardsCard({title, value, query}: LeaderboardsCardProps) {
 
   useEffect(() => {
     runQuery();
-  }, []);
+  }, [runQuery]);
 
   return (
     <div className="card">

@@ -8,7 +8,7 @@ export function LatestArticlesGrid() {
 
   useEffect(() => {
     runQuery();
-  }, []);
+  }, [runQuery]);
 
   return (
     <>

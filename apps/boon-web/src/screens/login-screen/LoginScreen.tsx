@@ -11,8 +11,8 @@ export function LoginScreen() {
   const [password, setPassword] = useState('');
   const {tryLogin} = useSignInWithUsernameAndPassword(username, password);
 
-  const onLogin = async (event?: SyntheticEvent) => {
-    event?.preventDefault();
+  const onLogin = async (event: SyntheticEvent) => {
+    event.preventDefault();
     if (!username || !password) {
       toast.error('You must provide a username and password');
     }

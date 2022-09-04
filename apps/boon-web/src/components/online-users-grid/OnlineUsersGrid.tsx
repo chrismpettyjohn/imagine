@@ -7,7 +7,7 @@ export function OnlineUsersGrid() {
 
   useEffect(() => {
     runQuery();
-  }, []);
+  }, [runQuery]);
 
   if (loading) {
     return <i className="fa fa-spinner fa-spin" />
