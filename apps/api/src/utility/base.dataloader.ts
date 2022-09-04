@@ -1,7 +1,9 @@
 import Dataloader from 'dataloader';
 
 export class BaseDataloaderService<Model> {
-  constructor(private readonly loadBatch: (ids: number[]) => Promise<Model[]>) {}
+  constructor(
+    private readonly loadBatch: (ids: number[]) => Promise<Model[]>
+  ) {}
 
   // @ts-ignore
   private readonly dataLoader = new Dataloader(this.loadBatch);

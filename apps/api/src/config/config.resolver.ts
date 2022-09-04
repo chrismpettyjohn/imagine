@@ -21,7 +21,9 @@ export class ConfigResolver {
   }
 
   @Mutation(() => Boolean)
-  async configUpdate(@Args('configUpdateInput') configUpdateInput: ConfigUpdateInput) {
+  async configUpdate(
+    @Args('configUpdateInput') configUpdateInput: ConfigUpdateInput
+  ) {
     await this.configRepo.update({id: 1}, configUpdateInput);
     pubSub.publish('configUpdated', {configUpdated: configUpdateInput});
     return true;

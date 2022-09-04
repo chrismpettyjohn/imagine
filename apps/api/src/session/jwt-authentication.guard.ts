@@ -6,23 +6,32 @@ import {Injectable, CanActivate, ExecutionContext} from '@nestjs/common';
 
 @Injectable()
 export class JwtAuthenticationGuard implements CanActivate {
-  constructor(private readonly jwtService: JwtService, private readonly userRepo: UserRepository) {}
+  constructor(
+    private readonly jwtService: JwtService,
+    private readonly userRepo: UserRepository
+  ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request: RawRequest = getRequestFromExecutionContext(context);
-    const bearerToken: string | undefined = request?.header('Authorization')?.split('Bearer ')?.[1];
+    const bearerToken: string | undefined = request
+      ?.header('Authorization')
+      ?.split('Bearer ')?.[1];
 
     if (!bearerToken) {
       return false;
     }
 
-    const parsedBearerToken: SessionContents | null = this.jwtService.decode(bearerToken) as any;
+    const parsedBearerToken: SessionContents | null = this.jwtService.decode(
+      bearerToken
+    ) as any;
 
     if (!parsedBearerToken) {
       return false;
     }
 
-    request.user = await this.userRepo.findOneOrFail({id: parsedBearerToken.userID});
+    request.user = await this.userRepo.findOneOrFail({
+      id: parsedBearerToken.userID,
+    });
     request.sessionID = parsedBearerToken.sessionID;
 
     return true;

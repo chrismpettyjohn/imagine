@@ -6,7 +6,9 @@ import {BaseRepository} from '../utility/base.repository';
 
 @Injectable()
 export class ConfigRepository extends BaseRepository<ConfigEntity> {
-  constructor(@InjectRepository(ConfigEntity) configRepo: Repository<ConfigEntity>) {
+  constructor(
+    @InjectRepository(ConfigEntity) configRepo: Repository<ConfigEntity>
+  ) {
     super(configRepo);
   }
 }

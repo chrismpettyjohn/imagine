@@ -8,7 +8,17 @@ import {ArticleCommentDataloaderService} from './article-comment/article-comment
 
 @Module({
   imports: [DatabaseModule, SessionModule],
-  providers: [ArticleDataloaderService, ArticleResolver, ArticleCommentDataloaderService, ArticleCommentResolver],
-  exports: [ArticleDataloaderService, ArticleResolver, ArticleCommentDataloaderService, ArticleCommentResolver],
+  providers: [
+    ArticleDataloaderService,
+    ArticleResolver,
+    ArticleCommentDataloaderService,
+    ArticleCommentResolver,
+  ],
+  exports: [
+    ArticleDataloaderService,
+    ArticleResolver,
+    ArticleCommentDataloaderService,
+    ArticleCommentResolver,
+  ],
 })
 export class ArticleModule {}

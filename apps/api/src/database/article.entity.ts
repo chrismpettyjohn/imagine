@@ -42,6 +42,9 @@ export class ArticleEntity implements ArticleWire {
   @UpdateDateColumn({name: 'updated_at'})
   updatedAt?: string;
 
-  @OneToMany(() => ArticleCommentEntity, articleComment => articleComment.article)
+  @OneToMany(
+    () => ArticleCommentEntity,
+    articleComment => articleComment.article
+  )
   comments?: ArticleCommentEntity[];
 }

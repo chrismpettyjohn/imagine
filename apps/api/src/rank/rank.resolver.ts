@@ -31,7 +31,9 @@ export class RankResolver {
   }
 
   @Mutation(() => RankModel)
-  async rankCreate(@Args('newRank') rankCreateInput: RankCreateInput): Promise<RankEntity> {
+  async rankCreate(
+    @Args('newRank') rankCreateInput: RankCreateInput
+  ): Promise<RankEntity> {
     const newRank = await this.rankRepo.create({
       ...rankCreateInput,
     });
@@ -45,7 +47,10 @@ export class RankResolver {
   }
 
   @Mutation(() => Boolean)
-  async rankUpdate(@Args('id') id: number, @Args('rankChanges') rankChanges: RankUpdateInput) {
+  async rankUpdate(
+    @Args('id') id: number,
+    @Args('rankChanges') rankChanges: RankUpdateInput
+  ) {
     await this.rankRepo.update({id}, rankChanges);
     return true;
   }

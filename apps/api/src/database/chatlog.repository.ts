@@ -6,7 +6,9 @@ import {BaseRepository} from '../utility/base.repository';
 
 @Injectable()
 export class ChatlogRepository extends BaseRepository<ChatlogEntity> {
-  constructor(@InjectRepository(ChatlogEntity) chatlogRepo: Repository<ChatlogEntity>) {
+  constructor(
+    @InjectRepository(ChatlogEntity) chatlogRepo: Repository<ChatlogEntity>
+  ) {
     super(chatlogRepo);
   }
 }

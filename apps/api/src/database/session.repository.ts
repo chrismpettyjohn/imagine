@@ -6,7 +6,9 @@ import {BaseRepository} from '../utility/base.repository';
 
 @Injectable()
 export class SessionRepository extends BaseRepository<SessionEntity> {
-  constructor(@InjectRepository(SessionEntity) sessionRepo: Repository<SessionEntity>) {
+  constructor(
+    @InjectRepository(SessionEntity) sessionRepo: Repository<SessionEntity>
+  ) {
     super(sessionRepo);
   }
 }

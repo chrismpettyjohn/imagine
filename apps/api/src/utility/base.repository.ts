@@ -1,4 +1,9 @@
-import {FindOptionsWhere, FindManyOptions, FindOneOptions, Repository} from 'typeorm';
+import {
+  FindOptionsWhere,
+  FindManyOptions,
+  FindOneOptions,
+  Repository,
+} from 'typeorm';
 
 export abstract class BaseRepository<Entity> {
   constructor(
@@ -18,28 +23,40 @@ export abstract class BaseRepository<Entity> {
     return this.findOneOrFail({id: newObject.id!});
   }
 
-  find(where?: FindOptionsWhere<Entity>, options?: FindManyOptions<Entity>): Promise<Entity[]> {
+  find(
+    where?: FindOptionsWhere<Entity>,
+    options?: FindManyOptions<Entity>
+  ): Promise<Entity[]> {
     return this.repo.find({
       where,
       ...options,
     });
   }
 
-  findOne(where?: FindOptionsWhere<Entity>, options?: FindOneOptions<Entity>): Promise<Entity | null> {
+  findOne(
+    where?: FindOptionsWhere<Entity>,
+    options?: FindOneOptions<Entity>
+  ): Promise<Entity | null> {
     return this.repo.findOne({
       where,
       ...options,
     });
   }
 
-  findOneOrFail(where?: FindOptionsWhere<Entity>, options?: FindOneOptions<Entity>): Promise<Entity> {
+  findOneOrFail(
+    where?: FindOptionsWhere<Entity>,
+    options?: FindOneOptions<Entity>
+  ): Promise<Entity> {
     return this.repo.findOneOrFail({
       where,
       ...options,
     });
   }
 
-  async update(conditions: FindOptionsWhere<Entity>, changes: Partial<Entity>): Promise<void> {
+  async update(
+    conditions: FindOptionsWhere<Entity>,
+    changes: Partial<Entity>
+  ): Promise<void> {
     await this.repo.update(conditions, changes as any);
   }
 

@@ -1,6 +1,13 @@
 import {UserEntity} from './user.entity';
 import {BanWire} from '@imagine-cms/types';
-import {Column, Entity, CreateDateColumn, PrimaryGeneratedColumn, ManyToOne, JoinColumn} from 'typeorm';
+import {
+  Column,
+  Entity,
+  CreateDateColumn,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 
 @Entity('bans')
 export class BanEntity implements BanWire {

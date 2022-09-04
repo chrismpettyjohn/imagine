@@ -11,7 +11,10 @@ import {ArticleCommentEntity} from '../../database/article-comment.entity';
 import {ArticleCommentDataloaderService} from './article-comment.dataloader';
 import {Args, Mutation, Query, Resolver, Subscription} from '@nestjs/graphql';
 import {ArticleCommentRepository} from '../../database/article-comment.repository';
-import {ArticleCommentCreateInput, ArticleCommentUpdateInput} from './article-comment.input';
+import {
+  ArticleCommentCreateInput,
+  ArticleCommentUpdateInput,
+} from './article-comment.input';
 
 const pubSub = new PubSub();
 
@@ -30,21 +33,29 @@ export class ArticleCommentResolver {
   }
 
   @Query(() => [ArticleCommentModel])
-  articleComments(@Args() articleCommentArgs: ArticleCommentArgs): Promise<ArticleCommentEntity[]> {
-    return this.articleCommentRepo.find(omit(articleCommentArgs, 'other'), articleCommentArgs.other);
+  articleComments(
+    @Args() articleCommentArgs: ArticleCommentArgs
+  ): Promise<ArticleCommentEntity[]> {
+    return this.articleCommentRepo.find(
+      omit(articleCommentArgs, 'other'),
+      articleCommentArgs.other
+    );
   }
 
   @Mutation(() => ArticleCommentModel)
   @HasSession()
   async articleCommentCreate(
-    @Args('newArticleComment') articleCommentCreateInput: ArticleCommentCreateInput,
+    @Args('newArticleComment')
+    articleCommentCreateInput: ArticleCommentCreateInput,
     @GetUser() user: UserEntity
   ): Promise<ArticleCommentEntity> {
     const newArticleComment = await this.articleCommentRepo.create({
       ...articleCommentCreateInput,
       userID: user.id!,
     });
-    pubSub.publish('articleCommentCreated', {articleCommentCreated: newArticleComment});
+    pubSub.publish('articleCommentCreated', {
+      articleCommentCreated: newArticleComment,
+    });
     return newArticleComment;
   }
 
@@ -64,8 +75,12 @@ export class ArticleCommentResolver {
 
   @Mutation(() => Boolean)
   async articleCommentDelete(@Args('id') id: number) {
-    const deletedArticleComment = await this.articleCommentRepo.findOneOrFail({id});
-    pubSub.publish('articleCommentDeleted', {articleCommentDeleted: deletedArticleComment});
+    const deletedArticleComment = await this.articleCommentRepo.findOneOrFail({
+      id,
+    });
+    pubSub.publish('articleCommentDeleted', {
+      articleCommentDeleted: deletedArticleComment,
+    });
     await this.articleCommentRepo.delete({id});
     return true;
   }

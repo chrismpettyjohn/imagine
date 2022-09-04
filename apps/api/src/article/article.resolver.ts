@@ -57,7 +57,10 @@ export class ArticleResolver {
   }
 
   @Mutation(() => Boolean)
-  async articleUpdate(@Args('id') id: number, @Args('articleChanges') articleChanges: ArticleUpdateInput) {
+  async articleUpdate(
+    @Args('id') id: number,
+    @Args('articleChanges') articleChanges: ArticleUpdateInput
+  ) {
     await this.articleRepo.update({id}, articleChanges);
     return true;
   }

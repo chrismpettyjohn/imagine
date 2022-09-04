@@ -2,7 +2,14 @@ import {RankEntity} from './rank.entity';
 import {SessionEntity} from './session.entity';
 import {ArticleEntity} from './article.entity';
 import {registerEnumType} from '@nestjs/graphql';
-import {Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import {
   IMAGINE_DEFAULT_ACTIVITY_POINTS,
   IMAGINE_DEFAULT_CREDITS,
@@ -114,7 +121,8 @@ export class UserEntity implements UserWire {
   muteStatus: UserMuteStatus = UserMuteStatus.NotMuted;
 
   @Column({name: 'block_newfriends'})
-  allowingNewFriends: UserAllowingNewFriendsStatus = UserAllowingNewFriendsStatus.Yes;
+  allowingNewFriends: UserAllowingNewFriendsStatus =
+    UserAllowingNewFriendsStatus.Yes;
 
   @Column({name: 'hide_online'})
   showOnlineStatus: UserShowOnlineStatus = UserShowOnlineStatus.Visible;

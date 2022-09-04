@@ -1,5 +1,9 @@
 import {Field, ID, ObjectType} from '@nestjs/graphql';
-import {WordFilterBannableStatus, WordFilterStrictStatus, WordFilterWire} from '@imagine-cms/types';
+import {
+  WordFilterBannableStatus,
+  WordFilterStrictStatus,
+  WordFilterWire,
+} from '@imagine-cms/types';
 
 @ObjectType()
 export class WordFilterModel implements WordFilterWire {

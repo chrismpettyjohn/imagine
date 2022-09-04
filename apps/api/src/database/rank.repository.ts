@@ -6,7 +6,9 @@ import {BaseRepository} from '../utility/base.repository';
 
 @Injectable()
 export class RankRepository extends BaseRepository<RankEntity> {
-  constructor(@InjectRepository(RankEntity) profileRepo: Repository<RankEntity>) {
+  constructor(
+    @InjectRepository(RankEntity) profileRepo: Repository<RankEntity>
+  ) {
     super(profileRepo);
   }
 }

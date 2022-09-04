@@ -6,7 +6,10 @@ import {WordFilterEntity} from './word-filter.entity';
 
 @Injectable()
 export class WordFilterRepository extends BaseRepository<WordFilterEntity> {
-  constructor(@InjectRepository(WordFilterEntity) wordFilterRepo: Repository<WordFilterEntity>) {
+  constructor(
+    @InjectRepository(WordFilterEntity)
+    wordFilterRepo: Repository<WordFilterEntity>
+  ) {
     super(wordFilterRepo);
   }
 }

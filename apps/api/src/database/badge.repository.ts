@@ -6,7 +6,9 @@ import {BaseRepository} from '../utility/base.repository';
 
 @Injectable()
 export class BadgeRepository extends BaseRepository<BadgeEntity> {
-  constructor(@InjectRepository(BadgeEntity) badgeRepo: Repository<BadgeEntity>) {
+  constructor(
+    @InjectRepository(BadgeEntity) badgeRepo: Repository<BadgeEntity>
+  ) {
     super(badgeRepo);
   }
 }

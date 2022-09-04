@@ -36,7 +36,10 @@ export class BanResolver {
 
   @Mutation(() => BanModel)
   @HasSession()
-  async banCreate(@Args('newBan') banCreateInput: BanCreateInput, @GetUser() user: UserEntity): Promise<BanEntity> {
+  async banCreate(
+    @Args('newBan') banCreateInput: BanCreateInput,
+    @GetUser() user: UserEntity
+  ): Promise<BanEntity> {
     const newBan = await this.banRepo.create({
       ...banCreateInput,
       type: 'site',
@@ -52,7 +55,10 @@ export class BanResolver {
   }
 
   @Mutation(() => Boolean)
-  async banUpdate(@Args('id') id: number, @Args('banChanges') banChanges: BanUpdateInput) {
+  async banUpdate(
+    @Args('id') id: number,
+    @Args('banChanges') banChanges: BanUpdateInput
+  ) {
     await this.banRepo.update({id}, banChanges);
     return true;
   }

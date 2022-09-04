@@ -18,15 +18,27 @@ export const IMAGINE_DATABASE_USER = process.env.DATABASE_USER;
 export const IMAGINE_GRAPHQL_PLAYGROUND = !!process.env.GRAPHQL_PLAYGROUND;
 
 export const IMAGINE_JWT_SECRET: string = getEnvOrFail('JWT_SECRET');
-export const IMAGINE_JWT_EXPIRATION_IN_MS = Number(getEnvOrFail('JWT_EXPIRATION_IN_MS'));
+export const IMAGINE_JWT_EXPIRATION_IN_MS = Number(
+  getEnvOrFail('JWT_EXPIRATION_IN_MS')
+);
 
 export const IMAGINE_DEFAULT_CREDITS = Number(getEnvOrFail('DEFAULT_CREDITS'));
-export const IMAGINE_DEFAULT_VIP_POINTS = Number(getEnvOrFail('DEFAULT_VIP_POINTS'));
-export const IMAGINE_DEFAULT_ACTIVITY_POINTS = Number(getEnvOrFail('DEFAULT_ACTIVITY_POINTS'));
+export const IMAGINE_DEFAULT_VIP_POINTS = Number(
+  getEnvOrFail('DEFAULT_VIP_POINTS')
+);
+export const IMAGINE_DEFAULT_ACTIVITY_POINTS = Number(
+  getEnvOrFail('DEFAULT_ACTIVITY_POINTS')
+);
 export const IMAGINE_DEFAULT_MOTTO: string = getEnvOrFail('DEFAULT_MOTTO');
 export const IMAGINE_DEFAULT_LOOK: string = getEnvOrFail('DEFAULT_LOOK');
-export const IMAGINE_DEFAULT_HOME_ROOM = Number(getEnvOrFail('DEFAULT_HOME_ROOM'));
+export const IMAGINE_DEFAULT_HOME_ROOM = Number(
+  getEnvOrFail('DEFAULT_HOME_ROOM')
+);
 export const IMAGINE_DEFAULT_VIP_STATUS: UserVipStatus =
-  getEnvOrFail('DEFAULT_VIP_STATUS') === 'true' ? UserVipStatus.Yes : UserVipStatus.No;
+  getEnvOrFail('DEFAULT_VIP_STATUS') === 'true'
+    ? UserVipStatus.Yes
+    : UserVipStatus.No;
 export const IMAGINE_DEFAULT_RANK = Number(getEnvOrFail('DEFAULT_RANK'));
-export const IMAGINE_DEFAULT_VIP_RANK = Number(getEnvOrFail('DEFAULT_VIP_RANK'));
+export const IMAGINE_DEFAULT_VIP_RANK = Number(
+  getEnvOrFail('DEFAULT_VIP_RANK')
+);

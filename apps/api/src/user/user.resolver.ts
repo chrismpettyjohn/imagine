@@ -36,7 +36,9 @@ export class UserResolver {
   }
 
   @Mutation(() => UserModel)
-  async userCreate(@Args('newUser') userCreateInput: UserCreateInput): Promise<UserEntity> {
+  async userCreate(
+    @Args('newUser') userCreateInput: UserCreateInput
+  ): Promise<UserEntity> {
     const secondsSinceEpoch = parseInt(`${now() / 1000}`);
     console.log(secondsSinceEpoch);
     const newUser = await this.userRepo.create({
@@ -58,7 +60,10 @@ export class UserResolver {
   }
 
   @Mutation(() => Boolean)
-  async userUpdate(@Args('id') id: number, @Args('userChanges') userChanges: UserUpdateInput) {
+  async userUpdate(
+    @Args('id') id: number,
+    @Args('userChanges') userChanges: UserUpdateInput
+  ) {
     await this.userRepo.update({id}, userChanges);
     return true;
   }

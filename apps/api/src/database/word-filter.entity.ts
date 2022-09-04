@@ -1,6 +1,16 @@
 import {UserEntity} from './user.entity';
-import {Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn} from 'typeorm';
-import {WordFilterBannableStatus, WordFilterStrictStatus, WordFilterWire} from '@imagine-cms/types';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
+import {
+  WordFilterBannableStatus,
+  WordFilterStrictStatus,
+  WordFilterWire,
+} from '@imagine-cms/types';
 
 @Entity('wordfilter')
 export class WordFilterEntity implements WordFilterWire {

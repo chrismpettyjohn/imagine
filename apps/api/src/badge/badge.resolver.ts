@@ -31,7 +31,9 @@ export class BadgeResolver {
   }
 
   @Mutation(() => BadgeModel)
-  async badgeCreate(@Args('newBadge') badgeCreateInput: BadgeInput): Promise<BadgeEntity> {
+  async badgeCreate(
+    @Args('newBadge') badgeCreateInput: BadgeInput
+  ): Promise<BadgeEntity> {
     const newBadge = await this.badgeRepo.create({
       ...badgeCreateInput,
     });
@@ -45,7 +47,10 @@ export class BadgeResolver {
   }
 
   @Mutation(() => Boolean)
-  async badgeUpdate(@Args('id') id: number, @Args('badgeChanges') badgeChanges: BadgeInput) {
+  async badgeUpdate(
+    @Args('id') id: number,
+    @Args('badgeChanges') badgeChanges: BadgeInput
+  ) {
     await this.badgeRepo.update({id}, badgeChanges);
     return true;
   }

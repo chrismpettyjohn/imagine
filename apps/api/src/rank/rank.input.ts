@@ -1,6 +1,11 @@
 import {Field, InputType} from '@nestjs/graphql';
 import {RankCreateInputDTO, RankUpdateInputDTO} from '@imagine-cms/types';
-import {MaxLength, IsAlphanumeric, IsNotEmpty, IsOptional} from 'class-validator';
+import {
+  MaxLength,
+  IsAlphanumeric,
+  IsNotEmpty,
+  IsOptional,
+} from 'class-validator';
 
 @InputType()
 export class RankCreateInput implements RankCreateInputDTO {

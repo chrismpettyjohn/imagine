@@ -7,7 +7,8 @@
     "dist"
   ],
   "scripts": {
-    "start": "node_modules/.bin/ts-node -r tsconfig-paths/register src/index.ts"
+    "start": "node_modules/.bin/ts-node -r tsconfig-paths/register src/index.ts",
+    "start:debug": "nodemon --exec yarn start"
   },
   "dependencies": {
     "lodash": "4.17.21",
@@ -42,7 +43,8 @@
     "@types/cors": "2.8.12",
     "@types/express": "^4.17.13",
     "@types/bcryptjs": "2.4.2",
-    "@types/lodash": "4.14.184"
+    "@types/lodash": "4.14.184",
+    "nodemon": "2.0.19"
   },
   "gitHead": "2305e183b7fa01b3837f0f20c401ecdec6858de6"
 }

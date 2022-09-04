@@ -10,7 +10,10 @@ import {UserRepository} from '../database/user.repository';
 import {HasSession} from '../session/has-session.decorator';
 import {WordFilterDataloaderService} from './word-filter.dataloader';
 import {WordFilterRepository} from '../database/word-filter.repository';
-import {WordFilterCreateInput, WordFilterUpdateInput} from './word-filter.input';
+import {
+  WordFilterCreateInput,
+  WordFilterUpdateInput,
+} from './word-filter.input';
 import {Args, Mutation, Query, Resolver, Subscription} from '@nestjs/graphql';
 
 const pubSub = new PubSub();
@@ -30,8 +33,13 @@ export class WordFilterResolver {
   }
 
   @Query(() => [WordFilterModel])
-  wordFilters(@Args() wordFilterArgs: WordFilterArgs): Promise<WordFilterEntity[]> {
-    return this.wordFilterRepo.find(omit(wordFilterArgs, 'other'), wordFilterArgs.other);
+  wordFilters(
+    @Args() wordFilterArgs: WordFilterArgs
+  ): Promise<WordFilterEntity[]> {
+    return this.wordFilterRepo.find(
+      omit(wordFilterArgs, 'other'),
+      wordFilterArgs.other
+    );
   }
 
   @Mutation(() => WordFilterModel)
@@ -54,7 +62,10 @@ export class WordFilterResolver {
   }
 
   @Mutation(() => Boolean)
-  async wordFilterUpdate(@Args('id') id: number, @Args('wordFilterChanges') wordFilterChanges: WordFilterUpdateInput) {
+  async wordFilterUpdate(
+    @Args('id') id: number,
+    @Args('wordFilterChanges') wordFilterChanges: WordFilterUpdateInput
+  ) {
     await this.wordFilterRepo.update({id}, wordFilterChanges);
     return true;
   }

@@ -21,10 +21,15 @@ export class UserRepository extends BaseRepository<UserEntity> {
     });
   }
 
-  async update(conditions: FindOptionsWhere<UserEntity>, changes: Partial<UserEntity>): Promise<void> {
+  async update(
+    conditions: FindOptionsWhere<UserEntity>,
+    changes: Partial<UserEntity>
+  ): Promise<void> {
     return super.update(conditions, {
       ...changes,
-      password: changes.password ? this.hashService.generate(changes.password) : undefined,
+      password: changes.password
+        ? this.hashService.generate(changes.password)
+        : undefined,
     });
   }
 }

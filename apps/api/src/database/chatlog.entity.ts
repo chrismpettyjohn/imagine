@@ -1,6 +1,12 @@
 import {UserEntity} from './user.entity';
 import {ChatlogWire} from '@imagine-cms/types';
-import {Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn} from 'typeorm';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 
 @Entity('chatlogs')
 export class ChatlogEntity implements ChatlogWire {

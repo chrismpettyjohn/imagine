@@ -6,7 +6,10 @@ import {CommonModule} from '../common/common.module';
 import {DatabaseModule} from '../database/database.module';
 import {SessionDataloaderService} from './session.dataloader';
 import {JwtAuthenticationGuard} from './jwt-authentication.guard';
-import {IMAGINE_JWT_EXPIRATION_IN_MS, IMAGINE_JWT_SECRET} from '../imagine.constant';
+import {
+  IMAGINE_JWT_EXPIRATION_IN_MS,
+  IMAGINE_JWT_SECRET,
+} from '../imagine.constant';
 
 @Module({
   imports: [
@@ -19,7 +22,18 @@ import {IMAGINE_JWT_EXPIRATION_IN_MS, IMAGINE_JWT_SECRET} from '../imagine.const
     CommonModule,
     DatabaseModule,
   ],
-  providers: [SessionService, SessionDataloaderService, SessionResolver, JwtAuthenticationGuard],
-  exports: [SessionService, SessionDataloaderService, SessionResolver, JwtAuthenticationGuard, JwtModule],
+  providers: [
+    SessionService,
+    SessionDataloaderService,
+    SessionResolver,
+    JwtAuthenticationGuard,
+  ],
+  exports: [
+    SessionService,
+    SessionDataloaderService,
+    SessionResolver,
+    JwtAuthenticationGuard,
+    JwtModule,
+  ],
 })
 export class SessionModule {}

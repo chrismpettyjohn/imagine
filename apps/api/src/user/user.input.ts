@@ -1,6 +1,12 @@
 import {Field, InputType} from '@nestjs/graphql';
 import {UserCreateInputDTO, UserUpdateInputDTO} from '@imagine-cms/types';
-import {IsEmail, MaxLength, IsAlphanumeric, IsNotEmpty, IsOptional} from 'class-validator';
+import {
+  IsEmail,
+  MaxLength,
+  IsAlphanumeric,
+  IsNotEmpty,
+  IsOptional,
+} from 'class-validator';
 
 @InputType()
 export class UserCreateInput implements UserCreateInputDTO {

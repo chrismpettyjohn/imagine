@@ -12,8 +12,8 @@ export function SiteSettingsScreen() {
     }))
   }
 
-  const onSubmit = (event?: SyntheticEvent) => {
-    event?.preventDefault();
+  const onSubmit = (event: SyntheticEvent) => {
+    event.preventDefault();
   }
 
   return (

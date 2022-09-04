@@ -1,6 +1,9 @@
 import {Field, InputType} from '@nestjs/graphql';
 import {MaxLength, IsNumber, IsNotEmpty} from 'class-validator';
-import {ArticleCommentCreateInputDTO, ArticleCommentUpdateInputDTO} from '@imagine-cms/types';
+import {
+  ArticleCommentCreateInputDTO,
+  ArticleCommentUpdateInputDTO,
+} from '@imagine-cms/types';
 
 @InputType()
 export class ArticleCommentCreateInput implements ArticleCommentCreateInputDTO {
