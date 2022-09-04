@@ -1,4 +1,5 @@
 export * from './fetch-articles.hook';
+export * from './fetch-bans.hook';
 export * from './fetch-config.hook';
 export * from './fetch-latest-article.hook';
 export * from './fetch-latest-articles.hook';

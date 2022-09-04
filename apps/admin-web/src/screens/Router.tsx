@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'wouter';
 import {LogoutScreen} from './logout-screen/LogoutScreen';
 import {LandingScreen} from './landing-screen/LandingScreen';
+import {BansListScreen} from './bans-list-screen/BansListScreen';
 import {DashboardScreen} from './dashboard-screen/DashboardScreen';
 import {UsersListScreen} from './users-list-screen/UsersListScreen';
 import {NotAllowedScreen} from './not-allowed-screen/NotAllowedScreen';
@@ -29,6 +30,10 @@ const SITE_ROUTES: Array<{path: string, view: any, }> = [
   {
     path: '/users/list',
     view: UsersListScreen,
+  },
+  {
+    path: '/bans/list',
+    view: BansListScreen,
   },
   {
     path: '/articles/list',
