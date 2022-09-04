@@ -4,6 +4,8 @@ export * from './article/ArticleComment';
 export * from './article/ArticleCommentInput';
 export * from './badge/Badge';
 export * from './badge/BadgeInput';
+export * from './ban/Ban';
+export * from './ban/BanInput';
 export * from './config/Config';
 export * from './config/ConfigInput';
 export * from './rank/Rank';

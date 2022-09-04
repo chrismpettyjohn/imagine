@@ -27,31 +27,35 @@ export function SiteSettingsScreen() {
                 <label>Site Name</label>
                 <input type="text" className="form-control" placeholder="Username" name="username" onChange={onChange} value={configDTO.siteName} />
               </div>
+              <div className="form-group">
+                <label>Site Logo</label>
+                <input type="text" className="form-control" placeholder="Logo URL" name="logoURL" onChange={onChange} value={configDTO.logoURL} />
+              </div>
               <hr />
               <h4 className="card-title">Social Media</h4>
               <div className="form-group">
                 <label>Facebook URL</label>
-                <input type="text" className="form-control" placeholder="Facebook URL" name="facebookURL" onChange={onChange} value={configDTO.facebookURL} />
+                <input type="text" className="form-control" name="facebookURL" onChange={onChange} value={configDTO.facebookURL} />
               </div>
               <div className="form-group">
                 <label>Instagram URL</label>
-                <input type="text" className="form-control" placeholder="Facebook URL" name="instagramURL" onChange={onChange} value={configDTO.instagramURL} />
+                <input type="text" className="form-control" name="instagramURL" onChange={onChange} value={configDTO.instagramURL} />
               </div>
               <div className="form-group">
                 <label>Twitter URL</label>
-                <input type="text" className="form-control" placeholder="Facebook URL" name="twitterURL" onChange={onChange} value={configDTO.twitterURL} />
+                <input type="text" className="form-control" name="twitterURL" onChange={onChange} value={configDTO.twitterURL} />
               </div>
               <div className="form-group">
                 <label>Snapchat URL</label>
-                <input type="text" className="form-control" placeholder="Facebook URL" name="snapchatURL" onChange={onChange} value={configDTO.snapchatURL} />
+                <input type="text" className="form-control" name="snapchatURL" onChange={onChange} value={configDTO.snapchatURL} />
               </div>
               <div className="form-group">
                 <label>Discord URL</label>
-                <input type="text" className="form-control" placeholder="Facebook URL" name="discordURL" onChange={onChange} value={configDTO.discordURL} />
+                <input type="text" className="form-control" name="discordURL" onChange={onChange} value={configDTO.discordURL} />
               </div>
               <div className="form-group">
                 <label>Discord Widget</label>
-                <textarea rows={3} className="form-control" placeholder="Facebook URL" name="discordURL" onChange={onChange as any} value={configDTO.discordURL} />
+                <textarea rows={3} className="form-control" name="discordURL" onChange={onChange as any} value={configDTO.discordURL} />
               </div>
               <hr />
               <h4 className="card-title">Advanced</h4>

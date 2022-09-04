@@ -1,9 +1,11 @@
+import {BanEntity} from './ban.entity';
 import {RankEntity} from './rank.entity';
 import {UserEntity} from './user.entity';
 import {BadgeEntity} from './badge.entity';
 import {ConfigEntity} from './config.entity';
 import {ArticleEntity} from './article.entity';
 import {SessionEntity} from './session.entity';
+import {BanRepository} from './ban.repository';
 import {UserRepository} from './user.repository';
 import {RankRepository} from './rank.repository';
 import {BadgeRepository} from './badge.repository';
@@ -21,6 +23,7 @@ export const databaseEntities = [
   ArticleCommentEntity,
   BadgeEntity,
   ConfigEntity,
+  BanEntity,
 ];
 
 export const databaseRepositories = [
@@ -31,4 +34,5 @@ export const databaseRepositories = [
   ArticleCommentRepository,
   BadgeRepository,
   ConfigRepository,
+  BanRepository,
 ];

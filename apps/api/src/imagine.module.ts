@@ -1,5 +1,6 @@
 import {resolve} from 'path';
 import {Module} from '@nestjs/common';
+import {BanModule} from './ban/ban.module';
 import GraphQLJSON from 'graphql-type-json';
 import {GraphQLModule} from '@nestjs/graphql';
 import {TypeOrmModule} from '@nestjs/typeorm';
@@ -49,6 +50,7 @@ import {
     RankModule,
     ArticleModule,
     ConfigModule,
+    BanModule,
   ],
 })
 export class ImagineModule {}

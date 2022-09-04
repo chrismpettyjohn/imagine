@@ -2,12 +2,14 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type RankModel {
+type BanModel {
   id: ID!
-  name: String
-  description: String
-  badgeCode: String
-  users: [UserModel!]
+  bannedUserID: Float
+  addedByUserID: Float
+  type: String
+  reason: String
+  createdAt: String
+  expiresAt: String
 }
 
 type SessionModel {
@@ -21,6 +23,14 @@ type SessionCreatedModel {
   id: ID!
   userID: Float
   accessToken: String
+}
+
+type RankModel {
+  id: ID!
+  name: String
+  description: String
+  badgeCode: String
+  users: [UserModel!]
 }
 
 type UserModel {
@@ -135,6 +145,8 @@ type Query {
   articleComment(id: Float!): ArticleCommentModel!
   articleComments(other: ExtraArgs): [ArticleCommentModel!]!
   config: ConfigModel!
+  ban(id: Float!): BanModel!
+  bans(other: ExtraArgs): [BanModel!]!
 }
 
 input ExtraArgs {
@@ -166,6 +178,9 @@ type Mutation {
   articleCommentUpdate(id: Float!, articleChanges: ArticleCommentUpdateInput!): Boolean!
   articleCommentDelete(id: Float!): Boolean!
   configUpdate(configUpdateInput: ConfigUpdateInput!): Boolean!
+  banCreate(newBan: BanCreateInput!): BanModel!
+  banUpdate(id: Float!, banChanges: BanUpdateInput!): Boolean!
+  banDelete(id: Float!): Boolean!
 }
 
 input BadgeInput {
@@ -236,6 +251,18 @@ input ConfigUpdateInput {
   dateFormat: String
 }
 
+input BanCreateInput {
+  bannedUserID: Float!
+  reason: String!
+  expiresAt: String!
+}
+
+input BanUpdateInput {
+  bannedUserID: Float!
+  reason: String!
+  expiresAt: String!
+}
+
 type Subscription {
   badgeCreated: BadgeModel!
   badgeDeleted: BadgeModel!
@@ -249,4 +276,6 @@ type Subscription {
   articleCommentCreated: ArticleCommentModel!
   articleCommentDeleted: ArticleCommentModel!
   configUpdated: ConfigModel!
+  banCreated: BanModel!
+  banDeleted: BanModel!
 }
