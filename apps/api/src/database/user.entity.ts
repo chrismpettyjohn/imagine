@@ -69,10 +69,10 @@ export class UserEntity implements UserWire {
   gameSSO!: string;
 
   @Column({name: 'rank'})
-  rankID: number = 1;
+  rankID = 1;
 
   @Column({name: 'rank_vip'})
-  rankVipID: number = 1;
+  rankVipID = 1;
 
   @Column()
   credits: number = IMAGINE_DEFAULT_CREDITS;
