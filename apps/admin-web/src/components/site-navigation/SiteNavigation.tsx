@@ -1,39 +1,14 @@
 import React from 'react';
-import {Link} from 'wouter';
-import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap';
+import {UserDropdown} from './user-dropdown/UserDropdown';
 
 export function SiteNavigation() {
   return (
-    <Navbar bg="light" expand="lg">
-      <Container>
-        <Nav className="me-auto">
-          <Link to="/dashboard">
-            <Nav.Link>
-              <i className="fas fa-home mr-2" />
-              Dashboard
-            </Nav.Link>
-          </Link>
-          <NavDropdown id="site-dropdown" title={<><i className="fas fa-laptop mr-2" /> Site</>}>
-            <Link to="/site/settings">
-              <NavDropdown.Item>Edit Settings</NavDropdown.Item>
-            </Link>
-            <Link to="/articles/list">
-              <NavDropdown.Item>News Articles</NavDropdown.Item>
-            </Link>
-          </NavDropdown>
-          <NavDropdown id="user-dropdown" title={<><i className="fas fa-users mr-2" /> Users</>}>
-            <Link to="/users/list">
-              <NavDropdown.Item>Users</NavDropdown.Item>
-            </Link>
-            <Link to="/ranks/list">
-              <NavDropdown.Item>Ranks</NavDropdown.Item>
-            </Link>
-            <Link to="/bans/list">
-              <NavDropdown.Item>Bans</NavDropdown.Item>
-            </Link>
-          </NavDropdown>
-        </Nav>
-      </Container>
-    </Navbar>
+    <nav className="navbar p-0 fixed-top d-flex flex-row">
+      <div className="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+        <ul className="navbar-nav navbar-nav-right">
+          <UserDropdown />
+        </ul>
+      </div>
+    </nav>
   )
 }
