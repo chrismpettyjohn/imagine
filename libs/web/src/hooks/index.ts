@@ -1,3 +1,4 @@
+export * from './create-word-filter.hook';
 export * from './fetch-articles.hook';
 export * from './fetch-bans.hook';
 export * from './fetch-chatlog.hook';
