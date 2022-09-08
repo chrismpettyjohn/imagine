@@ -1,11 +1,10 @@
 import {Link} from 'wouter';
 import React, {useContext} from 'react';
-import {configContext, sessionContext} from '@imagine-cms/web';
+import {configContext} from '@imagine-cms/web';
+import {GuestGuard} from '../guest-guard/GuestGuard';
 
 export function SiteHeader() {
   const {config} = useContext(configContext);
-  const {session} = useContext(sessionContext);
-
   return (
     <>
       <header className="header-container">
@@ -15,13 +14,15 @@ export function SiteHeader() {
               <div className="header-inner-card">
                 <div className="information"><img className="inline-block" src={config!.logoURL!} />
                   <div className="online-user"><span className="count">0</span>&nbsp; users online</div></div>
-                <div className="habbo-button">
-                  <div className="enter-hotel">
-                    <div className="inner">
-                      <Link to="/register">Create an account in {config!.siteName!}!</Link>
+                <GuestGuard>
+                  <div className="habbo-button">
+                    <div className="enter-hotel">
+                      <div className="inner">
+                        <Link to="/register">Create an account in {config!.siteName!}!</Link>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </GuestGuard>
               </div>
             </div>
           </div>

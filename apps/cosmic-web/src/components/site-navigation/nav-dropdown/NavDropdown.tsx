@@ -9,12 +9,18 @@ export function NavDropdown({label, links}: NavDropdownProps) {
     setIsOpen(_ => !_);
   }
 
+  const onBlur = () => {
+    if (isOpen) {
+      setIsOpen(false);
+    }
+  }
+
   return (
     <div className="dropdown">
-        <span className="router-link-active router-link-exact-active nav-link px-2 link-secondary dropdown-toggle" onClick={onToggle}>
+        <a className="router-link-active router-link-exact-active nav-link px-2 link-secondary dropdown-toggle" onClick={onToggle} href="#" onBlur={onBlur}>
           {label}
-        </span>
-        <ul className="dropdown-menu">
+        </a>
+        <ul className={`dropdown-menu ${isOpen ? 'show' : ''}`}>
           {
             links.map(link => (
               <Link className="dropdown-item" key={`nav_dropdown_${link.href}`} to={link.href}>

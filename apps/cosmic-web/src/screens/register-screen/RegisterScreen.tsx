@@ -2,12 +2,16 @@ import React, {SyntheticEvent, useEffect, useState} from 'react';
 import {GuestGuard} from '../../components/guest-guard/GuestGuard';
 import {LoadingOverlay} from '../../components/loading-overlay/LoadingOverlay';
 import {useSignInWithUsernameAndPassword, useUserCreateMutation} from '@imagine-cms/web';
+import {LookSelector} from './look-selector/LookSelector';
+import {UserGender} from '@imagine-cms/types';
 
 export function RegisterScreen() {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordAgain, setPasswordAgain] = useState('');
+  const [gender, setGender] = useState<UserGender>(UserGender.Male);
+  const [look, setLook] = useState('');
   const createUser = useUserCreateMutation(username, email, password);
   const {tryLogin} = useSignInWithUsernameAndPassword(username, password);
 
@@ -32,40 +36,100 @@ export function RegisterScreen() {
 
   return (
     <GuestGuard>
-      <main className="position-relative container justify-content-center py-4">
+      <div className="registerComponent">
         <div className="row justify-content-center">
-          <div className="col-lg-6 col-12">
+          <div className="col-md-10">
             <div className="card">
-              <div className="card-body">
-                <h5 className="silver">Register</h5>
-                <LoadingOverlay loading={isLoading}>
-                  <form className="form" onSubmit={onCreateUser}>
-                    <div className="form-group">
-                      <label htmlFor="username">Username</label>
-                      <input type="text" name="username" value={username} onChange={e => setUsername(e?.currentTarget?.value ?? '')} className="form-control" id="username" placeholder="Username" />
+              <div className="card-header">
+                <div className="card-header-title-container d-flex">
+                  <div className="card-header-titles">
+                    <div className="card-header-title">Registration page</div>
+                    <span className="card-header-subtitle">Create your account</span></div>
+                  </div>
+              </div>
+              </div>
+          </div>
+        </div>
+        <div className="row justify-content-md-center mt-4">
+          <div className="col-md-5">
+            <LoadingOverlay loading={isLoading}>
+              <form onSubmit={onCreateUser}>
+                <div className="row">
+                  <div className="col-md-12">
+                    <div className="card">
+                      <div className="card-header">
+                        <div className="card-header-title-container d-flex">
+                          <div className="background-gray card-header-icon-container">
+                            <div className="icon icon-box-one"/>
+                          </div>
+                          <div className="card-header-titles">
+                            <div className="card-header-title">Create your account</div>
+                            <span className="card-header-subtitle">Choose your fancy account name</span></div>
+                        </div>
+                      </div>
+
+                      <div className="card-body">
+                        <input className="form-control mb-3" type="text" placeholder="Username" autoComplete="on" value={username} onChange={e => setUsername(e.target.value ?? '')} />
+                        <input className="form-control mb-3" type="email" placeholder="Email Address" autoComplete="on" value={email} onChange={e => setEmail(e.target.value ?? '')} />
+                      </div>
                     </div>
-                    <div className="form-group">
-                      <label htmlFor="email">Email</label>
-                      <input type="text" name="email" value={email} onChange={e => setEmail(e?.currentTarget?.value ?? '')} className="form-control" id="email" placeholder="Email" />
+                  </div>
+                </div>
+                <div className="row mt-4">
+                  <div className="col-md-12">
+                    <div className="card">
+                      <div className="card-header">
+                        <div className="card-header-title-container d-flex">
+                          <div className="background-gray card-header-icon-container">
+                            <div className="icon icon-box-two"/>
+                          </div>
+                          <div className="card-header-titles">
+                            <div className="card-header-title">Create a strong password</div>
+                            <span className="card-header-subtitle">We all want that your account is safe!</span></div>
+                        </div>
+                      </div>
+                      <div className="card-body">
+                        <input className="form-control mb-3" type="password" placeholder="Password" autoComplete="on" value={password} onChange={e => setPassword(e.target.value ?? '')} />
+                        <input className="form-control mb-3" type="password" placeholder="Password Again" autoComplete="on" value={passwordAgain} onChange={e => setPasswordAgain(e.target.value ?? '')} />
+                      </div>
                     </div>
-                    <div className="form-group">
-                      <label htmlFor="password">Password</label>
-                      <input type="password" name="password" value={password} onChange={e => setPassword(e?.currentTarget?.value ?? '')} className="form-control" placeholder="Password" id="password" />
+                  </div>
+                </div>
+                <div className="row mt-4">
+                  <div className="col-md-12">
+                    <LookSelector gender={gender} onChangeGender={newGender => setGender(newGender)} look={look} onChangeLook={newLook => setLook(newLook)} />
+                  </div>
+                </div>
+                <div className="row mt-4">
+                  <div className="col-md-12">
+                    <button className="btn btn-success w-100" type="submit">Go inside!</button>
+                  </div>
+                </div>
+              </form>
+            </LoadingOverlay>
+          </div>
+          <div className="col-md-5">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="card">
+                  <div className="card-header">
+                    <div className="card-header-title-container d-flex">
+                      <div className="card-header-titles">
+                        <div className="card-header-title">What can you expect?</div>
+                        <span className="card-header-subtitle">Another game based around designing rooms</span></div>
+                      </div>
+                  </div>
+
+                  <div className="card-body">
+                    <div style={{float: 'left'}}><img src="https://images.habbo.com/c_images/HabboWay/habboway_2a.png" />
                     </div>
-                    <div className="form-group">
-                      <label htmlFor="password-confirmation">Confirm Password</label>
-                      <input type="password" name="password_confirmation" value={passwordAgain} onChange={e => setPasswordAgain(e?.currentTarget?.value ?? '')} className="form-control" id="password-confirmation" placeholder="Password again"  />
-                    </div>
-                    <div className="form-group mb-0">
-                      <button className="btn btn-primary btn-block" disabled={!canCreateUser} type="submit">Join now</button>
-                    </div>
-                  </form>
-                </LoadingOverlay>
+                  </div>
+                  </div>
               </div>
             </div>
           </div>
         </div>
-      </main>
+      </div>
     </GuestGuard>
   )
 }
