@@ -3,6 +3,7 @@ import {RankEntity} from './rank.entity';
 import {UserEntity} from './user.entity';
 import {RoomEntity} from './room.entity';
 import {BadgeEntity} from './badge.entity';
+import {GroupEntity} from './group.entity';
 import {ConfigEntity} from './config.entity';
 import {ArticleEntity} from './article.entity';
 import {SessionEntity} from './session.entity';
@@ -11,6 +12,7 @@ import {ChatlogEntity} from './chatlog.entity';
 import {UserRepository} from './user.repository';
 import {RankRepository} from './rank.repository';
 import {RoomRepository} from './room.repository';
+import {GroupRepository} from './group.repository';
 import {BadgeRepository} from './badge.repository';
 import {ConfigRepository} from './config.repository';
 import {WordFilterEntity} from './word-filter.entity';
@@ -33,6 +35,7 @@ export const databaseEntities = [
   WordFilterEntity,
   ChatlogEntity,
   RoomEntity,
+  GroupEntity,
 ];
 
 export const databaseRepositories = [
@@ -47,4 +50,5 @@ export const databaseRepositories = [
   WordFilterRepository,
   ChatlogRepository,
   RoomRepository,
+  GroupRepository,
 ];

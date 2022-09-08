@@ -6,16 +6,17 @@ import {TypeOrmModule} from '@nestjs/typeorm';
 import {UserModule} from './user/user.module';
 import {RankModule} from './rank/rank.module';
 import {RoomModule} from './room/room.module';
+import {GroupModule} from './group/group.module';
 import {BadgeModule} from './badge/badge.module';
 import {ConfigModule} from './config/config.module';
 import {CommonModule} from './common/common.module';
+import {GraphQLJSONObject} from 'graphql-type-json';
 import {ArticleModule} from './article/article.module';
 import {SessionModule} from './session/session.module';
 import {ChatlogModule} from './chatlog/chatlog.module';
 import {DatabaseModule} from './database/database.module';
 import {databaseEntities} from './database/database.const';
 import {ApolloDriver, ApolloDriverConfig} from '@nestjs/apollo';
-import {GraphQLJSONObject} from 'graphql-type-json';
 import {WordFilterModule} from './word-filter/word-filter.module';
 import {
   IMAGINE_DATABASE_HOST,
@@ -57,6 +58,7 @@ import {
     WordFilterModule,
     ChatlogModule,
     RoomModule,
+    GroupModule,
   ],
 })
 export class ImagineModule {}

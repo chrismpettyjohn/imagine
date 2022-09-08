@@ -9,6 +9,7 @@ export * from './ban/BanInput';
 export * from './chatlog/Chatlog';
 export * from './config/Config';
 export * from './config/ConfigInput';
+export * from './group/Group';
 export * from './rank/Rank';
 export * from './rank/RankInput';
 export * from './room/Room';
