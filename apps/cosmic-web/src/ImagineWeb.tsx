@@ -14,9 +14,11 @@ export function ImagineWeb() {
         <SessionContextProvider>
           <div style={{minHeight: 'calc(100% - 200px)'}}>
             <ToastContainer />
-            <SiteHeader />
             <SiteNavigation />
-            <Router />
+            <SiteHeader />
+            <main className="container content-container">
+             <Router />
+            </main>
           </div>
           <SiteFooter />
         </SessionContextProvider>

@@ -8,46 +8,18 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="position-relative">
-        <div className="container">
-          <div
-            className="row justify-content-center justify-content-md-between justify-content-lg-between align-items-center">
-            <div className="col-lg-3 col-md-6 d-lg-block d-md-block d-none">
-              <a href="/">
-                <img src={config?.logoURL} alt="Hotel Logo" loading="lazy" />
-              </a>
-            </div>
-            <div className="col-lg-3 col-md-4 col-8">
-              <div className="row">
-                {
-                  !session && (
-                    <div className="col-12">
-                      <Link to="/register">
-                        <a className="enter" aria-label="Register">
-                          <div>
-                            <i className="fas fa-plus" /> Register now!
-                          </div>
-                        </a>
-                      </Link>
+      <header className="header-container">
+        <div className="container h-100">
+          <div className="row h-100 align-items-center">
+            <div className="header-card">
+              <div className="header-inner-card">
+                <div className="information"><img className="inline-block" src={config!.logoURL!} />
+                  <div className="online-user"><span className="count">0</span>&nbsp; users online</div></div>
+                <div className="habbo-button">
+                  <div className="enter-hotel">
+                    <div className="inner">
+                      <Link to="/register">Create an account in {config!.siteName!}!</Link>
                     </div>
-                  )
-                }
-                {
-                  session && (
-                    <div className="col-12">
-                      <Link to="/play">
-                        <a className="enter">
-                          <div>
-                            <i className="fas fa-sign-in-alt" /> Enter {config?.siteName}
-                          </div>
-                        </a>
-                      </Link>
-                    </div>
-                  )
-                }
-                <div className="col-12">
-                  <div className="online">
-                    <i className="fas fa-users" /> <span className="count">2</span> Users Online
                   </div>
                 </div>
               </div>
@@ -55,6 +27,7 @@ export function SiteHeader() {
           </div>
         </div>
       </header>
+      <div className="content-bar" />
     </>
   )
 }
