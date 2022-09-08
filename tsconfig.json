@@ -6,6 +6,7 @@
       "@imagine-cms/api": ["apps/api/src"],
       "@imagine-cms/admin-web": ["apps/admin-web/src"],
       "@imagine-cms/boon-web": ["apps/boon-web/src"],
+      "@imagine-cms/cosmic-web": ["apps/cosmic-web/src"],
       "@imagine-cms/types": ["libs/types/src"],
       "@imagine-cms/web": ["libs/web/src"]
     },

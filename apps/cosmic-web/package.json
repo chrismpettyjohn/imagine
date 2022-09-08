@@ -1,0 +1,53 @@
+{
+  "name": "@imagine-cms/boon-web",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/types",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "PORT=3001 SKIP_PREFLIGHT_CHECK=true react-app-rewired start",
+    "build": "rimraf dist && rimraf ./build && SKIP_PREFLIGHT_CHECK=true react-scripts build && mv build dist && cp dist/index.html dist/404.html && yarn types",
+    "types": "graphql-codegen --config codegen.yml"
+  },
+  "dependencies": {
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "wouter": "2.7.4",
+    "graphql-tag": "2.12.6",
+    "react-bootstrap": "1.6.6",
+    "@imagine-cms/types": "*",
+    "@imagine-cms/web": "*",
+    "dayjs": "1.11.5",
+    "react-loading-overlay": "1.0.1",
+    "react-toastify": "7.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "15.12.4",
+    "@types/react": "17.0.11",
+    "@types/react-dom": "17.0.8",
+    "react-scripts": "3.4.3",
+    "typescript": "4.8.2",
+    "react-app-rewired": "2.1.8",
+    "react-refresh": "0.14.0",
+    "tsconfig-paths-webpack-plugin": "3.5.1",
+    "@pmmmwh/react-refresh-webpack-plugin": "0.5.7"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "gitHead": "2305e183b7fa01b3837f0f20c401ecdec6858de6",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
