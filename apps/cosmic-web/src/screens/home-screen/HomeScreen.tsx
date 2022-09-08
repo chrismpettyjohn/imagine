@@ -1,7 +1,7 @@
 import React from 'react';
 import {LatestArticles} from '../../components/latest-articles/LatestArticles';
 
-export function MeScreen() {
+export function HomeScreen() {
   return (
     <>
       <div className="row">

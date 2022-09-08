@@ -15,13 +15,14 @@ export function SiteHeader() {
                 <div className="information"><img className="inline-block" src={config!.logoURL!} />
                   <div className="online-user"><span className="count">0</span>&nbsp; users online</div></div>
                 <GuestGuard>
-                  <div className="habbo-button">
-                    <div className="enter-hotel">
-                      <div className="inner">
-                        <Link to="/register">Create an account in {config!.siteName!}!</Link>
+                  <Link to="/register">
+                    <div className="habbo-button">
+                      <div className="enter-hotel">
+                        <div className="inner">Create an account in {config!.siteName!}!
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </GuestGuard>
               </div>
             </div>

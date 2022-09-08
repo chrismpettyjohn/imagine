@@ -1,8 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'wouter';
-import {MeScreen} from './me-screen/MeScreen';
+import {HomeScreen} from './home-screen/HomeScreen';
 import {LogoutScreen} from './logout-screen/LogoutScreen';
-import {LandingScreen} from './landing-screen/LandingScreen';
 import {RegisterScreen} from './register-screen/RegisterScreen';
 import {PageNotFoundScreen} from './page-not-found-screen/PageNotFoundScreen';
 import {CommunityStaffScreen} from './community-staff-screen/CommunityStaffScreen';
@@ -12,7 +11,11 @@ import {CommunityLeaderboardsScreen} from './community-leaderboards-screen/Commu
 const SITE_ROUTES: Array<{path: string, view: any, }> = [
   {
     path: '/',
-    view: LandingScreen,
+    view: HomeScreen,
+  },
+  {
+    path: '/login',
+    view: HomeScreen,
   },
   {
     path: '/register',
@@ -21,10 +24,6 @@ const SITE_ROUTES: Array<{path: string, view: any, }> = [
   {
     path: '/logout',
     view: LogoutScreen,
-  },
-  {
-    path: '/me',
-    view: MeScreen,
   },
   {
     path: '/community/staff',

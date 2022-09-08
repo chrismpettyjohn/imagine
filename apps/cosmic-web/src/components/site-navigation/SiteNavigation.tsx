@@ -14,7 +14,7 @@ export function SiteNavigation() {
           <div className="d-flex flex-wrap align-items-center" style={{height: 60}}>
             <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
               <li>
-                <Link className="router-link-active router-link-exact-active nav-link selected px-2 link-secondary" to="/me">
+                <Link className="router-link-active router-link-exact-active nav-link selected px-2 link-secondary" to="/">
                   Home
                 </Link>
               </li>

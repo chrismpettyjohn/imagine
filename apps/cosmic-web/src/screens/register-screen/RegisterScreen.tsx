@@ -1,9 +1,9 @@
+import {UserGender} from '@imagine-cms/types';
+import {LookSelector} from './look-selector/LookSelector';
 import React, {SyntheticEvent, useEffect, useState} from 'react';
 import {GuestGuard} from '../../components/guest-guard/GuestGuard';
 import {LoadingOverlay} from '../../components/loading-overlay/LoadingOverlay';
 import {useSignInWithUsernameAndPassword, useUserCreateMutation} from '@imagine-cms/web';
-import {LookSelector} from './look-selector/LookSelector';
-import {UserGender} from '@imagine-cms/types';
 
 export function RegisterScreen() {
   const [email, setEmail] = useState('');
@@ -12,7 +12,7 @@ export function RegisterScreen() {
   const [passwordAgain, setPasswordAgain] = useState('');
   const [gender, setGender] = useState<UserGender>(UserGender.Male);
   const [look, setLook] = useState('');
-  const createUser = useUserCreateMutation(username, email, password);
+  const createUser = useUserCreateMutation(username, email, password, gender, look);
   const {tryLogin} = useSignInWithUsernameAndPassword(username, password);
 
   // When user is created, attempt to login

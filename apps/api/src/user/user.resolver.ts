@@ -40,7 +40,6 @@ export class UserResolver {
     @Args('newUser') userCreateInput: UserCreateInput
   ): Promise<UserEntity> {
     const secondsSinceEpoch = parseInt(`${now() / 1000}`);
-    console.log(secondsSinceEpoch);
     const newUser = await this.userRepo.create({
       ...DEFAULT_USER_VALUES,
       ...userCreateInput,
