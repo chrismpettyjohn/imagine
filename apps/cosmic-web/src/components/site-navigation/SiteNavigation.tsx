@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'wouter';
+import {LoginModal} from '../login-modal/LoginModal';
 import {GuestGuard} from '../guest-guard/GuestGuard';
 import {NavDropdown} from './nav-dropdown/NavDropdown';
 
@@ -24,15 +25,13 @@ export function SiteNavigation() {
                     },
                     {
                       label: 'Highscores',
-                      href: '/community/highscores',
+                      href: '/community/leaderboards',
                     },
                   ]}
               />
             </ul>
             <GuestGuard>
-              <div className="login-button">
-                <button className="btn btn-light" type="button">Login</button>
-              </div>
+              <LoginModal />
             </GuestGuard>
           </div>
         </div>
