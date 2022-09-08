@@ -1,8 +1,10 @@
 import React from 'react';
 import {Link} from 'wouter';
+import {UserGuard} from '../user-guard/UserGuard';
 import {LoginModal} from '../login-modal/LoginModal';
 import {GuestGuard} from '../guest-guard/GuestGuard';
 import {NavDropdown} from './nav-dropdown/NavDropdown';
+import {CurrencyStats} from './currency-stats/CurrencyStats';
 
 export function SiteNavigation() {
   return (
@@ -30,6 +32,14 @@ export function SiteNavigation() {
                   ]}
               />
             </ul>
+            <UserGuard>
+              <CurrencyStats />
+              <div className="login-button">
+                <Link to="/logout">
+                 <button className="btn btn-light" type="button">Logout</button>
+                </Link>
+              </div>
+            </UserGuard>
             <GuestGuard>
               <LoginModal />
             </GuestGuard>
