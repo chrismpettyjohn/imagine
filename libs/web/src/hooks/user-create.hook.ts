@@ -3,7 +3,7 @@ import {UserGender, UserWire} from '@imagine-cms/types';
 import {UseMutationResponse, useRunMutation} from './run-mutation.hook';
 
 const CREATE_NEW_USER = gql`
-  mutation ($username: String!, $email: String!, $password: String!, $gender: UserGender, $look: String) {
+  mutation ($username: String!, $email: String!, $password: String!, $gender: String, $look: String) {
     userCreate(newUser: {email: $email, username: $username, password: $password, gender: $gender, look: $look}) {
       id
       username

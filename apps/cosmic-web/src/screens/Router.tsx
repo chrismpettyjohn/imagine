@@ -18,6 +18,10 @@ const SITE_ROUTES: Array<{path: string, view: any, }> = [
     view: HomeScreen,
   },
   {
+    path: '/me',
+    view: HomeScreen,
+  },
+  {
     path: '/register',
     view: RegisterScreen,
   },
