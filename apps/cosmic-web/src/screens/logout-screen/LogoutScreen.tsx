@@ -1,4 +1,5 @@
 import {useLocation} from 'wouter';
+import {toast} from 'react-toastify';
 import React, {useContext, useEffect} from 'react';
 import {sessionContext, localStorageService} from '@imagine-cms/web';
 
@@ -10,6 +11,7 @@ export function LogoutScreen() {
     localStorageService.purge();
     setSession(null);
     setLocation('/login');
+    toast.success('You were logged out!');
   }, []);
 
   return null;
