@@ -11,6 +11,7 @@ export * from './config/Config';
 export * from './config/ConfigInput';
 export * from './rank/Rank';
 export * from './rank/RankInput';
+export * from './room/Room';
 export * from './session/Session';
 export * from './session/SessionInput';
 export * from './user/User';

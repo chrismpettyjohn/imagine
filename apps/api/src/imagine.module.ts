@@ -5,6 +5,7 @@ import {GraphQLModule} from '@nestjs/graphql';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import {UserModule} from './user/user.module';
 import {RankModule} from './rank/rank.module';
+import {RoomModule} from './room/room.module';
 import {BadgeModule} from './badge/badge.module';
 import {ConfigModule} from './config/config.module';
 import {CommonModule} from './common/common.module';
@@ -55,6 +56,7 @@ import {
     BanModule,
     WordFilterModule,
     ChatlogModule,
+    RoomModule,
   ],
 })
 export class ImagineModule {}

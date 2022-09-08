@@ -90,6 +90,14 @@ enum UserVipStatus {
   No
 }
 
+type RoomModel {
+  id: Float
+  name: String
+  description: String
+  userID: Float
+  user: UserModel
+}
+
 type BadgeModel {
   id: Float
   code: String
@@ -168,6 +176,8 @@ type Query {
   wordFilters(other: ExtraArgs): [WordFilterModel!]!
   chatlog(id: Float!): ChatlogModel!
   chatlogs(other: ExtraArgs, userID: Float, roomID: Float): [ChatlogModel!]!
+  room(id: Float!): RoomModel!
+  rooms(other: ExtraArgs): [RoomModel!]!
 }
 
 input ExtraArgs {
@@ -206,6 +216,7 @@ type Mutation {
   wordFilterUpdate(id: Float!, wordFilterChanges: WordFilterUpdateInput!): Boolean!
   wordFilterDelete(id: Float!): Boolean!
   chatlogDelete(id: Float!): Boolean!
+  roomDelete(id: Float!): Boolean!
 }
 
 input BadgeInput {
@@ -324,4 +335,5 @@ type Subscription {
   wordFilterCreated: WordFilterModel!
   wordFilterDeleted: WordFilterModel!
   chatlogDeleted: ChatlogModel!
+  roomDeleted: RoomModel!
 }

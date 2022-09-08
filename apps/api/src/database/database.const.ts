@@ -1,6 +1,7 @@
 import {BanEntity} from './ban.entity';
 import {RankEntity} from './rank.entity';
 import {UserEntity} from './user.entity';
+import {RoomEntity} from './room.entity';
 import {BadgeEntity} from './badge.entity';
 import {ConfigEntity} from './config.entity';
 import {ArticleEntity} from './article.entity';
@@ -9,6 +10,7 @@ import {BanRepository} from './ban.repository';
 import {ChatlogEntity} from './chatlog.entity';
 import {UserRepository} from './user.repository';
 import {RankRepository} from './rank.repository';
+import {RoomRepository} from './room.repository';
 import {BadgeRepository} from './badge.repository';
 import {ConfigRepository} from './config.repository';
 import {WordFilterEntity} from './word-filter.entity';
@@ -30,6 +32,7 @@ export const databaseEntities = [
   BanEntity,
   WordFilterEntity,
   ChatlogEntity,
+  RoomEntity,
 ];
 
 export const databaseRepositories = [
@@ -43,4 +46,5 @@ export const databaseRepositories = [
   BanRepository,
   WordFilterRepository,
   ChatlogRepository,
+  RoomRepository,
 ];
