@@ -2,6 +2,7 @@ export interface ConfigWire {
   siteName?: string;
   logoURL?: string;
   nitroURL?: string;
+  groupBadgeURL?: string;
   discordURL?: string;
   discordWidget?: string;
   facebookURL?: string;

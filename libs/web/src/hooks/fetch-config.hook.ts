@@ -8,6 +8,7 @@ const FETCH_SITE_CONFIG = gql`
             siteName
             logoURL
             nitroURL
+            groupBadgeURL
             discordURL
             discordWidget
             twitterURL

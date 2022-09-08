@@ -13,6 +13,9 @@ export class ConfigModel implements ConfigWire {
   nitroURL?: string;
 
   @Field({nullable: true})
+  groupBadgeURL?: string;
+
+  @Field({nullable: true})
   discordURL?: string;
 
   @Field({nullable: true})

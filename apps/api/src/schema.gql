@@ -96,6 +96,8 @@ type RoomModel {
   description: String
   userID: Float
   user: UserModel
+  usersNow: Float
+  usersMax: Float
 }
 
 type GroupModel {
@@ -116,6 +118,7 @@ type ConfigModel {
   siteName: String
   logoURL: String
   nitroURL: String
+  groupBadgeURL: String
   discordURL: String
   discordWidget: String
   facebookURL: String
@@ -294,6 +297,7 @@ input ConfigUpdateInput {
   siteName: String
   logoURL: String
   nitroURL: String
+  groupBadgeURL: String
   discordURL: String
   discordWidget: String
   facebookURL: String

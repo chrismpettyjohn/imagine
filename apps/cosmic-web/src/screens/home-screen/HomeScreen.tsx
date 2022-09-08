@@ -1,7 +1,7 @@
 import React from 'react';
 import {LatestBadges} from './latest-badges/LatestBadges';
 import {PopularRooms} from './popular-rooms/PopularRooms';
-import {PopularGroups} from './popular-groups/PopularGroups';
+import {LatestGroups} from './latest-groups/LatestGroups';
 import {OnlineFriends} from './online-friends/OnlineFriends';
 import {LatestArticles} from './latest-articles/LatestArticles';
 import {UserGuard} from '../../components/user-guard/UserGuard';
@@ -35,7 +35,7 @@ export function HomeScreen() {
           </div>
           <div className="row mb-2">
             <div className="col-12">
-              <PopularGroups />
+              <LatestGroups />
             </div>
           </div>
         </div>

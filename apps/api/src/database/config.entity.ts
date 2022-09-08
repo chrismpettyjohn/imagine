@@ -14,6 +14,9 @@ export class ConfigEntity {
   @Column({name: 'nitro_url'})
   nitroURL!: string;
 
+  @Column({name: 'group_badge_url'})
+  groupBadgeURL!: string;
+
   @Column({name: 'discord_url'})
   discordURL!: string;
 

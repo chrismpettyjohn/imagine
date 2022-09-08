@@ -22,6 +22,11 @@ export class ConfigUpdateInput implements ConfigUpdateInputDTO {
   @Field({nullable: true})
   @IsUrl()
   @IsOptional()
+  groupBadgeURL?: string;
+
+  @Field({nullable: true})
+  @IsUrl()
+  @IsOptional()
   discordURL?: string;
 
   @Field({nullable: true})

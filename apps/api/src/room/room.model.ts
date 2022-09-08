@@ -18,4 +18,10 @@ export class RoomModel implements RoomWire {
 
   @Field(() => UserModel, {nullable: true})
   user?: UserModel;
+
+  @Field({nullable: true})
+  usersNow?: number;
+
+  @Field({nullable: true})
+  usersMax?: number;
 }
