@@ -7,7 +7,6 @@ const FIND_USER_BY_ID = gql`
     user(id: $userID) {
       id
       username
-      email
       rankID
       rankVipID
       credits
@@ -19,7 +18,6 @@ const FIND_USER_BY_ID = gql`
       accountCreatedAt
       lastOnline
       onlineStatus
-      ipRegisteredWith
       homeRoomID
       muteStatus
       allowingNewFriends

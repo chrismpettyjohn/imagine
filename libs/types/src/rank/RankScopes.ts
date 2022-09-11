@@ -13,5 +13,5 @@ export const exampleRankScopesWire: RankScopesWire = {
 export const rankScopesLabels: Record<keyof RankScopesWire, string> = {
   accessAdminPanel: 'Access Admin Panel',
   manageArticles: 'Manage Articles',
-  manageUsers: 'Manage Users'
+  manageUsers: 'Manage Users',
 };

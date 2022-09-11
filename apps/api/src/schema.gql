@@ -46,7 +46,7 @@ type UserModel {
   email: String
   gameSSO: String
   rankID: Float
-  rank: RankModel!
+  rank: RankModel
   rankVipID: Float
   rankVip: RankModel
   credits: Float
@@ -65,7 +65,6 @@ type UserModel {
   showOnlineStatus: UserShowOnlineStatus
   vipStatus: UserVipStatus
   sessions: [SessionModel!]
-  ipLast: String!
 }
 
 enum UserGender {

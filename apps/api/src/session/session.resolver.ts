@@ -56,9 +56,12 @@ export class SessionResolver {
   @Mutation(() => SessionCreatedModel)
   async sessionCreate(
     @Args('username') username: string,
-    @Args('password') password: string,
+    @Args('password') password: string
   ): Promise<SessionCreatedModel> {
-    const newSession = await this.sessionService.loginWithUsernameAndPassword(username, password);
+    const newSession = await this.sessionService.loginWithUsernameAndPassword(
+      username,
+      password
+    );
     pubSub.publish('sessionCreated', {sessionCreated: newSession});
     return newSession;
   }

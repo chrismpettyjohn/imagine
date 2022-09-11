@@ -28,7 +28,6 @@ export class RankWireScopesCreateInput implements RankScopesWire {
   manageUsers!: boolean;
 }
 
-
 @InputType()
 export class RankWireScopesUpdateInput implements Partial<RankScopesWire> {
   @Field({nullable: true})

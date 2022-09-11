@@ -17,7 +17,6 @@ import {
   Parent,
   Query,
   ResolveField,
-  ResolveProperty,
   Resolver,
   Subscription,
 } from '@nestjs/graphql';
@@ -38,7 +37,7 @@ export class UserResolver {
     private readonly userDataloaderService: UserDataloaderService
   ) {}
 
-  @ResolveProperty('email')
+  @ResolveField('email')
   @HasSession()
   email(
     @Parent() {id, email}: UserEntity,
@@ -48,7 +47,7 @@ export class UserResolver {
     return email;
   }
 
-  @ResolveProperty('gameSSO')
+  @ResolveField('gameSSO')
   @HasSession()
   gameSSO(
     @Parent() {id, gameSSO}: UserEntity,
@@ -58,7 +57,7 @@ export class UserResolver {
     return gameSSO;
   }
 
-  @ResolveProperty('ipLast')
+  @ResolveField('ipLast')
   @HasSession()
   ipLast(
     @Parent() {id, ipLast}: UserEntity,
@@ -68,7 +67,7 @@ export class UserResolver {
     return ipLast;
   }
 
-  @ResolveProperty('ipRegisteredWith')
+  @ResolveField('ipRegisteredWith')
   @HasSession()
   ipRegisteredWith(
     @Parent() {id, ipRegisteredWith}: UserEntity,
@@ -78,7 +77,7 @@ export class UserResolver {
     return ipRegisteredWith;
   }
 
-  @ResolveProperty('lastOnline')
+  @ResolveField('lastOnline')
   @HasSession()
   lastOnline(
     @Parent() {id, lastOnline, showOnlineStatus}: UserEntity,
@@ -94,7 +93,7 @@ export class UserResolver {
     return lastOnline;
   }
 
-  @ResolveProperty('onlineStatus')
+  @ResolveField('onlineStatus')
   @HasSession()
   onlineStatus(
     @Parent() {id, onlineStatus, showOnlineStatus}: UserEntity,
@@ -176,7 +175,11 @@ export class UserResolver {
     }
   }
 
-  private ownsResourceOrCanManageUsers(userID: number, authenticatedUser: UserEntity) {
+  private ownsResourceOrCanManageUsers(
+    userID: number,
+    authenticatedUser: UserEntity
+  ) {
+    console.log(userID, authenticatedUser);
     if (authenticatedUser.rank?.scopes?.manageUsers) {
       return;
     }

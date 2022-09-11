@@ -12,7 +12,10 @@ import {
   IsOptional,
   IsBoolean,
 } from 'class-validator';
-import {RankWireScopesCreateInput, RankWireScopesUpdateInput} from './rank-scopes.input';
+import {
+  RankWireScopesCreateInput,
+  RankWireScopesUpdateInput,
+} from './rank-scopes.input';
 
 @InputType()
 export class RankCreateInput implements RankCreateInputDTO {

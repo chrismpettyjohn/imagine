@@ -3,7 +3,6 @@ import {Field, ObjectType} from '@nestjs/graphql';
 import {RankScopesModel} from './rank-scopes.model';
 import {RankScopesWire, RankWire} from '@imagine-cms/types';
 
-
 @ObjectType()
 export class RankModel implements RankWire {
   @Field({nullable: true})
