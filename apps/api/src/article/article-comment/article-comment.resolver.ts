@@ -9,12 +9,24 @@ import {UserRepository} from '../../database/user.repository';
 import {HasSession} from '../../session/has-session.decorator';
 import {ArticleCommentEntity} from '../../database/article-comment.entity';
 import {ArticleCommentDataloaderService} from './article-comment.dataloader';
-import {Args, Mutation, Query, Resolver, Subscription} from '@nestjs/graphql';
 import {ArticleCommentRepository} from '../../database/article-comment.repository';
 import {
   ArticleCommentCreateInput,
   ArticleCommentUpdateInput,
 } from './article-comment.input';
+import {
+  Args,
+  Mutation,
+  Query,
+  Resolver,
+  Subscription,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql';
+import {UserModel} from '../../user/user.model';
+import {ArticleEntity} from '../../database/article.entity';
+import {ArticleModel} from '../article.model';
+import {ArticleRepository} from '../../database/article.repository';
 
 const pubSub = new PubSub();
 
@@ -23,9 +35,22 @@ export class ArticleCommentResolver {
   constructor(
     @Inject(forwardRef(() => UserRepository))
     private readonly userRepo: UserRepository,
+    private readonly articleRepo: ArticleRepository,
     private readonly articleCommentRepo: ArticleCommentRepository,
     private readonly articleCommentDataloader: ArticleCommentDataloaderService
   ) {}
+
+  @ResolveField('user', () => UserModel)
+  getUser(@Parent() {userID}: ArticleCommentEntity): Promise<UserModel> {
+    return this.userRepo.findOneOrFail({id: userID});
+  }
+
+  @ResolveField('article', () => ArticleModel)
+  getArticle(
+    @Parent() {articleID}: ArticleCommentEntity
+  ): Promise<ArticleModel> {
+    return this.articleRepo.findOneOrFail({id: articleID});
+  }
 
   @Query(() => ArticleCommentModel)
   async articleComment(@Args('id') id: number): Promise<ArticleCommentEntity> {

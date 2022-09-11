@@ -11,6 +11,10 @@ const FETCH_POPULAR_ROOMS = gql`
             usersNow,
             usersMax,
             userID,
+            user {
+                username,
+                look,
+            }
         }
     }
 `;

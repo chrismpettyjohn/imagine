@@ -30,7 +30,7 @@ type RankModel {
   name: String
   description: String
   badgeCode: String
-  users: [UserModel!]
+  users: [UserModel!]!
 }
 
 type UserModel {
@@ -39,7 +39,7 @@ type UserModel {
   email: String
   gameSSO: String
   rankID: Float
-  rank: RankModel
+  rank: RankModel!
   rankVipID: Float
   rankVip: RankModel
   credits: Float
@@ -95,7 +95,7 @@ type RoomModel {
   name: String
   description: String
   userID: Float
-  user: UserModel
+  user: UserModel!
   usersNow: Float
   usersMax: Float
 }
@@ -131,9 +131,9 @@ type ConfigModel {
 type ArticleCommentModel {
   id: Float
   articleID: Float
-  article: ArticleModel
+  article: ArticleModel!
   userID: Float
-  user: UserModel
+  user: UserModel!
   comment: String
   createdAt: String
   updatedAt: String
@@ -147,7 +147,7 @@ type ArticleModel {
   imageURL: String
   userID: Float
   user: UserModel!
-  comments: [ArticleCommentModel!]
+  comments: [ArticleCommentModel!]!
 }
 
 type ChatlogModel {

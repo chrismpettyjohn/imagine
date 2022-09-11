@@ -7,7 +7,17 @@ import {RoomEntity} from '../database/room.entity';
 import {UserRepository} from '../database/user.repository';
 import {RoomDataloaderService} from './room.dataloader';
 import {RoomRepository} from '../database/room.repository';
-import {Args, Mutation, Query, Resolver, Subscription} from '@nestjs/graphql';
+import {
+  Args,
+  Mutation,
+  Query,
+  Resolver,
+  Subscription,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql';
+import {UserModel} from '../user/user.model';
+import {ArticleEntity} from '../database/article.entity';
 
 const pubSub = new PubSub();
 
@@ -19,6 +29,11 @@ export class RoomResolver {
     private readonly roomRepo: RoomRepository,
     private readonly roomDataloaderService: RoomDataloaderService
   ) {}
+
+  @ResolveField('user', () => UserModel)
+  getUser(@Parent() {userID}: ArticleEntity): Promise<UserModel> {
+    return this.userRepo.findOneOrFail({id: userID});
+  }
 
   @Query(() => RoomModel)
   async room(@Args('id') id: number): Promise<RoomEntity> {

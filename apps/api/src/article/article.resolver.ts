@@ -21,6 +21,8 @@ import {
   Parent,
 } from '@nestjs/graphql';
 import {UserModel} from '../user/user.model';
+import {ArticleCommentModel} from './article-comment/article-comment.model';
+import {ArticleCommentRepository} from '../database/article-comment.repository';
 
 const pubSub = new PubSub();
 
@@ -30,13 +32,20 @@ export class ArticleResolver {
     @Inject(forwardRef(() => UserRepository))
     private readonly userRepo: UserRepository,
     private readonly articleRepo: ArticleRepository,
+    private readonly articleCommentRepo: ArticleCommentRepository,
     private readonly articleDataloaderService: ArticleDataloaderService
   ) {}
 
   @ResolveField('user', () => UserModel)
-  async getUser(@Parent() {userID}: ArticleEntity): Promise<UserModel> {
-    console.log(userID);
+  getUser(@Parent() {userID}: ArticleEntity): Promise<UserModel> {
     return this.userRepo.findOneOrFail({id: userID});
+  }
+
+  @ResolveField('comments', () => [ArticleCommentModel])
+  getComments(@Parent() {id}: ArticleEntity): Promise<ArticleCommentModel[]> {
+    return this.articleCommentRepo.find({
+      articleID: id,
+    });
   }
 
   @Query(() => ArticleModel)

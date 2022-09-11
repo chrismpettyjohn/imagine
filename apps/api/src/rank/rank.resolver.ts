@@ -8,7 +8,16 @@ import {RankDataloaderService} from './rank.dataloader';
 import {RankRepository} from '../database/rank.repository';
 import {UserRepository} from '../database/user.repository';
 import {RankCreateInput, RankUpdateInput} from './rank.input';
-import {Args, Mutation, Query, Resolver, Subscription} from '@nestjs/graphql';
+import {
+  Args,
+  Mutation,
+  Query,
+  Resolver,
+  Subscription,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql';
+import {UserModel} from '../user/user.model';
 
 const pubSub = new PubSub();
 
@@ -20,6 +29,12 @@ export class RankResolver {
     private readonly rankRepo: RankRepository,
     private readonly rankDataloaderService: RankDataloaderService
   ) {}
+
+  @ResolveField('users', () => [UserModel])
+  getUsers(@Parent() {id}: RankEntity): Promise<UserModel[]> {
+    return this.userRepo.find({rankID: id});
+  }
+
   @Query(() => RankModel)
   async rank(@Args('id') id: number): Promise<RankEntity> {
     return this.rankDataloaderService.loadById(id);

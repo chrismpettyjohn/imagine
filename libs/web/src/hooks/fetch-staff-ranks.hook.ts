@@ -8,6 +8,12 @@ const FETCH_STAFF_RANKS = gql`
       id
       name
       badgeCode
+        users {
+            username
+            motto
+            look
+            onlineStatus
+        }
     }
   }
 `;
