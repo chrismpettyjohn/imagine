@@ -167,6 +167,16 @@ type WordFilterModel {
   addedByUserID: Float
 }
 
+type PhotoModel {
+  id: Float
+  userID: Float
+  user: UserModel!
+  roomID: Float
+  room: RoomModel!
+  photoURL: String
+  createdAt: Float
+}
+
 type Query {
   badge(id: Float!): BadgeModel!
   badges(other: ExtraArgs): [BadgeModel!]!
@@ -192,6 +202,8 @@ type Query {
   rooms(other: ExtraArgs): [RoomModel!]!
   group(id: Float!): GroupModel!
   groups(other: ExtraArgs): [GroupModel!]!
+  photo(id: Float!): PhotoModel!
+  photos(other: ExtraArgs): [PhotoModel!]!
 }
 
 input ExtraArgs {
@@ -232,6 +244,7 @@ type Mutation {
   chatlogDelete(id: Float!): Boolean!
   roomDelete(id: Float!): Boolean!
   groupDelete(id: Float!): Boolean!
+  photoDelete(id: Float!): Boolean!
 }
 
 input BadgeInput {
@@ -353,4 +366,5 @@ type Subscription {
   chatlogDeleted: ChatlogModel!
   roomDeleted: RoomModel!
   groupDeleted: GroupModel!
+  photoDeleted: PhotoModel!
 }

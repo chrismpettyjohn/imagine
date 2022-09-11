@@ -25,6 +25,7 @@ import {
   IMAGINE_DATABASE_USER,
   IMAGINE_GRAPHQL_PLAYGROUND,
 } from './imagine.constant';
+import {PhotoModule} from './photo/photo.module';
 
 @Module({
   imports: [
@@ -59,6 +60,7 @@ import {
     ChatlogModule,
     RoomModule,
     GroupModule,
+    PhotoModule,
   ],
 })
 export class ImagineModule {}

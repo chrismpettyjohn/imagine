@@ -1,7 +1,8 @@
-import React, {useEffect} from 'react';
-import {useFetchStaffRanks} from '@imagine-cms/web';
+import React, {useContext, useEffect} from 'react';
+import {configContext, useFetchStaffRanks} from '@imagine-cms/web';
 
 export function CommunityStaffScreen() {
+  const {config} = useContext(configContext);
   const {runQuery, loading, data} = useFetchStaffRanks();
 
   useEffect(() => {
@@ -36,24 +37,28 @@ export function CommunityStaffScreen() {
                       </h5>
                       <img src={`https://assets.habboon.pw/c_images/album1584/${rank.badgeCode}.gif`} title={rank.name} style={{position: 'absolute', top: 15, right: 25 }}/>
                       <div className="row no-gutters">
-                        <div className="col-lg-6 col-12">
-                          <div className="row no-gutters">
-                            <div className="col-12">
-                              <div className="staff-block ">
-                                <div className="row no-gutters align-items-center">
-                                  <div className="col-2 text-center">
-                                    <img
-                                      src="https://imager.habboon.pw/?figure=sh-3035-92.hr-5347-31.ch-3013-92.ca-4037-68-92.hd-629-3.lg-720-77.he-3974-1408.ha-3298-77-92&size=m&direction=3&head_direction=3&gesture=sml&headonly=1"
-                                      className="avatar  offline " alt="administrator" />
-                                  </div>
-                                  <div className="col-10">
-                                    <strong>{rank.name}</strong><br />
+                        {
+                          rank.users?.map(user => (
+                            <div className="col-lg-6 col-12" key={`rank_${rank.id}_user_${user.id}`}>
+                              <div className="row no-gutters">
+                                <div className="col-12">
+                                  <div className="staff-block ">
+                                    <div className="row no-gutters align-items-center">
+                                      <div className="col-2 text-center">
+                                        <img
+                                          src={`https://imager.habboon.pw/?figure=${user.look}&size=m&direction=3&head_direction=3&gesture=sml&headonly=1`}
+                                          className="avatar  offline " alt="administrator" />
+                                      </div>
+                                      <div className="col-10">
+                                        <strong>{user.username}</strong><br />
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
+                          ))
+                        }
                       </div>
                     </div>
                   </div>
@@ -65,8 +70,8 @@ export function CommunityStaffScreen() {
         <div className="col-lg-4 col-12">
           <div className="card">
             <div className="card-body">
-              <h5 className="silver">About Habboon Staff</h5>
-              <p className="mb-0">The Habboon staff team is one big happy family, each staff member has a different role
+              <h5 className="silver">About {config!.siteName!} Staff</h5>
+              <p className="mb-0">The {config!.siteName!} staff team is one big happy family, each staff member has a different role
                 and duties to fulfill. <br/><br/>Most of our team usually consists of players that have been around Boon
                   for quite a while, but this doesn't mean we only recruit old  known players, we recruit those who
                   shine out to us!</p>

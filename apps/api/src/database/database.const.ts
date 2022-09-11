@@ -5,6 +5,7 @@ import {RoomEntity} from './room.entity';
 import {BadgeEntity} from './badge.entity';
 import {GroupEntity} from './group.entity';
 import {ConfigEntity} from './config.entity';
+import {PhotoEntity} from './photo.entity';
 import {ArticleEntity} from './article.entity';
 import {SessionEntity} from './session.entity';
 import {BanRepository} from './ban.repository';
@@ -15,6 +16,7 @@ import {RoomRepository} from './room.repository';
 import {GroupRepository} from './group.repository';
 import {BadgeRepository} from './badge.repository';
 import {ConfigRepository} from './config.repository';
+import {PhotoRepository} from './photo.repository';
 import {WordFilterEntity} from './word-filter.entity';
 import {SessionRepository} from './session.repository';
 import {ArticleRepository} from './article.repository';
@@ -36,6 +38,7 @@ export const databaseEntities = [
   ChatlogEntity,
   RoomEntity,
   GroupEntity,
+  PhotoEntity,
 ];
 
 export const databaseRepositories = [
@@ -51,4 +54,5 @@ export const databaseRepositories = [
   ChatlogRepository,
   RoomRepository,
   GroupRepository,
+  PhotoRepository,
 ];
