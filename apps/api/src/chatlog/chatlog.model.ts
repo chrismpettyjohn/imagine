@@ -1,3 +1,5 @@
+import {UserModel} from '../user/user.model';
+import {RoomModel} from '../room/room.model';
 import {ChatlogWire} from '@imagine-cms/types';
 import {Field, ObjectType} from '@nestjs/graphql';
 
@@ -9,8 +11,14 @@ export class ChatlogModel implements ChatlogWire {
   @Field({nullable: true})
   userID?: number;
 
+  @Field(() => UserModel, {nullable: true})
+  user?: UserModel;
+
   @Field({nullable: true})
   roomID?: number;
+
+  @Field(() => RoomModel, {nullable: true})
+  room?: RoomModel;
 
   @Field({nullable: true})
   message?: string;

@@ -6,10 +6,17 @@ const FETCH_CHATLOG = gql`
     query ($roomID: Float, $userID: Float, $skip: Float!, $limit: Float!) {
         chatlogs(roomID: $roomID, userID: $userID, other: {skip: $skip, take: $limit, order: {id: "DESC"}}) {
             id,
-            userID,
-            roomID,
-            message,
+            roomID
+            message
             createdAt
+            user {
+                username
+                look
+            }
+            room {
+                id
+                name
+            }
         }
     }
 `;

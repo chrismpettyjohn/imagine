@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'wouter';
 import {LogoutScreen} from './logout-screen/LogoutScreen';
-import {ChatlogScreen} from './chatlog-screen/ChatlogScreen';
+import {ChatlogListScreen} from './chatlog-list-screen/ChatlogListScreen';
 import {LandingScreen} from './landing-screen/LandingScreen';
 import {RankListScreen} from './rank-list-screen/RankListScreen';
 import {BansListScreen} from './bans-list-screen/BansListScreen';
@@ -40,7 +40,7 @@ const SITE_ROUTES: Array<{path: string, view: any, }> = [
   },
   {
     path: '/chatlog/list',
-    view: ChatlogScreen,
+    view: ChatlogListScreen,
   },
   {
     path: '/articles/list',
