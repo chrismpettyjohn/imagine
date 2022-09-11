@@ -78,15 +78,9 @@ export class UserResolver {
   }
 
   @ResolveField('lastOnline')
-  @HasSession()
   lastOnline(
-    @Parent() {id, lastOnline, showOnlineStatus}: UserEntity,
-    @GetUser() user: UserEntity
+    @Parent() {id, lastOnline, showOnlineStatus}: UserEntity
   ): number | null {
-    if (user.rank?.scopes?.manageUsers) {
-      return lastOnline;
-    }
-
     if (showOnlineStatus === UserShowOnlineStatus.Hidden) {
       return null;
     }
@@ -94,15 +88,9 @@ export class UserResolver {
   }
 
   @ResolveField('onlineStatus')
-  @HasSession()
   onlineStatus(
-    @Parent() {id, onlineStatus, showOnlineStatus}: UserEntity,
-    @GetUser() user: UserEntity
+    @Parent() {id, onlineStatus, showOnlineStatus}: UserEntity
   ): string {
-    if (user.rank?.scopes?.manageUsers) {
-      return onlineStatus;
-    }
-
     if (showOnlineStatus === UserShowOnlineStatus.Hidden) {
       return UserOnlineStatus.Offline;
     }
