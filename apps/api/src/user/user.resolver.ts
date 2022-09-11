@@ -44,7 +44,7 @@ export class UserResolver {
     @Parent() {id, email}: UserEntity,
     @GetUser() user: UserEntity
   ): string {
-    this.ownsResource(id, user.id);
+    this.ownsResourceOrCanManageUsers(id, user);
     return email;
   }
 
@@ -54,7 +54,7 @@ export class UserResolver {
     @Parent() {id, gameSSO}: UserEntity,
     @GetUser() user: UserEntity
   ): string {
-    this.ownsResource(id, user.id);
+    this.ownsResource(id, user);
     return gameSSO;
   }
 
@@ -64,7 +64,7 @@ export class UserResolver {
     @Parent() {id, ipLast}: UserEntity,
     @GetUser() user: UserEntity
   ): string {
-    this.ownsResource(id, user.id);
+    this.ownsResourceOrCanManageUsers(id, user);
     return ipLast;
   }
 
@@ -74,7 +74,7 @@ export class UserResolver {
     @Parent() {id, ipRegisteredWith}: UserEntity,
     @GetUser() user: UserEntity
   ): string {
-    this.ownsResource(id, user.id);
+    this.ownsResourceOrCanManageUsers(id, user);
     return ipRegisteredWith;
   }
 
@@ -84,6 +84,10 @@ export class UserResolver {
     @Parent() {id, lastOnline, showOnlineStatus}: UserEntity,
     @GetUser() user: UserEntity
   ): number | null {
+    if (user.rank?.scopes?.manageUsers) {
+      return lastOnline;
+    }
+
     if (showOnlineStatus === UserShowOnlineStatus.Hidden) {
       return null;
     }
@@ -96,6 +100,10 @@ export class UserResolver {
     @Parent() {id, onlineStatus, showOnlineStatus}: UserEntity,
     @GetUser() user: UserEntity
   ): string {
+    if (user.rank?.scopes?.manageUsers) {
+      return onlineStatus;
+    }
+
     if (showOnlineStatus === UserShowOnlineStatus.Hidden) {
       return UserOnlineStatus.Offline;
     }
@@ -162,9 +170,17 @@ export class UserResolver {
     return pubSub.asyncIterator('userDeleted');
   }
 
-  private ownsResource(userID: number, authenticatedUser: number) {
-    if (Number(userID) !== Number(authenticatedUser)) {
+  private ownsResource(userID: number, authenticatedUser: UserEntity) {
+    if (Number(userID) !== Number(authenticatedUser.id)) {
       throw new UnauthorizedException();
     }
+  }
+
+  private ownsResourceOrCanManageUsers(userID: number, authenticatedUser: UserEntity) {
+    if (authenticatedUser.rank?.scopes?.manageUsers) {
+      return;
+    }
+
+    this.ownsResource(userID, authenticatedUser);
   }
 }

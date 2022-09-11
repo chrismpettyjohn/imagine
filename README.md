@@ -1,7 +1,4 @@
-# imagine-cms
-<img src="https://i.imgur.com/z4VhXpW.png" />
-<br/>
-Imagine is a CMS inspired by Habbo and designed for beginners, it comes with everything you'll ever need to create a website for your virtual world
+<img src="https://i.imgur.com/GDSz1PG.png" />
 
 ## 1. Community
 Join our Discord for updates, support and more!

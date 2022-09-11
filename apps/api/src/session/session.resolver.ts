@@ -5,7 +5,6 @@ import {GetUser} from './get-user.decorator';
 import {PubSub} from 'graphql-subscriptions';
 import {SessionService} from './session.service';
 import {HasSession} from './has-session.decorator';
-import {SessionCreateInput} from './session.input';
 import {UserEntity} from '../database/user.entity';
 import {UnauthorizedException} from '@nestjs/common';
 import {SessionEntity} from '../database/session.entity';
@@ -56,12 +55,10 @@ export class SessionResolver {
 
   @Mutation(() => SessionCreatedModel)
   async sessionCreate(
-    @Args('sessionCreateInput') sessionCreateInput: SessionCreateInput
+    @Args('username') username: string,
+    @Args('password') password: string,
   ): Promise<SessionCreatedModel> {
-    const newSession = await this.sessionService.loginWithUsernameAndPassword(
-      sessionCreateInput.username,
-      sessionCreateInput.password
-    );
+    const newSession = await this.sessionService.loginWithUsernameAndPassword(username, password);
     pubSub.publish('sessionCreated', {sessionCreated: newSession});
     return newSession;
   }

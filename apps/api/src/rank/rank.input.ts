@@ -12,17 +12,7 @@ import {
   IsOptional,
   IsBoolean,
 } from 'class-validator';
-
-@InputType()
-export class RankWireScopesInput implements RankScopesWire {
-  @Field()
-  @IsBoolean()
-  accessAdminPanel!: boolean;
-
-  @Field()
-  @IsBoolean()
-  manageArticles!: boolean;
-}
+import {RankWireScopesCreateInput, RankWireScopesUpdateInput} from './rank-scopes.input';
 
 @InputType()
 export class RankCreateInput implements RankCreateInputDTO {
@@ -44,7 +34,7 @@ export class RankCreateInput implements RankCreateInputDTO {
 
   @Field()
   @IsObject()
-  scopes!: RankWireScopesInput;
+  scopes!: RankWireScopesCreateInput;
 }
 
 @InputType()
@@ -71,5 +61,5 @@ export class RankUpdateInput implements RankUpdateInputDTO {
   @Field({nullable: true})
   @IsObject()
   @IsOptional()
-  scopes?: RankWireScopesInput;
+  scopes?: RankWireScopesUpdateInput;
 }

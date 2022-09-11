@@ -28,6 +28,7 @@ type SessionCreatedModel {
 type RankScopesModel {
   accessAdminPanel: Boolean!
   manageArticles: Boolean!
+  manageUsers: Boolean!
 }
 
 type RankModel {
@@ -228,7 +229,7 @@ type Mutation {
   badgeCreate(newBadge: BadgeInput!): BadgeModel!
   badgeUpdate(id: Float!, badgeChanges: BadgeInput!): Boolean!
   badgeDelete(id: Float!): Boolean!
-  sessionCreate(sessionCreateInput: SessionCreateInput!): SessionCreatedModel!
+  sessionCreate(username: String!, password: String!): SessionCreatedModel!
   userCreate(newUser: UserCreateInput!): UserModel!
   userUpdate(id: Float!, userChanges: UserUpdateInput!): Boolean!
   userDelete(id: Float!): Boolean!
@@ -258,11 +259,6 @@ input BadgeInput {
   code: String!
 }
 
-input SessionCreateInput {
-  username: String!
-  password: String!
-}
-
 input UserCreateInput {
   username: String!
   password: String!
@@ -282,19 +278,26 @@ input RankCreateInput {
   name: String!
   description: String!
   badgeCode: String!
-  scopes: RankWireScopesInput!
+  scopes: RankWireScopesCreateInput!
 }
 
-input RankWireScopesInput {
+input RankWireScopesCreateInput {
   accessAdminPanel: Boolean!
   manageArticles: Boolean!
+  manageUsers: Boolean!
 }
 
 input RankUpdateInput {
   name: String
   description: String
   badgeCode: String
-  scopes: RankWireScopesInput
+  scopes: RankWireScopesUpdateInput
+}
+
+input RankWireScopesUpdateInput {
+  accessAdminPanel: Boolean
+  manageArticles: Boolean
+  manageUsers: Boolean
 }
 
 input ArticleCreateInput {

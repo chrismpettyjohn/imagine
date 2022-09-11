@@ -13,6 +13,8 @@ export function SessionContextProvider({children}: SessionContextProviderProps) 
   const fetchSessionByJwt = useFetchSessionByJwt(existingJwt ?? '');
   const fetchUserBySessionID = useFindUserByID(fetchSessionByJwt?.data?.sessionByJWT?.userID ?? 0);
 
+  console.log(fetchSessionByJwt, fetchUserBySessionID)
+
   useEffect(() => {
     const checkForPreviousSession = async () => {
       if (!existingJwt) {

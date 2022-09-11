@@ -66,7 +66,14 @@ export class RankResolver {
     @Args('id') id: number,
     @Args('rankChanges') rankChanges: RankUpdateInput
   ) {
-    await this.rankRepo.update({id}, rankChanges);
+    const currentRank = await this.rankDataloaderService.loadById(id);
+    await this.rankRepo.update({id}, {
+      ...rankChanges,
+      scopes: {
+        ...currentRank.scopes,
+        ...rankChanges.scopes,
+      }
+    });
     return true;
   }
 

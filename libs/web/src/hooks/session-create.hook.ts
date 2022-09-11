@@ -4,7 +4,7 @@ import {UseMutationResponse, useRunMutation} from './run-mutation.hook';
 
 const CREATE_NEW_SESSION = gql`
   mutation ($username: String!, $password: String!) {
-    sessionCreate(sessionCreateInput: {username: $username, password: $password}) {
+    sessionCreate(username: $username, password: $password) {
       id
       accessToken
       userID
@@ -12,7 +12,7 @@ const CREATE_NEW_SESSION = gql`
   }
 `;
 
-export const useSessionCreateMutation = (
+export const useSessionCreate = (
   username: string,
   password: string
 ): UseMutationResponse<{sessionCreate: SessionCreatedWire}> => {

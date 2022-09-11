@@ -5,25 +5,27 @@ import {UseQueryResponse, useRunQuery} from './run-query.hook';
 const FETCH_USERS = gql`
     query($skip: Float!, $limit: Float!) {
         users(other: { skip: $skip, take: $limit }) {
-            id,
-            username,
-            email,
-            rankID,
-            rankVipID,
-            credits,
-            vipPoints,
-            activityPoints,
-            look,
-            gender,motto,
-            accountCreatedAt,
-            lastOnline,
-            onlineStatus,
-            ipRegisteredWith,
-            homeRoomID,
-            muteStatus,
-            allowingNewFriends,
-            showOnlineStatus,
-            vipStatus,
+            id
+            username
+            email
+            rankID
+            rankVipID
+            credits
+            vipPoints
+            activityPoints
+            look
+            gender
+            motto
+            accountCreatedAt
+            lastOnline
+            onlineStatus
+            ipLast
+            ipRegisteredWith
+            homeRoomID
+            muteStatus
+            allowingNewFriends
+            showOnlineStatus
+            vipStatus
         }
     }
 `;

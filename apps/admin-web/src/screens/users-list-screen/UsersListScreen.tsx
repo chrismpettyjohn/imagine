@@ -7,7 +7,9 @@ import {LoadingOverlay} from '../../components/loading-overlay/LoadingOverlay';
 
 export function UsersListScreen() {
   const {config} = useContext(configContext);
-  const {runQuery, data, loading} = useFetchUsers();
+  const {runQuery, data, error, loading} = useFetchUsers();
+
+  console.log(error);
 
   useEffect(() => {
     runQuery();
