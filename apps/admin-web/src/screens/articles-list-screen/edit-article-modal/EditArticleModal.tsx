@@ -22,7 +22,7 @@ export function EditArticleModal({article, onUpdate}: EditArticleModalProps) {
         toast.error('There was a problem updating your article');
       }
       if (data) {
-        toast.error('Your article was updated successfully');
+        toast.success('Your article was updated successfully');
         onUpdate({...article, ...updateArticleDTO});
       }
     }

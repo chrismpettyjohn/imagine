@@ -1,8 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'wouter';
-import {ChatlogScreen} from './chatlog-screen/ChatlogScreen';
 import {LogoutScreen} from './logout-screen/LogoutScreen';
+import {ChatlogScreen} from './chatlog-screen/ChatlogScreen';
 import {LandingScreen} from './landing-screen/LandingScreen';
+import {RankListScreen} from './rank-list-screen/RankListScreen';
 import {BansListScreen} from './bans-list-screen/BansListScreen';
 import {DashboardScreen} from './dashboard-screen/DashboardScreen';
 import {UsersListScreen} from './users-list-screen/UsersListScreen';
@@ -53,6 +54,10 @@ const SITE_ROUTES: Array<{path: string, view: any, }> = [
     path: '/settings/word-filter',
     view: WordFilterSettingsScreen,
   },
+  {
+    path: '/ranks/list',
+    view: RankListScreen,
+  }
 ]
 
 export function Router() {

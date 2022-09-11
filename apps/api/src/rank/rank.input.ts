@@ -49,26 +49,26 @@ export class RankCreateInput implements RankCreateInputDTO {
 
 @InputType()
 export class RankUpdateInput implements RankUpdateInputDTO {
-  @Field()
+  @Field({nullable: true})
   @MaxLength(30)
   @IsNotEmpty()
   @IsAlphanumeric()
   @IsOptional()
   name?: string;
 
-  @Field()
+  @Field({nullable: true})
   @IsNotEmpty()
   @IsOptional()
   description?: string;
 
-  @Field()
+  @Field({nullable: true})
   @MaxLength(6)
   @IsNotEmpty()
   @IsAlphanumeric()
   @IsOptional()
   badgeCode?: string;
 
-  @Field()
+  @Field({nullable: true})
   @IsObject()
   @IsOptional()
   scopes?: RankWireScopesInput;

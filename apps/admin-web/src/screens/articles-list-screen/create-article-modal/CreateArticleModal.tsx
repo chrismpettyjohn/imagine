@@ -22,7 +22,7 @@ export function CreateArticleModal({onCreate}: CreateArticleModalProps) {
         toast.error('There was a problem creating your article');
       }
       if (data) {
-        toast.error('Your article was created successfully');
+        toast.success('Your article was created successfully');
         onCreate(data.article);
       }
     }

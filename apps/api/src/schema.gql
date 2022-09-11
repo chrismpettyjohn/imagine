@@ -291,10 +291,10 @@ input RankWireScopesInput {
 }
 
 input RankUpdateInput {
-  name: String!
-  description: String!
-  badgeCode: String!
-  scopes: RankWireScopesInput!
+  name: String
+  description: String
+  badgeCode: String
+  scopes: RankWireScopesInput
 }
 
 input ArticleCreateInput {

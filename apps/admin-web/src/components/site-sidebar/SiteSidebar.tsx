@@ -57,13 +57,17 @@ export function SiteSidebar() {
               path: '/users/list',
             },
             {
+              label: 'Ranks',
+              path: '/ranks/list',
+            },
+            {
               label: 'Bans',
               path: '/bans/list',
             },
             {
               label: 'Chatlog',
               path: '/chatlog/list',
-            },
+            }
           ]}
         />
       </ul>
