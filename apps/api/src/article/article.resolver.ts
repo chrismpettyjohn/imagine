@@ -11,7 +11,16 @@ import {HasSession} from '../session/has-session.decorator';
 import {ArticleDataloaderService} from './article.dataloader';
 import {ArticleRepository} from '../database/article.repository';
 import {ArticleCreateInput, ArticleUpdateInput} from './article.input';
-import {Args, Mutation, Query, Resolver, Subscription} from '@nestjs/graphql';
+import {
+  Args,
+  Mutation,
+  Query,
+  Resolver,
+  Subscription,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql';
+import {UserModel} from '../user/user.model';
 
 const pubSub = new PubSub();
 
@@ -23,6 +32,12 @@ export class ArticleResolver {
     private readonly articleRepo: ArticleRepository,
     private readonly articleDataloaderService: ArticleDataloaderService
   ) {}
+
+  @ResolveField('user', () => UserModel)
+  async getUser(@Parent() {userID}: ArticleEntity): Promise<UserModel> {
+    console.log(userID);
+    return this.userRepo.findOneOrFail({id: userID});
+  }
 
   @Query(() => ArticleModel)
   async article(@Args('id') id: number): Promise<ArticleEntity> {

@@ -146,7 +146,7 @@ type ArticleModel {
   content: String
   imageURL: String
   userID: Float
-  user: UserModel
+  user: UserModel!
   comments: [ArticleCommentModel!]
 }
 
