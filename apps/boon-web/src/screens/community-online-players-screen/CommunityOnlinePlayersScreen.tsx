@@ -22,29 +22,31 @@ export function CommunityOnlinePlayersScreen() {
               </>
             )
           }
-          {
-            data?.users?.map(user => (
-              <div className="col-4" key={`online_players_screen_${user.id}`}>
-                <div className="card" style={{marginBottom: '0.75rem'}}>
-                  <div className="card-body">
-                    <div className="row align-items-center position-relative" key={`online_players_screen_${user.id}`}>
-                      <div className="col-4">
-                        <div>
-                          <img
-                            src={`https://imager.habboon.pw/?figure=${user.look}&direction=3&head_direction=2&gesture=sml&headonly=1`}
-                            alt={user.username} loading="lazy" />
+          <div className="row">
+            {
+              data?.users?.map(user => (
+                <div className="col-4" key={`online_players_screen_${user.id}`}>
+                  <div className="card" style={{marginBottom: '0.75rem'}}>
+                    <div className="card-body">
+                      <div className="row align-items-center position-relative" key={`online_players_screen_${user.id}`}>
+                        <div className="col-4">
+                          <div>
+                            <img
+                              src={`https://imager.habboon.pw/?figure=${user.look}&direction=3&head_direction=2&gesture=sml&headonly=1`}
+                              alt={user.username} loading="lazy" />
+                          </div>
                         </div>
-                      </div>
-                      <div className="col text-left text-truncate">
-                        <span className="d-block">{user.username}</span>
-                        <span className="text-muted">{DayJS(user.lastOnline).fromNow()}</span>
+                        <div className="col text-left text-truncate">
+                          <span className="d-block">{user.username}</span>
+                          <span className="text-muted">{DayJS(user.lastOnline).fromNow()}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))
-          }
+              ))
+            }
+          </div>
         </div>
       </div>
     </main>

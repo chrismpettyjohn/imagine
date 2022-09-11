@@ -10,6 +10,10 @@ const FETCH_ARTICLE_BY_ID = gql`
             description
             content
             imageURL
+            user {
+                username
+                look
+            }
         }
     }
 `;

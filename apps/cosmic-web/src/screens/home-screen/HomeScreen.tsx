@@ -2,6 +2,7 @@ import React from 'react';
 import {LatestBadges} from './latest-badges/LatestBadges';
 import {PopularRooms} from './popular-rooms/PopularRooms';
 import {LatestGroups} from './latest-groups/LatestGroups';
+import {LatestPhotos} from './latest-photos/LatestPhotos';
 import {OnlineFriends} from './online-friends/OnlineFriends';
 import {LatestArticles} from './latest-articles/LatestArticles';
 import {UserGuard} from '../../components/user-guard/UserGuard';
@@ -14,6 +15,11 @@ export function HomeScreen() {
           <div className="row mb-4">
             <div className="col-12">
               <LatestArticles />
+            </div>
+          </div>
+          <div className="row mb-4">
+            <div className="col-12">
+              <LatestPhotos />
             </div>
           </div>
           <div className="row mb-4">
