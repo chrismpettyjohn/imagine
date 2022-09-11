@@ -25,11 +25,17 @@ type SessionCreatedModel {
   accessToken: String
 }
 
+type RankScopesModel {
+  accessAdminPanel: Boolean!
+  manageArticles: Boolean!
+}
+
 type RankModel {
   id: Float
   name: String
   description: String
   badgeCode: String
+  scopes: RankScopesModel
   users: [UserModel!]!
 }
 
@@ -276,12 +282,19 @@ input RankCreateInput {
   name: String!
   description: String!
   badgeCode: String!
+  scopes: RankWireScopesInput!
+}
+
+input RankWireScopesInput {
+  accessAdminPanel: Boolean!
+  manageArticles: Boolean!
 }
 
 input RankUpdateInput {
   name: String!
   description: String!
   badgeCode: String!
+  scopes: RankWireScopesInput!
 }
 
 input ArticleCreateInput {

@@ -1,4 +1,5 @@
 import {UserWire} from '../user/User';
+import {RankScopesWire} from './RankScopes';
 
 export interface RankWire {
   id?: number;
@@ -6,4 +7,5 @@ export interface RankWire {
   description?: string;
   badgeCode?: string;
   users?: UserWire[];
+  scopes?: RankScopesWire;
 }

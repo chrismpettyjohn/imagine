@@ -1,6 +1,6 @@
 import {UserEntity} from './user.entity';
 import {ObjectType} from '@nestjs/graphql';
-import {RankWire} from '@imagine-cms/types';
+import {RankScopesWire, RankWire} from '@imagine-cms/types';
 import {Column, Entity, PrimaryGeneratedColumn, OneToMany} from 'typeorm';
 
 @Entity('ranks')
@@ -17,6 +17,9 @@ export class RankEntity implements RankWire {
 
   @Column({name: 'badgeid'})
   badgeCode!: string;
+
+  @Column({type: 'json'})
+  scopes!: RankScopesWire;
 
   @OneToMany(() => UserEntity, user => user.rank)
   users?: UserEntity[];

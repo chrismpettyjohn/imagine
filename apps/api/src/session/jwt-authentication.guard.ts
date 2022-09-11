@@ -29,9 +29,12 @@ export class JwtAuthenticationGuard implements CanActivate {
       return false;
     }
 
-    request.user = await this.userRepo.findOneOrFail({
-      id: parsedBearerToken.userID,
-    });
+    request.user = await this.userRepo.findOneOrFail(
+      {
+        id: parsedBearerToken.userID,
+      },
+      {relations: ['rank']}
+    );
     request.sessionID = parsedBearerToken.sessionID;
 
     return true;

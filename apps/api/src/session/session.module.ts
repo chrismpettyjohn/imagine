@@ -1,5 +1,6 @@
 import {Module} from '@nestjs/common';
 import {JwtModule} from '@nestjs/jwt';
+import {HasScopeGuard} from './has-scope.guard';
 import {SessionService} from './session.service';
 import {SessionResolver} from './session.resolver';
 import {CommonModule} from '../common/common.module';
@@ -27,12 +28,14 @@ import {
     SessionDataloaderService,
     SessionResolver,
     JwtAuthenticationGuard,
+    HasScopeGuard,
   ],
   exports: [
     SessionService,
     SessionDataloaderService,
     SessionResolver,
     JwtAuthenticationGuard,
+    HasScopeGuard,
     JwtModule,
   ],
 })

@@ -1,11 +1,28 @@
 import {Field, InputType} from '@nestjs/graphql';
-import {RankCreateInputDTO, RankUpdateInputDTO} from '@imagine-cms/types';
+import {
+  RankCreateInputDTO,
+  RankScopesWire,
+  RankUpdateInputDTO,
+} from '@imagine-cms/types';
 import {
   MaxLength,
   IsAlphanumeric,
   IsNotEmpty,
+  IsObject,
   IsOptional,
+  IsBoolean,
 } from 'class-validator';
+
+@InputType()
+export class RankWireScopesInput implements RankScopesWire {
+  @Field()
+  @IsBoolean()
+  accessAdminPanel!: boolean;
+
+  @Field()
+  @IsBoolean()
+  manageArticles!: boolean;
+}
 
 @InputType()
 export class RankCreateInput implements RankCreateInputDTO {
@@ -24,6 +41,10 @@ export class RankCreateInput implements RankCreateInputDTO {
   @IsNotEmpty()
   @IsAlphanumeric()
   badgeCode!: string;
+
+  @Field()
+  @IsObject()
+  scopes!: RankWireScopesInput;
 }
 
 @InputType()
@@ -46,4 +67,9 @@ export class RankUpdateInput implements RankUpdateInputDTO {
   @IsAlphanumeric()
   @IsOptional()
   badgeCode?: string;
+
+  @Field()
+  @IsObject()
+  @IsOptional()
+  scopes?: RankWireScopesInput;
 }

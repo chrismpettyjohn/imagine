@@ -5,9 +5,9 @@ import {PubSub} from 'graphql-subscriptions';
 import {Inject, forwardRef} from '@nestjs/common';
 import {UserEntity} from '../database/user.entity';
 import {GetUser} from '../session/get-user.decorator';
+import {HasScope} from '../session/has-scope.decorator';
 import {ArticleEntity} from '../database/article.entity';
 import {UserRepository} from '../database/user.repository';
-import {HasSession} from '../session/has-session.decorator';
 import {ArticleDataloaderService} from './article.dataloader';
 import {ArticleRepository} from '../database/article.repository';
 import {ArticleCreateInput, ArticleUpdateInput} from './article.input';
@@ -59,7 +59,7 @@ export class ArticleResolver {
   }
 
   @Mutation(() => ArticleModel)
-  @HasSession()
+  @HasScope('manageArticles')
   async articleCreate(
     @Args('newArticle') articleCreateInput: ArticleCreateInput,
     @GetUser() user: UserEntity
@@ -81,6 +81,7 @@ export class ArticleResolver {
   }
 
   @Mutation(() => Boolean)
+  @HasScope('manageArticles')
   async articleUpdate(
     @Args('id') id: number,
     @Args('articleChanges') articleChanges: ArticleUpdateInput
@@ -90,6 +91,7 @@ export class ArticleResolver {
   }
 
   @Mutation(() => Boolean)
+  @HasScope('manageArticles')
   async articleDelete(@Args('id') id: number) {
     const deletedArticle = await this.articleRepo.findOneOrFail({id});
     pubSub.publish('articleDeleted', {articleDeleted: deletedArticle});

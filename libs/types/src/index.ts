@@ -13,6 +13,7 @@ export * from './group/Group';
 export * from './photo/Photo';
 export * from './rank/Rank';
 export * from './rank/RankInput';
+export * from './rank/RankScopes';
 export * from './room/Room';
 export * from './session/Session';
 export * from './session/SessionInput';

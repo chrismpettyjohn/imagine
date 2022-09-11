@@ -1,9 +1,13 @@
 import {omit} from 'lodash';
 import {JwtService} from '@nestjs/jwt';
 import {SessionArgs} from './session.args';
+import {GetUser} from './get-user.decorator';
 import {PubSub} from 'graphql-subscriptions';
 import {SessionService} from './session.service';
+import {HasSession} from './has-session.decorator';
 import {SessionCreateInput} from './session.input';
+import {UserEntity} from '../database/user.entity';
+import {UnauthorizedException} from '@nestjs/common';
 import {SessionEntity} from '../database/session.entity';
 import {SessionDataloaderService} from './session.dataloader';
 import {SessionRepository} from '../database/session.repository';
@@ -28,13 +32,26 @@ export class SessionResolver {
   }
 
   @Query(() => SessionModel)
-  async session(@Args('id') id: number): Promise<SessionEntity> {
-    return this.sessionDataLoaderService.loadById(id);
+  @HasSession()
+  async session(
+    @Args('id') id: number,
+    @GetUser() user: UserEntity
+  ): Promise<SessionEntity> {
+    const session = await this.sessionDataLoaderService.loadById(id);
+    this.ownsResource(session, user);
+    return session;
   }
 
   @Query(() => [SessionModel])
-  sessions(@Args() sessionArgs: SessionArgs): Promise<SessionEntity[]> {
-    return this.sessionRepo.find(omit(sessionArgs, 'other'), sessionArgs.other);
+  @HasSession()
+  sessions(
+    @Args() sessionArgs: SessionArgs,
+    @GetUser() user: UserEntity
+  ): Promise<SessionEntity[]> {
+    return this.sessionRepo.find(
+      {...omit(sessionArgs, 'other'), userID: user.id!},
+      sessionArgs.other
+    );
   }
 
   @Mutation(() => SessionCreatedModel)
@@ -52,5 +69,11 @@ export class SessionResolver {
   @Subscription(() => SessionModel)
   sessionCreated() {
     return pubSub.asyncIterator('sessionCreated');
+  }
+
+  private ownsResource(session: SessionEntity, authenticatedUser: UserEntity) {
+    if (Number(session.userID) !== Number(authenticatedUser.id)) {
+      throw new UnauthorizedException('');
+    }
   }
 }
