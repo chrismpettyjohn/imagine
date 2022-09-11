@@ -45,8 +45,10 @@ export function CommunityStaffScreen() {
                             </span>
                           </div>
                         </div>
-                        <div className="d-flex">
-                          <i className={user.onlineStatus === UserOnlineStatus.Online ? 'icon-online' : 'icon-offline'} />
+                        <div className="d-flex align-items-center justify-content-center h-100">
+                          <div className="d-flex flex-column">
+                            <div style={{width: 25, height: 25, borderRadius: '100%'}} className={`text align-self-center ${user.onlineStatus === UserOnlineStatus.Online ? 'bg-success' : 'bg-danger'}`} />
+                          </div>
                         </div>
                       </div>
                       <div className="staffMotto">
