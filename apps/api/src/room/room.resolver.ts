@@ -50,6 +50,7 @@ export class RoomResolver {
     const deletedRoom = await this.roomRepo.findOneOrFail({id});
     pubSub.publish('roomDeleted', {roomDeleted: deletedRoom});
     await this.roomRepo.delete({id});
+    await this.roomDataloaderService.clearByID(id);
     return true;
   }
 

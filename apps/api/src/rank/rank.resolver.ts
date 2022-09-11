@@ -77,6 +77,7 @@ export class RankResolver {
         },
       }
     );
+    await this.rankDataloaderService.clearByID(id);
     return true;
   }
 
@@ -85,6 +86,7 @@ export class RankResolver {
     const deletedRank = await this.rankRepo.findOneOrFail({id});
     pubSub.publish('rankDeleted', {rankDeleted: deletedRank});
     await this.rankRepo.delete({id});
+    await this.rankDataloaderService.clearByID(id);
     return true;
   }
 

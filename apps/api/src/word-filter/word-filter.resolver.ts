@@ -67,6 +67,7 @@ export class WordFilterResolver {
     @Args('wordFilterChanges') wordFilterChanges: WordFilterUpdateInput
   ) {
     await this.wordFilterRepo.update({id}, wordFilterChanges);
+    await this.wordFilterDataloaderService.clearByID(id);
     return true;
   }
 
@@ -75,6 +76,7 @@ export class WordFilterResolver {
     const deletedWordFilter = await this.wordFilterRepo.findOneOrFail({id});
     pubSub.publish('wordFilterDeleted', {wordFilterDeleted: deletedWordFilter});
     await this.wordFilterRepo.delete({id});
+    await this.wordFilterDataloaderService.clearByID(id);
     return true;
   }
 

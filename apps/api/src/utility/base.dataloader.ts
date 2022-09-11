@@ -19,4 +19,12 @@ export class BaseDataloaderService<Model> {
 
     return this.dataLoader.loadMany(ids) as any;
   };
+
+  clearByID = (id: number): void => {
+    this.dataLoader.clear(id);
+  };
+
+  clearAll = (): void => {
+    this.dataLoader.clearAll();
+  };
 }

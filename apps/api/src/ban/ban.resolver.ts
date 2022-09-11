@@ -60,6 +60,7 @@ export class BanResolver {
     @Args('banChanges') banChanges: BanUpdateInput
   ) {
     await this.banRepo.update({id}, banChanges);
+    await this.banDataloaderService.clearByID(id);
     return true;
   }
 
@@ -68,6 +69,7 @@ export class BanResolver {
     const deletedBan = await this.banRepo.findOneOrFail({id});
     pubSub.publish('banDeleted', {banDeleted: deletedBan});
     await this.banRepo.delete({id});
+    await this.banDataloaderService.clearByID(id);
     return true;
   }
 

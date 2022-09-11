@@ -52,6 +52,7 @@ export class BadgeResolver {
     @Args('badgeChanges') badgeChanges: BadgeInput
   ) {
     await this.badgeRepo.update({id}, badgeChanges);
+    await this.badgeDataloaderService.clearByID(id);
     return true;
   }
 
@@ -60,6 +61,7 @@ export class BadgeResolver {
     const deletedBadge = await this.badgeRepo.findOneOrFail({id});
     pubSub.publish('badgeDeleted', {badgeDeleted: deletedBadge});
     await this.badgeRepo.delete({id});
+    await this.badgeDataloaderService.clearByID(id);
     return true;
   }
 

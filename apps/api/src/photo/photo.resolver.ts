@@ -57,6 +57,7 @@ export class PhotoResolver {
     const deletedPhoto = await this.photoRepo.findOneOrFail({id});
     pubSub.publish('photoDeleted', {photoDeleted: deletedPhoto});
     await this.photoRepo.delete({id});
+    await this.photoDataloaderService.clearByID(id);
     return true;
   }
 

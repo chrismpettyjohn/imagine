@@ -58,6 +58,7 @@ export class ChatlogResolver {
     const deletedChatlog = await this.chatlogRepo.findOneOrFail({id});
     pubSub.publish('chatlogDeleted', {chatlogDeleted: deletedChatlog});
     await this.chatlogRepo.delete({id});
+    await this.chatlogDataloaderService.clearByID(id);
     return true;
   }
 

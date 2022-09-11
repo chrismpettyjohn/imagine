@@ -141,6 +141,7 @@ export class UserResolver {
     @Args('userChanges') userChanges: UserUpdateInput
   ) {
     await this.userRepo.update({id}, userChanges);
+    await this.userDataloaderService.clearByID(id);
     return true;
   }
 
@@ -149,6 +150,7 @@ export class UserResolver {
     const deletedUser = await this.userRepo.findOneOrFail({id});
     pubSub.publish('userDeleted', {userDeleted: deletedUser});
     await this.userRepo.delete({id});
+    await this.userDataloaderService.clearByID(id);
     return true;
   }
 

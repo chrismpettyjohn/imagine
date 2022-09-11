@@ -35,6 +35,7 @@ export class GroupResolver {
     const deletedGroup = await this.groupRepo.findOneOrFail({id});
     pubSub.publish('groupDeleted', {groupDeleted: deletedGroup});
     await this.groupRepo.delete({id});
+    await this.groupDataloaderService.clearByID(id);
     return true;
   }
 

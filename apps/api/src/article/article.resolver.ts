@@ -87,6 +87,7 @@ export class ArticleResolver {
     @Args('articleChanges') articleChanges: ArticleUpdateInput
   ) {
     await this.articleRepo.update({id}, articleChanges);
+    this.articleDataloaderService.clearByID(id);
     return true;
   }
 
@@ -96,6 +97,7 @@ export class ArticleResolver {
     const deletedArticle = await this.articleRepo.findOneOrFail({id});
     pubSub.publish('articleDeleted', {articleDeleted: deletedArticle});
     await this.articleRepo.delete({id});
+    this.articleDataloaderService.clearByID(id);
     return true;
   }
 
