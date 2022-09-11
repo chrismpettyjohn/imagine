@@ -2,7 +2,6 @@ import DayJS from 'dayjs';
 import {Link, useRoute} from 'wouter';
 import React, {useContext, useEffect} from 'react';
 import {configContext, useArticleFetchByID} from '@imagine-cms/web';
-import {LatestArticlesList} from './latest-articles-list/LatestArticlesList';
 import {LoadingOverlay} from '../../components/loading-overlay/LoadingOverlay';
 import {ArticleCommentsCard} from './article-comments-card/ArticleCommentsCard';
 import {ArticlePostCommentCard} from './article-post-comment-card/ArticlePostCommentCard';
@@ -20,28 +19,46 @@ export function CommunityArticleScreen() {
   }, [params!.articleID]);
 
   return (
-    <main className="position-relative container justify-content-center py-4">
-      <div className="row articles-page">
-        <div className="col-lg-3 col-12 d-none d-lg-block">
-          <LatestArticlesList />
-        </div>
-        <div className="col-lg-9 col-12">
-          <LoadingOverlay loading={loading}>
-            <div className="card" id="article">
-              <div className="card-body">
-                <div id="header" className="mb-3" style={{backgroundPosition: 'center', backgroundImage: `url(${data?.article?.imageURL})`}}>
-                  <div className="avatar" style={{ backgroundImage: `url(https://imager.habboon.pw?figure=${data?.article?.user?.look}&size=m&direction=2&head_direction=2&gesture=sml&action=wav)` }} />
-                  <h6>{data?.article?.name}<br/>
-                  <span>Posted by <Link to={`/profile/${data?.article?.user?.username}`}><a href="#" className="text-white font-weight-bold">{data?.article?.user?.username}</a></Link> on the <a href="#" className="text-white font-weight-bold">{DayJS(data?.article?.createdAt).format(config!.dateFormat)}</a></span></h6>
+    <LoadingOverlay loading={loading}>
+      <div className="articleComponent">
+        <div className="row">
+          <div className="col-md-8">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="card">
+                  <img src={data?.article?.imageURL} className="card-img" />
+                  <div className="card-header">
+                    <div className="float-lg-start">
+                      <img src="/assets/clock.gif" />
+                      <span>{DayJS(data?.article?.createdAt).format(config!.dateFormat)}</span>
+                    </div>
+                    <div className="float-lg-end" style={{fontWeight: 500}}>
+                      <a className="" href="#"  target="_self">
+                        {data?.article?.user?.username}
+                      </a>
+                    </div>
+                  </div>
+                  <div className="card-body position-absolute text-white">
+                    <h5>{data?.article?.name}</h5>
+                    <span>{data?.article?.description}</span>
+                  </div>
+                  <div className="card-body">
+                    {data?.article?.content}
+                  </div>
                 </div>
-                <p className="content">{data?.article?.content}</p>
               </div>
             </div>
-            <ArticlePostCommentCard articleID={articleID} onPost={newComment => console.log(newComment)} />
-            <ArticleCommentsCard articleID={articleID} />
-          </LoadingOverlay>
+          </div>
+          <div className="col-md-4">
+            <div className="mb-4">
+              <ArticleCommentsCard articleID={articleID} />
+            </div>
+            <div className="mb-4">
+              <ArticlePostCommentCard articleID={articleID} onPost={newComment => console.log(newComment)} />
+            </div>
+          </div>
         </div>
       </div>
-    </main>
+    </LoadingOverlay>
   )
 }

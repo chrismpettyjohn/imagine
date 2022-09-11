@@ -16,35 +16,38 @@ export function ArticleCommentsCard({articleID}: ArticleCommentsCardProps) {
 
   return (
     <LoadingOverlay loading={loading}>
-      <div className="card mb-0" id="comments">
-        <div className="card-body">
-          <h5 className="silver">Comments ({articleComments.length})</h5>
-          {
-            articleComments.length === 0 && <p>No comments found, be the first!</p>
-          }
-          {
-            articleComments.map(articleComment => (
-              <div className="card mb-0" key={`article_comment_${articleComment.id!}`}>
-                <div className="card-body">
-                  <div className="row align-items-center">
-                    <div className="col-3">
-                      <div className="avatar orange">
-                        <img src={`https://imager.habboon.pw?figure=${articleComment.user?.look}&size=m&direction=3&head_direction=3&gesture=sml&headonly=1`} loading="lazy" />
-                      </div>
-                    </div>
-                    <div className="col-9">
-                      <p className="mb-0">
-                        <Link to={`/profile/${articleComment.user?.username}`}><a href="#">{articleComment.user?.username}</a></Link> <small className="float-right text-muted">{DayJS(articleComment.createdAt).fromNow()}</small></p>
-                      <p className="text mb-0">
-                        {articleComment.comment}
-                      </p>
-                    </div>
-                  </div>
+      <div className="card">
+        <div className="card-header">
+          <div className="card-header-title-container d-flex">
+            <div className="card-header-titles">
+              <div className="card-header-title">Comments</div>
+              <span className="card-header-subtitle"></span></div>
+            </div>
+        </div>
+        {
+          articleComments?.map(articleComment => (
+            <div className="card-body oddeven m-0 p-0" key={`article_comment_${articleComment.id}`}>
+              <div className="author">
+                <div className="avatar">
+                  <img className="avatar avatar-m mt-4" src={`https://www.habbo.com/habbo-imaging/avatarimage?figure=${articleComment.user?.look}&head_direction=2&direction=2&gesture=sml&size=m&headonly=0`} />
+                </div>
+                <div className="info">
+              <span className="username">
+                <Link to={`/profiles/${articleComment.user?.username}`}>{articleComment.user?.username}</Link>
+              </span>
+                  <span>
+                    {articleComment.comment}
+              </span>
                 </div>
               </div>
-            ))
-          }
-        </div>
+            </div>
+          ))
+        }
+        {
+          articleComments?.length === 0 && (
+            <div className="card-body">There are no comments</div>
+          )
+        }
       </div>
     </LoadingOverlay>
   )

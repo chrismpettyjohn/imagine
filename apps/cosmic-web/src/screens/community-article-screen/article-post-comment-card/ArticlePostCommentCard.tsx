@@ -1,6 +1,6 @@
 import {toast} from 'react-toastify';
-import React, {SyntheticEvent, useEffect, useState} from 'react';
 import {useArticleCommentCreate} from '@imagine-cms/web';
+import React, {SyntheticEvent, useEffect, useState} from 'react';
 import {ArticlePostCommentCardProps} from './ArticlePostCommentCard.types';
 
 export function ArticlePostCommentCard({articleID, onPost}: ArticlePostCommentCardProps) {
@@ -33,19 +33,15 @@ export function ArticlePostCommentCard({articleID, onPost}: ArticlePostCommentCa
   }
 
   return (
-    <div className="card">
-      <div className="card-body">
-        <h5 className="silver">Post a comment...</h5>
-        <form onSubmit={onSubmit}>
-          <div className="form-group">
-            <label htmlFor="comment" className="sr-only">Comment</label>
-            <textarea rows={3} id="comment" className="form-control" value={comment} onChange={e => setComment(e?.target?.value ?? '')} />
-          </div>
-          <div className="form-group mb-0">
-            <button className="btn btn-primary btn-block" type="submit">Post</button>
-          </div>
-        </form>
+    <form onSubmit={onSubmit}>
+      <div className="card">
+        <div className="card-body p-0 m-0 bottom-0">
+          <textarea rows={3} className="p-2 w-100 border-0" value={comment} onChange={e => setComment(e?.target?.value ?? '')} placeholder="Post your comment here" />
+        </div>
+        <div className="card-footer p-0 m-0">
+          <button className="btn btn-success w-100" type="submit">React!</button>
+        </div>
       </div>
-    </div>
+    </form>
   )
 }
