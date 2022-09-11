@@ -58,6 +58,7 @@ type UserModel {
   showOnlineStatus: UserShowOnlineStatus
   vipStatus: UserVipStatus
   sessions: [SessionModel!]
+  ipLast: String!
 }
 
 enum UserGender {

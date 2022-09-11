@@ -1,4 +1,4 @@
-import {omit, now} from 'lodash';
+import {now, omit} from 'lodash';
 import {UserArgs} from './user.args';
 import {UserModel} from './user.model';
 import {PubSub} from 'graphql-subscriptions';
@@ -7,19 +7,23 @@ import {DEFAULT_USER_VALUES} from './user.constant';
 import {UserDataloaderService} from './user.dataloader';
 import {UserRepository} from '../database/user.repository';
 import {RankRepository} from '../database/rank.repository';
+import {HasSession} from '../session/has-session.decorator';
 import {UserCreateInput, UserUpdateInput} from './user.input';
 import {SessionRepository} from '../database/session.repository';
 import {forwardRef, Inject, UnauthorizedException} from '@nestjs/common';
 import {
   Args,
   Mutation,
+  Parent,
   Query,
+  ResolveField,
+  ResolveProperty,
   Resolver,
   Subscription,
-  ResolveField,
-  Parent,
 } from '@nestjs/graphql';
 import {RankModel} from '../rank/rank.model';
+import {GetUser} from '../session/get-user.decorator';
+import {UserOnlineStatus, UserShowOnlineStatus} from '@imagine-cms/types';
 
 const pubSub = new PubSub();
 
@@ -33,6 +37,70 @@ export class UserResolver {
     private readonly sessionRepo: SessionRepository,
     private readonly userDataloaderService: UserDataloaderService
   ) {}
+
+  @ResolveProperty('email')
+  @HasSession()
+  email(
+    @Parent() {id, email}: UserEntity,
+    @GetUser() user: UserEntity
+  ): string {
+    this.ownsResource(id, user.id);
+    return email;
+  }
+
+  @ResolveProperty('gameSSO')
+  @HasSession()
+  gameSSO(
+    @Parent() {id, gameSSO}: UserEntity,
+    @GetUser() user: UserEntity
+  ): string {
+    this.ownsResource(id, user.id);
+    return gameSSO;
+  }
+
+  @ResolveProperty('ipLast')
+  @HasSession()
+  ipLast(
+    @Parent() {id, ipLast}: UserEntity,
+    @GetUser() user: UserEntity
+  ): string {
+    this.ownsResource(id, user.id);
+    return ipLast;
+  }
+
+  @ResolveProperty('ipRegisteredWith')
+  @HasSession()
+  ipRegisteredWith(
+    @Parent() {id, ipRegisteredWith}: UserEntity,
+    @GetUser() user: UserEntity
+  ): string {
+    this.ownsResource(id, user.id);
+    return ipRegisteredWith;
+  }
+
+  @ResolveProperty('lastOnline')
+  @HasSession()
+  lastOnline(
+    @Parent() {id, lastOnline, showOnlineStatus}: UserEntity,
+    @GetUser() user: UserEntity
+  ): number | null {
+    if (showOnlineStatus === UserShowOnlineStatus.Hidden) {
+      return null;
+    }
+    return lastOnline;
+  }
+
+  @ResolveProperty('onlineStatus')
+  @HasSession()
+  onlineStatus(
+    @Parent() {id, onlineStatus, showOnlineStatus}: UserEntity,
+    @GetUser() user: UserEntity
+  ): string {
+    if (showOnlineStatus === UserShowOnlineStatus.Hidden) {
+      return UserOnlineStatus.Offline;
+    }
+    return onlineStatus;
+  }
 
   @ResolveField('rank', () => RankModel)
   getRank(@Parent() {rankID}: UserEntity): Promise<RankModel> {
