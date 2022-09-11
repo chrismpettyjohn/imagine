@@ -40,13 +40,13 @@ export function CommunityLeaderboardsScreen() {
     <main className="position-relative container justify-content-center py-4">
       <div className="row">
         <div className="col-lg-3 col-md-6 col-12">
-          <LeaderboardsCard title="Most Credits" value={u => `${Number(u.credits ?? 0).toLocaleString()} Credits`} query={FETCH_MOST_CREDITS} />
+          <LeaderboardsCard title="Most Credits" value={u => `${Number(u.credits ?? 0).toLocaleString()}`} query={FETCH_MOST_CREDITS} />
         </div>
         <div className="col-lg-3 col-md-6 col-12">
-          <LeaderboardsCard title="Most Pixels" value={u => `${Number(u.activityPoints ?? 0).toLocaleString()} Pixels`} query={FETCH_MOST_ACTIVITY_POINTS} />
+          <LeaderboardsCard title="Most Pixels" value={u => `${Number(u.activityPoints ?? 0).toLocaleString()}`} query={FETCH_MOST_ACTIVITY_POINTS} />
         </div>
         <div className="col-lg-3 col-md-6 col-12">
-        <LeaderboardsCard title="Most VIP Points" value={u => `${Number(u.vipPoints ?? 0).toLocaleString()} VIP Points`} query={FETCH_MOST_VIP_POINTS} />
+        <LeaderboardsCard title="Most VIP Points" value={u => `${Number(u.vipPoints ?? 0).toLocaleString()}`} query={FETCH_MOST_VIP_POINTS} />
         </div>
       </div>
     </main>

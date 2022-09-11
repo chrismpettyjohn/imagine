@@ -11,7 +11,9 @@ export function NavDropdown({label, links}: NavDropdownProps) {
 
   const onBlur = () => {
     if (isOpen) {
-      setIsOpen(false);
+      setTimeout(() => {
+        setIsOpen(false);
+        }, 150);
     }
   }
 

@@ -4,7 +4,7 @@ import {UseQueryResponse, useRunQuery} from './run-query.hook';
 
 const FETCH_STAFF_RANKS = gql`
   query {
-    ranks {
+    ranks(other: { order: {id: "DESC"}}) {
       id
       name
       badgeCode

@@ -1,7 +1,9 @@
-import React, {useEffect} from 'react';
-import {useFetchStaffRanks} from '@imagine-cms/web';
+import React, {useContext, useEffect} from 'react';
+import {UserOnlineStatus} from '@imagine-cms/types';
+import {configContext, useFetchStaffRanks} from '@imagine-cms/web';
 
 export function CommunityStaffScreen() {
+  const {config} = useContext(configContext);
   const {runQuery, loading, data} = useFetchStaffRanks();
 
   useEffect(() => {
@@ -9,80 +11,66 @@ export function CommunityStaffScreen() {
   }, []);
 
   return (
-    <main className="position-relative container justify-content-center py-4">
-      <div className="row">
-        <div className="col-lg-8 col-12">
-          <div className="col-12">
-            <div id="staff-banner">
-              <img
-                src="https://imager.habboon.pw/?figure=sh-3035-92.hr-5347-31.ch-3013-92.ca-4037-68-92.hd-629-3.lg-720-77.he-3974-1408.ha-3298-77-92&size=m&direction=3&head_direction=3&gesture=sml&headonly=1"
-                className="staff" />
-            </div>
-          </div>
-          { loading && (
-            <>
-              <i className="fa fa-spinner fa-spin fa-2x" />
-              <h2>Loading Staff...</h2>
-            </>
-          )}
-          {
-            data?.ranks?.map(rank => (
-              <div className="row" key={`staff_rank_${rank.id}`}>
-                <div className="col-lg-12">
-                  <div className="card">
-                    <div className="card-body">
-                      <h5 className="silver" style={{backgroundColor: '#002FA2', textShadow: 'none', color: '#fff', borderRadius: 5, marginBottom: 8}}>
-                        {rank.name}
-                      </h5>
-                      <img src={`https://assets.habboon.pw/c_images/album1584/${rank.badgeCode}.gif`} title={rank.name} style={{position: 'absolute', top: 15, right: 25 }}/>
-                      <div className="row no-gutters">
-                        <div className="col-lg-6 col-12">
-                          <div className="row no-gutters">
-                            <div className="col-12">
-                              <div className="staff-block ">
-                                <div className="row no-gutters align-items-center">
-                                  <div className="col-2 text-center">
-                                    <img
-                                      src="https://imager.habboon.pw/?figure=sh-3035-92.hr-5347-31.ch-3013-92.ca-4037-68-92.hd-629-3.lg-720-77.he-3974-1408.ha-3298-77-92&size=m&direction=3&head_direction=3&gesture=sml&headonly=1"
-                                      className="avatar  offline " alt="administrator" />
-                                  </div>
-                                  <div className="col-10">
-                                    <strong>{rank.name}</strong><br />
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+    <div id="staffComponent" className="">
+      {
+        data?.ranks?.map(rank => (
+          <div className="row" key={`rank_${rank.id}`}>
+            <div className="rank col-md-12">
+              <div className="card">
+                <div className="card-header card-header-right-image moving">
+                  <div className="card-header-title-container ng-star-inserted">
+                    <div className="background-gray card-header-icon-container">
+                      <img src={`${config!.groupBadgeURL!}/${rank.badgeCode}.png`} />
+                    </div>
+                    <div className="card-header-titles ng-star-inserted">
+                      <div className="card-header-title mt-2"><h5>{rank.name}</h5></div>
                     </div>
                   </div>
                 </div>
               </div>
-            ))
-          }
-        </div>
-        <div className="col-lg-4 col-12">
-          <div className="card">
-            <div className="card-body">
-              <h5 className="silver">About Habboon Staff</h5>
-              <p className="mb-0">The Habboon staff team is one big happy family, each staff member has a different role
-                and duties to fulfill. <br/><br/>Most of our team usually consists of players that have been around Boon
-                  for quite a while, but this doesn't mean we only recruit old  known players, we recruit those who
-                  shine out to us!</p>
             </div>
+            {
+              rank.users?.map(user => (
+                <div className="col-md-4 mt-4" key={`rank_user_${user.id}`}>
+                  <div className="card">
+                    <div className="card-content no-spacing">
+                      <div className="staffUser d-flex justify-content-between align-content-center">
+                        <div className="align-content-center d-flex">
+                          <div className="avatar">
+                            <img className="avatar avatar-m" src={`https://www.habbo.com/habbo-imaging/avatarimage?figure=${user.look}&head_direction=3&direction=2&crr=3&gesture=sml&size=m&headonly=0`} />
+                          </div>
+                          <div className="information d-flex flex-column">
+                            <span className="username">
+                              {user.username}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="d-flex">
+                          <i className={user.onlineStatus === UserOnlineStatus.Online ? 'icon-online' : 'icon-offline'} />
+                        </div>
+                      </div>
+                      <div className="staffMotto">
+                        {user.motto}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            }
+            {
+              !rank.users && (
+                <div className="col-12 mt-4">
+                  <div className="card">
+                    <div className="card-content text-center">
+                      <p>There are no users in this role</p>
+                    </div>
+                  </div>
+                </div>
+              )
+            }
           </div>
-          <div className="card">
-            <div className="card-body">
-              <h5 className="silver">How do I join the team?</h5>
-              <p className="mb-0">Every couple of months staff applications may open up via a <a
-                href="https://www.habboon.pw/articles" target="_blank" rel="noreferrer">news article</a> giving users a chance to join
-                the team, though we also like to handpick users that we feel are worthy of a trial. Things that we look
-                out for are professionalism, a clear record, friendly  a frequent event host.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
+        ))
+      }
+    </div>
   )
 }

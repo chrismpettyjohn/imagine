@@ -13,37 +13,28 @@ export function LeaderboardsCard({title, value, query}: LeaderboardsCardProps) {
 
   return (
     <div className="card">
-      <div className="card-body">
-        <h5 className="silver">
-          {title}
-        </h5>
-        {
-          loading && (
-            <>
-              <i className="fa fa-spinner fa-spin fa-2x" />
-              <h2>Loading...</h2>
-            </>
-          )
-        }
-        <table className="leaderboard-table" width="100%">
-          <tbody>
+      <div className="card-header">
+        <div className="card-header-title-container">
+          <div className="card-header-title">{title}</div>
+        </div>
+      </div>
+      <div className="card-content no-spacing">
+        <div className="highscore-row">
           {
-            data?.users?.map(user => (
-              <tr key={`user_${user.id}`} style={{backgroundColor: 'f8f9fa'}}>
-                <td width="25%">
-                  <img src={`https://imager.habboon.pw?figure=${user.look}&size=m&direction=2&head_direction=2&gesture=sml&headonly=1`} />
-                </td>
-                <td width="75%">
-                  <Link to={`/profiles/${user.username}`}>
-                    <b>{user.username}</b>
-                  </Link>
-                  <b /> <br />{value(user)}
-                </td>
-              </tr>
+            data?.users?.map((user, index) => (
+              <div className="justify-between top-users-item no-spacing ng-star-inserted highscore" key={`leaderboard_${title}_user_${user.id}`}>
+                <span className="ranking-item-nth">{index+1}</span>
+                <div className="self-baseline">
+                  <img className="avatar avatar-m" src={`https://www.habbo.com/habbo-imaging/avatarimage?figure=${user.look}&head_direction=3&direction=3&gesture=sml&size=m&headonly=0`} />
+                </div>
+                <a href="#">{user.username}</a>
+                <span className="amount text-right">
+                  {value(user)}
+                </span>
+              </div>
             ))
           }
-          </tbody>
-        </table>
+        </div>
       </div>
     </div>
   )
