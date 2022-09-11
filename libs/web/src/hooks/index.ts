@@ -19,6 +19,7 @@ export * from './fetch-staff-ranks.hook';
 export * from './fetch-users.hook';
 export * from './fetch-word-filter.hook';
 export * from './find-user-by-id.hook';
+export * from './photo-fetch-latest.hook';
 export * from './run-mutation.hook';
 export * from './run-query.hook';
 export * from './search-data.hook';

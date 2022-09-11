@@ -21,7 +21,8 @@
     "@imagine-cms/web": "*",
     "dayjs": "1.11.5",
     "react-loading-overlay": "1.0.1",
-    "react-toastify": "7.0.4"
+    "react-toastify": "7.0.4",
+    "react-multi-carousel": "2.8.2"
   },
   "devDependencies": {
     "@types/node": "15.12.4",

@@ -3,6 +3,7 @@ import { Switch, Route } from 'wouter';
 import {MeScreen} from './me-screen/MeScreen';
 import {LoginScreen} from './login-screen/LoginScreen';
 import {LogoutScreen} from './logout-screen/LogoutScreen';
+import {GalleryScreen} from './gallery-screen/GalleryScreen';
 import {LandingScreen} from './landing-screen/LandingScreen';
 import {RegisterScreen} from './register-screen/RegisterScreen';
 import {CommunityScreen} from './community-screen/CommunityScreen';
@@ -56,6 +57,10 @@ const SITE_ROUTES: Array<{path: string, view: any, }> = [
   {
     path: '/community/articles/:articleID',
     view: CommunityArticleScreen,
+  },
+  {
+    path: '/gallery',
+    view: GalleryScreen,
   },
 ]
 
