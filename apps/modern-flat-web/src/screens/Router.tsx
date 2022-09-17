@@ -6,6 +6,7 @@ import {LogoutScreen} from './logout-screen/LogoutScreen';
 import {LandingScreen} from './landing-screen/LandingScreen';
 import {RegisterScreen} from './register-screen/RegisterScreen';
 import {PageNotFoundScreen} from './page-not-found-screen/PageNotFoundScreen';
+import {CommunityArticleScreen} from './community-article-screen/CommunityArticleScreen';
 
 const SITE_ROUTES: Array<{path: string, view: any, }> = [
   {
@@ -28,6 +29,10 @@ const SITE_ROUTES: Array<{path: string, view: any, }> = [
     path: '/me',
     view: MeScreen,
   },
+  {
+    path: '/community/news/:articleID',
+    view: CommunityArticleScreen,
+  }
 ]
 
 export function Router() {
