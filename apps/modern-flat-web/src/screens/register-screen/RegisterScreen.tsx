@@ -1,12 +1,24 @@
+import './RegisterScreen.css';
+import {useLocation} from 'wouter';
+import {UserGender} from '@imagine-cms/types';
+import {GenderSelector} from './gender-selector/GenderSelector';
 import React, {SyntheticEvent, useEffect, useState} from 'react';
 import {GuestGuard} from '../../components/guest-guard/GuestGuard';
+import {BirthdaySelector} from './birthday-selector/BirthdaySelector';
 import {LoadingOverlay} from '../../components/loading-overlay/LoadingOverlay';
+import {InteractiveWizard} from '../../components/interactive-wizard/InteractiveWizard';
 import {useSignInWithUsernameAndPassword, useUserCreateMutation} from '@imagine-cms/web';
+import {InteractiveWizardStep} from '../../components/interactive-wizard/InteractiveWizard.types';
+import {UsernameInput} from './username-input/UsernameInput';
+import {EmailInput} from './email-input/EmailInput';
 
 export function RegisterScreen() {
+  const [location, setLocation] = useLocation();
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [gender, setGender] = useState<UserGender>();
+  const [birthday, setBirthday] = useState<Date>();
   const [passwordAgain, setPasswordAgain] = useState('');
   const createUser = useUserCreateMutation(username, email, password);
   const {tryLogin} = useSignInWithUsernameAndPassword(username, password);
@@ -22,50 +34,64 @@ export function RegisterScreen() {
 
   const isLoading = createUser.loading;
 
-  const onCreateUser = (event: SyntheticEvent) => {
-    event.preventDefault();
+  const onCreateUser = () => {
     if (!canCreateUser || createUser.loading) {
       return;
     }
     createUser.runMutation();
   }
 
-  return (
-    <GuestGuard>
-      <main className="position-relative container justify-content-center py-4">
-        <div className="row justify-content-center">
-          <div className="col-lg-6 col-12">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="silver">Register</h5>
-                <LoadingOverlay loading={isLoading}>
-                  <form className="form" onSubmit={onCreateUser}>
-                    <div className="form-group">
-                      <label htmlFor="username">Username</label>
-                      <input type="text" name="username" value={username} onChange={e => setUsername(e?.currentTarget?.value ?? '')} className="form-control" id="username" placeholder="Username" />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="email">Email</label>
-                      <input type="text" name="email" value={email} onChange={e => setEmail(e?.currentTarget?.value ?? '')} className="form-control" id="email" placeholder="Email" />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="password">Password</label>
-                      <input type="password" name="password" value={password} onChange={e => setPassword(e?.currentTarget?.value ?? '')} className="form-control" placeholder="Password" id="password" />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="password-confirmation">Confirm Password</label>
-                      <input type="password" name="password_confirmation" value={passwordAgain} onChange={e => setPasswordAgain(e?.currentTarget?.value ?? '')} className="form-control" id="password-confirmation" placeholder="Password again"  />
-                    </div>
-                    <div className="form-group mb-0">
-                      <button className="btn btn-primary btn-block" disabled={!canCreateUser} type="submit">Join now</button>
-                    </div>
-                  </form>
-                </LoadingOverlay>
-              </div>
+  const REGISTER_STEPS: InteractiveWizardStep[] = [
+    {
+      label: 'Gender and Date of Birth',
+      view: (
+        <>
+          <GenderSelector gender={gender} onChange={setGender} />
+          <BirthdaySelector birthday={birthday} onChange={setBirthday} />
+        </>
+      ),
+      isComplete: () => gender !== undefined && birthday !== undefined,
+    },
+    {
+      label: 'Username and Email Address',
+      view: (
+        <>
+          <UsernameInput username={username} onChange={setUsername} />
+          <EmailInput email={email} onChange={setEmail} />
+        </>
+      ),
+      isComplete: () => username !== '' && email !== '',
+    },
+    {
+      label: 'Change your Password',
+      view: (
+        <>
+          <div className="row">
+            <div className="col-12">
+              <label>Password</label>
+              <input type="password" value={password} onChange={e => setPassword(e.target.value ?? '')} />
             </div>
           </div>
-        </div>
-      </main>
+          <div className="row">
+            <div className="col-12">
+              <label>Password Again</label>
+              <input type="password" value={passwordAgain} onChange={e => setPasswordAgain(e.target.value ?? '')} />
+            </div>
+          </div>
+        </>
+      ),
+      isComplete: () => password !== '' && password === passwordAgain
+    }
+  ]
+
+  return (
+    <GuestGuard redirect>
+      <div className="main" style={{marginTop: 100}}>
+        <div className="logo" />
+        <LoadingOverlay loading={isLoading}>
+          <InteractiveWizard steps={REGISTER_STEPS} onQuit={() => setLocation('/me')} onFinish={onCreateUser} />
+        </LoadingOverlay>
+      </div>
     </GuestGuard>
   )
 }

@@ -1,11 +1,8 @@
 import React from 'react';
-import DayJS from 'dayjs';
+import 'react-dates/initialize';
 import ReactDOM from 'react-dom';
 import {ImagineWeb} from './ImagineWeb';
-import "react-multi-carousel/lib/styles.css";
+import 'react-dates/lib/css/_datepicker.css';
 import 'react-toastify/dist/ReactToastify.css';
-import RelativeTime from 'dayjs/plugin/relativeTime';
-
-DayJS.extend(RelativeTime);
 
 ReactDOM.render(<ImagineWeb />, document.getElementById('root'));
