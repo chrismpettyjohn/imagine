@@ -32,7 +32,7 @@ export function CommunityArticleScreen() {
                   <div className="desc">{data?.article?.description}
                   </div>
                 </div>
-                <div className="png20" dangerouslySetInnerHTML={{__html: data?.article?.content}} />
+                <div className="png20" dangerouslySetInnerHTML={{__html: data?.article?.content ?? ''}} />
             </div>
             </LoadingOverlay>
           </div>
