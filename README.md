@@ -4,15 +4,26 @@
 Join our Discord for updates, support and more!
 https://discord.gg/rkxzpw9h5F
 
-## 2. Getting Started
+## 2. Themes
+* Boon Theme
+  * https://www.youtube.com/watch?v=yUczaZVGSmQ
+  * Designed by boon.pw
+* Cosmic V2 Theme
+  * https://www.youtube.com/watch?v=qVp6vYGmZDg
+  * Designed by Raizer
+* Modern Flat Theme
+  * https://www.youtube.com/watch?v=wjEhNXHAGVg
+  * Designed by Sonay
 
-### 2A. Prerequisites
+## 3. Getting Started
+
+### 3A. Prerequisites
 * Unix (or Mac)
     * If you're on Windows, please use [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install)
 * [git-cli](https://git-scm.com/downloads)
 * [NodeJS LTS](https://nodejs.org/en/download/)
 
-### 2B. Instructions
+### 3B. Instructions
 1. Install Yarn Globally
     * `npm i yarn -g`
 2. Clone the Git Repo
