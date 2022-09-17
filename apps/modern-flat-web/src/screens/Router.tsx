@@ -35,6 +35,10 @@ const SITE_ROUTES: Array<{path: string, view: any, }> = [
     view: CommunityPhotosScreen,
   },
   {
+    path: '/community/news',
+    view: CommunityArticleScreen,
+  },
+  {
     path: '/community/news/:articleID',
     view: CommunityArticleScreen,
   }
