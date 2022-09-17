@@ -1,0 +1,298 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900|Roboto:300,400,500,700,900";
+@import "https://pro-next.fontawesome.com/releases/v5.6.3/css/all.css";
+body {
+  background: #94c1d3;
+  color: #424251;
+  font: 500 13px "Poppins", "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.main {
+  position: relative;
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 150px;
+}
+
+.logo {
+  background: url(../img/bobbalogo_big_whiteR_beta.png);
+  height: 73px;
+  width: 197px;
+  margin: 30px auto;
+  -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -o-pixelated;
+      image-rendering: pixelated;
+}
+
+.content-box {
+  background: #fff;
+  border-radius: 5px;
+  color: #424251;
+  -webkit-box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.005);
+          box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.005);
+  position: relative;
+}
+
+.content-box .title-box {
+  position: relative;
+  border-bottom: 1px solid rgba(46, 58, 63, 0.02);
+  padding: 20px;
+}
+
+.content-box .title-box .title {
+  font: 600 13.5px "Poppins", "Roboto", sans-serif;
+  float: left;
+}
+
+.content-box .title-box .steps {
+  font: 500 12px "Poppins", "Roboto", sans-serif;
+  color: rgba(46, 58, 63, 0.7);
+  text-align: right;
+}
+
+.content-box .png20 {
+  padding: 20px;
+}
+
+.content-box .alert {
+  background: #ef5350;
+  color: #fff;
+  font: 600 12px "Poppins", "Roboto", sans-serif;
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 0 0 20px 0;
+}
+
+.content-box .genders {
+  width: 270px;
+  margin: 0 auto;
+}
+
+.content-box .genders .male {
+  background: no-repeat center center;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  float: left;
+  margin: 0 0 20px 0;
+  cursor: pointer;
+}
+
+.content-box .genders .male.selected {
+  -webkit-filter: drop-shadow(4px 4px 0 #94c1d3) drop-shadow(-4px 0px 0 #94c1d3) drop-shadow(0 -4px 0 #94c1d3);
+          filter: drop-shadow(4px 4px 0 #94c1d3) drop-shadow(-4px 0px 0 #94c1d3) drop-shadow(0 -4px 0 #94c1d3);
+}
+
+.content-box .genders .male input[type=radio] {
+  display: none !important;
+}
+
+.content-box .genders .female {
+  background: no-repeat center center;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  float: right;
+  margin: 0 0 20px 0;
+  cursor: pointer;
+}
+
+.content-box .genders .female.selected {
+  -webkit-filter: drop-shadow(4px 4px 0 #94c1d3) drop-shadow(-4px 0px 0 #94c1d3) drop-shadow(0 -4px 0 #94c1d3);
+          filter: drop-shadow(4px 4px 0 #94c1d3) drop-shadow(-4px 0px 0 #94c1d3) drop-shadow(0 -4px 0 #94c1d3);
+}
+
+.content-box .genders .female input[type=radio] {
+  display: none !important;
+}
+
+.content-box .desc {
+  font: 600 11px "Poppins", "Roboto", sans-serif;
+  color: rgba(66, 66, 81, 0.6);
+  margin: 0 0 20px 0;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.content-box .desc:last-of-type {
+  margin: 0 0 40px 0;
+  padding: 0;
+  border-bottom: none;
+}
+
+.content-box label {
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  margin: 0 0 20px 0;
+}
+
+.content-box select {
+  background: #fcfcfc;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  outline: none;
+  font: 600 12px "Poppins", "Roboto", sans-serif;
+  color: rgba(66, 66, 81, 0.7);
+  margin: 0 0 10px 0;
+}
+
+.content-box select::-webkit-input-placeholder {
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  color: rgba(66, 66, 81, 0.5);
+}
+
+.content-box select:-ms-input-placeholder {
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  color: rgba(66, 66, 81, 0.5);
+}
+
+.content-box select::-ms-input-placeholder {
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  color: rgba(66, 66, 81, 0.5);
+}
+
+.content-box select::placeholder {
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  color: rgba(66, 66, 81, 0.5);
+}
+
+.content-box input[type=text], .content-box input[type=password] {
+  background: #fcfcfc;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  outline: none;
+  font: 600 12px "Poppins", "Roboto", sans-serif;
+  color: rgba(66, 66, 81, 0.7);
+  margin: 0 0 10px 0;
+}
+
+.content-box input[type=text]::-webkit-input-placeholder, .content-box input[type=password]::-webkit-input-placeholder {
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  color: rgba(66, 66, 81, 0.5);
+}
+
+.content-box input[type=text]:-ms-input-placeholder, .content-box input[type=password]:-ms-input-placeholder {
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  color: rgba(66, 66, 81, 0.5);
+}
+
+.content-box input[type=text]::-ms-input-placeholder, .content-box input[type=password]::-ms-input-placeholder {
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  color: rgba(66, 66, 81, 0.5);
+}
+
+.content-box input[type=text]::placeholder, .content-box input[type=password]::placeholder {
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  color: rgba(66, 66, 81, 0.5);
+}
+
+.btn {
+  border-radius: 5px;
+  font: 600 12px "Poppins", "Roboto", sans-serif;
+  text-decoration: none;
+  color: #fff;
+  -webkit-transition: background .2s;
+  transition: background .2s;
+  padding: 10px 20px;
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn.big {
+  padding: 15px 40px;
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  text-transform: uppercase;
+}
+
+.btn.green {
+  background: #52be80;
+}
+
+.btn.green:hover {
+  background: #57ca89;
+}
+
+.btn.orange {
+  background: #ffca28;
+}
+
+.btn.orange:hover {
+  background: #ffe082;
+}
+
+.btn.red {
+  background: #ef5350;
+}
+
+.btn.red:hover {
+  background: #e57373;
+}
+
+.btn.disabled {
+  background: #cfd8dc;
+  cursor: default;
+}
+
+.btn.disabled:hover {
+  background: #cfd8dc;
+}
+
+.btn.login-button {
+  position: relative;
+  float: right;
+}
+
+.btn.register-button {
+  position: relative;
+  width: 100%;
+  float: left;
+}
+
+.btn.back-register {
+  float: left;
+  position: relative;
+  padding: 10px 20px;
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  text-transform: uppercase;
+}
+
+.btn.next-register {
+  float: right;
+  position: relative;
+  padding: 10px 20px;
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  text-transform: uppercase;
+}
+
+.btn.check-in-header {
+  position: absolute;
+  right: 0;
+  top: 60px;
+}
+
+.btn.news-slider-btn {
+  position: absolute;
+  right: 60px;
+  top: 14px;
+}
+
+.btn.news-card-btn {
+  position: absolute;
+  right: 20px;
+  bottom: 14px;
+}

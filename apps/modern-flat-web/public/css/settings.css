@@ -1,0 +1,182 @@
+.alert {
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 0 0 14px 0;
+  color: #fff;
+  text-align: center;
+}
+
+.alert.success {
+  background: #52be80;
+}
+
+.alert.failed {
+  background: #e57373;
+}
+
+label {
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  display: block;
+}
+
+.desc {
+  font: 500 12px "Poppins", "Roboto", sans-serif;
+  color: rgba(66, 66, 81, 0.6);
+  margin: 0 0 40px 0;
+  display: inline-block;
+}
+
+.btnset {
+  float: right;
+  position: relative;
+  top: -20px;
+  margin: 0 0 30px 0;
+}
+
+.btnset:last-child {
+  margin: 0 0 50px 0;
+}
+
+.ui-button {
+  width: 100px;
+  font: 300 13px "Poppins", "Roboto", sans-serif;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.ui-state-active {
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+  border: 1px solid #52be80;
+  background: #57ca89;
+  font-weight: normal;
+  color: #ffffff;
+}
+
+.save {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+#settings-navigation-box {
+  background: #fff;
+  border-radius: 5px;
+  color: #424251;
+  -webkit-box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.005);
+          box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.005);
+  position: relative;
+  margin: 0 0 15px;
+  padding: 20px;
+  -webkit-transition: background .2s, color .2s;
+  transition: background .2s, color .2s;
+  display: block;
+  height: 80px;
+}
+
+#settings-navigation-box .icon {
+  font-size: 32px;
+  float: left;
+  margin: 4px 0 0 0;
+  -webkit-transition: color .2s;
+  transition: color .2s;
+}
+
+#settings-navigation-box .settings-title {
+  position: absolute;
+  left: 70px;
+  top: 22px;
+  display: block;
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  -webkit-transition: color .2s;
+  transition: color .2s;
+}
+
+#settings-navigation-box .settings-desc {
+  position: absolute;
+  left: 70px;
+  top: 42px;
+  display: block;
+  font: 500 12px "Poppins", "Roboto", sans-serif;
+  color: rgba(66, 66, 81, 0.6);
+  -webkit-transition: color .2s;
+  transition: color .2s;
+}
+
+#settings-navigation-box:hover {
+  background: #424251;
+}
+
+#settings-navigation-box:hover .icon {
+  color: #fff;
+}
+
+#settings-navigation-box:hover .settings-title {
+  color: #fff;
+}
+
+#settings-navigation-box:hover .settings-desc {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+#settings-navigation-box.selected {
+  background: #424251;
+  pointer-events: none;
+}
+
+#settings-navigation-box.selected .icon {
+  color: #fff;
+}
+
+#settings-navigation-box.selected .settings-title {
+  color: #fff;
+}
+
+#settings-navigation-box.selected .settings-desc {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+input[type=text], input[type=email], input[type=password] {
+  background: #fff;
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  outline: none;
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  color: rgba(66, 66, 81, 0.7);
+  margin: 5px 0 10px 0;
+}
+
+input[type=text]::-webkit-input-placeholder, input[type=email]::-webkit-input-placeholder, input[type=password]::-webkit-input-placeholder {
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  color: rgba(66, 66, 81, 0.5);
+}
+
+input[type=text]:-ms-input-placeholder, input[type=email]:-ms-input-placeholder, input[type=password]:-ms-input-placeholder {
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  color: rgba(66, 66, 81, 0.5);
+}
+
+input[type=text]::-ms-input-placeholder, input[type=email]::-ms-input-placeholder, input[type=password]::-ms-input-placeholder {
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  color: rgba(66, 66, 81, 0.5);
+}
+
+input[type=text]::placeholder, input[type=email]::placeholder, input[type=password]::placeholder {
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  color: rgba(66, 66, 81, 0.5);
+}
+
+.line {
+  background: rgba(0, 0, 0, 0.1);
+  height: 1px;
+  width: 100%;
+  margin: 0 0 20px 0;
+}
