@@ -8,6 +8,7 @@ import {RegisterScreen} from './register-screen/RegisterScreen';
 import {PageNotFoundScreen} from './page-not-found-screen/PageNotFoundScreen';
 import {CommunityPhotosScreen} from './community-photos-screen/CommunityPhotosScreen';
 import {CommunityArticleScreen} from './community-article-screen/CommunityArticleScreen';
+import {CommunityStaffScreen} from './community-staff-screen/CommunityStaffScreen';
 
 const SITE_ROUTES: Array<{path: string, view: any, }> = [
   {
@@ -33,6 +34,10 @@ const SITE_ROUTES: Array<{path: string, view: any, }> = [
   {
     path: '/community/photos',
     view: CommunityPhotosScreen,
+  },
+  {
+    path: '/community/staff',
+    view: CommunityStaffScreen,
   },
   {
     path: '/community/news',

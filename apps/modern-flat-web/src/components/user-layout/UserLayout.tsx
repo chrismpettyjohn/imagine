@@ -8,7 +8,7 @@ import {SiteNavigation} from '../site-navigation/SiteNavigation';
 export function UserLayout({ children }: UserLayoutProps) {
   return (
     <UserGuard redirect>
-      <div style={{height: 'calc(100% - 100px)', width: '100%'}}>
+      <div style={{minHeight: 'calc(100% - 100px)', width: '100%'}}>
         <SiteHeader />
         <SiteNavigation />
         {children}
