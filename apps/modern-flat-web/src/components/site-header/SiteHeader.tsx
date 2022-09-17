@@ -1,6 +1,5 @@
 import {Link} from 'wouter';
 import React, {useContext} from 'react';
-import {UserGuard} from '../user-guard/UserGuard';
 import {configContext} from '@imagine-cms/web';
 
 export function SiteHeader() {
@@ -13,9 +12,7 @@ export function SiteHeader() {
           <div className="col-12">
             <div className="hotel"></div>
             <div className="online-count-box"><b>0</b>users online</div>
-            <UserGuard>
-              <Link to="/play" className="btn green big check-in-header" target="_blank">Enter {config?.siteName}</Link>
-            </UserGuard>
+            <Link to="/play" className="btn green big check-in-header" target="_blank">Enter {config?.siteName}</Link>
           </div>
         </div>
       </div>

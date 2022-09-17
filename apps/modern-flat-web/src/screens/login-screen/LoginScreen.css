@@ -5,6 +5,10 @@
   background: #fcfcfc !important;
   color: #152038;
   font: 400 13px "Poppins", "Roboto", sans-serif;
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
 }

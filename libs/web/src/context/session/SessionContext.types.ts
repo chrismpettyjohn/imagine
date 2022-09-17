@@ -1,13 +1,14 @@
 import {ReactNode} from 'react';
+import {UserWire} from '@imagine-cms/types';
 
 export interface SessionContext {
-  session?: any;
-  setSession(newSession?: any): void;
+  session?: UserWire;
+  setSession(newSession?: UserWire): void;
 }
 
 export const defaultSessionContext: SessionContext = {
   session: undefined,
-  setSession(newSession?: any) {},
+  setSession(newSession?: UserWire) {},
 };
 
 export interface SessionContextProviderProps {
