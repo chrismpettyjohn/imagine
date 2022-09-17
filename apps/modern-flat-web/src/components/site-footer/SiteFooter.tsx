@@ -5,12 +5,10 @@ export function SiteFooter() {
   const {config} = useContext(configContext);
 
   return (
-    <div className="row">
+    <div className="row" style={{height: 100, width: '100%', textAlign: 'center'}}>
       <div className="col-12">
-        <div id="footer-content">
-          <h3 style={{letterSpacing: 2}}>Imagine</h3>
-          <p><i className="far fa-heart" style={{marginRight: 4}} /><b>LeChris</b> and <b>Sonay</b></p>
-        </div>
+        <h3 style={{letterSpacing: 2}}>Imagine</h3>
+        <p><i className="far fa-heart" style={{marginRight: 4}} /><b>LeChris</b> and <b>Sonay</b></p>
       </div>
     </div>
   )
