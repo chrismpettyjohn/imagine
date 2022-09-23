@@ -1,0 +1,177 @@
+.profile {
+  height: 310px;
+  width: 100%;
+  position: relative;
+}
+
+.profile .avatar-image {
+  background: no-repeat center center;
+  height: 220px;
+  width: 128px;
+  position: relative;
+  left: 32px;
+  top: 32px;
+  float: left;
+  -webkit-filter: drop-shadow(1px 1px 0 #fff) drop-shadow(-1px 0px 0 #fff) drop-shadow(0 -1px 0 #fff);
+          filter: drop-shadow(1px 1px 0 #fff) drop-shadow(-1px 0px 0 #fff) drop-shadow(0 -1px 0 #fff);
+}
+
+.profile .username {
+  position: relative;
+  color: #fff;
+  font: 600 300% "Poppins", "Roboto", sans-serif;
+  left: 30px;
+  top: 80px;
+  margin: 0;
+}
+
+.profile .motto {
+  position: relative;
+  color: #fff;
+  left: 30px;
+  top: 75px;
+  font-size: 130%;
+}
+
+.profile .last-online {
+  position: relative;
+  color: #fff;
+  left: 30px;
+  top: 100px;
+  font: 400 100% "Poppins", "Roboto", sans-serif;
+}
+
+.profile .overlay {
+  background: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.profile .bg {
+  background: url(../img/profile/avatar-bg.png) -30px -260px !important;
+  height: 310px;
+  width: 100%;
+  position: absolute;
+  border-radius: 5px;
+  opacity: .3;
+}
+
+.friends-head {
+  background: no-repeat center center;
+  height: 62px;
+  width: 54px;
+  float: left;
+  display: block;
+  text-decoration: none;
+  margin: 0 20px 20px 20px;
+}
+
+.friends-head .username {
+  position: relative;
+  top: 65px;
+  text-align: center;
+  font: 500 13px "Poppins", "Roboto", sans-serif;
+  color: #424251;
+}
+
+.tease_friends {
+  background: url(../img/profile/teaser_profile_friends.png);
+  height: 110px;
+  width: 550px;
+}
+
+.tease_rooms {
+  background: url(../img/profile/teaser_profile_rooms.png);
+  height: 92px;
+  width: 550px;
+}
+
+.tease_groups {
+  background: url(../img/profile/teaser_profile_groups.png);
+  height: 140px;
+  width: 550px;
+}
+
+.room-thumbnail {
+  background: url(../img/profile/room-thumbnail.png) no-repeat center center;
+  height: 110px;
+  width: 110px;
+  margin: 0 8px 34px 8px;
+  float: left;
+  border-radius: 5px;
+}
+
+.room-thumbnail .room-name {
+  text-align: center;
+  position: relative;
+  top: 120px;
+  font: 500 13px "Poppins", "Roboto", sans-serif;
+}
+
+.group-badge {
+  background: no-repeat center center;
+  height: 60px;
+  width: 110px;
+  margin: 0 8px 35px 8px;
+  float: left;
+}
+
+.group-badge .group-name {
+  text-align: center;
+  position: relative;
+  top: 60px;
+  font: 500 13px "Poppins", "Roboto", sans-serif;
+}
+
+.created_account {
+  text-align: center;
+  text-transform: uppercase;
+  font: 500 26px "Poppins", "Roboto", sans-serif;
+  margin: 50px 0 50px 0;
+  color: rgba(46, 58, 63, 0.8);
+}
+
+.photo {
+  background: no-repeat center center;
+  background-size: cover;
+  -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -o-pixelated;
+      image-rendering: pixelated;
+  height: 360px;
+  width: 100%;
+  border-radius: 5px;
+  position: relative;
+  margin: 0 0 15px 0;
+}
+
+.photo .overlay {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, transparent), color-stop(80%, rgba(0, 0, 0, 0.5)));
+  background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.5) 80%);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  padding: 20px;
+  color: #fff;
+}
+
+.photo .overlay .avatar-head {
+  background: no-repeat center center;
+  height: 62px;
+  width: 54px;
+  position: absolute;
+  bottom: 10px;
+  -webkit-filter: drop-shadow(1px 1px 0 #fff) drop-shadow(-1px 0px 0 #fff) drop-shadow(0 -1px 0 #fff);
+          filter: drop-shadow(1px 1px 0 #fff) drop-shadow(-1px 0px 0 #fff) drop-shadow(0 -1px 0 #fff);
+}
+
+.photo .overlay .username {
+  position: absolute;
+  bottom: 20px;
+  left: 90px;
+  font: 600 21px "Poppins", "Roboto", sans-serif;
+}
