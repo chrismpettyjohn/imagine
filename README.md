@@ -32,7 +32,7 @@ https://discord.gg/rkxzpw9h5F
     * `yarn`
 4. Configure API Settings
     * cp demo/.env.example demo/.env
-     * Edit `demo/.env` with your values as follows
+     * Edit `apps/api/.env` with your values as follows
      ```
        # HTTP
        PORT=3000
@@ -50,6 +50,12 @@ https://discord.gg/rkxzpw9h5F
        # GraphQL
        GRAPHQL_PLAYGROUND=false # Enables GraphQL Playground for viewing API docs http://localhost:3000/graphql
        ```
- 5. Run the API
-    * `cd demo/api`
+5. Prepare your database
+   * Create a database based from the latest Plus++ sql
+   * Run [database-changes.sql](/database-changes.sql)
+6. Run the API
+    * `cd apps/api`
+    * `yarn start`
+ 6. Run your preferred theme
+    * `cd apps/boon-web`
     * `yarn start`
