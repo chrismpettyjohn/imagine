@@ -21,7 +21,8 @@
     "@imagine-cms/web": "*",
     "dayjs": "1.11.5",
     "react-loading-overlay": "1.0.1",
-    "react-toastify": "7.0.4"
+    "react-toastify": "7.0.4",
+    "styled-components": "5.3.5"
   },
   "devDependencies": {
     "@types/node": "15.12.4",
@@ -32,7 +33,8 @@
     "react-app-rewired": "2.1.8",
     "react-refresh": "0.14.0",
     "tsconfig-paths-webpack-plugin": "3.5.1",
-    "@pmmmwh/react-refresh-webpack-plugin": "0.5.7"
+    "@pmmmwh/react-refresh-webpack-plugin": "0.5.7",
+    "@types/styled-components": "5.1.26"
   },
   "eslintConfig": {
     "extends": "react-app"
