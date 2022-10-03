@@ -1,0 +1,180 @@
+#clnt-ui-counter-btn {
+    background-color: #ffb900;
+    border: 2px solid;
+    border-color: #ffea00;
+    color: #000!important;
+    padding: 6px;
+    padding-left: 21px;
+    background-image: url('/web/img/icons/logo.png');
+    background-repeat: no-repeat;
+    background-position: 6px 5px;
+    border-radius: 5px 0 0 5px;
+    -moz-border-radius: 5px 0 0 5px;
+    box-shadow: 0 3px 0 1px rgba(0, 0, 0, .3);
+    position: absolute;
+    top: 12px;
+    font-family: "Ubuntu";
+    min-height: 14px;
+    max-height: 14px;
+    font-size: 13px;
+    left: 12px;
+    cursor: pointer;
+    z-index: 560;
+    text-align: center;
+    width: 100px;
+}
+#clnt-ui-resize-btn {
+    background-color: #ffb900;
+    border: 2px solid;
+    border-color: #ffea00;
+    color: #000!important;
+    padding: 6px;
+    border-radius: 0px 5px 5px 0px;
+    -moz-border-radius: 0px 5px 5px 0px;
+    box-shadow: 0 3px 0 1px rgba(0, 0, 0, .3);
+    position: absolute;
+    top: 12px;
+    left: 146px;
+    cursor: pointer;
+    z-index: 560;
+}
+#clnt-ui-pls-btn {
+	background-color: #10ac84;
+    border: 2px solid;
+    border-color: #1dd1a1;
+    color: #fff!important;
+    padding: 4px;
+    border-radius: 2px;
+    -moz-border-radius: 0px 5px 5px 0px;
+    box-shadow: 0 3px 0 1px rgba(0,0,0,.3);
+    position: absolute;
+    top: 12px;
+    left: 130px;
+    font-size: 13px;
+    cursor: pointer;
+    z-index: 560;
+    font-family: "Ubuntu";
+}
+
+#clnt-ui-al-btn {
+	background-color: #222f3e;
+    border: 2px solid;
+    border-color: #576574;
+    color: #fff!important;
+    padding: 4px;
+    border-radius: 2px;
+    -moz-border-radius: 0px 5px 5px 0px;
+    box-shadow: 0 3px 0 1px rgba(0,0,0,.3);
+    position: absolute;
+    top: 12px;
+    left: 200px;
+    font-size: 13px;
+    cursor: pointer;
+    z-index: 560;
+    font-family: "Ubuntu";
+}
+
+
+#clnt-ui-pl-btn-bene {
+    background-color: #ffb900;
+    border: 2px solid;
+    border-color: #ffea00;
+    color: #000!important;
+    padding: 6px;
+    border-radius: 2px;
+    -moz-border-radius: 0px 5px 5px 0px;
+    box-shadow: 0 3px 0 1px rgba(0,0,0,.3);
+    position: absolute;
+    top: 10px;
+    right: 215px;
+    font-size: 13px;
+    cursor: pointer;
+    z-index: 560;
+    font-family: "Ubuntu";
+}
+
+#clnt-ui-pl-btn:hover {
+    background-color: #2a94bd;
+    border-color: #55c4ef;
+}
+
+#clnt-ui-resize-btn:hover,
+#clnt-ui-counter-btn:hover
+{
+    background-color: #ffd400;
+    border-color: #fffd70;
+}
+
+#clnt-ui-pl-btn:active
+{
+    box-shadow: 0 1px 0 1px rgba(0, 0, 0, .3);
+    -webkit-transform: translate(0, 2px);
+    transform: translate(0, 2px);
+    background-color: #bd3e2a;
+    border-color: #ef5555;
+}
+
+#clnt-ui-resize-btn:active,
+#clnt-ui-counter-btn:active
+{
+    box-shadow: 0 1px 0 1px rgba(0, 0, 0, .3);
+    -webkit-transform: translate(0, 2px);
+    transform: translate(0, 2px);
+    background-color: #f89400;
+    border-color: #ffce37;
+}
+.ui-resize-icon {
+    background-image: url('/web/img/client-sprite.png');
+    background-position: -511px -58px;
+    width: 15px;
+    height: 14px;
+}
+.ui-resize-icon.ui-resize-icon-state-switched {
+    background-position: -511px -42px;
+}
+.overlay {
+       position: absolute;
+       height: 100%;
+       width: 100%;
+       top: 0;
+       display: none;
+       left: 0;
+       z-index: 9999;
+       background-color: rgba(0, 0, 0, 0.8);
+   }
+
+.overlay_bene {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    display: none;
+    left: 0;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#pl-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 800px;
+    margin: auto;
+    height: 555px;
+}
+#pl-container span {
+    float: right;
+    color: white;
+    cursor: pointer;
+    padding-bottom: 2px;
+    font-family: Verdana;
+}
+#pl-container iframe {
+    border: 5px solid #B76A93;
+    height: 100%;
+    width: 100%;
+    background-color: #191818;
+    border-radius: 5px;
+}

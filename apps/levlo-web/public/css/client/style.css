@@ -1,0 +1,660 @@
+
+@import url(//fonts.googleapis.com/css?family=Ubuntu:400,500,300,700);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
+@import url(//fonts.googleapis.com/css?family=PT+Sans+Caption:400,700);
+
+
+/* Neu */
+
+.eventalert .inner {
+
+margin-top: 10px;
+position:relative;
+height: 120px;
+font: Ubuntu;
+text-shadow: 1px 1px 0 #FFF;
+font-size: 13px;
+color: #000;
+word-wrap: break-word;
+text-align:center;
+}
+.eventalert .goroom {
+background-color: #E2E2E2;
+    border: 1px solid #919191;
+    border-radius: 3px;
+    box-shadow: 0 -5px 0 #D3D3D3 inset,0 3px 0 #FFF inset;
+    color: #010101;
+    cursor: pointer;
+    display: block;
+    font: bold 12px/23px Ubuntu;
+    height: 24px;
+	bottom:4px;
+	left:5px;
+	width:calc( 100% - 13px );
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    text-shadow: 1px 1px 0 #FFF;
+ text-decoration: none;
+ 
+}
+
+.eventalert .break {
+	
+	border-top:1px solid rgba(0,0,0,0.1);
+	border-bottom:1px solid rgba(255,255,255,0.4);
+	width:100%;
+	
+}
+
+.eventalert .closebutton {
+ background-color: #E2E2E2;
+    border: 1px solid #919191;
+    border-radius: 3px;
+    box-shadow: 0 -5px 0 #D3D3D3 inset,0 3px 0 #FFF inset;
+    color: #010101;
+    cursor: pointer;
+    display: block;
+    font: bold 12px/23px Ubuntu;
+  height: 24px;
+   left: 176px;
+   top: 163px;
+    overflow: hidden;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: absolute;
+    text-align: center;
+    text-shadow: 1px 1px 0 #FFF;
+    width: 120px;
+ margin-bottom: 20px;
+ margin-left: 20px;
+ text-decoration: none;
+}
+
+.eventalert {
+padding: 10px;
+font-family: PT Sans Caption;
+font-family: Ubuntu;
+font-weight: 400;
+background: #DBDBDB;
+border-top: 4px solid #FFFFFF;
+border-bottom: 4px solid #C9C9C9;
+width: 300px;
+height: 205px;
+border-radius: 3px;
+-webkit-box-shadow: 0 0 0 1px #000;
+box-shadow: 0 0 0 1px #000, 0 0 4px rgba(0,0,0,0.15);
+text-align:center;
+}
+
+.eventalert .head {
+height: 20px;
+line-height: 20px;
+text-align: center;
+text-shadow: 0 1px 1px #FFF;
+font-size: 14px;
+font-weight: 700;
+color: #000;
+}
+
+.eventalert .close {
+float: right;
+height: 20px;
+width: 20px;
+background: url('/websockets/images/client/box/close.png');
+margin-right: 5px;
+margin-top: 0px;
+cursor: pointer;
+color: #000;
+}
+.close {
+float: right;
+background: url('/websockets/images/client/box/close.png');
+background-repeat: no-repeat;
+background-position: 50% 50%;
+width: 19px;
+height: 20px;
+cursor: pointer;
+margin-top: 5px;
+margin-right: 5px;
+}
+
+.alert .head {
+background: #FFFFFF;
+height: 30px;
+line-height: 30px;
+color: #FFF;
+text-align: center;
+border-radius: 3px 3px 0px 0px;
+border: 1px solid rgba(255, 255, 255, 0.2);
+border-bottom: 1px solid #000;
+font-size: 14px;
+}
+.alert .head .close {
+float: right;
+background: url('/websockets/images/client/box/close.png');
+background-repeat: no-repeat;
+background-position: 50% 50%;
+width: 19px;
+height: 20px;
+cursor: pointer;
+margin-top: 5px;
+margin-right: 5px;
+}
+
+
+
+.close:hover {
+background: url('/websockets/images/client/box/close_hover.png');
+}
+.close:active {
+background: url('/websockets/images/client/box/close_active.png');
+width: 19px;
+height: 19px;
+}
+
+
+    #fenster-WiredYoutubeplayerSettings {
+       color : 000 !important;
+	   font-family:'Ubuntu', sans-serif;
+    }
+
+    #Fenster-WiredYoutubeplayerSettings .banner {
+        background: url('/websockets/images/client/Stapelfelder/header_yt.png');	
+
+        background-position: 50% 55%;
+        width: 100%;
+        height: 70px;
+        border-bottom: 1px solid #000;
+    }
+
+    #Fenster-WiredYoutubeplayerSettings .text {
+        padding: 5px;
+        font-size: 13px;
+
+    }
+
+    #Fenster-WiredYoutubeplayerSettings .submit {
+        width: 100% !important;
+        height: 30px !important;
+        line-height: 30px;
+        text-align: center;
+        border: 1px solid black;
+        border-bottom: 2px solid black;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 13px;
+		box-shadow:inset 0 -13px rgba(0,0,0,0.1);
+    }
+
+    #fenster-WiredYoutubeplayerSettings input[type="text"] {
+        -webkit-box-shadow: 0px;
+        -webkit-appearance: none;
+        border: 1px solid #CCC;
+        border-bottom: 1.5px solid #CCC;
+        height: 30px !important;
+        width: 100% !important;
+        margin-bottom: 10px;
+        padding-left: 6px;
+        border-radius: 3px;
+    }
+
+    .alertt {
+        margin-top: 5px;
+        margin-left: 5px;
+        width: 430px;
+        padding: 5px;
+        height: 20px;
+        line-height: 20px;
+        border-radius: 3px;
+        color: #FFF;
+        display: none;
+    }
+
+    .alertt.success {
+        background: #2AA12C;
+        border: 0px;
+        border-bottom: 2px solid #218123;
+    }
+
+    .alertt.error {
+        background: #B62B1C;
+        border: 0px;
+        border-bottom: 2px solid #912216;
+    }
+
+    #slider {
+        width: 200px;
+        margin-left: 15px;
+        height: 30px;
+        float: left;
+    }
+
+    #slider a {
+        height: 28px;
+        margin-top: 4px;
+
+    }
+
+
+.alert .head .close {
+float: right;
+background: url('/websockets/images/client/box/close.png');
+background-repeat: no-repeat;
+background-position: 50% 50%;
+width: 19px;
+height: 20px;
+cursor: pointer;
+margin-top: 5px;
+margin-right: 5px;
+}
+
+
+.alert .head .close:hover {
+background: url('/websockets/images/client/box/close_hover.png');
+}
+
+.alert .head .close:active {
+background: url('/websockets/images/client/box/close_active.png');
+width: 19px;
+height: 19px;
+}
+
+/* Neu */
+
+.windowBackground{
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-color: rgba(0, 0, 0, 0.78);
+ z-index: 99;
+}
+
+.windowBackground .content {
+ position: absolute;
+    top: 50%;
+    left: 48%;
+    margin-top: -198px;
+    margin-left: -190px;
+}
+.windowBackground .content .windowTitle {
+ color: #FFF;
+    cursor: default;
+    font-family:Ubuntu;
+    font-size: 25px;
+    font-weight: 700;
+    padding: 12px 13px;
+	padding-top:0;
+    text-shadow: 0 0 15px rgba(0,0,0,0.9);
+}
+.windowBackground .content .windowDesc {
+ color: #FFF;
+    cursor: default;
+    font-family:Ubuntu;
+    font-size: 12px;
+	padding-left:13px;
+	text-shadow: 0 0 15px rgba(0,0,0,0.9);
+}
+
+.windowBox {
+ background-color: #E2E2E2;
+    border-radius: 7px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.9),0 -5px 0 #D3D3D3 inset,0 3px 0 #FFF inset;
+    padding: 20px;
+ width: 100%;
+ max-width: 470px;
+ height: 180px;
+ font-family: Ubuntu;
+}
+
+.windowBox p {
+ color: #000;
+ font: 500 12px/14px Ubuntu;
+    margin: 6px 20px 0 0;
+    min-height: 90px;
+    position: relative;
+    text-shadow: 1px 1px 0 #FFF;
+ padding: 3px;
+}
+
+.windowBox p b {
+ font-weight: 700;
+}
+
+.windowBox p .topbox {
+    display: block;
+    position: relative;
+ padding: 3px;
+ padding-left: 5px;
+}
+
+.windowBox p .topbox b {
+	
+	font-size:16px;
+	text-shadow:0 1px white;
+	
+}
+
+.windowBox #nachricht {
+    color: #000;
+ font: 500 13px/14px Ubuntu;
+    margin: 6px 20px 0 0;
+    min-height: 82px;
+    position: relative;
+    text-align: left;
+    text-shadow: 1px 1px 0 #FFF;
+}
+
+.windowBox .goroom {
+ background-color: #E2E2E2;
+    border: 1px solid #919191;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 -12px 0 #DBDBDB inset,0 3px 0 #FFF inset, 0 1px white;
+    color: #010101;
+    cursor: pointer;
+    display: block;
+    font: bold 12px/23px Ubuntu;
+    height: 24px;
+    overflow: hidden;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    text-shadow: 1px 1px 0 #FFF;
+    width: 120px;
+ text-decoration: none;
+ float:left;
+ position:absolute;
+ bottom:20px;
+}
+
+.windowBox .closeBtn {
+	text-decoration:underline;
+	font-size:12px;
+	text-shadow:0 1px white;
+	position:absolute;
+	bottom:25px;
+	right:220px;
+	cursor:pointer;
+}
+
+.yt_fenster {
+position: absolute;
+left: 50%;
+right: -50%;
+top: 50%;
+bottom: -50%;
+width: 200px;
+height: 100px;
+background: #FFF;
+}
+
+.alert {
+position: absolute;
+left: 50%;
+right: -50%;
+top: 50%;
+bottom: -50%;
+
+font-size: 13px;
+width: 200px;
+height: 100px;
+border: 1px solid #000;
+border-bottom: 2px solid #000;
+border-radius: 4px;
+font-family: Ubuntu;
+font-weight: light;
+background: #FFF;
+}
+
+.yt {
+height: 375px;
+width: 443px;
+background: url('https://i.imgur.com/wa95mcC.png');
+position: absolute;
+z-index: 1337;
+}
+
+.yt .close {
+float: right;
+background: url('/websockets/images/client/box/close.png');
+background-repeat: no-repeat;
+background-position: 50% 50%;
+width: 19px;
+height: 20px;
+cursor: pointer;
+margin-top: 5px;
+margin-right: 5px;
+}
+
+.yt .close:hover {
+background: url('/websockets/images/client/box/close_hover.png');
+}
+.yt .close:active {
+background: url('/websockets/images/client/box/close_active.png');
+width: 19px;
+height: 19px;
+}
+
+
+.alert2 {
+    position: absolute;
+    font-size: 13px;
+    border: 1px solid #000;
+    border-bottom: 2px solid #000;
+    border-radius: 4px;
+    font-family: Ubuntu;
+    background: #FFF;
+    width: 650px;
+    height: 450px;
+    left: 600px;
+    top: -28px;
+}
+
+
+.imagee .close {
+position: absolute;
+background: url('/websockets/images/client/box/close.png');
+background-repeat: no-repeat;
+background-position: 50% 50%;
+width: 19px;
+height: 20px;
+cursor: pointer;
+margin-top: 5px;
+margin-left: 5px;
+}
+.close {
+float: right;
+background: url('/websockets/images/client/box/close.png');
+background-repeat: no-repeat;
+background-position: 50% 50%;
+width: 19px;
+height: 20px;
+cursor: pointer;
+margin-top: 5px;
+margin-right: 5px;
+}
+
+.close:hover {
+background: url('/websockets/images/client/box/close_hover.png');
+}
+.close:active {
+background: url('/websockets/images/client/box/close_active.png');
+width: 19px;
+height: 19px;
+}
+.alert .loggedin {
+background: #FFF;
+margin-top: 0px;
+height: 25px;
+line-height: 25px;
+color: #000;
+font-size: 11px;
+border-bottom: 1px solid #000;
+margin-bottom: 5px;
+padding-left: 10px;
+}	
+
+.alert .modlog.scroll {
+height: 144px;
+overflow-y: scroll;
+color: #000;
+}
+
+.alert .modload .string, .alert .userload .string, {
+width: 100%;
+height: 40px;
+border-bottom: 1px dashed #CCC;
+}
+
+.alert .modload .string .avatar, .alert .userload .string .avatar {
+height: 38px;
+width: 60px;
+float: left;
+margin-left: 0px;
+}
+
+.alert .modload .string .username, .alert .userload .string .username {
+height: 40px;
+line-height: 30px;
+font-weight: bold;
+}	
+
+.alert .modload .string .bemerkung, .alert .userload .string .bemerkung {
+
+margin-top: -15px;
+margin-left: 50px;
+}
+
+.alert .modload .right, .alert .userload .right {
+float: right;
+margin-top: 5px;
+margin-right: 5px;
+height: 20px;
+}
+
+.alert .modload .bann, .alert .userload .bann {
+background: url('/websockets/images/client/modtool/ban.gif');
+background-repeat: no-repeat;
+width: 15px;
+height: 16px;
+cursor: pointer;
+float: right;
+margin-right: 5px;
+margin-top: 3px;
+}
+
+.alert .modload .isbann, .alert .userload .isbann {
+background: url('/websockets/images/client/modtool/banned.png');
+background-repeat: no-repeat;
+width: 15px;
+height: 16px;
+float: right;
+margin-right: 5px;
+margin-top: 3px;
+}
+
+
+.alert .modlog .status_0 {
+background: url('/websockets/images/etc/userstatus_0.gif');
+background-repeat: no-repeat;
+width: 40px;
+height: 18px;
+float: right;
+
+}
+
+.alert .modlog .status_1 {
+background: url('/websockets/images/etc/userstatus_1.gif');
+background-repeat: no-repeat;
+width: 40px;
+height: 18px;
+float: right;
+}
+
+.alert .modlog .goroom {
+background: url('/websockets/images/client/modtool/goroom.gif');
+background-repeat: no-repeat;
+width: 16px;
+height: 16px;
+float: right;
+margin-top: 1px;
+margin-right: 5px;
+}
+
+
+
+#sitealert {
+font-family: Ubuntu;
+position: absolute;
+left: 0px;
+top: 0px;
+width: 100%;
+height: 40px;
+line-height: 40px;
+text-align: center;
+font-size: 15px;
+background: #34495e;
+color: #FFF;
+font-weight: bold;
+border-bottom: 4px solid rgba(0, 0, 0, 0.4);
+}
+
+
+#infobox .header{
+font-size: 18px;
+border: none;
+border-bottom: 5px solid rgba(0,0,0,0.08)!important;
+border-top-left-radius: 6px;
+border-top-right-radius: 6px;
+font-weight: bold;
+color: #fff;
+display: table-cell;
+vertical-align: middle;
+text-align: center;
+width: 1%;
+float: none!important;
+padding: 8px 15px;
+margin: 4px;
+overflow: overlay;
+box-shadow: 2px 2px 0px rgba(0,0,0,0.1), -2px -2px 0px rgba(0,0,0,0.1), -2px 2px 0px rgba(0,0,0,0.05), 2px -2px 0px rgba(0,0,0,0.05);
+}
+.blau{
+background-color: #3c5a74;
+border-color: #3F3F3F;
+}
+.rot{
+background-color: #b40404;
+border-color: #3F3F3F;
+}
+#infobox .header .close{
+float: right;
+height: 20px;
+width: 20px;
+background: url('/websockets/images/client/box/close.png');
+margin-right: 5px;
+margin-top: 0px;
+cursor: pointer;
+color: #000;
+}
+#infobox .header .close:hover {
+background: url('/websockets/images/client/box/close_hover.png');
+}
+#infobox .header .close:active {
+background: url('/websockets/images/client/box/close_active.png');
+width: 19px;
+height: 19px;
+}
+#infobox .content{
+background: rgba(255, 255, 255, 1);
+    color: rgba(84, 82, 77, 0.77);
+    font-family: Ubuntu Condensed;
+    font-size: 18px;
+    margin-bottom: 20px;
+    overflow: auto;
+    padding: 20px;
+    border: 3px solid #FFF;
+    border-radius: 3px;
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.1), -2px -2px 0px rgba(0,0,0,0.1), -2px 2px 0px rgba(0,0,0,0.05), 2px -2px 0px rgba(0,0,0,0.05);font-size:15px;padding-left:60px;
+}

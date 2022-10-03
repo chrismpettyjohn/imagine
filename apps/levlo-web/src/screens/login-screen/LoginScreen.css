@@ -1,0 +1,300 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900|Roboto:300,400,500,700,900";
+@import "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap-grid.css";
+
+.login-page {
+  background: #fcfcfc !important;
+  color: #152038;
+  font: 400 13px "Poppins", "Roboto", sans-serif;
+  min-width: 100%;
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.login-page .container {
+  position: relative;
+}
+
+.login-page .clear {
+  clear: both;
+}
+
+.login-page .error-msg {
+  background: #ef5350;
+  height: 40px;
+  width: 100%;
+  text-align: center;
+  font: 600 15px "Poppins", "Roboto", sans-serif;
+  color: #fff;
+  padding: 8px;
+  position: absolute;
+  z-index: 9;
+}
+
+.login-page .hero {
+  background: #94c1d3;
+  height: 100%;
+  width: 100%;
+  -webkit-clip-path: polygon(40% 0, 100% 0%, 100% 100%, 65% 100%);
+  clip-path: polygon(40% 0, 100% 0%, 100% 100%, 65% 100%);
+  position: absolute;
+  right: 0;
+  -webkit-filter: drop-shadow(1px 1px 0 #fff) drop-shadow(-1px 0px 0 #fff) drop-shadow(0 -1px 0 #fff);
+  filter: drop-shadow(1px 1px 0 #fff) drop-shadow(-1px 0px 0 #fff) drop-shadow(0 -1px 0 #fff);
+}
+
+.login-page .hero .hotel {
+  background: url(/img/index/header-hotel.png) center top;
+  height: 950px;
+  width: 930px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.login-page #header-content {
+  height: 110px;
+  width: 100%;
+}
+
+.login-page #header-content .logo {
+  background: url(/img/bobbalogo_big_whiteR_beta.png);
+  height: 73px;
+  width: 197px;
+  margin: 50px 0 0 0;
+  float: left;
+}
+
+.login-page #header-content .online-count {
+  position: absolute;
+  left: 270px;
+  top: 80px;
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  color: rgba(21, 32, 56, 0.7);
+}
+
+.login-page #header-content .online-count:before {
+  background: url(/img/index/online-hotel.png);
+  height: 26px;
+  width: 21px;
+  content: '';
+  margin: -5px 0 0 -30px;
+  position: absolute;
+}
+
+.login-page #header-content .online-count b {
+  color: rgba(21, 32, 56, 0.9);
+}
+
+.login-page .login-position {
+  position: relative;
+  top: 110px;
+  width: 100%;
+  height: 95%;
+}
+
+.login-page .login-position h2 {
+  font: 600 200% "Poppins", "Roboto", sans-serif;
+}
+
+.login-page .login-position label {
+  display: block;
+  font: 600 13.5px "Poppins", "Roboto", sans-serif;
+  color: rgba(21, 32, 56, 0.7);
+  margin: 0 0 5px 0;
+}
+
+.login-page .login-position input[type=text], .login-position input[type=password] {
+  background: #fff;
+  padding: 13px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  outline: none;
+  border-radius: 5px;
+  width: 100%;
+  margin: 0 0 30px 0;
+  font: 500 13px "Poppins", "Roboto", sans-serif;
+  color: rgba(21, 32, 56, 0.7);
+  -webkit-transition: border .2s;
+  transition: border .2s;
+}
+
+.login-page .login-position input[type=text]:last-child, .login-position input[type=password]:last-child {
+  margin: 0 0 0 0;
+}
+
+.login-page .login-position input[type=text]:focus, .login-position input[type=text]:active, .login-position input[type=password]:focus, .login-position input[type=password]:active {
+  border: 2px solid #94c1d3;
+}
+
+.login-page .login-position p {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  font: 600 12px "Poppins", "Roboto", sans-serif;
+  color: rgba(21, 32, 56, 0.4);
+  margin: 20px 0;
+}
+
+.login-page .btn {
+  border-radius: 5px;
+  font: 600 12px "Poppins", "Roboto", sans-serif;
+  text-decoration: none;
+  color: #fff;
+  -webkit-transition: background .2s;
+  transition: background .2s;
+  padding: 10px 20px;
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.login-page .btn.big {
+  padding: 15px 40px;
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  text-transform: uppercase;
+}
+
+.login-page .btn.green {
+  background: #52be80;
+}
+
+.login-page .btn.green:hover {
+  background: #57ca89;
+}
+
+.login-page .btn.orange {
+  background: #ffca28;
+}
+
+.login-page .btn.orange:hover {
+  background: #ffe082;
+}
+
+.login-page .btn.red {
+  background: #ef5350;
+}
+
+.login-page .btn.red:hover {
+  background: #e57373;
+}
+
+.login-page .btn.disabled {
+  background: #cfd8dc;
+  cursor: default;
+}
+
+.login-page .btn.disabled:hover {
+  background: #cfd8dc;
+}
+
+.login-page .btn.login-button {
+  position: relative;
+  float: right;
+}
+
+.login-page .btn.register-button {
+  position: relative;
+  width: 100%;
+  float: left;
+}
+
+.login-page .btn.back-register {
+  float: left;
+  position: relative;
+  padding: 10px 20px;
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  text-transform: uppercase;
+}
+
+.login-page .btn.next-register {
+  float: right;
+  position: relative;
+  padding: 10px 20px;
+  font: 600 13px "Poppins", "Roboto", sans-serif;
+  text-transform: uppercase;
+}
+
+.login-page .btn.check-in-header {
+  position: absolute;
+  right: 0;
+  top: 60px;
+}
+
+.login-page .btn.news-slider-btn {
+  position: absolute;
+  right: 60px;
+  top: 14px;
+}
+
+.login-page .btn.news-card-btn {
+  position: absolute;
+  right: 20px;
+  bottom: 14px;
+}
+
+@media (max-width: 576px) {
+  .login-page #header-content {
+    width: 100%;
+  }
+  .login-page #header-content .logo {
+    background: url(/img/bobbalogo_big_whiteR_beta.png);
+    height: 73px;
+    width: 197px;
+    position: relative;
+    margin: 50px auto;
+    float: none;
+    margin-bottom: 20px;
+  }
+  .login-page #header-content .online-count {
+    position: relative;
+    left: 0;
+    top: 0;
+    text-align: center;
+    margin: 0 -15px 0 0;
+  }
+  .login-page .login-position {
+    height: auto;
+  }
+  .login-page  .community-photos {
+    display: none;
+  }
+  .login-page #footer-content {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-page #header-content {
+    width: 100%;
+  }
+  .login-page #header-content .logo {
+    background: url(/img/bobbalogo_big_whiteR_beta.png);
+    height: 73px;
+    width: 197px;
+    position: relative;
+    margin: 50px auto;
+    float: none;
+    margin-bottom: 20px;
+  }
+  .login-page #header-content .online-count {
+    position: relative;
+    left: 0;
+    top: 0;
+    text-align: center;
+    margin: 0 -15px 0 0;
+  }
+  .login-page .login-position {
+    height: auto;
+  }
+  .login-page .community-photos {
+    display: none;
+  }
+  .login-page #footer-content {
+    display: none;
+  }
+}
