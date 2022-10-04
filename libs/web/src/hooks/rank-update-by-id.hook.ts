@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 import {RankUpdateInputDTO} from '@imagine-cms/types';
-import {useRunMutation, UseMutationResponse} from '@imagine-cms/web';
+import {useRunMutation, UseMutationResponse} from './run-mutation.hook';
 
 const UPDATE_RANK = gql`
     mutation($rankID: Float!, $rankChanges: RankUpdateInput!) {

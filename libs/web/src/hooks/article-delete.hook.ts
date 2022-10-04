@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import {useRunMutation, UseMutationResponse} from '@imagine-cms/web';
+import {useRunMutation, UseMutationResponse} from './run-mutation.hook';
 
 const DELETE_ARTICLE = gql`
     mutation($articleID: Float!) {

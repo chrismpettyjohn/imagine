@@ -9,7 +9,7 @@ export function LogoutScreen() {
 
   useEffect(() => {
     localStorageService.purge();
-    setSession(null);
+    setSession(undefined);
     setLocation('/login');
     toast.success('You were logged out!');
   }, []);

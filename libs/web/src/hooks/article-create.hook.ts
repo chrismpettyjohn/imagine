@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 import {ArticleCreateInputDTO, ArticleWire} from '@imagine-cms/types';
-import {useRunMutation, UseMutationResponse} from '@imagine-cms/web';
+import {useRunMutation, UseMutationResponse} from './run-mutation.hook';
 
 const CREATE_ARTICLE = gql`
     mutation($articleCreateInput: ArticleCreateInput!) {

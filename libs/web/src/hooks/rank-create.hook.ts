@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 import {RankCreateInputDTO, RankWire} from '@imagine-cms/types';
-import {useRunMutation, UseMutationResponse} from '@imagine-cms/web';
+import {useRunMutation, UseMutationResponse} from './run-mutation.hook';
 
 const CREATE_RANK = gql`
     mutation($rankCreateInput: RankCreateInput!) {

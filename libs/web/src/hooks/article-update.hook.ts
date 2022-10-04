@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 import {ArticleUpdateInputDTO} from '@imagine-cms/types';
-import {useRunMutation, UseMutationResponse} from '@imagine-cms/web';
+import {useRunMutation, UseMutationResponse} from './run-mutation.hook';
 
 const UPDATE_ARTICLE = gql`
     mutation($articleID: Float!, $articleChanges: ArticleUpdateInput!) {

@@ -52,7 +52,7 @@ https://discord.gg/rkxzpw9h5F
        ```
 5. Prepare your database
    * Create a database based from the latest Plus++ sql
-   * Run [database-changes.sql](/database-changes.sql)
+   * Run [database-changes.sql](database-changes.sql)
 6. Run the API
     * `cd apps/api`
     * `yarn start`
