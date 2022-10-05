@@ -1,0 +1,24 @@
+.actions {
+    margin: 10px 10px;
+    position: absolute;
+    z-index: 1000;
+}
+
+.actions button {
+    background: #138cc8;
+    border: 2px solid #138cc8;
+    border-radius: 5px;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-weight: 600;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px;
+    margin-right: .75rem;
+}
+
+.actions button:hover {
+    background: #117eb4;
+    border-color: #117eb4;
+}

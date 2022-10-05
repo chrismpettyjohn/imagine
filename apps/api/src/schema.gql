@@ -25,6 +25,10 @@ type SessionCreatedModel {
   accessToken: String
 }
 
+type SessionSSOModel {
+  ssoToken: String!
+}
+
 type RankScopesModel {
   accessAdminPanel: Boolean!
   manageArticles: Boolean!
@@ -190,6 +194,7 @@ type PhotoModel {
 type Query {
   badge(id: Float!): BadgeModel!
   badges(other: ExtraArgs): [BadgeModel!]!
+  sessionSSOCreate: SessionSSOModel!
   sessionByJWT(jwt: String!): SessionModel!
   session(id: Float!): SessionModel!
   sessions(other: ExtraArgs): [SessionModel!]!

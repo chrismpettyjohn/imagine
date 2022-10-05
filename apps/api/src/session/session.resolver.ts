@@ -8,10 +8,15 @@ import {HasSession} from './has-session.decorator';
 import {UserEntity} from '../database/user.entity';
 import {UnauthorizedException} from '@nestjs/common';
 import {SessionEntity} from '../database/session.entity';
+import {UserRepository} from '../database/user.repository';
 import {SessionDataloaderService} from './session.dataloader';
 import {SessionRepository} from '../database/session.repository';
-import {SessionCreatedModel, SessionModel} from './session.model';
 import {Args, Mutation, Query, Resolver, Subscription} from '@nestjs/graphql';
+import {
+  SessionCreatedModel,
+  SessionModel,
+  SessionSSOModel,
+} from './session.model';
 
 const pubSub = new PubSub();
 
@@ -19,10 +24,22 @@ const pubSub = new PubSub();
 export class SessionResolver {
   constructor(
     private readonly jwtService: JwtService,
+    private readonly userRepo: UserRepository,
     private readonly sessionRepo: SessionRepository,
     private readonly sessionService: SessionService,
     private readonly sessionDataLoaderService: SessionDataloaderService
   ) {}
+
+  @Query(() => SessionSSOModel)
+  @HasSession()
+  async sessionSSOCreate(
+    @GetUser() user: UserEntity
+  ): Promise<SessionSSOModel> {
+    const newSSO = await this.userRepo.generateSSO(user.id!);
+    return {
+      ssoToken: newSSO,
+    };
+  }
 
   @Query(() => SessionModel)
   async sessionByJWT(@Args('jwt') jwt: string): Promise<SessionEntity> {

@@ -27,3 +27,9 @@ export class SessionCreatedModel implements SessionCreatedWire {
   @Field({nullable: true})
   accessToken?: string;
 }
+
+@ObjectType()
+export class SessionSSOModel {
+  @Field()
+  ssoToken!: string;
+}
