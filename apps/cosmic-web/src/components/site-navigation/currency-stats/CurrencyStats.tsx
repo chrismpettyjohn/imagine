@@ -22,7 +22,7 @@ export function CurrencyStats() {
       <div className="user-bar">
         <div className="icon diamonds" />
         <div className="item-column">
-          <div className="item-text amount bold">{Number(session.vipPoints).toLocaleString()}</div>
+          <div className="item-text amount bold">{Number(session!.vipPoints).toLocaleString()}</div>
           <div className="item-text">diamonds</div>
         </div>
       </div>
