@@ -8,8 +8,7 @@
   ],
   "scripts": {
     "start": "PORT=3001 SKIP_PREFLIGHT_CHECK=true react-app-rewired start",
-    "build": "rimraf dist && rimraf ./build && SKIP_PREFLIGHT_CHECK=true react-scripts build && mv build dist && cp dist/index.html dist/404.html && yarn types",
-    "types": "graphql-codegen --config codegen.yml"
+    "build": "rimraf dist && rimraf ./build && SKIP_PREFLIGHT_CHECK=true react-scripts build && mv build dist && cp dist/index.html dist/404.html"
   },
   "dependencies": {
     "react": "17.0.1",
