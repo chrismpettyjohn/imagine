@@ -12,7 +12,8 @@
     "jsx": "react",
     "removeComments": true,
     "skipLibCheck": true,
-    "strict": true
+    "strict": true,
+    "lib": ["dom"]
   },
   "include": [
     "src/**/*.ts"
