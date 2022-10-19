@@ -3,6 +3,7 @@ import { Switch, Route } from 'wouter';
 import {HomeScreen} from './home-screen/HomeScreen';
 import {LogoutScreen} from './logout-screen/LogoutScreen';
 import {RegisterScreen} from './register-screen/RegisterScreen';
+import {PlayGameScreen} from './play-game-screen/PlayGameScreen';
 import {PageNotFoundScreen} from './page-not-found-screen/PageNotFoundScreen';
 import {CommunityStaffScreen} from './community-staff-screen/CommunityStaffScreen';
 import {CommunityArticleScreen} from './community-article-screen/CommunityArticleScreen';
@@ -20,6 +21,10 @@ const SITE_ROUTES: Array<{path: string, view: any, }> = [
   {
     path: '/me',
     view: HomeScreen,
+  },
+  {
+    path: '/play',
+    view: PlayGameScreen,
   },
   {
     path: '/register',
