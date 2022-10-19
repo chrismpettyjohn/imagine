@@ -12,10 +12,10 @@ export function GraphQLContextProvider({children}: GraphQLContextProviderProps) 
   }
 
   return (
-    <graphQLContext.Provider value={{graphQLClient, setGraphQLAccessToken}}>
-      <ApolloProvider client={graphqlClient as any}>
+    <ApolloProvider client={graphqlClient as any}>
+      <graphQLContext.Provider value={{graphQLClient, setGraphQLAccessToken}}>
         {children}
-      </ApolloProvider>
-    </graphQLContext.Provider>
+      </graphQLContext.Provider>
+    </ApolloProvider>
   );
 }
