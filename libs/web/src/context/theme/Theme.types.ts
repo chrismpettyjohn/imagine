@@ -5,7 +5,7 @@ export interface ThemeContext {
   showFooter: boolean;
   showModalOverlay: boolean;
   applicationMode: boolean;
-  setStore: (changes: Partial<ThemeContext>) => void;
+  setTheme: (changes: Partial<ThemeContext>) => void;
 }
 
 export const defaultThemeContextInterface: ThemeContext = {
@@ -14,7 +14,7 @@ export const defaultThemeContextInterface: ThemeContext = {
   showModalOverlay: true,
   applicationMode: false,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  setStore: (changes: Partial<ThemeContext>) => {},
+  setTheme: (changes: Partial<ThemeContext>) => {},
 };
 
 export interface ThemeContextProviderProps {

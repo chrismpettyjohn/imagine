@@ -5,11 +5,11 @@ import {UseQueryResponse, useRunQuery} from './run-query.hook';
 const SSO_CREATE = gql`
   query {
       sessionSSOCreate {
-          generatedSSO
+          ssoToken
       }
   }
 `;
 
-export const useSSOCreate = (): UseQueryResponse<{generatedSSO: string}> => {
+export const useSSOCreate = (): UseQueryResponse<{ssoToken: string}> => {
   return useRunQuery(SSO_CREATE);
 };

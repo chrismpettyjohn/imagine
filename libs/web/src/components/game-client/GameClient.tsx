@@ -1,5 +1,4 @@
 import './GameClient.css';
-import {UserGuard} from '../user-guard/UserGuard';
 import React, {useContext, useEffect} from 'react';
 import {useSSOCreate} from '../../hooks/sso-create.hook';
 import {themeContext} from '../../context/theme/ThemeContext';
@@ -21,27 +20,22 @@ export function GameClient() {
     }
   }, [session]);
 
-  if (!session || !generateSSO.data?.generatedSSO || generateSSO.loading) {
+  console.log('session: ', session);
+  console.log('generated sso: ', generateSSO);
+
+  if (!session || !generateSSO.data?.ssoToken || generateSSO.loading) {
     return null;
   }
 
-  function getGame() {
-    return (
-      <div
-        className={`hotel-container ${showClient ? 'visible' : 'not-visible'}`}
-      >
-        <GameClientActions />
-
-      </div>
-    );
-  }
-
   return (
-    <UserGuard redirect={false}>
+    <div
+      className={`hotel-container ${showClient ? 'visible' : 'not-visible'}`}
+    >
+      <GameClientActions />
       <iframe
-        src={`${config!.nitroURL}?sso=${generateSSO.data?.generatedSSO}`}
+        src={`${config!.nitroURL}?sso=${generateSSO.data.ssoToken}`}
         style={{height: '100%', width: '100%'}}
       />
-    </UserGuard>
+    </div>
   );
 }

@@ -27,7 +27,7 @@ export function ThemeContextProvider({children}: ThemeContextProviderProps) {
   }
 
   return (
-    <themeContext.Provider value={{...state, setStore}}>
+    <themeContext.Provider value={{...state, setTheme: setStore}}>
       {children}
     </themeContext.Provider>
   );

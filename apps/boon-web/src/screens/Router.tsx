@@ -12,6 +12,7 @@ import {CommunityStaffScreen} from './community-staff-screen/CommunityStaffScree
 import {CommunityArticleScreen} from './community-article-screen/CommunityArticleScreen';
 import {CommunityLeaderboardsScreen} from './community-leaderboards-screen/CommunityLeaderboardsScreen';
 import {CommunityOnlinePlayersScreen} from './community-online-players-screen/CommunityOnlinePlayersScreen';
+import {PlayGameScreen} from './play-game-screen/PlayGameScreen';
 
 const SITE_ROUTES: Array<{path: string, view: any, }> = [
   {
@@ -33,6 +34,10 @@ const SITE_ROUTES: Array<{path: string, view: any, }> = [
   {
     path: '/me',
     view: MeScreen,
+  },
+  {
+    path: '/play',
+    view: PlayGameScreen,
   },
   {
     path: '/community',

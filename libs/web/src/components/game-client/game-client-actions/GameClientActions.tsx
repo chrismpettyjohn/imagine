@@ -5,11 +5,11 @@ import {themeContext} from '../../../context/theme/ThemeContext';
 
 export function GameClientActions() {
   const [location, setLocation] = useLocation();
-  const {showClient, setStore} = useContext(themeContext);
+  const {showClient, setTheme} = useContext(themeContext);
   const [isExpanded, setExpanded] = useState<boolean>(false);
 
   function toggleWebView(): void {
-    setStore({showClient: !showClient});
+    setTheme({showClient: !showClient});
     setLocation('/me');
   }
 
