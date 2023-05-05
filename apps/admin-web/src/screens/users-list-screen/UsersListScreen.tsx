@@ -1,13 +1,13 @@
 import DayJS from 'dayjs';
-import React, {useContext, useEffect} from 'react';
-import {UserOnlineStatus, UserWire} from '@imagine-cms/types';
-import {DataTable} from '../../components/data-table/DataTable';
-import {configContext, useFetchUsers} from '@imagine-cms/web';
-import {LoadingOverlay} from '../../components/loading-overlay/LoadingOverlay';
+import React, { useContext, useEffect } from 'react';
+import { UserOnlineStatus, UserWire } from '@imagine-cms/types';
+import { DataTable } from '../../components/data-table/DataTable';
+import { configContext, useFetchUsers } from '@imagine-cms/web';
+import { LoadingOverlay } from '../../components/loading-overlay/LoadingOverlay';
 
 export function UsersListScreen() {
-  const {config} = useContext(configContext);
-  const {runQuery, data, error, loading} = useFetchUsers();
+  const { config } = useContext(configContext);
+  const { runQuery, data, error, loading } = useFetchUsers();
 
   console.log(error);
 
@@ -54,10 +54,6 @@ export function UsersListScreen() {
                             : ['danger', 'Offline']
                           return <span className={`badge badge-${color}`}>{label}</span>
                         }
-                      },
-                      {
-                        header: 'Last Online',
-                        render: user => user.lastOnline ? DayJS.unix(user.lastOnline).format(config!.dateFormat) : <span className="text-danger">Never</span>
                       },
                       {
                         header: 'Tools',

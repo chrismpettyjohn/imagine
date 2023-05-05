@@ -13,16 +13,16 @@
     "compile:types": "tsc -d -p tsconfig.build.json --emitDeclarationOnly --declarationDir dist/types"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "19.0.0",
-    "@rollup/plugin-node-resolve": "13.0.0",
-    "@rollup/plugin-typescript": "8.2.1",
-    "@types/node": "15.12.4",
-    "rimraf": "3.0.2",
+    "@rollup/plugin-commonjs": "24.1.0",
+    "@rollup/plugin-node-resolve": "15.0.2",
+    "@rollup/plugin-typescript": "11.1.0",
+    "@types/node": "18.15.11",
+    "rimraf": "5.0.0",
     "rollup-plugin-peer-deps-external": "2.2.4",
-    "rollup-plugin-terser": "7.0.2",
-    "ts-node": "10.0.0",
-    "tsconfig-paths": "3.9.0",
-    "typescript": "~4.2.3"
+    "@rollup/plugin-terser": "0.4.1",
+    "ts-node": "10.9.1",
+    "tsconfig-paths": "4.2.0",
+    "typescript": "~5.0.4"
   },
   "gitHead": "2305e183b7fa01b3837f0f20c401ecdec6858de6"
 }

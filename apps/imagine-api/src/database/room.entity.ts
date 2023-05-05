@@ -19,14 +19,14 @@ export class RoomEntity implements RoomWire {
   @Column()
   description!: string;
 
-  @Column({name: 'owner'})
+  @Column({name: 'owner_id'})
   userID!: number;
 
   @ManyToOne(() => UserEntity)
-  @JoinColumn({name: 'owner'})
+  @JoinColumn({name: 'owner_id'})
   user?: UserEntity;
 
-  @Column({name: 'users_now'})
+  @Column({name: 'users'})
   usersNow!: number;
 
   @Column({name: 'users_max'})

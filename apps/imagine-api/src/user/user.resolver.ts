@@ -22,7 +22,6 @@ import {
 } from '@nestjs/graphql';
 import {RankModel} from '../rank/rank.model';
 import {GetUser} from '../session/get-user.decorator';
-import {UserOnlineStatus, UserShowOnlineStatus} from '@imagine-cms/types';
 
 const pubSub = new PubSub();
 
@@ -77,23 +76,8 @@ export class UserResolver {
     return ipRegisteredWith;
   }
 
-  @ResolveField('lastOnline')
-  lastOnline(
-    @Parent() {id, lastOnline, showOnlineStatus}: UserEntity
-  ): number | null {
-    if (showOnlineStatus === UserShowOnlineStatus.Hidden) {
-      return null;
-    }
-    return lastOnline;
-  }
-
   @ResolveField('onlineStatus')
-  onlineStatus(
-    @Parent() {id, onlineStatus, showOnlineStatus}: UserEntity
-  ): string {
-    if (showOnlineStatus === UserShowOnlineStatus.Hidden) {
-      return UserOnlineStatus.Offline;
-    }
+  onlineStatus(@Parent() {onlineStatus}: UserEntity): string {
     return onlineStatus;
   }
 
@@ -122,7 +106,6 @@ export class UserResolver {
       ...userCreateInput,
       gameSSO: '',
       accountCreatedAt: secondsSinceEpoch,
-      lastOnline: secondsSinceEpoch,
       ipLast: '', // TODO: Add support for IPs,
       ipRegisteredWith: '', // TODO: Add support for IPs
     });

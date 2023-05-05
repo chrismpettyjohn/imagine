@@ -35,7 +35,7 @@ export class UserRepository extends BaseRepository<UserEntity> {
   }
 
   async generateSSO(userID: number): Promise<string> {
-    const gameSSO: string = 'instinct_' + Random.generate(50) + '_' + userID;
+    const gameSSO: string = 'imagine_' + Random.generate(50) + '_' + userID;
     await this.update({id: userID}, {gameSSO});
     return gameSSO;
   }

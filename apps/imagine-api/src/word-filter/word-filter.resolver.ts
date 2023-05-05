@@ -1,13 +1,11 @@
 import {omit} from 'lodash';
+import {PubSub} from 'graphql-subscriptions';
 import {WordFilterArgs} from './word-filter.args';
 import {WordFilterModel} from './word-filter.model';
-import {PubSub} from 'graphql-subscriptions';
-import {Inject, forwardRef} from '@nestjs/common';
 import {UserEntity} from '../database/user.entity';
 import {GetUser} from '../session/get-user.decorator';
-import {WordFilterEntity} from '../database/word-filter.entity';
-import {UserRepository} from '../database/user.repository';
 import {HasSession} from '../session/has-session.decorator';
+import {WordFilterEntity} from '../database/word-filter.entity';
 import {WordFilterDataloaderService} from './word-filter.dataloader';
 import {WordFilterRepository} from '../database/word-filter.repository';
 import {
@@ -21,8 +19,6 @@ const pubSub = new PubSub();
 @Resolver(() => WordFilterModel)
 export class WordFilterResolver {
   constructor(
-    @Inject(forwardRef(() => UserRepository))
-    private readonly userRepo: UserRepository,
     private readonly wordFilterRepo: WordFilterRepository,
     private readonly wordFilterDataloaderService: WordFilterDataloaderService
   ) {}
@@ -50,7 +46,6 @@ export class WordFilterResolver {
   ): Promise<WordFilterEntity> {
     const newWordFilter = await this.wordFilterRepo.create({
       ...wordFilterCreateInput,
-      addedByUserID: user.id!,
     });
     pubSub.publish('wordFilterCreated', {wordFilterCreated: newWordFilter});
     return newWordFilter;

@@ -1,6 +1,13 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "ES2017"
-  }
+    "module": "CommonJS",
+    "lib": [
+      "esnext"
+    ],
+    "target": "ES2016"
+  },
+  "include": [
+    "./src"
+  ]
 }

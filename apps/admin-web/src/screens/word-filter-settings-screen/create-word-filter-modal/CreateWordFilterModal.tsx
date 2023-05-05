@@ -1,17 +1,15 @@
-import {toast} from 'react-toastify'
-import React, {useEffect, useState} from 'react';
-import {useWordFilterCreate} from '@imagine-cms/web';
-import {WordFilterEditor} from '../word-filter-editor/WordFilterEditor';
-import {WordFilterBannableStatus, WordFilterCreateInputDTO, WordFilterStrictStatus} from '@imagine-cms/types';
+import { toast } from 'react-toastify'
+import React, { useEffect, useState } from 'react';
+import { useWordFilterCreate } from '@imagine-cms/web';
+import { WordFilterCreateInputDTO } from '@imagine-cms/types';
+import { WordFilterEditor } from '../word-filter-editor/WordFilterEditor';
 
 export function CreateWordFilterModal() {
   const [wordFilterDTO, setWordFilterDTO] = useState<WordFilterCreateInputDTO>({
     word: '',
     replacement: '',
-    strict: WordFilterStrictStatus.NotStrict,
-    bannable: WordFilterBannableStatus.NotBannable,
   })
-  const {runMutation, data, error, loading} = useWordFilterCreate(wordFilterDTO);
+  const { runMutation, data, error, loading } = useWordFilterCreate(wordFilterDTO);
 
   useEffect(() => {
     if (!loading) {

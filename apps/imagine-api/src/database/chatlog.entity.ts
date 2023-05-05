@@ -8,7 +8,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-@Entity('chatlogs')
+@Entity('chatlogs_room')
 export class ChatlogEntity implements ChatlogWire {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -16,7 +16,7 @@ export class ChatlogEntity implements ChatlogWire {
   @Column()
   message?: string;
 
-  @Column({name: 'user_id'})
+  @Column({name: 'user_from_id'})
   userID!: number;
 
   @ManyToOne(() => UserEntity)

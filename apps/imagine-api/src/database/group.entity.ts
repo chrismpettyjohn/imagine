@@ -8,7 +8,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-@Entity('groups')
+@Entity('guilds')
 export class GroupEntity implements GroupWire {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -22,10 +22,10 @@ export class GroupEntity implements GroupWire {
   @Column({name: 'desc'})
   description!: string;
 
-  @Column({name: 'owner_id'})
+  @Column({name: 'user_id'})
   userID!: number;
 
   @ManyToOne(() => UserEntity)
-  @JoinColumn({name: 'owner_id'})
+  @JoinColumn({name: 'user_id'})
   user?: UserEntity;
 }

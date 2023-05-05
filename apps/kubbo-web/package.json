@@ -1,0 +1,53 @@
+{
+  "name": "@imagine-cms/boon-web",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/types",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "vite --host",
+    "build": "tsc && vite build"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "wouter": "2.10.0",
+    "graphql-tag": "2.12.6",
+    "react-bootstrap": "2.7.3",
+    "@imagine-cms/types": "*",
+    "@imagine-cms/web": "*",
+    "dayjs": "1.11.7",
+    "react-loading-overlay": "1.0.1",
+    "react-toastify": "9.0.0",
+    "react-multi-carousel": "2.8.3"
+  },
+  "devDependencies": {
+    "@types/node": "18.15.11",
+    "@types/react": "18.0.35",
+    "@types/react-dom": "18.0.11",
+    "typescript": "5.0.4",
+    "tsconfig-paths-webpack-plugin": "4.0.1",
+    "vite": "4.2.1",
+    "@vitejs/plugin-react": "3.1.0",
+    "vite-tsconfig-paths": "4.2.0",
+    "@originjs/vite-plugin-commonjs": "1.0.3"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "gitHead": "2305e183b7fa01b3837f0f20c401ecdec6858de6",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

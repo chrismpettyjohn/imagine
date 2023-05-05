@@ -1,5 +1,5 @@
-import {ReactNode} from 'react';
-import {GraphQLClient} from '@imagine-cms/web';
+import { ReactNode } from 'react';
+import { GraphQLClient } from '../../app/graphql.client';
 
 export interface GraphQLContext {
   graphQLClient: GraphQLClient;

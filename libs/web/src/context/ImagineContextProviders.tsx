@@ -1,13 +1,11 @@
 import React from 'react';
-import {ImagineContextProvidersProps} from './ImagineContextProviders.types';
-import {
-  ConfigContextProvider,
-  GraphQLContextProvider,
-  SessionContextProvider,
-  ThemeContextProvider
-} from '@imagine-cms/web';
+import { ThemeContextProvider } from './theme/ThemeProvider';
+import { ConfigContextProvider } from './config/ConfigContextProvider';
+import { GraphQLContextProvider } from './graphql/GraphQLContextProvider';
+import { SessionContextProvider } from './session/SessionContextProvider';
+import { ImagineContextProvidersProps } from './ImagineContextProviders.types';
 
-export function ImagineContextProviders({children}: ImagineContextProvidersProps) {
+export function ImagineContextProviders({ children }: ImagineContextProvidersProps) {
   return (
     <GraphQLContextProvider>
       <ConfigContextProvider>

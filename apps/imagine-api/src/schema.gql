@@ -51,8 +51,6 @@ type UserModel {
   gameSSO: String
   rankID: Float
   rank: RankModel!
-  rankVipID: Float
-  rankVip: RankModel
   credits: Float
   vipPoints: Float
   activityPoints: Float
@@ -60,14 +58,9 @@ type UserModel {
   gender: UserGender
   motto: String
   accountCreatedAt: Float
-  lastOnline: Float
   onlineStatus: UserOnlineStatus
   ipRegisteredWith: String
   homeRoomID: Float
-  muteStatus: UserMuteStatus
-  allowingNewFriends: UserAllowingNewFriendsStatus
-  showOnlineStatus: UserShowOnlineStatus
-  vipStatus: UserVipStatus
   sessions: [SessionModel!]
   ipLast: String!
 }
@@ -82,26 +75,6 @@ enum UserOnlineStatus {
   Offline
 }
 
-enum UserMuteStatus {
-  IsMuted
-  NotMuted
-}
-
-enum UserAllowingNewFriendsStatus {
-  Yes
-  No
-}
-
-enum UserShowOnlineStatus {
-  Hidden
-  Visible
-}
-
-enum UserVipStatus {
-  Yes
-  No
-}
-
 type RoomModel {
   id: Float
   name: String
@@ -112,6 +85,16 @@ type RoomModel {
   usersMax: Float
 }
 
+type PhotoModel {
+  id: Float
+  userID: Float
+  user: UserModel!
+  roomID: Float
+  room: RoomModel!
+  photoURL: String
+  createdAt: Float
+}
+
 type GroupModel {
   id: Float
   name: String
@@ -119,11 +102,6 @@ type GroupModel {
   badge: String
   userID: Float
   user: UserModel
-}
-
-type BadgeModel {
-  id: Float
-  code: String
 }
 
 type ConfigModel {
@@ -176,24 +154,35 @@ type WordFilterModel {
   id: Float
   word: String
   replacement: String
-  strict: String
-  bannable: String
-  addedByUserID: Float
 }
 
-type PhotoModel {
+type LanguageModel {
   id: Float
-  userID: Float
-  user: UserModel!
-  roomID: Float
-  room: RoomModel!
-  photoURL: String
-  createdAt: Float
+  hidden: Boolean
+  language: String
+  flagURL: String
+  createdAt: Timestamp
+}
+
+"""
+`Date` type as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
+"""
+scalar Timestamp
+
+type LanguagePhraseModel {
+  id: Float
+  key: String
+  type: LanguagePhraseType
+  description: String
+  createdAt: Timestamp
+}
+
+enum LanguagePhraseType {
+  Site
+  Game
 }
 
 type Query {
-  badge(id: Float!): BadgeModel!
-  badges(other: ExtraArgs): [BadgeModel!]!
   sessionSSOCreate: SessionSSOModel!
   sessionByJWT(jwt: String!): SessionModel!
   session(id: Float!): SessionModel!
@@ -219,6 +208,10 @@ type Query {
   groups(other: ExtraArgs): [GroupModel!]!
   photo(id: Float!): PhotoModel!
   photos(other: ExtraArgs): [PhotoModel!]!
+  language(id: Float!): LanguageModel!
+  languages: [LanguageModel!]!
+  languagePhrase(id: Float!): LanguagePhraseModel!
+  languagePhrases: [LanguagePhraseModel!]!
 }
 
 input ExtraArgs {
@@ -233,9 +226,6 @@ The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](
 scalar JSONObject
 
 type Mutation {
-  badgeCreate(newBadge: BadgeInput!): BadgeModel!
-  badgeUpdate(id: Float!, badgeChanges: BadgeInput!): Boolean!
-  badgeDelete(id: Float!): Boolean!
   sessionCreate(username: String!, password: String!): SessionCreatedModel!
   userCreate(newUser: UserCreateInput!): UserModel!
   userUpdate(id: Float!, userChanges: UserUpdateInput!): Boolean!
@@ -260,10 +250,12 @@ type Mutation {
   roomDelete(id: Float!): Boolean!
   groupDelete(id: Float!): Boolean!
   photoDelete(id: Float!): Boolean!
-}
-
-input BadgeInput {
-  code: String!
+  languageCreate(input: LanguageInput!): LanguageModel!
+  languageUpdate(id: Float!, input: LanguageInput!): LanguageModel!
+  languageDelete(id: Float!): Boolean!
+  languagePhraseCreate(input: LanguagePhraseInput!): LanguagePhraseModel!
+  languagePhraseUpdate(id: Float!, input: LanguagePhraseInput!): LanguagePhraseModel!
+  languagePhraseDelete(id: Float!): Boolean!
 }
 
 input UserCreateInput {
@@ -359,20 +351,26 @@ input BanUpdateInput {
 input WordFilterCreateInput {
   word: String!
   replacement: String!
-  strict: String!
-  bannable: String!
 }
 
 input WordFilterUpdateInput {
   word: String!
   replacement: String!
-  strict: String!
-  bannable: String!
+}
+
+input LanguageInput {
+  hidden: Boolean!
+  language: String!
+  flagURL: String!
+}
+
+input LanguagePhraseInput {
+  key: String!
+  type: LanguagePhraseType!
+  description: String!
 }
 
 type Subscription {
-  badgeCreated: BadgeModel!
-  badgeDeleted: BadgeModel!
   sessionCreated: SessionModel!
   userCreated: UserModel!
   userDeleted: UserModel!

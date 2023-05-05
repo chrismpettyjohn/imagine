@@ -2,9 +2,7 @@ import {omit} from 'lodash';
 import {GroupArgs} from './group.args';
 import {GroupModel} from './group.model';
 import {PubSub} from 'graphql-subscriptions';
-import {Inject, forwardRef} from '@nestjs/common';
 import {GroupEntity} from '../database/group.entity';
-import {UserRepository} from '../database/user.repository';
 import {GroupDataloaderService} from './group.dataloader';
 import {GroupRepository} from '../database/group.repository';
 import {Args, Mutation, Query, Resolver, Subscription} from '@nestjs/graphql';
@@ -14,8 +12,6 @@ const pubSub = new PubSub();
 @Resolver(() => GroupModel)
 export class GroupResolver {
   constructor(
-    @Inject(forwardRef(() => UserRepository))
-    private readonly userRepo: UserRepository,
     private readonly groupRepo: GroupRepository,
     private readonly groupDataloaderService: GroupDataloaderService
   ) {}

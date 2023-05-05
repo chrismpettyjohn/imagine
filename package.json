@@ -11,31 +11,24 @@
     "purge": "lerna exec -- rm -rf node_modules && lerna exec -- rm -rf dist && rm -rf yarn.lock && rm -rf node_modules && rm -rf yarn.lock"
   },
   "devDependencies": {
-    "@types/node": "14.14.33",
-    "@typescript-eslint/eslint-plugin": "4.17.0",
+    "@types/node": "18.15.11",
+    "@typescript-eslint/eslint-plugin": "5.58.0",
     "babel-eslint": "10.1.0",
-    "eslint-config-react-app": "6.0.0",
-    "eslint-plugin-flowtype": "5.3.1",
-    "eslint-plugin-import": "2.22.1",
-    "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-config-react-app": "7.0.1",
+    "eslint-plugin-flowtype": "8.0.3",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-jsx-a11y": "6.7.1",
     "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-prettier": "3.3.1",
-    "eslint-plugin-react": "7.22.0",
-    "eslint-plugin-react-hooks": "4.2.0",
-    "gts": "3.1.0",
-    "lerna": "4.0.0",
-    "tsconfig-paths-webpack-plugin": "3.3.0",
-    "typescript": "4.2.3"
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-react": "7.32.2",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "gts": "3.1.1",
+    "lerna": "6.6.1",
+    "tsconfig-paths-webpack-plugin": "4.0.1",
+    "typescript": "5.0.4"
   },
   "name": "imagine",
   "engines": {
     "node": ">=16.0.0"
-  },
-  "resolutions": {
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "react-scripts": "3.4.3",
-    "@types/react": "17.0.1",
-    "@types/react-dom": "17.0.1"
   }
 }

@@ -17,18 +17,8 @@ import {
   IMAGINE_DEFAULT_LOOK,
   IMAGINE_DEFAULT_MOTTO,
   IMAGINE_DEFAULT_VIP_POINTS,
-  IMAGINE_DEFAULT_VIP_STATUS,
 } from '../imagine.constant';
-import {
-  UserWire,
-  UserAllowingNewFriendsStatus,
-  UserGender,
-  UserMuteStatus,
-  UserOnlineStatus,
-  UserShowOnlineStatus,
-  UserShowRoomStatus,
-  UserVipStatus,
-} from '@imagine-cms/types';
+import {UserWire, UserGender, UserOnlineStatus} from '@imagine-cms/types';
 
 registerEnumType(UserGender, {
   name: 'UserGender',
@@ -36,26 +26,6 @@ registerEnumType(UserGender, {
 
 registerEnumType(UserOnlineStatus, {
   name: 'UserOnlineStatus',
-});
-
-registerEnumType(UserMuteStatus, {
-  name: 'UserMuteStatus',
-});
-
-registerEnumType(UserAllowingNewFriendsStatus, {
-  name: 'UserAllowingNewFriendsStatus',
-});
-
-registerEnumType(UserShowOnlineStatus, {
-  name: 'UserShowOnlineStatus',
-});
-
-registerEnumType(UserShowRoomStatus, {
-  name: 'UserShowRoomStatus',
-});
-
-registerEnumType(UserVipStatus, {
-  name: 'UserVipStatus',
 });
 
 @Entity('users')
@@ -78,16 +48,13 @@ export class UserEntity implements UserWire {
   @Column({name: 'rank'})
   rankID = 1;
 
-  @Column({name: 'rank_vip'})
-  rankVipID = 1;
-
   @Column()
   credits: number = IMAGINE_DEFAULT_CREDITS;
 
-  @Column({name: 'vip_points'})
+  @Column({name: 'points'})
   vipPoints: number = IMAGINE_DEFAULT_VIP_POINTS;
 
-  @Column({name: 'activity_points'})
+  @Column({name: 'pixels'})
   activityPoints: number = IMAGINE_DEFAULT_ACTIVITY_POINTS;
 
   @Column()
@@ -102,44 +69,21 @@ export class UserEntity implements UserWire {
   @Column({name: 'account_created'})
   accountCreatedAt!: number;
 
-  @Column({name: 'last_online'})
-  lastOnline!: number;
-
   @Column({name: 'online'})
   onlineStatus: UserOnlineStatus = UserOnlineStatus.Offline;
 
-  @Column({name: 'ip_last'})
+  @Column({name: 'ip_current'})
   ipLast!: string;
 
-  @Column({name: 'ip_reg'})
+  @Column({name: 'ip_register'})
   ipRegisteredWith!: string;
 
   @Column({name: 'home_room'})
   homeRoomID: number = IMAGINE_DEFAULT_HOME_ROOM;
 
-  @Column({name: 'is_muted'})
-  muteStatus: UserMuteStatus = UserMuteStatus.NotMuted;
-
-  @Column({name: 'block_newfriends'})
-  allowingNewFriends: UserAllowingNewFriendsStatus =
-    UserAllowingNewFriendsStatus.Yes;
-
-  @Column({name: 'hide_online'})
-  showOnlineStatus: UserShowOnlineStatus = UserShowOnlineStatus.Visible;
-
-  @Column({name: 'hide_inroom'})
-  showRoomStatus: UserShowRoomStatus = UserShowRoomStatus.Visible;
-
-  @Column({name: 'vip'})
-  vipStatus: UserVipStatus = IMAGINE_DEFAULT_VIP_STATUS;
-
   @ManyToOne(() => RankEntity, rank => rank.users)
   @JoinColumn({name: 'rank'})
   rank?: RankEntity;
-
-  @ManyToOne(() => RankEntity, rank => rank.vipUsers)
-  @JoinColumn({name: 'rank_vip'})
-  rankVip?: RankEntity;
 
   @OneToMany(() => SessionEntity, session => session.user)
   sessions?: SessionEntity[];

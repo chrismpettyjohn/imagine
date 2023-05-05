@@ -17,26 +17,26 @@ export class BanEntity implements BanWire {
   @Column({name: 'bantype'})
   type!: string;
 
-  @Column()
+  @Column({name: 'ban_reason'})
   reason!: string;
 
-  @Column({name: 'value'})
+  @Column({name: 'user_id'})
   bannedUserID!: number;
 
   @ManyToOne(() => UserEntity)
-  @JoinColumn({name: 'value'})
+  @JoinColumn({name: 'user_id'})
   bannedUser?: UserEntity;
 
-  @Column({name: 'added_by'})
+  @Column({name: 'user_staff_id'})
   addedByUserID!: number;
 
   @ManyToOne(() => UserEntity)
-  @JoinColumn({name: 'added_by'})
+  @JoinColumn({name: 'user_staff_id'})
   addedByUser?: UserEntity;
 
-  @CreateDateColumn({name: 'added_date'})
+  @CreateDateColumn({name: 'timestamp'})
   createdAt?: string;
 
-  @Column({name: 'expire'})
+  @Column({name: 'ban_expire'})
   expiresAt!: string;
 }

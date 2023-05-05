@@ -1,5 +1,3 @@
-import {UserVipStatus} from '@imagine-cms/types';
-
 export function getEnvOrFail(key: string): string {
   const value = process.env[key];
 
@@ -34,11 +32,4 @@ export const IMAGINE_DEFAULT_LOOK: string = getEnvOrFail('DEFAULT_LOOK');
 export const IMAGINE_DEFAULT_HOME_ROOM = Number(
   getEnvOrFail('DEFAULT_HOME_ROOM')
 );
-export const IMAGINE_DEFAULT_VIP_STATUS: UserVipStatus =
-  getEnvOrFail('DEFAULT_VIP_STATUS') === 'true'
-    ? UserVipStatus.Yes
-    : UserVipStatus.No;
 export const IMAGINE_DEFAULT_RANK = Number(getEnvOrFail('DEFAULT_RANK'));
-export const IMAGINE_DEFAULT_VIP_RANK = Number(
-  getEnvOrFail('DEFAULT_VIP_RANK')
-);

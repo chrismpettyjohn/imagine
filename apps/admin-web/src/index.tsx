@@ -1,10 +1,18 @@
 import React from 'react';
 import DayJS from 'dayjs';
-import ReactDOM from 'react-dom';
-import {ImagineWeb} from './ImagineWeb';
+import { ImagineWeb } from './ImagineWeb';
+import { createRoot } from 'react-dom/client';
 import 'react-toastify/dist/ReactToastify.css';
 import RelativeTime from 'dayjs/plugin/relativeTime';
 
 DayJS.extend(RelativeTime);
 
-ReactDOM.render(<ImagineWeb />, document.getElementById('root'));
+const container = document.getElementById('root')!;
+const root = createRoot(container);
+root.render(
+  <React.StrictMode>
+    <ImagineWeb />
+  </React.StrictMode>
+);
+
+

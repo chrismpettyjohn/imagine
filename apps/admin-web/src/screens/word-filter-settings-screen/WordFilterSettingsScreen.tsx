@@ -1,14 +1,14 @@
-import React, {useEffect} from 'react';
-import {useFetchWordFilter} from '@imagine-cms/web';
-import {DataTable} from '../../components/data-table/DataTable';
-import {LoadingOverlay} from '../../components/loading-overlay/LoadingOverlay';
-import {CreateWordFilterModal} from './create-word-filter-modal/CreateWordFilterModal';
-import {WordFilterBannableStatus, WordFilterStrictStatus, WordFilterWire} from '@imagine-cms/types';
-import {EditWordFilterModal} from './edit-word-filter-modal/EditWordFilterModal';
-import {DeleteWordFilterModal} from './delete-word-filter-modal/DeleteWordFilterModal';
+import React, { useEffect } from 'react';
+import { WordFilterWire } from '@imagine-cms/types';
+import { useFetchWordFilter } from '@imagine-cms/web';
+import { DataTable } from '../../components/data-table/DataTable';
+import { LoadingOverlay } from '../../components/loading-overlay/LoadingOverlay';
+import { EditWordFilterModal } from './edit-word-filter-modal/EditWordFilterModal';
+import { CreateWordFilterModal } from './create-word-filter-modal/CreateWordFilterModal';
+import { DeleteWordFilterModal } from './delete-word-filter-modal/DeleteWordFilterModal';
 
 export function WordFilterSettingsScreen() {
-  const {runQuery, data, loading} = useFetchWordFilter();
+  const { runQuery, data, loading } = useFetchWordFilter();
 
   useEffect(() => {
     runQuery();
@@ -38,27 +38,6 @@ export function WordFilterSettingsScreen() {
                     {
                       header: 'Replacement',
                       render: wordFilter => wordFilter.replacement,
-                    },
-                    {
-                      header: 'Tags',
-                      render: wordFilter => (
-                        <>
-                          {
-                            wordFilter.strict === WordFilterStrictStatus.Strict && (
-                              <span className="badge badge-warning mr-2">Strict</span>
-                            )
-                          }
-                          {
-                            wordFilter.bannable === WordFilterBannableStatus.Bannable && (
-                              <span className="badge badge-danger">Bannable</span>
-                            )
-                          }
-                        </>
-                      ),
-                    },
-                    {
-                      header: 'Added By',
-                      render: wordFilter => wordFilter.addedby,
                     },
                     {
                       header: 'Tools',

@@ -2,10 +2,9 @@ import {BanEntity} from './ban.entity';
 import {RankEntity} from './rank.entity';
 import {UserEntity} from './user.entity';
 import {RoomEntity} from './room.entity';
-import {BadgeEntity} from './badge.entity';
 import {GroupEntity} from './group.entity';
-import {ConfigEntity} from './config.entity';
 import {PhotoEntity} from './photo.entity';
+import {ConfigEntity} from './config.entity';
 import {ArticleEntity} from './article.entity';
 import {SessionEntity} from './session.entity';
 import {BanRepository} from './ban.repository';
@@ -13,17 +12,22 @@ import {ChatlogEntity} from './chatlog.entity';
 import {UserRepository} from './user.repository';
 import {RankRepository} from './rank.repository';
 import {RoomRepository} from './room.repository';
-import {GroupRepository} from './group.repository';
-import {BadgeRepository} from './badge.repository';
-import {ConfigRepository} from './config.repository';
+import {LanguageEntity} from './language.entity';
 import {PhotoRepository} from './photo.repository';
+import {GroupRepository} from './group.repository';
+import {ConfigRepository} from './config.repository';
 import {WordFilterEntity} from './word-filter.entity';
 import {SessionRepository} from './session.repository';
 import {ArticleRepository} from './article.repository';
 import {ChatlogRepository} from './chatlog.repository';
+import {LanguageRepository} from './language.repository';
+import {LanguagePhraseEntity} from './language-phrase.entity';
 import {WordFilterRepository} from './word-filter.repository';
 import {ArticleCommentEntity} from './article-comment.entity';
+import {LanguagePhraseRepository} from './language-phrase.repository';
 import {ArticleCommentRepository} from './article-comment.repository';
+import {LanguagePhraseTranslationEntity} from './language-phrase-translation.entity';
+import {LanguagePhraseTranslationRepository} from './language-phrase-translation.repository';
 
 export const databaseEntities = [
   ArticleEntity,
@@ -31,7 +35,6 @@ export const databaseEntities = [
   SessionEntity,
   UserEntity,
   ArticleCommentEntity,
-  BadgeEntity,
   ConfigEntity,
   BanEntity,
   WordFilterEntity,
@@ -39,6 +42,9 @@ export const databaseEntities = [
   RoomEntity,
   GroupEntity,
   PhotoEntity,
+  LanguageEntity,
+  LanguagePhraseEntity,
+  LanguagePhraseTranslationEntity,
 ];
 
 export const databaseRepositories = [
@@ -47,7 +53,6 @@ export const databaseRepositories = [
   UserRepository,
   ArticleRepository,
   ArticleCommentRepository,
-  BadgeRepository,
   ConfigRepository,
   BanRepository,
   WordFilterRepository,
@@ -55,4 +60,7 @@ export const databaseRepositories = [
   RoomRepository,
   GroupRepository,
   PhotoRepository,
+  LanguageRepository,
+  LanguagePhraseRepository,
+  LanguagePhraseTranslationRepository,
 ];

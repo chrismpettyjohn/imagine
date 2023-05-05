@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
-import {UserGender, UserWire} from '@imagine-cms/types';
-import {UseMutationResponse, useRunMutation} from './run-mutation.hook';
+import { UserGender, UserWire } from '@imagine-cms/types';
+import { UseMutationResponse, useRunMutation } from './run-mutation.hook';
 
 const CREATE_NEW_USER = gql`
   mutation ($username: String!, $email: String!, $password: String!, $gender: String, $look: String) {
@@ -9,7 +9,6 @@ const CREATE_NEW_USER = gql`
       username
       email
       rankID
-      rankVipID
       credits
       vipPoints
       activityPoints
@@ -17,14 +16,9 @@ const CREATE_NEW_USER = gql`
       gender
       motto
       accountCreatedAt
-      lastOnline
       onlineStatus
       ipRegisteredWith
       homeRoomID
-      muteStatus
-      allowingNewFriends
-      showOnlineStatus
-      vipStatus
     }
   }
 `;
@@ -35,6 +29,6 @@ export const useUserCreateMutation = (
   password: string,
   gender?: UserGender,
   look?: string
-): UseMutationResponse<{userCreate: UserWire}> => {
-  return useRunMutation(CREATE_NEW_USER, {username, email, password, gender, look});
+): UseMutationResponse<{ userCreate: UserWire }> => {
+  return useRunMutation(CREATE_NEW_USER, { username, email, password, gender, look });
 };

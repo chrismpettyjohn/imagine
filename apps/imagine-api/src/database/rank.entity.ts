@@ -3,19 +3,16 @@ import {ObjectType} from '@nestjs/graphql';
 import {RankScopesWire, RankWire} from '@imagine-cms/types';
 import {Column, Entity, PrimaryGeneratedColumn, OneToMany} from 'typeorm';
 
-@Entity('ranks')
+@Entity('permissions')
 @ObjectType()
 export class RankEntity implements RankWire {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column()
+  @Column({name: 'rank_name'})
   name!: string;
 
-  @Column({name: 'title'})
-  description!: string;
-
-  @Column({name: 'badgeid'})
+  @Column({name: 'badge'})
   badgeCode!: string;
 
   @Column({type: 'json'})
@@ -23,7 +20,4 @@ export class RankEntity implements RankWire {
 
   @OneToMany(() => UserEntity, user => user.rank)
   users?: UserEntity[];
-
-  @OneToMany(() => UserEntity, user => user.rankVip)
-  vipUsers?: UserEntity[];
 }
