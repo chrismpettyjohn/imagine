@@ -1,0 +1,392 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type BanModel {
+  id: Float
+  bannedUserID: Float
+  addedByUserID: Float
+  type: String
+  reason: String
+  createdAt: String
+  expiresAt: String
+}
+
+type SessionModel {
+  id: Float
+  userID: Float
+  createdAt: String
+  updatedAt: String
+}
+
+type SessionCreatedModel {
+  id: Float
+  userID: Float
+  accessToken: String
+}
+
+type SessionSSOModel {
+  ssoToken: String!
+}
+
+type RankScopesModel {
+  accessAdminPanel: Boolean!
+  manageArticles: Boolean!
+  manageUsers: Boolean!
+}
+
+type RankModel {
+  id: Float
+  name: String
+  description: String
+  badgeCode: String
+  scopes: RankScopesModel
+  users: [UserModel!]!
+}
+
+type UserModel {
+  id: Float
+  username: String
+  email: String
+  gameSSO: String
+  rankID: Float
+  rank: RankModel!
+  credits: Float
+  vipPoints: Float
+  activityPoints: Float
+  look: String
+  gender: UserGender
+  motto: String
+  accountCreatedAt: Float
+  onlineStatus: UserOnlineStatus
+  ipRegisteredWith: String
+  homeRoomID: Float
+  sessions: [SessionModel!]
+  ipLast: String!
+}
+
+enum UserGender {
+  Male
+  Female
+}
+
+enum UserOnlineStatus {
+  Online
+  Offline
+}
+
+type RoomModel {
+  id: Float
+  name: String
+  description: String
+  userID: Float
+  user: UserModel!
+  usersNow: Float
+  usersMax: Float
+}
+
+type PhotoModel {
+  id: Float
+  userID: Float
+  user: UserModel!
+  roomID: Float
+  room: RoomModel!
+  photoURL: String
+  createdAt: Float
+}
+
+type GroupModel {
+  id: Float
+  name: String
+  description: String
+  badge: String
+  userID: Float
+  user: UserModel
+}
+
+type ConfigModel {
+  siteName: String
+  logoURL: String
+  nitroURL: String
+  groupBadgeURL: String
+  discordURL: String
+  discordWidget: String
+  facebookURL: String
+  instagramURL: String
+  twitterURL: String
+  snapchatURL: String
+  dateFormat: String
+}
+
+type ArticleCommentModel {
+  id: Float
+  articleID: Float
+  article: ArticleModel!
+  userID: Float
+  user: UserModel!
+  comment: String
+  createdAt: String
+  updatedAt: String
+}
+
+type ArticleModel {
+  id: Float
+  name: String
+  description: String
+  content: String
+  imageURL: String
+  userID: Float
+  user: UserModel!
+  comments: [ArticleCommentModel!]!
+}
+
+type ChatlogModel {
+  id: Float
+  userID: Float
+  user: UserModel!
+  roomID: Float
+  room: RoomModel!
+  message: String
+  createdAt: String
+}
+
+type WordFilterModel {
+  id: Float
+  word: String
+  replacement: String
+}
+
+type LanguageModel {
+  id: Float
+  hidden: Boolean
+  language: String
+  flagURL: String
+  createdAt: Timestamp
+}
+
+"""
+`Date` type as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
+"""
+scalar Timestamp
+
+type LanguagePhraseModel {
+  id: Float
+  key: String
+  type: LanguagePhraseType
+  description: String
+  createdAt: Timestamp
+}
+
+enum LanguagePhraseType {
+  Site
+  Game
+}
+
+type Query {
+  sessionSSOCreate: SessionSSOModel!
+  sessionByJWT(jwt: String!): SessionModel!
+  session(id: Float!): SessionModel!
+  sessions(other: ExtraArgs): [SessionModel!]!
+  user(id: Float!): UserModel!
+  users(other: ExtraArgs, username: String): [UserModel!]!
+  rank(id: Float!): RankModel!
+  ranks(other: ExtraArgs): [RankModel!]!
+  article(id: Float!): ArticleModel!
+  articles(other: ExtraArgs): [ArticleModel!]!
+  articleComment(id: Float!): ArticleCommentModel!
+  articleComments(other: ExtraArgs, articleID: Float, userID: Float): [ArticleCommentModel!]!
+  config: ConfigModel!
+  ban(id: Float!): BanModel!
+  bans(other: ExtraArgs): [BanModel!]!
+  wordFilter(id: Float!): WordFilterModel!
+  wordFilters(other: ExtraArgs): [WordFilterModel!]!
+  chatlog(id: Float!): ChatlogModel!
+  chatlogs(other: ExtraArgs, userID: Float, roomID: Float): [ChatlogModel!]!
+  room(id: Float!): RoomModel!
+  rooms(other: ExtraArgs): [RoomModel!]!
+  group(id: Float!): GroupModel!
+  groups(other: ExtraArgs): [GroupModel!]!
+  photo(id: Float!): PhotoModel!
+  photos(other: ExtraArgs): [PhotoModel!]!
+  language(id: Float!): LanguageModel!
+  languages: [LanguageModel!]!
+  languagePhrase(id: Float!): LanguagePhraseModel!
+  languagePhrases: [LanguagePhraseModel!]!
+}
+
+input ExtraArgs {
+  skip: Float
+  take: Float
+  order: JSONObject
+}
+
+"""
+The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSONObject
+
+type Mutation {
+  sessionCreate(username: String!, password: String!): SessionCreatedModel!
+  userCreate(newUser: UserCreateInput!): UserModel!
+  userUpdate(id: Float!, userChanges: UserUpdateInput!): Boolean!
+  userDelete(id: Float!): Boolean!
+  rankCreate(newRank: RankCreateInput!): RankModel!
+  rankUpdate(id: Float!, rankChanges: RankUpdateInput!): Boolean!
+  rankDelete(id: Float!): Boolean!
+  articleCreate(newArticle: ArticleCreateInput!): ArticleModel!
+  articleUpdate(id: Float!, articleChanges: ArticleUpdateInput!): Boolean!
+  articleDelete(id: Float!): Boolean!
+  articleCommentCreate(newArticleComment: ArticleCommentCreateInput!): ArticleCommentModel!
+  articleCommentUpdate(id: Float!, articleChanges: ArticleCommentUpdateInput!): Boolean!
+  articleCommentDelete(id: Float!): Boolean!
+  configUpdate(configUpdateInput: ConfigUpdateInput!): Boolean!
+  banCreate(newBan: BanCreateInput!): BanModel!
+  banUpdate(id: Float!, banChanges: BanUpdateInput!): Boolean!
+  banDelete(id: Float!): Boolean!
+  wordFilterCreate(newWordFilter: WordFilterCreateInput!): WordFilterModel!
+  wordFilterUpdate(id: Float!, wordFilterChanges: WordFilterUpdateInput!): Boolean!
+  wordFilterDelete(id: Float!): Boolean!
+  chatlogDelete(id: Float!): Boolean!
+  roomDelete(id: Float!): Boolean!
+  groupDelete(id: Float!): Boolean!
+  photoDelete(id: Float!): Boolean!
+  languageCreate(input: LanguageInput!): LanguageModel!
+  languageUpdate(id: Float!, input: LanguageInput!): LanguageModel!
+  languageDelete(id: Float!): Boolean!
+  languagePhraseCreate(input: LanguagePhraseInput!): LanguagePhraseModel!
+  languagePhraseUpdate(id: Float!, input: LanguagePhraseInput!): LanguagePhraseModel!
+  languagePhraseDelete(id: Float!): Boolean!
+}
+
+input UserCreateInput {
+  username: String!
+  password: String!
+  email: String!
+  gender: String
+  look: String
+}
+
+input UserUpdateInput {
+  password: String
+  email: String
+  gender: String
+  look: String
+}
+
+input RankCreateInput {
+  name: String!
+  description: String!
+  badgeCode: String!
+  scopes: RankWireScopesCreateInput!
+}
+
+input RankWireScopesCreateInput {
+  accessAdminPanel: Boolean!
+  manageArticles: Boolean!
+  manageUsers: Boolean!
+}
+
+input RankUpdateInput {
+  name: String
+  description: String
+  badgeCode: String
+  scopes: RankWireScopesUpdateInput
+}
+
+input RankWireScopesUpdateInput {
+  accessAdminPanel: Boolean
+  manageArticles: Boolean
+  manageUsers: Boolean
+}
+
+input ArticleCreateInput {
+  name: String!
+  description: String!
+  content: String!
+  imageURL: String!
+}
+
+input ArticleUpdateInput {
+  name: String!
+  description: String!
+  content: String!
+  imageURL: String!
+}
+
+input ArticleCommentCreateInput {
+  articleID: Float!
+  comment: String!
+}
+
+input ArticleCommentUpdateInput {
+  comment: String!
+}
+
+input ConfigUpdateInput {
+  siteName: String
+  logoURL: String
+  nitroURL: String
+  groupBadgeURL: String
+  discordURL: String
+  discordWidget: String
+  facebookURL: String
+  instagramURL: String
+  twitterURL: String
+  snapchatURL: String
+  dateFormat: String
+}
+
+input BanCreateInput {
+  bannedUserID: Float!
+  reason: String!
+  expiresAt: String!
+}
+
+input BanUpdateInput {
+  bannedUserID: Float!
+  reason: String!
+  expiresAt: String!
+}
+
+input WordFilterCreateInput {
+  word: String!
+  replacement: String!
+}
+
+input WordFilterUpdateInput {
+  word: String!
+  replacement: String!
+}
+
+input LanguageInput {
+  hidden: Boolean!
+  language: String!
+  flagURL: String!
+}
+
+input LanguagePhraseInput {
+  key: String!
+  type: LanguagePhraseType!
+  description: String!
+}
+
+type Subscription {
+  sessionCreated: SessionModel!
+  userCreated: UserModel!
+  userDeleted: UserModel!
+  rankCreated: RankModel!
+  rankDeleted: RankModel!
+  articleCreated: ArticleModel!
+  articleDeleted: ArticleModel!
+  articleCommentCreated: ArticleCommentModel!
+  articleCommentDeleted: ArticleCommentModel!
+  configUpdated: ConfigModel!
+  banCreated: BanModel!
+  banDeleted: BanModel!
+  wordFilterCreated: WordFilterModel!
+  wordFilterDeleted: WordFilterModel!
+  chatlogDeleted: ChatlogModel!
+  roomDeleted: RoomModel!
+  groupDeleted: GroupModel!
+  photoDeleted: PhotoModel!
+}

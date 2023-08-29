@@ -1,0 +1,28 @@
+{
+  "extends": "./node_modules/gts/tsconfig-google.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "target": "es5",
+    "baseUrl": "./",
+    "sourceMap": false,
+    "jsx": "react",
+    "removeComments": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "lib": [
+      "dom"
+    ],
+    "types": [
+      "node",
+      "vite/client"
+    ]
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
+}

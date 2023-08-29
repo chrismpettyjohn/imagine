@@ -1,0 +1,55 @@
+{
+  "name": "@imagine-cms/web",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/types",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn run clean && yarn run compile",
+    "clean": "rimraf -rf ./dist && rimraf -rf ./build",
+    "compile": "rollup -c && yarn run compile:types",
+    "compile:types": "tsc -d -p tsconfig.build.json --emitDeclarationOnly --declarationDir dist/types"
+  },
+  "dependencies": {
+    "@apollo/react-hooks": "4.0.0",
+    "@apollo/client": "3.7.12",
+    "apollo-boost": "0.4.9",
+    "graphql": "16.6.0",
+    "apollo-link-ws": "1.0.20"
+  },
+  "devDependencies": {
+    "@types/node": "18.15.11",
+    "@types/react": "18.0.35",
+    "@types/react-dom": "18.0.11",
+    "react": "18.2.0",
+    "wouter": "2.10.0",
+    "graphql-tag": "2.12.6",
+    "sass": "1.62.0",
+    "acorn-jsx": "5.3.2",
+    "@rollup/plugin-commonjs": "24.1.0",
+    "@rollup/plugin-image": "3.0.2",
+    "@rollup/plugin-json": "6.0.0",
+    "@rollup/plugin-node-resolve": "15.0.2",
+    "@rollup/plugin-typescript": "11.1.0",
+    "rollup": "3.20.2",
+    "rollup-plugin-copy": "3.4.0",
+    "rollup-plugin-peer-deps-external": "2.2.4",
+    "rollup-plugin-scss": "4.0.0",
+    "@rollup/plugin-terser": "0.4.1",
+    "@imagine-cms/types": "*",
+    "react-toastify": "9.0.0"
+  },
+  "peerDependencies": {
+    "react": "17.0.1",
+    "wouter": "2.7.4",
+    "graphql-tag": "2.12.6",
+    "@imagine-cms/types": "*",
+    "react-toastify": "9.0.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "gitHead": "2305e183b7fa01b3837f0f20c401ecdec6858de6"
+}

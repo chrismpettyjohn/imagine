@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@imagine-cms/api": ["apps/imagine-api/src"],
+      "@imagine-cms/admin-web": ["apps/admin-web/src"],
+      "@imagine-cms/boon-web": ["apps/boon-web/src"],
+      "@imagine-cms/cosmic-web": ["apps/cosmic-web/src"],
+      "@imagine-cms/modern-flat-web": ["apps/modern-flat-web/src"],
+      "@imagine-cms/types": ["libs/types/src"],
+      "@imagine-cms/web": ["libs/web/src"]
+    },
+    "noEmit": true
+  },
+  "include": [
+    "apps",
+    "libs"
+  ]
+}
