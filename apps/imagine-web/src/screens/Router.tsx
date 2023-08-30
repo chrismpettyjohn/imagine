@@ -10,14 +10,9 @@ import { PlayGameScreen } from './play-game-screen/PlayGameScreen';
 import { CommunityScreen } from './community-screen/CommunityScreen';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
 import { CommunityStaffScreen } from './community-staff-screen/CommunityStaffScreen';
-import { LeaderboardGamesScreen } from './leaderboard-games-screen/LeaderboardGamesScreen';
-import { LeaderboardRichesScreen } from './leaderboard-riches-screen/LeaderboardRichesScreen';
-import { LeaderboardActivityScreen } from './leaderboard-activity-screen/LeaderboardActivityScreen';
-import { LeaderboardCountriesScreen } from './leaderboard-countries-screen/LeaderboardCountriesScreen';
 import { CommunityViewArticleScreen } from './community-view-article-screen/CommunityViewArticleScreen';
 import { CommunityListArticlesScreen } from './community-list-articles-screen/CommunityListArticlesScreen';
 import { CommunityOnlinePlayersScreen } from './community-online-players-screen/CommunityOnlinePlayersScreen';
-import { LeaderboardAchievementsScreen } from './leaderboard-achievements-screen/LeaderboardAchievementsScreen';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -63,26 +58,6 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/community/articles/:articleID',
     view: CommunityViewArticleScreen,
-  },
-  {
-    path: '/leaderboard/achievements',
-    view: LeaderboardAchievementsScreen,
-  },
-  {
-    path: '/leaderboard/activity',
-    view: LeaderboardActivityScreen,
-  },
-  {
-    path: '/leaderboard/countries',
-    view: LeaderboardCountriesScreen,
-  },
-  {
-    path: '/leaderboard/games',
-    view: LeaderboardGamesScreen,
-  },
-  {
-    path: '/leaderboard/riches',
-    view: LeaderboardRichesScreen,
   },
   {
     path: '/gallery',
