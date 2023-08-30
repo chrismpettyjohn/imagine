@@ -13,19 +13,34 @@ export function SiteHeader() {
       <SiteLogo />
       <ul>
         <li>
-          <a>Home</a>
+          <Link to="/me">
+            Home
+          </Link>
         </li>
         <li>
-          <a>News Articles</a>
+          <Link to="/community/articles">
+            News Articles
+          </Link>
         </li>
         <li>
-          <a>Staff Team</a>
+          <Link to="/community/staff">
+            Staff Team
+          </Link>
         </li>
         <li>
-          <a>High Scores</a>
+          <Link to="/community/online-players">
+            Online Players
+          </Link>
         </li>
         <li>
-          <a>Web Store</a>
+          <Link to="/community/high-scores">
+            High Scores
+          </Link>
+        </li>
+        <li>
+          <Link to="/web-store">
+            Web Store
+          </Link>
         </li>
       </ul>
     </SiteHeaderElement>
