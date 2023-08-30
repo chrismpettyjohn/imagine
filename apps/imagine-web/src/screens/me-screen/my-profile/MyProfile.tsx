@@ -9,7 +9,7 @@ export function MyProfile({ user }: MyProfileProps) {
       <InformationContainer>
         <div>
           <h2>{user.username}</h2>
-          <span>{user.motto}</span>
+          <span>"{user.motto}"</span>
         </div>
         <br />
         <BadgeContainer>

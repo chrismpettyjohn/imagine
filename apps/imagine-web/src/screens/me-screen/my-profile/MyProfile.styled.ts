@@ -12,7 +12,12 @@ export const MyProfileContainer = styled.div`
   position: relative;
   width: 100%;
   h2 {
+    font-size: ${({ theme }) => theme.fontSize.twoUnits};
     font-weight: bold;
+  }
+  span {
+    color: ${({ theme }) => theme.color.s50};
+    font-size: ${({ theme }) => theme.fontSize.oneUnit};
   }
 `
 
