@@ -18,6 +18,7 @@ export const SiteHeaderElement = styled.div`
     font-weight: 500;
     gap: ${({ theme }) => theme.space.twoUnits};
     list-style-type: none;
+    width: 100%;
 
     li, a {
       &:hover {
