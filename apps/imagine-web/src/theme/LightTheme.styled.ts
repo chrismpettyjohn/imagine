@@ -8,7 +8,7 @@ export const lightTheme: ImagineTheme = {
   fontSize: {
     halfUnit: '.8rem',
     oneUnit: '1.25rem',
-    twoUnits: '1.83rem',
+    twoUnits: '1.53rem',
   },
   color: {
     black: '#000000',

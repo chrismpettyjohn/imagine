@@ -1,5 +1,10 @@
 import React from 'react';
+import { MyFriendsContainer } from './MyFriends.styled';
 
 export function MyFriends() {
-  return null;
+  return (
+    <MyFriendsContainer>
+      <h1>My Friends</h1>
+    </MyFriendsContainer>
+  )
 }

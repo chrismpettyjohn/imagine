@@ -1,5 +1,10 @@
 import React from 'react';
+import { MyRoomsContainer } from './MyRooms.styled';
 
 export function MyRooms() {
-  return null;
+  return (
+    <MyRoomsContainer>
+      <h1>My Rooms</h1>
+    </MyRoomsContainer>
+  )
 }
