@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StatsContainerElement = styled.div`
   background: ${({ theme }) => theme.color.s30};
-  border-radius: ${({ theme }) => theme.radius.twoUnits};
+  border-radius: ${({ theme }) => theme.radius.oneUnit};
   color: ${({ theme }) => theme.color.s10};
   display: flex;
   flex: 1;
