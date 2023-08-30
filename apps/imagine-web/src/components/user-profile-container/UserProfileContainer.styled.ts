@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MyProfileContainer = styled.div`
+export const UserProfileContainerContainer = styled.div`
   background: url('https://i.imgur.com/bcSKOml.png');
   background-size: cover;
   background-position: bottom left;

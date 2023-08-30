@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MyRoomsContainer = styled.div`
+export const UserGroupsContainerContainer = styled.div`
   background: ${({ theme }) => theme.color.s20};
   border-radius: ${({ theme }) => theme.radius.oneUnit};
   display: flex;

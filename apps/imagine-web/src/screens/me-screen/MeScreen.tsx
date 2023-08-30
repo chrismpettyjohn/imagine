@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { MyRooms } from './my-rooms/MyRooms';
-import { MyGroups } from './my-groups/MyGroups';
 import { sessionContext } from '@imagine-cms/web';
-import { MyProfile } from './my-profile/MyProfile';
-import { MyFriends } from './my-friends/MyFriends';
 import { StoriesCard } from '../../components/stories-card/StoriesCard';
 import { UserStatsGrid } from '../../components/user-stats-grid/UserStatsGrid';
+import { UserFriendsGrid } from '../../components/user-friends-grid/UserFriendsGrid';
+import { UserRoomsContainer } from '../../components/user-rooms-container/UserRoomsContainer';
+import { UserGroupsContainer } from '../../components/user-groups-container/UserGroupsContainer';
+import { UserProfileContainer } from '../../components/user-profile-container/UserProfileContainer';
 
 export function MeScreen() {
   const { session } = useContext(sessionContext);
@@ -16,13 +16,13 @@ export function MeScreen() {
       <br />
       <UserStatsGrid user={session!} />
       <br />
-      <MyProfile user={session!} />
+      <UserProfileContainer user={session!} />
       <br />
-      <MyFriends />
+      <UserFriendsGrid />
       <br />
-      <MyGroups />
+      <UserGroupsContainer />
       <br />
-      <MyRooms />
+      <UserRoomsContainer />
     </>
   )
 }

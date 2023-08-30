@@ -1,5 +1,5 @@
 import { UserWire } from "@imagine-cms/types";
 
-export interface MyProfileProps {
+export interface UserProfileContainerProps {
   user: UserWire;
 }
