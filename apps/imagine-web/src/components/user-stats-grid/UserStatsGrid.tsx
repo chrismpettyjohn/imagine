@@ -1,15 +1,30 @@
 import React from 'react';
 import { UserStatsGridProps } from './UserStatsGrid.types';
 import { UserStatsGridElement } from './UserStatsGrid.styled';
-import { StatsContainer } from './stats-container/StatsContainer';
+import { CreditStatsContainerElement, DiamondStatsContainerElement, HabboClubStatsContainerElement, PixelStatsContainerElement } from './stats-container/StatsContainer.styled';
 
 export function UserStatsGrid({ user }: UserStatsGridProps) {
   return (
     <UserStatsGridElement>
-      <StatsContainer imageURL="https://habbox.fr/assets/icons/credits.svg" label="Credits" value={1592402} />
-      <StatsContainer imageURL="https://habbox.fr/assets/icons/diamonds.svg" label="Diamonds" value={400} />
-      <StatsContainer imageURL="https://habbox.fr/assets/icons/duckets.svg" label="Pixels" value={20000} />
-      <StatsContainer imageURL="https://habborator.org/badges/badges/HC1.gif" label="Days Left" value={28} />
-    </UserStatsGridElement>
+      <CreditStatsContainerElement>
+        <img src="https://habbox.fr/assets/icons/credits.svg" />
+        <b>{user.credits?.toLocaleString()}</b>
+        Credits
+      </CreditStatsContainerElement>
+      <DiamondStatsContainerElement>
+        <img src="https://habbox.fr/assets/icons/diamonds.svg" />
+        <b>{user.vipPoints?.toLocaleString()}</b>
+        Diamonds
+      </DiamondStatsContainerElement>
+      <PixelStatsContainerElement>
+        <img src="https://habbox.fr/assets/icons/duckets.svg" />
+        <b> {user.activityPoints?.toLocaleString()}</b>
+        Pixels
+      </PixelStatsContainerElement>
+      <HabboClubStatsContainerElement>
+        <img src="https://habborator.org/badges/badges/HC1.gif" />
+        <b>28 days left</b>
+      </HabboClubStatsContainerElement>
+    </UserStatsGridElement >
   )
 }

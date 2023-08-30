@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
-export interface StatsContainerProps {
+export interface StatsContainerProps extends HTMLAttributes<HTMLDivElement> {
   imageURL: string;
   label: string;
   value: number;

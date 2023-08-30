@@ -3,13 +3,14 @@ import styled from "styled-components";
 export const SiteHeaderElement = styled.div`
   align-items: center;
   background: ${({ theme }) => theme.color.s20};
-  border-radius: ${({ theme }) => theme.radius.twoUnits};
+  border:${({ theme }) => `1px solid ${theme.color.s40}`};
+  border-bottom-left-radius: ${({ theme }) => theme.radius.oneUnit};
+  border-bottom-right-radius: ${({ theme }) => theme.radius.oneUnit};
   display: flex;
   justify-content: space-between;
   flex: 1;
   width: 100%;
   margin-bottom: ${({ theme }) => theme.space.twoUnits};
-  margin-top: ${({ theme }) => theme.space.twoUnits};
   padding: ${({ theme }) => theme.space.twoUnits};
 
   ul {
@@ -26,6 +27,4 @@ export const SiteHeaderElement = styled.div`
       }
     }
   }
-
-  ${({ theme }) => theme.space.twoUnits};
 `

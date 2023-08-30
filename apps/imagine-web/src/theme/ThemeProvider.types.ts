@@ -16,6 +16,7 @@ export interface ImagineTheme {
     s10: string;
     s20: string;
     s30: string;
+    s40: string;
   };
   space: {
     quarterUnit: string;

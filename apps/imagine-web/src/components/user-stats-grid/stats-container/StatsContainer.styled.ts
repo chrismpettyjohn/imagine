@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StatsContainerElement = styled.div`
+const StatsContainerElement = styled.div`
   background: ${({ theme }) => theme.color.s30};
   border-radius: ${({ theme }) => theme.radius.twoUnits};
   color: ${({ theme }) => theme.color.s10};
@@ -16,4 +16,20 @@ export const StatsContainerElement = styled.div`
     width: 30px;
     height: 30px;
   }
+`
+
+export const CreditStatsContainerElement = styled(StatsContainerElement)`
+  background: #E0B246;
+`
+
+export const PixelStatsContainerElement = styled(StatsContainerElement)`
+  background: #A55CA0;
+`
+
+export const DiamondStatsContainerElement = styled(StatsContainerElement)`
+  background: #588e84;
+`
+
+export const HabboClubStatsContainerElement = styled(StatsContainerElement)`
+  background: #4a3b17;
 `
