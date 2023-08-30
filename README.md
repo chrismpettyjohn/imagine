@@ -18,5 +18,5 @@
     * `cd apps/imagine-api`
     * `yarn start`
 6. Run the Web
-    * `cd apps/kubbo-web`
+    * `cd apps/imagine-web`
     * `yarn start`
