@@ -1,6 +1,7 @@
 html,
 body,
 #root {
+    background: #eaeaeaff;
     min-width: 100%;
     min-height: 100%;
     width: 100%;

@@ -1,22 +1,24 @@
 import React from 'react';
 import { Router } from './screens/Router';
 import { ToastContainer } from 'react-toastify';
+import { ThemeProvider } from './theme/ThemeProvider';
 import { SiteFooter } from './components/site-footer/SiteFooter';
 import { SiteHeader } from './components/site-header/SiteHeader';
 import { GameClient, ImagineContextProviders } from '@imagine-cms/web';
+import { SiteContainerElement } from './components/site-container/SiteContainer.styled';
 
 export function ImagineWeb() {
   return (
-    <ImagineContextProviders>
-      <GameClient />
-      <div style={{ minHeight: 'calc(100% - 200px)' }}>
+    <ThemeProvider>
+      <ImagineContextProviders>
+        <GameClient />
         <ToastContainer />
-        <SiteHeader />
-        <main className="container-fluid no-padding-container">
+        <SiteContainerElement>
+          <SiteHeader />
           <Router />
-        </main>
-      </div>
-      <SiteFooter />
-    </ImagineContextProviders>
+        </SiteContainerElement>
+        <SiteFooter />
+      </ImagineContextProviders>
+    </ThemeProvider>
   )
 }

@@ -21,7 +21,8 @@
     "dayjs": "1.11.7",
     "react-loading-overlay": "1.0.1",
     "react-toastify": "9.0.0",
-    "react-multi-carousel": "2.8.3"
+    "react-multi-carousel": "2.8.3",
+    "styled-components": "6.0.7"
   },
   "devDependencies": {
     "@types/node": "18.15.11",
