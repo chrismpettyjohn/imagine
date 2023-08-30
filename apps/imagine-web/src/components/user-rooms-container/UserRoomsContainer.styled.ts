@@ -7,6 +7,7 @@ export const UserRoomsContainerContainer = styled.div`
   flex: 1;
   gap: ${({ theme }) => theme.space.twoUnits};
   padding: ${({ theme }) => theme.space.twoUnits};
+  width: 100%;
   
   h1 {
     font-size: ${({ theme }) => theme.fontSize.twoUnits};
