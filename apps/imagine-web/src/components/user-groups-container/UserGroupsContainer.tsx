@@ -1,10 +1,10 @@
 import React from 'react';
-import { UserGroupsContainerContainer } from './UserGroupsContainer.styled';
+import { Card } from '../card/Card';
 
 export function UserGroupsContainer() {
   return (
-    <UserGroupsContainerContainer>
-      <h1>My Groups</h1>
-    </UserGroupsContainerContainer>
+    <Card header="My Groups">
+      u dont belong anywhere
+    </Card>
   )
 }

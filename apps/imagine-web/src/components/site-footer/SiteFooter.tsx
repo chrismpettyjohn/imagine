@@ -7,7 +7,7 @@ export function SiteFooter() {
 
   return (
     <SiteFooterElement>
-      Imagine by LeChris
+      <h3>LeChris Lemade Lesite</h3>
     </SiteFooterElement>
   )
 }

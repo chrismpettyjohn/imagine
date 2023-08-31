@@ -11,7 +11,15 @@ export const SiteHeaderElement = styled.div`
   flex: 1;
   width: 100%;
   margin-bottom: ${({ theme }) => theme.space.twoUnits};
+`
+
+export const SiteHeaderContent = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
   padding: ${({ theme }) => theme.space.twoUnits};
+  width: 100%;
 
   ul {
     display: flex;
@@ -22,6 +30,9 @@ export const SiteHeaderElement = styled.div`
     width: 100%;
 
     li, a {
+      color: ${({ theme }) => theme.color.s60};
+      text-decoration: none;
+
       &:hover {
         color: ${({ theme }) => theme.color.s30};
       }

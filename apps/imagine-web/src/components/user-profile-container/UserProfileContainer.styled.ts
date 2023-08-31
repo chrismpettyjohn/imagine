@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const UserProfileContainerContainer = styled.div`
+export const UserProfileContainerElement = styled.div`
   background: url('https://i.imgur.com/bcSKOml.png');
   background-size: cover;
   background-position: bottom left;
@@ -8,9 +8,9 @@ export const UserProfileContainerContainer = styled.div`
   display: flex;
   gap: ${({ theme }) => theme.space.twoUnits};
   height: 100%;
-  padding: ${({ theme }) => theme.space.twoUnits};
   position: relative;
   width: 100%;
+  
   h2 {
     font-size: ${({ theme }) => theme.fontSize.twoUnits};
     font-weight: bold;
@@ -19,6 +19,10 @@ export const UserProfileContainerContainer = styled.div`
     color: ${({ theme }) => theme.color.s50};
     font-size: ${({ theme }) => theme.fontSize.oneUnit};
   }
+`
+
+export const UserProfileContainerContent = styled(UserProfileContainerElement)`
+  padding: ${({ theme }) => theme.space.twoUnits};
 `
 
 export const AvatarContainer = styled.img`

@@ -1,10 +1,10 @@
 import React from 'react';
-import { UserRoomsContainerContainer } from './UserRoomsContainer.styled';
+import { Card } from '../card/Card';
 
 export function UserRoomsContainer() {
   return (
-    <UserRoomsContainerContainer>
-      <h1>My Rooms</h1>
-    </UserRoomsContainerContainer>
+    <Card header="My Rooms">
+      u dont own any rooms
+    </Card>
   )
 }

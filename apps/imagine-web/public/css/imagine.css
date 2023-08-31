@@ -2,6 +2,7 @@ html,
 body,
 #root {
     background: #eaeaeaff;
+    font-family: 'Noto Sans', sans-serif;
     min-width: 100%;
     min-height: 100%;
     width: 100%;
