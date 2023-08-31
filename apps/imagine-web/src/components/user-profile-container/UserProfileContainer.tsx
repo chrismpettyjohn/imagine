@@ -1,6 +1,7 @@
 import React from 'react';
 import { UserProfileContainerProps } from './UserProfileContainer.types';
-import { AvatarContainer, BadgeContainer, BadgeHolder, InformationContainer, UserProfileContainerContent, UserProfileContainerElement } from './UserProfileContainer.styled';
+import { AvatarContainer, BadgeContainerGrid, InformationContainer, UserProfileContainerContent, UserProfileContainerElement } from './UserProfileContainer.styled';
+import { BadgeContainer } from '../badge-container/BadgeContainer';
 
 export function UserProfileContainer({ user }: UserProfileContainerProps) {
   return (
@@ -13,20 +14,12 @@ export function UserProfileContainer({ user }: UserProfileContainerProps) {
             <span>"{user.motto}"</span>
           </div>
           <br />
-          <BadgeContainer>
-            <BadgeHolder>
-              <img src="https://habborator.org/badges/badges/Z63.gif" />
-            </BadgeHolder>
-            <BadgeHolder>
-              <img src="https://habborator.org/badges/badges/HBA.gif" />
-            </BadgeHolder>
-            <BadgeHolder>
-              <img src="https://habborator.org/badges/badges/ADM.gif" />
-            </BadgeHolder>
-            <BadgeHolder>
-              <img src="https://habborator.org/badges/badges/Z63.gif" />
-            </BadgeHolder>
-          </BadgeContainer>
+          <BadgeContainerGrid>
+            <BadgeContainer badge={{ code: 'ADM' }} />
+            <BadgeContainer badge={{ code: 'FAN' }} />
+            <BadgeContainer badge={{ code: 'ADM' }} />
+            <BadgeContainer badge={{ code: 'ADM' }} />
+          </BadgeContainerGrid>
         </InformationContainer>
       </UserProfileContainerContent>
     </UserProfileContainerElement>
