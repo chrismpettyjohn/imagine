@@ -17,7 +17,7 @@ export const lightTheme: ImagineTheme = {
     s20: '#FFFFFF',
     s30: '#197AA0',
     s40: '#BDBCBC',
-    s50: '#D9D9D9',
+    s50: '#BDBCBC',
     s60: 'black',
   },
   space: {
@@ -37,5 +37,5 @@ export const lightTheme: ImagineTheme = {
     twoUnits: '1.8rem',
     threeUnits: '2.4rem',
   },
-  maxWidth: '1400px'
+  maxWidth: '1200px'
 }

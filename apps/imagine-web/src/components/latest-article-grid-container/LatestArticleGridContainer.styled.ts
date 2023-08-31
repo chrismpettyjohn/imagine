@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const LatestArticleContainerElement = styled.div`
+export const LatestArticleGridContainerElement = styled.div`
   border:${({ theme }) => `1px solid ${theme.color.s40}`};
   border-radius:  ${({ theme }) => theme.radius.oneUnit};
   cursor: pointer;
@@ -18,11 +18,10 @@ export const LatestArticleImage = styled.img`
 `
 
 export const LatestArticleInformation = styled.div`
-  background:  ${({ theme }) => theme.color.s20};
+  color:  ${({ theme }) => theme.color.s50};
   display: flex;
-  justify-content: center;
   flex: 1;
-  gap: ${({ theme }) => theme.space.oneUnit};
+  flex-direction: column;
   width: 100%;
 `
 

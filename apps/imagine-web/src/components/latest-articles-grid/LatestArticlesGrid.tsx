@@ -1,8 +1,7 @@
-import { Link } from 'wouter';
 import React, { useEffect } from 'react';
 import { useFetchLatestArticles } from '@imagine-cms/web';
 import { LatestArticlesGridElement } from './LatestArticlesGrid.styled';
-import { LatestArticleContainer } from '../latest-article-container/LatestArticleContainer';
+import { LatestArticleContainer } from '../latest-article-grid-container/LatestArticleGridContainer';
 
 export function LatestArticlesGrid() {
   const { runQuery, loading, data } = useFetchLatestArticles();
