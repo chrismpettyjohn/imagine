@@ -13,4 +13,5 @@ export const SiteContainerElement = styled.div`
 export const PageContainerElement = styled(SiteContainerElement)`
   max-width: ${({ theme }) => theme.maxWidth};
   overflow: hidden;
+  padding: ${({ theme }) => theme.space.twoUnits};
 `

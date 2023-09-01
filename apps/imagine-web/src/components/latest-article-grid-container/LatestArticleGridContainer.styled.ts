@@ -1,7 +1,8 @@
 import styled from "styled-components"
 
 export const LatestArticleGridContainerElement = styled.div`
-  border:${({ theme }) => `1px solid ${theme.color.s40}`};
+  background: ${({ theme }) => theme.color.s20};
+  border:${({ theme }) => `2px solid ${theme.color.s40}`};
   border-radius:  ${({ theme }) => theme.radius.oneUnit};
   cursor: pointer;
   display: flex;
@@ -10,7 +11,11 @@ export const LatestArticleGridContainerElement = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.space.oneUnit};
   width: 100%;
+  &:hover {
+    border-color: ${({ theme }) => theme.color.s30};
+  }
 `
+
 
 export const LatestArticleImage = styled.img`
   height: 250px;
@@ -22,7 +27,8 @@ export const LatestArticleInformation = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  width: 100%;
+  overflow: hidden;
+  padding: ${({ theme }) => theme.space.oneUnit};
 `
 
 export const LatestArticleInformationCategory = styled.span`

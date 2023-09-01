@@ -14,7 +14,6 @@ export function StoriesGridContainer({ stories }: StoriesGridContainerProps) {
         <StoryContainer story={{} as any} />
         <StoryContainer story={{} as any} />
         <StoryContainer story={{} as any} />
-        <StoryContainer story={{} as any} />
       </StoriesGridContainerContent>
     </StoriesGridContainerElement>
   )

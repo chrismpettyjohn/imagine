@@ -2,15 +2,16 @@ import styled from "styled-components";
 
 export const CardElement = styled.div`
   background: ${({ theme }) => theme.color.s20};
+  border:${({ theme }) => `2px solid ${theme.color.s40}`};
   border-radius: ${({ theme }) => theme.radius.oneUnit};
+  width: 100%;
+`
+
+export const CardContent = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
   gap: ${({ theme }) => theme.space.oneUnit};
-  width: 100%;
-`
-
-export const CardContent = styled(CardElement)`
   padding: ${({ theme }) => theme.space.twoUnits};
 `
 

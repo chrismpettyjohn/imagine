@@ -4,6 +4,7 @@ export const UserProfileContainerElement = styled.div`
   background: url('https://i.imgur.com/bcSKOml.png');
   background-size: cover;
   background-position: bottom left;
+  border-radius:  ${({ theme }) => theme.radius.oneUnit};
   color: ${({ theme }) => theme.color.s10};
   display: flex;
   gap: ${({ theme }) => theme.space.twoUnits};

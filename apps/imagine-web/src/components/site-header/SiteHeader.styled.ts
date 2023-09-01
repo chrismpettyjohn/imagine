@@ -3,9 +3,8 @@ import styled from "styled-components";
 export const SiteHeaderElement = styled.div`
   align-items: center;
   background: ${({ theme }) => theme.color.s20};
-  border:${({ theme }) => `1px solid ${theme.color.s40}`};
-  border-bottom-left-radius: ${({ theme }) => theme.radius.oneUnit};
-  border-bottom-right-radius: ${({ theme }) => theme.radius.oneUnit};
+  border:${({ theme }) => `2px solid ${theme.color.s40}`};
+  border-radius: ${({ theme }) => theme.radius.oneUnit};
   display: flex;
   justify-content: space-between;
   flex: 1;
