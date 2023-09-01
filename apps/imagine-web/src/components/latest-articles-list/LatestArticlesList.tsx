@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useFetchLatestArticles } from '@imagine-cms/web';
 import { LatestArticlesListElement } from './LatestArticlesList.styled';
-import { ArticleListContainer } from '../article-list-container/ArticleLIstContainer';
+import { ArticleListContainer } from '../article-list-container/ArticleListContainer';
 
 export function LatestArticlesList() {
   const { runQuery, loading, data } = useFetchLatestArticles();

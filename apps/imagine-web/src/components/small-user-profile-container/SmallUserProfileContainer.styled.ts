@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const SmallUserProfileContainerUserContainer = styled.div`
   background: ${({ theme }) => theme.color.s30};
+  border:${({ theme }) => `2px solid ${theme.color.s40}`};
   border-radius: ${({ theme }) => theme.radius.oneUnit};
   color: ${({ theme }) => theme.color.s20};
   cursor: pointer;
@@ -11,6 +12,9 @@ export const SmallUserProfileContainerUserContainer = styled.div`
   height: 150px;
   overflow: hidden;
   width: 150px;
+  &:hover {
+      border:${({ theme }) => `2px solid ${theme.color.s60}`};
+  }
 `
 
 export const SmallUserProfileContainerAvatarContainer = styled.img`

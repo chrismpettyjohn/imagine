@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const StatsContainerElement = styled.div`
   background: ${({ theme }) => theme.color.s30};
+  border:${({ theme }) => `2px solid ${theme.color.s40}`};
   border-radius: ${({ theme }) => theme.radius.oneUnit};
   color: ${({ theme }) => theme.color.s10};
   display: flex;
@@ -15,6 +16,10 @@ const StatsContainerElement = styled.div`
     display: flex;
     width: 30px;
     height: 30px;
+  }
+
+  &:hover {
+    border:${({ theme }) => `2px solid ${theme.color.s30}`};
   }
 `
 
