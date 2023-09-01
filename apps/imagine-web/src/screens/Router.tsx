@@ -7,7 +7,6 @@ import { GalleryScreen } from './gallery-screen/GalleryScreen';
 import { LandingScreen } from './landing-screen/LandingScreen';
 import { RegisterScreen } from './register-screen/RegisterScreen';
 import { PlayGameScreen } from './play-game-screen/PlayGameScreen';
-import { CommunityScreen } from './community-screen/CommunityScreen';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
 import { CommunityStaffScreen } from './community-staff-screen/CommunityStaffScreen';
 import { CommunityViewArticleScreen } from './community-view-article-screen/CommunityViewArticleScreen';
@@ -38,10 +37,6 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/play',
     view: PlayGameScreen,
-  },
-  {
-    path: '/community',
-    view: CommunityScreen,
   },
   {
     path: '/community/staff',
