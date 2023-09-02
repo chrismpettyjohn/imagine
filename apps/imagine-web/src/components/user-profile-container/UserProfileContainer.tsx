@@ -11,7 +11,7 @@ export function UserProfileContainer({ user }: UserProfileContainerProps) {
         <InformationContainer>
           <div>
             <h2>{user.username}</h2>
-            <span>"{user.motto}"</span>
+            {user.motto && <span>"{user.motto}"</span>}
           </div>
           <br />
           <BadgeContainerGrid>
