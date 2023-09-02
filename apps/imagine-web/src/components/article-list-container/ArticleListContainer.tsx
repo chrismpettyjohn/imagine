@@ -14,7 +14,7 @@ export function ArticleListContainer({ article }: ArticleListContainerProps) {
           <ArticleListContainerTitle>{article.name}</ArticleListContainerTitle>
           <ArticleListContainerDescription>{article.description}</ArticleListContainerDescription>
           {article.user && (
-            <Link to={`/profiles/${article.user?.username}`}>
+            <Link to={`/profile/${article.user?.username}`}>
               <LongUserContainer user={article.user} />
             </Link>
           )}

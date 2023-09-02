@@ -16,6 +16,7 @@ export * from './fetch-online-users.hook';
 export * from './fetch-popular-rooms.hook';
 export * from './fetch-session-by-jwt.hook';
 export * from './fetch-staff-ranks.hook';
+export * from './fetch-user-by-username.hook';
 export * from './fetch-users.hook';
 export * from './fetch-word-filter.hook';
 export * from './find-user-by-id.hook';

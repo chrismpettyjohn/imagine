@@ -1,4 +1,3 @@
-import DayJS from 'dayjs';
 import React, { useContext, useEffect } from 'react';
 import { UserOnlineStatus, UserWire } from '@imagine-cms/types';
 import { DataTable } from '../../components/data-table/DataTable';
@@ -8,8 +7,6 @@ import { LoadingOverlay } from '../../components/loading-overlay/LoadingOverlay'
 export function UsersListScreen() {
   const { config } = useContext(configContext);
   const { runQuery, data, error, loading } = useFetchUsers();
-
-  console.log(error);
 
   useEffect(() => {
     runQuery();

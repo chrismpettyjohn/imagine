@@ -5,7 +5,7 @@ import { Link } from 'wouter';
 
 export function LongUserContainer({ user }: LongUserContainerProps) {
   return (
-    <Link to={`/profiles/${user.username}`}>
+    <Link to={`/profile/${user.username}`}>
       <LongUserContainerElement>
         <img src={`https://imager.habboon.pw/?figure=${user.look}&size=m&direction=2&head_direction=2&gesture=sml&headonly=1`} />
         <LongUserContainerInformation>

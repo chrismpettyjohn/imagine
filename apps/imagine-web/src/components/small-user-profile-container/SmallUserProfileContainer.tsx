@@ -6,7 +6,7 @@ import { UserOnlineStatus } from '@imagine-cms/types';
 
 export function SmallUserProfileContainer({ user, showOnlineStatus = true }: SmallUserProfileContainerProps) {
   return (
-    <Link to={`/profiles/${user.username}`}>
+    <Link to={`/profile/${user.username}`}>
       <SmallUserProfileContainerUserContainer>
         <SmallUserProfileContainerAvatarContainer>
           <img src={`https://images.habbox.fr/?figure=${user.look}`} />

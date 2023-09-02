@@ -4,7 +4,6 @@ import { AvatarContainer, BadgeContainerGrid, InformationContainer, UserProfileC
 import { BadgeContainer } from '../badge-container/BadgeContainer';
 
 export function UserProfileContainer({ user }: UserProfileContainerProps) {
-  console.log(user)
   return (
     <UserProfileContainerElement>
       <UserProfileContainerContent>
