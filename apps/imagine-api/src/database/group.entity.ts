@@ -19,7 +19,7 @@ export class GroupEntity implements GroupWire {
   @Column()
   badge!: string;
 
-  @Column({name: 'desc'})
+  @Column()
   description!: string;
 
   @Column({name: 'user_id'})
