@@ -8,9 +8,10 @@ export const SiteContainerElement = styled.div`
 `
 
 export const PageContainerElement = styled.div`
-  overflow: hidden;
-  padding: ${({ theme }) => theme.space.twoUnits};
+  margin: 0 auto;
   max-width: ${({ theme }) => theme.maxWidth};
   min-height: calc(100% - 180px);
+  overflow: hidden;
+  padding: ${({ theme }) => theme.space.twoUnits};
   width: 100%;
 `

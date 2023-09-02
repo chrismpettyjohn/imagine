@@ -4,7 +4,7 @@
     "fix": "gts fix",
     "build": "lerna run build",
     "deploy": "yarn run build && lerna publish",
-    "purge": "pnpm --recursive -- rm -rf node_modules && lerna exec -- rm -rf dist && rm -rf pnpm-lock.yaml && rm -rf node_modules && rm -rf pnpm-lock.yaml",
+    "purge": "pnpm run --recursive -- rm -rf node_modules && lerna exec -- rm -rf dist && rm -rf pnpm-lock.yaml && rm -rf node_modules && rm -rf pnpm-lock.yaml",
     "dev:start": "pm2 start process.json && pnpm run dev:logs",
     "dev:logs": "pm2 logs",
     "dev:restart": "pnpm run dev:stop && pnpm run dev:start",
@@ -28,7 +28,7 @@
     "gts": "5.0.1",
     "lerna": "7.2.0",
     "tsconfig-paths-webpack-plugin": "4.1.0",
-    "typescript": "5.2.2",
+    "typescript": "5.0.4",
     "pm2": "5.3.0"
   },
   "name": "imagine",
