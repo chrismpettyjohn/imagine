@@ -1,8 +1,11 @@
 {
   "private": true,
   "workspaces": [
-    "apps/**/*",
-    "libs/**/*"
+    "libs/types",
+    "libs/web",
+    "apps/admin-web",
+    "apps/imagine-api",
+    "apps/imagine-web"
   ],
   "scripts": {
     "fix": "gts fix",
@@ -11,21 +14,21 @@
     "purge": "lerna exec -- rm -rf node_modules && lerna exec -- rm -rf dist && rm -rf yarn.lock && rm -rf node_modules && rm -rf yarn.lock"
   },
   "devDependencies": {
-    "@types/node": "18.15.11",
-    "@typescript-eslint/eslint-plugin": "5.58.0",
+    "@types/node": "20.5.8",
+    "@typescript-eslint/eslint-plugin": "6.5.0",
     "babel-eslint": "10.1.0",
     "eslint-config-react-app": "7.0.1",
     "eslint-plugin-flowtype": "8.0.3",
-    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-import": "2.28.1",
     "eslint-plugin-jsx-a11y": "6.7.1",
     "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-prettier": "4.2.1",
-    "eslint-plugin-react": "7.32.2",
+    "eslint-plugin-prettier": "5.0.0",
+    "eslint-plugin-react": "7.33.2",
     "eslint-plugin-react-hooks": "4.6.0",
-    "gts": "3.1.1",
-    "lerna": "6.6.1",
-    "tsconfig-paths-webpack-plugin": "4.0.1",
-    "typescript": "5.0.4"
+    "gts": "5.0.1",
+    "lerna": "7.2.0",
+    "tsconfig-paths-webpack-plugin": "4.1.0",
+    "typescript": "5.2.2"
   },
   "name": "imagine",
   "engines": {

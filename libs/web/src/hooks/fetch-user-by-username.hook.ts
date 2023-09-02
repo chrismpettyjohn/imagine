@@ -21,6 +21,6 @@ const FIND_USER_BY_USERNAME = gql`
   }
 `;
 
-export const useFetchUserByUsername = (username: string): UseQueryResponse<{ user: UserWire }> => {
+export const useFetchUserByUsername = (username: string): UseQueryResponse<{ users: UserWire[] }> => {
   return useRunQuery(FIND_USER_BY_USERNAME, { username });
 };

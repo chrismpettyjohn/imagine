@@ -13,21 +13,21 @@
   "dependencies": {
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "wouter": "2.10.0",
+    "wouter": "2.11.0",
     "graphql-tag": "2.12.6",
     "@imagine-cms/types": "*",
     "@imagine-cms/web": "*",
-    "dayjs": "1.11.7",
+    "dayjs": "1.11.9",
     "react-loading-overlay": "1.0.1",
-    "react-toastify": "9.1.2",
+    "react-toastify": "9.1.3",
     "react-dialog": "1.0.2"
   },
   "devDependencies": {
-    "@types/node": "18.15.11",
-    "@types/react": "18.0.35",
-    "@types/react-dom": "18.0.11",
-    "typescript": "5.0.4",
-    "tsconfig-paths-webpack-plugin": "4.0.1"
+    "@types/node": "20.5.8",
+    "@types/react": "18.2.21",
+    "@types/react-dom": "18.2.7",
+    "typescript": "5.2.2",
+    "tsconfig-paths-webpack-plugin": "4.1.0"
   },
   "eslintConfig": {
     "extends": "react-app"
