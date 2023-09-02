@@ -1,12 +1,5 @@
 {
   "private": true,
-  "workspaces": [
-    "libs/types",
-    "libs/web",
-    "apps/admin-web",
-    "apps/imagine-api",
-    "apps/imagine-web"
-  ],
   "scripts": {
     "fix": "gts fix",
     "build": "lerna run build",
