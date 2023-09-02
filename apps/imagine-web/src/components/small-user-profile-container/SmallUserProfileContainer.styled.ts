@@ -11,26 +11,48 @@ export const SmallUserProfileContainerUserContainer = styled.div`
   position: relative;
   height: 150px;
   overflow: hidden;
-  width: 150px;
+  width: 250px;
   &:hover {
       border:${({ theme }) => `2px solid ${theme.color.s60}`};
   }
 `
 
-export const SmallUserProfileContainerAvatarContainer = styled.img`
-  position: absolute;
-  top: 0px;
-  left: 20px;
-  width: 110px;
-`
-
-export const SmallUserProfileContainerInformationContainer = styled.div`
-  background: black;
+export const SmallUserProfileContainerAvatarContainer = styled.div`
+  align-items: center;
   display: flex;
   flex: 1;
   justify-content: center;
+  width: 100%;
+  height: 100%;
+  img {
+    height: 180px;
+  }
+`
+
+export const SmallUserProfileContainerInformationWrapper = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
+  height: 60px;
+`
+
+export const SmallUserProfileContainerInformationContainer = styled.div`
+  align-items: center;
+  background: black;
+  display: flex;
+  flex: 1;
+  font-size: ${({ theme }) => theme.fontSize.oneUnit};
+  gap: ${({ theme }) => theme.space.oneUnit};
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+`
+
+export const SmallUserProfileContainerOnlineIndicator = styled.div<{ $online: boolean }>`
+  background: ${({ $online }) => $online ? '#1B5E20' : '#C62828'};
+  border-radius: 100%;
+  display: flex;
+  height: 25px;
+  width: 25px;
 `

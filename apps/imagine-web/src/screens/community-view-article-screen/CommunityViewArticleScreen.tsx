@@ -6,6 +6,7 @@ import { LoadingOverlay } from '../../components/loading-overlay/LoadingOverlay'
 import { ArticleCommentsCard } from './article-comments-card/ArticleCommentsCard';
 import { ArticlePostCommentCard } from './article-post-comment-card/ArticlePostCommentCard';
 import { ArticleContentContainer, ArticleContentElement, ArticleHeaderBackground, ArticleHeaderContainer, ArticleHeaderContent, ArticleHeaderOverlay } from './CommunityViewArticleScreen.styled';
+import { LongUserContainer } from '../../components/long-user-container/LongUserContainer';
 
 export function CommunityViewArticleScreen() {
   const { config } = useContext(configContext);
@@ -34,6 +35,7 @@ export function CommunityViewArticleScreen() {
       <ArticleContentElement>
         <ArticleContentContainer>
           {article?.content}
+          {article?.user && <LongUserContainer user={article.user} />}
         </ArticleContentContainer>
       </ArticleContentElement>
     </>

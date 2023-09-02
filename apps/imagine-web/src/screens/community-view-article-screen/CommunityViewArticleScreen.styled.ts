@@ -64,5 +64,6 @@ export const ArticleContentContainer = styled.div`
   background: ${({ theme }) => theme.color.s20};
   display: flex;
   flex: 1;
+  flex-direction: column;
   padding: ${({ theme }) => theme.space.twoUnits};
 `
