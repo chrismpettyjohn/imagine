@@ -4,7 +4,10 @@
     "fix": "gts fix",
     "build": "lerna run build",
     "deploy": "yarn run build && lerna publish",
-    "purge": "lerna exec -- rm -rf node_modules && lerna exec -- rm -rf dist && rm -rf yarn.lock && rm -rf node_modules && rm -rf yarn.lock"
+    "purge": "pnpm --recursive -- rm -rf node_modules && lerna exec -- rm -rf dist && rm -rf pnpm-lock.yaml && rm -rf node_modules && rm -rf pnpm-lock.yaml",
+    "app:api": "pnpm run --filter @imagine-cms/api --",
+    "app:web": "pnpm run --filter @imagine-cms/imagine-web --",
+    "app:admin": "pnpm run --filter @imagine-cms/admin-web --"
   },
   "devDependencies": {
     "@types/node": "20.5.8",

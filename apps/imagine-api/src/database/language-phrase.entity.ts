@@ -9,7 +9,7 @@ export class LanguagePhraseEntity {
   @Column({unique: true})
   key!: string;
 
-  @Column()
+  @Column({type: 'varchar'})
   type!: LanguagePhraseType;
 
   @Column({type: 'text'})

@@ -262,14 +262,14 @@ input UserCreateInput {
   username: String!
   password: String!
   email: String!
-  gender: String
+  gender: UserGender
   look: String
 }
 
 input UserUpdateInput {
   password: String
   email: String
-  gender: String
+  gender: UserGender
   look: String
 }
 

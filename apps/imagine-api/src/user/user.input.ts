@@ -29,7 +29,7 @@ export class UserCreateInput implements UserCreateInputDTO {
   @IsEmail()
   email!: string;
 
-  @Field({nullable: true})
+  @Field(() => UserGender, {nullable: true})
   @IsEnum(UserGender)
   @IsOptional()
   gender?: UserGender;
@@ -51,7 +51,7 @@ export class UserUpdateInput implements UserUpdateInputDTO {
   @IsOptional()
   email!: string;
 
-  @Field({nullable: true})
+  @Field(() => UserGender, {nullable: true})
   @IsEnum(UserGender)
   @IsOptional()
   gender?: UserGender;

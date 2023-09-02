@@ -60,7 +60,7 @@ export class UserEntity implements UserWire {
   @Column()
   look: string = IMAGINE_DEFAULT_LOOK;
 
-  @Column()
+  @Column({type: 'int'})
   gender!: UserGender;
 
   @Column()
@@ -69,7 +69,7 @@ export class UserEntity implements UserWire {
   @Column({name: 'account_created'})
   accountCreatedAt!: number;
 
-  @Column({name: 'online'})
+  @Column({name: 'online', type: 'int'})
   onlineStatus: UserOnlineStatus = UserOnlineStatus.Offline;
 
   @Column({name: 'ip_current'})
