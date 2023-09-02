@@ -3,16 +3,16 @@ import { Switch, Route } from 'wouter';
 import { MeScreen } from './me-screen/MeScreen';
 import { LoginScreen } from './login-screen/LoginScreen';
 import { LogoutScreen } from './logout-screen/LogoutScreen';
-import { GalleryScreen } from './gallery-screen/GalleryScreen';
+import { ProfileScreen } from './profile-screen/ProfileScreen';
 import { LandingScreen } from './landing-screen/LandingScreen';
 import { RegisterScreen } from './register-screen/RegisterScreen';
 import { PlayGameScreen } from './play-game-screen/PlayGameScreen';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
 import { CommunityStaffScreen } from './community-staff-screen/CommunityStaffScreen';
+import { CommunityHighScoresScreen } from './community-high-scores-screen/CommunityHighScoresScreen';
 import { CommunityViewArticleScreen } from './community-view-article-screen/CommunityViewArticleScreen';
 import { CommunityListArticlesScreen } from './community-list-articles-screen/CommunityListArticlesScreen';
 import { CommunityOnlinePlayersScreen } from './community-online-players-screen/CommunityOnlinePlayersScreen';
-import { ProfileScreen } from './profile-screen/ProfileScreen';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -60,8 +60,8 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     view: CommunityViewArticleScreen,
   },
   {
-    path: '/gallery',
-    view: GalleryScreen,
+    path: '/community/high-scores',
+    view: CommunityHighScoresScreen,
   },
 ]
 

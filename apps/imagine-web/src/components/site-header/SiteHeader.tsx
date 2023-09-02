@@ -38,11 +38,6 @@ export function SiteHeader() {
               High Scores
             </Link>
           </li>
-          <li>
-            <Link to="/web-store">
-              Web Store
-            </Link>
-          </li>
         </ul>
       </SiteHeaderContent>
     </SiteHeaderElement>
