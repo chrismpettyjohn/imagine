@@ -1,0 +1,30 @@
+{
+  "apps": [
+    {
+      "name": "imagine-api",
+      "cwd": "./apps/imagine-api",
+      "script": "pnpm",
+      "args": "run start:dev",
+      "watch": [
+        "src",
+        ".../../libs/types"
+      ],
+      "ignore_watch": [
+        "src/schema.gql"
+      ],
+      "watch_delay": 1000
+    },
+    {
+      "name": "admin-web",
+      "cwd": "./apps/admin-web",
+      "script": "pnpm",
+      "args": "run start"
+    },
+    {
+      "name": "imagine-web",
+      "cwd": "./apps/imagine-web",
+      "script": "pnpm",
+      "args": "run start"
+    }
+  ]
+}

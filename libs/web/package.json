@@ -1,8 +1,7 @@
 {
   "name": "@imagine-cms/web",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "types": "dist/types",
+  "main": "src/index.ts",
   "files": [
     "dist"
   ],

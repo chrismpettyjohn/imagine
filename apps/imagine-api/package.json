@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "start": "node_modules/.bin/ts-node -r tsconfig-paths/register src/index.ts",
-    "start:debug": "nodemon --exec yarn start"
+    "start:dev": "nodemon --exec yarn start"
   },
   "dependencies": {
     "lodash": "4.17.21",

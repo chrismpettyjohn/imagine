@@ -15,14 +15,11 @@
     "react-dom": "18.2.0",
     "wouter": "2.11.0",
     "graphql-tag": "2.12.6",
-    "react-bootstrap": "2.8.0",
-    "@imagine-cms/types": "*",
-    "@imagine-cms/web": "*",
     "dayjs": "1.11.9",
-    "react-loading-overlay": "1.0.1",
     "react-toastify": "9.1.3",
-    "react-multi-carousel": "2.8.4",
-    "styled-components": "6.0.7"
+    "styled-components": "6.0.7",
+    "@imagine-cms/types": "*",
+    "@imagine-cms/web": "*"
   },
   "devDependencies": {
     "@types/node": "20.5.8",
