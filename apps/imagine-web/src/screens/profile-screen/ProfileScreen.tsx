@@ -30,10 +30,11 @@ export function ProfileScreen() {
 
   return (
     <>
-      <br />
-      <UserStatsGrid user={matchingProfile} />
+      <h1>Viewing Profile:</h1>
       <br />
       <UserProfileContainer user={matchingProfile!} />
+      <br />
+      <UserStatsGrid user={matchingProfile} />
       <br />
       <UserFriendsGrid />
       <br />
