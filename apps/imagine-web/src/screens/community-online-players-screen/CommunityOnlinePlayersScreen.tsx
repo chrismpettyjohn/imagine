@@ -17,7 +17,7 @@ export function CommunityOnlinePlayersScreen() {
 
   return (
     <Card>
-      <h1>Online Users</h1>
+      <h1>Online Users ({data?.users?.length})</h1>
       {
         loading && <i className="fa fa-spinner fa-spin" />
       }
