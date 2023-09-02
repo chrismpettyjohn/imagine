@@ -1,9 +1,9 @@
 import { Link } from 'wouter';
+import { Card } from '../card/Card';
 import React, { useEffect } from 'react';
 import { UserWire } from '@imagine-cms/types';
 import { useRunQuery } from '@imagine-cms/web';
 import { LeaderboardsCardProps } from './LeaderboardsCard.types';
-import { Card } from '../card/Card';
 
 export function LeaderboardsCard({ title, value, query }: LeaderboardsCardProps) {
   const { runQuery, loading, data } = useRunQuery<{ users: UserWire[] }>(query)
@@ -22,7 +22,7 @@ export function LeaderboardsCard({ title, value, query }: LeaderboardsCardProps)
           </>
         )
       }
-      <table className="leaderboard-table" width="100%">
+      <table width="100%">
         <tbody>
           {
             data?.users?.map(user => (

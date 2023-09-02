@@ -39,7 +39,6 @@ export function CommunityHighScoresScreen() {
   return (
     <>
       <h1>Top Players</h1>
-      <p>The best players based on their riches, skills or community presence.</p>
       <br />
       <LeaderboardsCard title="Most Credits" value={u => `${Number(u.credits ?? 0).toLocaleString()} Credits`} query={FETCH_MOST_CREDITS} />
       <br />
