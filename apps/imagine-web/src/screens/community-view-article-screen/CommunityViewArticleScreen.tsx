@@ -38,6 +38,10 @@ export function CommunityViewArticleScreen() {
           {article?.user && <LongUserContainer user={article.user} />}
         </ArticleContentContainer>
       </ArticleContentElement>
+      <br />
+      <ArticleCommentsCard articleID={articleID} />
+      <br />
+      <ArticlePostCommentCard articleID={articleID} onPost={() => console.log('todo')} />
     </>
   )
 }

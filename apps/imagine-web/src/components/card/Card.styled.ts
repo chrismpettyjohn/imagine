@@ -13,6 +13,10 @@ export const CardContent = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.space.oneUnit};
   padding: ${({ theme }) => theme.space.twoUnits};
+  h1 {
+    font-size: ${({ theme }) => theme.fontSize.twoUnits};
+    font-weight: 700;
+  }
 `
 
 export const CardHeader = styled.div`
