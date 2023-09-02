@@ -1,17 +1,16 @@
 import styled from "styled-components";
 
 export const SiteContainerElement = styled.div`
-  align-items: center;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: flex-start;
   overflow: auto;
+  height: 100%;
+  min-height: 100%;
   width: 100%;
 `
 
-export const PageContainerElement = styled(SiteContainerElement)`
-  max-width: ${({ theme }) => theme.maxWidth};
+export const PageContainerElement = styled.div`
   overflow: hidden;
   padding: ${({ theme }) => theme.space.twoUnits};
+  max-width: ${({ theme }) => theme.maxWidth};
+  min-height: calc(100% - 180px);
+  width: 100%;
 `

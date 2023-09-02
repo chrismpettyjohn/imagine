@@ -7,7 +7,8 @@ export function SiteFooter() {
 
   return (
     <SiteFooterElement>
-      <h3>LeChris Lemade Lesite</h3>
+      <h2 style={{ letterSpacing: 1.6, margin: 0 }}>imagine</h2>
+      <h4 style={{ margin: 0 }}>LeChris</h4>
     </SiteFooterElement>
   )
 }
