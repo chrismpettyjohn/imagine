@@ -1,9 +1,10 @@
-import {Link} from 'wouter';
-import React, {useEffect} from 'react';
-import {useFetchOnlineUsers} from '@imagine-cms/web';
+import { Card } from '../card/Card';
+import React, { useEffect } from 'react';
+import { useFetchOnlineUsers } from '@imagine-cms/web';
+import { SmallUserProfileContainer } from '../small-user-profile-container/SmallUserProfileContainer';
 
 export function OnlineUsersGrid() {
-  const {runQuery, loading, data} = useFetchOnlineUsers();
+  const { runQuery, loading, data } = useFetchOnlineUsers();
 
   useEffect(() => {
     runQuery();
@@ -14,23 +15,16 @@ export function OnlineUsersGrid() {
   }
 
   return (
-    <>
-      <h4 className="mb-3">Online Users</h4>
+    <Card>
+      <h1>Online Users</h1>
       {
         loading && <i className="fa fa-spinner fa-spin" />
       }
       {
-        data?.users?.map((user, userIndex) => (
-          <div className={`avatar ${userIndex % 2 ? 'dark-gray' : 'light-gray'}`} key={`online_user_${user.id}`}>
-            <Link to={`/profile/${user.username}`}>
-              <img
-                src={`https://imager.habboon.pw?figure=${user.look}&size=m&direction=3&head_direction=3&gesture=sml&headonly=1`}
-                alt={user.username} data-toggle="tooltip" data-placement="top" title="" loading="lazy"
-                data-original-title={user.username} />
-            </Link>
-          </div>
+        data?.users?.map(user => (
+          <SmallUserProfileContainer key={`online_user_${user.onlineStatus}`} user={user} />
         ))
       }
-    </>
+    </Card>
   )
 }

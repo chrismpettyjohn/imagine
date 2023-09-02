@@ -25,7 +25,6 @@ export const ArticleListContainerImage = styled.img`
 export const ArticleListContainerContent = styled.div`
   display: flex;
   flex: 1;
-  width: 100%;
 `
 
 export const ArticleListContainerInformation = styled.div`

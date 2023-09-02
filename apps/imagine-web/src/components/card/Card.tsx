@@ -6,9 +6,14 @@ export function Card({ children, header }: CardProps) {
   return (
     <CardElement>
       <CardContent>
-        <CardHeader>
-          {header}
-        </CardHeader>
+        {
+          header && (
+
+            <CardHeader>
+              {header}
+            </CardHeader>
+          )
+        }
         {children}
       </CardContent>
     </CardElement>

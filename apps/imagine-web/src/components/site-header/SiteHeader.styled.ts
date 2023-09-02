@@ -8,8 +8,8 @@ export const SiteHeaderElement = styled.div`
   display: flex;
   justify-content: space-between;
   flex: 1;
-  width: 100%;
   margin-bottom: ${({ theme }) => theme.space.twoUnits};
+  width: 100%;
 `
 
 export const SiteHeaderContent = styled.div`

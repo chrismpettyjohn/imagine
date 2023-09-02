@@ -4,10 +4,11 @@ import { AvatarContainer, BadgeContainerGrid, InformationContainer, UserProfileC
 import { BadgeContainer } from '../badge-container/BadgeContainer';
 
 export function UserProfileContainer({ user }: UserProfileContainerProps) {
+  console.log(user)
   return (
     <UserProfileContainerElement>
       <UserProfileContainerContent>
-        <AvatarContainer src="https://imager.habboon.pw/?figure=ea-1403-63.ch-3001-1408-110.hr-125-61.lg-285-89.fa-1201-1408.sh-905-1408.hd-3536-14-14.he-8394-110.wa-2009-1325.hd-180-14&size=m&direction=4&head_direction=3&gesture=sml&action=wav" />
+        <AvatarContainer src={`https://imager.habboon.pw/?figure=${user.look}&direction=2&head_direction=3&gesture=sml&action=wav&size=l`} />
         <InformationContainer>
           <div>
             <h2>{user.username}</h2>
