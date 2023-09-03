@@ -1,18 +1,18 @@
-import {omit} from 'lodash';
-import {PubSub} from 'graphql-subscriptions';
-import {WordFilterArgs} from './word-filter.args';
-import {WordFilterModel} from './word-filter.model';
-import {UserEntity} from '../database/user.entity';
-import {GetUser} from '../session/get-user.decorator';
-import {HasSession} from '../session/has-session.decorator';
-import {WordFilterEntity} from '../database/word-filter.entity';
-import {WordFilterDataloaderService} from './word-filter.dataloader';
-import {WordFilterRepository} from '../database/word-filter.repository';
+import { omit } from 'lodash';
+import { PubSub } from 'graphql-subscriptions';
+import { WordFilterArgs } from './word-filter.args';
+import { WordFilterModel } from './word-filter.model';
+import { UserEntity } from '../database/user.entity';
+import { GetUser } from '../session/get-user.decorator';
+import { HasSession } from '../session/has-session.decorator';
+import { WordFilterEntity } from '../database/word-filter.entity';
+import { WordFilterDataloaderService } from './word-filter.dataloader';
+import { WordFilterRepository } from '../database/word-filter.repository';
 import {
   WordFilterCreateInput,
   WordFilterUpdateInput,
 } from './word-filter.input';
-import {Args, Mutation, Query, Resolver, Subscription} from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
 
 const pubSub = new PubSub();
 
@@ -21,7 +21,7 @@ export class WordFilterResolver {
   constructor(
     private readonly wordFilterRepo: WordFilterRepository,
     private readonly wordFilterDataloaderService: WordFilterDataloaderService
-  ) {}
+  ) { }
 
   @Query(() => WordFilterModel)
   async wordFilter(@Args('id') id: number): Promise<WordFilterEntity> {
@@ -32,7 +32,7 @@ export class WordFilterResolver {
   wordFilters(
     @Args() wordFilterArgs: WordFilterArgs
   ): Promise<WordFilterEntity[]> {
-    return this.wordFilterRepo.find(
+    return this.wordFilterRepo._find(
       omit(wordFilterArgs, 'other'),
       wordFilterArgs.other
     );
@@ -47,7 +47,7 @@ export class WordFilterResolver {
     const newWordFilter = await this.wordFilterRepo.create({
       ...wordFilterCreateInput,
     });
-    pubSub.publish('wordFilterCreated', {wordFilterCreated: newWordFilter});
+    pubSub.publish('wordFilterCreated', { wordFilterCreated: newWordFilter });
     return newWordFilter;
   }
 
@@ -61,16 +61,16 @@ export class WordFilterResolver {
     @Args('id') id: number,
     @Args('wordFilterChanges') wordFilterChanges: WordFilterUpdateInput
   ) {
-    await this.wordFilterRepo.update({id}, wordFilterChanges);
+    await this.wordFilterRepo.update({ id }, wordFilterChanges);
     await this.wordFilterDataloaderService.clearByID(id);
     return true;
   }
 
   @Mutation(() => Boolean)
   async wordFilterDelete(@Args('id') id: number) {
-    const deletedWordFilter = await this.wordFilterRepo.findOneOrFail({id});
-    pubSub.publish('wordFilterDeleted', {wordFilterDeleted: deletedWordFilter});
-    await this.wordFilterRepo.delete({id});
+    const deletedWordFilter = await this.wordFilterRepo.findOneOrFail({ id });
+    pubSub.publish('wordFilterDeleted', { wordFilterDeleted: deletedWordFilter });
+    await this.wordFilterRepo.delete({ id });
     await this.wordFilterDataloaderService.clearByID(id);
     return true;
   }

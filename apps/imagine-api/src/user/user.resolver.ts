@@ -1,16 +1,16 @@
-import {now, omit} from 'lodash';
-import {UserArgs} from './user.args';
-import {UserModel} from './user.model';
-import {PubSub} from 'graphql-subscriptions';
-import {UserEntity} from '../database/user.entity';
-import {DEFAULT_USER_VALUES} from './user.constant';
-import {UserDataloaderService} from './user.dataloader';
-import {UserRepository} from '../database/user.repository';
-import {RankRepository} from '../database/rank.repository';
-import {HasSession} from '../session/has-session.decorator';
-import {UserCreateInput, UserUpdateInput} from './user.input';
-import {SessionRepository} from '../database/session.repository';
-import {forwardRef, Inject, UnauthorizedException} from '@nestjs/common';
+import { now, omit } from 'lodash';
+import { UserArgs } from './user.args';
+import { UserModel } from './user.model';
+import { PubSub } from 'graphql-subscriptions';
+import { UserEntity } from '../database/user.entity';
+import { DEFAULT_USER_VALUES } from './user.constant';
+import { UserDataloaderService } from './user.dataloader';
+import { UserRepository } from '../database/user.repository';
+import { RankRepository } from '../database/rank.repository';
+import { HasSession } from '../session/has-session.decorator';
+import { UserCreateInput, UserUpdateInput } from './user.input';
+import { SessionRepository } from '../database/session.repository';
+import { forwardRef, Inject, UnauthorizedException } from '@nestjs/common';
 import {
   Args,
   Mutation,
@@ -20,8 +20,8 @@ import {
   Resolver,
   Subscription,
 } from '@nestjs/graphql';
-import {RankModel} from '../rank/rank.model';
-import {GetUser} from '../session/get-user.decorator';
+import { RankModel } from '../rank/rank.model';
+import { GetUser } from '../session/get-user.decorator';
 
 const pubSub = new PubSub();
 
@@ -34,12 +34,12 @@ export class UserResolver {
     @Inject(forwardRef(() => SessionRepository))
     private readonly sessionRepo: SessionRepository,
     private readonly userDataloaderService: UserDataloaderService
-  ) {}
+  ) { }
 
   @ResolveField('email')
   @HasSession()
   email(
-    @Parent() {id, email}: UserEntity,
+    @Parent() { id, email }: UserEntity,
     @GetUser() user: UserEntity
   ): string {
     this.ownsResourceOrCanManageUsers(id, user);
@@ -49,7 +49,7 @@ export class UserResolver {
   @ResolveField('gameSSO')
   @HasSession()
   gameSSO(
-    @Parent() {id, gameSSO}: UserEntity,
+    @Parent() { id, gameSSO }: UserEntity,
     @GetUser() user: UserEntity
   ): string {
     this.ownsResource(id, user);
@@ -59,7 +59,7 @@ export class UserResolver {
   @ResolveField('ipLast')
   @HasSession()
   ipLast(
-    @Parent() {id, ipLast}: UserEntity,
+    @Parent() { id, ipLast }: UserEntity,
     @GetUser() user: UserEntity
   ): string {
     this.ownsResourceOrCanManageUsers(id, user);
@@ -69,7 +69,7 @@ export class UserResolver {
   @ResolveField('ipRegisteredWith')
   @HasSession()
   ipRegisteredWith(
-    @Parent() {id, ipRegisteredWith}: UserEntity,
+    @Parent() { id, ipRegisteredWith }: UserEntity,
     @GetUser() user: UserEntity
   ): string {
     this.ownsResourceOrCanManageUsers(id, user);
@@ -77,13 +77,13 @@ export class UserResolver {
   }
 
   @ResolveField('onlineStatus')
-  onlineStatus(@Parent() {onlineStatus}: UserEntity): string {
+  onlineStatus(@Parent() { onlineStatus }: UserEntity): string {
     return onlineStatus;
   }
 
   @ResolveField('rank', () => RankModel)
-  getRank(@Parent() {rankID}: UserEntity): Promise<RankModel> {
-    return this.rankRepo.findOneOrFail({id: rankID});
+  getRank(@Parent() { rankID }: UserEntity): Promise<RankModel> {
+    return this.rankRepo.findOneOrFail({ id: rankID });
   }
 
   @Query(() => UserModel)
@@ -93,7 +93,7 @@ export class UserResolver {
 
   @Query(() => [UserModel])
   users(@Args() userArgs: UserArgs): Promise<UserEntity[]> {
-    return this.userRepo.find(omit(userArgs, 'other'), userArgs.other);
+    return this.userRepo._find(omit(userArgs, 'other'), userArgs.other);
   }
 
   @Mutation(() => UserModel)
@@ -109,7 +109,7 @@ export class UserResolver {
       ipLast: '', // TODO: Add support for IPs,
       ipRegisteredWith: '', // TODO: Add support for IPs
     });
-    pubSub.publish('userCreated', {userCreated: newUser});
+    pubSub.publish('userCreated', { userCreated: newUser });
     return newUser;
   }
 
@@ -123,16 +123,16 @@ export class UserResolver {
     @Args('id') id: number,
     @Args('userChanges') userChanges: UserUpdateInput
   ) {
-    await this.userRepo.update({id}, userChanges);
+    await this.userRepo.update({ id }, userChanges);
     await this.userDataloaderService.clearByID(id);
     return true;
   }
 
   @Mutation(() => Boolean)
   async userDelete(@Args('id') id: number) {
-    const deletedUser = await this.userRepo.findOneOrFail({id});
-    pubSub.publish('userDeleted', {userDeleted: deletedUser});
-    await this.userRepo.delete({id});
+    const deletedUser = await this.userRepo.findOneOrFail({ id });
+    pubSub.publish('userDeleted', { userDeleted: deletedUser });
+    await this.userRepo.delete({ id });
     await this.userDataloaderService.clearByID(id);
     return true;
   }

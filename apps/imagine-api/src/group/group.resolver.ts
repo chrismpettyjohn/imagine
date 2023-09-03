@@ -1,10 +1,10 @@
-import {omit} from 'lodash';
-import {GroupArgs} from './group.args';
-import {GroupModel} from './group.model';
-import {PubSub} from 'graphql-subscriptions';
-import {GroupEntity} from '../database/group.entity';
-import {GroupDataloaderService} from './group.dataloader';
-import {GroupRepository} from '../database/group.repository';
+import { omit } from 'lodash';
+import { GroupArgs } from './group.args';
+import { GroupModel } from './group.model';
+import { PubSub } from 'graphql-subscriptions';
+import { GroupEntity } from '../database/group.entity';
+import { GroupDataloaderService } from './group.dataloader';
+import { GroupRepository } from '../database/group.repository';
 import {
   Args,
   Mutation,
@@ -14,8 +14,8 @@ import {
   Resolver,
   Subscription,
 } from '@nestjs/graphql';
-import {UserModel} from '../user/user.model';
-import {UserRepository} from '../database/user.repository';
+import { UserModel } from '../user/user.model';
+import { UserRepository } from '../database/user.repository';
 
 const pubSub = new PubSub();
 
@@ -25,11 +25,11 @@ export class GroupResolver {
     private readonly userRepo: UserRepository,
     private readonly groupRepo: GroupRepository,
     private readonly groupDataloaderService: GroupDataloaderService
-  ) {}
+  ) { }
 
   @ResolveField(() => UserModel)
   async user(@Parent() group: GroupModel): Promise<UserModel> {
-    return this.userRepo.findOneOrFail({id: group.userID});
+    return this.userRepo.findOneOrFail({ id: group.userID });
   }
 
   @Query(() => GroupModel)
@@ -39,14 +39,14 @@ export class GroupResolver {
 
   @Query(() => [GroupModel])
   groups(@Args() groupArgs: GroupArgs): Promise<GroupEntity[]> {
-    return this.groupRepo.find(omit(groupArgs, 'other'), groupArgs.other);
+    return this.groupRepo._find(omit(groupArgs, 'other'), groupArgs.other);
   }
 
   @Mutation(() => Boolean)
   async groupDelete(@Args('id') id: number) {
-    const deletedGroup = await this.groupRepo.findOneOrFail({id});
-    pubSub.publish('groupDeleted', {groupDeleted: deletedGroup});
-    await this.groupRepo.delete({id});
+    const deletedGroup = await this.groupRepo.findOneOrFail({ id });
+    pubSub.publish('groupDeleted', { groupDeleted: deletedGroup });
+    await this.groupRepo.delete({ id });
     await this.groupDataloaderService.clearByID(id);
     return true;
   }

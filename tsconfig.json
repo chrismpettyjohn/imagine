@@ -12,14 +12,11 @@
       "@imagine-cms/imagine-web": [
         "apps/imagine-web/src"
       ],
-      "@imagine-cms/cosmic-web": [
-        "apps/cosmic-web/src"
-      ],
-      "@imagine-cms/modern-flat-web": [
-        "apps/modern-flat-web/src"
-      ],
       "@imagine-cms/types": [
         "libs/types/src"
+      ],
+      "@imagine-cms/client": [
+        "libs/client/src"
       ],
       "@imagine-cms/web": [
         "libs/web/src"

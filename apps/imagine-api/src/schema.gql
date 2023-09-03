@@ -206,8 +206,8 @@ type Query {
   rooms(other: ExtraArgs): [RoomModel!]!
   group(id: Float!): GroupModel!
   groups(other: ExtraArgs): [GroupModel!]!
-  photo(id: Float!): PhotoModel!
-  photos(other: ExtraArgs): [PhotoModel!]!
+  photo(filter: PhotoFilterOneInput!): PhotoModel!
+  photos(filter: PhotoFilterManyInput): [PhotoModel!]!
   language(id: Float!): LanguageModel!
   languages: [LanguageModel!]!
   languagePhrase(id: Float!): LanguagePhraseModel!
@@ -224,6 +224,16 @@ input ExtraArgs {
 The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
 scalar JSONObject
+
+input PhotoFilterOneInput {
+  id: Float!
+}
+
+input PhotoFilterManyInput {
+  ids: [Float!]
+  userIDs: [Float!]
+  limit: Float
+}
 
 type Mutation {
   sessionCreate(username: String!, password: String!): SessionCreatedModel!

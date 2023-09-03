@@ -1,17 +1,17 @@
-import {omit} from 'lodash';
-import {BanArgs} from './ban.args';
-import {BanModel} from './ban.model';
-import {PubSub} from 'graphql-subscriptions';
-import {Inject, forwardRef} from '@nestjs/common';
-import {UserEntity} from '../database/user.entity';
-import {GetUser} from '../session/get-user.decorator';
-import {BanEntity} from '../database/ban.entity';
-import {UserRepository} from '../database/user.repository';
-import {HasSession} from '../session/has-session.decorator';
-import {BanDataloaderService} from './ban.dataloader';
-import {BanRepository} from '../database/ban.repository';
-import {BanCreateInput, BanUpdateInput} from './ban.input';
-import {Args, Mutation, Query, Resolver, Subscription} from '@nestjs/graphql';
+import { omit } from 'lodash';
+import { BanArgs } from './ban.args';
+import { BanModel } from './ban.model';
+import { PubSub } from 'graphql-subscriptions';
+import { Inject, forwardRef } from '@nestjs/common';
+import { UserEntity } from '../database/user.entity';
+import { GetUser } from '../session/get-user.decorator';
+import { BanEntity } from '../database/ban.entity';
+import { UserRepository } from '../database/user.repository';
+import { HasSession } from '../session/has-session.decorator';
+import { BanDataloaderService } from './ban.dataloader';
+import { BanRepository } from '../database/ban.repository';
+import { BanCreateInput, BanUpdateInput } from './ban.input';
+import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
 
 const pubSub = new PubSub();
 
@@ -22,7 +22,7 @@ export class BanResolver {
     private readonly userRepo: UserRepository,
     private readonly banRepo: BanRepository,
     private readonly banDataloaderService: BanDataloaderService
-  ) {}
+  ) { }
 
   @Query(() => BanModel)
   async ban(@Args('id') id: number): Promise<BanEntity> {
@@ -31,7 +31,7 @@ export class BanResolver {
 
   @Query(() => [BanModel])
   bans(@Args() banArgs: BanArgs): Promise<BanEntity[]> {
-    return this.banRepo.find(omit(banArgs, 'other'), banArgs.other);
+    return this.banRepo._find(omit(banArgs, 'other'), banArgs.other);
   }
 
   @Mutation(() => BanModel)
@@ -45,7 +45,7 @@ export class BanResolver {
       type: 'site',
       addedByUserID: user.id!,
     });
-    pubSub.publish('banCreated', {banCreated: newBan});
+    pubSub.publish('banCreated', { banCreated: newBan });
     return newBan;
   }
 
@@ -59,16 +59,16 @@ export class BanResolver {
     @Args('id') id: number,
     @Args('banChanges') banChanges: BanUpdateInput
   ) {
-    await this.banRepo.update({id}, banChanges);
+    await this.banRepo.update({ id }, banChanges);
     await this.banDataloaderService.clearByID(id);
     return true;
   }
 
   @Mutation(() => Boolean)
   async banDelete(@Args('id') id: number) {
-    const deletedBan = await this.banRepo.findOneOrFail({id});
-    pubSub.publish('banDeleted', {banDeleted: deletedBan});
-    await this.banRepo.delete({id});
+    const deletedBan = await this.banRepo.findOneOrFail({ id });
+    pubSub.publish('banDeleted', { banDeleted: deletedBan });
+    await this.banRepo.delete({ id });
     await this.banDataloaderService.clearByID(id);
     return true;
   }

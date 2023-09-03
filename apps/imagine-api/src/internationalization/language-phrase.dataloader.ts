@@ -1,8 +1,8 @@
-import {In} from 'typeorm';
-import {Injectable} from '@nestjs/common';
-import {BaseDataloaderService} from '../utility/base.dataloader';
-import {LanguagePhraseEntity} from '../database/language-phrase.entity';
-import {LanguagePhraseRepository} from '../database/language-phrase.repository';
+import { In } from 'typeorm';
+import { Injectable } from '@nestjs/common';
+import { BaseDataloaderService } from '../utility/base.dataloader';
+import { LanguagePhraseEntity } from '../database/language-phrase.entity';
+import { LanguagePhraseRepository } from '../database/language-phrase.repository';
 
 @Injectable()
 export class LanguagePhraseDataloaderService extends BaseDataloaderService<LanguagePhraseEntity> {
@@ -12,7 +12,7 @@ export class LanguagePhraseDataloaderService extends BaseDataloaderService<Langu
         return [];
       }
 
-      return this.languagePhraseRepo.find({
+      return this.languagePhraseRepo._find({
         id: In(ids),
       });
     });

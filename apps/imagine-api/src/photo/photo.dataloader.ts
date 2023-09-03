@@ -1,8 +1,8 @@
-import {In} from 'typeorm';
-import {Injectable} from '@nestjs/common';
-import {PhotoEntity} from '../database/photo.entity';
-import {PhotoRepository} from '../database/photo.repository';
-import {BaseDataloaderService} from '../utility/base.dataloader';
+import { In } from 'typeorm';
+import { Injectable } from '@nestjs/common';
+import { PhotoEntity } from '../database/photo.entity';
+import { PhotoRepository } from '../database/photo.repository';
+import { BaseDataloaderService } from '../utility/base.dataloader';
 
 @Injectable()
 export class PhotoDataloaderService extends BaseDataloaderService<PhotoEntity> {
@@ -12,7 +12,7 @@ export class PhotoDataloaderService extends BaseDataloaderService<PhotoEntity> {
         return [];
       }
 
-      return this.photoRepo.find({
+      return this.photoRepo._find({
         id: In(ids),
       });
     });

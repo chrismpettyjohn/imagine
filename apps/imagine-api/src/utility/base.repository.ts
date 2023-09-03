@@ -9,7 +9,7 @@ export abstract class BaseRepository<Entity> {
   constructor(
     // @ts-ignore
     readonly repo: Repository<Entity>
-  ) {}
+  ) { }
 
   async create(newEntity: Omit<Entity, 'id'>): Promise<Entity> {
     const newObject = await this.repo.save(newEntity as any);
@@ -20,10 +20,10 @@ export abstract class BaseRepository<Entity> {
     }
 
     // @ts-ignore It's expected for entities to have an `id`
-    return this.findOneOrFail({id: newObject.id!});
+    return this.findOneOrFail({ id: newObject.id! });
   }
 
-  find(
+  _find(
     where?: FindOptionsWhere<Entity>,
     options?: FindManyOptions<Entity>
   ): Promise<Entity[]> {
@@ -31,6 +31,12 @@ export abstract class BaseRepository<Entity> {
       where,
       ...options,
     });
+  }
+
+  find(
+    opts: FindManyOptions<Entity>,
+  ): Promise<Entity[]> {
+    return this.repo.find(opts);
   }
 
   findOne(

@@ -1,8 +1,8 @@
-import {In} from 'typeorm';
-import {Injectable} from '@nestjs/common';
-import {GroupEntity} from '../database/group.entity';
-import {GroupRepository} from '../database/group.repository';
-import {BaseDataloaderService} from '../utility/base.dataloader';
+import { In } from 'typeorm';
+import { Injectable } from '@nestjs/common';
+import { GroupEntity } from '../database/group.entity';
+import { GroupRepository } from '../database/group.repository';
+import { BaseDataloaderService } from '../utility/base.dataloader';
 
 @Injectable()
 export class GroupDataloaderService extends BaseDataloaderService<GroupEntity> {
@@ -12,7 +12,7 @@ export class GroupDataloaderService extends BaseDataloaderService<GroupEntity> {
         return [];
       }
 
-      return this.groupRepo.find({
+      return this.groupRepo._find({
         id: In(ids),
       });
     });

@@ -1,10 +1,10 @@
-import {PubSub} from 'graphql-subscriptions';
-import {LanguageModel} from './language.model';
-import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
-import {LanguageEntity} from '../database/language.entity';
-import {LanguageDataloaderService} from './language.dataloader';
-import {LanguageRepository} from '../database/language.repository';
-import {LanguageInput} from './language.input';
+import { PubSub } from 'graphql-subscriptions';
+import { LanguageModel } from './language.model';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { LanguageEntity } from '../database/language.entity';
+import { LanguageDataloaderService } from './language.dataloader';
+import { LanguageRepository } from '../database/language.repository';
+import { LanguageInput } from './language.input';
 
 const pubSub = new PubSub();
 
@@ -13,7 +13,7 @@ export class LanguageResolver {
   constructor(
     private readonly languageRepo: LanguageRepository,
     private readonly languageDataloaderService: LanguageDataloaderService
-  ) {}
+  ) { }
 
   @Query(() => LanguageModel)
   async language(@Args('id') id: number): Promise<LanguageEntity> {
@@ -22,7 +22,7 @@ export class LanguageResolver {
 
   @Query(() => [LanguageModel])
   languages(): Promise<LanguageEntity[]> {
-    return this.languageRepo.find();
+    return this.languageRepo._find();
   }
 
   @Mutation(() => LanguageModel)
@@ -40,18 +40,18 @@ export class LanguageResolver {
     @Args('input') input: LanguageInput
   ): Promise<LanguageEntity> {
     await this.languageRepo.update(
-      {id: languageID},
+      { id: languageID },
       {
         ...input,
         hidden: input.hidden ? 1 : 0,
       }
     );
-    return this.languageRepo.findOneOrFail({id: languageID});
+    return this.languageRepo.findOneOrFail({ id: languageID });
   }
 
   @Mutation(() => Boolean)
   async languageDelete(@Args('id') languageID: number): Promise<Boolean> {
-    await this.languageRepo.delete({id: languageID});
+    await this.languageRepo.delete({ id: languageID });
     return true;
   }
 }

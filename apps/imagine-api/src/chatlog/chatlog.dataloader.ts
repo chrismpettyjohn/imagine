@@ -1,8 +1,8 @@
-import {In} from 'typeorm';
-import {Injectable} from '@nestjs/common';
-import {ChatlogEntity} from '../database/chatlog.entity';
-import {ChatlogRepository} from '../database/chatlog.repository';
-import {BaseDataloaderService} from '../utility/base.dataloader';
+import { In } from 'typeorm';
+import { Injectable } from '@nestjs/common';
+import { ChatlogEntity } from '../database/chatlog.entity';
+import { ChatlogRepository } from '../database/chatlog.repository';
+import { BaseDataloaderService } from '../utility/base.dataloader';
 
 @Injectable()
 export class ChatlogDataloaderService extends BaseDataloaderService<ChatlogEntity> {
@@ -12,7 +12,7 @@ export class ChatlogDataloaderService extends BaseDataloaderService<ChatlogEntit
         return [];
       }
 
-      return this.chatlogRepo.find({
+      return this.chatlogRepo._find({
         id: In(ids),
       });
     });

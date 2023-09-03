@@ -1,8 +1,8 @@
-import {In} from 'typeorm';
-import {Injectable} from '@nestjs/common';
-import {RankEntity} from '../database/rank.entity';
-import {RankRepository} from '../database/rank.repository';
-import {BaseDataloaderService} from '../utility/base.dataloader';
+import { In } from 'typeorm';
+import { Injectable } from '@nestjs/common';
+import { RankEntity } from '../database/rank.entity';
+import { RankRepository } from '../database/rank.repository';
+import { BaseDataloaderService } from '../utility/base.dataloader';
 
 @Injectable()
 export class RankDataloaderService extends BaseDataloaderService<RankEntity> {
@@ -12,7 +12,7 @@ export class RankDataloaderService extends BaseDataloaderService<RankEntity> {
         return [];
       }
 
-      return this.rankRepo.find({
+      return this.rankRepo._find({
         id: In(ids),
       });
     });

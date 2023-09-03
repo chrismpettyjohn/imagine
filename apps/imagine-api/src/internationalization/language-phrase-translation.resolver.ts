@@ -1,10 +1,10 @@
-import {PubSub} from 'graphql-subscriptions';
-import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
-import {LanguagePhraseTranslationModel} from './language-phrase-translation.model';
-import {LanguagePhraseTranslationInput} from './language-phrase-translation.input';
-import {LanguagePhraseTranslationEntity} from '../database/language-phrase-translation.entity';
-import {LanguagePhraseTranslationDataloaderService} from './language-phrase-translation.dataloader';
-import {LanguagePhraseTranslationRepository} from '../database/language-phrase-translation.repository';
+import { PubSub } from 'graphql-subscriptions';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { LanguagePhraseTranslationModel } from './language-phrase-translation.model';
+import { LanguagePhraseTranslationInput } from './language-phrase-translation.input';
+import { LanguagePhraseTranslationEntity } from '../database/language-phrase-translation.entity';
+import { LanguagePhraseTranslationDataloaderService } from './language-phrase-translation.dataloader';
+import { LanguagePhraseTranslationRepository } from '../database/language-phrase-translation.repository';
 
 const pubSub = new PubSub();
 
@@ -13,7 +13,7 @@ export class LanguagePhraseResolver {
   constructor(
     private readonly languagePhraseTranslationRepo: LanguagePhraseTranslationRepository,
     private readonly languagePhraseTranslationDataloaderService: LanguagePhraseTranslationDataloaderService
-  ) {}
+  ) { }
 
   @Query(() => LanguagePhraseTranslationModel)
   async languagePhraseTranslation(
@@ -24,7 +24,7 @@ export class LanguagePhraseResolver {
 
   @Query(() => [LanguagePhraseTranslationModel])
   languagePhraseTranslations(): Promise<LanguagePhraseTranslationEntity[]> {
-    return this.languagePhraseTranslationRepo.find();
+    return this.languagePhraseTranslationRepo._find();
   }
 
   @Mutation(() => LanguagePhraseTranslationModel)
@@ -44,7 +44,7 @@ export class LanguagePhraseResolver {
     @Args('input') input: LanguagePhraseTranslationInput
   ): Promise<LanguagePhraseTranslationEntity> {
     await this.languagePhraseTranslationRepo.update(
-      {id: languagePhraseTranslationID},
+      { id: languagePhraseTranslationID },
       {
         ...input,
         updatedAt: new Date().toISOString(),
@@ -59,7 +59,7 @@ export class LanguagePhraseResolver {
   async languagePhraseTranslationDelete(
     @Args('id') languageID: number
   ): Promise<Boolean> {
-    await this.languagePhraseTranslationRepo.delete({id: languageID});
+    await this.languagePhraseTranslationRepo.delete({ id: languageID });
     return true;
   }
 }

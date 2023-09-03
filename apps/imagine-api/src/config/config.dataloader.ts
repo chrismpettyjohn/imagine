@@ -1,8 +1,8 @@
-import {In} from 'typeorm';
-import {Injectable} from '@nestjs/common';
-import {ConfigEntity} from '../database/config.entity';
-import {ConfigRepository} from '../database/config.repository';
-import {BaseDataloaderService} from '../utility/base.dataloader';
+import { In } from 'typeorm';
+import { Injectable } from '@nestjs/common';
+import { ConfigEntity } from '../database/config.entity';
+import { ConfigRepository } from '../database/config.repository';
+import { BaseDataloaderService } from '../utility/base.dataloader';
 
 @Injectable()
 export class ConfigDataloaderService extends BaseDataloaderService<ConfigEntity> {
@@ -12,7 +12,7 @@ export class ConfigDataloaderService extends BaseDataloaderService<ConfigEntity>
         return [];
       }
 
-      return this.configRepo.find({
+      return this.configRepo._find({
         id: In(ids),
       });
     });
