@@ -5,7 +5,7 @@ import { PhotoContainerElement } from './PhotoContainer.styled';
 
 export function PhotoContainer({ story }: PhotoContainerProps) {
   return (
-    <Link to={`/profiles/${story.user?.username}/photos/${story.id}`}>
+    <Link to={`/photos/${story.id}`}>
       <PhotoContainerElement>
         <img src={story.photoURL} />
       </PhotoContainerElement>

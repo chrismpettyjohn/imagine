@@ -41,7 +41,7 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     view: ProfileScreen,
   },
   {
-    path: '/profiles/:username/photos/:photoID',
+    path: '/photos/:photoID',
     view: ProfileViewPhotoScreen,
   },
   {
