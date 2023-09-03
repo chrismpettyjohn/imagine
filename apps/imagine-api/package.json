@@ -7,7 +7,7 @@
     "dist"
   ],
   "scripts": {
-    "start": "node_modules/.bin/ts-node --swc -r tsconfig-paths/register src/index.ts",
+    "start": "node_modules/.bin/ts-node -r tsconfig-paths/register src/index.ts",
     "dev": "nodemon --exec pnpm run start"
   },
   "dependencies": {
