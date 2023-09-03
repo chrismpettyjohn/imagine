@@ -36,6 +36,10 @@ export class RankCreateInput implements RankCreateInputDTO {
   badgeCode!: string;
 
   @Field()
+  @IsBoolean()
+  showStaff!: boolean;
+
+  @Field()
   @IsObject()
   scopes!: RankWireScopesCreateInput;
 }
@@ -61,8 +65,22 @@ export class RankUpdateInput implements RankUpdateInputDTO {
   @IsOptional()
   badgeCode?: string;
 
+  @Field()
+  @IsBoolean()
+  @IsOptional()
+  showStaff!: boolean;
+
   @Field({nullable: true})
   @IsObject()
   @IsOptional()
   scopes?: RankWireScopesUpdateInput;
+}
+
+@InputType()
+export class RankFilterManyInput {
+  @Field(() => [Number], {nullable: true})
+  ids?: number[];
+
+  @Field(() => Boolean, {nullable: true})
+  showStaffOnly?: boolean;
 }

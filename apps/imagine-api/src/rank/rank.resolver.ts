@@ -3,11 +3,15 @@ import {RankArgs} from './rank.args';
 import {RankModel} from './rank.model';
 import {PubSub} from 'graphql-subscriptions';
 import {Inject, forwardRef} from '@nestjs/common';
-import {RankEntity} from '../database/rank.entity';
+import {RankEntity, RankSiteShowStaff} from '../database/rank.entity';
 import {RankDataloaderService} from './rank.dataloader';
 import {RankRepository} from '../database/rank.repository';
 import {UserRepository} from '../database/user.repository';
-import {RankCreateInput, RankUpdateInput} from './rank.input';
+import {
+  RankCreateInput,
+  RankFilterManyInput,
+  RankUpdateInput,
+} from './rank.input';
 import {
   Args,
   Mutation,
@@ -18,6 +22,7 @@ import {
   Parent,
 } from '@nestjs/graphql';
 import {UserModel} from '../user/user.model';
+import {In} from 'typeorm';
 
 const pubSub = new PubSub();
 
@@ -41,8 +46,16 @@ export class RankResolver {
   }
 
   @Query(() => [RankModel])
-  ranks(@Args() rankArgs: RankArgs): Promise<RankEntity[]> {
-    return this.rankRepo._find(omit(rankArgs, 'other'), rankArgs.other);
+  ranks(@Args('filter') filter: RankFilterManyInput): Promise<RankEntity[]> {
+    return this.rankRepo.find({
+      where: {
+        id: filter.ids && In(filter.ids),
+        siteShowStaff: filter.showStaffOnly ? RankSiteShowStaff.Yes : undefined,
+      },
+      order: {
+        id: 'DESC',
+      },
+    });
   }
 
   @Mutation(() => RankModel)
@@ -50,6 +63,9 @@ export class RankResolver {
     @Args('newRank') rankCreateInput: RankCreateInput
   ): Promise<RankEntity> {
     const newRank = await this.rankRepo.create({
+      siteShowStaff: rankCreateInput.showStaff
+        ? RankSiteShowStaff.Yes
+        : RankSiteShowStaff.No,
       ...rankCreateInput,
     });
     pubSub.publish('rankCreated', {rankCreated: newRank});

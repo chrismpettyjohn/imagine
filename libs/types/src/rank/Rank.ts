@@ -6,6 +6,7 @@ export interface RankWire {
   name?: string;
   description?: string;
   badgeCode?: string;
+  showStaff?: boolean;
   users?: UserWire[];
   scopes?: RankScopesWire;
 }

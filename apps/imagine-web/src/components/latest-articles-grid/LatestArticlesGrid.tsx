@@ -12,12 +12,15 @@ export function LatestArticlesGrid() {
   }, [runQuery]);
 
   return (
-    <LatestArticlesGridElement>
-      {
-        latestArticles?.map(_ => (
-          <LatestArticleContainer article={_} key={`latest_article_${_.id}`} />
-        ))
-      }
-    </LatestArticlesGridElement>
+    <>
+      <h1>News Articles</h1>
+      <LatestArticlesGridElement>
+        {
+          latestArticles?.map(_ => (
+            <LatestArticleContainer article={_} key={`latest_article_${_.id}`} />
+          ))
+        }
+      </LatestArticlesGridElement>
+    </>
   )
 }

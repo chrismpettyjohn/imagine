@@ -3,6 +3,11 @@ import {ObjectType} from '@nestjs/graphql';
 import {RankScopesWire, RankWire} from '@imagine-cms/types';
 import {Column, Entity, PrimaryGeneratedColumn, OneToMany} from 'typeorm';
 
+export enum RankSiteShowStaff {
+  Yes = '1',
+  No = '0',
+}
+
 @Entity('permissions')
 @ObjectType()
 export class RankEntity implements RankWire {
@@ -14,6 +19,9 @@ export class RankEntity implements RankWire {
 
   @Column({name: 'badge'})
   badgeCode!: string;
+
+  @Column({name: 'site_show_staff', type: 'enum', enum: RankSiteShowStaff})
+  siteShowStaff!: RankSiteShowStaff;
 
   @Column({type: 'json'})
   scopes!: RankScopesWire;

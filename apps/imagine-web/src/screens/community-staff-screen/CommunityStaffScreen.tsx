@@ -1,20 +1,19 @@
-import React, { useContext, useEffect, useMemo } from 'react';
-import { configContext, useFetchStaffRanks } from '@imagine-cms/web';
+import React, { useEffect } from 'react';
+import { useRankFetchMany } from '@imagine-cms/client';
 import { RankListContainer } from '../../components/rank-list-container/RankListContainer';
 import { RankListContainerElement } from '../../components/rank-list-container/RankListContainer.styled';
 
 export function CommunityStaffScreen() {
-  const { config } = useContext(configContext);
-  const { runQuery, loading, data } = useFetchStaffRanks();
+  const { data, fetch } = useRankFetchMany();
 
   useEffect(() => {
-    runQuery()
+    fetch({ showStaffOnly: true })
   }, []);
 
   return (
     <RankListContainerElement>
       {
-        data?.ranks?.map(_ => (
+        data?.map(_ => (
           <RankListContainer key={`rank_${_.id}`} rank={_} />
         ))
       }

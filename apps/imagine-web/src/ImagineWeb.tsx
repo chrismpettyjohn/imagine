@@ -8,6 +8,7 @@ import { GameClient, ImagineContextProviders } from '@imagine-cms/web';
 import { PageContainerElement, SiteContainerElement } from './components/site-container/SiteContainer.styled';
 
 export function ImagineWeb() {
+
   return (
     <ThemeProvider>
       <ImagineContextProviders>
