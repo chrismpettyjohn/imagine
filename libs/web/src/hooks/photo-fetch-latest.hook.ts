@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
-import {PhotoWire} from '@imagine-cms/types';
-import {UseQueryResponse, useRunQuery} from './run-query.hook';
+import { PhotoWire } from '@imagine-cms/types';
+import { UseQueryResponse, useRunQuery } from './run-query.hook';
 
 const FETCH_LATEST_PHOTOS = gql`
     query ($limit: Float!) {
@@ -16,6 +16,6 @@ const FETCH_LATEST_PHOTOS = gql`
     }
 `;
 
-export const useFetchLatestPhotos = (limit = 20): UseQueryResponse<{photos: PhotoWire[]}> => {
-  return useRunQuery(FETCH_LATEST_PHOTOS, {limit});
+export const usePhotoFetchLatest = (limit = 20): UseQueryResponse<{ photos: PhotoWire[] }> => {
+    return useRunQuery(FETCH_LATEST_PHOTOS, { limit });
 };

@@ -1,13 +1,13 @@
-import { omit } from 'lodash';
-import { RankArgs } from './rank.args';
-import { RankModel } from './rank.model';
-import { PubSub } from 'graphql-subscriptions';
-import { Inject, forwardRef } from '@nestjs/common';
-import { RankEntity } from '../database/rank.entity';
-import { RankDataloaderService } from './rank.dataloader';
-import { RankRepository } from '../database/rank.repository';
-import { UserRepository } from '../database/user.repository';
-import { RankCreateInput, RankUpdateInput } from './rank.input';
+import {omit} from 'lodash';
+import {RankArgs} from './rank.args';
+import {RankModel} from './rank.model';
+import {PubSub} from 'graphql-subscriptions';
+import {Inject, forwardRef} from '@nestjs/common';
+import {RankEntity} from '../database/rank.entity';
+import {RankDataloaderService} from './rank.dataloader';
+import {RankRepository} from '../database/rank.repository';
+import {UserRepository} from '../database/user.repository';
+import {RankCreateInput, RankUpdateInput} from './rank.input';
 import {
   Args,
   Mutation,
@@ -17,7 +17,7 @@ import {
   ResolveField,
   Parent,
 } from '@nestjs/graphql';
-import { UserModel } from '../user/user.model';
+import {UserModel} from '../user/user.model';
 
 const pubSub = new PubSub();
 
@@ -28,11 +28,11 @@ export class RankResolver {
     private readonly userRepo: UserRepository,
     private readonly rankRepo: RankRepository,
     private readonly rankDataloaderService: RankDataloaderService
-  ) { }
+  ) {}
 
   @ResolveField('users', () => [UserModel])
-  getUsers(@Parent() { id }: RankEntity): Promise<UserModel[]> {
-    return this.userRepo._find({ rankID: id });
+  getUsers(@Parent() {id}: RankEntity): Promise<UserModel[]> {
+    return this.userRepo._find({rankID: id});
   }
 
   @Query(() => RankModel)
@@ -52,7 +52,7 @@ export class RankResolver {
     const newRank = await this.rankRepo.create({
       ...rankCreateInput,
     });
-    pubSub.publish('rankCreated', { rankCreated: newRank });
+    pubSub.publish('rankCreated', {rankCreated: newRank});
     return newRank;
   }
 
@@ -68,7 +68,7 @@ export class RankResolver {
   ) {
     const currentRank = await this.rankDataloaderService.loadById(id);
     await this.rankRepo.update(
-      { id },
+      {id},
       {
         ...rankChanges,
         scopes: {
@@ -83,9 +83,9 @@ export class RankResolver {
 
   @Mutation(() => Boolean)
   async rankDelete(@Args('id') id: number) {
-    const deletedRank = await this.rankRepo.findOneOrFail({ id });
-    pubSub.publish('rankDeleted', { rankDeleted: deletedRank });
-    await this.rankRepo.delete({ id });
+    const deletedRank = await this.rankRepo.findOneOrFail({id});
+    pubSub.publish('rankDeleted', {rankDeleted: deletedRank});
+    await this.rankRepo.delete({id});
     await this.rankDataloaderService.clearByID(id);
     return true;
   }

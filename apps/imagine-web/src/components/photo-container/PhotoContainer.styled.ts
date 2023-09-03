@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StoryContainerElement = styled.div`
+export const PhotoContainerElement = styled.div`
   img {
     border:${({ theme }) => `2px solid ${theme.color.s40}`};
     border-radius: ${({ theme }) => theme.space.oneUnit};

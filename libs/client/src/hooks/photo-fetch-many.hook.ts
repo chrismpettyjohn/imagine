@@ -13,13 +13,13 @@ export interface UsePhotoFetchManyResponse {
 export function usePhotoFetchMany(): UsePhotoFetchManyResponse {
   const [getPhotos, { loading, error, data }] = useLazyQuery<PhotoFetchManyResponse, PhotoFetchManyVariables>(PHOTO_FETCH_MANY_QUERY);
 
-  const onFetchBookmark = async (filter: PhotoFilterManyInput): Promise<PhotoFragment[]> => {
-    const matchingBookmark = await getPhotos({ variables: { filter } })
-    return matchingBookmark.data!.photos;
+  const onFetchPhotos = async (filter: PhotoFilterManyInput): Promise<PhotoFragment[]> => {
+    const matchingPhotos = await getPhotos({ variables: { filter } })
+    return matchingPhotos.data!.photos;
   }
 
   return {
-    fetch: onFetchBookmark,
+    fetch: onFetchPhotos,
     error,
     loading,
     data: data?.photos,

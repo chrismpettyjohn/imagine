@@ -1,8 +1,8 @@
-import { In } from 'typeorm';
-import { Injectable } from '@nestjs/common';
-import { UserEntity } from '../database/user.entity';
-import { UserRepository } from '../database/user.repository';
-import { BaseDataloaderService } from '../utility/base.dataloader';
+import {In} from 'typeorm';
+import {Injectable} from '@nestjs/common';
+import {UserEntity} from '../database/user.entity';
+import {UserRepository} from '../database/user.repository';
+import {BaseDataloaderService} from '../utility/base.dataloader';
 
 @Injectable()
 export class UserDataloaderService extends BaseDataloaderService<UserEntity> {

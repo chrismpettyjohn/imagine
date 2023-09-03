@@ -4,7 +4,7 @@ import { PHOTO_FRAGMENT, PhotoFragment } from '../fragments/photo.fragment';
 
 export const PHOTO_FETCH_MANY_QUERY: any = gql`
   ${PHOTO_FRAGMENT}
-  query(filter: PhotoFilterManyInput!) {
+  query($filter: PhotoFilterManyInput!) {
     photos(filter: $filter) {
       ...PhotoFragment
     }

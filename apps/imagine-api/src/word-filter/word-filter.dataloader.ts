@@ -1,8 +1,8 @@
-import { In } from 'typeorm';
-import { Injectable } from '@nestjs/common';
-import { WordFilterEntity } from '../database/word-filter.entity';
-import { BaseDataloaderService } from '../utility/base.dataloader';
-import { WordFilterRepository } from '../database/word-filter.repository';
+import {In} from 'typeorm';
+import {Injectable} from '@nestjs/common';
+import {WordFilterEntity} from '../database/word-filter.entity';
+import {BaseDataloaderService} from '../utility/base.dataloader';
+import {WordFilterRepository} from '../database/word-filter.repository';
 
 @Injectable()
 export class WordFilterDataloaderService extends BaseDataloaderService<WordFilterEntity> {

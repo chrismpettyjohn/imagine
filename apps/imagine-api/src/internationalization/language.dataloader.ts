@@ -1,8 +1,8 @@
-import { In } from 'typeorm';
-import { Injectable } from '@nestjs/common';
-import { LanguageEntity } from '../database/language.entity';
-import { BaseDataloaderService } from '../utility/base.dataloader';
-import { LanguageRepository } from '../database/language.repository';
+import {In} from 'typeorm';
+import {Injectable} from '@nestjs/common';
+import {LanguageEntity} from '../database/language.entity';
+import {BaseDataloaderService} from '../utility/base.dataloader';
+import {LanguageRepository} from '../database/language.repository';
 
 @Injectable()
 export class LanguageDataloaderService extends BaseDataloaderService<LanguageEntity> {

@@ -1,15 +1,15 @@
-import { omit } from 'lodash';
-import { PubSub } from 'graphql-subscriptions';
-import { Inject, forwardRef } from '@nestjs/common';
-import { UserEntity } from '../../database/user.entity';
-import { GetUser } from '../../session/get-user.decorator';
-import { ArticleCommentArgs } from './article-comment.args';
-import { ArticleCommentModel } from './article-comment.model';
-import { UserRepository } from '../../database/user.repository';
-import { HasSession } from '../../session/has-session.decorator';
-import { ArticleCommentEntity } from '../../database/article-comment.entity';
-import { ArticleCommentDataloaderService } from './article-comment.dataloader';
-import { ArticleCommentRepository } from '../../database/article-comment.repository';
+import {omit} from 'lodash';
+import {PubSub} from 'graphql-subscriptions';
+import {Inject, forwardRef} from '@nestjs/common';
+import {UserEntity} from '../../database/user.entity';
+import {GetUser} from '../../session/get-user.decorator';
+import {ArticleCommentArgs} from './article-comment.args';
+import {ArticleCommentModel} from './article-comment.model';
+import {UserRepository} from '../../database/user.repository';
+import {HasSession} from '../../session/has-session.decorator';
+import {ArticleCommentEntity} from '../../database/article-comment.entity';
+import {ArticleCommentDataloaderService} from './article-comment.dataloader';
+import {ArticleCommentRepository} from '../../database/article-comment.repository';
 import {
   ArticleCommentCreateInput,
   ArticleCommentUpdateInput,
@@ -23,10 +23,10 @@ import {
   ResolveField,
   Parent,
 } from '@nestjs/graphql';
-import { UserModel } from '../../user/user.model';
-import { ArticleEntity } from '../../database/article.entity';
-import { ArticleModel } from '../article.model';
-import { ArticleRepository } from '../../database/article.repository';
+import {UserModel} from '../../user/user.model';
+import {ArticleEntity} from '../../database/article.entity';
+import {ArticleModel} from '../article.model';
+import {ArticleRepository} from '../../database/article.repository';
 
 const pubSub = new PubSub();
 
@@ -38,18 +38,18 @@ export class ArticleCommentResolver {
     private readonly articleRepo: ArticleRepository,
     private readonly articleCommentRepo: ArticleCommentRepository,
     private readonly articleCommentDataloader: ArticleCommentDataloaderService
-  ) { }
+  ) {}
 
   @ResolveField('user', () => UserModel)
-  getUser(@Parent() { userID }: ArticleCommentEntity): Promise<UserModel> {
-    return this.userRepo.findOneOrFail({ id: userID });
+  getUser(@Parent() {userID}: ArticleCommentEntity): Promise<UserModel> {
+    return this.userRepo.findOneOrFail({id: userID});
   }
 
   @ResolveField('article', () => ArticleModel)
   getArticle(
-    @Parent() { articleID }: ArticleCommentEntity
+    @Parent() {articleID}: ArticleCommentEntity
   ): Promise<ArticleModel> {
-    return this.articleRepo.findOneOrFail({ id: articleID });
+    return this.articleRepo.findOneOrFail({id: articleID});
   }
 
   @Query(() => ArticleCommentModel)
@@ -94,7 +94,7 @@ export class ArticleCommentResolver {
     @Args('id') id: number,
     @Args('articleChanges') articleCommentUpdateInput: ArticleCommentUpdateInput
   ) {
-    await this.articleCommentRepo.update({ id }, articleCommentUpdateInput);
+    await this.articleCommentRepo.update({id}, articleCommentUpdateInput);
     return true;
   }
 
@@ -106,7 +106,7 @@ export class ArticleCommentResolver {
     pubSub.publish('articleCommentDeleted', {
       articleCommentDeleted: deletedArticleComment,
     });
-    await this.articleCommentRepo.delete({ id });
+    await this.articleCommentRepo.delete({id});
     return true;
   }
 

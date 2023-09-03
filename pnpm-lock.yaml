@@ -237,6 +237,9 @@ importers:
       '@apollo/react-hooks':
         specifier: 4.0.0
         version: 4.0.0(graphql@16.8.0)(react-dom@18.2.0)(react@18.2.0)(subscriptions-transport-ws@0.9.19)
+      '@imagine-cms/client':
+        specifier: '*'
+        version: link:../../libs/client
       '@imagine-cms/types':
         specifier: '*'
         version: link:../../libs/types

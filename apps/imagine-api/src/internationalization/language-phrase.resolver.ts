@@ -1,10 +1,10 @@
-import { PubSub } from 'graphql-subscriptions';
-import { LanguagePhraseInput } from './language-phrase.input';
-import { LanguagePhraseModel } from './language-phrase.model';
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { LanguagePhraseEntity } from '../database/language-phrase.entity';
-import { LanguagePhraseDataloaderService } from './language-phrase.dataloader';
-import { LanguagePhraseRepository } from '../database/language-phrase.repository';
+import {PubSub} from 'graphql-subscriptions';
+import {LanguagePhraseInput} from './language-phrase.input';
+import {LanguagePhraseModel} from './language-phrase.model';
+import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
+import {LanguagePhraseEntity} from '../database/language-phrase.entity';
+import {LanguagePhraseDataloaderService} from './language-phrase.dataloader';
+import {LanguagePhraseRepository} from '../database/language-phrase.repository';
 
 const pubSub = new PubSub();
 
@@ -13,7 +13,7 @@ export class LanguagePhraseResolver {
   constructor(
     private readonly languagePhraseRepo: LanguagePhraseRepository,
     private readonly languagePhraseDataloaderService: LanguagePhraseDataloaderService
-  ) { }
+  ) {}
 
   @Query(() => LanguagePhraseModel)
   async languagePhrase(@Args('id') id: number): Promise<LanguagePhraseEntity> {
@@ -40,13 +40,13 @@ export class LanguagePhraseResolver {
     @Args('id') languagePhraseID: number,
     @Args('input') input: LanguagePhraseInput
   ): Promise<LanguagePhraseEntity> {
-    await this.languagePhraseRepo.update({ id: languagePhraseID }, input);
-    return this.languagePhraseRepo.findOneOrFail({ id: languagePhraseID });
+    await this.languagePhraseRepo.update({id: languagePhraseID}, input);
+    return this.languagePhraseRepo.findOneOrFail({id: languagePhraseID});
   }
 
   @Mutation(() => Boolean)
   async languagePhraseDelete(@Args('id') languageID: number): Promise<Boolean> {
-    await this.languagePhraseRepo.delete({ id: languageID });
+    await this.languagePhraseRepo.delete({id: languageID});
     return true;
   }
 }

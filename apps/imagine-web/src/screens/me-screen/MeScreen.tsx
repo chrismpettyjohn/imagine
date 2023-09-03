@@ -5,9 +5,9 @@ import { UserFriendsGrid } from '../../components/user-friends-grid/UserFriendsG
 import { UserRoomsContainer } from '../../components/user-rooms-container/UserRoomsContainer';
 import { UserGroupsContainer } from '../../components/user-groups-container/UserGroupsContainer';
 import { UserProfileContainer } from '../../components/user-profile-container/UserProfileContainer';
-import { StoriesGridContainer } from '../../components/stories-grid-container/StoriesGridContainer';
 import { LatestArticlesGrid } from '../../components/latest-articles-grid/LatestArticlesGrid';
 import { MOCK_USER } from '../../const';
+import { LatestPhotosContainer } from '../../components/latest-photos-container/LatestPhotosContainer';
 
 export function MeScreen() {
   const { session } = useContext(sessionContext);
@@ -16,7 +16,7 @@ export function MeScreen() {
 
   return (
     <>
-      <StoriesGridContainer stories={[]} />
+      <LatestPhotosContainer />
       <br />
       <UserStatsGrid user={user} />
       <br />

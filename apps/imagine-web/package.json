@@ -24,7 +24,8 @@
     "graphql": "16.8.0",
     "apollo-link-ws": "1.0.20",
     "@imagine-cms/types": "*",
-    "@imagine-cms/web": "*"
+    "@imagine-cms/web": "*",
+    "@imagine-cms/client": "*"
   },
   "devDependencies": {
     "@types/node": "20.5.8",

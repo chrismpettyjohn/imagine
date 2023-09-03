@@ -37,5 +37,5 @@ export const lightTheme: ImagineTheme = {
     twoUnits: '1.8rem',
     threeUnits: '2.4rem',
   },
-  maxWidth: '1200px'
+  maxWidth: '1400px'
 }
