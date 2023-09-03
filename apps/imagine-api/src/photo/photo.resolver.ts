@@ -1,5 +1,3 @@
-import {omit} from 'lodash';
-import {PhotoArgs} from './photo.args';
 import {PhotoModel} from './photo.model';
 import {PubSub} from 'graphql-subscriptions';
 import {Inject, forwardRef} from '@nestjs/common';

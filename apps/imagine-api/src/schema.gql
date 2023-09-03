@@ -96,6 +96,29 @@ type PhotoModel {
   createdAt: Float
 }
 
+type PhotoCommentModel {
+  id: Float
+  userID: Float
+  comment: String
+  createdAt: Float
+  updatedAt: Float
+  photoID: Float
+}
+
+type PhotoReactionModel {
+  id: Float
+  userID: Float
+  reaction: ReactionType
+  createdAt: Float
+  updatedAt: Float
+  photoID: Float
+}
+
+enum ReactionType {
+  Like
+  Dislike
+}
+
 type GroupModel {
   id: Float
   name: String
@@ -210,6 +233,10 @@ type Query {
   groups(other: ExtraArgs): [GroupModel!]!
   photo(filter: PhotoFilterOneInput!): PhotoModel!
   photos(filter: PhotoFilterManyInput): [PhotoModel!]!
+  photoComment(filter: PhotoFilterOneInput!): PhotoCommentModel!
+  photoComments(filter: PhotoFilterManyInput): [PhotoCommentModel!]!
+  photoReaction(filter: PhotoFilterOneInput!): PhotoReactionModel!
+  photoReactions(filter: PhotoFilterManyInput): [PhotoReactionModel!]!
   language(id: Float!): LanguageModel!
   languages: [LanguageModel!]!
   languagePhrase(id: Float!): LanguagePhraseModel!
@@ -273,6 +300,10 @@ type Mutation {
   roomDelete(id: Float!): Boolean!
   groupDelete(id: Float!): Boolean!
   photoDelete(id: Float!): Boolean!
+  photoCommentCreate(input: PhotoCommentCreateInput!): PhotoCommentModel!
+  photoCommentDelete(id: Float!): Boolean!
+  photoReactionCreate(input: PhotoReactionCreateInput!): PhotoReactionModel!
+  photoReactionDelete(id: Float!): Boolean!
   languageCreate(input: LanguageInput!): LanguageModel!
   languageUpdate(id: Float!, input: LanguageInput!): LanguageModel!
   languageDelete(id: Float!): Boolean!
@@ -381,6 +412,16 @@ input WordFilterCreateInput {
 input WordFilterUpdateInput {
   word: String!
   replacement: String!
+}
+
+input PhotoCommentCreateInput {
+  photoID: Float!
+  comment: String!
+}
+
+input PhotoReactionCreateInput {
+  photoID: Float!
+  reaction: ReactionType!
 }
 
 input LanguageInput {
