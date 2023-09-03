@@ -4,7 +4,7 @@ import { PHOTO_COMMENT_FRAGMENT, PhotoCommentFragment } from '../fragments/photo
 
 export const PHOTO_COMMENT_UPDATE_MUTATION: any = gql`
   ${PHOTO_COMMENT_FRAGMENT}
-  mutation($filter, PhotoCommentFilterOneInput, $input: PhotoCommentUpdateInput) {
+  mutation($filter: PhotoCommentFilterOneInput!, $input: PhotoCommentUpdateInput!) {
     photoCommentUpdate(filter: $filter, input: $input) {
       ...PhotoCommentFragment
     }

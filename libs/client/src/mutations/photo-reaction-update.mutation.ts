@@ -4,7 +4,7 @@ import { PHOTO_REACTION_FRAGMENT, PhotoReactionFragment } from '../fragments/pho
 
 export const PHOTO_REACTION_UPDATE_MUTATION: any = gql`
   ${PHOTO_REACTION_FRAGMENT}
-  mutation($filter, PhotoReactionFilterOneInput, $input: PhotoReactionUpdateInput) {
+  mutation($filter: PhotoReactionFilterOneInput!, $input: PhotoReactionUpdateInput!) {
     photoReactionUpdate(filter: $filter, input: $input) {
       ...PhotoReactionFragment
     }

@@ -4,7 +4,7 @@ import { PHOTO_COMMENT_FRAGMENT, PhotoCommentFragment } from "../fragments/photo
 
 export const PHOTO_COMMENT_FETCH_MANY_QUERY: any = gql`
   ${PHOTO_COMMENT_FRAGMENT}
-  query($filter: PhotoCommentFilterManyInput) {
+  query($filter: PhotoCommentFilterManyInput!) {
     photoComments(filter: $filter) {
       ...PhotoCommentFragment
     }

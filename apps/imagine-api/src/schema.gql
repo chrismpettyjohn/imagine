@@ -301,8 +301,9 @@ type Mutation {
   groupDelete(id: Float!): Boolean!
   photoDelete(id: Float!): Boolean!
   photoCommentCreate(input: PhotoCommentCreateInput!): PhotoCommentModel!
+  photoCommentUpdate(filter: PhotoCommentFilterOneInput!, input: PhotoCommentCreateInput!): PhotoCommentModel!
   photoCommentDelete(id: Float!): Boolean!
-  photoReactionCreate(input: PhotoReactionCreateInput!): PhotoReactionModel!
+  photoReactionUpdate(filter: PhotoReactionFilterOneInput!, input: PhotoReactionCreateInput!): PhotoReactionModel!
   photoReactionDelete(id: Float!): Boolean!
   languageCreate(input: LanguageInput!): LanguageModel!
   languageUpdate(id: Float!, input: LanguageInput!): LanguageModel!
@@ -417,6 +418,14 @@ input WordFilterUpdateInput {
 input PhotoCommentCreateInput {
   photoID: Float!
   comment: String!
+}
+
+input PhotoCommentFilterOneInput {
+  id: Float!
+}
+
+input PhotoReactionFilterOneInput {
+  id: Float!
 }
 
 input PhotoReactionCreateInput {
