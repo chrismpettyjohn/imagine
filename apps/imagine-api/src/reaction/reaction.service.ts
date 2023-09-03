@@ -7,13 +7,20 @@ type ReactionExcludingResourceType = Omit<ReactionEntity, 'resourceType'>;
 export class ReactionService {
   constructor(
     private readonly resourceType: string,
-    private readonly ReactionRepo: ReactionRepository
+    private readonly reactionRepo: ReactionRepository
   ) {}
+
+  findOne(filter: FindOptionsWhere<ReactionEntity>): Promise<ReactionEntity> {
+    return this.reactionRepo.findOneOrFail({
+      ...filter,
+      resourceType: this.resourceType,
+    });
+  }
 
   findMany(
     filter: FindOptionsWhere<ReactionEntity>
   ): Promise<ReactionEntity[]> {
-    return this.ReactionRepo.find({
+    return this.reactionRepo.find({
       where: {
         ...filter,
         resourceType: this.resourceType,
@@ -22,17 +29,17 @@ export class ReactionService {
   }
 
   create(newReaction: ReactionExcludingResourceType): Promise<ReactionEntity> {
-    return this.ReactionRepo.create({
+    return this.reactionRepo.create({
       ...newReaction,
       resourceType: this.resourceType,
     });
   }
 
   async update(id: number, reaction: ReactionType): Promise<void> {
-    await this.ReactionRepo.update({id}, {reaction});
+    await this.reactionRepo.update({id}, {reaction});
   }
 
   async delete(id: number): Promise<void> {
-    await this.ReactionRepo.delete({id});
+    await this.reactionRepo.delete({id});
   }
 }

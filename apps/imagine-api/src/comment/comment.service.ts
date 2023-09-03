@@ -10,6 +10,13 @@ export class CommentService {
     private readonly commentRepo: CommentRepository
   ) {}
 
+  findOne(filter: FindOptionsWhere<CommentEntity>): Promise<CommentEntity> {
+    return this.commentRepo.findOneOrFail({
+      ...filter,
+      resourceType: this.resourceType,
+    });
+  }
+
   findMany(filter: FindOptionsWhere<CommentEntity>): Promise<CommentEntity[]> {
     return this.commentRepo.find({
       where: {

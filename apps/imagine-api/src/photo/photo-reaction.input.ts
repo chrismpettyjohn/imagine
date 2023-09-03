@@ -27,3 +27,9 @@ export class PhotoReactionFilterManyInput {
   @Field(() => [Number], {nullable: true})
   userIDs?: number[];
 }
+
+@InputType()
+export class PhotoReactionFilterOneInput {
+  @Field(() => Number)
+  id!: number;
+}

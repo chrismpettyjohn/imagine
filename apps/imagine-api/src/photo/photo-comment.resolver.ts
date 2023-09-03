@@ -4,10 +4,14 @@ import {PhotoCommentModel} from './photo-comment.model';
 import {HasSession} from '../session/has-session.decorator';
 import {GetSession} from '../session/get-session.decorator';
 import {PhotoCommentService} from './photo-comment.service';
-import {PhotoCommentCreateInput} from './photo-comment.input';
+import {
+  PhotoCommentCreateInput,
+  PhotoCommentFilterOneInput,
+} from './photo-comment.input';
 import {PhotoFilterManyInput, PhotoFilterOneInput} from './photo.input';
 import {PhotoCommentDataloaderService} from './photo-comment.dataloader';
 import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
+import {UnauthorizedException} from '@nestjs/common';
 
 @Resolver(() => PhotoCommentModel)
 export class PhotoCommentResolver {
@@ -48,8 +52,39 @@ export class PhotoCommentResolver {
     });
   }
 
+  @Mutation(() => PhotoCommentModel)
+  @HasSession()
+  async photoCommentUpdate(
+    @Args('filter', {type: () => PhotoCommentFilterOneInput})
+    filter: PhotoCommentFilterOneInput,
+    @Args('input', {type: () => PhotoCommentCreateInput})
+    input: PhotoCommentCreateInput,
+    @GetSession() session: UserEntity
+  ): Promise<PhotoCommentModel> {
+    const matchingPhotoComment = await this.photoCommentService.findOne({
+      id: filter.id,
+    });
+    const userOwnsPhotoComment = matchingPhotoComment.userID === session.id!;
+    if (!userOwnsPhotoComment) {
+      throw new UnauthorizedException();
+    }
+    return this.photoCommentService.create({
+      userID: session.id!,
+      comment: input.comment,
+      resourceID: input.photoID,
+    });
+  }
+
   @Mutation(() => Boolean)
-  async photoCommentDelete(@Args('id') id: number) {
+  async photoCommentDelete(
+    @Args('id') id: number,
+    @GetSession() session: UserEntity
+  ) {
+    const matchingPhotoComment = await this.photoCommentService.findOne({id});
+    const userOwnsPhotoComment = matchingPhotoComment.userID === session.id!;
+    if (!userOwnsPhotoComment) {
+      throw new UnauthorizedException();
+    }
     await this.photoCommentService.delete(id);
     await this.photoCommentDataloaderService.clearByID(id);
     return true;

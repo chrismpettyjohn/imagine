@@ -26,3 +26,9 @@ export class PhotoCommentFilterManyInput {
   @Field(() => [Number], {nullable: true})
   userIDs?: number[];
 }
+
+@InputType()
+export class PhotoCommentFilterOneInput {
+  @Field(() => Number)
+  id!: number;
+}
