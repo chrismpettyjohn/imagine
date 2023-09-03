@@ -9,8 +9,6 @@ export function ImagineScreen() {
 
   return (
     <>
-      <h1>Imagine</h1>
-      <br />
       <Card header="About">
         <div style={{ display: 'flex', gap: 16 }}>
           <ImagineLogoContainer>
