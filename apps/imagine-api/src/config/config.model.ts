@@ -35,4 +35,7 @@ export class ConfigModel implements ConfigWire {
 
   @Field({nullable: true})
   dateFormat?: string;
+
+  @Field({nullable: true})
+  softwareVersion?: string;
 }

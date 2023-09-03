@@ -1,7 +1,6 @@
 import {ConfigModel} from './config.model';
 import {PubSub} from 'graphql-subscriptions';
 import {ConfigUpdateInput} from './config.input';
-import {ConfigEntity} from '../database/config.entity';
 import {ConfigDataloaderService} from './config.dataloader';
 import {ConfigRepository} from '../database/config.repository';
 import {Args, Mutation, Query, Resolver, Subscription} from '@nestjs/graphql';
@@ -16,7 +15,7 @@ export class ConfigResolver {
   ) {}
 
   @Query(() => ConfigModel)
-  async config(): Promise<ConfigEntity> {
+  async config(): Promise<ConfigModel> {
     return this.configDataLoader.loadById(1);
   }
 

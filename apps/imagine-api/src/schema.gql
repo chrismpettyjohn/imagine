@@ -117,6 +117,7 @@ type ConfigModel {
   twitterURL: String
   snapchatURL: String
   dateFormat: String
+  softwareVersion: String
 }
 
 type ArticleCommentModel {

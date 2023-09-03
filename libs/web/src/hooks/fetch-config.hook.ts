@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
-import {ConfigWire} from '@imagine-cms/types';
-import {UseQueryResponse, useRunQuery} from './run-query.hook';
+import { ConfigWire } from '@imagine-cms/types';
+import { UseQueryResponse, useRunQuery } from './run-query.hook';
 
 const FETCH_SITE_CONFIG = gql`
     query {
@@ -16,10 +16,11 @@ const FETCH_SITE_CONFIG = gql`
             instagramURL
             snapchatURL,
             dateFormat
+            softwareVersion
         }
     }
 `;
 
-export const useFetchConfig = (): UseQueryResponse<{config: ConfigWire}> => {
-  return useRunQuery(FETCH_SITE_CONFIG);
+export const useFetchConfig = (): UseQueryResponse<{ config: ConfigWire }> => {
+    return useRunQuery(FETCH_SITE_CONFIG);
 };

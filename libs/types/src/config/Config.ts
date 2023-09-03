@@ -10,4 +10,5 @@ export interface ConfigWire {
   twitterURL?: string;
   snapchatURL?: string;
   dateFormat?: string;
+  softwareVersion?: string;
 }
