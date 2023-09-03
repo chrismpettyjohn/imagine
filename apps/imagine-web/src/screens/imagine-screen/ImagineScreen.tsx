@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card } from '../../components/card/Card';
 import { YoutubeVideo } from '../../components/youtube-video/YoutubeVideo';
+import { ImagineLogoContainer } from './ImagineScreen.styled';
 
 export function ImagineScreen() {
   return (
@@ -8,11 +9,14 @@ export function ImagineScreen() {
       <h1>Imagine</h1>
       <br />
       <Card header="About">
-        <div style={{ display: 'flex' }}>
-          Crafted with precision using the latest technologies like NodeJS, NestJS, ReactJS, Vite, GraphQL, and Websockets, it's not just a CMS; it's a game-changer for your business.
-        </div>
-        <div style={{ display: 'flex' }}>
-          Imagine offers the unbeatable combination of top-tier performance, blazing-fast speeds, and a development experience that's second to none. With Imagine, you're not just getting a software; you're unlocking a world of possibilities.
+        <div style={{ display: 'flex', gap: 16 }}>
+          <ImagineLogoContainer>
+            <img src="https://i.imgur.com/P7AOwnl.png" height={250} width={250} />
+          </ImagineLogoContainer>
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            <p>Crafted with precision using the latest technologies like NodeJS, NestJS, ReactJS, Vite, GraphQL, and Websockets, it's not just a CMS; it's a game-changer for your business.</p>
+            <p>Imagine offers the unbeatable combination of top-tier performance, blazing-fast speeds, and a development experience that's second to none. With Imagine, you're not just getting a software; you're unlocking a world of possibilities.</p>
+          </div>
         </div>
       </Card>
       <br />
