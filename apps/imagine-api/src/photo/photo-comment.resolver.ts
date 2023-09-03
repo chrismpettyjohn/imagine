@@ -1,24 +1,40 @@
 import {In} from 'typeorm';
+import {UserModel} from '../user/user.model';
 import {UserEntity} from '../database/user.entity';
+import {UnauthorizedException} from '@nestjs/common';
 import {PhotoCommentModel} from './photo-comment.model';
+import {PhotoReactionModel} from './photo-reaction.model';
 import {HasSession} from '../session/has-session.decorator';
 import {GetSession} from '../session/get-session.decorator';
 import {PhotoCommentService} from './photo-comment.service';
+import {UserRepository} from '../database/user.repository';
+import {PhotoFilterManyInput, PhotoFilterOneInput} from './photo.input';
+import {PhotoCommentDataloaderService} from './photo-comment.dataloader';
+import {
+  Args,
+  Mutation,
+  Parent,
+  Query,
+  ResolveField,
+  Resolver,
+} from '@nestjs/graphql';
 import {
   PhotoCommentCreateInput,
   PhotoCommentFilterOneInput,
 } from './photo-comment.input';
-import {PhotoFilterManyInput, PhotoFilterOneInput} from './photo.input';
-import {PhotoCommentDataloaderService} from './photo-comment.dataloader';
-import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
-import {UnauthorizedException} from '@nestjs/common';
 
 @Resolver(() => PhotoCommentModel)
 export class PhotoCommentResolver {
   constructor(
+    private readonly userRepo: UserRepository,
     private readonly photoCommentService: PhotoCommentService,
     private readonly photoCommentDataloaderService: PhotoCommentDataloaderService
   ) {}
+
+  @ResolveField(() => UserModel)
+  user(@Parent() photoReaction: PhotoReactionModel): Promise<UserModel> {
+    return this.userRepo.findOneOrFail({id: photoReaction.userID});
+  }
 
   @Query(() => PhotoCommentModel)
   async photoComment(

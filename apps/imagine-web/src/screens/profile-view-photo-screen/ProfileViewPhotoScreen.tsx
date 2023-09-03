@@ -3,6 +3,8 @@ import { useRoute } from 'wouter';
 import { configContext } from '@imagine-cms/web';
 import React, { useContext, useEffect } from 'react';
 import { usePhotoFetchOne } from '@imagine-cms/client';
+import { PhotoCommentsCard } from './photo-comments-card/PhotoCommentsCard';
+import { PhotoCreateCommentCard } from './photo-create-comment-card/PhotoCreateCommentCard';
 import { ProfileViewPhotoScreenContainer, ProfileViewPhotoScreenImagePreview, ProfileViewPhotoScreenInfoContainer } from './ProfileViewPhotoScreen.styled';
 
 export function ProfileViewPhotoScreen() {
@@ -25,7 +27,7 @@ export function ProfileViewPhotoScreen() {
       {
         data && (
           <ProfileViewPhotoScreenContainer>
-            <div>
+            <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
               <ProfileViewPhotoScreenImagePreview src={data.photoURL} />
               <ProfileViewPhotoScreenInfoContainer>
                 <b>Taken By: </b>
@@ -33,6 +35,11 @@ export function ProfileViewPhotoScreen() {
                 <b> Captured On: </b>
                 <b className="blue">{DayJS.unix(data.createdAt).format(config!.dateFormat)}</b>
               </ProfileViewPhotoScreenInfoContainer>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+              <PhotoCommentsCard photo={data} />
+              <br />
+              <PhotoCreateCommentCard photoID={data.id} onCreation={newComment => console.log(newComment)} />
             </div>
           </ProfileViewPhotoScreenContainer >
         )

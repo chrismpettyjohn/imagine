@@ -103,6 +103,7 @@ type PhotoCommentModel {
   createdAt: Float
   updatedAt: Float
   photoID: Float
+  user: UserModel!
 }
 
 type PhotoReactionModel {
@@ -112,6 +113,7 @@ type PhotoReactionModel {
   createdAt: Float
   updatedAt: Float
   photoID: Float
+  user: UserModel!
 }
 
 enum ReactionType {
