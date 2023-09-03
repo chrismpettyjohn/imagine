@@ -8,7 +8,11 @@ import {UserDataloaderService} from './user.dataloader';
 import {UserRepository} from '../database/user.repository';
 import {RankRepository} from '../database/rank.repository';
 import {HasSession} from '../session/has-session.decorator';
-import {UserCreateInput, UserUpdateInput} from './user.input';
+import {
+  UserCreateInput,
+  UserFilterManyInput,
+  UserUpdateInput,
+} from './user.input';
 import {SessionRepository} from '../database/session.repository';
 import {forwardRef, Inject, UnauthorizedException} from '@nestjs/common';
 import {
@@ -22,6 +26,8 @@ import {
 } from '@nestjs/graphql';
 import {RankModel} from '../rank/rank.model';
 import {GetUser} from '../session/get-user.decorator';
+import {In} from 'typeorm';
+import {UserOnlineStatus} from '@imagine-cms/types';
 
 const pubSub = new PubSub();
 
@@ -92,8 +98,17 @@ export class UserResolver {
   }
 
   @Query(() => [UserModel])
-  users(@Args() userArgs: UserArgs): Promise<UserEntity[]> {
-    return this.userRepo._find(omit(userArgs, 'other'), userArgs.other);
+  users(@Args('filter') filter: UserFilterManyInput): Promise<UserEntity[]> {
+    return this.userRepo.find({
+      where: {
+        id: filter.ids && In(filter.ids),
+        username: filter.usernames && In(filter.usernames),
+        onlineStatus: filter.online ? UserOnlineStatus.Online : undefined,
+      },
+      order: {
+        id: 'DESC',
+      },
+    });
   }
 
   @Mutation(() => UserModel)

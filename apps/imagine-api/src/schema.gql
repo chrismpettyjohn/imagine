@@ -189,7 +189,7 @@ type Query {
   session(id: Float!): SessionModel!
   sessions(other: ExtraArgs): [SessionModel!]!
   user(id: Float!): UserModel!
-  users(other: ExtraArgs, username: String): [UserModel!]!
+  users(filter: UserFilterManyInput!): [UserModel!]!
   rank(id: Float!): RankModel!
   ranks(filter: RankFilterManyInput!): [RankModel!]!
   article(id: Float!): ArticleModel!
@@ -225,6 +225,12 @@ input ExtraArgs {
 The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
 scalar JSONObject
+
+input UserFilterManyInput {
+  ids: [Float!]
+  usernames: [String!]
+  online: Boolean
+}
 
 input RankFilterManyInput {
   ids: [Float!]

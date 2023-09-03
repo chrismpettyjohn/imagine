@@ -60,3 +60,15 @@ export class UserUpdateInput implements UserUpdateInputDTO {
   @IsOptional()
   look?: string;
 }
+
+@InputType()
+export class UserFilterManyInput {
+  @Field(() => [Number], {nullable: true})
+  ids?: number[];
+
+  @Field(() => [String], {nullable: true})
+  usernames?: string[];
+
+  @Field(() => Boolean, {nullable: true})
+  online?: boolean;
+}

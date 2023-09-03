@@ -14,3 +14,9 @@ export * from './hooks/rank-fetch-one.hook';
 export * from './input/rank.input';
 export * from './queries/rank-fetch-many.query';
 export * from './queries/rank-fetch-one.query';
+
+// User
+export * from './fragments/user.fragment';
+export * from './hooks/user-fetch-many.hook';
+export * from './input/user.input';
+export * from './queries/user-fetch-many.query';
