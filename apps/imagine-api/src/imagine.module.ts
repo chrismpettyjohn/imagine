@@ -42,7 +42,7 @@ import {
       driver: ApolloDriver,
       playground: IMAGINE_GRAPHQL_PLAYGROUND,
       autoSchemaFile: resolve(__dirname, './schema.gql'),
-      fieldResolverEnhancers: ['guards'],
+      fieldResolverEnhancers: ['guards', 'interceptors'],
       installSubscriptionHandlers: true,
       resolvers: {JSONObject: GraphQLJSONObject},
     }),

@@ -2,7 +2,6 @@ import { sessionContext } from './SessionContext';
 import React, { useEffect, useState } from 'react';
 import { useFindUserByID } from '../../hooks/find-user-by-id.hook';
 import { SessionContextProviderProps } from './SessionContext.types';
-import { setGraphqlAccessToken } from '../../app/graphql.client';
 import { localStorageService } from '../../service/local-storage.service';
 import { useFetchSessionByJwt } from '../../hooks/fetch-session-by-jwt.hook';
 
@@ -20,7 +19,6 @@ export function SessionContextProvider({ children }: SessionContextProviderProps
         return;
       }
 
-      setGraphqlAccessToken(existingJwt);
       fetchSessionByJwt.runQuery();
     };
 
