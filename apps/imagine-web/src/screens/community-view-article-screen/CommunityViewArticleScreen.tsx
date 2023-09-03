@@ -34,7 +34,7 @@ export function CommunityViewArticleScreen() {
       </ArticleHeaderContainer>
       <ArticleContentElement>
         <ArticleContentContainer>
-          {article?.content}
+          <div dangerouslySetInnerHTML={{ __html: article?.content ?? '' }} />
           {article?.user && <LongUserContainer user={article.user} />}
         </ArticleContentContainer>
       </ArticleContentElement>
