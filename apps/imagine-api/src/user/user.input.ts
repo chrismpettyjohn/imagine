@@ -29,7 +29,7 @@ export class UserCreateInput implements UserCreateInputDTO {
   @IsEmail()
   email!: string;
 
-  @Field(() => UserGender, {nullable: true})
+  @Field(() => String, {nullable: true})
   @IsEnum(UserGender)
   @IsOptional()
   gender?: UserGender;

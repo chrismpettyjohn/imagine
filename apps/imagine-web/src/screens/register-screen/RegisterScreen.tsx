@@ -1,7 +1,6 @@
-import React, {SyntheticEvent, useEffect, useState} from 'react';
-import {GuestGuard} from '../../components/guest-guard/GuestGuard';
-import {LoadingOverlay} from '../../components/loading-overlay/LoadingOverlay';
-import {useSignInWithUsernameAndPassword, useUserCreateMutation} from '@imagine-cms/web';
+import React, { SyntheticEvent, useEffect, useState } from 'react';
+import { GuestGuard } from '../../components/guest-guard/GuestGuard';
+import { useSignInWithUsernameAndPassword, useUserCreateMutation } from '@imagine-cms/web';
 
 export function RegisterScreen() {
   const [email, setEmail] = useState('');
@@ -9,7 +8,7 @@ export function RegisterScreen() {
   const [password, setPassword] = useState('');
   const [passwordAgain, setPasswordAgain] = useState('');
   const createUser = useUserCreateMutation(username, email, password);
-  const {tryLogin} = useSignInWithUsernameAndPassword(username, password);
+  const { tryLogin } = useSignInWithUsernameAndPassword(username, password);
 
   // When user is created, attempt to login
   useEffect(() => {
@@ -38,29 +37,27 @@ export function RegisterScreen() {
             <div className="card">
               <div className="card-body">
                 <h5 className="silver">Register</h5>
-                <LoadingOverlay loading={isLoading}>
-                  <form className="form" onSubmit={onCreateUser}>
-                    <div className="form-group">
-                      <label htmlFor="username">Username</label>
-                      <input type="text" name="username" value={username} onChange={e => setUsername(e?.currentTarget?.value ?? '')} className="form-control" id="username" placeholder="Username" />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="email">Email</label>
-                      <input type="text" name="email" value={email} onChange={e => setEmail(e?.currentTarget?.value ?? '')} className="form-control" id="email" placeholder="Email" />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="password">Password</label>
-                      <input type="password" name="password" value={password} onChange={e => setPassword(e?.currentTarget?.value ?? '')} className="form-control" placeholder="Password" id="password" />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="password-confirmation">Confirm Password</label>
-                      <input type="password" name="password_confirmation" value={passwordAgain} onChange={e => setPasswordAgain(e?.currentTarget?.value ?? '')} className="form-control" id="password-confirmation" placeholder="Password again"  />
-                    </div>
-                    <div className="form-group mb-0">
-                      <button className="btn btn-primary btn-block" disabled={!canCreateUser} type="submit">Join now</button>
-                    </div>
-                  </form>
-                </LoadingOverlay>
+                <form className="form" onSubmit={onCreateUser}>
+                  <div className="form-group">
+                    <label htmlFor="username">Username</label>
+                    <input type="text" name="username" value={username} onChange={e => setUsername(e?.currentTarget?.value ?? '')} className="form-control" id="username" placeholder="Username" />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input type="text" name="email" value={email} onChange={e => setEmail(e?.currentTarget?.value ?? '')} className="form-control" id="email" placeholder="Email" />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <input type="password" name="password" value={password} onChange={e => setPassword(e?.currentTarget?.value ?? '')} className="form-control" placeholder="Password" id="password" />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="password-confirmation">Confirm Password</label>
+                    <input type="password" name="password_confirmation" value={passwordAgain} onChange={e => setPasswordAgain(e?.currentTarget?.value ?? '')} className="form-control" id="password-confirmation" placeholder="Password again" />
+                  </div>
+                  <div className="form-group mb-0">
+                    <button className="btn btn-primary btn-block" disabled={!canCreateUser} type="submit">Join now</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>

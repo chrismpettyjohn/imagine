@@ -262,7 +262,7 @@ input UserCreateInput {
   username: String!
   password: String!
   email: String!
-  gender: UserGender
+  gender: String
   look: String
 }
 
