@@ -4,7 +4,7 @@
       "name": "imagine-api",
       "cwd": "./apps/imagine-api",
       "script": "pnpm",
-      "args": "run start:dev",
+      "args": "run dev",
       "watch": [
         "src",
         ".../../libs/types"
