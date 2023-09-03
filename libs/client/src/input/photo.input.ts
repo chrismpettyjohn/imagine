@@ -3,3 +3,7 @@ export interface PhotoFilterManyInput {
   userIDs?: number[];
   limit?: number;
 }
+
+export interface PhotoFilterOneInput {
+  id: number;
+}
