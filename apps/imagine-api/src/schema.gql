@@ -235,10 +235,10 @@ type Query {
   groups(other: ExtraArgs): [GroupModel!]!
   photo(filter: PhotoFilterOneInput!): PhotoModel!
   photos(filter: PhotoFilterManyInput): [PhotoModel!]!
-  photoComment(filter: PhotoFilterOneInput!): PhotoCommentModel!
-  photoComments(filter: PhotoFilterManyInput): [PhotoCommentModel!]!
-  photoReaction(filter: PhotoFilterOneInput!): PhotoReactionModel!
-  photoReactions(filter: PhotoFilterManyInput): [PhotoReactionModel!]!
+  photoComment(filter: PhotoCommentFilterOneInput!): PhotoCommentModel!
+  photoComments(filter: PhotoCommentFilterManyInput): [PhotoCommentModel!]!
+  photoReaction(filter: PhotoReactionFilterOneInput!): PhotoReactionModel!
+  photoReactions(filter: PhotoReactionFilterManyInput): [PhotoReactionModel!]!
   language(id: Float!): LanguageModel!
   languages: [LanguageModel!]!
   languagePhrase(id: Float!): LanguagePhraseModel!
@@ -275,6 +275,26 @@ input PhotoFilterManyInput {
   ids: [Float!]
   userIDs: [Float!]
   limit: Float
+}
+
+input PhotoCommentFilterOneInput {
+  id: Float!
+}
+
+input PhotoCommentFilterManyInput {
+  ids: [Float!]
+  photoIDs: [Float!]
+  userIDs: [Float!]
+}
+
+input PhotoReactionFilterOneInput {
+  id: Float!
+}
+
+input PhotoReactionFilterManyInput {
+  ids: [Float!]
+  photoIDs: [Float!]
+  userIDs: [Float!]
 }
 
 type Mutation {
@@ -420,14 +440,6 @@ input WordFilterUpdateInput {
 input PhotoCommentCreateInput {
   photoID: Float!
   comment: String!
-}
-
-input PhotoCommentFilterOneInput {
-  id: Float!
-}
-
-input PhotoReactionFilterOneInput {
-  id: Float!
 }
 
 input PhotoReactionCreateInput {

@@ -5,6 +5,7 @@ export function CommentContainer({ comment, id, user }: CommentContainerProps) {
   return (
     <>
       User {user.username} said "{comment}" #{id}
+      <br />
     </>
   )
 }

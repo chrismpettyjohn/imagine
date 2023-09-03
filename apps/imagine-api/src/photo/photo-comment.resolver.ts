@@ -5,10 +5,8 @@ import {UnauthorizedException} from '@nestjs/common';
 import {PhotoCommentModel} from './photo-comment.model';
 import {PhotoReactionModel} from './photo-reaction.model';
 import {HasSession} from '../session/has-session.decorator';
-import {GetSession} from '../session/get-session.decorator';
 import {PhotoCommentService} from './photo-comment.service';
 import {UserRepository} from '../database/user.repository';
-import {PhotoFilterManyInput, PhotoFilterOneInput} from './photo.input';
 import {PhotoCommentDataloaderService} from './photo-comment.dataloader';
 import {
   Args,
@@ -20,8 +18,10 @@ import {
 } from '@nestjs/graphql';
 import {
   PhotoCommentCreateInput,
+  PhotoCommentFilterManyInput,
   PhotoCommentFilterOneInput,
 } from './photo-comment.input';
+import {GetUser} from '../session/get-user.decorator';
 
 @Resolver(() => PhotoCommentModel)
 export class PhotoCommentResolver {
@@ -38,15 +38,15 @@ export class PhotoCommentResolver {
 
   @Query(() => PhotoCommentModel)
   async photoComment(
-    @Args('filter') filter: PhotoFilterOneInput
+    @Args('filter') filter: PhotoCommentFilterOneInput
   ): Promise<PhotoCommentModel> {
     return this.photoCommentDataloaderService.loadById(filter.id);
   }
 
   @Query(() => [PhotoCommentModel])
   photoComments(
-    @Args('filter', {type: () => PhotoFilterManyInput, nullable: true})
-    filter: PhotoFilterManyInput
+    @Args('filter', {type: () => PhotoCommentFilterManyInput, nullable: true})
+    filter: PhotoCommentFilterManyInput
   ): Promise<PhotoCommentModel[]> {
     return this.photoCommentService.findMany({
       id: filter?.ids && In(filter.ids),
@@ -59,7 +59,7 @@ export class PhotoCommentResolver {
   async photoCommentCreate(
     @Args('input', {type: () => PhotoCommentCreateInput})
     input: PhotoCommentCreateInput,
-    @GetSession() session: UserEntity
+    @GetUser() session: UserEntity
   ): Promise<PhotoCommentModel> {
     return this.photoCommentService.create({
       userID: session.id!,
@@ -75,7 +75,7 @@ export class PhotoCommentResolver {
     filter: PhotoCommentFilterOneInput,
     @Args('input', {type: () => PhotoCommentCreateInput})
     input: PhotoCommentCreateInput,
-    @GetSession() session: UserEntity
+    @GetUser() session: UserEntity
   ): Promise<PhotoCommentModel> {
     const matchingPhotoComment = await this.photoCommentService.findOne({
       id: filter.id,
@@ -84,17 +84,14 @@ export class PhotoCommentResolver {
     if (!userOwnsPhotoComment) {
       throw new UnauthorizedException();
     }
-    return this.photoCommentService.create({
-      userID: session.id!,
-      comment: input.comment,
-      resourceID: input.photoID,
-    });
+    await this.photoCommentService.update(filter.id, input.comment);
+    return this.photoComment(filter);
   }
 
   @Mutation(() => Boolean)
   async photoCommentDelete(
     @Args('id') id: number,
-    @GetSession() session: UserEntity
+    @GetUser() session: UserEntity
   ) {
     const matchingPhotoComment = await this.photoCommentService.findOne({id});
     const userOwnsPhotoComment = matchingPhotoComment.userID === session.id!;

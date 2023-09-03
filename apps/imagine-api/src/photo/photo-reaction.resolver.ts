@@ -2,7 +2,6 @@ import {In} from 'typeorm';
 import {UserEntity} from '../database/user.entity';
 import {PhotoReactionModel} from './photo-reaction.model';
 import {HasSession} from '../session/has-session.decorator';
-import {GetSession} from '../session/get-session.decorator';
 import {PhotoReactionService} from './photo-reaction.service';
 import {
   Args,
@@ -12,15 +11,16 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
-import {PhotoFilterManyInput, PhotoFilterOneInput} from './photo.input';
 import {PhotoReactionDataloaderService} from './photo-reaction.dataloader';
 import {
   PhotoReactionCreateInput,
+  PhotoReactionFilterManyInput,
   PhotoReactionFilterOneInput,
 } from './photo-reaction.input';
 import {UnauthorizedException} from '@nestjs/common';
 import {UserRepository} from '../database/user.repository';
 import {UserModel} from '../user/user.model';
+import {GetUser} from '../session/get-user.decorator';
 
 @Resolver(() => PhotoReactionModel)
 export class PhotoReactionResolver {
@@ -37,15 +37,15 @@ export class PhotoReactionResolver {
 
   @Query(() => PhotoReactionModel)
   async photoReaction(
-    @Args('filter') filter: PhotoFilterOneInput
+    @Args('filter') filter: PhotoReactionFilterOneInput
   ): Promise<PhotoReactionModel> {
     return this.photoReactionDataloaderService.loadById(filter.id);
   }
 
   @Query(() => [PhotoReactionModel])
   photoReactions(
-    @Args('filter', {type: () => PhotoFilterManyInput, nullable: true})
-    filter: PhotoFilterManyInput
+    @Args('filter', {type: () => PhotoReactionFilterManyInput, nullable: true})
+    filter: PhotoReactionFilterManyInput
   ): Promise<PhotoReactionModel[]> {
     return this.photoReactionService.findMany({
       id: filter?.ids && In(filter.ids),
@@ -60,7 +60,7 @@ export class PhotoReactionResolver {
     filter: PhotoReactionFilterOneInput,
     @Args('input', {type: () => PhotoReactionCreateInput})
     input: PhotoReactionCreateInput,
-    @GetSession() session: UserEntity
+    @GetUser() session: UserEntity
   ): Promise<PhotoReactionModel> {
     const matchingPhotoReaction = await this.photoReactionService.findOne({
       id: filter.id,
@@ -79,7 +79,7 @@ export class PhotoReactionResolver {
   @Mutation(() => Boolean)
   async photoReactionDelete(
     @Args('id') id: number,
-    @GetSession() session: UserEntity
+    @GetUser() session: UserEntity
   ) {
     const matchingPhotoReaction = await this.photoReactionService.findOne({id});
     const userOwnsPhotoReaction = matchingPhotoReaction.userID === session.id!;
