@@ -1,6 +1,5 @@
 import {UserEntity} from './user.entity';
 import {ArticleWire} from '@imagine-cms/types';
-import {ArticleCommentEntity} from './article-comment.entity';
 import {
   Column,
   Entity,
@@ -9,7 +8,6 @@ import {
   JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToMany,
 } from 'typeorm';
 
 @Entity('imagine_articles')
@@ -41,10 +39,4 @@ export class ArticleEntity implements ArticleWire {
 
   @UpdateDateColumn({name: 'updated_at'})
   updatedAt?: string;
-
-  @OneToMany(
-    () => ArticleCommentEntity,
-    articleComment => articleComment.article
-  )
-  comments?: ArticleCommentEntity[];
 }

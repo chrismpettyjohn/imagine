@@ -167,7 +167,6 @@ export class UserResolver {
     userID: number,
     authenticatedUser: UserEntity
   ) {
-    console.log(userID, authenticatedUser);
     if (authenticatedUser.rank?.scopes?.manageUsers) {
       return;
     }

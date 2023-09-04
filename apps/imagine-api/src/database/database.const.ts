@@ -27,9 +27,7 @@ import {ReactionRepository} from './reaction.repository';
 import {LanguageRepository} from './language.repository';
 import {LanguagePhraseEntity} from './language-phrase.entity';
 import {WordFilterRepository} from './word-filter.repository';
-import {ArticleCommentEntity} from './article-comment.entity';
 import {LanguagePhraseRepository} from './language-phrase.repository';
-import {ArticleCommentRepository} from './article-comment.repository';
 import {LanguagePhraseTranslationEntity} from './language-phrase-translation.entity';
 import {LanguagePhraseTranslationRepository} from './language-phrase-translation.repository';
 
@@ -38,7 +36,6 @@ export const databaseEntities = [
   RankEntity,
   SessionEntity,
   UserEntity,
-  ArticleCommentEntity,
   ConfigEntity,
   BanEntity,
   WordFilterEntity,
@@ -58,7 +55,6 @@ export const databaseRepositories = [
   SessionRepository,
   UserRepository,
   ArticleRepository,
-  ArticleCommentRepository,
   ConfigRepository,
   BanRepository,
   WordFilterRepository,

@@ -15,7 +15,6 @@ export function usePhotoFetchOne(): UsePhotoFetchOneResponse {
 
   const onFetchPhoto = async (filter: PhotoFilterOneInput): Promise<PhotoFragment> => {
     const matchingPhoto = await getPhoto({ variables: { filter } })
-    console.log(matchingPhoto)
     return matchingPhoto.data!.photo;
   }
 

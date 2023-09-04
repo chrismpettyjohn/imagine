@@ -7,7 +7,6 @@ import { CommentContainer } from '../../../components/comment-container/CommentC
 
 export function PhotoCommentsCard({ photo }: PhotoCommentsCardProps) {
   const { data, error, fetch, loading } = usePhotoCommentFetchMany();
-  console.log(error)
 
   useEffect(() => {
     fetch({ photoIDs: [photo.id] });

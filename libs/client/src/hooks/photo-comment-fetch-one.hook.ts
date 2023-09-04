@@ -15,7 +15,6 @@ export function usePhotoCommentFetchOne(): UsePhotoCommentFetchOneResponse {
 
   const onFetchPhotoComment = async (filter: PhotoCommentFilterOneInput): Promise<PhotoCommentFragment> => {
     const matchingPhotoComment = await getPhotoComment({ variables: { filter } })
-    console.log(matchingPhotoComment)
     return matchingPhotoComment.data!.photoComment;
   }
 

@@ -15,7 +15,6 @@ export function usePhotoReactionFetchOne(): UsePhotoReactionFetchOneResponse {
 
   const onFetchPhotoReaction = async (filter: PhotoReactionFilterOneInput): Promise<PhotoReactionFragment> => {
     const matchingPhotoReaction = await getPhotoReaction({ variables: { filter } })
-    console.log(matchingPhotoReaction)
     return matchingPhotoReaction.data!.photoReaction;
   }
 

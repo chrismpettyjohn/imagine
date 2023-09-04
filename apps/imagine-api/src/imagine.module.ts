@@ -49,7 +49,6 @@ import {
         'subscriptions-transport-ws': {
           path: '/graphql',
           onConnect: (connectionParams: any) => {
-            console.log('module: ', connectionParams);
             return {
               req: {
                 headers: {

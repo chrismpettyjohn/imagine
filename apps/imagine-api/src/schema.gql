@@ -145,17 +145,6 @@ type ConfigModel {
   softwareVersion: String
 }
 
-type ArticleCommentModel {
-  id: Float
-  articleID: Float
-  article: ArticleModel!
-  userID: Float
-  user: UserModel!
-  comment: String
-  createdAt: String
-  updatedAt: String
-}
-
 type ArticleModel {
   id: Float
   name: String
@@ -164,7 +153,26 @@ type ArticleModel {
   imageURL: String
   userID: Float
   user: UserModel!
-  comments: [ArticleCommentModel!]!
+}
+
+type ArticleCommentModel {
+  id: Float
+  userID: Float
+  comment: String
+  createdAt: Float
+  updatedAt: Float
+  articleID: Float
+  user: UserModel!
+}
+
+type ArticleReactionModel {
+  id: Float
+  userID: Float
+  reaction: ReactionType
+  createdAt: Float
+  updatedAt: Float
+  articleID: Float
+  user: UserModel!
 }
 
 type ChatlogModel {
@@ -220,8 +228,10 @@ type Query {
   ranks(filter: RankFilterManyInput!): [RankModel!]!
   article(id: Float!): ArticleModel!
   articles(other: ExtraArgs): [ArticleModel!]!
-  articleComment(id: Float!): ArticleCommentModel!
-  articleComments(other: ExtraArgs, articleID: Float, userID: Float): [ArticleCommentModel!]!
+  articleComment(filter: ArticleCommentFilterOneInput!): ArticleCommentModel!
+  articleComments(filter: ArticleCommentFilterManyInput): [ArticleCommentModel!]!
+  articleReaction(filter: ArticleReactionFilterOneInput!): ArticleReactionModel!
+  articleReactions(filter: ArticleReactionFilterManyInput): [ArticleReactionModel!]!
   config: ConfigModel!
   ban(id: Float!): BanModel!
   bans(other: ExtraArgs): [BanModel!]!
@@ -267,6 +277,26 @@ input RankFilterManyInput {
   showStaffOnly: Boolean
 }
 
+input ArticleCommentFilterOneInput {
+  id: Float!
+}
+
+input ArticleCommentFilterManyInput {
+  ids: [Float!]
+  articleIDs: [Float!]
+  userIDs: [Float!]
+}
+
+input ArticleReactionFilterOneInput {
+  id: Float!
+}
+
+input ArticleReactionFilterManyInput {
+  ids: [Float!]
+  articleIDs: [Float!]
+  userIDs: [Float!]
+}
+
 input PhotoFilterOneInput {
   id: Float!
 }
@@ -308,9 +338,11 @@ type Mutation {
   articleCreate(newArticle: ArticleCreateInput!): ArticleModel!
   articleUpdate(id: Float!, articleChanges: ArticleUpdateInput!): Boolean!
   articleDelete(id: Float!): Boolean!
-  articleCommentCreate(newArticleComment: ArticleCommentCreateInput!): ArticleCommentModel!
-  articleCommentUpdate(id: Float!, articleChanges: ArticleCommentUpdateInput!): Boolean!
+  articleCommentCreate(input: ArticleCommentCreateInput!): ArticleCommentModel!
+  articleCommentUpdate(filter: ArticleCommentFilterOneInput!, input: ArticleCommentCreateInput!): ArticleCommentModel!
   articleCommentDelete(id: Float!): Boolean!
+  articleReactionUpdate(filter: ArticleReactionFilterOneInput!, input: ArticleReactionCreateInput!): ArticleReactionModel!
+  articleReactionDelete(id: Float!): Boolean!
   configUpdate(configUpdateInput: ConfigUpdateInput!): Boolean!
   banCreate(newBan: BanCreateInput!): BanModel!
   banUpdate(id: Float!, banChanges: BanUpdateInput!): Boolean!
@@ -397,8 +429,9 @@ input ArticleCommentCreateInput {
   comment: String!
 }
 
-input ArticleCommentUpdateInput {
-  comment: String!
+input ArticleReactionCreateInput {
+  articleID: Float!
+  reaction: ReactionType!
 }
 
 input ConfigUpdateInput {
@@ -467,8 +500,6 @@ type Subscription {
   rankDeleted: RankModel!
   articleCreated: ArticleModel!
   articleDeleted: ArticleModel!
-  articleCommentCreated: ArticleCommentModel!
-  articleCommentDeleted: ArticleCommentModel!
   configUpdated: ConfigModel!
   banCreated: BanModel!
   banDeleted: BanModel!
