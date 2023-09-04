@@ -7,5 +7,4 @@ export const InputElement = styled.input`
   display: flex;
   flex: 1;
   padding: ${({ theme }) => theme.space.halfUnit};
-  width: 100%;
 `

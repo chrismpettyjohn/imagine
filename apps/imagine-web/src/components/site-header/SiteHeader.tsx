@@ -55,9 +55,14 @@ export function SiteHeader() {
         </SiteHeaderNavigation>
         <SiteHeaderActions>
           <UserGuard>
+            <Link to="/settings">
+              <ButtonNoBorder style={{ padding: 0 }}>
+                <i className="fa fa-cog fa-2x" />
+              </ButtonNoBorder>
+            </Link>
             <Link to="/logout">
-              <ButtonNoBorder>
-                Logout
+              <ButtonNoBorder style={{ color: '#7C0F0F', padding: 0 }}>
+                <i className="fa fa-sign-out fa-2x" />
               </ButtonNoBorder>
             </Link>
           </UserGuard>

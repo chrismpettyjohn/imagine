@@ -1,11 +1,13 @@
 import React from 'react';
 import { Switch, Route } from 'wouter';
+import { UserGuard } from '@imagine-cms/web';
 import { MeScreen } from './me-screen/MeScreen';
 import { LoginScreen } from './login-screen/LoginScreen';
 import { LogoutScreen } from './logout-screen/LogoutScreen';
 import { ImagineScreen } from './imagine-screen/ImagineScreen';
 import { ProfileScreen } from './profile-screen/ProfileScreen';
 import { LandingScreen } from './landing-screen/LandingScreen';
+import { SettingsScreen } from './settings-screen/SettingsScreen';
 import { RegisterScreen } from './register-screen/RegisterScreen';
 import { PlayGameScreen } from './play-game-screen/PlayGameScreen';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
@@ -55,6 +57,14 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/me',
     view: MeScreen,
+  },
+  {
+    path: '/settings',
+    view: () => (
+      <UserGuard redirect>
+        <SettingsScreen />
+      </UserGuard>
+    ),
   },
   {
     path: '/profile/:username',
