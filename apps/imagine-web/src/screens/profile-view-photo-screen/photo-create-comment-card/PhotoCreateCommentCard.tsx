@@ -24,7 +24,7 @@ export function PhotoCreateCommentCard({ photoID, onCreation }: PhotoCreateComme
   }
 
   return (
-    <Card header="New Comment">
+    <Card header="Post Comment">
       <PhotoCreateCommentCardForm onSubmit={onCreate}>
         <Textarea value={comment} onChange={setComment} rows={10} />
         <PhotoCreateCommentCardActions>

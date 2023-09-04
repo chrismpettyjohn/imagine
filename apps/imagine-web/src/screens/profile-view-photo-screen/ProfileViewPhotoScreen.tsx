@@ -39,7 +39,7 @@ export function ProfileViewPhotoScreen() {
             <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
               <PhotoCommentsCard photo={data} />
               <br />
-              <PhotoCreateCommentCard photoID={data.id} onCreation={newComment => console.log(newComment)} />
+              <PhotoCreateCommentCard photoID={data.id} onCreation={() => null} />
             </div>
           </ProfileViewPhotoScreenContainer >
         )
