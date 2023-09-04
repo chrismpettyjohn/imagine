@@ -7,7 +7,7 @@ export function PhotoContainer({ story }: PhotoContainerProps) {
   return (
     <Link to={`/photos/${story.id}`}>
       <PhotoContainerElement>
-        <img src={story.photoURL} />
+        <img src={story.photoURL} loading="lazy" />
       </PhotoContainerElement>
     </Link>
 

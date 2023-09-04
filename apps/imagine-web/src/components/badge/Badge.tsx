@@ -14,6 +14,6 @@ export function Badge({ badge, ...props }: BadgeProps) {
   }
 
   return (
-    <img src={imageSrc} {...props} onError={() => setIsHidden(true)} />
+    <img src={imageSrc} {...props} onError={() => setIsHidden(true)} loading="lazy" />
   )
 }

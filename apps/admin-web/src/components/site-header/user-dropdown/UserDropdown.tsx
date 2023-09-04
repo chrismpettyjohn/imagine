@@ -1,8 +1,8 @@
-import {sessionContext} from '@imagine-cms/web';
-import React, {useContext, useState} from 'react';
+import { sessionContext } from '@imagine-cms/web';
+import React, { useContext, useState } from 'react';
 
 export function UserDropdown() {
-  const {session} = useContext(sessionContext);
+  const { session } = useContext(sessionContext);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleIsOpen = () => {
@@ -17,7 +17,7 @@ export function UserDropdown() {
     <li className="nav-item dropdown">
       <a className="nav-link" href="#" onClick={toggleIsOpen}>
         <div className="navbar-profile">
-          <img className="img-xs rounded-circle" src={`https://imager.habboon.pw/?figure=${session.look}&direction=3&head_direction=3&gesture=sml&headonly=1`} />
+          <img className="img-xs rounded-circle" src={`https://imager.habboon.pw/?figure=${session.look}&direction=3&head_direction=3&gesture=sml&headonly=1`} loading="lazy" />
           <p className="mb-0 d-none d-sm-block navbar-profile-name">
             {session.username}
           </p>

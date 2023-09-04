@@ -34,5 +34,5 @@ export function Avatar({ look, headOnly = false, size, direction, headDirection,
   if (isHidden) {
     return null;
   }
-  return <img src={imageSrc} {...props} onError={() => setIsHidden(true)} />
+  return <img src={imageSrc} {...props} onError={() => setIsHidden(true)} loading="lazy" />
 }
