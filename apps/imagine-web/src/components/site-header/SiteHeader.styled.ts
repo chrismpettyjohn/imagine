@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Button } from "../button/Button";
 
 export const SiteHeaderElement = styled.div`
   align-items: center;
@@ -49,22 +48,4 @@ export const SiteHeaderActions = styled.div`
   display: flex;
   justify-content: flex-end;
   gap: ${({ theme }) => theme.space.oneUnit};
-`
-
-export const SiteHeaderAdminPanelButton = styled(Button)`
-  border-color: #7C0F0F;
-  color: #7C0F0F;
-  &:hover {
-    border-color: #B90909;
-    color: #B90909;
-  }
-`
-
-export const SiteHeaderEnterHotelButton = styled(Button)`
-border-color: ${({ theme }) => theme.color.s30};
-color: ${({ theme }) => theme.color.s30};
-&:hover {
-    border-color: #1d97c4;
-    color: #1d97c4;
-}
 `

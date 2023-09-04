@@ -1,8 +1,11 @@
 import { Link } from 'wouter';
+import { Button } from '../button/Button';
 import React, { useContext } from 'react';
 import { SiteLogo } from '../site-logo/SiteLogo';
-import { configContext, sessionContext } from '@imagine-cms/web';
-import { SiteHeaderActions, SiteHeaderAdminPanelButton, SiteHeaderContent, SiteHeaderElement, SiteHeaderEnterHotelButton, SiteHeaderNavigation } from './SiteHeader.styled';
+import { GuestGuard } from '../guest-guard/GuestGuard';
+import { ButtonPrimary, ButtonDanger, ButtonNoBorder } from '../button/Button.remix';
+import { UserGuard, configContext, sessionContext } from '@imagine-cms/web';
+import { SiteHeaderActions, SiteHeaderContent, SiteHeaderElement, SiteHeaderNavigation } from './SiteHeader.styled';
 
 export function SiteHeader() {
   const { config } = useContext(configContext);
@@ -14,11 +17,20 @@ export function SiteHeader() {
         <SiteHeaderNavigation>
           <SiteLogo />
           <ul>
-            <li>
-              <Link to="/me">
-                Home
-              </Link>
-            </li>
+            <GuestGuard>
+              <li>
+                <Link to="/login">
+                  Login
+                </Link>
+              </li>
+            </GuestGuard>
+            <UserGuard>
+              <li>
+                <Link to="/me">
+                  Home
+                </Link>
+              </li>
+            </UserGuard>
             <li>
               <Link to="/community/articles">
                 News Articles
@@ -42,16 +54,23 @@ export function SiteHeader() {
           </ul>
         </SiteHeaderNavigation>
         <SiteHeaderActions>
-          <SiteHeaderAdminPanelButton>
+          <UserGuard>
+            <Link to="/logout">
+              <ButtonNoBorder>
+                Logout
+              </ButtonNoBorder>
+            </Link>
+          </UserGuard>
+          <ButtonDanger>
             Admin Panel
-          </SiteHeaderAdminPanelButton>
+          </ButtonDanger>
           <Link to="/play">
-            <SiteHeaderEnterHotelButton>
+            <ButtonPrimary>
               Play Game
-            </SiteHeaderEnterHotelButton>
+            </ButtonPrimary>
           </Link>
         </SiteHeaderActions>
       </SiteHeaderContent>
-    </SiteHeaderElement>
+    </SiteHeaderElement >
   )
 }
