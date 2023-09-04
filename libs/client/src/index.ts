@@ -13,6 +13,20 @@ export * from './article-comment/article-comment-delete.mutation';
 export * from './article-comment/article-comment-fetch-many.query';
 export * from './article-comment/article-comment-fetch-one.query';
 
+// Article Reaction
+export * from './article-reaction/article-reaction.fragment';
+export * from './article-reaction/article-reaction-create.hook';
+export * from './article-reaction/article-reaction-update.hook';
+export * from './article-reaction/article-reaction-delete.hook';
+export * from './article-reaction/article-reaction-fetch-many.hook';
+export * from './article-reaction/article-reaction-fetch-one.hook';
+export * from './article-reaction/article-reaction.input';
+export * from './article-reaction/article-reaction-create.mutation';
+export * from './article-reaction/article-reaction-update.mutation';
+export * from './article-reaction/article-reaction-delete.mutation';
+export * from './article-reaction/article-reaction-fetch-many.query';
+export * from './article-reaction/article-reaction-fetch-one.query';
+
 // Photo
 export * from './photo/photo.fragment';
 export * from './photo/photo-fetch-many.hook';
