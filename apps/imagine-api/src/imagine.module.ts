@@ -15,6 +15,7 @@ import {ArticleModule} from './article/article.module';
 import {SessionModule} from './session/session.module';
 import {ChatlogModule} from './chatlog/chatlog.module';
 import {DiscordModule} from './discord/discord.module';
+import {FacebookModule} from './facebook/facebook.module';
 import {DatabaseModule} from './database/database.module';
 import {databaseEntities} from './database/database.const';
 import {ApolloDriver, ApolloDriverConfig} from '@nestjs/apollo';
@@ -76,6 +77,7 @@ import {
     PhotoModule,
     InternationalizationModule,
     DiscordModule,
+    FacebookModule,
   ],
 })
 export class ImagineModule {}

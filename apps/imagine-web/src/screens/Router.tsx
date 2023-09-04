@@ -12,6 +12,7 @@ import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
 import { CommunityStaffScreen } from './community-staff-screen/CommunityStaffScreen';
 import { LoginWithDiscordScreen } from './login-with-discord-screen/LoginWithDiscordScreen';
 import { ProfileViewPhotoScreen } from './profile-view-photo-screen/ProfileViewPhotoScreen';
+import { LoginWithFacebookScreen } from './login-with-facebook-screen/LoginWithFacebookScreen';
 import { CommunityHighScoresScreen } from './community-high-scores-screen/CommunityHighScoresScreen';
 import { CommunityViewArticleScreen } from './community-view-article-screen/CommunityViewArticleScreen';
 import { CommunityListArticlesScreen } from './community-list-articles-screen/CommunityListArticlesScreen';
@@ -33,6 +34,10 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/login/discord',
     view: LoginWithDiscordScreen,
+  },
+  {
+    path: '/login/facebook',
+    view: LoginWithFacebookScreen,
   },
   {
     path: '/register',

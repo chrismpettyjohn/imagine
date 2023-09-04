@@ -194,6 +194,12 @@ type DiscordAuthModel {
   sessionToken: String
 }
 
+type FacebookAuthModel {
+  sessionID: Float
+  userID: Float
+  sessionToken: String
+}
+
 type WordFilterModel {
   id: Float
   word: String
@@ -375,6 +381,7 @@ type Mutation {
   languagePhraseUpdate(id: Float!, input: LanguagePhraseInput!): LanguagePhraseModel!
   languagePhraseDelete(id: Float!): Boolean!
   discordUserAuthenticate(input: DiscordAuthInput!): DiscordAuthModel!
+  facebookUserAuthenticate(input: FacebookAuthInput!): FacebookAuthModel!
 }
 
 input UserCreateInput {
@@ -507,6 +514,10 @@ input LanguagePhraseInput {
 
 input DiscordAuthInput {
   discordAuthToken: String!
+}
+
+input FacebookAuthInput {
+  accessToken: String!
 }
 
 type Subscription {

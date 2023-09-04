@@ -10,6 +10,7 @@ import { ButtonPrimary } from '../../components/button/Button.remix';
 import { GuestGuard } from '../../components/guest-guard/GuestGuard';
 import { DiscordLoginButton } from '../../components/discord-login-button/DiscordLoginButton';
 import { UsernameWithAvatarInput } from './username-with-avatar-input/UsernameWithAvatarInput';
+import { FacebookLoginButton } from '../../components/facebook-login-button/FacebookLoginButton';
 
 export function LoginScreen() {
   const [username, setUsername] = useState('');
@@ -41,6 +42,8 @@ export function LoginScreen() {
       </Card>
       <br />
       <DiscordLoginButton />
+      <br />
+      <FacebookLoginButton />
     </GuestGuard>
   )
 }
