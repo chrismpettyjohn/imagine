@@ -1,3 +1,18 @@
+
+// Article Comment
+export * from './article-comment/article-comment.fragment';
+export * from './article-comment/article-comment-create.hook';
+export * from './article-comment/article-comment-update.hook';
+export * from './article-comment/article-comment-delete.hook';
+export * from './article-comment/article-comment-fetch-many.hook';
+export * from './article-comment/article-comment-fetch-one.hook';
+export * from './article-comment/article-comment.input';
+export * from './article-comment/article-comment-create.mutation';
+export * from './article-comment/article-comment-update.mutation';
+export * from './article-comment/article-comment-delete.mutation';
+export * from './article-comment/article-comment-fetch-many.query';
+export * from './article-comment/article-comment-fetch-one.query';
+
 // Photo
 export * from './photo/photo.fragment';
 export * from './photo/photo-fetch-many.hook';
