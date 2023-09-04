@@ -10,6 +10,7 @@ import { RegisterScreen } from './register-screen/RegisterScreen';
 import { PlayGameScreen } from './play-game-screen/PlayGameScreen';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
 import { CommunityStaffScreen } from './community-staff-screen/CommunityStaffScreen';
+import { LoginWithDiscordScreen } from './login-with-discord-screen/LoginWithDiscordScreen';
 import { ProfileViewPhotoScreen } from './profile-view-photo-screen/ProfileViewPhotoScreen';
 import { CommunityHighScoresScreen } from './community-high-scores-screen/CommunityHighScoresScreen';
 import { CommunityViewArticleScreen } from './community-view-article-screen/CommunityViewArticleScreen';
@@ -28,6 +29,10 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/login',
     view: LoginScreen,
+  },
+  {
+    path: '/login/discord',
+    view: LoginWithDiscordScreen,
   },
   {
     path: '/register',
