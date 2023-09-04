@@ -15,5 +15,5 @@ export interface DiscordUserAuthenticateVariables {
 }
 
 export interface DiscordUserAuthenticateResponse {
-  auth: DiscordAuthFragment;
+  discordUserAuthenticate: DiscordAuthFragment;
 }

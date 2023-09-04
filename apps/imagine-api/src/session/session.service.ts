@@ -10,6 +10,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import {SessionCreatedModel} from './session.model';
+import {SessionEntity} from '../database/session.entity';
 
 @Injectable()
 export class SessionService {
@@ -46,6 +47,20 @@ export class SessionService {
       accessToken,
       id: newSession.id!,
       userID: newSession.userID,
+    };
+  }
+
+  async generateSession(
+    userID: number
+  ): Promise<{accessToken: string; session: SessionEntity}> {
+    const session = await this.sessionRepo.create({userID});
+    const accessToken = this.signToken({
+      userID,
+      sessionID: session.id!,
+    });
+    return {
+      accessToken,
+      session,
     };
   }
 

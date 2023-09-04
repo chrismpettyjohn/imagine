@@ -189,7 +189,9 @@ type ChatlogModel {
 }
 
 type DiscordAuthModel {
-  success: Boolean
+  sessionID: Float
+  userID: Float
+  sessionToken: String
 }
 
 type WordFilterModel {
@@ -372,7 +374,7 @@ type Mutation {
   languagePhraseCreate(input: LanguagePhraseInput!): LanguagePhraseModel!
   languagePhraseUpdate(id: Float!, input: LanguagePhraseInput!): LanguagePhraseModel!
   languagePhraseDelete(id: Float!): Boolean!
-  discordUserAuthentication(input: DiscordAuthInput!): DiscordAuthModel!
+  discordUserAuthenticate(input: DiscordAuthInput!): DiscordAuthModel!
 }
 
 input UserCreateInput {

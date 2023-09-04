@@ -81,6 +81,9 @@ export class UserEntity implements UserWire {
   @Column({name: 'home_room'})
   homeRoomID: number = IMAGINE_DEFAULT_HOME_ROOM;
 
+  @Column({name: 'discord_id', type: 'varchar'})
+  discordID?: string;
+
   @ManyToOne(() => RankEntity, rank => rank.users)
   @JoinColumn({name: 'rank'})
   rank?: RankEntity;

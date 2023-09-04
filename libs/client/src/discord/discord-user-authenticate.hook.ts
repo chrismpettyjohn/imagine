@@ -1,23 +1,27 @@
 import { useMutation } from "@apollo/client";
-import { DiscordAuthInput } from "apps/imagine-api/src/discord/discord-auth.input";
+import { DiscordAuthInput } from "./discord.input";
 import { DISCORD_USER_AUTHENTICATE_MUTATION, DiscordUserAuthenticateResponse, DiscordUserAuthenticateVariables } from "./discord-user-authenticate.mutation";
+import { DiscordAuthFragment } from "./discord.fragment";
 
 export interface UseDiscordUserAuthenticateResponse {
-  execute(input: DiscordAuthInput): Promise<void>;
+  data?: DiscordAuthFragment;
+  execute(input: DiscordAuthInput): Promise<DiscordAuthFragment>;
   error?: Error;
   loading: boolean;
 }
 
 export function useDiscordUserAuthenticate(): UseDiscordUserAuthenticateResponse {
-  const [discordAuth, { loading, error }] = useMutation<DiscordUserAuthenticateResponse, DiscordUserAuthenticateVariables>(DISCORD_USER_AUTHENTICATE_MUTATION);
+  const [discordAuth, { loading, data, error }] = useMutation<DiscordUserAuthenticateResponse, DiscordUserAuthenticateVariables>(DISCORD_USER_AUTHENTICATE_MUTATION);
 
-  const onDiscordAuth = async (input: DiscordAuthInput): Promise<void> => {
-    const newUserSession = await discordAuth({ variables: { input } })
+  const onDiscordAuth = async (input: DiscordAuthInput): Promise<DiscordAuthFragment> => {
+    const response = await discordAuth({ variables: { input } })
+    return response.data!.discordUserAuthenticate;
   }
 
   return {
     execute: onDiscordAuth,
     error,
     loading,
+    data: data?.discordUserAuthenticate,
   }
 }

@@ -37,7 +37,7 @@ export abstract class BaseRepository<Entity> {
     return this.repo.find(opts);
   }
 
-  findOne(
+  _findOne(
     where?: FindOptionsWhere<Entity>,
     options?: FindOneOptions<Entity>
   ): Promise<Entity | null> {
@@ -45,6 +45,10 @@ export abstract class BaseRepository<Entity> {
       where,
       ...options,
     });
+  }
+
+  findOne(options?: FindOneOptions<Entity>): Promise<Entity | null> {
+    return this.repo.findOne({...options});
   }
 
   findOneOrFail(
