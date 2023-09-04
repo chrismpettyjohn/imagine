@@ -8,6 +8,7 @@ import { Button } from '../../components/button/Button';
 import { useSignInWithUsernameAndPassword } from '@imagine-cms/web';
 import { ButtonPrimary } from '../../components/button/Button.remix';
 import { GuestGuard } from '../../components/guest-guard/GuestGuard';
+import { DiscordLoginButton } from '../../components/discord-login-button/DiscordLoginButton';
 import { UsernameWithAvatarInput } from './username-with-avatar-input/UsernameWithAvatarInput';
 
 export function LoginScreen() {
@@ -38,6 +39,8 @@ export function LoginScreen() {
           </div>
         </Form>
       </Card>
+      <br />
+      <DiscordLoginButton />
     </GuestGuard>
   )
 }

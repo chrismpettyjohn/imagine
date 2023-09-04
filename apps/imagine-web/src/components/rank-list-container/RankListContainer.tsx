@@ -3,13 +3,14 @@ import { Card } from '../card/Card';
 import { RankListContainerProps } from './RankListContainer.types';
 import { RankListContainerHeader, RankListContainerMembers } from './RankListContainer.styled';
 import { SmallUserProfileContainer } from '../small-user-profile-container/SmallUserProfileContainer';
+import { Badge } from '../badge/Badge';
 
 export function RankListContainer({ rank }: RankListContainerProps) {
   return (
     <Card>
       <RankListContainerHeader>
         <h1>{rank.name}</h1>
-        <img src={`https://habborator.org/badges/badges/${rank.badgeCode || 'ADM'}.gif`} />
+        <Badge badge={{ code: 'ADM' }} />
       </RankListContainerHeader>
       <p>{rank.description}</p>
       <RankListContainerMembers>

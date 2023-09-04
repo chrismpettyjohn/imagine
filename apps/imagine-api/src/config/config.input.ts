@@ -1,6 +1,6 @@
 import {Field, InputType} from '@nestjs/graphql';
 import {ConfigUpdateInputDTO} from '@imagine-cms/types';
-import {IsAlphanumeric, IsOptional, IsUrl} from 'class-validator';
+import {IsAlphanumeric, IsOptional, IsString, IsUrl} from 'class-validator';
 
 @InputType()
 export class ConfigUpdateInput implements ConfigUpdateInputDTO {
@@ -18,6 +18,16 @@ export class ConfigUpdateInput implements ConfigUpdateInputDTO {
   @IsUrl()
   @IsOptional()
   nitroURL?: string;
+
+  @Field({nullable: true})
+  @IsUrl()
+  @IsOptional()
+  badgeURL?: string;
+
+  @Field({nullable: true})
+  @IsString()
+  @IsOptional()
+  badgeEXT?: string;
 
   @Field({nullable: true})
   @IsUrl()

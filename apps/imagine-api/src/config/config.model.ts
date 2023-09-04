@@ -13,6 +13,12 @@ export class ConfigModel implements ConfigWire {
   nitroURL?: string;
 
   @Field({nullable: true})
+  badgeURL?: string;
+
+  @Field({nullable: true})
+  badgeEXT?: string;
+
+  @Field({nullable: true})
   groupBadgeURL?: string;
 
   @Field({nullable: true})

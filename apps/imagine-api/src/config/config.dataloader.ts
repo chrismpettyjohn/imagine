@@ -4,6 +4,7 @@ import {Injectable} from '@nestjs/common';
 import {ConfigModel} from './config.model';
 import {ConfigRepository} from '../database/config.repository';
 import {BaseDataloaderService} from '../utility/base.dataloader';
+import {match} from 'assert';
 
 @Injectable()
 export class ConfigDataloaderService extends BaseDataloaderService<ConfigModel> {
@@ -13,18 +14,16 @@ export class ConfigDataloaderService extends BaseDataloaderService<ConfigModel> 
         return [];
       }
 
-      const matchingConfig = await this.configRepo._find({
+      const matchingConfigs = await this.configRepo._find({
         id: In(ids),
       });
 
       const commitHash = execSync('git rev-parse HEAD').toString().trim();
 
-      return [
-        {
-          ...matchingConfig,
-          softwareVersion: commitHash,
-        },
-      ];
+      return matchingConfigs.map(_ => ({
+        ..._,
+        softwareVersion: commitHash,
+      }));
     });
   }
 }
