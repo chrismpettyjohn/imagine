@@ -12,7 +12,7 @@ export function LoginWithDiscordScreen() {
   const userFetchByID = useFindUserByID(discordUserAuthenticate?.data?.userID ?? -1);
 
   const discordAuthCode = useMemo(() => {
-    return window.location.hash.split('&access_token=')[1].split('&expires_in')[0]
+    return window.location.hash.split('#access_token=')[1].split('&expires_in')[0]
   }, []);
 
   const onAttemptDiscordAuthentication = async (authCode: string) => {

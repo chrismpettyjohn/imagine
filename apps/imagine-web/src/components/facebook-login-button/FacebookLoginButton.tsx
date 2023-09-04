@@ -11,7 +11,7 @@ export function FacebookLoginButton() {
       client_id: FACEBOOK_APP_ID,
       redirect_uri: FACEBOOK_REDIRECT_URL,
       scope: ['email'].join(','),
-      response_type: 'code',
+      response_type: 'token',
     });
     return `${FACEBOOK_OAUTH_URL}?${params}`;
   }, []);

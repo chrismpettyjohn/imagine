@@ -12,16 +12,13 @@ export function LoginWithFacebookScreen() {
   const userFetchByID = useFindUserByID(facebookUserAuthenticate?.data?.userID ?? -1);
 
   const facebookAuthCode = useMemo(() => {
-    let search = window.location.search;
-    let params = new URLSearchParams(search);
-    return params.get('code');
+    return window.location.hash.split('#access_token=')[1].split('&data_access_expiration_time')[0]
   }, []);
 
 
   const onAttemptFacebookAuthentication = async (authCode: string) => {
     try {
       const session = await facebookUserAuthenticate.execute({ facebookAuthToken: authCode });
-      console.log(session);
       localStorageService.set('SESSION', session.sessionToken);
       const matchingUser = await userFetchByID.runQuery();
       console.log(matchingUser);

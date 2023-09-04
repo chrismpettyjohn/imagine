@@ -10,8 +10,7 @@ export class FacebookService {
   }
 
   async getUser(): Promise<FacebookUserWire> {
-    const response = await this.facebookAPI.get('users/@me');
-    console.log(response.data);
+    const response = await this.facebookAPI.get('me?fields=email');
     return response.data;
   }
 }
