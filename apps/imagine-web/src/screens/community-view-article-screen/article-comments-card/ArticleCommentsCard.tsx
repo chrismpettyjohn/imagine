@@ -1,18 +1,18 @@
 import DayJS from 'dayjs';
 import { Link } from 'wouter';
 import React, { useEffect } from 'react';
-import { ArticleCommentsCardProps } from './ArticleCommentsCard.types';
-import { useArticleCommentsFetchByArticleID } from '@imagine-cms/web';
 import { Card } from '../../../components/card/Card';
+import { useArticleCommentFetchMany } from '@imagine-cms/client';
+import { ArticleCommentsCardProps } from './ArticleCommentsCard.types';
 import { ArticleCommentsCardHeader } from './ArticleCommentsCard.styled';
 
 export function ArticleCommentsCard({ articleID }: ArticleCommentsCardProps) {
-  const { runQuery, data, loading } = useArticleCommentsFetchByArticleID(articleID);
+  const { data, fetch } = useArticleCommentFetchMany();
 
-  const articleComments = data?.articleComments ?? [];
+  const articleComments = data ?? [];
 
   useEffect(() => {
-    runQuery();
+    fetch({ articleIDs: [articleID] });
   }, [articleID]);
 
   return (

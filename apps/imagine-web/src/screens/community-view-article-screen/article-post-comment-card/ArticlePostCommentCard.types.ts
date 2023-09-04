@@ -1,6 +1,6 @@
-import {ArticleCommentWire} from '@imagine-cms/types';
+import { ArticleCommentFragment } from '@imagine-cms/client';
 
 export interface ArticlePostCommentCardProps {
   articleID: number;
-  onPost(newComment: ArticleCommentWire): void;
+  onPost(newComment: ArticleCommentFragment): void;
 }

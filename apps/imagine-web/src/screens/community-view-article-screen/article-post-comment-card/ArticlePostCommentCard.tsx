@@ -1,37 +1,24 @@
 import { toast } from 'react-toastify';
 import { Card } from '../../../components/card/Card';
-import { useArticleCommentCreate } from '@imagine-cms/web';
-import React, { SyntheticEvent, useEffect, useState } from 'react';
+import React, { SyntheticEvent, useState } from 'react';
+import { useArticleCommentCreate } from '@imagine-cms/client';
 import { ArticlePostCommentCardForm } from './ArticlePostCommentCard.styled';
 import { ArticlePostCommentCardProps } from './ArticlePostCommentCard.types';
 
 export function ArticlePostCommentCard({ articleID, onPost }: ArticlePostCommentCardProps) {
   const [comment, setComment] = useState('');
-  const { runMutation, data, error, loading } = useArticleCommentCreate({
-    articleID,
-    comment,
-  });
+  const { data, execute } = useArticleCommentCreate();
 
-  useEffect(() => {
-    if (!loading) {
-      if (error) {
-        toast.error('There was a problem creating your comment');
-      }
-      if (data) {
-        toast.success('Your comment was posted successfully');
-        onPost(data.newComment);
-        setComment('');
-      }
-    }
-  }, [data, error, loading]);
-
-  const onSubmit = (event: SyntheticEvent) => {
+  const onSubmit = async (event: SyntheticEvent) => {
     event.preventDefault();
-    if (comment.length < 10) {
-      toast.error('Comment must have at least 10 characters');
-      return;
+    try {
+      const response = await execute({ articleID, comment });
+      toast.success('Your comment was posted successfully');
+      onPost(response);
+      setComment('');
+    } catch {
+      toast.error('There was a problem creating your comment');
     }
-    runMutation();
   }
 
   return (
