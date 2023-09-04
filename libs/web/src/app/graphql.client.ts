@@ -13,10 +13,7 @@ export const graphQLClient: any = new ApolloClient({
       connectionParams: () => {
         const accessToken = localStorage.getItem('SESSION');
         return {
-          headers: {
-
-            Authorization: `Bearer ${accessToken}`,
-          }
+          Authorization: `Bearer ${accessToken}`,
         }
       },
     },

@@ -45,6 +45,21 @@ import {
       fieldResolverEnhancers: ['guards', 'interceptors'],
       installSubscriptionHandlers: true,
       resolvers: {JSONObject: GraphQLJSONObject},
+      subscriptions: {
+        'subscriptions-transport-ws': {
+          path: '/graphql',
+          onConnect: (connectionParams: any) => {
+            console.log('module: ', connectionParams);
+            return {
+              req: {
+                headers: {
+                  Authorization: connectionParams.Authorization,
+                },
+              },
+            };
+          },
+        },
+      },
     }),
     CommonModule,
     DatabaseModule,
