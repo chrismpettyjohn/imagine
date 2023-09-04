@@ -1,4 +1,10 @@
+import { Link } from 'wouter';
+import { Card } from '../../components/card/Card';
+import { Form } from '../../components/form/Form';
+import { Input } from '../../components/input/Input';
+import { Button } from '../../components/button/Button';
 import React, { SyntheticEvent, useEffect, useState } from 'react';
+import { ButtonPrimary } from '../../components/button/Button.remix';
 import { GuestGuard } from '../../components/guest-guard/GuestGuard';
 import { useSignInWithUsernameAndPassword, useUserCreateMutation } from '@imagine-cms/web';
 
@@ -31,38 +37,24 @@ export function RegisterScreen() {
 
   return (
     <GuestGuard>
-      <main className="position-relative container justify-content-center py-4">
-        <div className="row justify-content-center">
-          <div className="col-lg-6 col-12">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="silver">Register</h5>
-                <form className="form" onSubmit={onCreateUser}>
-                  <div className="form-group">
-                    <label htmlFor="username">Username</label>
-                    <input type="text" name="username" value={username} onChange={e => setUsername(e?.currentTarget?.value ?? '')} className="form-control" id="username" placeholder="Username" />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input type="text" name="email" value={email} onChange={e => setEmail(e?.currentTarget?.value ?? '')} className="form-control" id="email" placeholder="Email" />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input type="password" name="password" value={password} onChange={e => setPassword(e?.currentTarget?.value ?? '')} className="form-control" placeholder="Password" id="password" />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="password-confirmation">Confirm Password</label>
-                    <input type="password" name="password_confirmation" value={passwordAgain} onChange={e => setPasswordAgain(e?.currentTarget?.value ?? '')} className="form-control" id="password-confirmation" placeholder="Password again" />
-                  </div>
-                  <div className="form-group mb-0">
-                    <button className="btn btn-primary btn-block" disabled={!canCreateUser} type="submit">Join now</button>
-                  </div>
-                </form>
-              </div>
-            </div>
+      <Card header="Register">
+        <Form onSubmit={onCreateUser}>
+          <label htmlFor="username">Username</label>
+          <Input type="text" name="username" value={username} onChange={e => setUsername(e?.currentTarget?.value ?? '')} id="username" placeholder="Username" />
+          <label htmlFor="email">Email</label>
+          <Input type="text" name="email" value={email} onChange={e => setEmail(e?.currentTarget?.value ?? '')} id="email" placeholder="Email" />
+          <label htmlFor="password">Password</label>
+          <Input type="password" name="password" value={password} onChange={e => setPassword(e?.currentTarget?.value ?? '')} placeholder="Password" id="password" />
+          <label htmlFor="password-confirmation">Confirm Password</label>
+          <Input type="password" name="password_confirmation" value={passwordAgain} onChange={e => setPasswordAgain(e?.currentTarget?.value ?? '')} id="password-confirmation" placeholder="Password again" />
+          <div style={{ display: 'flex', flex: 1, gap: 16, justifyContent: 'flex-end' }}>
+            <Link to="/login">
+              <ButtonPrimary>Login</ButtonPrimary>
+            </Link>
+            <Button className="btn btn-primary btn-block" disabled={!canCreateUser} type="submit">Join now</Button>
           </div>
-        </div>
-      </main>
+        </Form>
+      </Card>
     </GuestGuard>
   )
 }

@@ -12,6 +12,7 @@ export const CardContent = styled.div`
   flex: 1;
   flex-direction: column;
   gap: ${({ theme }) => theme.space.oneUnit};
+  overflow: hidden;
   padding: ${({ theme }) => theme.space.twoUnits};
   h1 {
     font-size: ${({ theme }) => theme.fontSize.twoUnits};
