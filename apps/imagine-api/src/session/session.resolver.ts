@@ -4,6 +4,7 @@ import {SessionArgs} from './session.args';
 import {GetUser} from './get-user.decorator';
 import {PubSub} from 'graphql-subscriptions';
 import {SessionService} from './session.service';
+import {HashService} from '../common/hash.service';
 import {HasSession} from './has-session.decorator';
 import {UserEntity} from '../database/user.entity';
 import {UnauthorizedException} from '@nestjs/common';
@@ -13,9 +14,15 @@ import {SessionDataloaderService} from './session.dataloader';
 import {SessionRepository} from '../database/session.repository';
 import {Args, Mutation, Query, Resolver, Subscription} from '@nestjs/graphql';
 import {
+  SessionUpdateEmailInput,
+  SessionUpdatePasswordInput,
+} from './session.input';
+import {
   SessionCreatedModel,
   SessionModel,
   SessionSSOModel,
+  SessionUpdateEmailModel,
+  SessionUpdatePasswordModel,
 } from './session.model';
 
 const pubSub = new PubSub();
@@ -25,6 +32,7 @@ export class SessionResolver {
   constructor(
     private readonly jwtService: JwtService,
     private readonly userRepo: UserRepository,
+    private readonly hashService: HashService,
     private readonly sessionRepo: SessionRepository,
     private readonly sessionService: SessionService,
     private readonly sessionDataLoaderService: SessionDataloaderService
@@ -81,6 +89,46 @@ export class SessionResolver {
     );
     pubSub.publish('sessionCreated', {sessionCreated: newSession});
     return newSession;
+  }
+
+  @Mutation(() => SessionUpdateEmailModel)
+  @HasSession()
+  async sessionUpdateEmail(
+    @Args('input', {type: () => SessionUpdateEmailInput})
+    input: SessionUpdateEmailInput,
+    @GetUser() user: UserEntity
+  ): Promise<SessionUpdateEmailModel> {
+    const doesPasswordMatch = this.hashService.compare(
+      user.password,
+      input.password
+    );
+    if (!doesPasswordMatch) {
+      throw new UnauthorizedException();
+    }
+    await this.userRepo.update({id: user.id!}, {email: input.email});
+    return {
+      success: true,
+    };
+  }
+
+  @Mutation(() => SessionUpdatePasswordModel)
+  @HasSession()
+  async sessionUpdatePassword(
+    @Args('input', {type: () => SessionUpdatePasswordInput})
+    input: SessionUpdatePasswordInput,
+    @GetUser() user: UserEntity
+  ): Promise<SessionUpdatePasswordModel> {
+    const doesPasswordMatch = this.hashService.compare(
+      user.password,
+      input.currentPassword
+    );
+    if (!doesPasswordMatch) {
+      throw new UnauthorizedException();
+    }
+    await this.userRepo.update({id: user.id!}, {password: input.newPassword});
+    return {
+      success: true,
+    };
   }
 
   @Subscription(() => SessionModel)

@@ -89,6 +89,13 @@ export * from './rank/rank.input';
 export * from './rank/rank-fetch-many.query';
 export * from './rank/rank-fetch-one.query';
 
+// Session
+export * from './session/session-update-email.hook';
+export * from './session/session-update-email.mutation';
+export * from './session/session-update-password.hook';
+export * from './session/session-update-password.mutation';
+export * from './session/session.input';
+
 // User
 export * from './user/user.fragment';
 export * from './user/user-fetch-many.hook';

@@ -28,7 +28,7 @@ export const AccordionHeaderElement = styled.div<{ $open: boolean }>`
   font-size: 20px;
   flex: 1;
   &:hover {  
-    font-size: 22px;
+    font-size: 21px;
   }
 `
 

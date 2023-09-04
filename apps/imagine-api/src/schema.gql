@@ -29,6 +29,14 @@ type SessionSSOModel {
   ssoToken: String!
 }
 
+type SessionUpdateEmailModel {
+  success: Boolean!
+}
+
+type SessionUpdatePasswordModel {
+  success: Boolean!
+}
+
 type RankScopesModel {
   accessAdminPanel: Boolean!
   manageArticles: Boolean!
@@ -350,6 +358,8 @@ input PhotoReactionFilterManyInput {
 
 type Mutation {
   sessionCreate(username: String!, password: String!): SessionCreatedModel!
+  sessionUpdateEmail(input: SessionUpdateEmailInput!): SessionUpdateEmailModel!
+  sessionUpdatePassword(input: SessionUpdatePasswordInput!): SessionUpdatePasswordModel!
   userCreate(newUser: UserCreateInput!): UserModel!
   userUpdate(id: Float!, userChanges: UserUpdateInput!): Boolean!
   userDelete(id: Float!): Boolean!
@@ -389,6 +399,16 @@ type Mutation {
   discordUserAuthenticate(input: DiscordAuthInput!): DiscordAuthModel!
   facebookUserAuthenticate(input: FacebookAuthInput!): FacebookAuthModel!
   googleUserAuthenticate(input: GoogleAuthInput!): GoogleAuthModel!
+}
+
+input SessionUpdateEmailInput {
+  email: String!
+  password: String!
+}
+
+input SessionUpdatePasswordInput {
+  currentPassword: String!
+  newPassword: String!
 }
 
 input UserCreateInput {

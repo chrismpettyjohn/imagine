@@ -33,3 +33,15 @@ export class SessionSSOModel {
   @Field()
   ssoToken!: string;
 }
+
+@ObjectType()
+export class SessionUpdateEmailModel {
+  @Field(() => Boolean)
+  success!: boolean;
+}
+
+@ObjectType()
+export class SessionUpdatePasswordModel {
+  @Field(() => Boolean)
+  success!: boolean;
+}
