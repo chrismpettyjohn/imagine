@@ -188,6 +188,10 @@ type ChatlogModel {
   createdAt: String
 }
 
+type DiscordAuthModel {
+  success: Boolean
+}
+
 type WordFilterModel {
   id: Float
   word: String
@@ -368,6 +372,7 @@ type Mutation {
   languagePhraseCreate(input: LanguagePhraseInput!): LanguagePhraseModel!
   languagePhraseUpdate(id: Float!, input: LanguagePhraseInput!): LanguagePhraseModel!
   languagePhraseDelete(id: Float!): Boolean!
+  discordUserAuthentication(input: DiscordAuthInput!): DiscordAuthModel!
 }
 
 input UserCreateInput {
@@ -496,6 +501,10 @@ input LanguagePhraseInput {
   key: String!
   type: LanguagePhraseType!
   description: String!
+}
+
+input DiscordAuthInput {
+  discordAuthToken: String!
 }
 
 type Subscription {

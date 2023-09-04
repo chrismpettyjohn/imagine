@@ -14,6 +14,7 @@ import {GraphQLJSONObject} from 'graphql-type-json';
 import {ArticleModule} from './article/article.module';
 import {SessionModule} from './session/session.module';
 import {ChatlogModule} from './chatlog/chatlog.module';
+import {DiscordModule} from './discord/discord.module';
 import {DatabaseModule} from './database/database.module';
 import {databaseEntities} from './database/database.const';
 import {ApolloDriver, ApolloDriverConfig} from '@nestjs/apollo';
@@ -74,6 +75,7 @@ import {
     GroupModule,
     PhotoModule,
     InternationalizationModule,
+    DiscordModule,
   ],
 })
 export class ImagineModule {}

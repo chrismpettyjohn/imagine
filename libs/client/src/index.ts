@@ -27,6 +27,12 @@ export * from './article-reaction/article-reaction-delete.mutation';
 export * from './article-reaction/article-reaction-fetch-many.query';
 export * from './article-reaction/article-reaction-fetch-one.query';
 
+// Discord
+export * from './discord/discord-user-authenticate.hook';
+export * from './discord/discord-user-authenticate.mutation';
+export * from './discord/discord.fragment';
+export * from './discord/discord.input';
+
 // Photo
 export * from './photo/photo.fragment';
 export * from './photo/photo-fetch-many.hook';
