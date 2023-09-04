@@ -10,6 +10,7 @@ const FETCH_SITE_CONFIG = gql`
             nitroURL
             badgeURL
             badgeEXT
+            figureURL
             groupBadgeURL
             discordURL
             discordWidget

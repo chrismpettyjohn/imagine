@@ -5,6 +5,7 @@ import { Card } from '../../../components/card/Card';
 import { useArticleCommentFetchMany } from '@imagine-cms/client';
 import { ArticleCommentsCardProps } from './ArticleCommentsCard.types';
 import { ArticleCommentsCardHeader } from './ArticleCommentsCard.styled';
+import { Avatar } from '../../../components/avatar/Avatar';
 
 export function ArticleCommentsCard({ articleID }: ArticleCommentsCardProps) {
   const { data, fetch } = useArticleCommentFetchMany();
@@ -30,7 +31,7 @@ export function ArticleCommentsCard({ articleID }: ArticleCommentsCardProps) {
               <div className="row align-items-center">
                 <div className="col-3">
                   <div className="avatar orange">
-                    <img src={`https://imager.habboon.pw?figure=${articleComment.user?.look}&size=m&direction=3&head_direction=3&gesture=sml&headonly=1`} loading="lazy" />
+                    <Avatar look={articleComment.user?.look ?? '-'} headOnly />
                   </div>
                 </div>
                 <div className="col-9">

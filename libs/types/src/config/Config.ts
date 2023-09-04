@@ -4,6 +4,7 @@ export interface ConfigWire {
   nitroURL?: string;
   badgeURL?: string;
   badgeEXT?: string;
+  figureURL?: string;
   groupBadgeURL?: string;
   discordURL?: string;
   discordWidget?: string;

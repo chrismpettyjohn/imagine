@@ -1,17 +1,19 @@
 import React from 'react';
+import { Link } from 'wouter';
+import { Badge } from '../badge/Badge';
+import { Avatar } from '../avatar/Avatar';
 import { LongUserContainerProps } from './LongUserContainer.types';
 import { LongUserContainerElement, LongUserContainerInformation } from './LongUserContainer.styled';
-import { Link } from 'wouter';
 
 export function LongUserContainer({ user }: LongUserContainerProps) {
   return (
     <Link to={`/profile/${user.username}`}>
       <LongUserContainerElement>
-        <img src={`https://imager.habboon.pw/?figure=${user.look}&size=m&direction=2&head_direction=2&gesture=sml&headonly=1`} />
+        <Avatar look={user.look ?? '-'} headOnly size="l" direction={2} headDirection={2} />
         <LongUserContainerInformation>
 
           <h3>{user.username}</h3>
-          <img src={`https://habborator.org/badges/badges/${user.rank?.badgeCode || 'FAN'}.gif`} />
+          <Badge badge={{ code: user.rank?.badgeCode }} />
         </LongUserContainerInformation>
       </LongUserContainerElement>
     </Link>

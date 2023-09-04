@@ -1,13 +1,13 @@
 import DayJS from 'dayjs';
-import {BanWire} from '@imagine-cms/types';
-import React, {useContext, useEffect} from 'react';
-import {configContext, useFetchBans} from '@imagine-cms/web';
-import {DataTable} from '../../components/data-table/DataTable';
-import {LoadingOverlay} from '../../components/loading-overlay/LoadingOverlay';
+import { BanWire } from '@imagine-cms/types';
+import React, { useContext, useEffect } from 'react';
+import { configContext, useFetchBans } from '@imagine-cms/web';
+import { DataTable } from '../../components/data-table/DataTable';
+import { LoadingOverlay } from '../../components/loading-overlay/LoadingOverlay';
 
 export function BansListScreen() {
-  const {config} = useContext(configContext);
-  const {runQuery, data, loading} = useFetchBans();
+  const { config } = useContext(configContext);
+  const { runQuery, data, loading } = useFetchBans();
 
   useEffect(() => {
     runQuery();

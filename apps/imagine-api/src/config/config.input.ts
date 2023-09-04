@@ -32,6 +32,11 @@ export class ConfigUpdateInput implements ConfigUpdateInputDTO {
   @Field({nullable: true})
   @IsUrl()
   @IsOptional()
+  figureURL?: string;
+
+  @Field({nullable: true})
+  @IsUrl()
+  @IsOptional()
   groupBadgeURL?: string;
 
   @Field({nullable: true})

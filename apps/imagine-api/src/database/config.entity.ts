@@ -20,6 +20,9 @@ export class ConfigEntity {
   @Column({name: 'badge_ext'})
   badgeEXT!: string;
 
+  @Column({name: 'figure_url'})
+  figureURL!: string;
+
   @Column({name: 'group_badge_url'})
   groupBadgeURL!: string;
 

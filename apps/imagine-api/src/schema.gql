@@ -136,6 +136,7 @@ type ConfigModel {
   nitroURL: String
   badgeURL: String
   badgeEXT: String
+  figureURL: String
   groupBadgeURL: String
   discordURL: String
   discordWidget: String
@@ -442,6 +443,7 @@ input ConfigUpdateInput {
   nitroURL: String
   badgeURL: String
   badgeEXT: String
+  figureURL: String
   groupBadgeURL: String
   discordURL: String
   discordWidget: String

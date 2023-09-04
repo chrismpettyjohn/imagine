@@ -19,6 +19,9 @@ export class ConfigModel implements ConfigWire {
   badgeEXT?: string;
 
   @Field({nullable: true})
+  figureURL?: string;
+
+  @Field({nullable: true})
   groupBadgeURL?: string;
 
   @Field({nullable: true})

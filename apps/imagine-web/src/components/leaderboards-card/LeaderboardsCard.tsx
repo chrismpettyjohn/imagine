@@ -1,6 +1,7 @@
 import { Link } from 'wouter';
 import { Card } from '../card/Card';
 import React, { useEffect } from 'react';
+import { Avatar } from '../avatar/Avatar';
 import { UserWire } from '@imagine-cms/types';
 import { useRunQuery } from '@imagine-cms/web';
 import { LeaderboardsCardProps } from './LeaderboardsCard.types';
@@ -28,7 +29,7 @@ export function LeaderboardsCard({ title, value, query }: LeaderboardsCardProps)
             data?.users?.map(user => (
               <tr key={`user_${user.id}`} style={{ backgroundColor: 'f8f9fa' }}>
                 <td width="25%">
-                  <img src={`https://imager.habboon.pw?figure=${user.look}&size=m&direction=2&head_direction=2&gesture=sml&headonly=1`} />
+                  <Avatar look={user.look} size="m" direction={2} headDirection={2} gesture="sml" headOnly />
                 </td>
                 <td width="75%">
                   <Link to={`/profile/${user.username}`}>
