@@ -28,6 +28,7 @@ import {
   IMAGINE_DATABASE_USER,
   IMAGINE_GRAPHQL_PLAYGROUND,
 } from './imagine.constant';
+import {GoogleModule} from './google/google.module';
 
 @Module({
   imports: [
@@ -78,6 +79,7 @@ import {
     InternationalizationModule,
     DiscordModule,
     FacebookModule,
+    GoogleModule,
   ],
 })
 export class ImagineModule {}

@@ -39,6 +39,12 @@ export * from './facebook/facebook-user-authenticate.mutation';
 export * from './facebook/facebook.fragment';
 export * from './facebook/facebook.input';
 
+// Google
+export * from './google/google-user-authenticate.hook';
+export * from './google/google-user-authenticate.mutation';
+export * from './google/google.fragment';
+export * from './google/google.input';
+
 // Photo
 export * from './photo/photo.fragment';
 export * from './photo/photo-fetch-many.hook';

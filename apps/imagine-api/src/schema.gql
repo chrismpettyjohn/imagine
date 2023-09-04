@@ -232,6 +232,12 @@ enum LanguagePhraseType {
   Game
 }
 
+type GoogleAuthModel {
+  sessionID: Float
+  userID: Float
+  sessionToken: String
+}
+
 type Query {
   sessionSSOCreate: SessionSSOModel!
   sessionByJWT(jwt: String!): SessionModel!
@@ -382,6 +388,7 @@ type Mutation {
   languagePhraseDelete(id: Float!): Boolean!
   discordUserAuthenticate(input: DiscordAuthInput!): DiscordAuthModel!
   facebookUserAuthenticate(input: FacebookAuthInput!): FacebookAuthModel!
+  googleUserAuthenticate(input: GoogleAuthInput!): GoogleAuthModel!
 }
 
 input UserCreateInput {
@@ -518,6 +525,10 @@ input DiscordAuthInput {
 
 input FacebookAuthInput {
   facebookAuthToken: String!
+}
+
+input GoogleAuthInput {
+  googleAuthToken: String!
 }
 
 type Subscription {

@@ -81,6 +81,9 @@ export class UserEntity implements UserWire {
   @Column({name: 'home_room'})
   homeRoomID: number = IMAGINE_DEFAULT_HOME_ROOM;
 
+  @Column({name: 'google_id', type: 'varchar'})
+  googleID?: string;
+
   @Column({name: 'fb_id', type: 'varchar'})
   facebookID?: string;
 
