@@ -10,3 +10,9 @@ export const FACEBOOK_APP_ID = import.meta.env.VITE_FACEBOOK_APP_ID!;
 
 // @ts-ignore
 export const FACEBOOK_REDIRECT_URL = import.meta.env.VITE_FACEBOOK_REDIRECT_URL!;
+
+// @ts-ignore
+export const GOOGLE_APP_ID = import.meta.env.VITE_GOOGLE_APP_ID!;
+
+// @ts-ignore
+export const GOOGLE_REDIRECT_URL = import.meta.env.VITE_GOOGLE_REDIRECT_URL!;

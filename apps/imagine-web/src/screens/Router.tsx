@@ -10,6 +10,7 @@ import { RegisterScreen } from './register-screen/RegisterScreen';
 import { PlayGameScreen } from './play-game-screen/PlayGameScreen';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
 import { CommunityStaffScreen } from './community-staff-screen/CommunityStaffScreen';
+import { LoginWithGoogleScreen } from './login-with-google-screen/LoginWithGoogleScreen';
 import { LoginWithDiscordScreen } from './login-with-discord-screen/LoginWithDiscordScreen';
 import { ProfileViewPhotoScreen } from './profile-view-photo-screen/ProfileViewPhotoScreen';
 import { LoginWithFacebookScreen } from './login-with-facebook-screen/LoginWithFacebookScreen';
@@ -38,6 +39,10 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/login/facebook',
     view: LoginWithFacebookScreen,
+  },
+  {
+    path: '/login/google',
+    view: LoginWithGoogleScreen,
   },
   {
     path: '/register',

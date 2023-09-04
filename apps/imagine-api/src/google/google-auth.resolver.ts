@@ -11,15 +11,21 @@ export class GoogleAuthResolver {
   async googleUserAuthenticate(
     @Args('input', {type: () => GoogleAuthInput}) input: GoogleAuthInput
   ): Promise<GoogleAuthModel> {
-    const googleService = new GoogleService(input.googleAuthToken);
-    const googleUser = await googleService.getUser();
-    const sessionToken = await this.googleAuthService.googleUserAuthenticate(
-      googleUser
-    );
-    return {
-      sessionID: sessionToken.session.id!,
-      userID: sessionToken.session.userID,
-      sessionToken: sessionToken.accessToken,
-    };
+    try {
+      const googleService = new GoogleService(input.googleAuthToken);
+      const googleUser = await googleService.getUser();
+      console.log(googleUser);
+      const sessionToken = await this.googleAuthService.googleUserAuthenticate(
+        googleUser
+      );
+      return {
+        sessionID: sessionToken.session.id!,
+        userID: sessionToken.session.userID,
+        sessionToken: sessionToken.accessToken,
+      };
+    } catch (e: any) {
+      console.log(e);
+      throw e;
+    }
   }
 }

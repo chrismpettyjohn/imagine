@@ -10,7 +10,7 @@ export class GoogleService {
   }
 
   async getUser(): Promise<GoogleUserWire> {
-    const response = await this.googleAPI.get('me?fields=email');
+    const response = await this.googleAPI.get('oauth2/v3/userinfo ');
     return response.data;
   }
 }
