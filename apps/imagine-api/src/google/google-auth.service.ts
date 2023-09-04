@@ -20,7 +20,7 @@ export class GoogleAuthService {
           email: googleUser.email,
         },
         {
-          googleID: googleUser.id,
+          googleID: googleUser.sub,
         },
       ],
     });

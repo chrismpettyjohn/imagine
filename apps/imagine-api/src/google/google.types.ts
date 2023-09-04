@@ -1,4 +1,4 @@
 export interface GoogleUserWire {
-  id: string;
+  sub: string;
   email: string;
 }
