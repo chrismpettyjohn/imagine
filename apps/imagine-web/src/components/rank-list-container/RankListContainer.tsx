@@ -10,7 +10,7 @@ export function RankListContainer({ rank }: RankListContainerProps) {
     <Card>
       <RankListContainerHeader>
         <h1>{rank.name}</h1>
-        <Badge badge={{ code: 'ADM' }} />
+        <Badge badge={{ code: rank.badgeCode }} />
       </RankListContainerHeader>
       <p>{rank.description}</p>
       <RankListContainerMembers>
