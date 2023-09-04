@@ -33,6 +33,12 @@ export * from './discord/discord-user-authenticate.mutation';
 export * from './discord/discord.fragment';
 export * from './discord/discord.input';
 
+// Facebook
+export * from './facebook/facebook-user-authenticate.hook';
+export * from './facebook/facebook-user-authenticate.mutation';
+export * from './facebook/facebook.fragment';
+export * from './facebook/facebook.input';
+
 // Photo
 export * from './photo/photo.fragment';
 export * from './photo/photo-fetch-many.hook';

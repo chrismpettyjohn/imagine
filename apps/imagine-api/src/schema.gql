@@ -517,7 +517,7 @@ input DiscordAuthInput {
 }
 
 input FacebookAuthInput {
-  accessToken: String!
+  facebookAuthToken: String!
 }
 
 type Subscription {

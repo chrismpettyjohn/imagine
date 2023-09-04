@@ -11,7 +11,7 @@ export class FacebookAuthResolver {
   async facebookUserAuthenticate(
     @Args('input', {type: () => FacebookAuthInput}) input: FacebookAuthInput
   ): Promise<FacebookAuthModel> {
-    const facebookService = new FacebookService(input.accessToken);
+    const facebookService = new FacebookService(input.facebookAuthToken);
     const facebookUser = await facebookService.getUser();
     const sessionToken =
       await this.facebookAuthService.facebookUserAuthenticate(facebookUser);

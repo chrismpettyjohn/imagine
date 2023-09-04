@@ -7,7 +7,7 @@
     "dist"
   ],
   "scripts": {
-    "start": "vite --host",
+    "start": "vite",
     "build": "tsc && vite build"
   },
   "dependencies": {
@@ -23,6 +23,7 @@
     "apollo-boost": "0.4.9",
     "graphql": "16.8.0",
     "apollo-link-ws": "1.0.20",
+    "query-string": "8.1.0",
     "@imagine-cms/types": "*",
     "@imagine-cms/web": "*",
     "@imagine-cms/client": "*"
@@ -36,7 +37,8 @@
     "vite": "4.4.9",
     "@vitejs/plugin-react": "4.0.4",
     "vite-tsconfig-paths": "4.2.0",
-    "@originjs/vite-plugin-commonjs": "1.0.3"
+    "@originjs/vite-plugin-commonjs": "1.0.3",
+    "vite-plugin-mkcert": "1.16.0"
   },
   "eslintConfig": {
     "extends": "react-app"
