@@ -1,9 +1,10 @@
 import React from 'react';
 import { Card } from '../../components/card/Card';
-import { SwitchProfileCard } from './switch-profile-card/SwitchProfileCard';
+import { GoogleAccountCard } from './google-account-card/GoogleAccountCard';
 import { ChangePasswordForm } from './change-password-form/ChangePasswordForm';
+import { DiscordAccountCard } from './discord-account-card/DiscordAccountCard';
+import { FacebookAccountCard } from './facebook-account-card/FacebookAccountCard';
 import { ChangeEmailAddressForm } from './change-email-address-form/ChangeEmailAddressForm';
-import { ManageConnectedAccountsCard } from './manage-connected-accounts-card/ManageConnectedAccountsCard';
 
 export function SettingsScreen() {
   return (
@@ -15,9 +16,13 @@ export function SettingsScreen() {
         <ChangePasswordForm />
       </Card>
       <br />
-      <ManageConnectedAccountsCard />
-      <br />
-      <SwitchProfileCard />
+      <Card header="Connected Accounts">
+        <div style={{ display: 'flex', gap: 16 }}>
+          <DiscordAccountCard />
+          <FacebookAccountCard />
+          <GoogleAccountCard />
+        </div>
+      </Card>
     </>
   )
 }

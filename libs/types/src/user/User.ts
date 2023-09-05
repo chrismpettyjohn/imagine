@@ -30,6 +30,9 @@ export interface UserWire {
   ipLast?: string;
   ipRegisteredWith?: string;
   homeRoomID?: number;
+  discordID?: string;
+  facebookID?: string;
+  googleID?: string;
   rank?: RankWire;
   sessions?: SessionWire[];
   articles?: ArticleWire[];

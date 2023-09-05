@@ -17,6 +17,9 @@ const FIND_USER_BY_ID = gql`
       accountCreatedAt
       onlineStatus
       homeRoomID
+      discordID
+      facebookID
+      googleID
     }
   }
 `;

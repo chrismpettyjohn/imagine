@@ -70,6 +70,9 @@ type UserModel {
   onlineStatus: UserOnlineStatus
   ipRegisteredWith: String
   homeRoomID: Float
+  discordID: String
+  facebookID: String
+  googleID: String
   sessions: [SessionModel!]
   ipLast: String!
 }

@@ -55,6 +55,15 @@ export class UserModel implements UserWire {
   @Field(() => Number, {nullable: true})
   homeRoomID?: number;
 
+  @Field(() => String, {nullable: true})
+  discordID?: string;
+
+  @Field(() => String, {nullable: true})
+  facebookID?: string;
+
+  @Field(() => String, {nullable: true})
+  googleID?: string;
+
   @Field(() => [SessionModel], {nullable: true})
   sessions?: SessionModel[];
 }
