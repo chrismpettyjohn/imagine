@@ -1,7 +1,11 @@
 import {In} from 'typeorm';
+import {UserModel} from '../user/user.model';
 import {UserEntity} from '../database/user.entity';
-import {ArticleReactionModel} from './article-reaction.model';
+import {UnauthorizedException} from '@nestjs/common';
+import {GetUser} from '../session/get-user.decorator';
+import {UserRepository} from '../database/user.repository';
 import {HasSession} from '../session/has-session.decorator';
+import {ArticleReactionModel} from './article-reaction.model';
 import {ArticleReactionService} from './article-reaction.service';
 import {
   Args,
@@ -11,23 +15,17 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
-import {ArticleReactionDataloaderService} from './article-reaction.dataloader';
 import {
   ArticleReactionCreateInput,
   ArticleReactionFilterManyInput,
   ArticleReactionFilterOneInput,
 } from './article-reaction.input';
-import {UnauthorizedException} from '@nestjs/common';
-import {UserRepository} from '../database/user.repository';
-import {UserModel} from '../user/user.model';
-import {GetUser} from '../session/get-user.decorator';
 
 @Resolver(() => ArticleReactionModel)
 export class ArticleReactionResolver {
   constructor(
     private readonly userRepo: UserRepository,
-    private readonly articleReactionService: ArticleReactionService,
-    private readonly articleReactionDataloaderService: ArticleReactionDataloaderService
+    private readonly articleReactionService: ArticleReactionService
   ) {}
 
   @ResolveField(() => UserModel)
@@ -39,7 +37,7 @@ export class ArticleReactionResolver {
   async articleReaction(
     @Args('filter') filter: ArticleReactionFilterOneInput
   ): Promise<ArticleReactionModel> {
-    return this.articleReactionDataloaderService.loadById(filter.id);
+    return this.articleReactionService.findOne({id: filter.id});
   }
 
   @Query(() => [ArticleReactionModel])
@@ -94,7 +92,6 @@ export class ArticleReactionResolver {
       throw new UnauthorizedException();
     }
     await this.articleReactionService.delete(id);
-    await this.articleReactionDataloaderService.clearByID(id);
     return true;
   }
 }

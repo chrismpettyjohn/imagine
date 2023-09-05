@@ -2,17 +2,15 @@ import {omit} from 'lodash';
 import {JwtService} from '@nestjs/jwt';
 import {SessionArgs} from './session.args';
 import {GetUser} from './get-user.decorator';
-import {PubSub} from 'graphql-subscriptions';
 import {SessionService} from './session.service';
 import {HashService} from '../common/hash.service';
 import {HasSession} from './has-session.decorator';
 import {UserEntity} from '../database/user.entity';
-import {BadRequestException, UnauthorizedException} from '@nestjs/common';
 import {SessionEntity} from '../database/session.entity';
 import {UserRepository} from '../database/user.repository';
-import {SessionDataloaderService} from './session.dataloader';
+import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
 import {SessionRepository} from '../database/session.repository';
-import {Args, Mutation, Query, Resolver, Subscription} from '@nestjs/graphql';
+import {BadRequestException, UnauthorizedException} from '@nestjs/common';
 import {
   SessionDisconnectAccountInput,
   SessionUpdateEmailInput,
@@ -27,8 +25,6 @@ import {
   SessionUpdatePasswordModel,
 } from './session.model';
 
-const pubSub = new PubSub();
-
 @Resolver(() => SessionModel)
 export class SessionResolver {
   constructor(
@@ -36,8 +32,7 @@ export class SessionResolver {
     private readonly userRepo: UserRepository,
     private readonly hashService: HashService,
     private readonly sessionRepo: SessionRepository,
-    private readonly sessionService: SessionService,
-    private readonly sessionDataLoaderService: SessionDataloaderService
+    private readonly sessionService: SessionService
   ) {}
 
   @Query(() => SessionSSOModel)
@@ -63,7 +58,7 @@ export class SessionResolver {
     @Args('id') id: number,
     @GetUser() user: UserEntity
   ): Promise<SessionEntity> {
-    const session = await this.sessionDataLoaderService.loadById(id);
+    const session = await this.sessionRepo.findOneOrFail({id});
     this.ownsResource(session, user);
     return session;
   }
@@ -89,7 +84,6 @@ export class SessionResolver {
       username,
       password
     );
-    pubSub.publish('sessionCreated', {sessionCreated: newSession});
     return newSession;
   }
 
@@ -173,11 +167,6 @@ export class SessionResolver {
     }
     await this.userRepo.update({id: session.id!}, {googleID: null as any});
     return {success: true};
-  }
-
-  @Subscription(() => SessionModel)
-  sessionCreated() {
-    return pubSub.asyncIterator('sessionCreated');
   }
 
   private ownsResource(session: SessionEntity, authenticatedUser: UserEntity) {

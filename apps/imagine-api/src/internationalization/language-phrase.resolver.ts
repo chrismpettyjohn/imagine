@@ -3,21 +3,17 @@ import {LanguagePhraseInput} from './language-phrase.input';
 import {LanguagePhraseModel} from './language-phrase.model';
 import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
 import {LanguagePhraseEntity} from '../database/language-phrase.entity';
-import {LanguagePhraseDataloaderService} from './language-phrase.dataloader';
 import {LanguagePhraseRepository} from '../database/language-phrase.repository';
 
 const pubSub = new PubSub();
 
 @Resolver(() => LanguagePhraseModel)
 export class LanguagePhraseResolver {
-  constructor(
-    private readonly languagePhraseRepo: LanguagePhraseRepository,
-    private readonly languagePhraseDataloaderService: LanguagePhraseDataloaderService
-  ) {}
+  constructor(private readonly languagePhraseRepo: LanguagePhraseRepository) {}
 
   @Query(() => LanguagePhraseModel)
   async languagePhrase(@Args('id') id: number): Promise<LanguagePhraseEntity> {
-    return this.languagePhraseDataloaderService.loadById(id);
+    return this.languagePhraseRepo.findOneOrFail({id});
   }
 
   @Query(() => [LanguagePhraseModel])

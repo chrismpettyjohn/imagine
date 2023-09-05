@@ -5,7 +5,6 @@ import {SessionService} from './session.service';
 import {SessionResolver} from './session.resolver';
 import {CommonModule} from '../common/common.module';
 import {DatabaseModule} from '../database/database.module';
-import {SessionDataloaderService} from './session.dataloader';
 import {JwtAuthenticationGuard} from './jwt-authentication.guard';
 import {
   IMAGINE_JWT_EXPIRATION_IN_MS,
@@ -25,14 +24,12 @@ import {
   ],
   providers: [
     SessionService,
-    SessionDataloaderService,
     SessionResolver,
     JwtAuthenticationGuard,
     HasScopeGuard,
   ],
   exports: [
     SessionService,
-    SessionDataloaderService,
     SessionResolver,
     JwtAuthenticationGuard,
     HasScopeGuard,

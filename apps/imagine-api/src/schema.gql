@@ -566,20 +566,5 @@ input GoogleAuthInput {
 }
 
 type Subscription {
-  sessionCreated: SessionModel!
-  userCreated: UserModel!
-  userDeleted: UserModel!
-  rankCreated: RankModel!
-  rankDeleted: RankModel!
-  articleCreated: ArticleModel!
-  articleDeleted: ArticleModel!
   configUpdated: ConfigModel!
-  banCreated: BanModel!
-  banDeleted: BanModel!
-  wordFilterCreated: WordFilterModel!
-  wordFilterDeleted: WordFilterModel!
-  chatlogDeleted: ChatlogModel!
-  roomDeleted: RoomModel!
-  groupDeleted: GroupModel!
-  photoDeleted: PhotoModel!
 }

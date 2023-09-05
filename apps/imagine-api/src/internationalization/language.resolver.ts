@@ -1,23 +1,16 @@
-import {PubSub} from 'graphql-subscriptions';
 import {LanguageModel} from './language.model';
-import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
-import {LanguageEntity} from '../database/language.entity';
-import {LanguageDataloaderService} from './language.dataloader';
-import {LanguageRepository} from '../database/language.repository';
 import {LanguageInput} from './language.input';
-
-const pubSub = new PubSub();
+import {LanguageEntity} from '../database/language.entity';
+import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
+import {LanguageRepository} from '../database/language.repository';
 
 @Resolver(() => LanguageModel)
 export class LanguageResolver {
-  constructor(
-    private readonly languageRepo: LanguageRepository,
-    private readonly languageDataloaderService: LanguageDataloaderService
-  ) {}
+  constructor(private readonly languageRepo: LanguageRepository) {}
 
   @Query(() => LanguageModel)
   async language(@Args('id') id: number): Promise<LanguageEntity> {
-    return this.languageDataloaderService.loadById(id);
+    return this.languageRepo.findOneOrFail({id});
   }
 
   @Query(() => [LanguageModel])

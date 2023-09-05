@@ -3,11 +3,11 @@ import {UserModel} from '../user/user.model';
 import {UserEntity} from '../database/user.entity';
 import {UnauthorizedException} from '@nestjs/common';
 import {PhotoCommentModel} from './photo-comment.model';
+import {GetUser} from '../session/get-user.decorator';
 import {PhotoReactionModel} from './photo-reaction.model';
+import {UserRepository} from '../database/user.repository';
 import {HasSession} from '../session/has-session.decorator';
 import {PhotoCommentService} from './photo-comment.service';
-import {UserRepository} from '../database/user.repository';
-import {PhotoCommentDataloaderService} from './photo-comment.dataloader';
 import {
   Args,
   Mutation,
@@ -21,14 +21,12 @@ import {
   PhotoCommentFilterManyInput,
   PhotoCommentFilterOneInput,
 } from './photo-comment.input';
-import {GetUser} from '../session/get-user.decorator';
 
 @Resolver(() => PhotoCommentModel)
 export class PhotoCommentResolver {
   constructor(
     private readonly userRepo: UserRepository,
-    private readonly photoCommentService: PhotoCommentService,
-    private readonly photoCommentDataloaderService: PhotoCommentDataloaderService
+    private readonly photoCommentService: PhotoCommentService
   ) {}
 
   @ResolveField(() => UserModel)
@@ -40,7 +38,7 @@ export class PhotoCommentResolver {
   async photoComment(
     @Args('filter') filter: PhotoCommentFilterOneInput
   ): Promise<PhotoCommentModel> {
-    return this.photoCommentDataloaderService.loadById(filter.id);
+    return this.photoCommentService.findOne({id: filter.id});
   }
 
   @Query(() => [PhotoCommentModel])
@@ -99,7 +97,6 @@ export class PhotoCommentResolver {
       throw new UnauthorizedException();
     }
     await this.photoCommentService.delete(id);
-    await this.photoCommentDataloaderService.clearByID(id);
     return true;
   }
 }

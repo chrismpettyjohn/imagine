@@ -2,12 +2,12 @@ import {In} from 'typeorm';
 import {UserModel} from '../user/user.model';
 import {UserEntity} from '../database/user.entity';
 import {UnauthorizedException} from '@nestjs/common';
+import {GetUser} from '../session/get-user.decorator';
 import {ArticleCommentModel} from './article-comment.model';
 import {ArticleReactionModel} from './article-reaction.model';
 import {HasSession} from '../session/has-session.decorator';
 import {ArticleCommentService} from './article-comment.service';
 import {UserRepository} from '../database/user.repository';
-import {ArticleCommentDataloaderService} from './article-comment.dataloader';
 import {
   Args,
   Mutation,
@@ -21,14 +21,12 @@ import {
   ArticleCommentFilterManyInput,
   ArticleCommentFilterOneInput,
 } from './article-comment.input';
-import {GetUser} from '../session/get-user.decorator';
 
 @Resolver(() => ArticleCommentModel)
 export class ArticleCommentResolver {
   constructor(
     private readonly userRepo: UserRepository,
-    private readonly articleCommentService: ArticleCommentService,
-    private readonly articleCommentDataloaderService: ArticleCommentDataloaderService
+    private readonly articleCommentService: ArticleCommentService
   ) {}
 
   @ResolveField(() => UserModel)
@@ -40,7 +38,7 @@ export class ArticleCommentResolver {
   async articleComment(
     @Args('filter') filter: ArticleCommentFilterOneInput
   ): Promise<ArticleCommentModel> {
-    return this.articleCommentDataloaderService.loadById(filter.id);
+    return this.articleCommentService.findOne({id: filter.id});
   }
 
   @Query(() => [ArticleCommentModel])
@@ -103,7 +101,6 @@ export class ArticleCommentResolver {
       throw new UnauthorizedException();
     }
     await this.articleCommentService.delete(id);
-    await this.articleCommentDataloaderService.clearByID(id);
     return true;
   }
 }

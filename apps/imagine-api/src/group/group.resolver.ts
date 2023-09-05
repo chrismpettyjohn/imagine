@@ -1,9 +1,9 @@
 import {omit} from 'lodash';
 import {GroupArgs} from './group.args';
 import {GroupModel} from './group.model';
-import {PubSub} from 'graphql-subscriptions';
+import {UserModel} from '../user/user.model';
 import {GroupEntity} from '../database/group.entity';
-import {GroupDataloaderService} from './group.dataloader';
+import {UserRepository} from '../database/user.repository';
 import {GroupRepository} from '../database/group.repository';
 import {
   Args,
@@ -12,19 +12,13 @@ import {
   Query,
   ResolveField,
   Resolver,
-  Subscription,
 } from '@nestjs/graphql';
-import {UserModel} from '../user/user.model';
-import {UserRepository} from '../database/user.repository';
-
-const pubSub = new PubSub();
 
 @Resolver(() => GroupModel)
 export class GroupResolver {
   constructor(
     private readonly userRepo: UserRepository,
-    private readonly groupRepo: GroupRepository,
-    private readonly groupDataloaderService: GroupDataloaderService
+    private readonly groupRepo: GroupRepository
   ) {}
 
   @ResolveField(() => UserModel)
@@ -34,7 +28,7 @@ export class GroupResolver {
 
   @Query(() => GroupModel)
   async group(@Args('id') id: number): Promise<GroupEntity> {
-    return this.groupDataloaderService.loadById(id);
+    return this.groupRepo.findOneOrFail({id});
   }
 
   @Query(() => [GroupModel])
@@ -44,15 +38,7 @@ export class GroupResolver {
 
   @Mutation(() => Boolean)
   async groupDelete(@Args('id') id: number) {
-    const deletedGroup = await this.groupRepo.findOneOrFail({id});
-    pubSub.publish('groupDeleted', {groupDeleted: deletedGroup});
     await this.groupRepo.delete({id});
-    await this.groupDataloaderService.clearByID(id);
     return true;
-  }
-
-  @Subscription(() => GroupModel)
-  groupDeleted() {
-    return pubSub.asyncIterator('groupDeleted');
   }
 }

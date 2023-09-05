@@ -1,7 +1,6 @@
 import {omit} from 'lodash';
 import {ArticleArgs} from './article.args';
 import {ArticleModel} from './article.model';
-import {PubSub} from 'graphql-subscriptions';
 import {UserModel} from '../user/user.model';
 import {Inject, forwardRef} from '@nestjs/common';
 import {UserEntity} from '../database/user.entity';
@@ -9,7 +8,6 @@ import {GetUser} from '../session/get-user.decorator';
 import {HasScope} from '../session/has-scope.decorator';
 import {ArticleEntity} from '../database/article.entity';
 import {UserRepository} from '../database/user.repository';
-import {ArticleDataloaderService} from './article.dataloader';
 import {ArticleRepository} from '../database/article.repository';
 import {ArticleCreateInput, ArticleUpdateInput} from './article.input';
 import {
@@ -17,20 +15,16 @@ import {
   Mutation,
   Query,
   Resolver,
-  Subscription,
   ResolveField,
   Parent,
 } from '@nestjs/graphql';
-
-const pubSub = new PubSub();
 
 @Resolver(() => ArticleModel)
 export class ArticleResolver {
   constructor(
     @Inject(forwardRef(() => UserRepository))
     private readonly userRepo: UserRepository,
-    private readonly articleRepo: ArticleRepository,
-    private readonly articleDataloaderService: ArticleDataloaderService
+    private readonly articleRepo: ArticleRepository
   ) {}
 
   @ResolveField('user', () => UserModel)
@@ -40,7 +34,7 @@ export class ArticleResolver {
 
   @Query(() => ArticleModel)
   async article(@Args('id') id: number): Promise<ArticleEntity> {
-    return this.articleDataloaderService.loadById(id);
+    return this.articleRepo.findOneOrFail({id});
   }
 
   @Query(() => [ArticleModel])
@@ -64,13 +58,7 @@ export class ArticleResolver {
       createdAt,
       updatedAt: createdAt,
     });
-    pubSub.publish('articleCreated', {articleCreated: newArticle});
     return newArticle;
-  }
-
-  @Subscription(() => ArticleModel)
-  articleCreated() {
-    return pubSub.asyncIterator('articleCreated');
   }
 
   @Mutation(() => Boolean)
@@ -80,22 +68,13 @@ export class ArticleResolver {
     @Args('articleChanges') articleChanges: ArticleUpdateInput
   ) {
     await this.articleRepo.update({id}, articleChanges);
-    this.articleDataloaderService.clearByID(id);
     return true;
   }
 
   @Mutation(() => Boolean)
   @HasScope('manageArticles')
   async articleDelete(@Args('id') id: number) {
-    const deletedArticle = await this.articleRepo.findOneOrFail({id});
-    pubSub.publish('articleDeleted', {articleDeleted: deletedArticle});
     await this.articleRepo.delete({id});
-    this.articleDataloaderService.clearByID(id);
     return true;
-  }
-
-  @Subscription(() => ArticleModel)
-  articleDeleted() {
-    return pubSub.asyncIterator('articleDeleted');
   }
 }

@@ -1,8 +1,13 @@
 import {In} from 'typeorm';
+import {UserModel} from '../user/user.model';
 import {UserEntity} from '../database/user.entity';
+import {UnauthorizedException} from '@nestjs/common';
+import {GetUser} from '../session/get-user.decorator';
 import {PhotoReactionModel} from './photo-reaction.model';
 import {HasSession} from '../session/has-session.decorator';
+import {UserRepository} from '../database/user.repository';
 import {PhotoReactionService} from './photo-reaction.service';
+
 import {
   Args,
   Mutation,
@@ -11,23 +16,17 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
-import {PhotoReactionDataloaderService} from './photo-reaction.dataloader';
 import {
   PhotoReactionCreateInput,
   PhotoReactionFilterManyInput,
   PhotoReactionFilterOneInput,
 } from './photo-reaction.input';
-import {UnauthorizedException} from '@nestjs/common';
-import {UserRepository} from '../database/user.repository';
-import {UserModel} from '../user/user.model';
-import {GetUser} from '../session/get-user.decorator';
 
 @Resolver(() => PhotoReactionModel)
 export class PhotoReactionResolver {
   constructor(
     private readonly userRepo: UserRepository,
-    private readonly photoReactionService: PhotoReactionService,
-    private readonly photoReactionDataloaderService: PhotoReactionDataloaderService
+    private readonly photoReactionService: PhotoReactionService
   ) {}
 
   @ResolveField(() => UserModel)
@@ -39,7 +38,7 @@ export class PhotoReactionResolver {
   async photoReaction(
     @Args('filter') filter: PhotoReactionFilterOneInput
   ): Promise<PhotoReactionModel> {
-    return this.photoReactionDataloaderService.loadById(filter.id);
+    return this.photoReactionService.findOne({id: filter.id});
   }
 
   @Query(() => [PhotoReactionModel])
@@ -87,7 +86,6 @@ export class PhotoReactionResolver {
       throw new UnauthorizedException();
     }
     await this.photoReactionService.delete(id);
-    await this.photoReactionDataloaderService.clearByID(id);
     return true;
   }
 }

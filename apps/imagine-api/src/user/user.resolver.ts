@@ -1,20 +1,20 @@
-import {now, omit} from 'lodash';
-import {UserArgs} from './user.args';
+import {now} from 'lodash';
+import {In} from 'typeorm';
 import {UserModel} from './user.model';
-import {PubSub} from 'graphql-subscriptions';
+import {RankModel} from '../rank/rank.model';
 import {UserEntity} from '../database/user.entity';
 import {DEFAULT_USER_VALUES} from './user.constant';
-import {UserDataloaderService} from './user.dataloader';
+import {UserOnlineStatus} from '@imagine-cms/types';
+import {GetUser} from '../session/get-user.decorator';
 import {UserRepository} from '../database/user.repository';
 import {RankRepository} from '../database/rank.repository';
 import {HasSession} from '../session/has-session.decorator';
+import {forwardRef, Inject, UnauthorizedException} from '@nestjs/common';
 import {
   UserCreateInput,
   UserFilterManyInput,
   UserUpdateInput,
 } from './user.input';
-import {SessionRepository} from '../database/session.repository';
-import {forwardRef, Inject, UnauthorizedException} from '@nestjs/common';
 import {
   Args,
   Mutation,
@@ -22,24 +22,14 @@ import {
   Query,
   ResolveField,
   Resolver,
-  Subscription,
 } from '@nestjs/graphql';
-import {RankModel} from '../rank/rank.model';
-import {GetUser} from '../session/get-user.decorator';
-import {In} from 'typeorm';
-import {UserOnlineStatus} from '@imagine-cms/types';
-
-const pubSub = new PubSub();
 
 @Resolver(() => UserModel)
 export class UserResolver {
   constructor(
     private readonly userRepo: UserRepository,
     @Inject(forwardRef(() => RankRepository))
-    private readonly rankRepo: RankRepository,
-    @Inject(forwardRef(() => SessionRepository))
-    private readonly sessionRepo: SessionRepository,
-    private readonly userDataloaderService: UserDataloaderService
+    private readonly rankRepo: RankRepository
   ) {}
 
   @ResolveField('email')
@@ -94,7 +84,7 @@ export class UserResolver {
 
   @Query(() => UserModel)
   async user(@Args('id') id: number): Promise<UserEntity> {
-    return this.userDataloaderService.loadById(id);
+    return this.userRepo.findOneOrFail({id});
   }
 
   @Query(() => [UserModel])
@@ -124,37 +114,25 @@ export class UserResolver {
       ipLast: '', // TODO: Add support for IPs,
       ipRegisteredWith: '', // TODO: Add support for IPs
     });
-    pubSub.publish('userCreated', {userCreated: newUser});
     return newUser;
-  }
-
-  @Subscription(() => UserModel)
-  userCreated() {
-    return pubSub.asyncIterator('userCreated');
   }
 
   @Mutation(() => Boolean)
   async userUpdate(
     @Args('id') id: number,
-    @Args('userChanges') userChanges: UserUpdateInput
+    @Args('userChanges') userChanges: UserUpdateInput,
+    @GetUser() session: UserEntity
   ) {
+    this.ownsResource(id, session);
     await this.userRepo.update({id}, userChanges);
-    await this.userDataloaderService.clearByID(id);
     return true;
   }
 
   @Mutation(() => Boolean)
-  async userDelete(@Args('id') id: number) {
-    const deletedUser = await this.userRepo.findOneOrFail({id});
-    pubSub.publish('userDeleted', {userDeleted: deletedUser});
+  async userDelete(@Args('id') id: number, @GetUser() session: UserEntity) {
+    this.ownsResource(id, session);
     await this.userRepo.delete({id});
-    await this.userDataloaderService.clearByID(id);
     return true;
-  }
-
-  @Subscription(() => UserModel)
-  userDeleted() {
-    return pubSub.asyncIterator('userDeleted');
   }
 
   private ownsResource(userID: number, authenticatedUser: UserEntity) {

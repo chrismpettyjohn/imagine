@@ -1,25 +1,20 @@
-import {PubSub} from 'graphql-subscriptions';
 import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
 import {LanguagePhraseTranslationModel} from './language-phrase-translation.model';
 import {LanguagePhraseTranslationInput} from './language-phrase-translation.input';
 import {LanguagePhraseTranslationEntity} from '../database/language-phrase-translation.entity';
-import {LanguagePhraseTranslationDataloaderService} from './language-phrase-translation.dataloader';
 import {LanguagePhraseTranslationRepository} from '../database/language-phrase-translation.repository';
-
-const pubSub = new PubSub();
 
 @Resolver(() => LanguagePhraseTranslationModel)
 export class LanguagePhraseResolver {
   constructor(
-    private readonly languagePhraseTranslationRepo: LanguagePhraseTranslationRepository,
-    private readonly languagePhraseTranslationDataloaderService: LanguagePhraseTranslationDataloaderService
+    private readonly languagePhraseTranslationRepo: LanguagePhraseTranslationRepository
   ) {}
 
   @Query(() => LanguagePhraseTranslationModel)
   async languagePhraseTranslation(
     @Args('id') id: number
   ): Promise<LanguagePhraseTranslationEntity> {
-    return this.languagePhraseTranslationDataloaderService.loadById(id);
+    return this.languagePhraseTranslationRepo.findOneOrFail({id});
   }
 
   @Query(() => [LanguagePhraseTranslationModel])

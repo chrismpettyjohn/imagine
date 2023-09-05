@@ -1,26 +1,21 @@
+import {In} from 'typeorm';
 import {PhotoModel} from './photo.model';
-import {PubSub} from 'graphql-subscriptions';
+import {UserModel} from '../user/user.model';
+import {RoomModel} from '../room/room.model';
 import {Inject, forwardRef} from '@nestjs/common';
 import {PhotoEntity} from '../database/photo.entity';
+import {RoomRepository} from '../database/room.repository';
 import {UserRepository} from '../database/user.repository';
-import {PhotoDataloaderService} from './photo.dataloader';
 import {PhotoRepository} from '../database/photo.repository';
+import {PhotoFilterManyInput, PhotoFilterOneInput} from './photo.input';
 import {
   Args,
   Mutation,
   Query,
   Resolver,
-  Subscription,
   ResolveField,
   Parent,
 } from '@nestjs/graphql';
-import {RoomRepository} from '../database/room.repository';
-import {UserModel} from '../user/user.model';
-import {RoomModel} from '../room/room.model';
-import {PhotoFilterManyInput, PhotoFilterOneInput} from './photo.input';
-import {In} from 'typeorm';
-
-const pubSub = new PubSub();
 
 @Resolver(() => PhotoModel)
 export class PhotoResolver {
@@ -28,8 +23,7 @@ export class PhotoResolver {
     @Inject(forwardRef(() => UserRepository))
     private readonly userRepo: UserRepository,
     private readonly roomRepo: RoomRepository,
-    private readonly photoRepo: PhotoRepository,
-    private readonly photoDataloaderService: PhotoDataloaderService
+    private readonly photoRepo: PhotoRepository
   ) {}
 
   @ResolveField('user', () => UserModel)
@@ -46,7 +40,7 @@ export class PhotoResolver {
   async photo(
     @Args('filter') filter: PhotoFilterOneInput
   ): Promise<PhotoEntity> {
-    return this.photoDataloaderService.loadById(filter.id);
+    return this.photoRepo.findOneOrFail({id: filter.id});
   }
 
   @Query(() => [PhotoModel])
@@ -68,15 +62,7 @@ export class PhotoResolver {
 
   @Mutation(() => Boolean)
   async photoDelete(@Args('id') id: number) {
-    const deletedPhoto = await this.photoRepo.findOneOrFail({id});
-    pubSub.publish('photoDeleted', {photoDeleted: deletedPhoto});
     await this.photoRepo.delete({id});
-    await this.photoDataloaderService.clearByID(id);
     return true;
-  }
-
-  @Subscription(() => PhotoModel)
-  photoDeleted() {
-    return pubSub.asyncIterator('photoDeleted');
   }
 }
