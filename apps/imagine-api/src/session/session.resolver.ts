@@ -7,18 +7,20 @@ import {SessionService} from './session.service';
 import {HashService} from '../common/hash.service';
 import {HasSession} from './has-session.decorator';
 import {UserEntity} from '../database/user.entity';
-import {UnauthorizedException} from '@nestjs/common';
+import {BadRequestException, UnauthorizedException} from '@nestjs/common';
 import {SessionEntity} from '../database/session.entity';
 import {UserRepository} from '../database/user.repository';
 import {SessionDataloaderService} from './session.dataloader';
 import {SessionRepository} from '../database/session.repository';
 import {Args, Mutation, Query, Resolver, Subscription} from '@nestjs/graphql';
 import {
+  SessionDisconnectAccountInput,
   SessionUpdateEmailInput,
   SessionUpdatePasswordInput,
 } from './session.input';
 import {
   SessionCreatedModel,
+  SessionDisconnectAccountModel,
   SessionModel,
   SessionSSOModel,
   SessionUpdateEmailModel,
@@ -129,6 +131,48 @@ export class SessionResolver {
     return {
       success: true,
     };
+  }
+
+  @Mutation(() => SessionDisconnectAccountModel)
+  @HasSession()
+  async sessionDisconnectDiscord(
+    @Args('input', {type: () => SessionDisconnectAccountInput})
+    input: SessionDisconnectAccountInput,
+    @GetUser() session: UserEntity
+  ): Promise<SessionDisconnectAccountModel> {
+    if (!input.confirm) {
+      throw new BadRequestException();
+    }
+    await this.userRepo.update({id: session.id!}, {discordID: null as any});
+    return {success: true};
+  }
+
+  @Mutation(() => SessionDisconnectAccountModel)
+  @HasSession()
+  async sessionDisconnectFacebook(
+    @Args('input', {type: () => SessionDisconnectAccountInput})
+    input: SessionDisconnectAccountInput,
+    @GetUser() session: UserEntity
+  ): Promise<SessionDisconnectAccountModel> {
+    if (!input.confirm) {
+      throw new BadRequestException();
+    }
+    await this.userRepo.update({id: session.id!}, {facebookID: null as any});
+    return {success: true};
+  }
+
+  @Mutation(() => SessionDisconnectAccountModel)
+  @HasSession()
+  async sessionDisconnectGoogle(
+    @Args('input', {type: () => SessionDisconnectAccountInput})
+    input: SessionDisconnectAccountInput,
+    @GetUser() session: UserEntity
+  ): Promise<SessionDisconnectAccountModel> {
+    if (!input.confirm) {
+      throw new BadRequestException();
+    }
+    await this.userRepo.update({id: session.id!}, {googleID: null as any});
+    return {success: true};
   }
 
   @Subscription(() => SessionModel)

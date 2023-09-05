@@ -81,13 +81,13 @@ export class UserEntity implements UserWire {
   @Column({name: 'home_room'})
   homeRoomID: number = IMAGINE_DEFAULT_HOME_ROOM;
 
-  @Column({name: 'google_id', type: 'varchar'})
+  @Column({name: 'google_id', type: 'varchar', nullable: true})
   googleID?: string;
 
-  @Column({name: 'fb_id', type: 'varchar'})
+  @Column({name: 'fb_id', type: 'varchar', nullable: true})
   facebookID?: string;
 
-  @Column({name: 'discord_id', type: 'varchar'})
+  @Column({name: 'discord_id', type: 'varchar', nullable: true})
   discordID?: string;
 
   @ManyToOne(() => RankEntity, rank => rank.users)

@@ -22,3 +22,9 @@ export class SessionUpdatePasswordInput {
   @IsNotEmpty()
   newPassword!: string;
 }
+
+@InputType()
+export class SessionDisconnectAccountInput {
+  @Field(() => Boolean)
+  confirm!: boolean;
+}

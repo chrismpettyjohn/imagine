@@ -7,3 +7,7 @@ export interface SessionUpdatePasswordInput {
   currentPassword: string;
   newPassword: string;
 }
+
+export interface SessionDisconnectAccountInput {
+  confirm: boolean;
+}

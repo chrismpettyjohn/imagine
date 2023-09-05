@@ -30,6 +30,13 @@ export class DiscordAuthService {
       throw new UnauthorizedException();
     }
 
+    if (!matchingUser.discordID) {
+      await this.userRepo.update(
+        {id: matchingUser.id!},
+        {discordID: discordUser.id}
+      );
+    }
+
     return this.sessionService.generateSession(matchingUser.id!);
   }
 }

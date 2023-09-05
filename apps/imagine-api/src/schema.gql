@@ -37,6 +37,10 @@ type SessionUpdatePasswordModel {
   success: Boolean!
 }
 
+type SessionDisconnectAccountModel {
+  success: Boolean!
+}
+
 type RankScopesModel {
   accessAdminPanel: Boolean!
   manageArticles: Boolean!
@@ -363,6 +367,9 @@ type Mutation {
   sessionCreate(username: String!, password: String!): SessionCreatedModel!
   sessionUpdateEmail(input: SessionUpdateEmailInput!): SessionUpdateEmailModel!
   sessionUpdatePassword(input: SessionUpdatePasswordInput!): SessionUpdatePasswordModel!
+  sessionDisconnectDiscord(input: SessionDisconnectAccountInput!): SessionDisconnectAccountModel!
+  sessionDisconnectFacebook(input: SessionDisconnectAccountInput!): SessionDisconnectAccountModel!
+  sessionDisconnectGoogle(input: SessionDisconnectAccountInput!): SessionDisconnectAccountModel!
   userCreate(newUser: UserCreateInput!): UserModel!
   userUpdate(id: Float!, userChanges: UserUpdateInput!): Boolean!
   userDelete(id: Float!): Boolean!
@@ -412,6 +419,10 @@ input SessionUpdateEmailInput {
 input SessionUpdatePasswordInput {
   currentPassword: String!
   newPassword: String!
+}
+
+input SessionDisconnectAccountInput {
+  confirm: Boolean!
 }
 
 input UserCreateInput {

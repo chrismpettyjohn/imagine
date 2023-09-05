@@ -1,10 +1,11 @@
 import React from 'react';
-import { DISCORD_REDIRECT_URL } from '@imagine-cms/web';
 import { DiscordLoginButtonElement } from './DiscordLoginButton.styled';
+import { getDiscordLoginRedirect } from '../../hooks/discord-login-redirect.hook';
 
 export function DiscordLoginButton() {
+  const discordRedirectURL = getDiscordLoginRedirect();
   return (
-    <a href={DISCORD_REDIRECT_URL} rel="external noreferrer">
+    <a href={discordRedirectURL} rel="external noreferrer">
       <DiscordLoginButtonElement>
         Discord
       </DiscordLoginButtonElement>

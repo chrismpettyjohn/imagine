@@ -30,6 +30,13 @@ export class GoogleAuthService {
       throw new UnauthorizedException();
     }
 
+    if (!matchingUser.googleID) {
+      await this.userRepo.update(
+        {id: matchingUser.id!},
+        {googleID: googleUser.sub}
+      );
+    }
+
     return this.sessionService.generateSession(matchingUser.id!);
   }
 }

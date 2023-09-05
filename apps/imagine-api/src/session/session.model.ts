@@ -45,3 +45,9 @@ export class SessionUpdatePasswordModel {
   @Field(() => Boolean)
   success!: boolean;
 }
+
+@ObjectType()
+export class SessionDisconnectAccountModel {
+  @Field(() => Boolean)
+  success!: boolean;
+}
