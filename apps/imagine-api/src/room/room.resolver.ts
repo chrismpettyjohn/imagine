@@ -1,12 +1,11 @@
-import {omit} from 'lodash';
-import {RoomArgs} from './room.args';
+import {In} from 'typeorm';
 import {RoomModel} from './room.model';
 import {UserModel} from '../user/user.model';
 import {Inject, forwardRef} from '@nestjs/common';
-import {RoomEntity} from '../database/room.entity';
 import {ArticleEntity} from '../database/article.entity';
 import {UserRepository} from '../database/user.repository';
 import {RoomRepository} from '../database/room.repository';
+import {RoomFilterManyInput, RoomFilterOneInput} from './room.input';
 import {
   Args,
   Mutation,
@@ -24,24 +23,33 @@ export class RoomResolver {
     private readonly roomRepo: RoomRepository
   ) {}
 
-  @ResolveField('user', () => UserModel, {nullable: true})
-  getUser(@Parent() {userID}: ArticleEntity): Promise<UserModel> {
+  @ResolveField(() => UserModel, {nullable: true})
+  user(@Parent() {userID}: ArticleEntity): Promise<UserModel> {
     return this.userRepo.findOneOrFail({id: userID});
   }
 
   @Query(() => RoomModel)
-  async room(@Args('id') id: number): Promise<RoomEntity> {
-    return this.roomRepo.findOneOrFail({id});
+  async room(@Args('filter') filter: RoomFilterOneInput): Promise<RoomModel> {
+    const matchingRoom = await this.roomRepo.findOneOrFail({id: filter.id});
+    return RoomModel.fromEntity(matchingRoom);
   }
 
   @Query(() => [RoomModel])
-  rooms(@Args() roomArgs: RoomArgs): Promise<RoomEntity[]> {
-    return this.roomRepo._find(omit(roomArgs, 'other'), roomArgs.other);
+  async rooms(
+    @Args('filter') filter: RoomFilterManyInput
+  ): Promise<RoomModel[]> {
+    const matchingRooms = await this.roomRepo.find({
+      where: {
+        id: filter.ids && In(filter.ids),
+        userID: filter.userIDs && In(filter.userIDs),
+      },
+      take: filter.limit,
+    });
+    return matchingRooms.map(RoomModel.fromEntity);
   }
 
   @Mutation(() => Boolean)
   async roomDelete(@Args('id') id: number) {
-    const deletedRoom = await this.roomRepo.findOneOrFail({id});
     await this.roomRepo.delete({id});
     return true;
   }

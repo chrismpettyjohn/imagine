@@ -15,7 +15,6 @@ export function useUserBadgeFetchMany(): UseUserBadgeFetchManyResponse {
 
   const onFetchUserBadges = async (filter: UserBadgeFilterManyInput): Promise<UserBadgeFragment[]> => {
     const matchingUserBadges = await getUserBadges({ variables: { filter } })
-    console.log(matchingUserBadges);
     return matchingUserBadges.data!.userBadges;
   }
 

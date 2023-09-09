@@ -23,7 +23,6 @@ export class GoogleAuthResolver {
         sessionToken: sessionToken.accessToken,
       };
     } catch (e: any) {
-      console.log(e);
       throw e;
     }
   }

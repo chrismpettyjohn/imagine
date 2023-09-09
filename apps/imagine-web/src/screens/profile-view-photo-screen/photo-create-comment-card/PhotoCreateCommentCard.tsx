@@ -18,7 +18,6 @@ export function PhotoCreateCommentCard({ photoID, onCreation }: PhotoCreateComme
       const newComment = await createComment.execute({ comment, photoID });
       onCreation(newComment);
     } catch (e) {
-      console.log(e)
       toast.error(`Something went wrong and your comment couldn't be posted`);
     }
   }

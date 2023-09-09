@@ -96,9 +96,9 @@ type RoomModel {
   name: String
   description: String
   userID: Float
-  user: UserModel
   usersNow: Float
   usersMax: Float
+  user: UserModel
 }
 
 type PhotoModel {
@@ -299,8 +299,8 @@ type Query {
   wordFilters(other: ExtraArgs): [WordFilterModel!]!
   chatlog(id: Float!): ChatlogModel!
   chatlogs(other: ExtraArgs, userID: Float, roomID: Float): [ChatlogModel!]!
-  room(id: Float!): RoomModel!
-  rooms(other: ExtraArgs): [RoomModel!]!
+  room(filter: RoomFilterOneInput!): RoomModel!
+  rooms(filter: RoomFilterManyInput!): [RoomModel!]!
   group(id: Float!): GroupModel!
   groups(other: ExtraArgs): [GroupModel!]!
   groupMemberships(filter: GroupMembershipFilterManyInput!): [GroupMembershipModel!]!
@@ -358,6 +358,16 @@ input ArticleReactionFilterManyInput {
   ids: [Float!]
   articleIDs: [Float!]
   userIDs: [Float!]
+}
+
+input RoomFilterOneInput {
+  id: Float!
+}
+
+input RoomFilterManyInput {
+  ids: [Float!]
+  userIDs: [Float!]
+  limit: Float
 }
 
 input GroupMembershipFilterManyInput {

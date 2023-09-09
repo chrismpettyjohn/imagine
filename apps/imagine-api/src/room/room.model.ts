@@ -1,6 +1,6 @@
-import {UserModel} from '../user/user.model';
 import {RoomWire} from '@imagine-cms/types';
 import {Field, ObjectType} from '@nestjs/graphql';
+import {RoomEntity} from '../database/room.entity';
 
 @ObjectType()
 export class RoomModel implements RoomWire {
@@ -16,12 +16,20 @@ export class RoomModel implements RoomWire {
   @Field({nullable: true})
   userID?: number;
 
-  @Field(() => UserModel, {nullable: true})
-  user?: UserModel;
-
   @Field({nullable: true})
   usersNow?: number;
 
   @Field({nullable: true})
   usersMax?: number;
+
+  static fromEntity(roomEntity: RoomEntity): RoomModel {
+    return {
+      id: roomEntity.id!,
+      name: roomEntity.name,
+      description: roomEntity.description,
+      userID: roomEntity.userID,
+      usersNow: roomEntity.usersNow,
+      usersMax: roomEntity.usersMax,
+    };
+  }
 }

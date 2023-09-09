@@ -22,7 +22,6 @@ export function GoogleAccountCard() {
       }
       window.open(googleLoginURL)
     } catch (e) {
-      console.log(e)
       toast.error(<>{icon} There was a problem</>);
     }
   }

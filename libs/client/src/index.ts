@@ -101,6 +101,14 @@ export * from './rank/rank.input';
 export * from './rank/rank-fetch-many.query';
 export * from './rank/rank-fetch-one.query';
 
+// Room
+export * from './room/room-fetch-many.hook';
+export * from './room/room-fetch-many.query';
+export * from './room/room-fetch-one.hook';
+export * from './room/room-fetch-one.query';
+export * from './room/room.fragment';
+export * from './room/room.input';
+
 // Session
 export * from './session/session-disconnect-discord.hook';
 export * from './session/session-disconnect-discord.mutation';

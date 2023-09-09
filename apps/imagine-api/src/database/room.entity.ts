@@ -13,7 +13,7 @@ export class RoomEntity implements RoomWire {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column({name: 'caption'})
+  @Column({name: 'name'})
   name!: string;
 
   @Column()
