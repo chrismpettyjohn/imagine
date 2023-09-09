@@ -270,6 +270,13 @@ type GoogleAuthModel {
   sessionToken: String
 }
 
+type UserBadgeModel {
+  id: Float
+  userID: Float
+  slotID: Float
+  badgeCode: String
+}
+
 type Query {
   sessionSSOCreate: SessionSSOModel!
   sessionByJWT(jwt: String!): SessionModel!
@@ -308,6 +315,7 @@ type Query {
   languagePhrase(id: Float!): LanguagePhraseModel!
   languagePhrases: [LanguagePhraseModel!]!
   friendships(filter: FriendshipFilterManyInput!): [FriendshipModel!]!
+  userBadges(filter: UserBadgeFilterManyInput!): [UserBadgeModel!]!
 }
 
 input ExtraArgs {
@@ -390,6 +398,11 @@ input PhotoReactionFilterManyInput {
 
 input FriendshipFilterManyInput {
   userID: Float!
+  limit: Float
+}
+
+input UserBadgeFilterManyInput {
+  userIDS: [Float!]
   limit: Float
 }
 

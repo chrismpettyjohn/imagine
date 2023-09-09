@@ -114,6 +114,12 @@ export * from './session/session-update-password.hook';
 export * from './session/session-update-password.mutation';
 export * from './session/session.input';
 
+// User Badge
+export * from './user-badge/user-badge-fetch-many.hook';
+export * from './user-badge/user-badge-fetch-many.query';
+export * from './user-badge/user-badge.fragment';
+export * from './user-badge/user-badge.input';
+
 // User
 export * from './user/user.fragment';
 export * from './user/user-fetch-many.hook';

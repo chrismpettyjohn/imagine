@@ -34,6 +34,8 @@ import {LanguagePhraseRepository} from './language-phrase.repository';
 import {GroupMembershipRepository} from './group-membership.repository';
 import {LanguagePhraseTranslationEntity} from './language-phrase-translation.entity';
 import {LanguagePhraseTranslationRepository} from './language-phrase-translation.repository';
+import {UserBadgeEntity} from './user-badge.entity';
+import {UserBadgeRepository} from './user-badge.repository';
 
 export const databaseEntities = [
   ArticleEntity,
@@ -54,6 +56,7 @@ export const databaseEntities = [
   ReactionEntity,
   FriendshipEntity,
   GroupMembershipEntity,
+  UserBadgeEntity,
 ];
 
 export const databaseRepositories = [
@@ -75,4 +78,5 @@ export const databaseRepositories = [
   ReactionRepository,
   FriendshipRepository,
   GroupMembershipRepository,
+  UserBadgeRepository,
 ];

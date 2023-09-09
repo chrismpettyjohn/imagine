@@ -30,6 +30,7 @@ import {
   IMAGINE_GRAPHQL_PLAYGROUND,
 } from './imagine.constant';
 import {GoogleModule} from './google/google.module';
+import {UserBadgeModule} from './user-badge/user-badge.module';
 
 @Module({
   imports: [
@@ -82,6 +83,7 @@ import {GoogleModule} from './google/google.module';
     FacebookModule,
     GoogleModule,
     FriendshipModule,
+    UserBadgeModule,
   ],
 })
 export class ImagineModule {}
