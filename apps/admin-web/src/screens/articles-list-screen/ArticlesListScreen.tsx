@@ -1,20 +1,20 @@
 import DayJS from 'dayjs';
-import {ArticleWire} from '@imagine-cms/types';
-import React, {useContext, useEffect} from 'react';
-import {DataTable} from '../../components/data-table/DataTable';
-import {configContext, useFetchArticles} from '@imagine-cms/web';
-import {CreateArticleModal} from './create-article-modal/CreateArticleModal';
-import {LoadingOverlay} from '../../components/loading-overlay/LoadingOverlay';
-import {EditArticleModal} from './edit-article-modal/EditArticleModal';
-import {DeleteArticleModal} from './delete-article-modal/DeleteArticleModal';
+import { configContext } from '@imagine-cms/web';
+import React, { useContext, useEffect } from 'react';
+import { ArticleFragment, useArticleFetchMany } from '@imagine-cms/client';
+import { DataTable } from '../../components/data-table/DataTable';
+import { EditArticleModal } from './edit-article-modal/EditArticleModal';
+import { DeleteArticleModal } from './delete-article-modal/DeleteArticleModal';
+import { CreateArticleModal } from './create-article-modal/CreateArticleModal';
+import { LoadingOverlay } from '../../components/loading-overlay/LoadingOverlay';
 
 export function ArticlesListScreen() {
-  const {config} = useContext(configContext);
-  const {runQuery, data, loading} = useFetchArticles();
+  const { config } = useContext(configContext);
+  const fetchArticles = useArticleFetchMany();
 
   useEffect(() => {
-    runQuery();
-  }, [runQuery]);
+    fetchArticles.fetch({});
+  }, []);
 
   return (
     <>
@@ -31,12 +31,12 @@ export function ArticlesListScreen() {
                 </div>
               </div>
               <div className="table-responsive">
-                <LoadingOverlay loading={loading}>
-                  <DataTable<ArticleWire>
+                <LoadingOverlay loading={fetchArticles.loading}>
+                  <DataTable<ArticleFragment>
                     columns={[
                       {
                         header: '',
-                        render: article => <img src={article.imageURL} loading="lazy" style={{borderRadius: 0, width: 200, height: 100}} />,
+                        render: article => <img src={article.imageURL} loading="lazy" style={{ borderRadius: 0, width: 200, height: 100 }} />,
                       },
                       {
                         header: 'Article',
@@ -59,7 +59,7 @@ export function ArticlesListScreen() {
 
                       }
                     ]}
-                    data={data?.articles}
+                    data={fetchArticles.data ?? []}
                   />
                 </LoadingOverlay>
               </div>

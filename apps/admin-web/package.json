@@ -17,6 +17,7 @@
     "graphql-tag": "2.12.6",
     "@imagine-cms/types": "*",
     "@imagine-cms/web": "*",
+    "@imagine-cms/client": "*",
     "dayjs": "1.11.9",
     "react-loading-overlay": "1.0.1",
     "react-toastify": "9.1.3",

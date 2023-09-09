@@ -55,6 +55,9 @@ importers:
 
   apps/admin-web:
     dependencies:
+      '@imagine-cms/client':
+        specifier: '*'
+        version: link:../../libs/client
       '@imagine-cms/types':
         specifier: '*'
         version: link:../../libs/types
@@ -437,6 +440,9 @@ importers:
       '@apollo/react-hooks':
         specifier: 4.0.0
         version: 4.0.0(graphql@16.8.0)(react-dom@18.2.0)(react@18.2.0)(subscriptions-transport-ws@0.9.19)
+      '@imagine-cms/client':
+        specifier: '*'
+        version: link:../client
       '@imagine-cms/types':
         specifier: '*'
         version: link:../types
@@ -565,6 +571,42 @@ packages:
       tslib: 2.6.2
       zen-observable-ts: 1.2.5
 
+  /@apollo/client@3.8.3(graphql@16.8.0)(react-dom@18.2.0)(react@18.2.0)(subscriptions-transport-ws@0.9.19):
+    resolution: {integrity: sha512-mK86JM6hCpMEBGDgdO9U8ZYS8r9lPjXE1tVGpJMdSFUsIcXpmEfHUAbbFpPtYmxn8Qa7XsYy0dwDaDhpf4UUPw==}
+    peerDependencies:
+      graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
+      graphql-ws: ^5.5.5
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      subscriptions-transport-ws: ^0.9.0 || ^0.11.0
+    peerDependenciesMeta:
+      graphql-ws:
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+      subscriptions-transport-ws:
+        optional: true
+    dependencies:
+      '@graphql-typed-document-node/core': 3.2.0(graphql@16.8.0)
+      '@wry/context': 0.7.3
+      '@wry/equality': 0.5.6
+      '@wry/trie': 0.4.3
+      graphql: 16.8.0
+      graphql-tag: 2.12.6(graphql@16.8.0)
+      hoist-non-react-statics: 3.3.2
+      optimism: 0.17.5
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      response-iterator: 0.2.6
+      subscriptions-transport-ws: 0.9.19(graphql@16.8.0)
+      symbol-observable: 4.0.0
+      ts-invariant: 0.10.3
+      tslib: 2.6.2
+      zen-observable-ts: 1.2.5
+
   /@apollo/protobufjs@1.2.6:
     resolution: {integrity: sha512-Wqo1oSHNUj/jxmsVp4iR3I480p6qdqHikn38lKrFhfzcDJ7lwd7Ck7cHRl4JE81tWNArl77xhnG/OkZhxKBYOw==}
     hasBin: true
@@ -607,7 +649,7 @@ packages:
   /@apollo/react-hooks@4.0.0(graphql@16.8.0)(react-dom@18.2.0)(react@18.2.0)(subscriptions-transport-ws@0.9.19):
     resolution: {integrity: sha512-fCu0cbne3gbUl0QbA8X4L33iuuFVQbC5Jo2MIKRK8CyawR6PoxDpFdFA1kc6033ODZuZZ9Eo4RdeJFlFIIYcLA==}
     dependencies:
-      '@apollo/client': 3.8.2(graphql@16.8.0)(react-dom@18.2.0)(react@18.2.0)(subscriptions-transport-ws@0.9.19)
+      '@apollo/client': 3.8.3(graphql@16.8.0)(react-dom@18.2.0)(react@18.2.0)(subscriptions-transport-ws@0.9.19)
     transitivePeerDependencies:
       - graphql
       - graphql-ws

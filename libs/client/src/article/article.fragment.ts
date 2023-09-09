@@ -13,6 +13,7 @@ export const ARTICLE_FRAGMENT: any = gql`
     user {
       ...UserFragment
     }
+    createdAt
   }
 `
 
@@ -24,4 +25,5 @@ export interface ArticleFragment {
   imageURL: string;
   userID: number;
   user: UserFragment;
+  createdAt: number;
 }

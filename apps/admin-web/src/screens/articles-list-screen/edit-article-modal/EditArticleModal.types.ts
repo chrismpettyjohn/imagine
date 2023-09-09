@@ -1,6 +1,6 @@
-import {ArticleWire} from '@imagine-cms/types';
+import { ArticleFragment } from '@imagine-cms/client';
 
 export interface EditArticleModalProps {
-  article: ArticleWire;
-  onUpdate(updatedArticle: ArticleWire): void;
+  article: ArticleFragment;
+  onUpdate(updatedArticle: ArticleFragment): void;
 }

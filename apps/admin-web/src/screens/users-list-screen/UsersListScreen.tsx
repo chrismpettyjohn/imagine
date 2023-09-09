@@ -1,16 +1,16 @@
+import { configContext } from '@imagine-cms/web';
 import React, { useContext, useEffect } from 'react';
-import { UserOnlineStatus, UserWire } from '@imagine-cms/types';
 import { DataTable } from '../../components/data-table/DataTable';
-import { configContext, useFetchUsers } from '@imagine-cms/web';
+import { UserFragment, useUserFetchMany } from '@imagine-cms/client';
 import { LoadingOverlay } from '../../components/loading-overlay/LoadingOverlay';
 
 export function UsersListScreen() {
   const { config } = useContext(configContext);
-  const { runQuery, data, error, loading } = useFetchUsers();
+  const fetchUsers = useUserFetchMany();
 
   useEffect(() => {
-    runQuery();
-  }, [runQuery]);
+    fetchUsers.fetch({});
+  }, []);
 
   return (
     <>
@@ -20,8 +20,8 @@ export function UsersListScreen() {
             <div className="card-body">
               <h4 className="card-title">Users</h4>
               <div className="table-responsive">
-                <LoadingOverlay loading={loading}>
-                  <DataTable<UserWire>
+                <LoadingOverlay loading={fetchUsers.loading}>
+                  <DataTable<UserFragment>
                     columns={[
                       {
                         header: '',
@@ -46,7 +46,7 @@ export function UsersListScreen() {
                       {
                         header: 'Status',
                         render: user => {
-                          const [color, label] = user.onlineStatus === UserOnlineStatus.Online
+                          const [color, label] = user.onlineStatus === 1
                             ? ['success', 'Online']
                             : ['danger', 'Offline']
                           return <span className={`badge badge-${color}`}>{label}</span>
@@ -67,7 +67,7 @@ export function UsersListScreen() {
 
                       }
                     ]}
-                    data={data?.users}
+                    data={fetchUsers.data ?? []}
                   />
                 </LoadingOverlay>
               </div>

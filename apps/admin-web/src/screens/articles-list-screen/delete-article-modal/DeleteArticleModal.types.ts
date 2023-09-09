@@ -1,6 +1,6 @@
-import {ArticleWire} from '@imagine-cms/types';
+import { ArticleFragment } from '@imagine-cms/client';
 
 export interface DeleteArticleModalProps {
-  article: ArticleWire;
+  article: ArticleFragment;
   onDelete(): void;
 }
