@@ -179,6 +179,7 @@ type ArticleModel {
   content: String
   imageURL: String
   userID: Float
+  createdAt: Float
   user: UserModel
 }
 

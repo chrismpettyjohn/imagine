@@ -1,15 +1,13 @@
-import { configContext } from '@imagine-cms/web';
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { DataTable } from '../../components/data-table/DataTable';
 import { UserFragment, useUserFetchMany } from '@imagine-cms/client';
 import { LoadingOverlay } from '../../components/loading-overlay/LoadingOverlay';
 
 export function UsersListScreen() {
-  const { config } = useContext(configContext);
   const fetchUsers = useUserFetchMany();
 
   useEffect(() => {
-    fetchUsers.fetch({});
+    fetchUsers.fetch({ limit: 1000 });
   }, []);
 
   return (
@@ -32,16 +30,8 @@ export function UsersListScreen() {
                         render: user => user.username,
                       },
                       {
-                        header: 'Email',
-                        render: user => user.email,
-                      },
-                      {
                         header: 'Motto',
                         render: user => user.motto,
-                      },
-                      {
-                        header: 'IP Address',
-                        render: user => user.ipLast,
                       },
                       {
                         header: 'Status',

@@ -1,9 +1,9 @@
 import DayJS from 'dayjs';
 import { configContext } from '@imagine-cms/web';
 import React, { useContext, useEffect } from 'react';
-import { ArticleFragment, useArticleFetchMany } from '@imagine-cms/client';
 import { DataTable } from '../../components/data-table/DataTable';
 import { EditArticleModal } from './edit-article-modal/EditArticleModal';
+import { ArticleFragment, useArticleFetchMany } from '@imagine-cms/client';
 import { DeleteArticleModal } from './delete-article-modal/DeleteArticleModal';
 import { CreateArticleModal } from './create-article-modal/CreateArticleModal';
 import { LoadingOverlay } from '../../components/loading-overlay/LoadingOverlay';

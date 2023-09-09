@@ -2,7 +2,6 @@ import { gql } from 'graphql-tag';
 
 export interface UserFragment {
   id: number;
-  email: string;
   username: string;
   rankID: number;
   credits: number;
@@ -17,14 +16,11 @@ export interface UserFragment {
   discordID?: string;
   facebookID?: string;
   googleID?: string;
-  ipReg: string;
-  ipLast: string;
 }
 
 export const USER_FRAGMENT: any = gql`
   fragment UserFragment on UserModel {
     id
-    email
     username
     rankID
     credits
@@ -39,6 +35,4 @@ export const USER_FRAGMENT: any = gql`
     discordID
     facebookID
     googleID
-    ipLast
-    ipReg
   }`
