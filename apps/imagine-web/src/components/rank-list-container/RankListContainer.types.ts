@@ -1,5 +1,5 @@
-import { RankWire } from "@imagine-cms/types";
+import { RankFragment } from "@imagine-cms/client";
 
 export interface RankListContainerProps {
-  rank: RankWire;
+  rank: RankFragment;
 }

@@ -284,7 +284,7 @@ type Query {
   sessions(other: ExtraArgs): [SessionModel!]!
   user(filter: UserFilterOneInput!): UserModel!
   users(filter: UserFilterManyInput!): [UserModel!]!
-  rank(id: Float!): RankModel!
+  rank(filter: RankFilterOneInput!): RankModel!
   ranks(filter: RankFilterManyInput!): [RankModel!]!
   article(filter: ArticleFilterOneInput!): ArticleModel!
   articles(filter: ArticleFilterManyInput!): [ArticleModel!]!
@@ -347,6 +347,10 @@ enum UserOrderBy {
   CREDITS_ASC
   PIXELS_ASC
   POINTS_ASC
+}
+
+input RankFilterOneInput {
+  id: Float!
 }
 
 input RankFilterManyInput {

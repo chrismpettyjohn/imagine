@@ -84,3 +84,9 @@ export class RankFilterManyInput {
   @Field(() => Boolean, {nullable: true})
   showStaffOnly?: boolean;
 }
+
+@InputType()
+export class RankFilterOneInput {
+  @Field(() => Number)
+  id!: number;
+}

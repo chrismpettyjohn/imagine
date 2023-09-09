@@ -8,6 +8,7 @@ import {RankEntity, RankSiteShowStaff} from '../database/rank.entity';
 import {
   RankCreateInput,
   RankFilterManyInput,
+  RankFilterOneInput,
   RankUpdateInput,
 } from './rank.input';
 import {
@@ -33,8 +34,10 @@ export class RankResolver {
   }
 
   @Query(() => RankModel)
-  async rank(@Args('id') id: number): Promise<RankEntity> {
-    return this.rankRepo.findOneOrFail({id});
+  async rank(
+    @Args('filter', {type: () => RankFilterOneInput}) filter: RankFilterOneInput
+  ): Promise<RankEntity> {
+    return this.rankRepo.findOneOrFail({id: filter.id});
   }
 
   @Query(() => [RankModel])
