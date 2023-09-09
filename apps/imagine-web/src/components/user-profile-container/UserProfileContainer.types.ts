@@ -1,5 +1,5 @@
-import { UserWire } from "@imagine-cms/types";
+import { UserFragment } from "@imagine-cms/client";
 
 export interface UserProfileContainerProps {
-  user: UserWire;
+  user: UserFragment;
 }
