@@ -19,6 +19,12 @@
       "cwd": "./apps/imagine-web",
       "script": "pnpm",
       "args": "run start"
+    },
+    {
+      "name": "cerberus-web",
+      "cwd": "./apps/cerberus-web",
+      "script": "pnpm",
+      "args": "run start"
     }
   ]
 }
