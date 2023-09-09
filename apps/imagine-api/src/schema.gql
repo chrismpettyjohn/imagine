@@ -301,8 +301,8 @@ type Query {
   chatlogs(other: ExtraArgs, userID: Float, roomID: Float): [ChatlogModel!]!
   room(filter: RoomFilterOneInput!): RoomModel!
   rooms(filter: RoomFilterManyInput!): [RoomModel!]!
-  group(id: Float!): GroupModel!
-  groups(other: ExtraArgs): [GroupModel!]!
+  group(filter: GroupFilterOneInput!): GroupModel!
+  groups(filter: GroupFilterManyInput!): [GroupModel!]!
   groupMemberships(filter: GroupMembershipFilterManyInput!): [GroupMembershipModel!]!
   photo(filter: PhotoFilterOneInput!): PhotoModel!
   photos(filter: PhotoFilterManyInput): [PhotoModel!]!
@@ -365,6 +365,16 @@ input RoomFilterOneInput {
 }
 
 input RoomFilterManyInput {
+  ids: [Float!]
+  userIDs: [Float!]
+  limit: Float
+}
+
+input GroupFilterOneInput {
+  id: Float!
+}
+
+input GroupFilterManyInput {
   ids: [Float!]
   userIDs: [Float!]
   limit: Float

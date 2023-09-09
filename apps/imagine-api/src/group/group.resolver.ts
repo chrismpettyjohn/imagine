@@ -1,10 +1,9 @@
-import {omit} from 'lodash';
-import {GroupArgs} from './group.args';
+import {In} from 'typeorm';
 import {GroupModel} from './group.model';
 import {UserModel} from '../user/user.model';
-import {GroupEntity} from '../database/group.entity';
 import {UserRepository} from '../database/user.repository';
 import {GroupRepository} from '../database/group.repository';
+import {GroupFilterManyInput, GroupFilterOneInput} from './group.input';
 import {
   Args,
   Mutation,
@@ -27,13 +26,24 @@ export class GroupResolver {
   }
 
   @Query(() => GroupModel)
-  async group(@Args('id') id: number): Promise<GroupEntity> {
-    return this.groupRepo.findOneOrFail({id});
+  async group(
+    @Args('filter') filter: GroupFilterOneInput
+  ): Promise<GroupModel> {
+    return this.groupRepo.findOneOrFail({id: filter.id});
   }
 
   @Query(() => [GroupModel])
-  groups(@Args() groupArgs: GroupArgs): Promise<GroupEntity[]> {
-    return this.groupRepo._find(omit(groupArgs, 'other'), groupArgs.other);
+  async groups(
+    @Args('filter') filter: GroupFilterManyInput
+  ): Promise<GroupModel[]> {
+    const matchingGroups = await this.groupRepo.find({
+      where: {
+        id: filter.ids && In(filter.ids),
+        userID: filter.userIDs && In(filter.userIDs),
+      },
+      take: filter.limit,
+    });
+    return matchingGroups.map(GroupModel.fromEntity);
   }
 
   @Mutation(() => Boolean)

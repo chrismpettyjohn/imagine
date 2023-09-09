@@ -1,6 +1,6 @@
-import {UserModel} from '../user/user.model';
 import {GroupWire} from '@imagine-cms/types';
 import {Field, ObjectType} from '@nestjs/graphql';
+import {GroupEntity} from '../database/group.entity';
 
 @ObjectType()
 export class GroupModel implements GroupWire {
@@ -19,6 +19,13 @@ export class GroupModel implements GroupWire {
   @Field({nullable: true})
   userID?: number;
 
-  @Field(() => UserModel, {nullable: true})
-  user?: UserModel;
+  static fromEntity(groupEntity: GroupEntity): GroupModel {
+    return {
+      id: groupEntity.id!,
+      name: groupEntity.name,
+      description: groupEntity.description,
+      badge: groupEntity.badge,
+      userID: groupEntity.userID,
+    };
+  }
 }

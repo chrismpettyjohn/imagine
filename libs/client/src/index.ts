@@ -45,6 +45,14 @@ export * from './friendship/friendship-fetch-many.query';
 export * from './friendship/friendship.fragment';
 export * from './friendship/friendship.input';
 
+// Group
+export * from './group/group-fetch-many.hook';
+export * from './group/group-fetch-many.query';
+export * from './group/group-fetch-one.hook';
+export * from './group/group-fetch-one.query';
+export * from './group/group.fragment';
+export * from './group/group.input';
+
 // Group Membership
 export * from './group-membership/group-membership-fetch-many.hook';
 export * from './group-membership/group-membership-fetch-many.query';

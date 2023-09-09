@@ -10,6 +10,8 @@ import { LandingScreen } from './landing-screen/LandingScreen';
 import { SettingsScreen } from './settings-screen/SettingsScreen';
 import { RegisterScreen } from './register-screen/RegisterScreen';
 import { PlayGameScreen } from './play-game-screen/PlayGameScreen';
+import { RoomViewScreen } from './room-view-screen/RoomViewScreen';
+import { GroupViewScreen } from './group-view-screen/GroupViewScreen';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
 import { CommunityStaffScreen } from './community-staff-screen/CommunityStaffScreen';
 import { LoginWithGoogleScreen } from './login-with-google-screen/LoginWithGoogleScreen';
@@ -98,6 +100,14 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     path: '/community/high-scores',
     view: CommunityHighScoresScreen,
   },
+  {
+    path: '/rooms/:roomID',
+    view: RoomViewScreen,
+  },
+  {
+    path: '/groups/:groupID',
+    view: GroupViewScreen,
+  }
 ]
 
 export function Router() {
