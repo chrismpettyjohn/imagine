@@ -14,7 +14,7 @@ export class UserBadgeResolver {
   ): Promise<UserBadgeModel[]> {
     const matchingBadges = await this.userBadgeRepo.find({
       where: {
-        userID: filter.userIDS && In(filter.userIDS),
+        userID: filter.userIDs && In(filter.userIDs),
       },
       take: filter.limit,
     });

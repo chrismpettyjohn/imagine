@@ -10,7 +10,7 @@ export interface ArticleCommentUpdateInput {
 export interface ArticleCommentFilterManyInput {
   ids?: number[];
   articleIDs?: number[];
-  userIDS?: number[];
+  userIDs?: number[];
 }
 
 export interface ArticleCommentFilterOneInput {

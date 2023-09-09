@@ -14,7 +14,6 @@ export class GoogleAuthResolver {
     try {
       const googleService = new GoogleService(input.googleAuthToken);
       const googleUser = await googleService.getUser();
-      console.log(googleUser);
       const sessionToken = await this.googleAuthService.googleUserAuthenticate(
         googleUser
       );

@@ -1,8 +1,7 @@
 import { useLazyQuery } from "@apollo/client";
 import { UserBadgeFragment } from "./user-badge.fragment";
 import { UserBadgeFilterManyInput } from "./user-badge.input";
-import { GROUP_MEMBERSHIP_FETCH_MANY_QUERY } from "../group-membership/group-membership-fetch-many.query";
-import { UserBadgeFetchManyQueryResponse, UserBadgeFetchManyQueryVariables } from "./user-badge-fetch-many.query";
+import { USER_BADGE_FETCH_MANY_QUERY, UserBadgeFetchManyQueryResponse, UserBadgeFetchManyQueryVariables } from "./user-badge-fetch-many.query";
 
 export interface UseUserBadgeFetchManyResponse {
   fetch(filter: UserBadgeFilterManyInput): Promise<UserBadgeFragment[]>;
@@ -12,10 +11,11 @@ export interface UseUserBadgeFetchManyResponse {
 }
 
 export function useUserBadgeFetchMany(): UseUserBadgeFetchManyResponse {
-  const [getUserBadges, { loading, error, data }] = useLazyQuery<UserBadgeFetchManyQueryResponse, UserBadgeFetchManyQueryVariables>(GROUP_MEMBERSHIP_FETCH_MANY_QUERY);
+  const [getUserBadges, { loading, error, data }] = useLazyQuery<UserBadgeFetchManyQueryResponse, UserBadgeFetchManyQueryVariables>(USER_BADGE_FETCH_MANY_QUERY);
 
   const onFetchUserBadges = async (filter: UserBadgeFilterManyInput): Promise<UserBadgeFragment[]> => {
     const matchingUserBadges = await getUserBadges({ variables: { filter } })
+    console.log(matchingUserBadges);
     return matchingUserBadges.data!.userBadges;
   }
 

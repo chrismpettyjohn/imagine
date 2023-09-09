@@ -1,7 +1,7 @@
 import React from 'react';
 import { UserProfileContainerProps } from './UserProfileContainer.types';
-import { AvatarContainer, BadgeContainerGrid, InformationContainer, UserProfileContainerContent, UserProfileContainerElement } from './UserProfileContainer.styled';
-import { BadgeContainer } from '../badge-container/BadgeContainer';
+import { UserBadgeContainerGrid } from '../user-badge-container-grid/UserBadgeContainerGrid';
+import { AvatarContainer, InformationContainer, UserProfileContainerContent, UserProfileContainerElement } from './UserProfileContainer.styled';
 
 export function UserProfileContainer({ user }: UserProfileContainerProps) {
   return (
@@ -14,12 +14,7 @@ export function UserProfileContainer({ user }: UserProfileContainerProps) {
             {user.motto && <span>"{user.motto}"</span>}
           </div>
           <br />
-          <BadgeContainerGrid>
-            <BadgeContainer badge={{ code: 'ADM' }} />
-            <BadgeContainer badge={{ code: 'FAN' }} />
-            <BadgeContainer badge={{ code: 'ADM' }} />
-            <BadgeContainer badge={{ code: 'ADM' }} />
-          </BadgeContainerGrid>
+          <UserBadgeContainerGrid user={user as any} />
         </InformationContainer>
       </UserProfileContainerContent>
     </UserProfileContainerElement>

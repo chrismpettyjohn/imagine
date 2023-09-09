@@ -12,7 +12,7 @@ export interface PhotoReactionUpdateInput {
 export interface PhotoReactionFilterManyInput {
   ids?: number[];
   photoIDs?: number[];
-  userIDS?: number[];
+  userIDs?: number[];
 }
 
 export interface PhotoReactionFilterOneInput {

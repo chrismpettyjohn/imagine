@@ -18,15 +18,12 @@ export function LoginWithDiscordScreen() {
   const onAttemptDiscordAuthentication = async (authCode: string) => {
     try {
       const session = await discordUserAuthenticate.execute({ discordAuthToken: authCode });
-      console.log(session);
       localStorageService.set('SESSION', session.sessionToken);
       const matchingUser = await userFetchByID.runQuery();
-      console.log(matchingUser);
       toast.success(`Welcome back, ${matchingUser.user.username}`);
       setSession(matchingUser.user);
       setLocation('/me');
     } catch (e: any) {
-      console.log(e);
       toast.error('There was a problem logging in');
     }
   }

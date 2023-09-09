@@ -22,7 +22,6 @@ export function FacebookAccountCard() {
       }
       window.open(facebookLoginURL);
     } catch (e) {
-      console.log(e)
       toast.error(<>{icon} There was a problem</>);
     }
   }

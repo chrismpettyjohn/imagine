@@ -15,7 +15,6 @@ export function useFriendshipFetchMany(): UseFriendshipFetchManyResponse {
 
   const onFetchFriendships = async (filter: FriendshipFilterManyInput): Promise<FriendshipFragment[]> => {
     const matchingFriendships = await getFriendships({ variables: { filter } })
-    console.log(matchingFriendships)
     return matchingFriendships.data!.friendships;
   }
 

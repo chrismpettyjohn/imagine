@@ -10,7 +10,7 @@ export interface PhotoCommentUpdateInput {
 export interface PhotoCommentFilterManyInput {
   ids?: number[];
   photoIDs?: number[];
-  userIDS?: number[];
+  userIDs?: number[];
 }
 
 export interface PhotoCommentFilterOneInput {

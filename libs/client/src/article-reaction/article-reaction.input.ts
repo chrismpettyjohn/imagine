@@ -12,7 +12,7 @@ export interface ArticleReactionUpdateInput {
 export interface ArticleReactionFilterManyInput {
   ids?: number[];
   articleIDs?: number[];
-  userIDS?: number[];
+  userIDs?: number[];
 }
 
 export interface ArticleReactionFilterOneInput {

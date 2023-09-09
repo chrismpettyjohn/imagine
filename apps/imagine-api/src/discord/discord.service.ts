@@ -11,7 +11,6 @@ export class DiscordService {
 
   async getUser(): Promise<DiscordUserWire> {
     const response = await this.discordAPI.get('users/@me');
-    console.log(response.data);
     return response.data;
   }
 }

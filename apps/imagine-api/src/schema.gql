@@ -402,7 +402,7 @@ input FriendshipFilterManyInput {
 }
 
 input UserBadgeFilterManyInput {
-  userIDS: [Float!]
+  userIDs: [Float!]
   limit: Float
 }
 

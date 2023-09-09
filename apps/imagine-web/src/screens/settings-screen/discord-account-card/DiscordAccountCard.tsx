@@ -22,7 +22,6 @@ export function DiscordAccountCard() {
       }
       window.open(discordLoginURL);
     } catch (e) {
-      console.log(e)
       toast.error(<>{icon} There was a problem</>);
     }
   }

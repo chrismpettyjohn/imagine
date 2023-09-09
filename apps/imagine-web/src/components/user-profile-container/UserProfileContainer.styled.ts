@@ -36,9 +36,3 @@ export const InformationContainer = styled.div`
   flex-direction: column;
   z-index: 3;
 `
-
-export const BadgeContainerGrid = styled.div`
-  border-radius: ${({ theme }) => theme.radius.oneUnit};
-  display: flex;  
-  gap: ${({ theme }) => theme.space.twoUnits};
-`
