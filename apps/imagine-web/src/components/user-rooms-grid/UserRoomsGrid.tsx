@@ -2,6 +2,7 @@ import { Card } from '../card/Card';
 import React, { useEffect } from 'react';
 import { useRoomFetchMany } from '@imagine-cms/client';
 import { UserRoomsGridProps } from './UserRoomsGrid.types';
+import { UserRoomContainerGridElement } from './UserRoomsGrid.styled';
 import { RoomGridContainer } from '../room-grid-container/RoomGridContainer';
 
 export function UserRoomsGrid({ user }: UserRoomsGridProps) {
@@ -19,11 +20,14 @@ export function UserRoomsGrid({ user }: UserRoomsGridProps) {
       {
         fetchRooms.data?.length === 0 && <p>You don't own any rooms</p>
       }
-      {
-        fetchRooms.data?.map(_ => (
-          <RoomGridContainer key={`my_rooms_${_.id}`} room={_} />
-        ))
-      }
+      <UserRoomContainerGridElement>
+
+        {
+          fetchRooms.data?.map(_ => (
+            <RoomGridContainer key={`my_rooms_${_.id}`} room={_} />
+          ))
+        }
+      </UserRoomContainerGridElement>
     </Card>
   )
 }
