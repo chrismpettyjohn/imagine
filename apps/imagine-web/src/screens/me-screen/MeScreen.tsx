@@ -22,7 +22,7 @@ export function MeScreen() {
       <br />
       <UserProfileContainer user={user} />
       <br />
-      <UserFriendsGrid />
+      <UserFriendsGrid user={user as any} />
       <br />
       <UserGroupsContainer />
       <br />

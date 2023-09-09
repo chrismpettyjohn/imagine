@@ -39,6 +39,12 @@ export * from './facebook/facebook-user-authenticate.mutation';
 export * from './facebook/facebook.fragment';
 export * from './facebook/facebook.input';
 
+// Friendship
+export * from './friendship/friendship-fetch-many.hook';
+export * from './friendship/friendship-fetch-many.query';
+export * from './friendship/friendship.fragment';
+export * from './friendship/friendship.input';
+
 // Google
 export * from './google/google-user-authenticate.hook';
 export * from './google/google-user-authenticate.mutation';

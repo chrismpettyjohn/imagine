@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-export const UserFriendsGridGrid = styled.div`
-  display: flex;
-  flex: 1;
+export const UserFriendsGridContainer = styled.div`
+  display: grid;
+  gap: ${({ theme }) => theme.space.oneUnit};
+  grid-template-columns: auto auto auto auto; 
+
 `

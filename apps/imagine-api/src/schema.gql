@@ -215,6 +215,14 @@ type FacebookAuthModel {
   sessionToken: String
 }
 
+type FriendshipModel {
+  userID: Float
+  friendID: Float
+  relation: Float
+  createdAt: Float
+  friend: UserModel!
+}
+
 type WordFilterModel {
   id: Float
   word: String
@@ -289,6 +297,7 @@ type Query {
   languages: [LanguageModel!]!
   languagePhrase(id: Float!): LanguagePhraseModel!
   languagePhrases: [LanguagePhraseModel!]!
+  friendships(filter: FriendshipFilterManyInput!): [FriendshipModel!]!
 }
 
 input ExtraArgs {
@@ -361,6 +370,11 @@ input PhotoReactionFilterManyInput {
   ids: [Float!]
   photoIDs: [Float!]
   userIDs: [Float!]
+}
+
+input FriendshipFilterManyInput {
+  userID: Float!
+  limit: Float
 }
 
 type Mutation {

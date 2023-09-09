@@ -1,14 +1,29 @@
-import React from 'react';
 import { Card } from '../card/Card';
-import { UserFriendsGridGrid } from './UserFriendsGrid.styled';
+import React, { useEffect } from 'react';
+import { useFriendshipFetchMany } from '@imagine-cms/client';
+import { UserFriendsGridProps } from './UserFriendsGrid.types';
+import { UserFriendsGridContainer } from './UserFriendsGrid.styled';
 import { SmallUserProfileContainer } from '../small-user-profile-container/SmallUserProfileContainer';
 
-export function UserFriendsGrid() {
+export function UserFriendsGrid({ user }: UserFriendsGridProps) {
+  const friendshipFetch = useFriendshipFetchMany();
+
+  useEffect(() => {
+    friendshipFetch.fetch({ userID: user.id, limit: 8 })
+  }, [user.id]);
+
   return (
     <Card header="My Friends">
-      <UserFriendsGridGrid>
-        <SmallUserProfileContainer user={{ username: 'ElChris', look: 'hr-802-37.hd-185-1.ch-804-82.lg-280-73.sh-3068-1408-1408.wa-2001' } as any} />
-      </UserFriendsGridGrid>
+      {
+        friendshipFetch.loading && <i className="fa fa-spinner fa-spin" />
+      }
+      <UserFriendsGridContainer>
+        {
+          friendshipFetch.data?.map(_ => (
+            <SmallUserProfileContainer key={`friendship_${_.friendID}`} user={_.friend} />
+          ))
+        }
+      </UserFriendsGridContainer>
     </Card>
   )
 }

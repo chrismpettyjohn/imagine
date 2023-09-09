@@ -18,6 +18,7 @@ import {DiscordModule} from './discord/discord.module';
 import {FacebookModule} from './facebook/facebook.module';
 import {DatabaseModule} from './database/database.module';
 import {databaseEntities} from './database/database.const';
+import {FriendshipModule} from './friendship/friendship.module';
 import {ApolloDriver, ApolloDriverConfig} from '@nestjs/apollo';
 import {WordFilterModule} from './word-filter/word-filter.module';
 import {InternationalizationModule} from './internationalization/internationalization.module';
@@ -80,6 +81,7 @@ import {GoogleModule} from './google/google.module';
     DiscordModule,
     FacebookModule,
     GoogleModule,
+    FriendshipModule,
   ],
 })
 export class ImagineModule {}
