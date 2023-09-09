@@ -1,6 +1,6 @@
 import { sessionContext } from './SessionContext';
 import React, { useEffect, useState } from 'react';
-import { useFindUserByID } from '../../hooks/find-user-by-id.hook';
+import { useUserFetchOne } from '@imagine-cms/client';
 import { SessionContextProviderProps } from './SessionContext.types';
 import { localStorageService } from '../../service/local-storage.service';
 import { useFetchSessionByJwt } from '../../hooks/fetch-session-by-jwt.hook';
@@ -10,7 +10,7 @@ export function SessionContextProvider({ children }: SessionContextProviderProps
   const [loading, setIsLoading] = useState(true);
   const [session, setSessionState] = useState<any>();
   const fetchSessionByJwt = useFetchSessionByJwt(existingJwt ?? '');
-  const fetchUserBySessionID = useFindUserByID(fetchSessionByJwt?.data?.sessionByJWT?.userID ?? 0);
+  const fetchUser = useUserFetchOne();
 
   useEffect(() => {
     const checkForPreviousSession = async () => {
@@ -31,15 +31,18 @@ export function SessionContextProvider({ children }: SessionContextProviderProps
       return;
     }
 
-    fetchUserBySessionID.runQuery();
+    if (fetchSessionByJwt.data?.sessionByJWT?.userID) {
+      fetchUser.fetch({ id: fetchSessionByJwt.data.sessionByJWT.userID })
+    }
+
   }, [fetchSessionByJwt?.data, fetchSessionByJwt?.error]);
 
   useEffect(() => {
-    if (fetchUserBySessionID?.data?.user) {
-      setSession(fetchUserBySessionID?.data?.user);
+    if (fetchUser?.data) {
+      setSession(fetchUser.data);
       setIsLoading(false);
     }
-  }, [fetchUserBySessionID?.data?.user]);
+  }, [fetchUser?.data]);
 
   const setSession = (newSession?: any) => {
     setSessionState(newSession);

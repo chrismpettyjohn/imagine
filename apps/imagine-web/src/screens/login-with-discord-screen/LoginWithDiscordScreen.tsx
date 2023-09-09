@@ -1,15 +1,15 @@
 import { useLocation } from 'wouter';
+import { toast } from 'react-toastify';
 import { Card } from '../../components/card/Card';
 import React, { useContext, useEffect, useMemo } from 'react';
-import { useDiscordUserAuthenticate } from '@imagine-cms/client';
-import { localStorageService, sessionContext, useFindUserByID } from '@imagine-cms/web';
-import { toast } from 'react-toastify';
+import { localStorageService, sessionContext } from '@imagine-cms/web';
+import { useDiscordUserAuthenticate, useUserFetchOne } from '@imagine-cms/client';
 
 export function LoginWithDiscordScreen() {
   const [, setLocation] = useLocation();
   const { setSession } = useContext(sessionContext);
   const discordUserAuthenticate = useDiscordUserAuthenticate();
-  const userFetchByID = useFindUserByID(discordUserAuthenticate?.data?.userID ?? -1);
+  const fetchUser = useUserFetchOne();
 
   const discordAuthCode = useMemo(() => {
     return window.location.hash.split('#access_token=')[1].split('&expires_in')[0]
@@ -19,9 +19,9 @@ export function LoginWithDiscordScreen() {
     try {
       const session = await discordUserAuthenticate.execute({ discordAuthToken: authCode });
       localStorageService.set('SESSION', session.sessionToken);
-      const matchingUser = await userFetchByID.runQuery();
-      toast.success(`Welcome back, ${matchingUser.user.username}`);
-      setSession(matchingUser.user);
+      const matchingUser = await fetchUser.fetch({ id: discordUserAuthenticate.data!.userID })
+      toast.success(`Welcome back, ${matchingUser.username}`);
+      setSession(matchingUser);
       setLocation('/me');
     } catch (e: any) {
       toast.error('There was a problem logging in');

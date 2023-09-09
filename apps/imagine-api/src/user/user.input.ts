@@ -61,6 +61,13 @@ export class UserUpdateInput implements UserUpdateInputDTO {
   look?: string;
 }
 
+export enum UserOrderBy {
+  ID_DESC = 'ID_DESC',
+  CREDITS_ASC = 'CREDITS_ASC',
+  PIXELS_ASC = 'PIXELS_ASC',
+  POINTS_ASC = 'POINTS_ASC',
+}
+
 @InputType()
 export class UserFilterManyInput {
   @Field(() => [Number], {nullable: true})
@@ -71,4 +78,19 @@ export class UserFilterManyInput {
 
   @Field(() => Boolean, {nullable: true})
   online?: boolean;
+
+  @Field(() => [UserOrderBy], {nullable: true})
+  orderBy?: UserOrderBy[];
+
+  @Field(() => Number, {nullable: true})
+  limit?: number;
+}
+
+@InputType()
+export class UserFilterOneInput {
+  @Field(() => Number, {nullable: true})
+  id?: number;
+
+  @Field(() => String, {nullable: true})
+  username?: string;
 }

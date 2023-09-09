@@ -1,5 +1,3 @@
-import {omit} from 'lodash';
-import {ArticleArgs} from './article.args';
 import {ArticleModel} from './article.model';
 import {UserModel} from '../user/user.model';
 import {Inject, forwardRef} from '@nestjs/common';
@@ -9,7 +7,12 @@ import {HasScope} from '../session/has-scope.decorator';
 import {ArticleEntity} from '../database/article.entity';
 import {UserRepository} from '../database/user.repository';
 import {ArticleRepository} from '../database/article.repository';
-import {ArticleCreateInput, ArticleUpdateInput} from './article.input';
+import {
+  ArticleCreateInput,
+  ArticleFilterManyInput,
+  ArticleFilterOneInput,
+  ArticleUpdateInput,
+} from './article.input';
 import {
   Args,
   Mutation,
@@ -18,6 +21,8 @@ import {
   ResolveField,
   Parent,
 } from '@nestjs/graphql';
+import {match} from 'assert';
+import {In} from 'typeorm';
 
 @Resolver(() => ArticleModel)
 export class ArticleResolver {
@@ -33,16 +38,29 @@ export class ArticleResolver {
   }
 
   @Query(() => ArticleModel)
-  async article(@Args('id') id: number): Promise<ArticleEntity> {
-    return this.articleRepo.findOneOrFail({id});
+  async article(
+    @Args('filter', {type: () => ArticleFilterOneInput})
+    filter: ArticleFilterOneInput
+  ): Promise<ArticleModel> {
+    const matchingArticle = await this.articleRepo.findOneOrFail({
+      id: filter.id,
+    });
+    return ArticleModel.fromEntity(matchingArticle);
   }
 
   @Query(() => [ArticleModel])
-  articles(@Args() articleArgs: ArticleArgs): Promise<ArticleEntity[]> {
-    return this.articleRepo._find(
-      omit(articleArgs, 'other'),
-      articleArgs.other
-    );
+  async articles(
+    @Args('filter', {type: () => ArticleFilterManyInput})
+    filter: ArticleFilterManyInput
+  ): Promise<ArticleModel[]> {
+    const matchingArticles = await this.articleRepo.find({
+      where: {
+        id: filter.ids && In(filter.ids),
+        userID: filter.userIDs && In(filter.userIDs),
+      },
+      take: filter.limit,
+    });
+    return matchingArticles.map(ArticleModel.fromEntity);
   }
 
   @Mutation(() => ArticleModel)

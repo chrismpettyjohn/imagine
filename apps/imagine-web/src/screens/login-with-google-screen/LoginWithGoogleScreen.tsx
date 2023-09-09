@@ -1,15 +1,15 @@
 import { useLocation } from 'wouter';
+import { toast } from 'react-toastify';
 import { Card } from '../../components/card/Card';
 import React, { useContext, useEffect, useMemo } from 'react';
-import { useGoogleUserAuthenticate } from '@imagine-cms/client';
-import { localStorageService, sessionContext, useFindUserByID } from '@imagine-cms/web';
-import { toast } from 'react-toastify';
+import { localStorageService, sessionContext } from '@imagine-cms/web';
+import { useGoogleUserAuthenticate, useUserFetchOne } from '@imagine-cms/client';
 
 export function LoginWithGoogleScreen() {
   const [, setLocation] = useLocation();
   const { setSession } = useContext(sessionContext);
   const googleUserAuthenticate = useGoogleUserAuthenticate();
-  const userFetchByID = useFindUserByID(googleUserAuthenticate?.data?.userID ?? -1);
+  const fetchUser = useUserFetchOne();
 
   const googleAuthCode = useMemo(() => {
     return window.location.hash.split('#access_token=')[1].split('&token_type')[0]
@@ -19,9 +19,9 @@ export function LoginWithGoogleScreen() {
     try {
       const session = await googleUserAuthenticate.execute({ googleAuthToken: authCode });
       localStorageService.set('SESSION', session.sessionToken);
-      const matchingUser = await userFetchByID.runQuery();
-      toast.success(`Welcome back, ${matchingUser.user.username}`);
-      setSession(matchingUser.user);
+      const matchingUser = await fetchUser.fetch({ id: googleUserAuthenticate.data!.userID });
+      toast.success(`Welcome back, ${matchingUser.username}`);
+      setSession(matchingUser);
       setLocation('/me');
     } catch (e: any) {
       toast.error('There was a problem logging in');

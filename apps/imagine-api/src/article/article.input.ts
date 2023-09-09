@@ -53,3 +53,21 @@ export class ArticleUpdateInput implements ArticleUpdateInputDTO {
   @IsOptional()
   imageURL?: string;
 }
+
+@InputType()
+export class ArticleFilterManyInput {
+  @Field(() => [Number], {nullable: true})
+  ids?: number[];
+
+  @Field(() => [Number], {nullable: true})
+  userIDs?: number[];
+
+  @Field(() => Number, {nullable: true})
+  limit?: number;
+}
+
+@InputType()
+export class ArticleFilterOneInput {
+  @Field(() => Number)
+  id!: number;
+}

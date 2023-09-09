@@ -282,12 +282,12 @@ type Query {
   sessionByJWT(jwt: String!): SessionModel!
   session(id: Float!): SessionModel!
   sessions(other: ExtraArgs): [SessionModel!]!
-  user(id: Float!): UserModel!
+  user(filter: UserFilterOneInput!): UserModel!
   users(filter: UserFilterManyInput!): [UserModel!]!
   rank(id: Float!): RankModel!
   ranks(filter: RankFilterManyInput!): [RankModel!]!
-  article(id: Float!): ArticleModel!
-  articles(other: ExtraArgs): [ArticleModel!]!
+  article(filter: ArticleFilterOneInput!): ArticleModel!
+  articles(filter: ArticleFilterManyInput!): [ArticleModel!]!
   articleComment(filter: ArticleCommentFilterOneInput!): ArticleCommentModel!
   articleComments(filter: ArticleCommentFilterManyInput): [ArticleCommentModel!]!
   articleReaction(filter: ArticleReactionFilterOneInput!): ArticleReactionModel!
@@ -329,15 +329,39 @@ The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](
 """
 scalar JSONObject
 
+input UserFilterOneInput {
+  id: Float
+  username: String
+}
+
 input UserFilterManyInput {
   ids: [Float!]
   usernames: [String!]
   online: Boolean
+  orderBy: [UserOrderBy!]
+  limit: Float
+}
+
+enum UserOrderBy {
+  ID_DESC
+  CREDITS_ASC
+  PIXELS_ASC
+  POINTS_ASC
 }
 
 input RankFilterManyInput {
   ids: [Float!]
   showStaffOnly: Boolean
+}
+
+input ArticleFilterOneInput {
+  id: Float!
+}
+
+input ArticleFilterManyInput {
+  ids: [Float!]
+  userIDs: [Float!]
+  limit: Float
 }
 
 input ArticleCommentFilterOneInput {

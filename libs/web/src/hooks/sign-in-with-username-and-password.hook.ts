@@ -1,31 +1,31 @@
 import { useLocation } from 'wouter';
 import { toast } from 'react-toastify';
 import { useContext, useEffect } from 'react';
-import { useFindUserByID } from './find-user-by-id.hook';
+import { useUserFetchOne } from '@imagine-cms/client';
 import { useSessionCreate } from './session-create.hook';
 import { sessionContext } from '../context/session/SessionContext';
 import { localStorageService } from '../service/local-storage.service';
 
 export function useSignInWithUsernameAndPassword(username: string, password: string): { tryLogin(): void } {
-  const [location, setLocation] = useLocation();
+  const [, setLocation] = useLocation();
   const { setSession } = useContext(sessionContext);
   const createSession = useSessionCreate(username, password);
-  const fetchUserBySessionID = useFindUserByID(createSession?.data?.sessionCreate?.userID ?? 0);
+  const fetchUser = useUserFetchOne();
 
   useEffect(() => {
     if (createSession.data) {
       localStorageService.set('SESSION', createSession.data.sessionCreate.accessToken);
-      fetchUserBySessionID.runQuery();
+      fetchUser.fetch({ id: createSession.data.sessionCreate.userID })
     }
-  }, [createSession.data]);
+  }, [createSession.data?.sessionCreate]);
 
   useEffect(() => {
-    if (fetchUserBySessionID?.data?.user) {
-      setSession(fetchUserBySessionID.data.user);
-      toast.success(`Welcome back, ${fetchUserBySessionID.data.user.username}!`);
+    if (fetchUser?.data) {
+      setSession(fetchUser.data);
+      toast.success(`Welcome back, ${fetchUser.data.username}!`);
       setLocation('/me');
     }
-  }, [fetchUserBySessionID.data]);
+  }, [fetchUser.data]);
 
   return {
     tryLogin: () => {

@@ -1,5 +1,5 @@
 import {now} from 'lodash';
-import {In} from 'typeorm';
+import {FindOptionsOrder, In} from 'typeorm';
 import {UserModel} from './user.model';
 import {RankModel} from '../rank/rank.model';
 import {UserEntity} from '../database/user.entity';
@@ -9,10 +9,17 @@ import {GetUser} from '../session/get-user.decorator';
 import {UserRepository} from '../database/user.repository';
 import {RankRepository} from '../database/rank.repository';
 import {HasSession} from '../session/has-session.decorator';
-import {forwardRef, Inject, UnauthorizedException} from '@nestjs/common';
+import {
+  BadRequestException,
+  forwardRef,
+  Inject,
+  UnauthorizedException,
+} from '@nestjs/common';
 import {
   UserCreateInput,
   UserFilterManyInput,
+  UserFilterOneInput,
+  UserOrderBy,
   UserUpdateInput,
 } from './user.input';
 import {
@@ -83,12 +90,46 @@ export class UserResolver {
   }
 
   @Query(() => UserModel)
-  async user(@Args('id') id: number): Promise<UserEntity> {
-    return this.userRepo.findOneOrFail({id});
+  async user(
+    @Args('filter', {type: () => UserFilterOneInput}) filter: UserFilterOneInput
+  ): Promise<UserEntity> {
+    if (!filter.id && !filter.username) {
+      throw new BadRequestException();
+    }
+    return this.userRepo.findOneOrFail({
+      id: filter.id,
+      username: filter.username,
+    });
   }
 
   @Query(() => [UserModel])
   users(@Args('filter') filter: UserFilterManyInput): Promise<UserEntity[]> {
+    const userOrder: FindOptionsOrder<UserEntity> = {};
+
+    if (filter.orderBy) {
+      for (const orderBy of filter.orderBy) {
+        if (orderBy === UserOrderBy.ID_DESC) {
+          userOrder.id = 'DESC';
+        }
+
+        if (orderBy === UserOrderBy.CREDITS_ASC) {
+          userOrder.credits = 'ASC';
+        }
+
+        if (orderBy === UserOrderBy.PIXELS_ASC) {
+          userOrder.activityPoints = 'ASC';
+        }
+
+        if (orderBy === UserOrderBy.POINTS_ASC) {
+          userOrder.vipPoints = 'ASC';
+        }
+      }
+    }
+
+    if (!filter.orderBy) {
+      userOrder.id = 'DESC';
+    }
+
     return this.userRepo.find({
       where: {
         id: filter.ids && In(filter.ids),
@@ -98,6 +139,7 @@ export class UserResolver {
       order: {
         id: 'DESC',
       },
+      take: filter.limit,
     });
   }
 
