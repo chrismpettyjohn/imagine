@@ -1,41 +1,36 @@
-import DayJS from 'dayjs';
-import { Link, useRoute } from 'wouter';
-import React, { useContext, useEffect } from 'react';
-import { configContext, useArticleFetchByID } from '@imagine-cms/web';
-import { LoadingOverlay } from '../../components/loading-overlay/LoadingOverlay';
+import { useRoute } from 'wouter';
+import React, { useEffect } from 'react';
+import { useArticleFetchOne } from '@imagine-cms/client';
 import { ArticleCommentsCard } from './article-comments-card/ArticleCommentsCard';
+import { LongUserContainer } from '../../components/long-user-container/LongUserContainer';
 import { ArticlePostCommentCard } from './article-post-comment-card/ArticlePostCommentCard';
 import { ArticleContentContainer, ArticleContentElement, ArticleHeaderBackground, ArticleHeaderContainer, ArticleHeaderContent, ArticleHeaderOverlay } from './CommunityViewArticleScreen.styled';
-import { LongUserContainer } from '../../components/long-user-container/LongUserContainer';
 
 export function CommunityViewArticleScreen() {
-  const { config } = useContext(configContext);
   const [_, params] = useRoute<{ articleID: string }>('/community/articles/:articleID');
 
   const articleID = Number(params!.articleID);
 
-  const { runQuery, data, loading } = useArticleFetchByID(articleID);
-
-  const article = data?.article;
+  const fetchArticle = useArticleFetchOne();
 
   useEffect(() => {
-    runQuery();
-  }, [params!.articleID]);
+    fetchArticle.fetch({ id: articleID });
+  }, [articleID]);
 
   return (
     <>
       <ArticleHeaderContainer>
-        <ArticleHeaderBackground src={article?.imageURL} />
+        <ArticleHeaderBackground src={fetchArticle.data?.imageURL} />
         <ArticleHeaderOverlay />
         <ArticleHeaderContent>
-          <h1>{article?.name}</h1>
-          <p>{article?.description}</p>
+          <h1>{fetchArticle.data?.name}</h1>
+          <p>{fetchArticle.data?.description}</p>
         </ArticleHeaderContent>
       </ArticleHeaderContainer>
       <ArticleContentElement>
         <ArticleContentContainer>
-          <div dangerouslySetInnerHTML={{ __html: article?.content ?? '' }} />
-          {article?.user && <LongUserContainer user={article.user} />}
+          <div dangerouslySetInnerHTML={{ __html: fetchArticle.data?.content ?? '' }} />
+          {fetchArticle.data?.user && <LongUserContainer user={fetchArticle.data.user as any} />}
         </ArticleContentContainer>
       </ArticleContentElement>
       <br />
