@@ -54,7 +54,7 @@ type RankModel {
   badgeCode: String
   showStaff: Boolean
   scopes: RankScopesModel
-  users: [UserModel!]!
+  users: [UserModel!]
 }
 
 type UserModel {
@@ -63,7 +63,7 @@ type UserModel {
   email: String
   gameSSO: String
   rankID: Float
-  rank: RankModel!
+  rank: RankModel
   credits: Float
   vipPoints: Float
   activityPoints: Float
@@ -96,7 +96,7 @@ type RoomModel {
   name: String
   description: String
   userID: Float
-  user: UserModel!
+  user: UserModel
   usersNow: Float
   usersMax: Float
 }
@@ -104,9 +104,9 @@ type RoomModel {
 type PhotoModel {
   id: Float
   userID: Float
-  user: UserModel!
+  user: UserModel
   roomID: Float
-  room: RoomModel!
+  room: RoomModel
   photoURL: String
   createdAt: Float
 }
@@ -118,7 +118,7 @@ type PhotoCommentModel {
   createdAt: Float
   updatedAt: Float
   photoID: Float
-  user: UserModel!
+  user: UserModel
 }
 
 type PhotoReactionModel {
@@ -128,7 +128,7 @@ type PhotoReactionModel {
   createdAt: Float
   updatedAt: Float
   photoID: Float
-  user: UserModel!
+  user: UserModel
 }
 
 enum ReactionType {
@@ -143,6 +143,15 @@ type GroupModel {
   badge: String
   userID: Float
   user: UserModel
+}
+
+type GroupMembershipModel {
+  id: Float
+  groupID: Float
+  userID: Float
+  createdAt: Float
+  user: UserModel
+  group: GroupModel
 }
 
 type ConfigModel {
@@ -170,7 +179,7 @@ type ArticleModel {
   content: String
   imageURL: String
   userID: Float
-  user: UserModel!
+  user: UserModel
 }
 
 type ArticleCommentModel {
@@ -180,7 +189,7 @@ type ArticleCommentModel {
   createdAt: Float
   updatedAt: Float
   articleID: Float
-  user: UserModel!
+  user: UserModel
 }
 
 type ArticleReactionModel {
@@ -190,15 +199,15 @@ type ArticleReactionModel {
   createdAt: Float
   updatedAt: Float
   articleID: Float
-  user: UserModel!
+  user: UserModel
 }
 
 type ChatlogModel {
   id: Float
   userID: Float
-  user: UserModel!
+  user: UserModel
   roomID: Float
-  room: RoomModel!
+  room: RoomModel
   message: String
   createdAt: String
 }
@@ -220,7 +229,7 @@ type FriendshipModel {
   friendID: Float
   relation: Float
   createdAt: Float
-  friend: UserModel!
+  friend: UserModel
 }
 
 type WordFilterModel {
@@ -287,6 +296,7 @@ type Query {
   rooms(other: ExtraArgs): [RoomModel!]!
   group(id: Float!): GroupModel!
   groups(other: ExtraArgs): [GroupModel!]!
+  groupMemberships(filter: GroupMembershipFilterManyInput!): [GroupMembershipModel!]!
   photo(filter: PhotoFilterOneInput!): PhotoModel!
   photos(filter: PhotoFilterManyInput): [PhotoModel!]!
   photoComment(filter: PhotoCommentFilterOneInput!): PhotoCommentModel!
@@ -340,6 +350,12 @@ input ArticleReactionFilterManyInput {
   ids: [Float!]
   articleIDs: [Float!]
   userIDs: [Float!]
+}
+
+input GroupMembershipFilterManyInput {
+  groupIDS: [Float!]
+  userIDs: [Float!]
+  limit: Float
 }
 
 input PhotoFilterOneInput {

@@ -2,9 +2,6 @@ import { useRoute } from 'wouter';
 import React, { useEffect } from 'react';
 import { useFetchUserByUsername } from '@imagine-cms/web';
 import { UserStatsGrid } from '../../components/user-stats-grid/UserStatsGrid';
-import { UserFriendsGrid } from '../../components/user-friends-grid/UserFriendsGrid';
-import { UserRoomsContainer } from '../../components/user-rooms-container/UserRoomsContainer';
-import { UserGroupsContainer } from '../../components/user-groups-container/UserGroupsContainer';
 import { UserProfileContainer } from '../../components/user-profile-container/UserProfileContainer';
 
 export function ProfileScreen() {
@@ -35,12 +32,6 @@ export function ProfileScreen() {
       <UserProfileContainer user={matchingProfile!} />
       <br />
       <UserStatsGrid user={matchingProfile} />
-      <br />
-      <UserFriendsGrid />
-      <br />
-      <UserGroupsContainer />
-      <br />
-      <UserRoomsContainer />
     </>
   )
 }

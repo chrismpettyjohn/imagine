@@ -24,7 +24,7 @@ export class RoomResolver {
     private readonly roomRepo: RoomRepository
   ) {}
 
-  @ResolveField('user', () => UserModel)
+  @ResolveField('user', () => UserModel, {nullable: true})
   getUser(@Parent() {userID}: ArticleEntity): Promise<UserModel> {
     return this.userRepo.findOneOrFail({id: userID});
   }

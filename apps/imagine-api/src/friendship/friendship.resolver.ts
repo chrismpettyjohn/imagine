@@ -12,7 +12,7 @@ export class FriendshipResolver {
     private readonly userRepo: UserRepository
   ) {}
 
-  @ResolveField(() => UserModel)
+  @ResolveField(() => UserModel, {nullable: true})
   friend(@Parent() parent: FriendshipModel): Promise<UserModel> {
     return this.userRepo.findOneOrFail({id: parent.friendID});
   }

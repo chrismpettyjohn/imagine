@@ -27,7 +27,7 @@ export class RankResolver {
     private readonly rankRepo: RankRepository
   ) {}
 
-  @ResolveField('users', () => [UserModel])
+  @ResolveField('users', () => [UserModel], {nullable: true})
   getUsers(@Parent() {id}: RankEntity): Promise<UserModel[]> {
     return this.userRepo._find({rankID: id});
   }

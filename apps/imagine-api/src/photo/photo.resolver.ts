@@ -26,12 +26,12 @@ export class PhotoResolver {
     private readonly photoRepo: PhotoRepository
   ) {}
 
-  @ResolveField('user', () => UserModel)
+  @ResolveField('user', () => UserModel, {nullable: true})
   getUser(@Parent() {userID}: PhotoEntity): Promise<UserModel> {
     return this.userRepo.findOneOrFail({id: userID});
   }
 
-  @ResolveField('room', () => RoomModel)
+  @ResolveField('room', () => RoomModel, {nullable: true})
   getRoom(@Parent() {roomID}: PhotoEntity): Promise<RoomModel> {
     return this.roomRepo.findOneOrFail({id: roomID});
   }

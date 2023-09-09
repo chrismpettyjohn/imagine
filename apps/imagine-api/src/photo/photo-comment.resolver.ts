@@ -29,7 +29,7 @@ export class PhotoCommentResolver {
     private readonly photoCommentService: PhotoCommentService
   ) {}
 
-  @ResolveField(() => UserModel)
+  @ResolveField(() => UserModel, {nullable: true})
   user(@Parent() photoReaction: PhotoReactionModel): Promise<UserModel> {
     return this.userRepo.findOneOrFail({id: photoReaction.userID});
   }

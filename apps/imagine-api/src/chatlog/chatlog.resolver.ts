@@ -27,12 +27,12 @@ export class ChatlogResolver {
     private readonly chatlogRepo: ChatlogRepository
   ) {}
 
-  @ResolveField('user', () => UserModel)
+  @ResolveField('user', () => UserModel, {nullable: true})
   getUser(@Parent() {userID}: ChatlogEntity): Promise<UserModel> {
     return this.userRepo.findOneOrFail({id: userID});
   }
 
-  @ResolveField('room', () => RoomModel)
+  @ResolveField('room', () => RoomModel, {nullable: true})
   getRoom(@Parent() {roomID}: ChatlogEntity): Promise<RoomEntity> {
     return this.roomRepo.findOneOrFail({id: roomID});
   }

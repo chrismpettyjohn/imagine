@@ -29,7 +29,7 @@ export class ArticleCommentResolver {
     private readonly articleCommentService: ArticleCommentService
   ) {}
 
-  @ResolveField(() => UserModel)
+  @ResolveField(() => UserModel, {nullable: true})
   user(@Parent() articleReaction: ArticleReactionModel): Promise<UserModel> {
     return this.userRepo.findOneOrFail({id: articleReaction.userID});
   }

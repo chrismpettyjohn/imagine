@@ -27,7 +27,7 @@ export class ArticleResolver {
     private readonly articleRepo: ArticleRepository
   ) {}
 
-  @ResolveField('user', () => UserModel)
+  @ResolveField('user', () => UserModel, {nullable: true})
   getUser(@Parent() {userID}: ArticleEntity): Promise<UserModel> {
     return this.userRepo.findOneOrFail({id: userID});
   }

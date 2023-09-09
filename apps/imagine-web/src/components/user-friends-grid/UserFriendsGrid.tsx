@@ -17,6 +17,9 @@ export function UserFriendsGrid({ user }: UserFriendsGridProps) {
       {
         friendshipFetch.loading && <i className="fa fa-spinner fa-spin" />
       }
+      {
+        friendshipFetch.data?.length === 0 && <p>You don't have any friends</p>
+      }
       <UserFriendsGridContainer>
         {
           friendshipFetch.data?.map(_ => (

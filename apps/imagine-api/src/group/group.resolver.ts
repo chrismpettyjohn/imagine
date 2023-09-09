@@ -21,7 +21,7 @@ export class GroupResolver {
     private readonly groupRepo: GroupRepository
   ) {}
 
-  @ResolveField(() => UserModel)
+  @ResolveField(() => UserModel, {nullable: true})
   async user(@Parent() group: GroupModel): Promise<UserModel> {
     return this.userRepo.findOneOrFail({id: group.userID});
   }

@@ -77,7 +77,7 @@ export class UserResolver {
     return onlineStatus;
   }
 
-  @ResolveField('rank', () => RankModel)
+  @ResolveField('rank', () => RankModel, {nullable: true})
   getRank(@Parent() {rankID}: UserEntity): Promise<RankModel> {
     return this.rankRepo.findOneOrFail({id: rankID});
   }

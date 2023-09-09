@@ -29,7 +29,9 @@ import {LanguageRepository} from './language.repository';
 import {FriendshipRepository} from './friendship.repository';
 import {LanguagePhraseEntity} from './language-phrase.entity';
 import {WordFilterRepository} from './word-filter.repository';
+import {GroupMembershipEntity} from './group-membership.entity';
 import {LanguagePhraseRepository} from './language-phrase.repository';
+import {GroupMembershipRepository} from './group-membership.repository';
 import {LanguagePhraseTranslationEntity} from './language-phrase-translation.entity';
 import {LanguagePhraseTranslationRepository} from './language-phrase-translation.repository';
 
@@ -51,6 +53,7 @@ export const databaseEntities = [
   CommentEntity,
   ReactionEntity,
   FriendshipEntity,
+  GroupMembershipEntity,
 ];
 
 export const databaseRepositories = [
@@ -71,4 +74,5 @@ export const databaseRepositories = [
   CommentRepository,
   ReactionRepository,
   FriendshipRepository,
+  GroupMembershipRepository,
 ];

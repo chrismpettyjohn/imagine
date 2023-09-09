@@ -28,7 +28,7 @@ export class ArticleReactionResolver {
     private readonly articleReactionService: ArticleReactionService
   ) {}
 
-  @ResolveField(() => UserModel)
+  @ResolveField(() => UserModel, {nullable: true})
   user(@Parent() articleReaction: ArticleReactionModel): Promise<UserModel> {
     return this.userRepo.findOneOrFail({id: articleReaction.userID});
   }
