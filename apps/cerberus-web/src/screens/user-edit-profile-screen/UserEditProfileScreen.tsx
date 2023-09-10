@@ -4,6 +4,7 @@ import { Card } from '../../blocks/card/Card';
 import { useUserFetchOne } from '@imagine-cms/client';
 import { UserBadgesCard } from '../../components/user-badges-card/UserBadgesCard';
 import { UserPossibleAltsCard } from '../../components/user-possible-alts-card/UserPossibleAltsCard';
+import { UserSupportTicketsCard } from '../../components/user-support-tickets-card/UserSupportTicketsCard';
 import { UserSanctionHistoryCard } from '../../components/user-sanction-history-card/UserSanctionHistoryCard';
 
 export function UserEditProfileScreen() {
@@ -28,6 +29,7 @@ export function UserEditProfileScreen() {
             </Card>
             <UserPossibleAltsCard user={user} />
             <UserSanctionHistoryCard user={user} />
+            <UserSupportTicketsCard user={user} />
             <Card header="Player Stats">
               hoe
             </Card>
