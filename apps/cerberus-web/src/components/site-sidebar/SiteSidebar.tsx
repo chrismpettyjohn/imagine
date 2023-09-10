@@ -37,11 +37,13 @@ export function SiteSidebar() {
             <i className="fa fa-flag" />
           </li>
         </Link>
-        <Link href="/permissions">
-          <li>
-            <i className="fa fa-shield" />
-          </li>
-        </Link>
+        <ScopeGuard scope="managePermissions" redirect={false}>
+          <Link href="/permissions">
+            <li>
+              <i className="fa fa-shield" />
+            </li>
+          </Link>
+        </ScopeGuard>
         <Link href="/configuration">
           <li>
             <i className="fa fa-cog" />

@@ -3,15 +3,18 @@ import { UserFragment } from '@imagine-cms/client';
 import { Avatar } from '../../blocks/avatar/Avatar';
 import { TableColumn } from "react-data-table-component";
 import { Link } from 'wouter';
+import { Button } from '../../blocks/button/Button';
 
 export const USERS_TABLE_COLUMNS: TableColumn<UserFragment>[] = [
   {
     name: '',
     cell: ({ username, look }) => (
-      <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
-        <Avatar look={look} headOnly height={110} width={64} />
-        <b style={{ marginTop: -40 }}>{username}</b>
-      </div>
+      <Link href={`/users/${username}`}>
+        <div style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
+          <Avatar look={look} headOnly height={110} width={64} />
+          <b style={{ marginTop: -40 }}>{username}</b>
+        </div>
+      </Link>
     ),
   },
   {
@@ -43,7 +46,9 @@ export const USERS_TABLE_COLUMNS: TableColumn<UserFragment>[] = [
     cell: (user: UserFragment) => (
       <>
         <Link href={`/users/${user.username}`}>
-          <button>view</button>
+          <Button>
+            <i className="fa fa-eye" /> View More
+          </Button>
         </Link>
       </>
     )

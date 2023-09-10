@@ -14,6 +14,7 @@ import { PermissionsOverviewScreen } from './permissions-overview-screen/Permiss
 import { NewsArticlesOverviewScreen } from './news-articles-overview-screen/NewsArticlesOverviewScreen';
 import { ConfigurationOverviewScreen } from './configuration-overview-screen/ConfigurationOverviewScreen';
 import { RoomsViewRoomScreen } from './rooms-view-room-screen/RoomsViewRoomScreen';
+import { PermissionsEditRankScreen } from './permissions-edit-rank-screen/PermissionsEditRankScreen';
 
 const SITE_ROUTES: SiteRouteProps[] = [
   {
@@ -64,7 +65,12 @@ const SITE_ROUTES: SiteRouteProps[] = [
   {
     path: '/permissions',
     view: PermissionsOverviewScreen,
-    guard: UserGuard,
+    guard: RouteScopeGuard('managePermissions'),
+  },
+  {
+    path: '/permissions/:rankID',
+    view: PermissionsEditRankScreen,
+    guard: RouteScopeGuard('managePermissions'),
   },
   {
     path: '/configuration',

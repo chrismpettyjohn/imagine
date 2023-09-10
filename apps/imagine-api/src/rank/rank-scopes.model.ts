@@ -16,5 +16,8 @@ export class RankScopesModel implements RankScopesWire {
   manageRooms!: boolean;
 
   @Field({nullable: true})
+  managePermissions!: boolean;
+
+  @Field({nullable: true})
   manageSupportTickets!: boolean;
 }

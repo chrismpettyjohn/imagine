@@ -3,6 +3,7 @@ export interface RankScopesWire {
   manageArticles: boolean;
   manageUsers: boolean;
   manageRooms: boolean;
+  managePermissions: boolean;
   manageSupportTickets: boolean;
 }
 
@@ -11,6 +12,7 @@ export const exampleRankScopesWire: RankScopesWire = {
   manageArticles: false,
   manageUsers: false,
   manageRooms: false,
+  managePermissions: false,
   manageSupportTickets: false,
 };
 
@@ -19,5 +21,6 @@ export const rankScopesLabels: Record<keyof RankScopesWire, string> = {
   manageArticles: 'Manage Articles',
   manageUsers: 'Manage Users',
   manageRooms: 'Manage Rooms',
+  managePermissions: 'Manage Permissions',
   manageSupportTickets: 'Manage Support Tickets',
 };

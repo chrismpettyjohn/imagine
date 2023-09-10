@@ -11,11 +11,13 @@ import {
   IsObject,
   IsOptional,
   IsBoolean,
+  Max,
 } from 'class-validator';
 import {
   RankWireScopesCreateInput,
   RankWireScopesUpdateInput,
 } from './rank-scopes.input';
+import {GLOBAL_MAX_RESOURCE_LIMIT} from '../imagine.constant';
 
 @InputType()
 export class RankCreateInput implements RankCreateInputDTO {
@@ -83,6 +85,10 @@ export class RankFilterManyInput {
 
   @Field(() => Boolean, {nullable: true})
   showStaffOnly?: boolean;
+
+  @Field(() => Number, {nullable: true})
+  @Max(GLOBAL_MAX_RESOURCE_LIMIT)
+  limit?: number;
 }
 
 @InputType()

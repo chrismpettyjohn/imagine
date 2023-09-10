@@ -50,6 +50,7 @@ export class RankResolver {
       order: {
         id: 'DESC',
       },
+      take: filter.limit,
     });
   }
 
