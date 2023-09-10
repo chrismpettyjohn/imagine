@@ -2654,7 +2654,7 @@ packages:
     dependencies:
       '@graphql-tools/utils': 10.0.1(graphql@16.8.0)
       graphql: 16.8.0
-      tslib: 2.6.0
+      tslib: 2.6.2
     dev: false
 
   /@graphql-tools/mock@8.7.20(graphql@16.8.0):
@@ -2678,7 +2678,7 @@ packages:
       '@graphql-tools/merge': 9.0.0(graphql@16.8.0)
       '@graphql-tools/utils': 10.0.1(graphql@16.8.0)
       graphql: 16.8.0
-      tslib: 2.6.0
+      tslib: 2.6.2
       value-or-promise: 1.0.12
     dev: false
 
@@ -2714,7 +2714,7 @@ packages:
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.8.0)
       graphql: 16.8.0
-      tslib: 2.6.0
+      tslib: 2.6.2
     dev: false
 
   /@graphql-tools/utils@8.9.0(graphql@16.8.0):
@@ -7885,7 +7885,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 3.0.5
+      minimatch: 3.1.2
       once: 1.4.0
       path-is-absolute: 1.0.1
     dev: true
