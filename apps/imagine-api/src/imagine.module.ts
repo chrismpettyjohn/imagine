@@ -31,6 +31,7 @@ import {
 } from './imagine.constant';
 import {GoogleModule} from './google/google.module';
 import {UserBadgeModule} from './user-badge/user-badge.module';
+import {SupportTicketModule} from './support-ticket/support-ticket.module';
 
 @Module({
   imports: [
@@ -84,6 +85,7 @@ import {UserBadgeModule} from './user-badge/user-badge.module';
     GoogleModule,
     FriendshipModule,
     UserBadgeModule,
+    SupportTicketModule,
   ],
 })
 export class ImagineModule {}

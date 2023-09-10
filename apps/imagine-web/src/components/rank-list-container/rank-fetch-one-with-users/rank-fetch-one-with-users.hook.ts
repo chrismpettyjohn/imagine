@@ -14,7 +14,6 @@ export function useRankFetchOneWithUsers(): UseRankFetchOneResponse {
 
   const onFetchRank = async (filter: RankFilterOneInput): Promise<RankWithUsersFragment> => {
     const matchingRank = await getRank({ variables: { filter } })
-    console.log(matchingRank)
     return matchingRank.data!.rank;
   }
 

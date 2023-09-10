@@ -17,8 +17,6 @@ export class JwtAuthenticationGuard implements CanActivate {
       // @ts-ignore
       request?.headers?.Authorization?.split('Bearer ')?.[1];
 
-    console.log(bearerToken);
-
     if (!bearerToken) {
       return false;
     }

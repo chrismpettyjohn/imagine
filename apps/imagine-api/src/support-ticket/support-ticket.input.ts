@@ -22,4 +22,7 @@ export class SupportTicketFilterManyInput {
 }
 
 @InputType()
-export class SupportTicketFilterOneInput {}
+export class SupportTicketFilterOneInput {
+  @Field(() => Number)
+  id!: number;
+}

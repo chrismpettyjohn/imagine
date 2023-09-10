@@ -45,6 +45,7 @@ type RankScopesModel {
   accessAdminPanel: Boolean!
   manageArticles: Boolean!
   manageUsers: Boolean!
+  manageSupportTickets: Boolean!
 }
 
 type RankModel {
@@ -279,6 +280,13 @@ type UserBadgeModel {
   badgeCode: String
 }
 
+type SupportTicketModel {
+  id: Float
+  reportingUserID: Float
+  offendingUserID: Float
+  staffUserID: Float
+}
+
 type Query {
   sessionSSOCreate: SessionSSOModel!
   sessionByJWT(jwt: String!): SessionModel!
@@ -318,6 +326,8 @@ type Query {
   languagePhrases: [LanguagePhraseModel!]!
   friendships(filter: FriendshipFilterManyInput!): [FriendshipModel!]!
   userBadges(filter: UserBadgeFilterManyInput!): [UserBadgeModel!]!
+  supportTickets(filter: SupportTicketFilterManyInput!): [SupportTicketModel!]!
+  supportTicket(filter: SupportTicketFilterOneInput!): SupportTicketModel!
 }
 
 input ExtraArgs {
@@ -459,6 +469,18 @@ input UserBadgeFilterManyInput {
   limit: Float
 }
 
+input SupportTicketFilterManyInput {
+  ids: [Float!]
+  reportingUserIDs: [Float!]
+  offendingUserIDs: [Float!]
+  staffUserIDs: [Float!]
+  limit: Float
+}
+
+input SupportTicketFilterOneInput {
+  id: Float!
+}
+
 type Mutation {
   sessionCreate(username: String!, password: String!): SessionCreatedModel!
   sessionUpdateEmail(input: SessionUpdateEmailInput!): SessionUpdateEmailModel!
@@ -548,6 +570,7 @@ input RankWireScopesCreateInput {
   accessAdminPanel: Boolean!
   manageArticles: Boolean!
   manageUsers: Boolean!
+  manageSupportTickets: Boolean!
 }
 
 input RankUpdateInput {
@@ -562,6 +585,7 @@ input RankWireScopesUpdateInput {
   accessAdminPanel: Boolean
   manageArticles: Boolean
   manageUsers: Boolean
+  manageSupportTickets: Boolean
 }
 
 input ArticleCreateInput {

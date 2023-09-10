@@ -15,7 +15,6 @@ export function useRoomFetchMany(): UseRoomFetchManyResponse {
 
   const onFetchRooms = async (filter: RoomFilterManyInput): Promise<RoomFragment[]> => {
     const matchingRooms = await getRooms({ variables: { filter } })
-    console.log(matchingRooms);
     return matchingRooms.data!.rooms;
   }
 

@@ -1,17 +1,6 @@
 import {Field, InputType} from '@nestjs/graphql';
-import {
-  RankCreateInputDTO,
-  RankScopesWire,
-  RankUpdateInputDTO,
-} from '@imagine-cms/types';
-import {
-  MaxLength,
-  IsAlphanumeric,
-  IsNotEmpty,
-  IsObject,
-  IsOptional,
-  IsBoolean,
-} from 'class-validator';
+import {RankScopesWire} from '@imagine-cms/types';
+import {IsOptional, IsBoolean} from 'class-validator';
 
 @InputType()
 export class RankWireScopesCreateInput implements RankScopesWire {
@@ -26,6 +15,10 @@ export class RankWireScopesCreateInput implements RankScopesWire {
   @Field()
   @IsBoolean()
   manageUsers!: boolean;
+
+  @Field()
+  @IsBoolean()
+  manageSupportTickets!: boolean;
 }
 
 @InputType()
@@ -44,4 +37,9 @@ export class RankWireScopesUpdateInput implements Partial<RankScopesWire> {
   @IsBoolean()
   @IsOptional()
   manageUsers?: boolean;
+
+  @Field({nullable: true})
+  @IsBoolean()
+  @IsOptional()
+  manageSupportTickets!: boolean;
 }
