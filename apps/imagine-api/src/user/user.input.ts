@@ -90,6 +90,9 @@ export class UserFilterManyInput {
   @Field(() => [String], {nullable: true})
   machineAddress?: string[];
 
+  @Field(() => [Number], {nullable: true})
+  rankIDs?: number[];
+
   @Field(() => [UserOrderBy], {nullable: true})
   orderBy?: UserOrderBy[];
 

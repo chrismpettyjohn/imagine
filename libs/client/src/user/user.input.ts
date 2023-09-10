@@ -13,6 +13,7 @@ export interface UserFilterManyInput {
   ipRegistered?: string[];
   machineAddress?: string[];
   orderBy?: UserOrderBy[];
+  rankIDs?: number[];
   limit?: number;
 }
 

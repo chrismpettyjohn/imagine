@@ -355,6 +355,7 @@ input UserFilterManyInput {
   ipLast: [String!]
   ipRegistered: [String!]
   machineAddress: [String!]
+  rankIDs: [Float!]
   orderBy: [UserOrderBy!]
   limit: Float
 }

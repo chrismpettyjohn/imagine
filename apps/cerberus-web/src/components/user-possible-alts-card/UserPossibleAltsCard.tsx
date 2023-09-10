@@ -1,10 +1,8 @@
-import { Link } from 'wouter';
 import { Card } from '../../blocks/card/Card';
 import React, { useEffect, useMemo } from 'react'
-import { Button } from '../../blocks/button/Button';
-import { Avatar } from '../../blocks/avatar/Avatar';
 import { useUserFetchMany } from '@imagine-cms/client';
 import { UserPossibleAltsCardProps } from './UserPossibleAltsCard.types';
+import { SmallUserContainer } from '../small-user-container/SmallUserContainer';
 
 export function UserPossibleAltsCard({ user }: UserPossibleAltsCardProps) {
   const fetchUsers = useUserFetchMany();
@@ -42,12 +40,7 @@ export function UserPossibleAltsCard({ user }: UserPossibleAltsCardProps) {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 16, alignItems: 'center', justifyContent: 'center' }}>
         {
           matchingUsers.map(_ => (
-            <Link key={`alt_user_${_.id}`} href={`/users/${_.username}`}>
-              <Button style={{ display: 'flex', justifyContent: 'center', height: 64, alignContent: 'center' }}>
-                <Avatar look={_.look} headOnly style={{ height: 80, marginTop: -20 }} />
-                <b style={{ marginLeft: 10 }}> {_.username}</b>
-              </Button>
-            </Link>
+            <SmallUserContainer key={`alt_user_${_.id}`} user={_} />
           ))
         }
       </div>

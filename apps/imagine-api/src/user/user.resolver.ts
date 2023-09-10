@@ -158,6 +158,7 @@ export class UserResolver {
         ipLast: filter.ipLast && In(filter.ipLast),
         ipRegistered: filter.ipRegistered && In(filter.ipRegistered),
         machineAddress: filter.machineAddress && In(filter.machineAddress),
+        rankID: filter.rankIDs && In(filter.rankIDs),
       },
       order: {
         id: 'DESC',
