@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Card } from '../../blocks/card/Card';
+import { Button } from '../../blocks/button/Button';
 import { useSupportTicketFetchMany } from '@imagine-cms/client';
 import { UserSupportTicketsCardProps } from './UserSupportTicketsCard.types';
 
@@ -25,9 +26,9 @@ export function UserSupportTicketsCard({ user }: UserSupportTicketsCardProps) {
       }
       {
         fetchSupportTickets.data?.map(_ => (
-          <div key={`sanction_history_${_.id}`}>
+          <Button key={`sanction_history_${_.id}`}>
             {_.reportingUserID}
-          </div>
+          </Button>
         ))
       }
     </Card>

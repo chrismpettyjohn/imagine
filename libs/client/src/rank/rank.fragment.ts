@@ -19,6 +19,7 @@ export const RANK_FRAGMENT: any = gql`
       accessAdminPanel
       manageArticles
       manageUsers
+      manageRooms
       manageSupportTickets
     }
   }`

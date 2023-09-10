@@ -7,8 +7,6 @@ import { RankScopesWire } from '@imagine-cms/types';
 export function ScopeGuard({ children, scope, redirect = false }: ScopeGuardProps) {
   const { session } = useContext(sessionContext);
 
-  console.log(session)
-
   const userHasRequiredScope = !!session?.rank?.scopes?.[scope]
 
   if (!userHasRequiredScope) {

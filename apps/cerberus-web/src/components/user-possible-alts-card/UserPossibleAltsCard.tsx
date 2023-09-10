@@ -1,6 +1,7 @@
 import { Link } from 'wouter';
-import React, { useEffect, useMemo } from 'react'
 import { Card } from '../../blocks/card/Card';
+import React, { useEffect, useMemo } from 'react'
+import { Button } from '../../blocks/button/Button';
 import { Avatar } from '../../blocks/avatar/Avatar';
 import { useUserFetchMany } from '@imagine-cms/client';
 import { UserPossibleAltsCardProps } from './UserPossibleAltsCard.types';
@@ -42,10 +43,10 @@ export function UserPossibleAltsCard({ user }: UserPossibleAltsCardProps) {
         {
           matchingUsers.map(_ => (
             <Link key={`alt_user_${_.id}`} href={`/users/${_.username}`}>
-              <Card elevation={2} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column' }}>
-                <Avatar look={_.look} headOnly height={110} width={64} />
-                <b style={{ marginTop: -40 }}>{_.username}</b>
-              </Card>
+              <Button style={{ display: 'flex', justifyContent: 'center', height: 64, alignContent: 'center' }}>
+                <Avatar look={_.look} headOnly style={{ height: 80, marginTop: -20 }} />
+                <b style={{ marginLeft: 10 }}> {_.username}</b>
+              </Button>
             </Link>
           ))
         }

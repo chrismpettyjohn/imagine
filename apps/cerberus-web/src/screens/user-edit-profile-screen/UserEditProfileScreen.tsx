@@ -2,6 +2,7 @@ import { useRoute } from 'wouter';
 import React, { useEffect } from 'react';
 import { Card } from '../../blocks/card/Card';
 import { useUserFetchOne } from '@imagine-cms/client';
+import { UserRoomsCard } from '../../components/user-rooms-card/UserRoomsCard';
 import { UserBadgesCard } from '../../components/user-badges-card/UserBadgesCard';
 import { UserPossibleAltsCard } from '../../components/user-possible-alts-card/UserPossibleAltsCard';
 import { UserSupportTicketsCard } from '../../components/user-support-tickets-card/UserSupportTicketsCard';
@@ -34,9 +35,7 @@ export function UserEditProfileScreen() {
               hoe
             </Card>
             <UserBadgesCard user={user} />
-            <Card header="Rooms">
-              hoe
-            </Card>
+            <UserRoomsCard user={user} />
             <Card header="Trades">
               hoe
             </Card>

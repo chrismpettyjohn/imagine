@@ -3,10 +3,10 @@ import { Badge } from '../../blocks/badge/Badge';
 import { BadgeHolder } from './BadgeContainer.styled';
 import { BadgeContainerProps } from './BadgeContainer.types';
 
-export function BadgeContainer({ badge }: BadgeContainerProps) {
+export function BadgeContainer({ badge, ...props }: BadgeContainerProps) {
   return (
     <BadgeHolder>
-      <Badge badge={badge} />
+      <Badge badge={badge} {...props} />
     </BadgeHolder>
   )
 }

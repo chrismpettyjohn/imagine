@@ -13,6 +13,7 @@ import { UserEditProfileScreen } from './user-edit-profile-screen/UserEditProfil
 import { PermissionsOverviewScreen } from './permissions-overview-screen/PermissionsOverviewScreen';
 import { NewsArticlesOverviewScreen } from './news-articles-overview-screen/NewsArticlesOverviewScreen';
 import { ConfigurationOverviewScreen } from './configuration-overview-screen/ConfigurationOverviewScreen';
+import { RoomsViewRoomScreen } from './rooms-view-room-screen/RoomsViewRoomScreen';
 
 const SITE_ROUTES: SiteRouteProps[] = [
   {
@@ -38,6 +39,11 @@ const SITE_ROUTES: SiteRouteProps[] = [
   {
     path: '/users/:username',
     view: UserEditProfileScreen,
+    guard: RouteScopeGuard('manageUsers'),
+  },
+  {
+    path: '/rooms/:roomID',
+    view: RoomsViewRoomScreen,
     guard: RouteScopeGuard('manageUsers'),
   },
   {
