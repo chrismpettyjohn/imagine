@@ -37,7 +37,7 @@ export const SiteSidebarElement = styled.div`
 
   footer {
     position: absolute;
-    bottom: 0;
+    bottom: 15px;
     left: 0;
     width: 100%;
   }
