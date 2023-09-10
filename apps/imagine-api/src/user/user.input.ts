@@ -11,7 +11,9 @@ import {
   IsNotEmpty,
   IsOptional,
   IsEnum,
+  Max,
 } from 'class-validator';
+import {GLOBAL_MAX_RESOURCE_LIMIT} from '../imagine.constant';
 
 @InputType()
 export class UserCreateInput implements UserCreateInputDTO {
@@ -92,6 +94,7 @@ export class UserFilterManyInput {
   orderBy?: UserOrderBy[];
 
   @Field(() => Number, {nullable: true})
+  @Max(GLOBAL_MAX_RESOURCE_LIMIT)
   limit?: number;
 }
 

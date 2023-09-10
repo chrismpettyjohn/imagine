@@ -17,6 +17,7 @@ import {RoomRepository} from './room.repository';
 import {LanguageEntity} from './language.entity';
 import {PhotoRepository} from './photo.repository';
 import {GroupRepository} from './group.repository';
+import {UserBadgeEntity} from './user-badge.entity';
 import {ConfigRepository} from './config.repository';
 import {FriendshipEntity} from './friendship.entity';
 import {WordFilterEntity} from './word-filter.entity';
@@ -26,16 +27,17 @@ import {ChatlogRepository} from './chatlog.repository';
 import {CommentRepository} from './comment.repository';
 import {ReactionRepository} from './reaction.repository';
 import {LanguageRepository} from './language.repository';
+import {UserBadgeRepository} from './user-badge.repository';
+import {SupportTicketEntity} from './support-ticket.entity';
 import {FriendshipRepository} from './friendship.repository';
 import {LanguagePhraseEntity} from './language-phrase.entity';
 import {WordFilterRepository} from './word-filter.repository';
 import {GroupMembershipEntity} from './group-membership.entity';
+import {SupportTicketRepository} from './support-ticket.repository';
 import {LanguagePhraseRepository} from './language-phrase.repository';
 import {GroupMembershipRepository} from './group-membership.repository';
 import {LanguagePhraseTranslationEntity} from './language-phrase-translation.entity';
 import {LanguagePhraseTranslationRepository} from './language-phrase-translation.repository';
-import {UserBadgeEntity} from './user-badge.entity';
-import {UserBadgeRepository} from './user-badge.repository';
 
 export const databaseEntities = [
   ArticleEntity,
@@ -57,6 +59,7 @@ export const databaseEntities = [
   FriendshipEntity,
   GroupMembershipEntity,
   UserBadgeEntity,
+  SupportTicketEntity,
 ];
 
 export const databaseRepositories = [
@@ -79,4 +82,5 @@ export const databaseRepositories = [
   FriendshipRepository,
   GroupMembershipRepository,
   UserBadgeRepository,
+  SupportTicketRepository,
 ];

@@ -33,3 +33,5 @@ export const IMAGINE_DEFAULT_HOME_ROOM = Number(
   getEnvOrFail('DEFAULT_HOME_ROOM')
 );
 export const IMAGINE_DEFAULT_RANK = Number(getEnvOrFail('DEFAULT_RANK'));
+
+export const GLOBAL_MAX_RESOURCE_LIMIT = 100;
