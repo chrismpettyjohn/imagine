@@ -76,7 +76,10 @@ export class UserEntity implements UserWire {
   ipLast!: string;
 
   @Column({name: 'ip_register'})
-  ipRegisteredWith!: string;
+  ipRegistered!: string;
+
+  @Column({name: 'machine_id'})
+  machineAddress!: string;
 
   @Column({name: 'home_room'})
   homeRoomID: number = IMAGINE_DEFAULT_HOME_ROOM;

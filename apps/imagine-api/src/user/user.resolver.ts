@@ -9,12 +9,7 @@ import {GetUser} from '../session/get-user.decorator';
 import {UserRepository} from '../database/user.repository';
 import {RankRepository} from '../database/rank.repository';
 import {HasSession} from '../session/has-session.decorator';
-import {
-  BadRequestException,
-  forwardRef,
-  Inject,
-  UnauthorizedException,
-} from '@nestjs/common';
+import {BadRequestException, forwardRef, Inject} from '@nestjs/common';
 import {
   UserCreateInput,
   UserFilterManyInput,
@@ -39,44 +34,69 @@ export class UserResolver {
     private readonly rankRepo: RankRepository
   ) {}
 
-  @ResolveField('email')
+  @ResolveField()
   @HasSession()
   email(
     @Parent() {id, email}: UserEntity,
     @GetUser() user: UserEntity
-  ): string {
-    this.ownsResourceOrCanManageUsers(id, user);
+  ): string | null {
+    const canAccess = this.ownsResourceOrCanManageUsers(id, user);
+    if (!canAccess) {
+      return null;
+    }
     return email;
   }
 
-  @ResolveField('gameSSO')
+  @ResolveField()
   @HasSession()
   gameSSO(
     @Parent() {id, gameSSO}: UserEntity,
     @GetUser() user: UserEntity
-  ): string {
-    this.ownsResource(id, user);
+  ): string | null {
+    const canAccess = this.ownsResourceOrCanManageUsers(id, user);
+    if (!canAccess) {
+      return null;
+    }
     return gameSSO;
   }
 
-  @ResolveField('ipLast')
+  @ResolveField()
   @HasSession()
   ipLast(
     @Parent() {id, ipLast}: UserEntity,
     @GetUser() user: UserEntity
-  ): string {
-    this.ownsResourceOrCanManageUsers(id, user);
+  ): string | null {
+    const canAccess = this.ownsResourceOrCanManageUsers(id, user);
+    if (!canAccess) {
+      return null;
+    }
     return ipLast;
   }
 
-  @ResolveField('ipRegisteredWith')
+  @ResolveField()
   @HasSession()
-  ipRegisteredWith(
-    @Parent() {id, ipRegisteredWith}: UserEntity,
+  ipRegistered(
+    @Parent() {id, ipRegistered: ipRegisteredWith}: UserEntity,
     @GetUser() user: UserEntity
-  ): string {
-    this.ownsResourceOrCanManageUsers(id, user);
+  ): string | null {
+    const canAccess = this.ownsResourceOrCanManageUsers(id, user);
+    if (!canAccess) {
+      return null;
+    }
     return ipRegisteredWith;
+  }
+
+  @ResolveField()
+  @HasSession()
+  machineAddress(
+    @Parent() {id, machineAddress}: UserEntity,
+    @GetUser() user: UserEntity
+  ): string | null {
+    const canAccess = this.ownsResourceOrCanManageUsers(id, user);
+    if (!canAccess) {
+      return null;
+    }
+    return machineAddress;
   }
 
   @ResolveField('onlineStatus')
@@ -135,6 +155,9 @@ export class UserResolver {
         id: filter.ids && In(filter.ids),
         username: filter.usernames && In(filter.usernames),
         onlineStatus: filter.online ? UserOnlineStatus.Online : undefined,
+        ipLast: filter.ipLast && In(filter.ipLast),
+        ipRegistered: filter.ipRegistered && In(filter.ipRegistered),
+        machineAddress: filter.machineAddress && In(filter.machineAddress),
       },
       order: {
         id: 'DESC',
@@ -154,7 +177,8 @@ export class UserResolver {
       gameSSO: '',
       accountCreatedAt: secondsSinceEpoch,
       ipLast: '', // TODO: Add support for IPs,
-      ipRegisteredWith: '', // TODO: Add support for IPs
+      ipRegistered: '', // TODO: Add support for IPs
+      machineAddress: '', // TODO: Add support for machine addresses
     });
     return newUser;
   }
@@ -177,20 +201,18 @@ export class UserResolver {
     return true;
   }
 
-  private ownsResource(userID: number, authenticatedUser: UserEntity) {
-    if (Number(userID) !== Number(authenticatedUser.id)) {
-      throw new UnauthorizedException();
-    }
+  private ownsResource(userID: number, authenticatedUser: UserEntity): Boolean {
+    return Number(userID) !== Number(authenticatedUser.id);
   }
 
   private ownsResourceOrCanManageUsers(
     userID: number,
     authenticatedUser: UserEntity
-  ) {
+  ): Boolean {
     if (authenticatedUser.rank?.scopes?.manageUsers) {
-      return;
+      return true;
     }
 
-    this.ownsResource(userID, authenticatedUser);
+    return this.ownsResource(userID, authenticatedUser);
   }
 }

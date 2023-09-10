@@ -6,17 +6,13 @@ import { Link } from 'wouter';
 
 export const USERS_TABLE_COLUMNS: TableColumn<UserFragment>[] = [
   {
-    name: 'ID',
-    selector: user => user.id,
-  },
-  {
-    name: 'Avatar',
-    selector: user => user.look,
-    cell: ({ look }) => <Avatar look={look} headOnly />,
-  },
-  {
-    name: 'Username',
-    selector: user => user.username,
+    name: '',
+    cell: ({ username, look }) => (
+      <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
+        <Avatar look={look} headOnly height={110} width={64} />
+        <b style={{ marginTop: -40 }}>{username}</b>
+      </div>
+    ),
   },
   {
     name: 'Rank',
@@ -24,15 +20,15 @@ export const USERS_TABLE_COLUMNS: TableColumn<UserFragment>[] = [
   },
   {
     name: 'Credits',
-    selector: user => user.credits,
+    cell: ({ credits }) => credits.toLocaleString(),
   },
   {
     name: 'Pixels',
-    selector: user => user.activityPoints,
+    cell: ({ activityPoints }) => activityPoints.toLocaleString(),
   },
   {
     name: 'Points',
-    selector: user => user.vipPoints,
+    cell: ({ vipPoints }) => vipPoints.toLocaleString(),
   },
   {
     name: 'Social Media',
@@ -46,11 +42,9 @@ export const USERS_TABLE_COLUMNS: TableColumn<UserFragment>[] = [
     name: 'Tools',
     cell: (user: UserFragment) => (
       <>
-        <Link href={`/users/${user.id}`}>
-          <button>edit</button>
+        <Link href={`/users/${user.username}`}>
+          <button>view</button>
         </Link>
-        <button>delete</button>
-        <button>ban</button>
       </>
     )
   },

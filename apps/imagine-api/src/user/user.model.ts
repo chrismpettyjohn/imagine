@@ -50,7 +50,13 @@ export class UserModel implements UserWire {
   onlineStatus?: UserOnlineStatus;
 
   @Field(() => String, {nullable: true})
-  ipRegisteredWith?: string;
+  ipLast?: string;
+
+  @Field(() => String, {nullable: true})
+  ipRegistered?: string;
+
+  @Field(() => String, {nullable: true})
+  machineAddress?: string;
 
   @Field(() => Number, {nullable: true})
   homeRoomID?: number;

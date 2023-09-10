@@ -1,6 +1,10 @@
 import React from 'react';
 import { Switch, Route } from 'wouter';
+import { GuestGuard, UserGuard } from '@imagine-cms/web';
+import { SignInScreen } from './sign-in-screen/SignInScreen';
+import { SiteRoute } from '../components/site-route/SiteRoute';
 import { DashboardScreen } from './dashboard-screen/DashboardScreen';
+import { SiteRouteProps } from '../components/site-route/SiteRoute.types';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
 import { UsersOverviewScreen } from './users-overview-screen/UsersOverviewScreen';
 import { ReportsOverviewScreen } from './reports-overview-screen/ReportsOverviewScreen';
@@ -10,38 +14,51 @@ import { PermissionsOverviewScreen } from './permissions-overview-screen/Permiss
 import { NewsArticlesOverviewScreen } from './news-articles-overview-screen/NewsArticlesOverviewScreen';
 import { ConfigurationOverviewScreen } from './configuration-overview-screen/ConfigurationOverviewScreen';
 
-const SITE_ROUTES: Array<{ path: string, view: any, }> = [
+const SITE_ROUTES: SiteRouteProps[] = [
+  {
+    path: '/login',
+    view: SignInScreen,
+    guard: GuestGuard
+  },
   {
     path: '/dashboard',
     view: DashboardScreen,
+    guard: UserGuard,
   },
   {
     path: '/users',
     view: UsersOverviewScreen,
+    guard: UserGuard,
   },
   {
-    path: '/users/:userID',
+    path: '/users/:username',
     view: UserEditProfileScreen,
+    guard: UserGuard,
   },
   {
     path: '/catalog',
     view: CatalogOverviewScreen,
+    guard: UserGuard,
   },
   {
     path: '/articles',
     view: NewsArticlesOverviewScreen,
+    guard: UserGuard,
   },
   {
     path: '/reports',
-    view: ReportsOverviewScreen
+    view: ReportsOverviewScreen,
+    guard: UserGuard,
   },
   {
     path: '/permissions',
-    view: PermissionsOverviewScreen
+    view: PermissionsOverviewScreen,
+    guard: UserGuard,
   },
   {
     path: '/configuration',
     view: ConfigurationOverviewScreen,
+    guard: UserGuard,
   }
 ]
 
@@ -51,7 +68,7 @@ export function Router() {
       <>
         {
           SITE_ROUTES.map(route => (
-            <Route key={`route_${route.path}`} path={route.path} component={route.view} />
+            <SiteRoute key={`route_${route.path}`} {...route} />
           ))
         }
       </>

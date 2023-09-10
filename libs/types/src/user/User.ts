@@ -28,7 +28,7 @@ export interface UserWire {
   accountCreatedAt?: number;
   onlineStatus?: UserOnlineStatus;
   ipLast?: string;
-  ipRegisteredWith?: string;
+  ipRegistered?: string;
   homeRoomID?: number;
   discordID?: string;
   facebookID?: string;

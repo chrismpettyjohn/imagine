@@ -9,6 +9,9 @@ export interface UserFilterManyInput {
   ids?: number[];
   usernames?: number[];
   online?: boolean;
+  ipLast?: string[];
+  ipRegistered?: string[];
+  machineAddress?: string[];
   orderBy?: UserOrderBy[];
   limit?: number;
 }

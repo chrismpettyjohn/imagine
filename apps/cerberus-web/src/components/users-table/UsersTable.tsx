@@ -8,10 +8,8 @@ export function UsersTable() {
   const fetchUsers = useUserFetchMany();
 
   useEffect(() => {
-    fetchUsers.fetch({ limit: 1000 });
+    fetchUsers.fetch({ limit: 25 });
   }, []);
-
-  console.log(fetchUsers)
 
   return (
     <DataTable

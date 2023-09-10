@@ -79,6 +79,15 @@ export class UserFilterManyInput {
   @Field(() => Boolean, {nullable: true})
   online?: boolean;
 
+  @Field(() => [String], {nullable: true})
+  ipLast?: string[];
+
+  @Field(() => [String], {nullable: true})
+  ipRegistered?: string[];
+
+  @Field(() => [String], {nullable: true})
+  machineAddress?: string[];
+
   @Field(() => [UserOrderBy], {nullable: true})
   orderBy?: UserOrderBy[];
 

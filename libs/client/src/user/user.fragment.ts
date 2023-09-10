@@ -16,6 +16,9 @@ export interface UserFragment {
   discordID?: string;
   facebookID?: string;
   googleID?: string;
+  ipLast?: string;
+  ipRegistered?: string;
+  machineAddress?: string;
 }
 
 export const USER_FRAGMENT: any = gql`
@@ -35,4 +38,7 @@ export const USER_FRAGMENT: any = gql`
     discordID
     facebookID
     googleID
+    ipLast
+    ipRegistered
+    machineAddress
   }`
