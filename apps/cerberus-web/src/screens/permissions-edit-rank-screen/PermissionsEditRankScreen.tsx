@@ -19,7 +19,7 @@ export function PermissionsEditRankScreen() {
     <>
       <h1 style={{ alignItems: 'center', display: 'flex' }}>
         <Link href="/permissions"><i className="fa fa-caret-left fa-2x" style={{ cursor: 'pointer', marginRight: 8 }} /></Link>
-        Ranks <small>-&nbsp;{fetchRank.data?.name ?? rankID}</small></h1>
+        Permissions <small>-&nbsp;{fetchRank.data?.name ?? rankID}</small></h1>
       {
         fetchRank.data && (
           <>
