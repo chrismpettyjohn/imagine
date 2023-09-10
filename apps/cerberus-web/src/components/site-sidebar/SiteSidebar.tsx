@@ -1,6 +1,6 @@
 import React from 'react';
-import { SITE_URL } from '@imagine-cms/web';
 import { Link } from '../../blocks/link/Link';
+import { SITE_URL, ScopeGuard } from '@imagine-cms/web';
 import { SiteSidebarElement } from './SiteSidebar.styled';
 
 export function SiteSidebar() {
@@ -15,11 +15,13 @@ export function SiteSidebar() {
             <i className="fa fa-home" />
           </li>
         </Link>
-        <Link href="/users">
-          <li>
-            <i className="fa fa-users" />
-          </li>
-        </Link>
+        <ScopeGuard scope="manageUsers" redirect={false}>
+          <Link href="/users">
+            <li>
+              <i className="fa fa-users" />
+            </li>
+          </Link>
+        </ScopeGuard>
         <Link href="/catalog">
           <li>
             <i className="fa fa-couch" />
@@ -54,6 +56,12 @@ export function SiteSidebar() {
             </li>
           </a>
         </ul>
+        <div>
+          <b>Cerberus</b>
+          <div>
+            by&nbsp;<b>LeChris</b>
+          </div>
+        </div>
       </footer>
     </SiteSidebarElement>
   )

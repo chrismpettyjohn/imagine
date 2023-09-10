@@ -42,10 +42,10 @@ type SessionDisconnectAccountModel {
 }
 
 type RankScopesModel {
-  accessAdminPanel: Boolean!
-  manageArticles: Boolean!
-  manageUsers: Boolean!
-  manageSupportTickets: Boolean!
+  accessAdminPanel: Boolean
+  manageArticles: Boolean
+  manageUsers: Boolean
+  manageSupportTickets: Boolean
 }
 
 type RankModel {

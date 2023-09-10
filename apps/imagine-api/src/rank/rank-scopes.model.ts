@@ -3,15 +3,15 @@ import {RankScopesWire} from '@imagine-cms/types';
 
 @ObjectType()
 export class RankScopesModel implements RankScopesWire {
-  @Field({nullable: false})
+  @Field({nullable: true})
   accessAdminPanel!: boolean;
 
-  @Field({nullable: false})
+  @Field({nullable: true})
   manageArticles!: boolean;
 
-  @Field({nullable: false})
+  @Field({nullable: true})
   manageUsers!: boolean;
 
-  @Field({nullable: false})
+  @Field({nullable: true})
   manageSupportTickets!: boolean;
 }

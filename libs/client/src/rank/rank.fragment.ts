@@ -1,11 +1,12 @@
 import { gql } from 'graphql-tag';
+import { RankScopesWire } from '@imagine-cms/types';
 
 export interface RankFragment {
   id: number;
   name: string;
   description: string;
   badgeCode: string;
-  showStaff: boolean;
+  scopes: RankScopesWire;
 }
 
 export const RANK_FRAGMENT: any = gql`
@@ -14,5 +15,10 @@ export const RANK_FRAGMENT: any = gql`
     name
     description
     badgeCode
-    showStaff
+    scopes {
+      accessAdminPanel
+      manageArticles
+      manageUsers
+      manageSupportTickets
+    }
   }`

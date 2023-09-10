@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'wouter';
-import { GuestGuard, UserGuard } from '@imagine-cms/web';
+import { GuestGuard, RouteScopeGuard, ScopeGuard, UserGuard } from '@imagine-cms/web';
 import { SignInScreen } from './sign-in-screen/SignInScreen';
 import { SiteRoute } from '../components/site-route/SiteRoute';
 import { DashboardScreen } from './dashboard-screen/DashboardScreen';
@@ -21,6 +21,11 @@ const SITE_ROUTES: SiteRouteProps[] = [
     guard: GuestGuard
   },
   {
+    path: '/me',
+    view: DashboardScreen,
+    guard: UserGuard,
+  },
+  {
     path: '/dashboard',
     view: DashboardScreen,
     guard: UserGuard,
@@ -28,12 +33,12 @@ const SITE_ROUTES: SiteRouteProps[] = [
   {
     path: '/users',
     view: UsersOverviewScreen,
-    guard: UserGuard,
+    guard: RouteScopeGuard('manageUsers'),
   },
   {
     path: '/users/:username',
     view: UserEditProfileScreen,
-    guard: UserGuard,
+    guard: RouteScopeGuard('manageUsers'),
   },
   {
     path: '/catalog',
