@@ -26,7 +26,7 @@ export function RankMembersCard({ rank }: RankMembersCardProps) {
       {
         members.length === 0 && <p>No members found</p>
       }
-      <div style={{ display: 'flex', flex: 1, gap: 8 }}>
+      <div style={{ display: 'flex', flex: 1, gap: 16 }}>
         {
           members?.map(_ => <SmallUserContainer key={`rank_${rank.id}_member_${_.id}`} user={_} />)
         }

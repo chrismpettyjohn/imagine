@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { Link, useRoute } from 'wouter';
-import { Card } from '../../blocks/card/Card';
 import { useRankFetchOne } from '@imagine-cms/client';
+import { RankScopesCard } from '../../components/rank-scopes-card/RankScopesCard';
 import { RankMembersCard } from '../../components/rank-members-card/RankMembersCard';
+import { RankDetailsCard } from '../../components/rank-details-card/RankDetailsCard';
 
 export function PermissionsEditRankScreen() {
   const [, params] = useRoute<{ rankID: string }>('/permissions/:rankID');
@@ -18,16 +19,12 @@ export function PermissionsEditRankScreen() {
     <>
       <h1 style={{ alignItems: 'center', display: 'flex' }}>
         <Link href="/permissions"><i className="fa fa-caret-left fa-2x" style={{ cursor: 'pointer', marginRight: 8 }} /></Link>
-        Ranks <small>-&nbsp;{rankID}</small></h1>
+        Ranks <small>-&nbsp;{fetchRank.data?.name ?? rankID}</small></h1>
       {
         fetchRank.data && (
           <>
-            <Card header="Details">
-              No members found
-            </Card>
-            <Card header="Permissions">
-              No members found
-            </Card>
+            <RankDetailsCard rank={fetchRank.data} />
+            <RankScopesCard rank={fetchRank.data} />
             <RankMembersCard rank={fetchRank.data} />
           </>
         )
