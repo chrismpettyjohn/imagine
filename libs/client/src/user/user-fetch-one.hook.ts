@@ -15,7 +15,6 @@ export function useUserFetchOne(): UseUserFetchOneResponse {
 
   const onFetchUsers = async (filter: UserFilterOneInput): Promise<UserFragment> => {
     const matchingUsers = await getUsers({ variables: { filter } })
-    console.log(matchingUsers)
     return matchingUsers.data!.user;
   }
 

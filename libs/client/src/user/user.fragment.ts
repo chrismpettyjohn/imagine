@@ -1,4 +1,5 @@
 import { gql } from 'graphql-tag';
+import { RANK_FRAGMENT, RankFragment } from '../rank/rank.fragment';
 
 export interface UserFragment {
   id: number;
@@ -19,9 +20,11 @@ export interface UserFragment {
   ipLast?: string;
   ipRegistered?: string;
   machineAddress?: string;
+  rank: RankFragment;
 }
 
 export const USER_FRAGMENT: any = gql`
+  ${RANK_FRAGMENT}
   fragment UserFragment on UserModel {
     id
     username
@@ -41,4 +44,7 @@ export const USER_FRAGMENT: any = gql`
     ipLast
     ipRegistered
     machineAddress
+    rank {
+      ...RankFragment
+    }
   }`
