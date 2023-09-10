@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from '../link/Link';
+import { Link } from '../../blocks/link/Link';
 import { SiteSidebarElement } from './SiteSidebar.styled';
 
 export function SiteSidebar() {

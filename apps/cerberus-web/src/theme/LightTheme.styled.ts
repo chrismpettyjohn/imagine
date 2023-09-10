@@ -2,6 +2,9 @@ import { ImagineTheme } from "./ThemeProvider.types";
 
 export const lightTheme: ImagineTheme = {
   name: 'Light',
+  components: {
+    sidebarWidth: '150px',
+  },
   fontFamily: {
     primary: 'Maven Pro'
   },

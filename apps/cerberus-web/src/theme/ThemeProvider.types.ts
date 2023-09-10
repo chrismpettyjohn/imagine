@@ -2,6 +2,9 @@ import { ReactNode } from "react";
 
 export interface ImagineTheme {
   name: string;
+  components: {
+    sidebarWidth: string;
+  },
   fontFamily: {
     primary: string;
   }

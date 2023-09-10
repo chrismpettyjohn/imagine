@@ -3,7 +3,7 @@ import { Router } from './screens/Router';
 import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from './theme/ThemeProvider';
 import { ImagineContextProviders } from '@imagine-cms/web';
-import { SiteSidebar } from './blocks/site-sidebar/SiteSidebar';
+import { SiteSidebar } from './components/site-sidebar/SiteSidebar';
 import { PageContainerElement, SiteContainerElement } from './AdminWeb.styled';
 
 export function ImagineWeb() {

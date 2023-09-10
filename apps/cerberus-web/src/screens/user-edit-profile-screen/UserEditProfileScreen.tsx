@@ -14,10 +14,22 @@ export function UserEditProfileScreen() {
       <Card header="Possible Alts">
         hoe
       </Card>
+      <Card header="Sanction History">
+        hoe
+      </Card>
+      <Card header="Player Stats">
+        hoe
+      </Card>
       <Card header="Badges">
         hoe
       </Card>
       <Card header="Rooms">
+        hoe
+      </Card>
+      <Card header="Trades">
+        hoe
+      </Card>
+      <Card header="Inventory">
         hoe
       </Card>
       <Card header="Furniture">

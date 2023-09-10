@@ -3,7 +3,11 @@ import styled from "styled-components";
 export const SiteSidebarElement = styled.div`
   background: ${({ theme }) => theme.color.s20};
   text-align: center;
-  padding: ${({ theme }) => theme.space.oneUnit};
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-height: 100%;
+  width: ${({ theme }) => theme.components.sidebarWidth};
   
   .logo {
     border-bottom: ${({ theme }) => `1px solid ${theme.color.s60}`};
