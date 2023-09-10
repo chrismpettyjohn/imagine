@@ -42,10 +42,10 @@ export function UserPossibleAltsCard({ user }: UserPossibleAltsCardProps) {
         {
           matchingUsers.map(_ => (
             <Link key={`alt_user_${_.id}`} href={`/users/${_.username}`}>
-              <div style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column' }}>
+              <Card elevation={2} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column' }}>
                 <Avatar look={_.look} headOnly height={110} width={64} />
                 <b style={{ marginTop: -40 }}>{_.username}</b>
-              </div>
+              </Card>
             </Link>
           ))
         }

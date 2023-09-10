@@ -1,6 +1,9 @@
-import { ReactNode } from "react";
+import { HTMLProps, ReactNode } from "react";
 
-export interface CardProps {
-  header?: ReactNode;
+export type CardElevation = 1 | 2;
+
+export interface CardProps extends HTMLProps<HTMLDivElement> {
   children: ReactNode;
+  elevation?: CardElevation;
+  header?: ReactNode;
 }

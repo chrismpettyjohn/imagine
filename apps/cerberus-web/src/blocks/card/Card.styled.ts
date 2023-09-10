@@ -1,8 +1,20 @@
 import styled from "styled-components";
+import { CardElevation } from "./Card.types";
 
-export const CardElement = styled.div`
-  background: ${({ theme }) => theme.color.s20};
-  border:${({ theme }) => `2px solid ${theme.color.s40}`};
+export const CardElement = styled.div<{ $elevation: CardElevation }>`
+  background: ${({ theme, $elevation }) => {
+    if ($elevation === 2) {
+      return theme.color.s50;
+    };
+    return theme.color.s20;
+  }};
+  border:${({ theme, $elevation }) => {
+    let borderColor = theme.color.s40;
+    if ($elevation === 2) {
+      borderColor = theme.color.s60;
+    };
+    return `2px solid ${borderColor}`
+  }};
   border-radius: ${({ theme }) => theme.radius.oneUnit};
   width: 100%;
 `
