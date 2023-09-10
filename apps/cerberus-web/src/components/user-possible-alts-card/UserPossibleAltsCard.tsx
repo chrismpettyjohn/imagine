@@ -1,8 +1,9 @@
+import { Link } from 'wouter';
 import React, { useEffect, useMemo } from 'react'
 import { Card } from '../../blocks/card/Card';
+import { Avatar } from '../../blocks/avatar/Avatar';
 import { useUserFetchMany } from '@imagine-cms/client';
 import { UserPossibleAltsCardProps } from './UserPossibleAltsCard.types';
-import { Avatar } from '../../blocks/avatar/Avatar';
 
 export function UserPossibleAltsCard({ user }: UserPossibleAltsCardProps) {
   const fetchUsers = useUserFetchMany();
@@ -16,8 +17,16 @@ export function UserPossibleAltsCard({ user }: UserPossibleAltsCardProps) {
     })
   }, [user]);
 
+  const matchingUsers = useMemo(() => {
+    if (!fetchUsers.data) {
+      return [];
+    }
+
+    return fetchUsers.data.filter(_ => _.id !== user.id);
+  }, [fetchUsers.data]);
+
   return (
-    <Card header={<>Possible Alts ({fetchUsers.data?.length ?? 0})</>}>
+    <Card header={<>Possible Alts ({matchingUsers.length})</>}>
       {
         fetchUsers.loading && (
           <div style={{ display: 'flex', gap: 8 }}>
@@ -28,11 +37,13 @@ export function UserPossibleAltsCard({ user }: UserPossibleAltsCardProps) {
       }
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 16, alignItems: 'center', justifyContent: 'center' }}>
         {
-          fetchUsers.data?.map(_ => (
-            <div key={`alt_user_${_.id}`} style={{ display: 'flex', flexDirection: 'column' }}>
-              <Avatar look={_.look} headOnly height={110} width={64} />
-              <b style={{ marginTop: -40 }}>{_.username}</b>
-            </div>
+          matchingUsers.map(_ => (
+            <Link key={`alt_user_${_.id}`} href={`/users/${_.username}`}>
+              <div style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column' }}>
+                <Avatar look={_.look} headOnly height={110} width={64} />
+                <b style={{ marginTop: -40 }}>{_.username}</b>
+              </div>
+            </Link>
           ))
         }
       </div>
