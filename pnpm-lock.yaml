@@ -91,6 +91,9 @@ importers:
       react:
         specifier: 18.2.0
         version: 18.2.0
+      react-data-table-component:
+        specifier: 7.5.4
+        version: 7.5.4(react@18.2.0)(styled-components@6.0.7)
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
@@ -6160,7 +6163,6 @@ packages:
   /deepmerge@4.3.1:
     resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
     engines: {node: '>=0.10.0'}
-    dev: true
 
   /default-browser-id@3.0.0:
     resolution: {integrity: sha512-OZ1y3y0SqSICtE8DE4S8YOE9UZOJ8wO16fKWVP5J1Qz42kV9jcnMVFrEE/noXb/ss3Q4pZIH79kxofzyNNtUNA==}
@@ -10649,6 +10651,17 @@ packages:
       http-errors: 2.0.0
       iconv-lite: 0.4.24
       unpipe: 1.0.0
+    dev: false
+
+  /react-data-table-component@7.5.4(react@18.2.0)(styled-components@6.0.7):
+    resolution: {integrity: sha512-6DGVj3urJZfEEMuP652fSjxdRVKeyb+9d0YounVc+MX8jwoyXQW6KO10eyZqElE9QtVrKrCeJxR7vht9yxyJiw==}
+    peerDependencies:
+      react: '>= 16.8.3'
+      styled-components: '>= 4'
+    dependencies:
+      deepmerge: 4.3.1
+      react: 18.2.0
+      styled-components: 6.0.7(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /react-dom@18.2.0(react@18.2.0):
