@@ -17,6 +17,10 @@ export class HasScopeGuard implements CanActivate {
       context
     ) as RequestWithSession;
 
+    console.log('test');
+
+    console.log(request.user);
+
     return !!request.user.rank?.scopes[requiredScope];
   }
 }

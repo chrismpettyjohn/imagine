@@ -2,7 +2,6 @@ import {In} from 'typeorm';
 import {Args, Query, Resolver} from '@nestjs/graphql';
 import {HasScope} from '../session/has-scope.decorator';
 import {SupportTicketModel} from './support-ticket.model';
-import {HasSession} from '../session/has-session.decorator';
 import {SupportTicketRepository} from '../database/support-ticket.repository';
 import {
   SupportTicketFilterManyInput,
@@ -10,12 +9,11 @@ import {
 } from './support-ticket.input';
 
 @Resolver(() => SupportTicketModel)
-@HasSession()
-@HasScope('manageSupportTickets')
 export class SupportTicketResolver {
   constructor(private readonly supportTicketRepo: SupportTicketRepository) {}
 
   @Query(() => [SupportTicketModel])
+  @HasScope('manageSupportTickets')
   async supportTickets(
     @Args('filter', {type: () => SupportTicketFilterManyInput})
     filter: SupportTicketFilterManyInput
@@ -33,6 +31,7 @@ export class SupportTicketResolver {
   }
 
   @Query(() => SupportTicketModel)
+  @HasScope('manageSupportTickets')
   async supportTicket(
     @Args('filter', {type: () => SupportTicketFilterOneInput})
     filter: SupportTicketFilterOneInput
