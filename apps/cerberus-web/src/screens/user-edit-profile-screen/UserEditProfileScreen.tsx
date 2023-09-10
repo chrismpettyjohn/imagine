@@ -1,4 +1,4 @@
-import { useRoute } from 'wouter';
+import { Link, useRoute } from 'wouter';
 import React, { useEffect } from 'react';
 import { Card } from '../../blocks/card/Card';
 import { useUserFetchOne } from '@imagine-cms/client';
@@ -21,7 +21,9 @@ export function UserEditProfileScreen() {
 
   return (
     <>
-      <h1>Users <small>-&nbsp;{params!.username}</small></h1>
+      <h1 style={{ alignItems: 'center', display: 'flex' }}>
+        <Link href="/users"><i className="fa fa-caret-left fa-2x" style={{ cursor: 'pointer', marginRight: 8 }} /></Link>
+        Users <small>-&nbsp;{params!.username}</small></h1>
       {
         user && (
           <>
