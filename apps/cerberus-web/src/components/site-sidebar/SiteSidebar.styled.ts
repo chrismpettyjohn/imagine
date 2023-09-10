@@ -34,4 +34,11 @@ export const SiteSidebarElement = styled.div`
       color: ${({ theme }) => theme.color.s30};
     }
   }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
 `

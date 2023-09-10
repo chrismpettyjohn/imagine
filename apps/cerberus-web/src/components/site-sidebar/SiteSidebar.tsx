@@ -1,4 +1,5 @@
 import React from 'react';
+import { SITE_URL } from '@imagine-cms/web';
 import { Link } from '../../blocks/link/Link';
 import { SiteSidebarElement } from './SiteSidebar.styled';
 
@@ -14,14 +15,12 @@ export function SiteSidebar() {
             <i className="fa fa-home" />
           </li>
         </Link>
-
         <Link href="/users">
           <li>
             <i className="fa fa-users" />
           </li>
         </Link>
         <Link href="/catalog">
-
           <li>
             <i className="fa fa-couch" />
           </li>
@@ -47,6 +46,15 @@ export function SiteSidebar() {
           </li>
         </Link>
       </ul>
+      <footer>
+        <ul>
+          <a href={SITE_URL}>
+            <li>
+              <i className="fa fa-external-link" />
+            </li>
+          </a>
+        </ul>
+      </footer>
     </SiteSidebarElement>
   )
 }
