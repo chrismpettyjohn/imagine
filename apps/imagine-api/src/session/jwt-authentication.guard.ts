@@ -13,13 +13,11 @@ export class JwtAuthenticationGuard implements CanActivate {
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request: RawRequest = getRequestFromExecutionContext(context);
-    const authHeader =
-      request?.headers?.Authorization ?? request.header
+    const authHeader: string | undefined =
+      typeof request.header === 'function'
         ? request.header('Authorization')
-        : undefined;
+        : (request?.headers?.Authorization as any);
     const bearerToken: string | undefined = authHeader?.split('Bearer ')?.[1];
-
-    console.log('test', bearerToken);
 
     if (!bearerToken) {
       return false;

@@ -35,6 +35,9 @@ export function UserPossibleAltsCard({ user }: UserPossibleAltsCardProps) {
           </div>
         )
       }
+      {
+        matchingUsers.length === 0 && <p>No possible alts found</p>
+      }
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 16, alignItems: 'center', justifyContent: 'center' }}>
         {
           matchingUsers.map(_ => (

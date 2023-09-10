@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
 import { useRoute } from 'wouter';
+import React, { useEffect } from 'react';
 import { Card } from '../../blocks/card/Card';
-import { UserPossibleAltsCard } from '../../components/user-possible-alts-card/UserPossibleAltsCard';
 import { useUserFetchOne } from '@imagine-cms/client';
+import { UserBadgesCard } from '../../components/user-badges-card/UserBadgesCard';
+import { UserPossibleAltsCard } from '../../components/user-possible-alts-card/UserPossibleAltsCard';
+import { UserSanctionHistoryCard } from '../../components/user-sanction-history-card/UserSanctionHistoryCard';
 
 export function UserEditProfileScreen() {
   const [, params] = useRoute<{ username: string }>('/users/:username');
@@ -25,15 +27,11 @@ export function UserEditProfileScreen() {
               hoe
             </Card>
             <UserPossibleAltsCard user={user} />
-            <Card header="Sanction History">
-              hoe
-            </Card>
+            <UserSanctionHistoryCard user={user} />
             <Card header="Player Stats">
               hoe
             </Card>
-            <Card header="Badges">
-              hoe
-            </Card>
+            <UserBadgesCard user={user} />
             <Card header="Rooms">
               hoe
             </Card>

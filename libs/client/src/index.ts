@@ -138,6 +138,11 @@ export * from './session/session-update-password.hook';
 export * from './session/session-update-password.mutation';
 export * from './session/session.input';
 
+export * from './support-ticket/support-ticket-fetch-many.hook';
+export * from './support-ticket/support-ticket-fetch-many.query';
+export * from './support-ticket/support-ticket.fragment';
+export * from './support-ticket/support-ticket.input';
+
 // User Badge
 export * from './user-badge/user-badge-fetch-many.hook';
 export * from './user-badge/user-badge-fetch-many.query';
