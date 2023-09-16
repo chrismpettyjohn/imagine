@@ -1,6 +1,6 @@
-import {SessionEntity} from './session.entity';
 import {registerEnumType} from '@nestjs/graphql';
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
+import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
+import {UserWire, UserGender, UserOnlineStatus} from '@imagine-cms/types';
 import {
   IMAGINE_DEFAULT_ACTIVITY_POINTS,
   IMAGINE_DEFAULT_CREDITS,
@@ -9,7 +9,6 @@ import {
   IMAGINE_DEFAULT_MOTTO,
   IMAGINE_DEFAULT_VIP_POINTS,
 } from '../imagine.constant';
-import {UserWire, UserGender, UserOnlineStatus} from '@imagine-cms/types';
 
 registerEnumType(UserGender, {
   name: 'UserGender',
@@ -83,7 +82,4 @@ export class UserEntity implements UserWire {
 
   @Column({name: 'discord_id', type: 'varchar', nullable: true})
   discordID?: string;
-
-  @OneToMany(() => SessionEntity, session => session.user)
-  sessions?: SessionEntity[];
 }
