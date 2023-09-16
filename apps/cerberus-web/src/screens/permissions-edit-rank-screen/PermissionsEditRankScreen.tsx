@@ -2,7 +2,6 @@ import { Link, useRoute } from 'wouter';
 import React, { useEffect } from 'react';
 import { RankCreateInputDTO } from '@imagine-cms/types';
 import { useRankFetchOne, useRankUpdateOne } from '@imagine-cms/client';
-import { RankScopesCard } from '../../components/rank-scopes-card/RankScopesCard';
 import { RankMembersCard } from '../../components/rank-members-card/RankMembersCard';
 import { RankDetailsEditorCard } from '../../components/rank-details-editor-card/RankDetailsEditorCard';
 
@@ -35,7 +34,6 @@ export function PermissionsEditRankScreen() {
         fetchRank.data && (
           <>
             <RankDetailsEditorCard defaultRank={fetchRank.data} onSave={onSaveChanges} />
-            <RankScopesCard rank={fetchRank.data} />
             <RankMembersCard rank={fetchRank.data} />
           </>
         )

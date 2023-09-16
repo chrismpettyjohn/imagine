@@ -36,13 +36,16 @@ export class RankResolver {
   @Query(() => RankModel)
   async rank(
     @Args('filter', {type: () => RankFilterOneInput}) filter: RankFilterOneInput
-  ): Promise<RankEntity> {
-    return this.rankRepo.findOneOrFail({id: filter.id});
+  ): Promise<RankModel> {
+    const matchingRank = await this.rankRepo.findOneOrFail({id: filter.id});
+    return RankModel.fromEntity(matchingRank);
   }
 
   @Query(() => [RankModel])
-  ranks(@Args('filter') filter: RankFilterManyInput): Promise<RankEntity[]> {
-    return this.rankRepo.find({
+  async ranks(
+    @Args('filter') filter: RankFilterManyInput
+  ): Promise<RankModel[]> {
+    const matchingRanks = await this.rankRepo.find({
       where: {
         id: filter.ids && In(filter.ids),
         siteShowStaff: filter.showStaffOnly ? RankSiteShowStaff.Yes : undefined,
@@ -52,19 +55,20 @@ export class RankResolver {
       },
       take: filter.limit,
     });
+    return matchingRanks.map(RankModel.fromEntity);
   }
 
   @Mutation(() => RankModel)
   async rankCreate(
     @Args('newRank') rankCreateInput: RankCreateInput
-  ): Promise<RankEntity> {
+  ): Promise<RankModel> {
     const newRank = await this.rankRepo.create({
       ...rankCreateInput,
       siteShowStaff: rankCreateInput.siteShowStaff
         ? RankSiteShowStaff.Yes
         : RankSiteShowStaff.No,
     });
-    return newRank;
+    return RankModel.fromEntity(newRank);
   }
 
   @Mutation(() => Boolean)
@@ -76,6 +80,12 @@ export class RankResolver {
     const currentRank = await this.rankRepo.findOneOrFail(filter);
     await this.rankRepo.update(filter, {
       ...input,
+      siteShowStaff:
+        input.siteShowStaff === undefined
+          ? currentRank.siteShowStaff
+          : input.siteShowStaff
+          ? RankSiteShowStaff.Yes
+          : RankSiteShowStaff.No,
       scopes: {
         ...currentRank.scopes,
         ...input.scopes,

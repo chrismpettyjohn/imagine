@@ -10,7 +10,6 @@ import { ButtonPrimary } from '../../components/button/Button.remix';
 import { GuestGuard } from '../../components/guest-guard/GuestGuard';
 import { GoogleLoginButton } from '../../components/google-login-button/GoogleLoginButton';
 import { DiscordLoginButton } from '../../components/discord-login-button/DiscordLoginButton';
-import { UsernameWithAvatarInput } from './username-with-avatar-input/UsernameWithAvatarInput';
 import { FacebookLoginButton } from '../../components/facebook-login-button/FacebookLoginButton';
 
 export function LoginScreen() {
@@ -30,23 +29,29 @@ export function LoginScreen() {
     <GuestGuard redirect>
       <Card header="Login">
         <Form onSubmit={onLogin}>
-          <UsernameWithAvatarInput username={username} onChange={setUsername} />
-          <label htmlFor="password">Password</label>
-          <Input type="password" name="password" className="form-control" id="password" placeholder="Password" autoComplete="current-password" required value={password} onChange={(e: any) => setPassword(e?.currentTarget?.value ?? '')} />
-          <div style={{ display: 'flex', flex: 1, gap: 16, justifyContent: 'flex-end' }}>
-            <Link to="/register">
-              <ButtonPrimary type="button">Create Account</ButtonPrimary>
+          <label>Username</label>
+          <Input type="text" name="username" placeholder="Username" value={username} onChange={e => setUsername(e.currentTarget.value ?? '')} />
+          <label>Password</label>
+          <Input type="password" name="password" placeholder="Password" required value={password} onChange={(e: any) => setPassword(e?.currentTarget?.value ?? '')} />
+          <div style={{ display: 'flex', flex: 1, gap: 16, justifyContent: 'space-between', alignItems: 'center' }}>
+            <Link to="/forgot-password">
+              Forgot Password?
             </Link>
-            <Button type="submit">Login</Button>
+            <div style={{ display: 'flex', flex: 1, gap: 16, justifyContent: 'flex-end' }}>
+              <Link to="/register">
+                <ButtonPrimary type="button">Create Account</ButtonPrimary>
+              </Link>
+              <Button type="submit">Login</Button>
+            </div>
           </div>
+
         </Form>
       </Card>
-      <br />
-      <DiscordLoginButton />
-      <br />
-      <FacebookLoginButton />
-      <br />
-      <GoogleLoginButton />
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginTop: 16 }}>
+        <DiscordLoginButton />
+        <FacebookLoginButton />
+        <GoogleLoginButton />
+      </div>
     </GuestGuard>
   )
 }

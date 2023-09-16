@@ -61,7 +61,7 @@ export class RankUpdateInput implements RankUpdateInputDTO {
   @Field()
   @IsBoolean()
   @IsOptional()
-  showStaff!: boolean;
+  siteShowStaff!: boolean;
 
   @Field({nullable: true})
   @IsObject()

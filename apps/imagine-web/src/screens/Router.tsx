@@ -13,6 +13,7 @@ import { PlayGameScreen } from './play-game-screen/PlayGameScreen';
 import { RoomViewScreen } from './room-view-screen/RoomViewScreen';
 import { GroupViewScreen } from './group-view-screen/GroupViewScreen';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
+import { ForgotPasswordScreen } from './forgot-password-screen/ForgotPasswordScreen';
 import { CommunityStaffScreen } from './community-staff-screen/CommunityStaffScreen';
 import { LoginWithGoogleScreen } from './login-with-google-screen/LoginWithGoogleScreen';
 import { LoginWithDiscordScreen } from './login-with-discord-screen/LoginWithDiscordScreen';
@@ -22,6 +23,8 @@ import { CommunityHighScoresScreen } from './community-high-scores-screen/Commun
 import { CommunityViewArticleScreen } from './community-view-article-screen/CommunityViewArticleScreen';
 import { CommunityListArticlesScreen } from './community-list-articles-screen/CommunityListArticlesScreen';
 import { CommunityOnlinePlayersScreen } from './community-online-players-screen/CommunityOnlinePlayersScreen';
+import { ForgotPasswordLinkSentScreen } from './forgot-password-link-sent-screen/ForgotPasswordLinkSentScreen';
+import { ForgotPasswordRedeemCodeScreen } from './forgot-password-redeem-code-screen/ForgotPasswordRedeemCodeScreen';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -51,6 +54,18 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/register',
     view: RegisterScreen,
+  },
+  {
+    path: '/forgot-password',
+    view: ForgotPasswordScreen,
+  },
+  {
+    path: '/forgot-password/confirmation',
+    view: ForgotPasswordLinkSentScreen,
+  },
+  {
+    path: '/forgot-password/redeem/:requestCode',
+    view: ForgotPasswordRedeemCodeScreen,
   },
   {
     path: '/logout',

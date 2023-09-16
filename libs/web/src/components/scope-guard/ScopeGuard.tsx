@@ -9,6 +9,8 @@ export function ScopeGuard({ children, scope, redirect = false }: ScopeGuardProp
 
   const userHasRequiredScope = !!session?.rank?.scopes?.[scope]
 
+  console.log(session)
+
   if (!userHasRequiredScope) {
     return redirect ? <Redirect to="/me" /> : null;
   }

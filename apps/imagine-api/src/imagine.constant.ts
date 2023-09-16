@@ -34,4 +34,14 @@ export const IMAGINE_DEFAULT_HOME_ROOM = Number(
 );
 export const IMAGINE_DEFAULT_RANK = Number(getEnvOrFail('DEFAULT_RANK'));
 
+export const SITE_WEB_URL = getEnvOrFail('SITE_WEB_URL');
+
+export const FORGOT_PASSWORD_EXPIRATION_LENGTH_HOURS = Number(
+  getEnvOrFail('FORGOT_PASSWORD_EXPIRATION_LENGTH_HOURS')
+);
+
 export const GLOBAL_MAX_RESOURCE_LIMIT = 100;
+
+export const EMAILS_INTERNAL_EMAIL_ADDRESS = getEnvOrFail(
+  'EMAILS_INTERNAL_EMAIL_ADDRESS'
+);

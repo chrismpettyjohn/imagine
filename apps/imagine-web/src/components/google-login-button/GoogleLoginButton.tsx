@@ -1,15 +1,16 @@
 import React from 'react';
-import { GoogleLoginButtonElement } from './GoogleLoginButton.styled';
 import { getGoogleLoginRedirect } from '../../hooks/google-login-redirect.hook';
+import { ButtonPrimary } from '../button/Button.remix';
 
 
 export function GoogleLoginButton() {
   const googleLoginRedirectUrl = getGoogleLoginRedirect();
   return (
     <a href={googleLoginRedirectUrl}>
-      <GoogleLoginButtonElement>
+      <ButtonPrimary style={{ width: '100%' }}>
+        <i className="fab fa-google" />&nbsp;
         Google
-      </GoogleLoginButtonElement>
+      </ButtonPrimary>
     </a>
   )
 }

@@ -529,6 +529,8 @@ type Mutation {
   discordUserAuthenticate(input: DiscordAuthInput!): DiscordAuthModel!
   facebookUserAuthenticate(input: FacebookAuthInput!): FacebookAuthModel!
   googleUserAuthenticate(input: GoogleAuthInput!): GoogleAuthModel!
+  forgotPasswordRequestCreate(input: ForgotPasswordRequestCreateInput!): Boolean!
+  forgotPasswordRequestRedeem(input: ForgotPasswordRequestRedeemInput!): Boolean!
 }
 
 input SessionUpdateEmailInput {
@@ -579,7 +581,7 @@ input RankWireScopesCreateInput {
 input RankUpdateInput {
   name: String
   badgeCode: String
-  showStaff: Boolean!
+  siteShowStaff: Boolean!
   scopes: RankWireScopesUpdateInput
 }
 
@@ -687,6 +689,15 @@ input FacebookAuthInput {
 
 input GoogleAuthInput {
   googleAuthToken: String!
+}
+
+input ForgotPasswordRequestCreateInput {
+  emailAddress: String!
+}
+
+input ForgotPasswordRequestRedeemInput {
+  requestCode: String!
+  newPassword: String!
 }
 
 type Subscription {

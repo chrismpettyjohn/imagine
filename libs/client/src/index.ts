@@ -47,6 +47,13 @@ export * from './facebook/facebook-user-authenticate.mutation';
 export * from './facebook/facebook.fragment';
 export * from './facebook/facebook.input';
 
+// Forgot Password
+export * from './forgot-password/forgot-password-create.hook';
+export * from './forgot-password/forgot-password-create.mutation';
+export * from './forgot-password/forgot-password-redeem.hook';
+export * from './forgot-password/forgot-password-redeem.mutation';
+export * from './forgot-password/forgot-password.input';
+
 // Friendship
 export * from './friendship/friendship-fetch-many.hook';
 export * from './friendship/friendship-fetch-many.query';

@@ -38,6 +38,8 @@ import {LanguagePhraseRepository} from './language-phrase.repository';
 import {GroupMembershipRepository} from './group-membership.repository';
 import {LanguagePhraseTranslationEntity} from './language-phrase-translation.entity';
 import {LanguagePhraseTranslationRepository} from './language-phrase-translation.repository';
+import {ForgotPasswordRequestEntity} from './forgot-password-request.entity';
+import {ForgotPasswordRequestRepository} from './forgot-password-request.repository';
 
 export const databaseEntities = [
   ArticleEntity,
@@ -60,6 +62,7 @@ export const databaseEntities = [
   GroupMembershipEntity,
   UserBadgeEntity,
   SupportTicketEntity,
+  ForgotPasswordRequestEntity,
 ];
 
 export const databaseRepositories = [
@@ -83,4 +86,5 @@ export const databaseRepositories = [
   GroupMembershipRepository,
   UserBadgeRepository,
   SupportTicketRepository,
+  ForgotPasswordRequestRepository,
 ];

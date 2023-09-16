@@ -15,6 +15,15 @@ export const ButtonDanger = styled(Button)`
   }
 `
 
+export const ButtonSuccess = styled(Button)`
+  border-color: green;
+  color: green;
+  &:hover {
+    border-color: green;
+    color: green;
+  }
+`
+
 export const ButtonNoBorder = styled(Button)`
   border-color: transparent;
 `

@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import { SiteLogo } from '../site-logo/SiteLogo';
 import { GuestGuard } from '../guest-guard/GuestGuard';
 import { ButtonPrimary, ButtonDanger, ButtonNoBorder } from '../button/Button.remix';
-import { ADMIN_URL, UserGuard, configContext, sessionContext } from '@imagine-cms/web';
+import { ADMIN_URL, ScopeGuard, UserGuard, configContext, sessionContext } from '@imagine-cms/web';
 import { SiteHeaderActions, SiteHeaderContent, SiteHeaderElement, SiteHeaderNavigation } from './SiteHeader.styled';
 
 export function SiteHeader() {
@@ -66,11 +66,13 @@ export function SiteHeader() {
               </ButtonNoBorder>
             </Link>
           </UserGuard>
-          <a href={ADMIN_URL}>
-            <ButtonDanger>
-              Admin Panel
-            </ButtonDanger>
-          </a>
+          <ScopeGuard scope="accessAdminPanel" redirect={false}>
+            <a href={ADMIN_URL}>
+              <ButtonDanger>
+                Admin Panel
+              </ButtonDanger>
+            </a>
+          </ScopeGuard>
           <Link to="/play">
             <ButtonPrimary>
               Play Game

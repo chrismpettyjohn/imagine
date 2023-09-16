@@ -7,7 +7,7 @@ export function LatestArticlesGrid() {
   const fetchArticles = useArticleFetchMany();
 
   useEffect(() => {
-    fetchArticles.fetch({});
+    fetchArticles.fetch({ limit: 6 });
   }, []);
 
   return (

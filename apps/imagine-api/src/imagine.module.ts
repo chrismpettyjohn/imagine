@@ -32,6 +32,7 @@ import {
 import {GoogleModule} from './google/google.module';
 import {UserBadgeModule} from './user-badge/user-badge.module';
 import {SupportTicketModule} from './support-ticket/support-ticket.module';
+import {ForgotPasswordModule} from './forgot-password/forgot-password.module';
 
 @Module({
   imports: [
@@ -86,6 +87,7 @@ import {SupportTicketModule} from './support-ticket/support-ticket.module';
     FriendshipModule,
     UserBadgeModule,
     SupportTicketModule,
+    ForgotPasswordModule,
   ],
 })
 export class ImagineModule {}
