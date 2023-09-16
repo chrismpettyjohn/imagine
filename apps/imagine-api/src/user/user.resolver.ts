@@ -36,11 +36,11 @@ export class UserResolver {
 
   @ResolveField()
   @HasSession()
-  email(
+  async email(
     @Parent() {id, email}: UserEntity,
     @GetUser() user: UserEntity
-  ): string | null {
-    const canAccess = this.ownsResourceOrCanManageUsers(id, user);
+  ): Promise<string | null> {
+    const canAccess = await this.ownsResourceOrCanManageUsers(id, user);
     if (!canAccess) {
       return null;
     }
@@ -49,11 +49,11 @@ export class UserResolver {
 
   @ResolveField()
   @HasSession()
-  gameSSO(
+  async gameSSO(
     @Parent() {id, gameSSO}: UserEntity,
     @GetUser() user: UserEntity
-  ): string | null {
-    const canAccess = this.ownsResourceOrCanManageUsers(id, user);
+  ): Promise<string | null> {
+    const canAccess = await this.ownsResourceOrCanManageUsers(id, user);
     if (!canAccess) {
       return null;
     }
@@ -62,11 +62,11 @@ export class UserResolver {
 
   @ResolveField()
   @HasSession()
-  ipLast(
+  async ipLast(
     @Parent() {id, ipLast}: UserEntity,
     @GetUser() user: UserEntity
-  ): string | null {
-    const canAccess = this.ownsResourceOrCanManageUsers(id, user);
+  ): Promise<string | null> {
+    const canAccess = await this.ownsResourceOrCanManageUsers(id, user);
     if (!canAccess) {
       return null;
     }
@@ -75,11 +75,11 @@ export class UserResolver {
 
   @ResolveField()
   @HasSession()
-  ipRegistered(
+  async ipRegistered(
     @Parent() {id, ipRegistered: ipRegisteredWith}: UserEntity,
     @GetUser() user: UserEntity
-  ): string | null {
-    const canAccess = this.ownsResourceOrCanManageUsers(id, user);
+  ): Promise<string | null> {
+    const canAccess = await this.ownsResourceOrCanManageUsers(id, user);
     if (!canAccess) {
       return null;
     }
@@ -88,11 +88,11 @@ export class UserResolver {
 
   @ResolveField()
   @HasSession()
-  machineAddress(
+  async machineAddress(
     @Parent() {id, machineAddress}: UserEntity,
     @GetUser() user: UserEntity
-  ): string | null {
-    const canAccess = this.ownsResourceOrCanManageUsers(id, user);
+  ): Promise<string | null> {
+    const canAccess = await this.ownsResourceOrCanManageUsers(id, user);
     if (!canAccess) {
       return null;
     }
@@ -105,8 +105,9 @@ export class UserResolver {
   }
 
   @ResolveField('rank', () => RankModel, {nullable: true})
-  getRank(@Parent() {rankID}: UserEntity): Promise<RankModel> {
-    return this.rankRepo.findOneOrFail({id: rankID});
+  async getRank(@Parent() {rankID}: UserEntity): Promise<RankModel> {
+    const matchingRank = await this.rankRepo.findOneOrFail({id: rankID});
+    return RankModel.fromEntity(matchingRank);
   }
 
   @Query(() => UserModel)
@@ -206,11 +207,17 @@ export class UserResolver {
     return Number(userID) !== Number(authenticatedUser.id);
   }
 
-  private ownsResourceOrCanManageUsers(
+  private async ownsResourceOrCanManageUsers(
     userID: number,
     authenticatedUser: UserEntity
-  ): Boolean {
-    if (authenticatedUser.rank?.scopes?.manageUsers) {
+  ): Promise<Boolean> {
+    const matchingRank = await this.rankRepo.findOne({
+      where: {
+        id: authenticatedUser.rankID,
+      },
+    });
+
+    if (matchingRank?.scopes?.manageUsers) {
       return true;
     }
 

@@ -59,30 +59,28 @@ export class RankResolver {
     @Args('newRank') rankCreateInput: RankCreateInput
   ): Promise<RankEntity> {
     const newRank = await this.rankRepo.create({
-      siteShowStaff: rankCreateInput.showStaff
+      ...rankCreateInput,
+      siteShowStaff: rankCreateInput.siteShowStaff
         ? RankSiteShowStaff.Yes
         : RankSiteShowStaff.No,
-      ...rankCreateInput,
     });
     return newRank;
   }
 
   @Mutation(() => Boolean)
   async rankUpdate(
-    @Args('id') id: number,
-    @Args('rankChanges') rankChanges: RankUpdateInput
+    @Args('filter', {type: () => RankFilterOneInput})
+    filter: RankFilterOneInput,
+    @Args('input', {type: () => RankUpdateInput}) input: RankUpdateInput
   ) {
-    const currentRank = await this.rankRepo.findOneOrFail({id});
-    await this.rankRepo.update(
-      {id},
-      {
-        ...rankChanges,
-        scopes: {
-          ...currentRank.scopes,
-          ...rankChanges.scopes,
-        },
-      }
-    );
+    const currentRank = await this.rankRepo.findOneOrFail(filter);
+    await this.rankRepo.update(filter, {
+      ...input,
+      scopes: {
+        ...currentRank.scopes,
+        ...input.scopes,
+      },
+    });
     return true;
   }
 

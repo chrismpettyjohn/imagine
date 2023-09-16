@@ -41,32 +41,12 @@ type SessionDisconnectAccountModel {
   success: Boolean!
 }
 
-type RankScopesModel {
-  accessAdminPanel: Boolean
-  manageArticles: Boolean
-  manageUsers: Boolean
-  manageRooms: Boolean
-  managePermissions: Boolean
-  manageSupportTickets: Boolean
-}
-
-type RankModel {
-  id: Float
-  name: String
-  description: String
-  badgeCode: String
-  showStaff: Boolean
-  scopes: RankScopesModel
-  users: [UserModel!]
-}
-
 type UserModel {
   id: Float
   username: String
   email: String
   gameSSO: String
   rankID: Float
-  rank: RankModel
   credits: Float
   vipPoints: Float
   activityPoints: Float
@@ -82,7 +62,7 @@ type UserModel {
   discordID: String
   facebookID: String
   googleID: String
-  sessions: [SessionModel!]
+  rank: RankModel
 }
 
 enum UserGender {
@@ -93,6 +73,24 @@ enum UserGender {
 enum UserOnlineStatus {
   Online
   Offline
+}
+
+type RankScopesModel {
+  accessAdminPanel: Boolean
+  manageArticles: Boolean
+  manageUsers: Boolean
+  manageRooms: Boolean
+  managePermissions: Boolean
+  manageSupportTickets: Boolean
+}
+
+type RankModel {
+  id: Float
+  name: String
+  badgeCode: String
+  siteShowStaff: Boolean
+  scopes: RankScopesModel
+  users: [UserModel!]
 }
 
 type RoomModel {
@@ -496,7 +494,7 @@ type Mutation {
   userUpdate(id: Float!, userChanges: UserUpdateInput!): Boolean!
   userDelete(id: Float!): Boolean!
   rankCreate(newRank: RankCreateInput!): RankModel!
-  rankUpdate(id: Float!, rankChanges: RankUpdateInput!): Boolean!
+  rankUpdate(filter: RankFilterOneInput!, input: RankUpdateInput!): Boolean!
   rankDelete(id: Float!): Boolean!
   articleCreate(newArticle: ArticleCreateInput!): ArticleModel!
   articleUpdate(id: Float!, articleChanges: ArticleUpdateInput!): Boolean!
@@ -564,9 +562,8 @@ input UserUpdateInput {
 
 input RankCreateInput {
   name: String!
-  description: String!
   badgeCode: String!
-  showStaff: Boolean!
+  siteShowStaff: Boolean!
   scopes: RankWireScopesCreateInput!
 }
 
@@ -581,7 +578,6 @@ input RankWireScopesCreateInput {
 
 input RankUpdateInput {
   name: String
-  description: String
   badgeCode: String
   showStaff: Boolean!
   scopes: RankWireScopesUpdateInput

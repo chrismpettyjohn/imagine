@@ -19,7 +19,7 @@ export function useSignInWithUsernameAndPassword(username: string, password: str
 
   useEffect(() => {
     if (fetchUser?.data) {
-      if (!fetchUser.data.rank.showStaff) {
+      if (!fetchUser.data.rank.siteShowStaff) {
         toast.error('This area is only for members of our staff team')
         localStorageService.delete('SESSION');
         return;

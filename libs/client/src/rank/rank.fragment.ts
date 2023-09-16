@@ -14,17 +14,17 @@ export const QUERIED_SCOPES: Record<keyof RankScopesWire, true> = {
 export interface RankFragment {
   id: number;
   name: string;
-  description: string;
   badgeCode: string;
   scopes: RankScopesWire;
+  siteShowStaff: boolean;
 }
 
 export const RANK_FRAGMENT: any = gql`
   fragment RankFragment on RankModel {
     id
     name
-    description
     badgeCode
+    siteShowStaff
     scopes {
       accessAdminPanel
       manageArticles

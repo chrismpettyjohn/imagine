@@ -1,6 +1,4 @@
-import {RankModel} from '../rank/rank.model';
 import {Field, ObjectType} from '@nestjs/graphql';
-import {SessionModel} from '../session/session.model';
 import {UserGender, UserOnlineStatus, UserWire} from '@imagine-cms/types';
 
 @ObjectType()
@@ -21,9 +19,6 @@ export class UserModel implements UserWire {
 
   @Field({nullable: true})
   rankID?: number;
-
-  @Field(() => RankModel, {nullable: true})
-  rank?: RankModel;
 
   @Field(() => Number, {nullable: true})
   credits?: number;
@@ -69,7 +64,4 @@ export class UserModel implements UserWire {
 
   @Field(() => String, {nullable: true})
   googleID?: string;
-
-  @Field(() => [SessionModel], {nullable: true})
-  sessions?: SessionModel[];
 }

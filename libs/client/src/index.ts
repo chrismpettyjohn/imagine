@@ -113,9 +113,11 @@ export * from './photo-reaction/photo-reaction-fetch-one.query';
 export * from './rank/rank.fragment';
 export * from './rank/rank-fetch-many.hook';
 export * from './rank/rank-fetch-one.hook';
-export * from './rank/rank.input';
 export * from './rank/rank-fetch-many.query';
 export * from './rank/rank-fetch-one.query';
+export * from './rank/rank-update-one.hook';
+export * from './rank/rank-update-one.mutation';
+export * from './rank/rank.input';
 
 // Room
 export * from './room/room-fetch-many.hook';

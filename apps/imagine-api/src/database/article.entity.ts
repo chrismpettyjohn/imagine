@@ -1,11 +1,8 @@
-import {UserEntity} from './user.entity';
 import {ArticleWire} from '@imagine-cms/types';
 import {
   Column,
   Entity,
   PrimaryGeneratedColumn,
-  ManyToOne,
-  JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -17,10 +14,6 @@ export class ArticleEntity implements ArticleWire {
 
   @Column({name: 'user_id'})
   userID!: number;
-
-  @ManyToOne(() => UserEntity, user => user.articles)
-  @JoinColumn({name: 'user_id'})
-  user?: UserEntity;
 
   @Column()
   name!: string;

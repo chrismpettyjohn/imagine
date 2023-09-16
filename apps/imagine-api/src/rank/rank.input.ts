@@ -28,10 +28,6 @@ export class RankCreateInput implements RankCreateInputDTO {
   name!: string;
 
   @Field()
-  @IsNotEmpty()
-  description!: string;
-
-  @Field()
   @MaxLength(6)
   @IsNotEmpty()
   @IsAlphanumeric()
@@ -39,7 +35,7 @@ export class RankCreateInput implements RankCreateInputDTO {
 
   @Field()
   @IsBoolean()
-  showStaff!: boolean;
+  siteShowStaff!: boolean;
 
   @Field()
   @IsObject()
@@ -54,11 +50,6 @@ export class RankUpdateInput implements RankUpdateInputDTO {
   @IsAlphanumeric()
   @IsOptional()
   name?: string;
-
-  @Field({nullable: true})
-  @IsNotEmpty()
-  @IsOptional()
-  description?: string;
 
   @Field({nullable: true})
   @MaxLength(6)

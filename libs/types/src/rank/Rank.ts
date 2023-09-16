@@ -4,9 +4,8 @@ import {RankScopesWire} from './RankScopes';
 export interface RankWire {
   id?: number;
   name?: string;
-  description?: string;
   badgeCode?: string;
-  showStaff?: boolean;
+  siteShowStaff?: boolean;
   users?: UserWire[];
   scopes?: RankScopesWire;
 }

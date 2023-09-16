@@ -1,19 +1,30 @@
-import React, { useEffect } from 'react';
 import { Link, useRoute } from 'wouter';
-import { useRankFetchOne } from '@imagine-cms/client';
+import React, { useEffect } from 'react';
+import { RankCreateInputDTO } from '@imagine-cms/types';
+import { useRankFetchOne, useRankUpdateOne } from '@imagine-cms/client';
 import { RankScopesCard } from '../../components/rank-scopes-card/RankScopesCard';
 import { RankMembersCard } from '../../components/rank-members-card/RankMembersCard';
-import { RankDetailsCard } from '../../components/rank-details-card/RankDetailsCard';
+import { RankDetailsEditorCard } from '../../components/rank-details-editor-card/RankDetailsEditorCard';
 
 export function PermissionsEditRankScreen() {
   const [, params] = useRoute<{ rankID: string }>('/permissions/:rankID');
   const rankID = Number(params!.rankID);
 
   const fetchRank = useRankFetchOne();
+  const updateRank = useRankUpdateOne();
+
+  const onFetchRank = () => {
+    fetchRank.fetch({ id: rankID })
+  }
 
   useEffect(() => {
-    fetchRank.fetch({ id: rankID })
+    onFetchRank();
   }, [rankID]);
+
+  const onSaveChanges = async (rankDTO: RankCreateInputDTO) => {
+    await updateRank.execute({ id: rankID }, rankDTO);
+    onFetchRank();
+  }
 
   return (
     <>
@@ -23,7 +34,7 @@ export function PermissionsEditRankScreen() {
       {
         fetchRank.data && (
           <>
-            <RankDetailsCard rank={fetchRank.data} />
+            <RankDetailsEditorCard defaultRank={fetchRank.data} onSave={onSaveChanges} />
             <RankScopesCard rank={fetchRank.data} />
             <RankMembersCard rank={fetchRank.data} />
           </>

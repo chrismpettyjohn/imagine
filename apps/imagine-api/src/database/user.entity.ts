@@ -1,15 +1,6 @@
-import {RankEntity} from './rank.entity';
 import {SessionEntity} from './session.entity';
-import {ArticleEntity} from './article.entity';
 import {registerEnumType} from '@nestjs/graphql';
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
 import {
   IMAGINE_DEFAULT_ACTIVITY_POINTS,
   IMAGINE_DEFAULT_CREDITS,
@@ -45,8 +36,8 @@ export class UserEntity implements UserWire {
   @Column({name: 'auth_ticket'})
   gameSSO!: string;
 
-  @Column({name: 'rank'})
-  rankID = 1;
+  @Column({name: 'rank', type: 'int'})
+  rankID: number = 1;
 
   @Column()
   credits: number = IMAGINE_DEFAULT_CREDITS;
@@ -93,13 +84,6 @@ export class UserEntity implements UserWire {
   @Column({name: 'discord_id', type: 'varchar', nullable: true})
   discordID?: string;
 
-  @ManyToOne(() => RankEntity, rank => rank.users)
-  @JoinColumn({name: 'rank'})
-  rank?: RankEntity;
-
   @OneToMany(() => SessionEntity, session => session.user)
   sessions?: SessionEntity[];
-
-  @OneToMany(() => ArticleEntity, article => article.user)
-  articles?: ArticleEntity[];
 }
