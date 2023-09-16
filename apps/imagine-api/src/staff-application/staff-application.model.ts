@@ -27,6 +27,9 @@ export class StaffApplicationModel {
   @Field(() => Number, {nullable: true})
   updatedAt!: number;
 
+  @Field(() => Number, {nullable: true})
+  reviewedAt?: number;
+
   static fromEntity(entity: StaffApplicationEntity): StaffApplicationModel {
     return {
       id: entity.id!,
@@ -34,6 +37,7 @@ export class StaffApplicationModel {
       rankID: entity.rankID,
       accepted: entity.applicationAccepted,
       reviewingUserID: entity.reviewingUserID,
+      reviewedAt: entity.reviewedAt,
       content: entity.content,
       createdAt: entity.createdAt,
       updatedAt: entity.updatedAt,

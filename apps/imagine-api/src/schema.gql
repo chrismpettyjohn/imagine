@@ -327,6 +327,9 @@ type StaffApplicationModel {
   content: String
   createdAt: Float
   updatedAt: Float
+  reviewedAt: Float
+  user: UserModel
+  reviewingUser: UserModel
 }
 
 type Query {

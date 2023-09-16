@@ -1,13 +1,22 @@
 import DayJS from 'dayjs';
 import {In} from 'typeorm';
+import {UserModel} from '../user/user.model';
 import {UserEntity} from '../database/user.entity';
 import {UnauthorizedException} from '@nestjs/common';
 import {HasScope} from '../session/has-scope.decorator';
+import {UserRepository} from '../database/user.repository';
 import {RankRepository} from '../database/rank.repository';
 import {GetSession} from '../session/get-session.decorator';
-import {Resolver, Query, Mutation, Args} from '@nestjs/graphql';
 import {StaffApplicationModel} from './staff-application.model';
 import {StaffApplicationRepository} from '../database/staff-application.repository';
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql';
 import {
   StaffApplicationCreateInput,
   StaffApplicationFilterManyInput,
@@ -18,9 +27,28 @@ import {
 @Resolver(() => StaffApplicationModel)
 export class StaffApplicationResolver {
   constructor(
-    private readonly staffApplicationRepo: StaffApplicationRepository,
-    private readonly rankRepo: RankRepository
+    private readonly rankRepo: RankRepository,
+    private readonly userRepo: UserRepository,
+    private readonly staffApplicationRepo: StaffApplicationRepository
   ) {}
+
+  @ResolveField(() => UserModel, {nullable: true})
+  async user(
+    @Parent() staffApplication: StaffApplicationModel
+  ): Promise<UserModel> {
+    return this.userRepo.findOneOrFail({id: staffApplication.userID});
+  }
+
+  @ResolveField(() => UserModel, {nullable: true})
+  async reviewingUser(
+    @Parent() staffApplication: StaffApplicationModel
+  ): Promise<UserModel | null> {
+    return this.userRepo.findOne({
+      where: {
+        id: staffApplication.reviewingUserID ?? -1,
+      },
+    });
+  }
 
   @Query(() => StaffApplicationModel)
   async staffApplication(

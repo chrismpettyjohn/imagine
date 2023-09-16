@@ -9,7 +9,7 @@ export function SmallUserContainer({ user }: SmallUserContainerProps) {
     <Link href={`/users/${user.username}`}>
       <Button style={{ display: 'flex', justifyContent: 'center', height: 64, alignContent: 'center' }}>
         <Avatar look={user.look} headOnly style={{ height: 80, marginTop: -20 }} />
-        <b style={{ marginLeft: 10 }}> {user.username}</b>
+        <b style={{ marginTop: 5 }}> {user.username}</b>
       </Button>
     </Link>
   )

@@ -10,6 +10,7 @@ export const QUERIED_SCOPES: Record<keyof RankScopesWire, false> = {
   manageBetaCodes: false,
   managePermissions: false,
   manageSupportTickets: false,
+  manageStaffApplications: false,
 }
 
 export interface RankFragment {
@@ -34,6 +35,7 @@ export const RANK_FRAGMENT: any = gql`
       manageBetaCodes
       managePermissions
       manageSupportTickets
+      manageStaffApplications
     }
   }`
 

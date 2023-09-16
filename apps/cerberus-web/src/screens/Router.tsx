@@ -22,6 +22,7 @@ import { NewsArticlesEditArticleScreen } from './news-articles-edit-article-scre
 import { NewsArticlesCreateArticleScreen } from './news-articles-create-article-screen/NewsArticlesCreateArticleScreen';
 import { StaffApplicationsOverviewScreen } from './staff-applications-overview-screen/StaffApplicationsOverviewScreen';
 import { WebStoreOverviewScreen } from './web-store-overview-screen/WebStoreOverviewScreen';
+import { StaffApplicationsViewApplicationScreen } from './staff-applications-view-application-screen/StaffApplicationsViewApplicationScreen';
 
 const SITE_ROUTES: SiteRouteProps[] = [
   {
@@ -92,7 +93,12 @@ const SITE_ROUTES: SiteRouteProps[] = [
   {
     path: '/staff-applications',
     view: StaffApplicationsOverviewScreen,
-    guard: UserGuard,
+    guard: RouteScopeGuard('manageStaffApplications'),
+  },
+  {
+    path: '/staff-applications/:staffApplicationID',
+    view: StaffApplicationsViewApplicationScreen,
+    guard: RouteScopeGuard('manageStaffApplications'),
   },
   {
     path: '/radio',

@@ -44,11 +44,14 @@ export function SiteSidebar() {
             <i className="fa fa-door-open" />
           </li>
         </Link>
-        <Link href="/staff-applications">
-          <li>
-            <i className="fa fa-clipboard-user" />
-          </li>
-        </Link>
+        <ScopeGuard scope="manageStaffApplications" redirect={false}>
+
+          <Link href="/staff-applications">
+            <li>
+              <i className="fa fa-clipboard-user" />
+            </li>
+          </Link>
+        </ScopeGuard>
         <Link href="/radio">
           <li>
             <i className="fa fa-radio" />
