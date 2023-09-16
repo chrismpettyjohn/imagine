@@ -15,4 +15,5 @@ export interface StaffApplicationFilterManyInput {
   ids?: number[];
   userIDs?: number[];
   rankIDs?: number[];
+  limit?: number;
 }
