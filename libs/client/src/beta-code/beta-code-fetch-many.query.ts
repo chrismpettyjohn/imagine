@@ -4,7 +4,7 @@ import { BETA_CODE_FRAGMENT, BetaCodeFragment } from './beta-code.fragment';
 
 export const BETA_CODE_FETCH_MANY_QUERY: any = gql`
   ${BETA_CODE_FRAGMENT}
-  query($filter: BetaCodeFetchManyInput!) {
+  query($filter: BetaCodeFilterManyInput!) {
     betaCodes(filter: $filter) {
       ...BetaCodeFragment
     }

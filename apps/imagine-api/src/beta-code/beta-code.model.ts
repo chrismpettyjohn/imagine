@@ -6,7 +6,7 @@ export class BetaCodeModel {
   @Field(() => Number, {nullable: true})
   id!: number;
 
-  @Field(() => Number, {nullable: true})
+  @Field(() => String, {nullable: true})
   betaCode!: string;
 
   @Field(() => Number, {nullable: true})

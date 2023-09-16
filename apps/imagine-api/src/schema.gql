@@ -289,7 +289,7 @@ type SupportTicketModel {
 
 type BetaCodeModel {
   id: Float
-  betaCode: Float
+  betaCode: String
   userID: Float
 }
 

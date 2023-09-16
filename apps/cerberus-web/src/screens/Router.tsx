@@ -1,20 +1,21 @@
 import React from 'react';
 import { Switch, Route } from 'wouter';
-import { GuestGuard, RouteScopeGuard, ScopeGuard, UserGuard } from '@imagine-cms/web';
 import { SignInScreen } from './sign-in-screen/SignInScreen';
 import { SiteRoute } from '../components/site-route/SiteRoute';
 import { DashboardScreen } from './dashboard-screen/DashboardScreen';
 import { SiteRouteProps } from '../components/site-route/SiteRoute.types';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
 import { UsersOverviewScreen } from './users-overview-screen/UsersOverviewScreen';
+import { RoomsViewRoomScreen } from './rooms-view-room-screen/RoomsViewRoomScreen';
+import { GuestGuard, RouteScopeGuard, ScopeGuard, UserGuard } from '@imagine-cms/web';
 import { ReportsOverviewScreen } from './reports-overview-screen/ReportsOverviewScreen';
 import { CatalogOverviewScreen } from './catalog-overview-screen/CatalogOverviewScreen';
 import { UserEditProfileScreen } from './user-edit-profile-screen/UserEditProfileScreen';
+import { BetaCodesOverviewScreen } from './beta-codes-overview-screen/BetaCodesOverviewScreen';
 import { PermissionsOverviewScreen } from './permissions-overview-screen/PermissionsOverviewScreen';
+import { PermissionsEditRankScreen } from './permissions-edit-rank-screen/PermissionsEditRankScreen';
 import { NewsArticlesOverviewScreen } from './news-articles-overview-screen/NewsArticlesOverviewScreen';
 import { ConfigurationOverviewScreen } from './configuration-overview-screen/ConfigurationOverviewScreen';
-import { RoomsViewRoomScreen } from './rooms-view-room-screen/RoomsViewRoomScreen';
-import { PermissionsEditRankScreen } from './permissions-edit-rank-screen/PermissionsEditRankScreen';
 
 const SITE_ROUTES: SiteRouteProps[] = [
   {
@@ -30,6 +31,11 @@ const SITE_ROUTES: SiteRouteProps[] = [
   {
     path: '/dashboard',
     view: DashboardScreen,
+    guard: UserGuard,
+  },
+  {
+    path: '/beta-codes',
+    view: BetaCodesOverviewScreen,
     guard: UserGuard,
   },
   {

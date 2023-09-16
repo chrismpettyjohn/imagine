@@ -38,6 +38,8 @@ export * from './article-reaction/article-reaction-fetch-one.query';
 // Beta Code
 export * from './beta-code/beta-code-create.hook';
 export * from './beta-code/beta-code-create.mutation';
+export * from './beta-code/beta-code-delete.hook';
+export * from './beta-code/beta-code-delete.mutation';
 export * from './beta-code/beta-code-fetch-many.hook';
 export * from './beta-code/beta-code-fetch-many.query';
 export * from './beta-code/beta-code-fetch-one.hook';

@@ -12,8 +12,10 @@ import {
   BetaCodeFilterOneInput,
   BetaCodeRedeemInput,
 } from './beta-code.input';
+import {HasScope} from '../session/has-scope.decorator';
 
 @Resolver(() => BetaCodeModel)
+@HasSession()
 export class BetaCodeResolver {
   constructor(private readonly betaCodeRepo: BetaCodeRepository) {}
 
@@ -49,6 +51,7 @@ export class BetaCodeResolver {
   }
 
   @Mutation(() => BetaCodeModel)
+  @HasScope('manageBetaCodes')
   async betaCodeCreate(): Promise<BetaCodeModel> {
     const betaCode = uuidv4();
     const newBetaCode = await this.betaCodeRepo.create({
@@ -58,7 +61,17 @@ export class BetaCodeResolver {
   }
 
   @Mutation(() => Boolean)
-  @HasSession()
+  @HasScope('manageBetaCodes')
+  async betaCodeDelete(
+    @Args('filter', {type: () => BetaCodeFilterOneInput})
+    filter: BetaCodeFilterOneInput
+  ): Promise<boolean> {
+    await this.betaCodeRepo.delete({
+      id: filter.id,
+      betaCode: filter.betaCode,
+    });
+    return true;
+  }
   async betaCodeRedeem(
     @Args('input', {type: () => BetaCodeRedeemInput})
     input: BetaCodeRedeemInput,

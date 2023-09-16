@@ -5,7 +5,7 @@ export class BetaCodeEntity {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @Column({name: 'beta_code'})
+  @Column({name: 'beta_code', type: 'varchar'})
   betaCode!: string;
 
   @Column({name: 'user_id'})
