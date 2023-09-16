@@ -20,6 +20,9 @@ export class RankWireScopesCreateInput implements RankScopesWire {
   @IsBoolean()
   manageRooms!: boolean;
 
+  @Field({nullable: true})
+  manageBetaCodes!: boolean;
+
   @Field()
   @IsBoolean()
   managePermissions!: boolean;
@@ -50,6 +53,9 @@ export class RankWireScopesUpdateInput implements Partial<RankScopesWire> {
   @IsBoolean()
   @IsOptional()
   manageRooms?: boolean;
+
+  @Field({nullable: true})
+  manageBetaCodes!: boolean;
 
   @Field({nullable: true})
   @IsBoolean()

@@ -80,6 +80,7 @@ type RankScopesModel {
   manageArticles: Boolean
   manageUsers: Boolean
   manageRooms: Boolean
+  manageBetaCodes: Boolean
   managePermissions: Boolean
   manageSupportTickets: Boolean
 }
@@ -552,7 +553,7 @@ type Mutation {
   forgotPasswordRequestCreate(input: ForgotPasswordRequestCreateInput!): Boolean!
   forgotPasswordRequestRedeem(input: ForgotPasswordRequestRedeemInput!): Boolean!
   betaCodeCreate: BetaCodeModel!
-  betaCodeRedeem(input: BetaCodeRedeemInput!): Boolean!
+  betaCodeDelete(filter: BetaCodeFilterOneInput!): Boolean!
 }
 
 input SessionUpdateEmailInput {
@@ -596,6 +597,7 @@ input RankWireScopesCreateInput {
   manageArticles: Boolean!
   manageUsers: Boolean!
   manageRooms: Boolean!
+  manageBetaCodes: Boolean
   managePermissions: Boolean!
   manageSupportTickets: Boolean!
 }
@@ -612,6 +614,7 @@ input RankWireScopesUpdateInput {
   manageArticles: Boolean
   manageUsers: Boolean
   manageRooms: Boolean
+  manageBetaCodes: Boolean
   managePermissions: Boolean
   manageSupportTickets: Boolean
 }
@@ -720,10 +723,6 @@ input ForgotPasswordRequestCreateInput {
 input ForgotPasswordRequestRedeemInput {
   requestCode: String!
   newPassword: String!
-}
-
-input BetaCodeRedeemInput {
-  betaCode: String!
 }
 
 type Subscription {

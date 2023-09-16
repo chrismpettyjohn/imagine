@@ -2,13 +2,14 @@ import { gql } from 'graphql-tag';
 import { RankScopesWire } from '@imagine-cms/types';
 
 // This doesn't need to be here, but it will keep the scopes in sync to help prevent any unexpected issues when relying on scope guards
-export const QUERIED_SCOPES: Record<keyof RankScopesWire, true> = {
-  accessAdminPanel: true,
-  manageArticles: true,
-  manageUsers: true,
-  manageRooms: true,
-  managePermissions: true,
-  manageSupportTickets: true,
+export const QUERIED_SCOPES: Record<keyof RankScopesWire, false> = {
+  accessAdminPanel: false,
+  manageArticles: false,
+  manageUsers: false,
+  manageRooms: false,
+  manageBetaCodes: false,
+  managePermissions: false,
+  manageSupportTickets: false,
 }
 
 export interface RankFragment {
@@ -30,6 +31,7 @@ export const RANK_FRAGMENT: any = gql`
       manageArticles
       manageUsers
       manageRooms
+      manageBetaCodes
       managePermissions
       manageSupportTickets
     }

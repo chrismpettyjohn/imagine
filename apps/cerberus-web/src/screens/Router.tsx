@@ -3,11 +3,11 @@ import { Switch, Route } from 'wouter';
 import { SignInScreen } from './sign-in-screen/SignInScreen';
 import { SiteRoute } from '../components/site-route/SiteRoute';
 import { DashboardScreen } from './dashboard-screen/DashboardScreen';
+import { GuestGuard, RouteScopeGuard, UserGuard } from '@imagine-cms/web';
 import { SiteRouteProps } from '../components/site-route/SiteRoute.types';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
 import { UsersOverviewScreen } from './users-overview-screen/UsersOverviewScreen';
 import { RoomsViewRoomScreen } from './rooms-view-room-screen/RoomsViewRoomScreen';
-import { GuestGuard, RouteScopeGuard, ScopeGuard, UserGuard } from '@imagine-cms/web';
 import { ReportsOverviewScreen } from './reports-overview-screen/ReportsOverviewScreen';
 import { CatalogOverviewScreen } from './catalog-overview-screen/CatalogOverviewScreen';
 import { UserEditProfileScreen } from './user-edit-profile-screen/UserEditProfileScreen';
@@ -36,7 +36,7 @@ const SITE_ROUTES: SiteRouteProps[] = [
   {
     path: '/beta-codes',
     view: BetaCodesOverviewScreen,
-    guard: UserGuard,
+    guard: RouteScopeGuard('manageBetaCodes'),
   },
   {
     path: '/users',

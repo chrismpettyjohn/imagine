@@ -15,7 +15,7 @@ export function SiteSidebar() {
             <i className="fa fa-home" />
           </li>
         </Link>
-        <ScopeGuard scope="manageUsers" redirect={false}>
+        <ScopeGuard scope="manageBetaCodes" redirect={false}>
           <Link href="/beta-codes">
             <li>
               <i className="fa fa-vial" />
