@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     https: true,
     host: 'cerberus.dev',
-    port: 5174,
+    port: 5173,
   },
   plugins: [tsconfigPaths(), viteCommonjs(), react(), MkCert()],
 });

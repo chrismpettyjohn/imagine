@@ -11,10 +11,10 @@ import { ArticleEditorCardProps } from './ArticleEditorCard.types';
 
 export function ArticleEditorCard({ defaultArticle, onSave }: ArticleEditorCardProps) {
   const [articleDTO, setArticleDTO] = useState<ArticleCreateInputDTO>({
-    name: defaultArticle.name ?? '',
-    description: defaultArticle.description ?? '',
-    imageURL: defaultArticle.imageURL ?? '',
-    content: defaultArticle.content ?? '',
+    name: defaultArticle?.name ?? '',
+    description: defaultArticle?.description ?? '',
+    imageURL: defaultArticle?.imageURL ?? '',
+    content: defaultArticle?.content ?? '',
   });
 
   const onChanges = (changes: Partial<ArticleCreateInputDTO>) => {
@@ -36,7 +36,7 @@ export function ArticleEditorCard({ defaultArticle, onSave }: ArticleEditorCardP
       await onSave(articleDTO);
       toast.success(`Successfully updated article ${articleDTO.name}`);
     } catch {
-      toast.error(`Failed to save changes on article ${defaultArticle.name}`)
+      toast.error(`Failed to save changes on article ${articleDTO.name}`)
     }
   }
 

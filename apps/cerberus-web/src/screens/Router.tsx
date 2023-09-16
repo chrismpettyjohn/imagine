@@ -6,6 +6,8 @@ import { DashboardScreen } from './dashboard-screen/DashboardScreen';
 import { GuestGuard, RouteScopeGuard, UserGuard } from '@imagine-cms/web';
 import { SiteRouteProps } from '../components/site-route/SiteRoute.types';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
+import { RadioOverviewScreen } from './radio-overview-screen/RadioOverviewScreen';
+import { RoomsOverviewScreen } from './rooms-overview-screen/RoomsOverviewScreen';
 import { UsersOverviewScreen } from './users-overview-screen/UsersOverviewScreen';
 import { RoomsViewRoomScreen } from './rooms-view-room-screen/RoomsViewRoomScreen';
 import { ReportsOverviewScreen } from './reports-overview-screen/ReportsOverviewScreen';
@@ -17,6 +19,9 @@ import { PermissionsEditRankScreen } from './permissions-edit-rank-screen/Permis
 import { NewsArticlesOverviewScreen } from './news-articles-overview-screen/NewsArticlesOverviewScreen';
 import { ConfigurationOverviewScreen } from './configuration-overview-screen/ConfigurationOverviewScreen';
 import { NewsArticlesEditArticleScreen } from './news-articles-edit-article-screen/NewsArticlesEditArticleScreen';
+import { NewsArticlesCreateArticleScreen } from './news-articles-create-article-screen/NewsArticlesCreateArticleScreen';
+import { StaffApplicationsOverviewScreen } from './staff-applications-overview-screen/StaffApplicationsOverviewScreen';
+import { WebStoreOverviewScreen } from './web-store-overview-screen/WebStoreOverviewScreen';
 
 const SITE_ROUTES: SiteRouteProps[] = [
   {
@@ -65,13 +70,33 @@ const SITE_ROUTES: SiteRouteProps[] = [
     guard: RouteScopeGuard('manageArticles'),
   },
   {
+    path: '/articles/create',
+    view: NewsArticlesCreateArticleScreen,
+    guard: RouteScopeGuard('manageArticles'),
+  },
+  {
     path: '/articles/:articleID',
     view: NewsArticlesEditArticleScreen,
     guard: RouteScopeGuard('manageArticles'),
   },
   {
+    path: '/rooms',
+    view: RoomsOverviewScreen,
+    guard: UserGuard,
+  },
+  {
     path: '/reports',
     view: ReportsOverviewScreen,
+    guard: UserGuard,
+  },
+  {
+    path: '/staff-applications',
+    view: StaffApplicationsOverviewScreen,
+    guard: UserGuard,
+  },
+  {
+    path: '/radio',
+    view: RadioOverviewScreen,
     guard: UserGuard,
   },
   {
@@ -87,6 +112,11 @@ const SITE_ROUTES: SiteRouteProps[] = [
   {
     path: '/configuration',
     view: ConfigurationOverviewScreen,
+    guard: UserGuard,
+  },
+  {
+    path: '/web-store',
+    view: WebStoreOverviewScreen,
     guard: UserGuard,
   }
 ]

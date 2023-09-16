@@ -34,14 +34,6 @@ export const USERS_TABLE_COLUMNS: TableColumn<UserFragment>[] = [
     cell: ({ vipPoints }) => vipPoints.toLocaleString(),
   },
   {
-    name: 'Social Media',
-    cell: (user: UserFragment) => (
-      <>
-        bitch ass hoe
-      </>
-    )
-  },
-  {
     name: 'Tools',
     cell: (user: UserFragment) => (
       <>

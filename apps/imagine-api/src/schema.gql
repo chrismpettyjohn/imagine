@@ -292,6 +292,7 @@ type BetaCodeModel {
   id: Float
   betaCode: String
   userID: Float
+  user: UserModel
 }
 
 type Query {

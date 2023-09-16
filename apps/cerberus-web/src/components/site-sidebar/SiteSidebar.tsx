@@ -34,11 +34,33 @@ export function SiteSidebar() {
             <i className="fa fa-couch" />
           </li>
         </Link>
-        <Link href="/articles">
+        <Link href="/web-store">
           <li>
-            <i className="fa fa-newspaper" />
+            <i className="fa fa-shopping-cart" />
           </li>
         </Link>
+        <Link href="/rooms">
+          <li>
+            <i className="fa fa-door-open" />
+          </li>
+        </Link>
+        <Link href="/staff-applications">
+          <li>
+            <i className="fa fa-file-signature" />
+          </li>
+        </Link>
+        <Link href="/radio">
+          <li>
+            <i className="fa fa-radio" />
+          </li>
+        </Link>
+        <ScopeGuard scope="manageArticles" redirect={false}>
+          <Link href="/articles">
+            <li>
+              <i className="fa fa-typewriter" />
+            </li>
+          </Link>
+        </ScopeGuard>
         <Link href="/reports">
           <li>
             <i className="fa fa-flag" />

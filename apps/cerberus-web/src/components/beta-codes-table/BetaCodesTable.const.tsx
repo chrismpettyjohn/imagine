@@ -1,26 +1,22 @@
 import React from 'react';
-import { Link } from 'wouter';
 import { BetaCodeFragment } from '@imagine-cms/client';
 import { TableColumn } from "react-data-table-component";
+import { SmallUserContainer } from '../small-user-container/SmallUserContainer';
 import { BetaCodeDeleteButton } from '../beta-code-delete-button/BetaCodeDeleteButton';
 
 export const BETA_CODES_TABLE_COLUMNS: TableColumn<BetaCodeFragment>[] = [
   {
     name: '',
-    cell: ({ id, betaCode }) => (
-      <Link href={`/beta-codes/${id}`}>
-        {betaCode}
-      </Link>
-    ),
+    selector: betaCode => betaCode.betaCode,
   },
   {
     name: 'User',
-    // TODO: Display actual user fragment
-    cell: ({ userID }) => (
-      <>
-        {userID}
-      </>
-    ),
+    cell: betaCode => {
+      if (!betaCode.user) {
+        return null;
+      }
+      return <SmallUserContainer user={betaCode.user} />
+    }
   },
   {
     name: 'Tools',

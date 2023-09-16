@@ -3,6 +3,7 @@ import { Link } from 'wouter';
 import { Button } from '../../blocks/button/Button';
 import { ArticleFragment } from '@imagine-cms/client';
 import { TableColumn } from "react-data-table-component";
+import { SmallUserContainer } from '../small-user-container/SmallUserContainer';
 
 export const ARTICLES_TABLE_COLUMNS: TableColumn<ArticleFragment>[] = [
   {
@@ -23,11 +24,7 @@ export const ARTICLES_TABLE_COLUMNS: TableColumn<ArticleFragment>[] = [
   },
   {
     name: 'Author',
-    cell: article => (
-      <>
-        {article.user.username}
-      </>
-    )
+    cell: article => <SmallUserContainer user={article.user} />
   },
   {
     name: 'Tools',

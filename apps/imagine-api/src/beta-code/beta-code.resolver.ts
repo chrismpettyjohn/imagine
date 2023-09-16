@@ -5,7 +5,14 @@ import {UserEntity} from '../database/user.entity';
 import {BadRequestException} from '@nestjs/common';
 import {HasSession} from '../session/has-session.decorator';
 import {GetSession} from '../session/get-session.decorator';
-import {Args, Mutation, Resolver, Query} from '@nestjs/graphql';
+import {
+  Args,
+  Mutation,
+  Resolver,
+  Query,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql';
 import {BetaCodeRepository} from '../database/beta-code.repository';
 import {
   BetaCodeFilterManyInput,
@@ -13,11 +20,27 @@ import {
   BetaCodeRedeemInput,
 } from './beta-code.input';
 import {HasScope} from '../session/has-scope.decorator';
+import {UserRepository} from '../database/user.repository';
+import {UserModel} from '../user/user.model';
+import {BetaCodeEntity} from '../database/beta-code.entity';
 
 @Resolver(() => BetaCodeModel)
 @HasSession()
 export class BetaCodeResolver {
-  constructor(private readonly betaCodeRepo: BetaCodeRepository) {}
+  constructor(
+    private readonly betaCodeRepo: BetaCodeRepository,
+    private readonly userRepo: UserRepository
+  ) {}
+
+  @ResolveField(() => UserModel, {nullable: true})
+  @HasScope('manageBetaCodes')
+  async user(@Parent() betaCode: BetaCodeEntity): Promise<UserModel | null> {
+    return this.userRepo.findOne({
+      where: {
+        id: betaCode.userID ?? -1,
+      },
+    });
+  }
 
   @Query(() => [BetaCodeModel])
   async betaCodes(

@@ -1,4 +1,4 @@
-import { useRoute } from 'wouter';
+import { Link, useRoute } from 'wouter';
 import React, { useEffect } from 'react';
 import { ArticleCreateInputDTO } from '@imagine-cms/types';
 import { useArticleFetchOne } from '@imagine-cms/client';
@@ -19,7 +19,12 @@ export function NewsArticlesEditArticleScreen() {
 
   return (
     <>
-      <h1>News Articles - Editing {articleID}</h1>
+      <h1>
+        <Link to="/articles">
+          <i className="fa fa-caret-left" style={{ marginRight: 8 }} />
+        </Link>
+        News Articles - Editing {articleID}
+      </h1>
       {
         fetchArticle.loading && (
           <>
