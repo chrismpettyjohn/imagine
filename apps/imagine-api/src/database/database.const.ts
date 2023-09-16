@@ -40,6 +40,8 @@ import {LanguagePhraseTranslationEntity} from './language-phrase-translation.ent
 import {LanguagePhraseTranslationRepository} from './language-phrase-translation.repository';
 import {ForgotPasswordRequestEntity} from './forgot-password-request.entity';
 import {ForgotPasswordRequestRepository} from './forgot-password-request.repository';
+import {BetaCodeRepository} from './beta-code.repository';
+import {BetaCodeEntity} from './beta-code.entity';
 
 export const databaseEntities = [
   ArticleEntity,
@@ -63,6 +65,7 @@ export const databaseEntities = [
   UserBadgeEntity,
   SupportTicketEntity,
   ForgotPasswordRequestEntity,
+  BetaCodeEntity,
 ];
 
 export const databaseRepositories = [
@@ -87,4 +90,5 @@ export const databaseRepositories = [
   UserBadgeRepository,
   SupportTicketRepository,
   ForgotPasswordRequestRepository,
+  BetaCodeRepository,
 ];

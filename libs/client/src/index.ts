@@ -35,6 +35,18 @@ export * from './article-reaction/article-reaction-delete.mutation';
 export * from './article-reaction/article-reaction-fetch-many.query';
 export * from './article-reaction/article-reaction-fetch-one.query';
 
+// Beta Code
+export * from './beta-code/beta-code-create.hook';
+export * from './beta-code/beta-code-create.mutation';
+export * from './beta-code/beta-code-fetch-many.hook';
+export * from './beta-code/beta-code-fetch-many.query';
+export * from './beta-code/beta-code-fetch-one.hook';
+export * from './beta-code/beta-code-fetch-one.query';
+export * from './beta-code/beta-code-redeem.hook';
+export * from './beta-code/beta-code-redeem.mutation';
+export * from './beta-code/beta-code.fragment';
+export * from './beta-code/beta-code.input';
+
 // Discord
 export * from './discord/discord-user-authenticate.hook';
 export * from './discord/discord-user-authenticate.mutation';

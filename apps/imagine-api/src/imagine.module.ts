@@ -33,6 +33,7 @@ import {GoogleModule} from './google/google.module';
 import {UserBadgeModule} from './user-badge/user-badge.module';
 import {SupportTicketModule} from './support-ticket/support-ticket.module';
 import {ForgotPasswordModule} from './forgot-password/forgot-password.module';
+import {BetaCodeModule} from './beta-code/beta-code.module';
 
 @Module({
   imports: [
@@ -88,6 +89,7 @@ import {ForgotPasswordModule} from './forgot-password/forgot-password.module';
     UserBadgeModule,
     SupportTicketModule,
     ForgotPasswordModule,
+    BetaCodeModule,
   ],
 })
 export class ImagineModule {}

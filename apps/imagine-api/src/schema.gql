@@ -287,6 +287,12 @@ type SupportTicketModel {
   staffUserID: Float
 }
 
+type BetaCodeModel {
+  id: Float
+  betaCode: Float
+  userID: Float
+}
+
 type Query {
   sessionSSOCreate: SessionSSOModel!
   sessionByJWT(jwt: String!): SessionModel!
@@ -328,6 +334,8 @@ type Query {
   userBadges(filter: UserBadgeFilterManyInput!): [UserBadgeModel!]!
   supportTickets(filter: SupportTicketFilterManyInput!): [SupportTicketModel!]!
   supportTicket(filter: SupportTicketFilterOneInput!): SupportTicketModel!
+  betaCodes(filter: BetaCodeFilterManyInput!): [BetaCodeModel!]!
+  betaCode(filter: BetaCodeFilterOneInput!): BetaCodeModel!
 }
 
 input ExtraArgs {
@@ -483,6 +491,18 @@ input SupportTicketFilterOneInput {
   id: Float!
 }
 
+input BetaCodeFilterManyInput {
+  ids: [Float!]
+  betaCodes: [String!]
+  userIDs: [Float!]
+  limit: Float
+}
+
+input BetaCodeFilterOneInput {
+  id: Float
+  betaCode: String
+}
+
 type Mutation {
   sessionCreate(username: String!, password: String!): SessionCreatedModel!
   sessionUpdateEmail(input: SessionUpdateEmailInput!): SessionUpdateEmailModel!
@@ -531,6 +551,8 @@ type Mutation {
   googleUserAuthenticate(input: GoogleAuthInput!): GoogleAuthModel!
   forgotPasswordRequestCreate(input: ForgotPasswordRequestCreateInput!): Boolean!
   forgotPasswordRequestRedeem(input: ForgotPasswordRequestRedeemInput!): Boolean!
+  betaCodeCreate: BetaCodeModel!
+  betaCodeRedeem(input: BetaCodeRedeemInput!): Boolean!
 }
 
 input SessionUpdateEmailInput {
@@ -698,6 +720,10 @@ input ForgotPasswordRequestCreateInput {
 input ForgotPasswordRequestRedeemInput {
   requestCode: String!
   newPassword: String!
+}
+
+input BetaCodeRedeemInput {
+  betaCode: String!
 }
 
 type Subscription {
