@@ -16,6 +16,7 @@ import { PermissionsOverviewScreen } from './permissions-overview-screen/Permiss
 import { PermissionsEditRankScreen } from './permissions-edit-rank-screen/PermissionsEditRankScreen';
 import { NewsArticlesOverviewScreen } from './news-articles-overview-screen/NewsArticlesOverviewScreen';
 import { ConfigurationOverviewScreen } from './configuration-overview-screen/ConfigurationOverviewScreen';
+import { NewsArticlesEditArticleScreen } from './news-articles-edit-article-screen/NewsArticlesEditArticleScreen';
 
 const SITE_ROUTES: SiteRouteProps[] = [
   {
@@ -61,7 +62,12 @@ const SITE_ROUTES: SiteRouteProps[] = [
   {
     path: '/articles',
     view: NewsArticlesOverviewScreen,
-    guard: UserGuard,
+    guard: RouteScopeGuard('manageArticles'),
+  },
+  {
+    path: '/articles/:articleID',
+    view: NewsArticlesEditArticleScreen,
+    guard: RouteScopeGuard('manageArticles'),
   },
   {
     path: '/reports',

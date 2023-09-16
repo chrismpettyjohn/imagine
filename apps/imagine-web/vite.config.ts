@@ -8,6 +8,7 @@ export default defineConfig({
   server: {
     https: true,
     host: 'imagine.dev',
+    port: 5173,
   },
   plugins: [tsconfigPaths(), viteCommonjs(), react(), MkCert()],
 });
