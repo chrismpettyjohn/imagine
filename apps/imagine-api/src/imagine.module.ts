@@ -34,6 +34,7 @@ import {UserBadgeModule} from './user-badge/user-badge.module';
 import {SupportTicketModule} from './support-ticket/support-ticket.module';
 import {ForgotPasswordModule} from './forgot-password/forgot-password.module';
 import {BetaCodeModule} from './beta-code/beta-code.module';
+import {StaffApplicationModule} from './staff-application/staff-application.module';
 
 @Module({
   imports: [
@@ -90,6 +91,7 @@ import {BetaCodeModule} from './beta-code/beta-code.module';
     SupportTicketModule,
     ForgotPasswordModule,
     BetaCodeModule,
+    StaffApplicationModule,
   ],
 })
 export class ImagineModule {}

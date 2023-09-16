@@ -46,7 +46,7 @@ export function SiteSidebar() {
         </Link>
         <Link href="/staff-applications">
           <li>
-            <i className="fa fa-file-signature" />
+            <i className="fa fa-clipboard-user" />
           </li>
         </Link>
         <Link href="/radio">

@@ -13,11 +13,8 @@ import {
   IsBoolean,
   Max,
 } from 'class-validator';
-import {
-  RankWireScopesCreateInput,
-  RankWireScopesUpdateInput,
-} from './rank-scopes.input';
 import {GLOBAL_MAX_RESOURCE_LIMIT} from '../imagine.constant';
+import {RankFlagsInterface, RankScopesInterface} from './rank.interface';
 
 @InputType()
 export class RankCreateInput implements RankCreateInputDTO {
@@ -37,9 +34,13 @@ export class RankCreateInput implements RankCreateInputDTO {
   @IsBoolean()
   siteShowStaff!: boolean;
 
-  @Field()
+  @Field(() => RankScopesInterface)
   @IsObject()
-  scopes!: RankWireScopesCreateInput;
+  scopes!: RankScopesInterface;
+
+  @Field(() => RankFlagsInterface)
+  @IsObject()
+  flags!: RankFlagsInterface;
 }
 
 @InputType()
@@ -63,10 +64,15 @@ export class RankUpdateInput implements RankUpdateInputDTO {
   @IsOptional()
   siteShowStaff!: boolean;
 
-  @Field({nullable: true})
+  @Field(() => RankScopesInterface, {nullable: true})
   @IsObject()
   @IsOptional()
-  scopes?: RankWireScopesUpdateInput;
+  scopes?: RankScopesInterface;
+
+  @Field(() => RankFlagsInterface, {nullable: true})
+  @IsObject()
+  @IsOptional()
+  flags?: RankFlagsInterface;
 }
 
 @InputType()

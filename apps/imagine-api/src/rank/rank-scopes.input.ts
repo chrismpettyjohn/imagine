@@ -30,6 +30,10 @@ export class RankWireScopesCreateInput implements RankScopesWire {
   @Field()
   @IsBoolean()
   manageSupportTickets!: boolean;
+
+  @Field()
+  @IsBoolean()
+  manageStaffApplications!: boolean;
 }
 
 @InputType()
@@ -66,4 +70,9 @@ export class RankWireScopesUpdateInput implements Partial<RankScopesWire> {
   @IsBoolean()
   @IsOptional()
   manageSupportTickets!: boolean;
+
+  @Field({nullable: true})
+  @IsBoolean()
+  @IsOptional()
+  manageStaffApplications!: boolean;
 }

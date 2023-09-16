@@ -1,26 +1,8 @@
-import {Field, ObjectType} from '@nestjs/graphql';
-import {RankScopesWire} from '@imagine-cms/types';
+import {ObjectType} from '@nestjs/graphql';
+import {RankFlagsInterface, RankScopesInterface} from './rank.interface';
 
-@ObjectType()
-export class RankScopesModel implements RankScopesWire {
-  @Field({nullable: true})
-  accessAdminPanel!: boolean;
+@ObjectType({implements: () => RankScopesInterface})
+export class RankScopesModel extends RankScopesInterface {}
 
-  @Field({nullable: true})
-  manageArticles!: boolean;
-
-  @Field({nullable: true})
-  manageUsers!: boolean;
-
-  @Field({nullable: true})
-  manageRooms!: boolean;
-
-  @Field({nullable: true})
-  manageBetaCodes!: boolean;
-
-  @Field({nullable: true})
-  managePermissions!: boolean;
-
-  @Field({nullable: true})
-  manageSupportTickets!: boolean;
-}
+@ObjectType({implements: () => RankFlagsInterface})
+export class RankFlagsModel extends RankFlagsInterface {}

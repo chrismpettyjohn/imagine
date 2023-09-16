@@ -75,14 +75,36 @@ enum UserOnlineStatus {
   Offline
 }
 
-type RankScopesModel {
-  accessAdminPanel: Boolean
-  manageArticles: Boolean
-  manageUsers: Boolean
-  manageRooms: Boolean
-  manageBetaCodes: Boolean
-  managePermissions: Boolean
-  manageSupportTickets: Boolean
+type RankScopesModel implements RankScopesInterface {
+  accessAdminPanel: Boolean!
+  manageArticles: Boolean!
+  manageUsers: Boolean!
+  manageRooms: Boolean!
+  manageBetaCodes: Boolean!
+  managePermissions: Boolean!
+  manageSupportTickets: Boolean!
+  manageStaffApplications: Boolean!
+}
+
+interface RankScopesInterface {
+  accessAdminPanel: Boolean!
+  manageArticles: Boolean!
+  manageUsers: Boolean!
+  manageRooms: Boolean!
+  manageBetaCodes: Boolean!
+  managePermissions: Boolean!
+  manageSupportTickets: Boolean!
+  manageStaffApplications: Boolean!
+}
+
+type RankFlagsModel implements RankFlagsInterface {
+  showOnStaffPage: Boolean!
+  acceptingApplications: Boolean!
+}
+
+interface RankFlagsInterface {
+  showOnStaffPage: Boolean!
+  acceptingApplications: Boolean!
 }
 
 type RankModel {
@@ -91,6 +113,7 @@ type RankModel {
   badgeCode: String
   siteShowStaff: Boolean
   scopes: RankScopesModel
+  flags: RankFlagsModel
   users: [UserModel!]
 }
 
@@ -295,6 +318,17 @@ type BetaCodeModel {
   user: UserModel
 }
 
+type StaffApplicationModel {
+  id: Float
+  userID: Float
+  rankID: Float
+  accepted: Boolean
+  reviewingUserID: Float
+  content: String
+  createdAt: Float
+  updatedAt: Float
+}
+
 type Query {
   sessionSSOCreate: SessionSSOModel!
   sessionByJWT(jwt: String!): SessionModel!
@@ -338,6 +372,8 @@ type Query {
   supportTicket(filter: SupportTicketFilterOneInput!): SupportTicketModel!
   betaCodes(filter: BetaCodeFilterManyInput!): [BetaCodeModel!]!
   betaCode(filter: BetaCodeFilterOneInput!): BetaCodeModel!
+  staffApplication(filter: StaffApplicationFilterOneInput!): StaffApplicationModel!
+  staffApplications(filter: StaffApplicationFilterManyInput!): [StaffApplicationModel!]!
 }
 
 input ExtraArgs {
@@ -505,6 +541,17 @@ input BetaCodeFilterOneInput {
   betaCode: String
 }
 
+input StaffApplicationFilterOneInput {
+  id: Float!
+}
+
+input StaffApplicationFilterManyInput {
+  ids: [Float!]
+  rankIDs: [Float!]
+  userIDs: [Float!]
+  limit: Float
+}
+
 type Mutation {
   sessionCreate(username: String!, password: String!): SessionCreatedModel!
   sessionUpdateEmail(input: SessionUpdateEmailInput!): SessionUpdateEmailModel!
@@ -555,6 +602,9 @@ type Mutation {
   forgotPasswordRequestRedeem(input: ForgotPasswordRequestRedeemInput!): Boolean!
   betaCodeCreate: BetaCodeModel!
   betaCodeDelete(filter: BetaCodeFilterOneInput!): Boolean!
+  staffApplicationCreate(input: StaffApplicationCreateInput!): StaffApplicationModel!
+  staffApplicationReview(filter: StaffApplicationFilterOneInput!, input: StaffApplicationReviewInput!): Boolean!
+  staffApplicationDelete(filter: StaffApplicationFilterOneInput!): Boolean!
 }
 
 input SessionUpdateEmailInput {
@@ -590,34 +640,32 @@ input RankCreateInput {
   name: String!
   badgeCode: String!
   siteShowStaff: Boolean!
-  scopes: RankWireScopesCreateInput!
+  scopes: RankScopesInput!
+  flags: RankFlagsInput!
 }
 
-input RankWireScopesCreateInput {
+input RankScopesInput {
   accessAdminPanel: Boolean!
   manageArticles: Boolean!
   manageUsers: Boolean!
   manageRooms: Boolean!
-  manageBetaCodes: Boolean
+  manageBetaCodes: Boolean!
   managePermissions: Boolean!
   manageSupportTickets: Boolean!
+  manageStaffApplications: Boolean!
+}
+
+input RankFlagsInput {
+  showOnStaffPage: Boolean!
+  acceptingApplications: Boolean!
 }
 
 input RankUpdateInput {
   name: String
   badgeCode: String
   siteShowStaff: Boolean!
-  scopes: RankWireScopesUpdateInput
-}
-
-input RankWireScopesUpdateInput {
-  accessAdminPanel: Boolean
-  manageArticles: Boolean
-  manageUsers: Boolean
-  manageRooms: Boolean
-  manageBetaCodes: Boolean
-  managePermissions: Boolean
-  manageSupportTickets: Boolean
+  scopes: RankScopesInput
+  flags: RankFlagsInput
 }
 
 input ArticleCreateInput {
@@ -724,6 +772,15 @@ input ForgotPasswordRequestCreateInput {
 input ForgotPasswordRequestRedeemInput {
   requestCode: String!
   newPassword: String!
+}
+
+input StaffApplicationCreateInput {
+  rankID: Float!
+  content: String!
+}
+
+input StaffApplicationReviewInput {
+  accepted: Boolean!
 }
 
 type Subscription {

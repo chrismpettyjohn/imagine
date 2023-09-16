@@ -42,6 +42,8 @@ import {ForgotPasswordRequestEntity} from './forgot-password-request.entity';
 import {ForgotPasswordRequestRepository} from './forgot-password-request.repository';
 import {BetaCodeRepository} from './beta-code.repository';
 import {BetaCodeEntity} from './beta-code.entity';
+import {StaffApplicationRepository} from './staff-application.repository';
+import {StaffApplicationEntity} from './staff-application.entity';
 
 export const databaseEntities = [
   ArticleEntity,
@@ -66,6 +68,7 @@ export const databaseEntities = [
   SupportTicketEntity,
   ForgotPasswordRequestEntity,
   BetaCodeEntity,
+  StaffApplicationEntity,
 ];
 
 export const databaseRepositories = [
@@ -91,4 +94,5 @@ export const databaseRepositories = [
   SupportTicketRepository,
   ForgotPasswordRequestRepository,
   BetaCodeRepository,
+  StaffApplicationRepository,
 ];

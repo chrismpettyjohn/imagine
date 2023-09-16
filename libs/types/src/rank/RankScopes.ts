@@ -6,6 +6,12 @@ export interface RankScopesWire {
   manageBetaCodes: boolean;
   managePermissions: boolean;
   manageSupportTickets: boolean;
+  manageStaffApplications: boolean;
+}
+
+export interface RankFlagsWire {
+  showOnStaffPage: boolean;
+  acceptingApplications: boolean;
 }
 
 export const exampleRankScopesWire: RankScopesWire = {
@@ -16,6 +22,7 @@ export const exampleRankScopesWire: RankScopesWire = {
   manageBetaCodes: false,
   managePermissions: false,
   manageSupportTickets: false,
+  manageStaffApplications: false,
 };
 
 export const rankScopesLabels: Record<keyof RankScopesWire, string> = {
@@ -26,4 +33,5 @@ export const rankScopesLabels: Record<keyof RankScopesWire, string> = {
   manageBetaCodes: 'Manage Beta Codes',
   managePermissions: 'Manage Permissions',
   manageSupportTickets: 'Manage Support Tickets',
+  manageStaffApplications: 'Manage Staff Applications',
 };
