@@ -161,6 +161,21 @@ export * from './session/session-update-password.hook';
 export * from './session/session-update-password.mutation';
 export * from './session/session.input';
 
+// Staff Application
+export * from './staff-application/staff-application-create.hook';
+export * from './staff-application/staff-application-create.mutation';
+export * from './staff-application/staff-application-delete-one.hook';
+export * from './staff-application/staff-application-delete-one.mutation';
+export * from './staff-application/staff-application-fetch-one.hook';
+export * from './staff-application/staff-application-fetch-one.query';
+export * from './staff-application/staff-application-fetch-many.hook';
+export * from './staff-application/staff-application-fetch-many.query';
+export * from './staff-application/staff-application-update-one.hook';
+export * from './staff-application/staff-application-update-one.mutation';
+export * from './staff-application/staff-application.fragment';
+export * from './staff-application/staff-application.input';
+
+// Support Ticket
 export * from './support-ticket/support-ticket-fetch-many.hook';
 export * from './support-ticket/support-ticket-fetch-many.query';
 export * from './support-ticket/support-ticket.fragment';
