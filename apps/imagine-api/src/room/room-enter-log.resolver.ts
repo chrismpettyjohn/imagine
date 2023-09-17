@@ -1,15 +1,25 @@
-import {Args, Query, Resolver} from '@nestjs/graphql';
+import {In} from 'typeorm';
+import {UserModel} from '../user/user.model';
 import {RoomEnterLogModel} from './room-enter-log.model';
+import {UserRepository} from '../database/user.repository';
+import {Args, Parent, Query, ResolveField, Resolver} from '@nestjs/graphql';
 import {RoomEnterLogRepository} from '../database/room-enter-log.repository';
 import {
   RoomEnterLogFilterOneInput,
-  RoommEnterLogFilterManyInput,
+  RoomEnterLogFilterManyInput,
 } from './room-enter-log.input';
-import {In} from 'typeorm';
 
 @Resolver(() => RoomEnterLogModel)
 export class RoomEnterLogResolver {
-  constructor(private readonly roomEnterLogRepo: RoomEnterLogRepository) {}
+  constructor(
+    private readonly roomEnterLogRepo: RoomEnterLogRepository,
+    private readonly userRepo: UserRepository
+  ) {}
+
+  @ResolveField(() => UserModel)
+  user(@Parent() roomEnterLog: RoomEnterLogModel): Promise<UserModel> {
+    return this.userRepo.findOneOrFail({id: roomEnterLog.userID});
+  }
 
   @Query(() => RoomEnterLogModel)
   async roomEnterLog(
@@ -24,8 +34,8 @@ export class RoomEnterLogResolver {
 
   @Query(() => [RoomEnterLogModel])
   async roomEnterLogs(
-    @Args({name: 'filter', type: () => RoommEnterLogFilterManyInput})
-    filter: RoommEnterLogFilterManyInput
+    @Args({name: 'filter', type: () => RoomEnterLogFilterManyInput})
+    filter: RoomEnterLogFilterManyInput
   ): Promise<RoomEnterLogModel[]> {
     const matchingRoomEnterLogs = await this.roomEnterLogRepo.find({
       where: {

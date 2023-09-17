@@ -9,7 +9,7 @@ export class RoomEnterLogFilterOneInput {
 }
 
 @InputType()
-export class RoommEnterLogFilterManyInput {
+export class RoomEnterLogFilterManyInput {
   @Field(() => [Number], {nullable: true})
   ids?: number[];
 

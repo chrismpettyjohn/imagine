@@ -4,8 +4,8 @@ import { Card } from '../../blocks/card/Card';
 import { Input } from '../../blocks/input/Input';
 import { useRoomFetchOne } from '@imagine-cms/client';
 import { RoomRightsCard } from '../../components/room-rights-card/RoomRightsCard';
-import { RoomEntryLogsCard } from '../../components/room-entry-logs-card/RoomEntryLogsCard';
 import { RoomTradeLogsCard } from '../../components/room-trade-logs-card/RoomTradeLogsCard';
+import { RoomEntryLogsTableLazy } from '../../components/room-entry-logs-table/RoomEntryLogsTable.lazy';
 
 export function RoomsViewRoomScreen() {
   const [, params] = useRoute<{ roomID: string }>('/rooms/:roomID');
@@ -32,7 +32,7 @@ export function RoomsViewRoomScreen() {
               <label>Name</label>
               <Input type="text" value={fetchRoom.data.name} />
             </Card>
-            <RoomEntryLogsCard room={fetchRoom.data} />
+            <RoomEntryLogsTableLazy room={fetchRoom.data} />
             <RoomTradeLogsCard room={fetchRoom.data} />
             <RoomRightsCard room={fetchRoom.data} />
           </>
