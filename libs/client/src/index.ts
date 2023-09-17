@@ -148,6 +148,14 @@ export * from './room/room-fetch-one.query';
 export * from './room/room.fragment';
 export * from './room/room.input';
 
+// Room Enter Log
+export * from './room-enter-log/room-enter-log-fetch-many.hook';
+export * from './room-enter-log/room-enter-log-fetch-many.query';
+export * from './room-enter-log/room-enter-log-fetch-one.hook';
+export * from './room-enter-log/room-enter-log-fetch-one.query';
+export * from './room-enter-log/room-enter-log.fragment';
+export * from './room-enter-log/room-enter-log.input';
+
 // Session
 export * from './session/session-disconnect-discord.hook';
 export * from './session/session-disconnect-discord.mutation';
