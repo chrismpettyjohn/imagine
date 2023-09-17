@@ -27,13 +27,19 @@ export class PhotoResolver {
   ) {}
 
   @ResolveField('user', () => UserModel, {nullable: true})
-  getUser(@Parent() {userID}: PhotoEntity): Promise<UserModel> {
-    return this.userRepo.findOneOrFail({id: userID});
+  getUser(@Parent() {userID}: PhotoEntity): Promise<UserModel | null> {
+    return this.userRepo.findOne({
+      where: {
+        id: userID,
+      },
+    });
   }
 
   @ResolveField('room', () => RoomModel, {nullable: true})
-  getRoom(@Parent() {roomID}: PhotoEntity): Promise<RoomModel> {
-    return this.roomRepo.findOneOrFail({id: roomID});
+  getRoom(@Parent() {roomID}: PhotoEntity): Promise<RoomModel | null> {
+    return this.roomRepo.findOne({
+      where: {id: roomID},
+    });
   }
 
   @Query(() => PhotoModel)

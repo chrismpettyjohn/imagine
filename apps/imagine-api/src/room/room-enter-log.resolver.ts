@@ -17,8 +17,12 @@ export class RoomEnterLogResolver {
   ) {}
 
   @ResolveField(() => UserModel)
-  user(@Parent() roomEnterLog: RoomEnterLogModel): Promise<UserModel> {
-    return this.userRepo.findOneOrFail({id: roomEnterLog.userID});
+  user(@Parent() roomEnterLog: RoomEnterLogModel): Promise<UserModel | null> {
+    return this.userRepo.findOne({
+      where: {
+        id: roomEnterLog.userID,
+      },
+    });
   }
 
   @Query(() => RoomEnterLogModel)

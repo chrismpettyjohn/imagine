@@ -28,8 +28,10 @@ export class ChatlogResolver {
   ) {}
 
   @ResolveField('user', () => UserModel, {nullable: true})
-  getUser(@Parent() {userID}: ChatlogEntity): Promise<UserModel> {
-    return this.userRepo.findOneOrFail({id: userID});
+  getUser(@Parent() {userID}: ChatlogEntity): Promise<UserModel | null> {
+    return this.userRepo.findOne({
+      where: {id: userID},
+    });
   }
 
   @ResolveField('room', () => RoomModel, {nullable: true})

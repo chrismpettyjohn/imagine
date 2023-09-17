@@ -24,8 +24,12 @@ export class RoomResolver {
   ) {}
 
   @ResolveField(() => UserModel, {nullable: true})
-  user(@Parent() {userID}: ArticleEntity): Promise<UserModel> {
-    return this.userRepo.findOneOrFail({id: userID});
+  user(@Parent() {userID}: ArticleEntity): Promise<UserModel | null> {
+    return this.userRepo.findOne({
+      where: {
+        id: userID,
+      },
+    });
   }
 
   @Query(() => RoomModel)

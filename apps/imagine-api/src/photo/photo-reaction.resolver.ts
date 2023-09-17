@@ -30,8 +30,12 @@ export class PhotoReactionResolver {
   ) {}
 
   @ResolveField(() => UserModel, {nullable: true})
-  user(@Parent() photoReaction: PhotoReactionModel): Promise<UserModel> {
-    return this.userRepo.findOneOrFail({id: photoReaction.userID});
+  user(@Parent() photoReaction: PhotoReactionModel): Promise<UserModel | null> {
+    return this.userRepo.findOne({
+      where: {
+        id: photoReaction.userID,
+      },
+    });
   }
 
   @Query(() => PhotoReactionModel)

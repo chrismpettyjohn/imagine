@@ -21,8 +21,12 @@ export class GroupResolver {
   ) {}
 
   @ResolveField(() => UserModel, {nullable: true})
-  async user(@Parent() group: GroupModel): Promise<UserModel> {
-    return this.userRepo.findOneOrFail({id: group.userID});
+  async user(@Parent() group: GroupModel): Promise<UserModel | null> {
+    return this.userRepo.findOne({
+      where: {
+        id: group.userID,
+      },
+    });
   }
 
   @Query(() => GroupModel)

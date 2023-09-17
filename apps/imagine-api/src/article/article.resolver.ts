@@ -32,8 +32,12 @@ export class ArticleResolver {
   ) {}
 
   @ResolveField('user', () => UserModel, {nullable: true})
-  getUser(@Parent() {userID}: ArticleEntity): Promise<UserModel> {
-    return this.userRepo.findOneOrFail({id: userID});
+  getUser(@Parent() {userID}: ArticleEntity): Promise<UserModel | null> {
+    return this.userRepo.findOne({
+      where: {
+        id: userID,
+      },
+    });
   }
 
   @Query(() => ArticleModel)

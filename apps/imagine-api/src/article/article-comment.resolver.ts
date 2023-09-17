@@ -30,8 +30,14 @@ export class ArticleCommentResolver {
   ) {}
 
   @ResolveField(() => UserModel, {nullable: true})
-  user(@Parent() articleReaction: ArticleReactionModel): Promise<UserModel> {
-    return this.userRepo.findOneOrFail({id: articleReaction.userID});
+  user(
+    @Parent() articleReaction: ArticleReactionModel
+  ): Promise<UserModel | null> {
+    return this.userRepo.findOne({
+      where: {
+        id: articleReaction.userID,
+      },
+    });
   }
 
   @Query(() => ArticleCommentModel)
