@@ -16,7 +16,7 @@ export class UserBadgeResolver {
       where: {
         userID: filter.userIDs && In(filter.userIDs),
       },
-      take: filter.limit,
+      take: filter.limit ?? 25,
     });
     return matchingBadges.map(UserBadgeModel.fromEntity);
   }

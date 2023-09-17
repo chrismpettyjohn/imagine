@@ -53,7 +53,7 @@ export class BetaCodeResolver {
         betaCode: filter.betaCodes && In(filter.betaCodes),
         userID: filter.userIDs && In(filter.userIDs),
       },
-      take: filter.limit,
+      take: filter.limit ?? 25,
     });
     return matchingBetaCodes.map(BetaCodeModel.fromEntity);
   }

@@ -56,7 +56,7 @@ export class PhotoResolver {
       order: {
         id: 'DESC',
       },
-      take: filter.limit,
+      take: filter.limit ?? 25,
     });
   }
 

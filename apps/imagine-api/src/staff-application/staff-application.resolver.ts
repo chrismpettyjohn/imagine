@@ -74,7 +74,7 @@ export class StaffApplicationResolver {
         userID: filter.userIDs && In(filter.userIDs),
         rankID: filter.rankIDs && In(filter.rankIDs),
       },
-      take: filter.limit,
+      take: filter.limit ?? 25,
     });
     return matchingStaffApplications.map(StaffApplicationModel.fromEntity);
   }

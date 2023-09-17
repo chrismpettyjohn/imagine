@@ -127,6 +127,14 @@ type RoomModel {
   user: UserModel
 }
 
+type RoomEnterLogModel {
+  id: Float
+  roomID: Float
+  userID: Float
+  enterTimestamp: Float
+  exitTimestamp: Float
+}
+
 type PhotoModel {
   id: Float
   userID: Float
@@ -356,6 +364,8 @@ type Query {
   chatlogs(other: ExtraArgs, userID: Float, roomID: Float): [ChatlogModel!]!
   room(filter: RoomFilterOneInput!): RoomModel!
   rooms(filter: RoomFilterManyInput!): [RoomModel!]!
+  roomEnterLog(filter: RoomEnterLogFilterOneInput!): RoomEnterLogModel!
+  roomEnterLogs(filter: RoommEnterLogFilterManyInput!): [RoomEnterLogModel!]!
   group(filter: GroupFilterOneInput!): GroupModel!
   groups(filter: GroupFilterManyInput!): [GroupModel!]!
   groupMemberships(filter: GroupMembershipFilterManyInput!): [GroupMembershipModel!]!
@@ -461,6 +471,17 @@ input RoomFilterOneInput {
 input RoomFilterManyInput {
   ids: [Float!]
   userIDs: [Float!]
+  limit: Float
+}
+
+input RoomEnterLogFilterOneInput {
+  id: Float!
+}
+
+input RoommEnterLogFilterManyInput {
+  ids: [Float!]
+  userIDs: [Float!]
+  roomIDs: [Float!]
   limit: Float
 }
 

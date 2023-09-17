@@ -41,7 +41,7 @@ export class GroupMembershipResolver {
         groupID: filter.groupIDS && In(filter.groupIDS),
         userID: filter.userIDs && In(filter.userIDs),
       },
-      take: filter.limit,
+      take: filter.limit ?? 25,
     });
     return matchingGroups.map(GroupMembershipModel.fromEntity);
   }

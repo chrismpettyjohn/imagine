@@ -44,6 +44,8 @@ import {BetaCodeRepository} from './beta-code.repository';
 import {BetaCodeEntity} from './beta-code.entity';
 import {StaffApplicationRepository} from './staff-application.repository';
 import {StaffApplicationEntity} from './staff-application.entity';
+import {RoomEnterLogEntity} from './room-enter-log.entity';
+import {RoomEnterLogRepository} from './room-enter-log.repository';
 
 export const databaseEntities = [
   ArticleEntity,
@@ -69,6 +71,7 @@ export const databaseEntities = [
   ForgotPasswordRequestEntity,
   BetaCodeEntity,
   StaffApplicationEntity,
+  RoomEnterLogEntity,
 ];
 
 export const databaseRepositories = [
@@ -95,4 +98,5 @@ export const databaseRepositories = [
   ForgotPasswordRequestRepository,
   BetaCodeRepository,
   StaffApplicationRepository,
+  RoomEnterLogRepository,
 ];

@@ -25,7 +25,7 @@ export class SupportTicketResolver {
         reportedID: filter.offendingUserIDs && In(filter.offendingUserIDs),
         modID: filter.staffUserIDs && In(filter.staffUserIDs),
       },
-      take: filter.limit,
+      take: filter.limit ?? 25,
     });
     return matchingSupports.map(SupportTicketModel.fromEntity);
   }

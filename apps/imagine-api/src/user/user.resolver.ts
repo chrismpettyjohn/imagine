@@ -164,7 +164,7 @@ export class UserResolver {
       order: {
         id: 'DESC',
       },
-      take: filter.limit,
+      take: filter.limit ?? 25,
     });
   }
 
