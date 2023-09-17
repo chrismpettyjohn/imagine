@@ -23,12 +23,12 @@ export class RadioRequestEntity {
   @Column({name: 'reviewing_user_id', type: 'int', nullable: true})
   reviewingUserID?: number;
 
-  @Column({name: 'created_at', type: 'int', nullable: true})
+  @Column({name: 'reviewed_at', type: 'int', nullable: true})
   reviewedAt?: number;
 
   @Column({name: 'created_at', type: 'int'})
   createdAt!: number;
 
-  @Column({name: 'created_at', type: 'int'})
+  @Column({name: 'updated_at', type: 'int'})
   updatedAt!: number;
 }

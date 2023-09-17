@@ -4,7 +4,7 @@ import { RadioRequestCreateInput } from './radio-request.input';
 
 export const RADIO_REQUEST_CREATE_ONE_MUTATION: any = gql`
   ${RADIO_REQUEST_FRAGMENT}
-  mutation($input: RadioRequestCreateInput) {
+  mutation($input: RadioRequestCreateInput!) {
     radioRequestCreate(input: $input) {
       ...RadioRequestFragment
     }

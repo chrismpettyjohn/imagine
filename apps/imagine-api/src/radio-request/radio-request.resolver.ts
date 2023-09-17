@@ -5,7 +5,6 @@ import {UnauthorizedException} from '@nestjs/common';
 import {RadioRequestModel} from './radio-request.model';
 import {HasScope} from '../session/has-scope.decorator';
 import {HasSession} from '../session/has-session.decorator';
-import {GetSession} from '../session/get-session.decorator';
 import {
   Args,
   Mutation,
@@ -24,6 +23,7 @@ import {
 } from './radio-request.input';
 import {UserRepository} from '../database/user.repository';
 import {UserModel} from '../user/user.model';
+import {GetUser} from '../session/get-user.decorator';
 
 @Resolver(() => RadioRequestModel)
 export class RadioRequestResolver {
@@ -83,7 +83,7 @@ export class RadioRequestResolver {
   async radioRequestCreate(
     @Args({name: 'input', type: () => RadioRequestCreateInput})
     input: RadioRequestCreateInput,
-    @GetSession() user: UserEntity
+    @GetUser() user: UserEntity
   ): Promise<RadioRequestModel> {
     const currentDate = Dayjs().unix();
     const newRadioRequest = await this.radioRequestRepo.create({
@@ -103,7 +103,7 @@ export class RadioRequestResolver {
     filter: RadioRequestFilterOneInput,
     @Args({name: 'input', type: () => RadioRequestCreateInput})
     input: RadioRequestCreateInput,
-    @GetSession() user: UserEntity
+    @GetUser() user: UserEntity
   ): Promise<boolean> {
     const matchingRadioRequest = await this.radioRequestRepo.findOneOrFail({
       id: filter.id,
@@ -130,7 +130,7 @@ export class RadioRequestResolver {
     filter: RadioRequestFilterOneInput,
     @Args({name: 'input', type: () => RadioRequestReviewInput})
     input: RadioRequestReviewInput,
-    @GetSession() user: UserEntity
+    @GetUser() user: UserEntity
   ): Promise<boolean> {
     const currentDate = Dayjs().unix();
     await this.radioRequestRepo.update(
