@@ -46,6 +46,10 @@ import {StaffApplicationRepository} from './staff-application.repository';
 import {StaffApplicationEntity} from './staff-application.entity';
 import {RoomEnterLogEntity} from './room-enter-log.entity';
 import {RoomEnterLogRepository} from './room-enter-log.repository';
+import {UserTradeLogEntity} from './user-trade-log.entity';
+import {UserTradeLogRepository} from './user-trade-log.repository';
+import {RadioRequestEntity} from './radio-request.entity';
+import {RadioRequestRepository} from './radio-request.repository';
 
 export const databaseEntities = [
   ArticleEntity,
@@ -72,6 +76,8 @@ export const databaseEntities = [
   BetaCodeEntity,
   StaffApplicationEntity,
   RoomEnterLogEntity,
+  UserTradeLogEntity,
+  RadioRequestEntity,
 ];
 
 export const databaseRepositories = [
@@ -99,4 +105,6 @@ export const databaseRepositories = [
   BetaCodeRepository,
   StaffApplicationRepository,
   RoomEnterLogRepository,
+  UserTradeLogRepository,
+  RadioRequestRepository,
 ];

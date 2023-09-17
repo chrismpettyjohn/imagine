@@ -35,6 +35,7 @@ import {SupportTicketModule} from './support-ticket/support-ticket.module';
 import {ForgotPasswordModule} from './forgot-password/forgot-password.module';
 import {BetaCodeModule} from './beta-code/beta-code.module';
 import {StaffApplicationModule} from './staff-application/staff-application.module';
+import {RadioRequestModule} from './radio-request/radio-request.module';
 
 @Module({
   imports: [
@@ -92,6 +93,7 @@ import {StaffApplicationModule} from './staff-application/staff-application.modu
     ForgotPasswordModule,
     BetaCodeModule,
     StaffApplicationModule,
+    RadioRequestModule,
   ],
 })
 export class ImagineModule {}

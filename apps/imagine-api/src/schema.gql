@@ -84,6 +84,7 @@ type RankScopesModel implements RankScopesInterface {
   managePermissions: Boolean!
   manageSupportTickets: Boolean!
   manageStaffApplications: Boolean!
+  manageRadioRequests: Boolean!
 }
 
 interface RankScopesInterface {
@@ -95,6 +96,7 @@ interface RankScopesInterface {
   managePermissions: Boolean!
   manageSupportTickets: Boolean!
   manageStaffApplications: Boolean!
+  manageRadioRequests: Boolean!
 }
 
 type RankFlagsModel implements RankFlagsInterface {
@@ -341,6 +343,23 @@ type StaffApplicationModel {
   reviewingUser: UserModel
 }
 
+type RadioRequestModel {
+  id: Float
+  userID: Float
+  content: String
+  status: RadioRequestStatus
+  reviewingUserID: Float
+  createdAt: Float
+  updatedAt: Float
+  reviewedAt: Float
+}
+
+enum RadioRequestStatus {
+  Requested
+  Approved
+  Rejected
+}
+
 type Query {
   sessionSSOCreate: SessionSSOModel!
   sessionByJWT(jwt: String!): SessionModel!
@@ -388,6 +407,8 @@ type Query {
   betaCode(filter: BetaCodeFilterOneInput!): BetaCodeModel!
   staffApplication(filter: StaffApplicationFilterOneInput!): StaffApplicationModel!
   staffApplications(filter: StaffApplicationFilterManyInput!): [StaffApplicationModel!]!
+  radioRequest(filter: RadioRequestFilterOneInput!): RadioRequestModel!
+  radioRequests(filter: RadioRequestFilterManyInput!): [RadioRequestModel!]!
 }
 
 input ExtraArgs {
@@ -577,6 +598,18 @@ input StaffApplicationFilterManyInput {
   limit: Float
 }
 
+input RadioRequestFilterOneInput {
+  id: Float!
+}
+
+input RadioRequestFilterManyInput {
+  ids: [Float!]
+  userIDs: [Float!]
+  reviewingUserIDs: [Float!]
+  statuses: [RadioRequestStatus!]
+  limit: Float
+}
+
 type Mutation {
   sessionCreate(username: String!, password: String!): SessionCreatedModel!
   sessionUpdateEmail(input: SessionUpdateEmailInput!): SessionUpdateEmailModel!
@@ -630,6 +663,9 @@ type Mutation {
   staffApplicationCreate(input: StaffApplicationCreateInput!): StaffApplicationModel!
   staffApplicationReview(filter: StaffApplicationFilterOneInput!, input: StaffApplicationReviewInput!): Boolean!
   staffApplicationDelete(filter: StaffApplicationFilterOneInput!): Boolean!
+  radioRequestCreate(input: RadioRequestCreateInput!): RadioRequestModel!
+  radioRequestUpdate(filter: RadioRequestFilterOneInput!, input: RadioRequestCreateInput!): Boolean!
+  radioRequestReview(filter: RadioRequestFilterOneInput!, input: RadioRequestReviewInput!): Boolean!
 }
 
 input SessionUpdateEmailInput {
@@ -678,6 +714,7 @@ input RankScopesInput {
   managePermissions: Boolean!
   manageSupportTickets: Boolean!
   manageStaffApplications: Boolean!
+  manageRadioRequests: Boolean!
 }
 
 input RankFlagsInput {
@@ -806,6 +843,14 @@ input StaffApplicationCreateInput {
 
 input StaffApplicationReviewInput {
   accepted: Boolean!
+}
+
+input RadioRequestCreateInput {
+  content: String!
+}
+
+input RadioRequestReviewInput {
+  status: RadioRequestStatus!
 }
 
 type Subscription {

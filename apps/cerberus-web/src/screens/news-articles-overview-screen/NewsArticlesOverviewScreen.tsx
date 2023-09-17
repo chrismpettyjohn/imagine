@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'wouter';
+import { Card } from '../../blocks/card/Card';
 import { ButtonPrimary } from '../../blocks/button/Button.remix';
 import { ArticlesTableLazy } from '../../components/articles-table/ArticlesTable.lazy';
 
@@ -14,7 +15,9 @@ export function NewsArticlesOverviewScreen() {
           </ButtonPrimary>
         </Link>
       </div>
-      <ArticlesTableLazy />
+      <Card>
+        <ArticlesTableLazy />
+      </Card>
     </>
   )
 }

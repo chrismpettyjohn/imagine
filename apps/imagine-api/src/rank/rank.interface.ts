@@ -27,6 +27,9 @@ export class RankScopesInterface implements RankScopesWire {
 
   @Field()
   manageStaffApplications!: boolean;
+
+  @Field()
+  manageRadioRequests!: boolean;
 }
 
 @InputType('RankFlagsInput')

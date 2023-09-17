@@ -3,9 +3,8 @@ import React, { useEffect } from 'react';
 import { Card } from '../../blocks/card/Card';
 import { Input } from '../../blocks/input/Input';
 import { useRoomFetchOne } from '@imagine-cms/client';
-import { RoomRightsCard } from '../../components/room-rights-card/RoomRightsCard';
-import { RoomTradeLogsCard } from '../../components/room-trade-logs-card/RoomTradeLogsCard';
 import { RoomEntryLogsTableLazy } from '../../components/room-entry-logs-table/RoomEntryLogsTable.lazy';
+import { SmallUserContainer } from '../../components/small-user-container/SmallUserContainer';
 
 export function RoomsViewRoomScreen() {
   const [, params] = useRoute<{ roomID: string }>('/rooms/:roomID');
@@ -29,12 +28,34 @@ export function RoomsViewRoomScreen() {
         fetchRoom.data && (
           <>
             <Card header="Room Info">
+
               <label>Name</label>
-              <Input type="text" value={fetchRoom.data.name} />
+              <Input type="text" value={fetchRoom.data.name} disabled />
+              <div style={{ display: 'flex', gap: 16, width: '100%' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+                  <label>Current Users</label>
+                  <Input type="text" value={fetchRoom.data.usersNow} disabled />
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+                  <label>Maximum Users</label>
+                  <Input type="text" value={fetchRoom.data.usersMax} disabled />
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', flex: 1, gap: 16 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+                  <label>Maximum Users</label>
+                  {
+                    fetchRoom.data.user && <SmallUserContainer user={fetchRoom.data.user} />
+                  }
+                </div>
+              </div>
             </Card>
-            <RoomEntryLogsTableLazy room={fetchRoom.data} />
-            <RoomTradeLogsCard room={fetchRoom.data} />
-            <RoomRightsCard room={fetchRoom.data} />
+            <Card header="Entry Logs">
+              <div style={{ maxHeight: 400, overflowY: 'auto' }}>
+                <RoomEntryLogsTableLazy room={fetchRoom.data} />
+              </div>
+            </Card>
           </>
         )
       }
