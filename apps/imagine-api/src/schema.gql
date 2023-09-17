@@ -352,6 +352,8 @@ type RadioRequestModel {
   createdAt: Float
   updatedAt: Float
   reviewedAt: Float
+  user: UserModel
+  reviewingUser: UserModel
 }
 
 enum RadioRequestStatus {

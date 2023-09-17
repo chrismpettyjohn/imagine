@@ -42,6 +42,11 @@ export function SiteHeader() {
               </Link>
             </li>
             <li>
+              <Link to="/radio">
+                Radio
+              </Link>
+            </li>
+            <li>
               <Link to="/community/online-players">
                 Online Players
               </Link>

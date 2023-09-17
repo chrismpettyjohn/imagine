@@ -6,7 +6,14 @@ import {RadioRequestModel} from './radio-request.model';
 import {HasScope} from '../session/has-scope.decorator';
 import {HasSession} from '../session/has-session.decorator';
 import {GetSession} from '../session/get-session.decorator';
-import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
+import {
+  Args,
+  Mutation,
+  Parent,
+  Query,
+  ResolveField,
+  Resolver,
+} from '@nestjs/graphql';
 import {RadioRequestStatus} from '../database/radio-request.entity';
 import {RadioRequestRepository} from '../database/radio-request.repository';
 import {
@@ -15,10 +22,33 @@ import {
   RadioRequestFilterOneInput,
   RadioRequestReviewInput,
 } from './radio-request.input';
+import {UserRepository} from '../database/user.repository';
+import {UserModel} from '../user/user.model';
 
 @Resolver(() => RadioRequestModel)
 export class RadioRequestResolver {
-  constructor(private readonly radioRequestRepo: RadioRequestRepository) {}
+  constructor(
+    private readonly radioRequestRepo: RadioRequestRepository,
+    private readonly userRepo: UserRepository
+  ) {}
+
+  @ResolveField(() => UserModel, {nullable: true})
+  async user(
+    @Parent() radioRequestModel: RadioRequestModel
+  ): Promise<UserModel> {
+    return this.userRepo.findOneOrFail({id: radioRequestModel.userID});
+  }
+
+  @ResolveField(() => UserModel, {nullable: true})
+  async reviewingUser(
+    @Parent() radioRequestModel: RadioRequestModel
+  ): Promise<UserModel | null> {
+    return this.userRepo.findOne({
+      where: {
+        id: radioRequestModel.reviewingUserID,
+      },
+    });
+  }
 
   @Query(() => RadioRequestModel)
   async radioRequest(

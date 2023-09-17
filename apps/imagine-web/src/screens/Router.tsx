@@ -25,6 +25,7 @@ import { CommunityListArticlesScreen } from './community-list-articles-screen/Co
 import { CommunityOnlinePlayersScreen } from './community-online-players-screen/CommunityOnlinePlayersScreen';
 import { ForgotPasswordLinkSentScreen } from './forgot-password-link-sent-screen/ForgotPasswordLinkSentScreen';
 import { ForgotPasswordRedeemCodeScreen } from './forgot-password-redeem-code-screen/ForgotPasswordRedeemCodeScreen';
+import { RadioScreen } from './radio-screen/RadioScreen';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -94,6 +95,10 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/play',
     view: PlayGameScreen,
+  },
+  {
+    path: '/radio',
+    view: RadioScreen,
   },
   {
     path: '/community/staff',

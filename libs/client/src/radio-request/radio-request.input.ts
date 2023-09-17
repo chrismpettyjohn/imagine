@@ -9,6 +9,7 @@ export interface RadioRequestFilterManyInput {
   userIDs?: number[];
   reviewingUserIDs?: number[];
   statuses?: RadioRequestStatus[];
+  limit?: number;
 }
 
 export interface RadioRequestCreateInput {
