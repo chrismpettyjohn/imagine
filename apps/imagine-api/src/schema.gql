@@ -76,37 +76,37 @@ enum UserOnlineStatus {
 }
 
 type RankScopesModel implements RankScopesInterface {
-  accessAdminPanel: Boolean!
-  manageArticles: Boolean!
-  manageUsers: Boolean!
-  manageRooms: Boolean!
-  manageBetaCodes: Boolean!
-  managePermissions: Boolean!
-  manageSupportTickets: Boolean!
-  manageStaffApplications: Boolean!
-  manageRadioRequests: Boolean!
+  accessAdminPanel: Boolean
+  manageArticles: Boolean
+  manageUsers: Boolean
+  manageRooms: Boolean
+  manageBetaCodes: Boolean
+  managePermissions: Boolean
+  manageSupportTickets: Boolean
+  manageStaffApplications: Boolean
+  manageRadioRequests: Boolean
 }
 
 interface RankScopesInterface {
-  accessAdminPanel: Boolean!
-  manageArticles: Boolean!
-  manageUsers: Boolean!
-  manageRooms: Boolean!
-  manageBetaCodes: Boolean!
-  managePermissions: Boolean!
-  manageSupportTickets: Boolean!
-  manageStaffApplications: Boolean!
-  manageRadioRequests: Boolean!
+  accessAdminPanel: Boolean
+  manageArticles: Boolean
+  manageUsers: Boolean
+  manageRooms: Boolean
+  manageBetaCodes: Boolean
+  managePermissions: Boolean
+  manageSupportTickets: Boolean
+  manageStaffApplications: Boolean
+  manageRadioRequests: Boolean
 }
 
 type RankFlagsModel implements RankFlagsInterface {
-  showOnStaffPage: Boolean!
-  acceptingApplications: Boolean!
+  showOnStaffPage: Boolean
+  acceptingApplications: Boolean
 }
 
 interface RankFlagsInterface {
-  showOnStaffPage: Boolean!
-  acceptingApplications: Boolean!
+  showOnStaffPage: Boolean
+  acceptingApplications: Boolean
 }
 
 type RankModel {
@@ -708,20 +708,20 @@ input RankCreateInput {
 }
 
 input RankScopesInput {
-  accessAdminPanel: Boolean!
-  manageArticles: Boolean!
-  manageUsers: Boolean!
-  manageRooms: Boolean!
-  manageBetaCodes: Boolean!
-  managePermissions: Boolean!
-  manageSupportTickets: Boolean!
-  manageStaffApplications: Boolean!
-  manageRadioRequests: Boolean!
+  accessAdminPanel: Boolean
+  manageArticles: Boolean
+  manageUsers: Boolean
+  manageRooms: Boolean
+  manageBetaCodes: Boolean
+  managePermissions: Boolean
+  manageSupportTickets: Boolean
+  manageStaffApplications: Boolean
+  manageRadioRequests: Boolean
 }
 
 input RankFlagsInput {
-  showOnStaffPage: Boolean!
-  acceptingApplications: Boolean!
+  showOnStaffPage: Boolean
+  acceptingApplications: Boolean
 }
 
 input RankUpdateInput {

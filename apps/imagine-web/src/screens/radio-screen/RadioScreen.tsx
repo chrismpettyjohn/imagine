@@ -6,11 +6,11 @@ import { CreateRadioRequestCard } from '../../components/create-radio-request-ca
 export function RadioScreen() {
   return (
     <>
+      <CreateRadioRequestCard onCreation={() => location.reload()} />
+      <br />
       <Card header="Radio Requests">
         <RadioRequestsTableLazy />
       </Card>
-      <br />
-      <CreateRadioRequestCard onCreation={() => location.reload()} />
     </>
   )
 }

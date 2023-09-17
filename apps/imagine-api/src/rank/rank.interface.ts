@@ -4,40 +4,40 @@ import {RankFlagsWire, RankScopesWire} from '@imagine-cms/types';
 @InputType('RankScopesInput')
 @InterfaceType()
 export class RankScopesInterface implements RankScopesWire {
-  @Field()
+  @Field({nullable: true})
   accessAdminPanel!: boolean;
 
-  @Field()
+  @Field({nullable: true})
   manageArticles!: boolean;
 
-  @Field()
+  @Field({nullable: true})
   manageUsers!: boolean;
 
-  @Field()
+  @Field({nullable: true})
   manageRooms!: boolean;
 
-  @Field()
+  @Field({nullable: true})
   manageBetaCodes!: boolean;
 
-  @Field()
+  @Field({nullable: true})
   managePermissions!: boolean;
 
-  @Field()
+  @Field({nullable: true})
   manageSupportTickets!: boolean;
 
-  @Field()
+  @Field({nullable: true})
   manageStaffApplications!: boolean;
 
-  @Field()
+  @Field({nullable: true})
   manageRadioRequests!: boolean;
 }
 
 @InputType('RankFlagsInput')
 @InterfaceType()
 export class RankFlagsInterface implements RankFlagsWire {
-  @Field()
+  @Field({nullable: true})
   showOnStaffPage!: boolean;
 
-  @Field()
+  @Field({nullable: true})
   acceptingApplications!: boolean;
 }

@@ -23,9 +23,9 @@ export class StaffApplicationEntity {
   @Column({type: 'text'})
   content!: string;
 
-  @Column({name: 'created_at', type: 'datetime'})
+  @Column({name: 'created_at', type: 'int'})
   createdAt!: number;
 
-  @Column({name: 'created_at', type: 'datetime'})
+  @Column({name: 'updated_at', type: 'int'})
   updatedAt!: number;
 }

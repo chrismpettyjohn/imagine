@@ -26,6 +26,7 @@ import { CommunityOnlinePlayersScreen } from './community-online-players-screen/
 import { ForgotPasswordLinkSentScreen } from './forgot-password-link-sent-screen/ForgotPasswordLinkSentScreen';
 import { ForgotPasswordRedeemCodeScreen } from './forgot-password-redeem-code-screen/ForgotPasswordRedeemCodeScreen';
 import { RadioScreen } from './radio-screen/RadioScreen';
+import { CommunityStaffApplicationScreen } from './community-staff-application-screen/CommunityStaffApplicationScreen';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -103,6 +104,10 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/community/staff',
     view: CommunityStaffScreen,
+  },
+  {
+    path: '/community/staff/:rankID/apply',
+    view: CommunityStaffApplicationScreen,
   },
   {
     path: '/community/online-players',

@@ -4,7 +4,6 @@ import {BetaCodeModel} from './beta-code.model';
 import {UserEntity} from '../database/user.entity';
 import {BadRequestException} from '@nestjs/common';
 import {HasSession} from '../session/has-session.decorator';
-import {GetSession} from '../session/get-session.decorator';
 import {
   Args,
   Mutation,
@@ -23,6 +22,7 @@ import {HasScope} from '../session/has-scope.decorator';
 import {UserRepository} from '../database/user.repository';
 import {UserModel} from '../user/user.model';
 import {BetaCodeEntity} from '../database/beta-code.entity';
+import {GetUser} from '../session/get-user.decorator';
 
 @Resolver(() => BetaCodeModel)
 @HasSession()
@@ -98,7 +98,7 @@ export class BetaCodeResolver {
   async betaCodeRedeem(
     @Args('input', {type: () => BetaCodeRedeemInput})
     input: BetaCodeRedeemInput,
-    @GetSession() session: UserEntity
+    @GetUser() session: UserEntity
   ): Promise<boolean> {
     const matchingBetaCode = await this.betaCodeRepo.findOneOrFail({
       betaCode: input.betaCode,

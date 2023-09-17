@@ -4,7 +4,7 @@ import { STAFF_APPLICATION_FRAGMENT, StaffApplicationFragment } from './staff-ap
 
 export const STAFF_APPLICATION_CREATE_MUTATION: any = gql`
   ${STAFF_APPLICATION_FRAGMENT}
-  mutation($input: StaffApplicationCreateInput) {
+  mutation($input: StaffApplicationCreateInput!) {
     staffApplicationCreate(input: $input) {
       ...StaffApplicationFragment
     }

@@ -6,7 +6,6 @@ import {UnauthorizedException} from '@nestjs/common';
 import {HasScope} from '../session/has-scope.decorator';
 import {UserRepository} from '../database/user.repository';
 import {RankRepository} from '../database/rank.repository';
-import {GetSession} from '../session/get-session.decorator';
 import {StaffApplicationModel} from './staff-application.model';
 import {StaffApplicationRepository} from '../database/staff-application.repository';
 import {
@@ -23,6 +22,8 @@ import {
   StaffApplicationFilterOneInput,
   StaffApplicationReviewInput,
 } from './staff-application.input';
+import {HasSession} from '../session/has-session.decorator';
+import {GetUser} from '../session/get-user.decorator';
 
 @Resolver(() => StaffApplicationModel)
 export class StaffApplicationResolver {
@@ -80,10 +81,11 @@ export class StaffApplicationResolver {
   }
 
   @Mutation(() => StaffApplicationModel)
+  @HasSession()
   async staffApplicationCreate(
     @Args({name: 'input', type: () => StaffApplicationCreateInput})
     input: StaffApplicationCreateInput,
-    @GetSession() user: UserEntity
+    @GetUser() user: UserEntity
   ): Promise<StaffApplicationModel> {
     const currentDate = DayJS().unix();
     const newStaffApplication = await this.staffApplicationRepo.create({
@@ -104,7 +106,7 @@ export class StaffApplicationResolver {
     filter: StaffApplicationFilterOneInput,
     @Args({name: 'input', type: () => StaffApplicationReviewInput})
     input: StaffApplicationReviewInput,
-    @GetSession() user: UserEntity
+    @GetUser() user: UserEntity
   ): Promise<boolean> {
     const currentDate = DayJS().unix();
     await this.staffApplicationRepo.update(
@@ -122,7 +124,7 @@ export class StaffApplicationResolver {
   async staffApplicationDelete(
     @Args({name: 'filter', type: () => StaffApplicationFilterOneInput})
     filter: StaffApplicationFilterOneInput,
-    @GetSession() user: UserEntity
+    @GetUser() user: UserEntity
   ): Promise<boolean> {
     await this.userCanAccessStaffApplication(filter.id, user);
     await this.staffApplicationRepo.delete({id: filter.id});
