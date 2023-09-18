@@ -24,7 +24,7 @@ export const ARTICLES_TABLE_COLUMNS: TableColumn<ArticleFragment>[] = [
   },
   {
     name: 'Author',
-    cell: article => <SmallUserContainer user={article.user} />
+    cell: article => <SmallUserContainer user={article.user} style={{ width: 200 }} />
   },
   {
     name: 'Tools',

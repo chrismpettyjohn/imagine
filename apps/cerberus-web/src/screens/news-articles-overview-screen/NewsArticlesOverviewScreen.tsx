@@ -11,7 +11,7 @@ export function NewsArticlesOverviewScreen() {
       <h1>News Articles</h1>
       <Link to="/articles/create">
         <ButtonPrimary>
-          <i className="fa fa-plus-circle" />&nbsp; Add
+          <i className="fa fa-plus-circle" />&nbsp; New Article
         </ButtonPrimary>
       </Link>
     </div>

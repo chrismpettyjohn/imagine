@@ -3,23 +3,28 @@ import { Link } from 'wouter';
 import { RoomFragment } from '@imagine-cms/client';
 import { Button } from '../../blocks/button/Button';
 import { TableColumn } from "react-data-table-component";
+import { SmallUserContainer } from '../small-user-container/SmallUserContainer';
 
 export const ROOMS_TABLE_COLUMNS: TableColumn<RoomFragment>[] = [
   {
     name: 'Room',
-    selector: room => room.name,
+    cell: ({ id, name }) => (
+      <Link to={`/rooms/${id}`}>
+        {name}
+      </Link>
+    )
   },
   {
     name: 'Owned By',
-    selector: room => room.userID,
+    cell: room => (
+      <div style={{ padding: 8 }}>
+        {room.user ? <SmallUserContainer user={room.user} style={{ width: 200 }} /> : <span style={{ color: 'red' }}>User not found</span>}
+      </div>
+    ),
   },
   {
-    name: 'Max Users',
-    selector: room => room.usersMax,
-  },
-  {
-    name: 'Current Users',
-    selector: room => room.usersNow,
+    name: 'Users',
+    cell: ({ usersMax, usersNow }) => `${usersNow} / ${usersMax}`
   },
   {
     name: 'Tools',

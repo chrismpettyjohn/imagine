@@ -9,7 +9,7 @@ export const ROOMS_ENTRY_LOGS_TABLE_COLUMNS: TableColumn<RoomEnterLogFragment>[]
     name: 'User',
     cell: ({ user }) => (
       <div style={{ padding: 8 }}>
-        <SmallUserContainer user={user} />
+        <SmallUserContainer user={user} style={{ width: 200 }} />
       </div>
     ),
   },

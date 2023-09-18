@@ -28,7 +28,7 @@ export function BetaCodesOverviewScreen() {
       <div>Beta Codes</div>
       <ButtonPrimary disabled={betaCodeCreate.loading} type="button" onClick={onBetaCodeCreate}>
         <i className={betaCodeCreate.loading ? 'fa fa-spinner fa-spin' : 'fa fa-plus-circle'} />&nbsp;
-        Add
+        Add Code
       </ButtonPrimary>
     </div>
   ), []);

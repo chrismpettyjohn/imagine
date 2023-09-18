@@ -6,7 +6,7 @@ import { BetaCodeDeleteButton } from '../beta-code-delete-button/BetaCodeDeleteB
 
 export const BETA_CODES_TABLE_COLUMNS: TableColumn<BetaCodeFragment>[] = [
   {
-    name: '',
+    name: 'Beta Code',
     selector: betaCode => betaCode.betaCode,
   },
   {
@@ -15,7 +15,7 @@ export const BETA_CODES_TABLE_COLUMNS: TableColumn<BetaCodeFragment>[] = [
       if (!betaCode.user) {
         return null;
       }
-      return <SmallUserContainer user={betaCode.user} />
+      return <SmallUserContainer user={betaCode.user} style={{ width: 200 }} />
     }
   },
   {

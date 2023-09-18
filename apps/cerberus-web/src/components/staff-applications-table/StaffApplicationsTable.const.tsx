@@ -10,7 +10,7 @@ export const STAFF_APPLICATION_TABLE_COLUMNS: TableColumn<StaffApplicationFragme
     name: 'User ID',
     cell: staffApplication => (
       <div style={{ padding: 8 }}>
-        <SmallUserContainer user={staffApplication.user} />
+        <SmallUserContainer user={staffApplication.user} style={{ width: 200 }} />
       </div>
     )
   },

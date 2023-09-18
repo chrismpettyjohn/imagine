@@ -76,11 +76,6 @@ export function SiteSidebar() {
             </li>
           </Link>
         </ScopeGuard>
-        <Link href="/languages">
-          <li>
-            <i className="fa fa-language" />
-          </li>
-        </Link>
         <Link href="/configuration">
           <li>
             <i className="fa fa-cog" />

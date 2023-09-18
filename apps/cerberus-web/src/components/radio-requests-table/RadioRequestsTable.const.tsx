@@ -9,7 +9,7 @@ export const RADIO_REQUEST_TABLE_COLUMNS: TableColumn<RadioRequestFragment>[] = 
     name: 'User',
     cell: ({ user }) => (
       <div style={{ padding: 8 }}>
-        <SmallUserContainer user={user} />
+        <SmallUserContainer user={user} style={{ width: 200 }} />
       </div>
     )
   },
