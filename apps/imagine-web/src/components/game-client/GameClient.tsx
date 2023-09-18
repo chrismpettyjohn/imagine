@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useMemo } from 'react';
 import { GameClientElement } from './GameClient.styled';
+import React, { useContext, useEffect, useMemo } from 'react';
 import { GameClientActions } from './game-client-actions/GameClientActions';
 import { configContext, sessionContext, themeContext, useSSOCreate } from '@imagine-cms/web';
 
@@ -25,7 +25,13 @@ export function GameClient() {
 
   return (
     <GameClientElement $visible={showClient}>
-      <GameClientActions />
+      {
+        showClient && (
+          <>
+            <GameClientActions />
+          </>
+        )
+      }
       <iframe
         src={`${config!.nitroURL}?sso=${ssoToken}`}
         style={{ height: '100%', width: '100%' }}
