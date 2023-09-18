@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'wouter';
 import { LatestArticleContainerProps } from './LatestArticleGridContainer.types';
 import { LatestArticleGridContainerElement, LatestArticleImage, LatestArticleInformation, LatestArticleInformationCategory, LatestArticleInformationTitle, } from './LatestArticleGridContainer.styled';
-import { Link } from 'wouter';
 
 export function LatestArticleContainer({ article }: LatestArticleContainerProps) {
   return (

@@ -1,7 +1,7 @@
-import { UserWire } from '@imagine-cms/types';
+import { UserFragment } from '@imagine-cms/client';
 
 export interface LeaderboardsCardProps {
   title: string;
-  value(user: UserWire): string;
+  value(user: UserFragment): string;
   query: any;
 }

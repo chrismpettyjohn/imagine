@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import { SessionUpdatePasswordInput } from "apps/imagine-api/src/session/session.input";
+import { SessionUpdatePasswordInput } from "./session.input";
 import { SESSION_UPDATE_PASSWORD_MUTATION, SessionUpdatePasswordResponse, SessionUpdatePasswordVariables } from "./session-update-password.mutation";
 
 export interface UseSessionUpdatePasswordResponse {

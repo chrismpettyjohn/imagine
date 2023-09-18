@@ -1,5 +1,5 @@
-import { ArticleWire } from "@imagine-cms/types";
+import { ArticleFragment } from "@imagine-cms/client";
 
 export interface ArticleListContainerProps {
-  article: ArticleWire;
+  article: ArticleFragment;
 }

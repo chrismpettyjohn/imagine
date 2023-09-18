@@ -23,7 +23,7 @@ export function UserFriendsGrid({ user }: UserFriendsGridProps) {
       <UserFriendsGridContainer>
         {
           friendshipFetch.data?.map(_ => (
-            <SmallUserProfileContainer key={`friendship_${_.friendID}`} user={_.friend} />
+            <SmallUserProfileContainer key={`friendship_${_.friendID}`} user={_.friend as any} />
           ))
         }
       </UserFriendsGridContainer>

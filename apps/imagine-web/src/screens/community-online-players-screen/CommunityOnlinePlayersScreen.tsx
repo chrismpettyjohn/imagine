@@ -24,7 +24,7 @@ export function CommunityOnlinePlayersScreen() {
       <CommunityOnlinePlayersScreenUsersContainer>
         {
           data?.map(user => (
-            <SmallUserProfileContainer key={`online_user_${user.id}`} user={user} showOnlineStatus={false} />
+            <SmallUserProfileContainer key={`online_user_${user.id}`} user={user as any} showOnlineStatus={false} />
           ))
         }
       </CommunityOnlinePlayersScreenUsersContainer>

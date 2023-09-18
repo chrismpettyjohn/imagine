@@ -6,7 +6,7 @@ import { BadgeContainerProps } from './BadgeContainer.types';
 export function BadgeContainer({ badge, ...props }: BadgeContainerProps) {
   return (
     <BadgeHolder>
-      <Badge badge={badge} {...props} />
+      <Badge badge={badge} {...props as any} />
     </BadgeHolder>
   )
 }

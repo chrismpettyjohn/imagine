@@ -21,7 +21,7 @@ export function useSignInWithUsernameAndPassword(username: string, password: str
 
   useEffect(() => {
     if (fetchUser?.data) {
-      setSession(fetchUser.data);
+      setSession(fetchUser.data as any);
       toast.success(`Welcome back, ${fetchUser.data.username}!`);
       setLocation('/me');
     }

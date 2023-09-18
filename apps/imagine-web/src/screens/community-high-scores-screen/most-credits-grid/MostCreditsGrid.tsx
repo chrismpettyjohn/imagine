@@ -20,7 +20,7 @@ export function MostCreditsGrid() {
       }
       {
         fetchUsers.data?.map(_ => (
-          <SmallUserProfileContainer key={`most_credits_${_.id}`} user={_} />
+          <SmallUserProfileContainer key={`most_credits_${_.id}`} user={_ as any} />
         ))
       }
     </Card>

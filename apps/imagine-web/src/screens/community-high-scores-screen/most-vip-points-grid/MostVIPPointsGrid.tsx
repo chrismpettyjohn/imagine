@@ -20,7 +20,7 @@ export function MostVIPPointsGrid() {
       }
       {
         fetchUsers.data?.map(_ => (
-          <SmallUserProfileContainer key={`most_vip_points_${_.id}`} user={_} />
+          <SmallUserProfileContainer key={`most_vip_points_${_.id}`} user={_ as any} />
         ))
       }
     </Card>

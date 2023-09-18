@@ -21,7 +21,7 @@ export function LoginWithGoogleScreen() {
       localStorageService.set('SESSION', session.sessionToken);
       const matchingUser = await fetchUser.fetch({ id: googleUserAuthenticate.data!.userID });
       toast.success(`Welcome back, ${matchingUser.username}`);
-      setSession(matchingUser);
+      setSession(matchingUser as any);
       setLocation('/me');
     } catch (e: any) {
       toast.error('There was a problem logging in');

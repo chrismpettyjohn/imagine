@@ -1,6 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
 import { UserTradeLogFragment } from "./user-trade-log.fragment";
-import { UserTradeLogFilterOneInput } from "apps/imagine-api/src/user-trade-log/user-trade-log.input";
+import { UserTradeLogFilterOneInput } from "./user-trade-log.input";
 import { USER_TRADE_LOG_FETCH_ONE_QUERY, UserTradeLogFetchOneQueryResponse, UserTradeLogFetchOneQueryVariables } from "./user-trade-log-fetch-one.query";
 
 export interface UseUserTradeLogFetchOneResponse {

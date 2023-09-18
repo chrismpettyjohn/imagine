@@ -1,5 +1,4 @@
 import { useCallback } from 'react';
-import { DocumentNode } from 'graphql';
 import { useLazyQuery } from '@apollo/react-hooks';
 
 export interface UseQueryResponse<Response> {
@@ -9,7 +8,7 @@ export interface UseQueryResponse<Response> {
   data?: Response;
 }
 
-export function useRunQuery<Response>(query: DocumentNode, variables?: object): UseQueryResponse<Response> {
+export function useRunQuery<Response>(query: any, variables?: object): UseQueryResponse<Response> {
   const [runQuery, { loading, error, data }] = useLazyQuery(query, { variables });
 
   const onRunQuery = useCallback(async (...options: any) => {

@@ -22,7 +22,7 @@ export function LoginWithFacebookScreen() {
       localStorageService.set('SESSION', session.sessionToken);
       const matchingUser = await fetchUser.fetch({ id: facebookUserAuthenticate.data!.userID })
       toast.success(`Welcome back, ${matchingUser.username}`);
-      setSession(matchingUser);
+      setSession(matchingUser as any);
       setLocation('/me');
     } catch (e: any) {
       toast.error('There was a problem logging in');

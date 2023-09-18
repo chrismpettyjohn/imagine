@@ -19,6 +19,7 @@
     "wouter": "2.11.0",
     "graphql-tag": "2.12.6",
     "sass": "1.66.1",
+    "tslib": "2.6.2",
     "acorn-jsx": "5.3.2",
     "@rollup/plugin-commonjs": "25.0.4",
     "@rollup/plugin-image": "3.0.2",

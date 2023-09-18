@@ -1,5 +1,5 @@
-import { PhotoWire } from "@imagine-cms/types";
+import { PhotoFragment } from "@imagine-cms/client";
 
 export interface PhotoContainerProps {
-  story: PhotoWire;
+  story: PhotoFragment;
 }

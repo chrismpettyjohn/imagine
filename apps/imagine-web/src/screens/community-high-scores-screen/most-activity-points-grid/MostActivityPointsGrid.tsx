@@ -20,7 +20,7 @@ export function MostActivityPointsGrid() {
       }
       {
         fetchUsers.data?.map(_ => (
-          <SmallUserProfileContainer key={`most_activity_points_${_.id}`} user={_} />
+          <SmallUserProfileContainer key={`most_activity_points_${_.id}`} user={_ as any} />
         ))
       }
     </Card>

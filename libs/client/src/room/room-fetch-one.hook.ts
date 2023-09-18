@@ -1,6 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
 import { RoomFragment } from "./room.fragment";
-import { RoomFilterOneInput } from "apps/imagine-api/src/room/room.input";
+import { RoomFilterOneInput } from "./room.input";
 import { ROOM_FETCH_ONE_QUERY, RoomFetchOneQueryResponse, RoomFetchOneQueryVariables } from "./room-fetch-one.query";
 
 export interface UseRoomFetchOneResponse {
