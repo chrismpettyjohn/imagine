@@ -3,7 +3,7 @@
   "scripts": {
     "fix": "gts fix",
     "build": "lerna run build",
-    "deploy": "yarn run build && lerna publish",
+    "deploy": "pnpm run build && lerna publish",
     "purge": "lerna exec -- rm -rf node_modules && lerna exec -- rm -rf dist && rm -rf pnpm-lock.yaml && rm -rf node_modules && rm -rf pnpm-lock.yaml",
     "dev:start": "pm2 start process.json && pnpm run dev:logs",
     "dev:logs": "pm2 logs",

@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import { BetaCodeRedeemInput } from "apps/imagine-api/src/beta-code/beta-code.input";
+import { BetaCodeRedeemInput } from "./beta-code.input";
 import { BETA_CODE_REDEEM_MUTATION, BetaCodeRedeemMutationResponse, BetaCodeRedeemMutationVariables } from "./beta-code-redeem.mutation";
 
 export interface UseBetaCodeRedeemResponse {

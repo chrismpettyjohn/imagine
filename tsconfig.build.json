@@ -18,8 +18,7 @@
       "dom"
     ],
     "types": [
-      "node",
-      "vite/client"
+      "node"
     ]
   },
   "include": [

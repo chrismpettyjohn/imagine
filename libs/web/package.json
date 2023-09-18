@@ -6,9 +6,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "yarn run clean && yarn run compile",
-    "clean": "rimraf -rf ./dist && rimraf -rf ./build",
-    "compile": "rollup -c && yarn run compile:types",
+    "build": "pnpm run clean && pnpm run compile",
+    "clean": "rm -rf ./dist && rm -rf ./build",
+    "compile": "rollup -c && pnpm run compile:types",
     "compile:types": "tsc -d -p tsconfig.build.json --emitDeclarationOnly --declarationDir dist/types"
   },
   "devDependencies": {

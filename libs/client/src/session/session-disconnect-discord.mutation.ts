@@ -1,5 +1,5 @@
-import { SessionDisconnectAccountInput } from 'apps/imagine-api/src/session/session.input';
 import gql from 'graphql-tag';
+import { SessionDisconnectAccountInput } from './session.input';
 
 export const SESSION_DISCONNECT_DISCORD_MUTATION: any = gql`
   mutation($input: SessionDisconnectAccountInput!) {

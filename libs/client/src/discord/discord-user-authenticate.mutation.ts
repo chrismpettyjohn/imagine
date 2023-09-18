@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
+import { DiscordAuthInput } from './discord.input';
 import { DISCORD_AUTH_FRAGMENT, DiscordAuthFragment } from './discord.fragment';
-import { DiscordAuthInput } from 'apps/imagine-api/src/discord/discord-auth.input';
 
 export const DISCORD_USER_AUTHENTICATE_MUTATION: any = gql`
   ${DISCORD_AUTH_FRAGMENT}
