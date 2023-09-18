@@ -7,7 +7,7 @@ export function CommunityStaffScreen() {
   const { data, fetch } = useRankFetchMany();
 
   useEffect(() => {
-    fetch({ showStaffOnly: true })
+    fetch({ staffOnly: true })
   }, []);
 
   return (

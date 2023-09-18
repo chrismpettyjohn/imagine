@@ -20,7 +20,6 @@ export interface RankFragment {
   badgeCode: string;
   scopes: RankScopesWire;
   flags: RankFlagsWire;
-  siteShowStaff: boolean;
 }
 
 export const RANK_FRAGMENT: any = gql`
@@ -28,7 +27,6 @@ export const RANK_FRAGMENT: any = gql`
     id
     name
     badgeCode
-    siteShowStaff
     scopes {
       accessAdminPanel
       manageArticles

@@ -15,7 +15,6 @@ export function RankDetailsEditorCard({ defaultRank, onSave }: RankDetailsEditor
   const [rankDTO, setRankDTO] = useState<RankUpdateInput>({
     name: defaultRank?.name ?? '',
     badgeCode: defaultRank?.badgeCode ?? '',
-    siteShowStaff: defaultRank?.siteShowStaff ?? false,
     scopes: {
       accessAdminPanel: defaultRank?.scopes?.accessAdminPanel ?? false,
       manageArticles: defaultRank?.scopes?.manageArticles ?? false,
@@ -37,13 +36,6 @@ export function RankDetailsEditorCard({ defaultRank, onSave }: RankDetailsEditor
     setRankDTO(_ => ({
       ..._,
       ...changes,
-    }))
-  }
-
-  const onToggleShowStaff = () => {
-    setRankDTO(_ => ({
-      ..._,
-      siteShowStaff: !_.siteShowStaff,
     }))
   }
 
@@ -89,10 +81,6 @@ export function RankDetailsEditorCard({ defaultRank, onSave }: RankDetailsEditor
         <div style={{ display: 'flex', flex: 1, gap: 16 }}>
           <Badge badge={{ code: rankDTO.badgeCode } as any} height={45} />
           <Input value={rankDTO.badgeCode} onChange={e => onChanges({ badgeCode: e.currentTarget?.value ?? '' })} />
-        </div>
-        <div style={{ margin: 0, padding: 0 }}>
-          <label>Show on staff page?</label>
-          <input type="checkbox" checked={rankDTO.siteShowStaff} onChange={onToggleShowStaff} />
         </div>
         <RankDetailsEditorCardPermissionsContainer>
           <label>Permissions</label>

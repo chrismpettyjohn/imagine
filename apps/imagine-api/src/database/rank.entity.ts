@@ -1,11 +1,6 @@
 import {ObjectType} from '@nestjs/graphql';
-import {RankFlagsWire, RankScopesWire} from '@imagine-cms/types';
 import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
-
-export enum RankSiteShowStaff {
-  Yes = '1',
-  No = '0',
-}
+import {RankFlagsWire, RankScopesWire} from '@imagine-cms/types';
 
 @Entity('permissions')
 @ObjectType()
@@ -18,9 +13,6 @@ export class RankEntity {
 
   @Column({name: 'badge'})
   badgeCode!: string;
-
-  @Column({name: 'site_show_staff', type: 'enum', enum: RankSiteShowStaff})
-  siteShowStaff!: RankSiteShowStaff;
 
   @Column({type: 'json'})
   scopes!: RankScopesWire;

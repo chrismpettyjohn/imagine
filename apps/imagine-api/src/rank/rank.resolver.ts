@@ -1,10 +1,10 @@
-import {In} from 'typeorm';
+import {ILike, In} from 'typeorm';
 import {RankModel} from './rank.model';
 import {UserModel} from '../user/user.model';
 import {Inject, forwardRef} from '@nestjs/common';
+import {RankEntity} from '../database/rank.entity';
 import {RankRepository} from '../database/rank.repository';
 import {UserRepository} from '../database/user.repository';
-import {RankEntity, RankSiteShowStaff} from '../database/rank.entity';
 import {
   RankCreateInput,
   RankFilterManyInput,
@@ -48,7 +48,7 @@ export class RankResolver {
     const matchingRanks = await this.rankRepo.find({
       where: {
         id: filter.ids && In(filter.ids),
-        siteShowStaff: filter.showStaffOnly ? RankSiteShowStaff.Yes : undefined,
+        flags: filter.staffOnly && ILike('%"showOnStaffPage":true%'),
       },
       order: {
         id: 'DESC',
@@ -64,9 +64,6 @@ export class RankResolver {
   ): Promise<RankModel> {
     const newRank = await this.rankRepo.create({
       ...rankCreateInput,
-      siteShowStaff: rankCreateInput.siteShowStaff
-        ? RankSiteShowStaff.Yes
-        : RankSiteShowStaff.No,
     });
     return RankModel.fromEntity(newRank);
   }
@@ -80,15 +77,13 @@ export class RankResolver {
     const currentRank = await this.rankRepo.findOneOrFail(filter);
     await this.rankRepo.update(filter, {
       ...input,
-      siteShowStaff:
-        input.siteShowStaff === undefined
-          ? currentRank.siteShowStaff
-          : input.siteShowStaff
-          ? RankSiteShowStaff.Yes
-          : RankSiteShowStaff.No,
       scopes: {
         ...currentRank.scopes,
         ...input.scopes,
+      },
+      flags: {
+        ...currentRank.flags,
+        ...input.flags,
       },
     });
     return true;

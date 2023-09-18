@@ -2,7 +2,7 @@ import { RankFlagsWire, RankScopesWire } from "@imagine-cms/types";
 
 export interface RankFilterManyInput {
   ids?: number;
-  showStaffOnly?: boolean;
+  staffOnly?: boolean;
   limit?: number;
 }
 
@@ -15,7 +15,6 @@ export interface RankCreateOneInput {
   badgeCode: string;
   scopes: RankScopesWire;
   flags: RankFlagsWire;
-  siteShowStaff: boolean;
 }
 
 export type RankUpdateInput = Partial<RankCreateOneInput>;

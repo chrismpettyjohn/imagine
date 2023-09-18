@@ -1,11 +1,11 @@
 import {UserWire} from '../user/User';
-import {RankScopesWire} from './RankScopes';
+import {RankFlagsWire, RankScopesWire} from './RankScopes';
 
 export interface RankWire {
-  id?: number;
-  name?: string;
-  badgeCode?: string;
-  siteShowStaff?: boolean;
+  id: number;
+  name: string;
+  badgeCode: string;
   users?: UserWire[];
-  scopes?: RankScopesWire;
+  scopes: RankScopesWire;
+  flags: RankFlagsWire;
 }

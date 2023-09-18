@@ -30,10 +30,6 @@ export class RankCreateInput implements RankCreateInputDTO {
   @IsAlphanumeric()
   badgeCode!: string;
 
-  @Field()
-  @IsBoolean()
-  siteShowStaff!: boolean;
-
   @Field(() => RankScopesInterface)
   @IsObject()
   scopes!: RankScopesInterface;
@@ -59,11 +55,6 @@ export class RankUpdateInput implements RankUpdateInputDTO {
   @IsOptional()
   badgeCode?: string;
 
-  @Field()
-  @IsBoolean()
-  @IsOptional()
-  siteShowStaff!: boolean;
-
   @Field(() => RankScopesInterface, {nullable: true})
   @IsObject()
   @IsOptional()
@@ -81,7 +72,7 @@ export class RankFilterManyInput {
   ids?: number[];
 
   @Field(() => Boolean, {nullable: true})
-  showStaffOnly?: boolean;
+  staffOnly?: boolean;
 
   @Field(() => Number, {nullable: true})
   @Max(GLOBAL_MAX_RESOURCE_LIMIT)

@@ -1,10 +1,9 @@
-import {RankWire} from '@imagine-cms/types';
 import {Field, ObjectType} from '@nestjs/graphql';
+import {RankEntity} from '../database/rank.entity';
 import {RankFlagsModel, RankScopesModel} from './rank-scopes.model';
-import {RankEntity, RankSiteShowStaff} from '../database/rank.entity';
 
 @ObjectType()
-export class RankModel implements RankWire {
+export class RankModel {
   @Field({nullable: true})
   id!: number;
 
@@ -13,9 +12,6 @@ export class RankModel implements RankWire {
 
   @Field({nullable: true})
   badgeCode!: string;
-
-  @Field(() => Boolean, {nullable: true})
-  siteShowStaff!: boolean;
 
   @Field(() => RankScopesModel, {nullable: true})
   scopes!: RankScopesModel;
@@ -28,7 +24,6 @@ export class RankModel implements RankWire {
       id: entity.id!,
       name: entity.name,
       badgeCode: entity.badgeCode,
-      siteShowStaff: entity.siteShowStaff === RankSiteShowStaff.Yes,
       scopes: {
         accessAdminPanel: entity.scopes?.accessAdminPanel ?? false,
         manageArticles: entity.scopes?.manageArticles ?? false,

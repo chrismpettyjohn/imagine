@@ -113,7 +113,6 @@ type RankModel {
   id: Float
   name: String
   badgeCode: String
-  siteShowStaff: Boolean
   scopes: RankScopesModel
   flags: RankFlagsModel
   users: [UserModel!]
@@ -454,7 +453,7 @@ input RankFilterOneInput {
 
 input RankFilterManyInput {
   ids: [Float!]
-  showStaffOnly: Boolean
+  staffOnly: Boolean
   limit: Float
 }
 
@@ -702,7 +701,6 @@ input UserUpdateInput {
 input RankCreateInput {
   name: String!
   badgeCode: String!
-  siteShowStaff: Boolean!
   scopes: RankScopesInput!
   flags: RankFlagsInput!
 }
@@ -727,7 +725,6 @@ input RankFlagsInput {
 input RankUpdateInput {
   name: String
   badgeCode: String
-  siteShowStaff: Boolean!
   scopes: RankScopesInput
   flags: RankFlagsInput
 }
