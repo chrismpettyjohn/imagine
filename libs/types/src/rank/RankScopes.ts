@@ -38,3 +38,8 @@ export const rankScopesLabels: Record<keyof RankScopesWire, string> = {
   manageStaffApplications: 'Manage Staff Applications',
   manageRadioRequests: 'Manage Radio Requests',
 };
+
+export const rankFlagsLabels: Record<keyof RankFlagsWire, string> = {
+  showOnStaffPage: 'Show On Staff Page',
+  acceptingApplications: 'Accepting Applications',
+};

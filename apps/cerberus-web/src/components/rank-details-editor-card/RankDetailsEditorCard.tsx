@@ -4,7 +4,7 @@ import { Form } from '../../blocks/form/Form';
 import { Input } from '../../blocks/input/Input';
 import { Badge } from '../../blocks/badge/Badge';
 import { RankUpdateInput } from '@imagine-cms/client';
-import { RankCreateInputDTO } from '@imagine-cms/types';
+import { RankCreateInputDTO, RankFlagsWire, rankFlagsLabels } from '@imagine-cms/types';
 import React, { SyntheticEvent, useState } from 'react';
 import { RankScopesWire, rankScopesLabels } from '@imagine-cms/types';
 import { RankDetailsEditorCardProps } from './RankDetailsEditorCard.types';
@@ -13,17 +13,24 @@ import { ButtonDanger, ButtonPrimary, ButtonSuccess } from '../../blocks/button/
 
 export function RankDetailsEditorCard({ defaultRank, onSave }: RankDetailsEditorCardProps) {
   const [rankDTO, setRankDTO] = useState<RankUpdateInput>({
-    name: defaultRank.name ?? '',
-    badgeCode: defaultRank.badgeCode ?? '',
+    name: defaultRank?.name ?? '',
+    badgeCode: defaultRank?.badgeCode ?? '',
+    siteShowStaff: defaultRank?.siteShowStaff ?? false,
     scopes: {
-      accessAdminPanel: defaultRank.scopes?.accessAdminPanel ?? false,
-      manageArticles: defaultRank.scopes?.manageArticles ?? false,
-      manageUsers: defaultRank.scopes?.manageUsers ?? false,
-      manageRooms: defaultRank.scopes?.manageRooms ?? false,
-      managePermissions: defaultRank.scopes?.managePermissions ?? false,
-      manageSupportTickets: defaultRank.scopes?.manageSupportTickets ?? false,
+      accessAdminPanel: defaultRank?.scopes?.accessAdminPanel ?? false,
+      manageArticles: defaultRank?.scopes?.manageArticles ?? false,
+      manageUsers: defaultRank?.scopes?.manageUsers ?? false,
+      manageRooms: defaultRank?.scopes?.manageRooms ?? false,
+      managePermissions: defaultRank?.scopes?.managePermissions ?? false,
+      manageSupportTickets: defaultRank?.scopes?.manageSupportTickets ?? false,
+      manageRadioRequests: defaultRank?.scopes?.manageRadioRequests ?? false,
+      manageBetaCodes: defaultRank?.scopes?.manageBetaCodes ?? false,
+      manageStaffApplications: defaultRank?.scopes?.manageStaffApplications ?? false,
     },
-    siteShowStaff: defaultRank.siteShowStaff ?? false,
+    flags: {
+      showOnStaffPage: defaultRank?.flags?.showOnStaffPage ?? false,
+      acceptingApplications: defaultRank?.flags.acceptingApplications ?? false,
+    },
   });
 
   const onChanges = (changes: Partial<RankCreateInputDTO>) => {
@@ -50,6 +57,16 @@ export function RankDetailsEditorCard({ defaultRank, onSave }: RankDetailsEditor
     }))
   }
 
+  const onToggleFlag = (key: keyof RankFlagsWire) => {
+    setRankDTO(_ => ({
+      ..._,
+      flags: {
+        ..._.flags!,
+        [key]: !_.flags![key],
+      }
+    }))
+  }
+
   const isDisabled = !rankDTO.name || !rankDTO.badgeCode;
 
   const onSaveChanges = async (event: SyntheticEvent) => {
@@ -59,7 +76,7 @@ export function RankDetailsEditorCard({ defaultRank, onSave }: RankDetailsEditor
       toast.success(`Changes to ${rankDTO.name} saved`);
     } catch (e) {
       console.log(e)
-      toast.error(`Failed to update ${defaultRank.name}`);
+      toast.error(`Failed to update ${defaultRank?.name}`);
     }
   }
 
@@ -88,6 +105,22 @@ export function RankDetailsEditorCard({ defaultRank, onSave }: RankDetailsEditor
                 const value = rankScopesLabels[scope];
                 return (
                   <Button key={`rank_scope_${scope}`} onClick={() => onToggleScope(scope as any)} type="button">{value}</Button>
+                )
+              })
+            }
+          </div>
+        </RankDetailsEditorCardPermissionsContainer>
+        <RankDetailsEditorCardPermissionsContainer>
+          <label>Flags</label>
+          <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto', gap: 16 }}>
+            {
+              Object.keys(rankFlagsLabels).map(flag => {
+                // @ts-ignore
+                const Button = rankDTO.flags[flag] ? ButtonSuccess : ButtonDanger;
+                // @ts-ignore
+                const value = rankFlagsLabels[flag];
+                return (
+                  <Button key={`rank_flag_${flag}`} onClick={() => onToggleFlag(flag as any)} type="button">{value}</Button>
                 )
               })
             }

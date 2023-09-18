@@ -44,11 +44,12 @@ export function RoomsViewRoomScreen() {
 
               <div style={{ display: 'flex', flex: 1, gap: 16 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
-                  <label>Maximum Users</label>
+                  <label>Owned By</label>
                   {
                     fetchRoom.data.user && <SmallUserContainer user={fetchRoom.data.user} />
                   }
                 </div>
+                <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }} />
               </div>
             </Card>
             <Card header="Entry Logs">

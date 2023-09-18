@@ -1,4 +1,4 @@
-import { RankScopesWire } from "@imagine-cms/types";
+import { RankFlagsWire, RankScopesWire } from "@imagine-cms/types";
 
 export interface RankFilterManyInput {
   ids?: number;
@@ -14,6 +14,7 @@ export interface RankCreateOneInput {
   name: string;
   badgeCode: string;
   scopes: RankScopesWire;
+  flags: RankFlagsWire;
   siteShowStaff: boolean;
 }
 
