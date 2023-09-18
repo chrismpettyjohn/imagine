@@ -4,7 +4,7 @@ import { Card } from '../../blocks/card/Card';
 export function ReportsOverviewScreen() {
   return (
     <>
-      <Card header="Reports">
+      <Card header="Reports" style={{ height: '100%' }}>
         test
       </Card>
     </>

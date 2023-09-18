@@ -1,9 +1,12 @@
 import React from 'react';
+import { Card } from '../../blocks/card/Card';
 
 export function CatalogOverviewScreen() {
   return (
     <>
-      <h1>Catalog</h1>
+      <Card header="Catalog" style={{ height: '100%' }}>
+        test
+      </Card>
     </>
   )
 }

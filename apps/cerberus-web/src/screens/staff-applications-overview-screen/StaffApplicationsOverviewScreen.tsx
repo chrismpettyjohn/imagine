@@ -5,7 +5,7 @@ import { StaffApplicationsTableLazy } from '../../components/staff-applications-
 export function StaffApplicationsOverviewScreen() {
   return (
     <>
-      <Card header="Staff Applications">
+      <Card header="Staff Applications" style={{ height: '100%' }}>
         <StaffApplicationsTableLazy />
       </Card>
     </>

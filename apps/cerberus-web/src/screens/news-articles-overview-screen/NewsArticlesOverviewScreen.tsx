@@ -19,7 +19,7 @@ export function NewsArticlesOverviewScreen() {
 
   return (
     <>
-      <Card header={cardHeader}>
+      <Card header={cardHeader} style={{ height: '100%' }}>
         <ArticlesTableLazy />
       </Card>
     </>

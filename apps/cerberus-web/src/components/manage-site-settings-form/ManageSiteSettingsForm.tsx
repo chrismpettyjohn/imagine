@@ -4,6 +4,7 @@ import { configContext } from '@imagine-cms/web';
 import { ConfigUpdateInputDTO } from '@imagine-cms/types';
 import { ButtonPrimary } from '../../blocks/button/Button.remix';
 import React, { ChangeEvent, useCallback, useContext, useState } from 'react';
+import { Badge } from '../../blocks/badge/Badge';
 
 export function ManageSiteSettingsForm() {
   const { config } = useContext(configContext);
@@ -26,6 +27,7 @@ export function ManageSiteSettingsForm() {
   })
 
   const onChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    console.log(event.target.name)
     setConfigDTO(_ => ({
       ..._,
       [event.target.name]: event.target.value ?? '',
@@ -44,6 +46,10 @@ export function ManageSiteSettingsForm() {
       <Input name="nitroURL" value={configDTO.nitroURL} onChange={onChange} />
 
       <div style={{ display: 'flex', flex: 1, gap: 16 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: 50 }}>
+          <label>&nbsp;</label>
+          <Badge badge={{ code: 'ADM' as any }} overrideBadgeURL={configDTO.badgeURL} overrideBadgeEXT={configDTO.badgeEXT} />
+        </div>
         <div style={{ display: 'flex', flex: 1, flexDirection: 'column', gap: 8 }}>
           <label>Badges URL <small>(album1584)</small></label>
           <Input name="badgeURL" value={configDTO.badgeURL} onChange={onChange} />

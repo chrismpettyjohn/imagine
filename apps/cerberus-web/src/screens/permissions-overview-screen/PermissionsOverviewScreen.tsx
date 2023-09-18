@@ -5,7 +5,7 @@ import { RanksTableLazy } from '../../components/ranks-table/RanksTable.lazy';
 export function PermissionsOverviewScreen() {
   return (
     <>
-      <Card header="Permissions">
+      <Card header="Permissions" style={{ height: '100%' }}>
         <RanksTableLazy />
       </Card>
     </>

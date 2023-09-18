@@ -34,7 +34,7 @@ export function BetaCodesOverviewScreen() {
   ), []);
 
   return (
-    <Card header={header}>
+    <Card header={header} style={{ height: '100%' }}>
       <BetaCodesTableLazy />
     </Card>
   )
