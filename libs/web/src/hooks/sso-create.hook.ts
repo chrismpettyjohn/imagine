@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
-import {UserWire} from '@imagine-cms/types';
-import {UseQueryResponse, useRunQuery} from './run-query.hook';
+import { UserWire } from '@imagine-cms/types';
+import { UseQueryResponse, useRunQuery } from './run-query.hook';
 
 const SSO_CREATE = gql`
   query {
@@ -10,6 +10,6 @@ const SSO_CREATE = gql`
   }
 `;
 
-export const useSSOCreate = (): UseQueryResponse<{ssoToken: string}> => {
+export const useSSOCreate = (): UseQueryResponse<{ sessionSSOCreate: { ssoToken: string } }> => {
   return useRunQuery(SSO_CREATE);
 };
