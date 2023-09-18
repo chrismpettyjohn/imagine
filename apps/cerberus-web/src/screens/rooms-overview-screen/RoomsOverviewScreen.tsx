@@ -5,8 +5,7 @@ import { RoomsTableLazy } from '../../components/rooms-table/RoomsTable.lazy';
 export function RoomsOverviewScreen() {
   return (
     <>
-      <h1>Rooms</h1>
-      <Card>
+      <Card header="Rooms">
         <RoomsTableLazy />
       </Card>
     </>

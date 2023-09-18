@@ -5,8 +5,7 @@ import { RadioRequestsTableLazy } from '../../components/radio-requests-table/Ra
 export function RadioOverviewScreen() {
   return (
     <>
-      <h1>Radio</h1>
-      <Card>
+      <Card header="Radio Requests">
         <RadioRequestsTableLazy />
       </Card>
     </>

@@ -1,9 +1,12 @@
 import React from 'react';
+import { Card } from '../../blocks/card/Card';
 
 export function WebStoreOverviewScreen() {
   return (
     <>
-      <h1>Web Store</h1>
+      <Card header="Web Store">
+        test
+      </Card>
     </>
   )
 }
