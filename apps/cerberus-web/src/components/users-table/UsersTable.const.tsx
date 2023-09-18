@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'wouter';
+import { Badge } from '../../blocks/badge/Badge';
 import { UserFragment } from '@imagine-cms/client';
 import { Button } from '../../blocks/button/Button';
 import { TableColumn } from "react-data-table-component";
@@ -16,7 +17,12 @@ export const USERS_TABLE_COLUMNS: TableColumn<UserFragment>[] = [
   },
   {
     name: 'Rank',
-    selector: user => user.rankID,
+    cell: ({ rank }) => (
+      <Link to={`/permissions/${rank.id}`}>
+        <Badge badge={{ code: rank.badgeCode as any }} />
+        {rank.name}
+      </Link>
+    )
   },
   {
     name: 'Credits',
