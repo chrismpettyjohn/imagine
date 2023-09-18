@@ -15,7 +15,7 @@ export function SiteContainer() {
       <GameClient />
       <ToastContainer />
       {
-        showClient && (
+        !showClient && (
           <>
             <PageContainerElement>
               <SiteHeader />

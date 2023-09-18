@@ -5,10 +5,7 @@ export function PlayGameScreen() {
   const { setTheme } = useContext(themeContext);
 
   useEffect(() => {
-    // setTheme({ showClient: true });
-    // return () => {
-    //   setTheme({ showClient: false })
-    // }
+    setTheme({ showClient: true });
   }, []);
 
   return null;

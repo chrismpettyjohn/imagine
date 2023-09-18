@@ -1,12 +1,15 @@
 import './GameClientActions.css';
 import { useLocation } from 'wouter';
-import React, { useState } from 'react';
+import { themeContext } from '@imagine-cms/web';
+import React, { useContext, useState } from 'react';
 
 export function GameClientActions() {
   const [, setLocation] = useLocation();
   const [isExpanded, setExpanded] = useState<boolean>(false);
+  const { setTheme } = useContext(themeContext);
 
   function toggleWebView(): void {
+    setTheme({ showClient: false });
     setLocation('/me');
   }
 
