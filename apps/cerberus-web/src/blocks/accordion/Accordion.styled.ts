@@ -32,7 +32,7 @@ export const AccordionHeaderElement = styled.div<{ $open: boolean }>`
 `
 
 export const AccordionContentElement = styled.div`
-  background:${({ theme }) => theme.color.s40};
+  background:${({ theme }) => theme.color.s20};
   border-bottom:${({ theme }) => `2px solid ${theme.color.s50}`};
   border-left:${({ theme }) => `2px solid ${theme.color.s50}`};
   border-right:${({ theme }) => `2px solid ${theme.color.s50}`};

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { AccordionProps } from './Accordion.types';
 import { AccordionContainer, AccordionContentElement, AccordionElement, AccordionHeaderElement } from './Accordion.styled';
 
-export function Accordion({ children, header }: AccordionProps) {
-  const [isOpen, setIsOpen] = useState(false);
+export function Accordion({ children, defaultIsOpen = false, header }: AccordionProps) {
+  const [isOpen, setIsOpen] = useState(defaultIsOpen);
 
   const onToggle = () => {
     setIsOpen(_ => !_);
