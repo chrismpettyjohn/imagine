@@ -1,5 +1,4 @@
 import { Link } from 'wouter';
-import { Button } from '../button/Button';
 import React, { useContext } from 'react';
 import { SiteLogo } from '../site-logo/SiteLogo';
 import { GuestGuard } from '../guest-guard/GuestGuard';
@@ -54,6 +53,11 @@ export function SiteHeader() {
             <li>
               <Link to="/community/high-scores">
                 High Scores
+              </Link>
+            </li>
+            <li>
+              <Link to="/bug-reports">
+                Bug Reports
               </Link>
             </li>
           </ul>
