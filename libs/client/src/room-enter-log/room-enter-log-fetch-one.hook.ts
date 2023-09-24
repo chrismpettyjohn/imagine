@@ -14,7 +14,7 @@ export function useRoomEnterLogFetchOne(): UseRoomEnterLogFetchOneResponse {
   const [getRoomEnterLog, { loading, error, data }] = useLazyQuery<RoomEnterLogFetchOneQueryResponse, RoomEnterLogFetchOneQueryVariables>(ROOM_ENTER_LOG_FETCH_ONE_QUERY);
 
   const onFetchRoomEnterLogs = async (filter: RoomEnterLogFilterOneInput): Promise<RoomEnterLogFragment> => {
-    const matchingRoomEnterLogs = await getRoomEnterLog({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
+    const matchingRoomEnterLogs = await getRoomEnterLog({ fetchPolicy: "network-only", variables: { filter } })
     return matchingRoomEnterLogs.data!.roomEnterLog;
   }
 

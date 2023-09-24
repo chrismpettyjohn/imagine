@@ -13,7 +13,7 @@ export function useBetaCodeDelete(): UseBetaCodeDeleteResponse {
   const [deletaBetaCode, { loading, error, data }] = useMutation<BetaCodeDeleteMutationResponse, BetaCodeDeleteMutationVariables>(BETA_CODE_DELETE_MUTATION);
 
   const onDeleteBetaCode = async (filter: BetaCodeFilterOneInput): Promise<boolean> => {
-    const matchingBetaCode = await deletaBetaCode({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } });
+    const matchingBetaCode = await deletaBetaCode({ fetchPolicy: "network-only", variables: { filter } });
     return matchingBetaCode.data!.betaCodeDelete;
   }
 

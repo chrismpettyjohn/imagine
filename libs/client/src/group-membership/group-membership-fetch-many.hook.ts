@@ -14,7 +14,7 @@ export function useGroupMembershipFetchMany(): UseGroupMembershipFetchManyRespon
   const [getGroupMemberships, { loading, error, data }] = useLazyQuery<GroupMembershipFetchManyQueryResponse, GroupMembershipFetchManyQueryVariables>(GROUP_MEMBERSHIP_FETCH_MANY_QUERY);
 
   const onFetchGroupMemberships = async (filter: GroupMembershipFilterManyInput): Promise<GroupMembershipFragment[]> => {
-    const matchingGroupMemberships = await getGroupMemberships({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
+    const matchingGroupMemberships = await getGroupMemberships({ fetchPolicy: "network-only", variables: { filter } })
     return matchingGroupMemberships.data!.groupMemberships;
   }
 

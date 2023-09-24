@@ -14,7 +14,7 @@ export function useArticleCommentCreate(): UseArticleCommentCreateResponse {
   const [getArticleComment, { loading, error, data }] = useMutation<ArticleCommentCreateResponse, ArticleCommentCreateVariables>(ARTICLE_COMMENT_CREATE_MUTATION);
 
   const onFetchArticleComment = async (input: ArticleCommentCreateInput): Promise<ArticleCommentFragment> => {
-    const matchingArticleComment = await getArticleComment({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", input } })
+    const matchingArticleComment = await getArticleComment({ fetchPolicy: "network-only", variables: { input } })
     return matchingArticleComment.data!.articleComment;
   }
 

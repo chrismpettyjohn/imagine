@@ -13,7 +13,7 @@ export function useSessionUpdatePassword(): UseSessionUpdatePasswordResponse {
   const [sessionUpdatePassword, { loading, error, data }] = useMutation<SessionUpdatePasswordResponse, SessionUpdatePasswordVariables>(SESSION_UPDATE_PASSWORD_MUTATION);
 
   const onSessionUpdatePassword = async (input: SessionUpdatePasswordInput): Promise<SessionUpdatePasswordResponse> => {
-    const matchingPhotoReaction = await sessionUpdatePassword({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", input } })
+    const matchingPhotoReaction = await sessionUpdatePassword({ fetchPolicy: "network-only", variables: { input } })
     return matchingPhotoReaction.data!;
   }
 

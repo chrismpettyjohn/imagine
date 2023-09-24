@@ -14,7 +14,7 @@ export function useArticleCommentFetchOne(): UseArticleCommentFetchOneResponse {
   const [getArticleComment, { loading, error, data }] = useLazyQuery<ArticleCommentFetchOneResponse, ArticleCommentFetchOneVariables>(ARTICLE_COMMENT_FETCH_ONE_QUERY);
 
   const onFetchArticleComment = async (filter: ArticleCommentFilterOneInput): Promise<ArticleCommentFragment> => {
-    const matchingArticleComment = await getArticleComment({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
+    const matchingArticleComment = await getArticleComment({ fetchPolicy: "network-only", variables: { filter } })
     return matchingArticleComment.data!.articleComment;
   }
 

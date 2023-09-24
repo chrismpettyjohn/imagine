@@ -14,7 +14,7 @@ export function usePhotoReactionFetchOne(): UsePhotoReactionFetchOneResponse {
   const [getPhotoReaction, { loading, error, data }] = useLazyQuery<PhotoReactionFetchOneResponse, PhotoReactionFetchOneVariables>(PHOTO_REACTION_FETCH_ONE_QUERY);
 
   const onFetchPhotoReaction = async (filter: PhotoReactionFilterOneInput): Promise<PhotoReactionFragment> => {
-    const matchingPhotoReaction = await getPhotoReaction({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
+    const matchingPhotoReaction = await getPhotoReaction({ fetchPolicy: "network-only", variables: { filter } })
     return matchingPhotoReaction.data!.photoReaction;
   }
 

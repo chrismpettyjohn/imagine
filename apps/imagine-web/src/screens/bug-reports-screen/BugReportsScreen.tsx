@@ -1,3 +1,4 @@
+import { Link } from 'wouter';
 import React, { useEffect } from 'react';
 import { Card } from '../../components/card/Card';
 import { useBugReportFetchMany } from '@imagine-cms/client';
@@ -34,7 +35,11 @@ export function BugReportsScreen() {
         }
         {
           fetchBugReports.data?.map(_ => (
-            <div key={`bug_report_${_.id}`}>#{_.id}</div>
+            <div key={`bug_report_${_.id}`}>
+              <Link to={`/bug-reports/${_.id}`}>
+                #${_.id} - {_.content.slice(0, 255)} - {_.reportingUser.username}
+              </Link>
+            </div>
           ))
         }
       </Card>

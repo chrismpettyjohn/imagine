@@ -14,7 +14,7 @@ export function useUserTradeLogFetchMany(): UseUserTradeLogFetchManyResponse {
   const [getUserTradeLogs, { loading, error, data }] = useLazyQuery<UserTradeLogFetchManyQueryResponse, UserTradeLogFetchManyQueryVariables>(USER_TRADE_LOG_FETCH_MANY_QUERY);
 
   const onFetchUserTradeLogs = async (filter: UserTradeLogFilterManyInput): Promise<UserTradeLogFragment[]> => {
-    const matchingUserTradeLogs = await getUserTradeLogs({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
+    const matchingUserTradeLogs = await getUserTradeLogs({ fetchPolicy: "network-only", variables: { filter } })
     return matchingUserTradeLogs.data!.userTradeLogs;
   }
 

@@ -12,7 +12,7 @@ export function usePhotoReactionDelete(): UsePhotoReactionDeleteResponse {
   const [getPhotoReaction, { loading, error }] = useMutation<PhotoReactionDeleteResponse, PhotoReactionDeleteVariables>(PHOTO_REACTION_DELETE_MUTATION);
 
   const onFetchPhotoReaction = async (input: PhotoReactionDeleteInput): Promise<void> => {
-    const matchingPhotoReaction = await getPhotoReaction({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", input } })
+    const matchingPhotoReaction = await getPhotoReaction({ fetchPolicy: "network-only", variables: { input } })
   }
 
   return {

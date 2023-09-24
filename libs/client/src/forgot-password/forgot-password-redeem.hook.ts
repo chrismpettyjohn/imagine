@@ -13,7 +13,7 @@ export function useForgotPasswordRequestRedeem(): UseForgotPasswordRequestRedeem
   const [forgotPasswordRequestRedeem, { loading, error, data }] = useMutation<ForgotPasswordRequestRedeemMutationResponse, ForgotPasswordRequestRedeemMutationVariables>(FORGOT_PASSWORD_REQUEST_REDEEM_MUTATION);
 
   const onForgotPasswordRequestRedeem = async (input: ForgotPasswordRequestRedeemInput): Promise<boolean> => {
-    const matchingArticleReaction = await forgotPasswordRequestRedeem({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", input } })
+    const matchingArticleReaction = await forgotPasswordRequestRedeem({ fetchPolicy: "network-only", variables: { input } })
     return matchingArticleReaction.data!.forgotPasswordRequestRedeem;
   }
 

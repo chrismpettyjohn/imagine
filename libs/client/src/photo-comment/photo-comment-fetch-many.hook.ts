@@ -14,7 +14,7 @@ export function usePhotoCommentFetchMany(): UsePhotoCommentFetchManyResponse {
   const [getPhotoComments, { loading, error, data }] = useLazyQuery<PhotoCommentFetchManyQueryResponse, PhotoCommentFetchManyQueryVariables>(PHOTO_COMMENT_FETCH_MANY_QUERY);
 
   const onFetchPhotoComments = async (filter: PhotoCommentFilterManyInput): Promise<PhotoCommentFragment[]> => {
-    const matchingPhotoComments = await getPhotoComments({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
+    const matchingPhotoComments = await getPhotoComments({ fetchPolicy: "network-only", variables: { filter } })
     return matchingPhotoComments.data!.photoComments;
   }
 

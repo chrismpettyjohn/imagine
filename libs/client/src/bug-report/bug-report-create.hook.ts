@@ -14,7 +14,7 @@ export function useBugReportCreate(): UseBugReportCreateResponse {
   const [getBugReport, { loading, error, data }] = useMutation<BugReportCreateMutationResponse, BugReportCreateMutationVariables>(BUG_REPORT_CREATE_MUTATION);
 
   const onFetchBugReport = async (input: BugReportCreateInput): Promise<BugReportFragment> => {
-    const matchingBugReport = await getBugReport({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", input } })
+    const matchingBugReport = await getBugReport({ fetchPolicy: "network-only", variables: { input } })
     return matchingBugReport.data!.bugReportCreate;
   }
 

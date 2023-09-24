@@ -14,7 +14,7 @@ export function useFacebookUserAuthenticate(): UseFacebookUserAuthenticateRespon
   const [facebookAuth, { loading, data, error }] = useMutation<FacebookUserAuthenticateResponse, FacebookUserAuthenticateVariables>(FACEBOOK_USER_AUTHENTICATE_MUTATION);
 
   const onFacebookAuth = async (input: FacebookAuthInput): Promise<FacebookAuthFragment> => {
-    const response = await facebookAuth({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", input } })
+    const response = await facebookAuth({ fetchPolicy: "network-only", variables: { input } })
     return response.data!.facebookUserAuthenticate;
   }
 

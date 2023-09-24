@@ -12,7 +12,7 @@ export function useBugReportDelete(): UseBugReportDeleteResponse {
   const [deleteBugReport, { loading, error }] = useMutation<BugReportDeleteMutationResponse, BugReportDeleteMutationVariables>(BUG_REPORT_DELETE_MUTATION);
 
   const onFetchBugReport = async (filter: BugReportFilterOneInput): Promise<void> => {
-    await deleteBugReport({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
+    await deleteBugReport({ fetchPolicy: "network-only", variables: { filter } })
   }
 
   return {

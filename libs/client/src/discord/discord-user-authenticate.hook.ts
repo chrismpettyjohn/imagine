@@ -14,7 +14,7 @@ export function useDiscordUserAuthenticate(): UseDiscordUserAuthenticateResponse
   const [discordAuth, { loading, data, error }] = useMutation<DiscordUserAuthenticateResponse, DiscordUserAuthenticateVariables>(DISCORD_USER_AUTHENTICATE_MUTATION);
 
   const onDiscordAuth = async (input: DiscordAuthInput): Promise<DiscordAuthFragment> => {
-    const response = await discordAuth({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", input } })
+    const response = await discordAuth({ fetchPolicy: "network-only", variables: { input } })
     return response.data!.discordUserAuthenticate;
   }
 

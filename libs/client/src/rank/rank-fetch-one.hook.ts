@@ -14,7 +14,7 @@ export function useRankFetchOne(): UseRankFetchOneResponse {
   const [getRank, { loading, error, data }] = useLazyQuery<RankFetchOneResponse, RankFetchOneVariables>(RANK_FETCH_ONE_QUERY);
 
   const onFetchRank = async (filter: RankFilterOneInput): Promise<RankFragment> => {
-    const matchingRank = await getRank({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
+    const matchingRank = await getRank({ fetchPolicy: "network-only", variables: { filter } })
     return matchingRank.data!.rank;
   }
 

@@ -14,7 +14,7 @@ export function usePhotoReactionCreate(): UsePhotoReactionCreateResponse {
   const [getPhotoReaction, { loading, error, data }] = useMutation<PhotoReactionCreateResponse, PhotoReactionCreateVariables>(PHOTO_REACTION_CREATE_MUTATION);
 
   const onFetchPhotoReaction = async (input: PhotoReactionCreateInput): Promise<PhotoReactionFragment> => {
-    const matchingPhotoReaction = await getPhotoReaction({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", input } })
+    const matchingPhotoReaction = await getPhotoReaction({ fetchPolicy: "network-only", variables: { input } })
     return matchingPhotoReaction.data!.photoReaction;
   }
 

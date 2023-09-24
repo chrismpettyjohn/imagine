@@ -380,6 +380,8 @@ type BugReportModel {
   updatedAt: Float
   resolvedAt: Float
   resolvingUserID: Float
+  reportingUser: UserModel
+  resolvingUser: UserModel
 }
 
 type Query {
@@ -707,6 +709,8 @@ type Mutation {
   radioRequestReview(filter: RadioRequestFilterOneInput!, input: RadioRequestReviewInput!): Boolean!
   bugReportCreate(input: BugReportCreateInput!): BugReportModel!
   bugReportUpdate(filter: BugReportFilterOneInput!, input: BugReportUpdateInput!): Boolean!
+  bugReportResolve(filter: BugReportFilterOneInput!): Boolean!
+  bugReportOpen(filter: BugReportFilterOneInput!): Boolean!
   bugReportDelete(filter: BugReportFilterOneInput!): Boolean!
 }
 

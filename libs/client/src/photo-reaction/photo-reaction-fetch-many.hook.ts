@@ -14,7 +14,7 @@ export function usePhotoReactionFetchMany(): UsePhotoReactionFetchManyResponse {
   const [getPhotoReactions, { loading, error, data }] = useLazyQuery<PhotoReactionFetchManyQueryResponse, PhotoReactionFetchManyQueryVariables>(PHOTO_REACTION_FETCH_MANY_QUERY);
 
   const onFetchPhotoReactions = async (filter: PhotoReactionFilterManyInput): Promise<PhotoReactionFragment[]> => {
-    const matchingPhotoReactions = await getPhotoReactions({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
+    const matchingPhotoReactions = await getPhotoReactions({ fetchPolicy: "network-only", variables: { filter } })
     return matchingPhotoReactions.data!.photoReactions;
   }
 

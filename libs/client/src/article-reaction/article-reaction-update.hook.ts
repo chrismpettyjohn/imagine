@@ -14,7 +14,7 @@ export function useArticleReactionUpdate(): UseArticleReactionUpdateResponse {
   const [getArticleReaction, { loading, error, data }] = useMutation<ArticleReactionUpdateResponse, ArticleReactionUpdateVariables>(ARTICLE_REACTION_UPDATE_MUTATION);
 
   const onFetchArticleReaction = async (filter: ArticleReactionFilterOneInput, input: ArticleReactionUpdateInput): Promise<ArticleReactionFragment> => {
-    const matchingArticleReaction = await getArticleReaction({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter, input } })
+    const matchingArticleReaction = await getArticleReaction({ fetchPolicy: "network-only", variables: { filter, input } })
     return matchingArticleReaction.data!.articleReaction;
   }
 

@@ -14,7 +14,7 @@ export function useArticleCommentFetchMany(): UseArticleCommentFetchManyResponse
   const [getArticleComments, { loading, error, data }] = useLazyQuery<ArticleCommentFetchManyQueryResponse, ArticleCommentFetchManyQueryVariables>(ARTICLE_COMMENT_FETCH_MANY_QUERY);
 
   const onFetchArticleComments = async (filter: ArticleCommentFilterManyInput): Promise<ArticleCommentFragment[]> => {
-    const matchingArticleComments = await getArticleComments({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
+    const matchingArticleComments = await getArticleComments({ fetchPolicy: "network-only", variables: { filter } })
     return matchingArticleComments.data!.articleComments;
   }
 

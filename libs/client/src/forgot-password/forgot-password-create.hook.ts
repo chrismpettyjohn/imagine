@@ -13,7 +13,7 @@ export function useForgotPasswordRequestCreate(): UseForgotPasswordRequestCreate
   const [forgotPasswordRequestCreate, { loading, error, data }] = useMutation<ForgotPasswordRequestCreateMutationResponse, ForgotPasswordRequestCreateMutationVariables>(FORGOT_PASSWORD_REQUEST_CREATE_MUTATION);
 
   const onForgotPasswordRequestCreate = async (input: ForgotPasswordRequestCreateInput): Promise<boolean> => {
-    const matchingArticleReaction = await forgotPasswordRequestCreate({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", input } })
+    const matchingArticleReaction = await forgotPasswordRequestCreate({ fetchPolicy: "network-only", variables: { input } })
     return matchingArticleReaction.data!.forgotPasswordRequestCreate;
   }
 
