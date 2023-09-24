@@ -7,7 +7,7 @@ export function SiteFooter() {
   const { config } = useContext(configContext);
 
   return (
-    <SiteFooterElement>
+    <SiteFooterElement className="notranslate">
       <Link to="/about">
         <h2 style={{ letterSpacing: 1.6, margin: 0 }}>imagine</h2>
       </Link>

@@ -90,7 +90,7 @@ export function SiteSidebar() {
             </li>
           </a>
         </ul>
-        <div>
+        <div className="notranslate">
           <b>Cerberus</b>
           <div>
             by&nbsp;<b>LeChris</b>
