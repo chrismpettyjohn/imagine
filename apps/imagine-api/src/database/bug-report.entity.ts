@@ -14,13 +14,13 @@ export class BugReportEntity {
   @Column({type: 'int'})
   severity!: number;
 
-  @Column({type: 'int'})
+  @Column({name: 'created_at', type: 'int'})
   createdAt!: number;
 
-  @Column({type: 'int'})
+  @Column({name: 'updated_at', type: 'int'})
   updatedAt!: number;
 
-  @Column({type: 'int', nullable: true})
+  @Column({name: 'resolved_at', type: 'int', nullable: true})
   resolvedAt?: number;
 
   @Column({type: 'int', nullable: true})

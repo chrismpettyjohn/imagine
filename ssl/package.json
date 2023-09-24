@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "ssl:generate": "openssl req -x509 -newkey rsa:2048 -nodes -sha256 -keyout ssl.key -out ssl.crt"
+  }
+}
