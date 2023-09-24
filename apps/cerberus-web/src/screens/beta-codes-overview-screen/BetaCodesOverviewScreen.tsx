@@ -1,11 +1,21 @@
 import { toast } from 'react-toastify';
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Card } from '../../blocks/card/Card';
-import { useBetaCodeCreate } from '@imagine-cms/client';
 import { ButtonPrimary } from '../../blocks/button/Button.remix';
+import { useBetaCodeCreate, useBetaCodeFetchMany } from '@imagine-cms/client';
 import { BetaCodesTableLazy } from '../../components/beta-codes-table/BetaCodesTable.lazy';
 
 export function BetaCodesOverviewScreen() {
+  const fetchBetaCodes = useBetaCodeFetchMany();
+
+  const onFetchBetaCodes = async () => {
+    await fetchBetaCodes.fetch({ limit: 25 });
+  }
+
+  useEffect(() => {
+    onFetchBetaCodes();
+  }, []);
+
   const betaCodeCreate = useBetaCodeCreate();
 
   const onBetaCodeCreate = async () => {
@@ -15,8 +25,7 @@ export function BetaCodesOverviewScreen() {
       }
       const newBetaCode = await betaCodeCreate.execute();
       toast.success(`Successfully added beta code ${newBetaCode.betaCode}`)
-      // TODO: Update state with latest beta code
-      location.reload();
+      await onFetchBetaCodes();
     } catch (e: any) {
       console.log(e);
       toast.error('Beta code could not be created at this time')
@@ -35,7 +44,7 @@ export function BetaCodesOverviewScreen() {
 
   return (
     <Card header={header} style={{ height: '100%' }}>
-      <BetaCodesTableLazy />
+      <BetaCodesTableLazy betaCodes={fetchBetaCodes.data} onChanges={onFetchBetaCodes} />
     </Card>
   )
 }
