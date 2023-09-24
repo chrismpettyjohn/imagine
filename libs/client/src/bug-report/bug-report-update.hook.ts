@@ -12,7 +12,7 @@ export function useBugReportUpdate(): UseBugReportUpdateResponse {
   const [updateBugReport, { loading, error, data }] = useMutation<BugReportUpdateMutationResponse, BugReportUpdateMutationVariables>(BUG_REPORT_UPDATE_MUTATION);
 
   const onFetchBugReport = async (filter: BugReportFilterOneInput, input: BugReportUpdateInput): Promise<void> => {
-    await updateBugReport({ variables: { filter, input } })
+    await updateBugReport({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter, input } })
 
   }
 

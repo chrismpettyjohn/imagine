@@ -13,7 +13,7 @@ export function useStaffApplicationDelete(): UseStaffApplicationDeleteResponse {
   const [getStaffApplication, { loading, error, data }] = useMutation<StaffApplicationDeleteOneMutationResponse, StaffApplicationDeleteOneMutationVariables>(STAFF_APPLICATION_DELETE_ONE_MUTATION);
 
   const onFetchStaffApplication = async (filter: StaffApplicationFilterOneInput): Promise<boolean> => {
-    const matchingStaffApplication = await getStaffApplication({ variables: { filter } })
+    const matchingStaffApplication = await getStaffApplication({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
     return matchingStaffApplication.data!.staffApplicationDelete;
   }
 

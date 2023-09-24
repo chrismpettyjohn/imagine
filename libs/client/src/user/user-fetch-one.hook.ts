@@ -14,7 +14,7 @@ export function useUserFetchOne(): UseUserFetchOneResponse {
   const [getUsers, { loading, error, data }] = useLazyQuery<UserFetchOneResponse, UserFetchOneVariables>(USER_FETCH_ONE_QUERY);
 
   const onFetchUsers = async (filter: UserFilterOneInput): Promise<UserFragment> => {
-    const matchingUsers = await getUsers({ variables: { filter } })
+    const matchingUsers = await getUsers({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
     return matchingUsers.data!.user;
   }
 

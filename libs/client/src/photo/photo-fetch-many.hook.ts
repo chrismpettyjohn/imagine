@@ -14,7 +14,7 @@ export function usePhotoFetchMany(): UsePhotoFetchManyResponse {
   const [getPhotos, { loading, error, data }] = useLazyQuery<PhotoFetchManyResponse, PhotoFetchManyVariables>(PHOTO_FETCH_MANY_QUERY);
 
   const onFetchPhotos = async (filter: PhotoFilterManyInput): Promise<PhotoFragment[]> => {
-    const matchingPhotos = await getPhotos({ variables: { filter } })
+    const matchingPhotos = await getPhotos({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
     return matchingPhotos.data!.photos;
   }
 

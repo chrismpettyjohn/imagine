@@ -13,7 +13,7 @@ export function useSessionUpdateEmail(): UseSessionUpdateEmailResponse {
   const [sessionUpdateEmail, { loading, error, data }] = useMutation<SessionUpdateEmailResponse, SessionUpdateEmailVariables>(SESSION_UPDATE_EMAIL_MUTATION);
 
   const onSessionUpdateEmail = async (input: SessionUpdateEmailInput): Promise<SessionUpdateEmailResponse> => {
-    const matchingPhotoReaction = await sessionUpdateEmail({ variables: { input } })
+    const matchingPhotoReaction = await sessionUpdateEmail({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", input } })
     return matchingPhotoReaction.data!;
   }
 

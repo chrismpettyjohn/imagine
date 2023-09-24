@@ -14,7 +14,7 @@ export function useUserTradeLogFetchOne(): UseUserTradeLogFetchOneResponse {
   const [getUserTradeLogs, { loading, error, data }] = useLazyQuery<UserTradeLogFetchOneQueryResponse, UserTradeLogFetchOneQueryVariables>(USER_TRADE_LOG_FETCH_ONE_QUERY);
 
   const onFetchUserTradeLogs = async (filter: UserTradeLogFilterOneInput): Promise<UserTradeLogFragment> => {
-    const matchingUserTradeLogs = await getUserTradeLogs({ variables: { filter } })
+    const matchingUserTradeLogs = await getUserTradeLogs({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
     return matchingUserTradeLogs.data!.userTradeLog;
   }
 

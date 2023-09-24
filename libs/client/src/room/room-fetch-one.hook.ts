@@ -14,7 +14,7 @@ export function useRoomFetchOne(): UseRoomFetchOneResponse {
   const [getRooms, { loading, error, data }] = useLazyQuery<RoomFetchOneQueryResponse, RoomFetchOneQueryVariables>(ROOM_FETCH_ONE_QUERY);
 
   const onFetchRooms = async (filter: RoomFilterOneInput): Promise<RoomFragment> => {
-    const matchingRooms = await getRooms({ variables: { filter } })
+    const matchingRooms = await getRooms({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
     return matchingRooms.data!.room;
   }
 

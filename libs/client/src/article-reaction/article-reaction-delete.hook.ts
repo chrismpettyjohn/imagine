@@ -12,7 +12,7 @@ export function useArticleReactionDelete(): UseArticleReactionDeleteResponse {
   const [getArticleReaction, { loading, error }] = useMutation<ArticleReactionDeleteResponse, ArticleReactionDeleteVariables>(ARTICLE_REACTION_DELETE_MUTATION);
 
   const onFetchArticleReaction = async (input: ArticleReactionDeleteInput): Promise<void> => {
-    const matchingArticleReaction = await getArticleReaction({ variables: { input } })
+    const matchingArticleReaction = await getArticleReaction({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", input } })
   }
 
   return {

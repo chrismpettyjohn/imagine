@@ -14,7 +14,7 @@ export function useArticleFetchMany(): UseArticleFetchManyResponse {
   const [getArticles, { loading, error, data }] = useLazyQuery<ArticleFetchManyQueryResponse, ArticleFetchManyQueryVariables>(ARTICLE_FETCH_MANY_QUERY);
 
   const onFetchArticles = async (filter: ArticleFilterManyInput): Promise<ArticleFragment[]> => {
-    const matchingArticles = await getArticles({ variables: { filter } })
+    const matchingArticles = await getArticles({ fetchPolicy: "network-only", variables: { filter } })
     return matchingArticles.data!.articles;
   }
 

@@ -14,7 +14,7 @@ export function useArticleFetchOne(): UseArticleFetchOneResponse {
   const [getArticles, { loading, error, data }] = useLazyQuery<ArticleFetchOneQueryResponse, ArticleFetchOneQueryVariables>(ARTICLE_FETCH_ONE_QUERY);
 
   const onFetchArticles = async (filter: ArticleFilterOneInput): Promise<ArticleFragment> => {
-    const matchingArticles = await getArticles({ variables: { filter } })
+    const matchingArticles = await getArticles({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
     return matchingArticles.data!.article;
   }
 

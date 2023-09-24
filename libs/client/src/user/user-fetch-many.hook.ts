@@ -15,7 +15,7 @@ export function useUserFetchMany(): UseUserFetchManyResponse {
   const [getUsers, { loading, error, data }] = useLazyQuery<UserFetchManyResponse, UserFetchManyVariables>(USER_FETCH_MANY_QUERY);
 
   const onFetchUsers = async (filter: UserFilterManyInput): Promise<UserFragment[]> => {
-    const matchingUsers = await getUsers({ variables: { filter } })
+    const matchingUsers = await getUsers({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
     return matchingUsers.data!.users;
   }
 

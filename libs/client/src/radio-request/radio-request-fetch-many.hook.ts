@@ -14,7 +14,7 @@ export function useRadioRequestFetchMany(): UseRadioRequestFetchManyResponse {
   const [getRadioRequests, { loading, error, data }] = useLazyQuery<RadioRequestFetchManyQueryResponse, RadioRequestFetchManyQueryVariables>(RADIO_REQUEST_FETCH_MANY_QUERY);
 
   const onFetchRadioRequests = async (filter: RadioRequestFilterManyInput): Promise<RadioRequestFragment[]> => {
-    const matchingRadioRequests = await getRadioRequests({ variables: { filter } })
+    const matchingRadioRequests = await getRadioRequests({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
     return matchingRadioRequests.data!.radioRequests;
   }
 

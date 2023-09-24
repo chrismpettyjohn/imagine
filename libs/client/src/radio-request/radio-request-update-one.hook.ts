@@ -13,7 +13,7 @@ export function useRadioRequestUpdate(): UseRadioRequestUpdateResponse {
   const [UpdateRadioRequest, { loading, error, data }] = useMutation<RadioRequestUpdateOneMutationResponse, RadioRequestUpdateOneMutationVariables>(RADIO_REQUEST_UPDATE_ONE_MUTATION);
 
   const onFetchRadioRequest = async (filter: RadioRequestFilterOneInput, input: RadioRequestUpdateInput): Promise<boolean> => {
-    const matchingRadioRequest = await UpdateRadioRequest({ variables: { filter, input } })
+    const matchingRadioRequest = await UpdateRadioRequest({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter, input } })
     return matchingRadioRequest.data!.radioRequestUpdate;
   }
 

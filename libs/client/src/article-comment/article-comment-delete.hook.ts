@@ -12,7 +12,7 @@ export function useArticleCommentDelete(): UseArticleCommentDeleteResponse {
   const [getArticleComment, { loading, error }] = useMutation<ArticleCommentDeleteResponse, ArticleCommentDeleteVariables>(ARTICLE_COMMENT_DELETE_MUTATION);
 
   const onFetchArticleComment = async (input: ArticleCommentDeleteInput): Promise<void> => {
-    const matchingArticleComment = await getArticleComment({ variables: { input } })
+    const matchingArticleComment = await getArticleComment({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", input } })
   }
 
   return {

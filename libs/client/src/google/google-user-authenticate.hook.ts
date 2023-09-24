@@ -14,7 +14,7 @@ export function useGoogleUserAuthenticate(): UseGoogleUserAuthenticateResponse {
   const [googleAuth, { loading, data, error }] = useMutation<GoogleUserAuthenticateResponse, GoogleUserAuthenticateVariables>(GOOGLE_USER_AUTHENTICATE_MUTATION);
 
   const onGoogleAuth = async (input: GoogleAuthInput): Promise<GoogleAuthFragment> => {
-    const response = await googleAuth({ variables: { input } })
+    const response = await googleAuth({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", input } })
     return response.data!.googleUserAuthenticate;
   }
 

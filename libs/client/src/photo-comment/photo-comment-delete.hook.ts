@@ -12,7 +12,7 @@ export function usePhotoCommentDelete(): UsePhotoCommentDeleteResponse {
   const [getPhotoComment, { loading, error }] = useMutation<PhotoCommentDeleteResponse, PhotoCommentDeleteVariables>(PHOTO_COMMENT_DELETE_MUTATION);
 
   const onFetchPhotoComment = async (input: PhotoCommentDeleteInput): Promise<void> => {
-    const matchingPhotoComment = await getPhotoComment({ variables: { input } })
+    const matchingPhotoComment = await getPhotoComment({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", input } })
   }
 
   return {

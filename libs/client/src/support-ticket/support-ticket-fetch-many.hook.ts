@@ -14,7 +14,7 @@ export function useSupportTicketFetchMany(): UseSupportTicketFetchManyResponse {
   const [getSupportTickets, { loading, error, data }] = useLazyQuery<SupportTicketFetchManyQueryResponse, SupportTicketFetchManyQueryVariables>(SUPPORT_TICKET_FETCH_MANY_QUERY);
 
   const onFetchSupportTickets = async (filter: SupportTicketFilterManyInput): Promise<SupportTicketFragment[]> => {
-    const matchingSupportTickets = await getSupportTickets({ variables: { filter } })
+    const matchingSupportTickets = await getSupportTickets({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
     return matchingSupportTickets.data!.supportTickets;
   }
 

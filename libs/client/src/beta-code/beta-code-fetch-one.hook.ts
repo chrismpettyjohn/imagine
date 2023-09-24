@@ -14,7 +14,7 @@ export function useBetaCodeFetchOne(): UseBetaCodeFetchOneResponse {
   const [getBetaCodes, { loading, error, data }] = useLazyQuery<BetaCodeFetchOneQueryResponse, BetaCodeFetchOneQueryVariables>(BETA_CODE_FETCH_ONE_QUERY);
 
   const onFetchBetaCodes = async (filter: BetaCodeFilterOneInput): Promise<BetaCodeFragment> => {
-    const matchingBetaCodes = await getBetaCodes({ variables: { filter } })
+    const matchingBetaCodes = await getBetaCodes({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
     return matchingBetaCodes.data!.betaCode;
   }
 

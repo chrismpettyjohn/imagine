@@ -14,7 +14,7 @@ export function useGroupFetchOne(): UseGroupFetchOneResponse {
   const [getGroups, { loading, error, data }] = useLazyQuery<GroupFetchOneQueryResponse, GroupFetchOneQueryVariables>(GROUP_FETCH_ONE_QUERY);
 
   const onFetchGroups = async (filter: GroupFilterOneInput): Promise<GroupFragment> => {
-    const matchingGroups = await getGroups({ variables: { filter } })
+    const matchingGroups = await getGroups({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
     return matchingGroups.data!.group;
   }
 

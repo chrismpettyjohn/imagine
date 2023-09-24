@@ -13,7 +13,7 @@ export function useRadioRequestReview(): UseRadioRequestReviewResponse {
   const [ReviewRadioRequest, { loading, error, data }] = useMutation<RadioRequestReviewOneMutationResponse, RadioRequestReviewOneMutationVariables>(RADIO_REQUEST_REVIEW_ONE_MUTATION);
 
   const onFetchRadioRequest = async (filter: RadioRequestFilterOneInput, input: RadioRequestReviewInput): Promise<boolean> => {
-    const matchingRadioRequest = await ReviewRadioRequest({ variables: { filter, input } })
+    const matchingRadioRequest = await ReviewRadioRequest({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter, input } })
     return matchingRadioRequest.data!.radioRequestReview;
   }
 

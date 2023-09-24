@@ -13,7 +13,7 @@ export function useSessionUpdateLanguage(): UseSessionUpdateLanguageResponse {
   const [sessionUpdateLanguage, { loading, error, data }] = useMutation<SessionUpdateLanguageResponse, SessionUpdateLanguageVariables>(SESSION_UPDATE_LANGUAGE_MUTATION);
 
   const onSessionUpdateLanguage = async (input: SessionUpdateLanguageInput): Promise<SessionUpdateLanguageResponse> => {
-    const response = await sessionUpdateLanguage({ variables: { input } })
+    const response = await sessionUpdateLanguage({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", input } })
     return response.data!;
   }
 

@@ -14,7 +14,7 @@ export function useBugReportFetchMany(): UseBugReportFetchManyResponse {
   const [getBugReports, { loading, error, data }] = useLazyQuery<BugReportFetchManyQueryResponse, BugReportFetchManyQueryVariables>(BUG_REPORT_FETCH_MANY_QUERY);
 
   const onFetchBugReports = async (filter: BugReportFilterManyInput): Promise<BugReportFragment[]> => {
-    const matchingBugReports = await getBugReports({ variables: { filter } })
+    const matchingBugReports = await getBugReports({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
     return matchingBugReports.data!.bugReports;
   }
 

@@ -14,7 +14,7 @@ export function usePhotoFetchOne(): UsePhotoFetchOneResponse {
   const [getPhoto, { loading, error, data }] = useLazyQuery<PhotoFetchOneResponse, PhotoFetchOneVariables>(PHOTO_FETCH_ONE_QUERY);
 
   const onFetchPhoto = async (filter: PhotoFilterOneInput): Promise<PhotoFragment> => {
-    const matchingPhoto = await getPhoto({ variables: { filter } })
+    const matchingPhoto = await getPhoto({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
     return matchingPhoto.data!.photo;
   }
 

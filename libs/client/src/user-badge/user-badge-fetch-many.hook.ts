@@ -14,7 +14,7 @@ export function useUserBadgeFetchMany(): UseUserBadgeFetchManyResponse {
   const [getUserBadges, { loading, error, data }] = useLazyQuery<UserBadgeFetchManyQueryResponse, UserBadgeFetchManyQueryVariables>(USER_BADGE_FETCH_MANY_QUERY);
 
   const onFetchUserBadges = async (filter: UserBadgeFilterManyInput): Promise<UserBadgeFragment[]> => {
-    const matchingUserBadges = await getUserBadges({ variables: { filter } })
+    const matchingUserBadges = await getUserBadges({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
     return matchingUserBadges.data!.userBadges;
   }
 

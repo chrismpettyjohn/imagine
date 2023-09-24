@@ -14,7 +14,7 @@ export function useRadioRequestFetchOne(): UseRadioRequestFetchOneResponse {
   const [getRadioRequest, { loading, error, data }] = useLazyQuery<RadioRequestFetchOneQueryResponse, RadioRequestFetchOneQueryVariables>(RADIO_REQUEST_FETCH_ONE_QUERY);
 
   const onFetchRadioRequests = async (filter: RadioRequestFilterOneInput): Promise<RadioRequestFragment> => {
-    const matchingRadioRequests = await getRadioRequest({ variables: { filter } })
+    const matchingRadioRequests = await getRadioRequest({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
     return matchingRadioRequests.data!.radioRequest;
   }
 

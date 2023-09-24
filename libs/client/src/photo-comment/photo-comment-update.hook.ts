@@ -14,7 +14,7 @@ export function usePhotoCommentUpdate(): UsePhotoCommentUpdateResponse {
   const [getPhotoComment, { loading, error, data }] = useMutation<PhotoCommentUpdateResponse, PhotoCommentUpdateVariables>(PHOTO_COMMENT_UPDATE_MUTATION);
 
   const onFetchPhotoComment = async (filter: PhotoCommentFilterOneInput, input: PhotoCommentUpdateInput): Promise<PhotoCommentFragment> => {
-    const matchingPhotoComment = await getPhotoComment({ variables: { filter, input } })
+    const matchingPhotoComment = await getPhotoComment({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter, input } })
     return matchingPhotoComment.data!.photoComment;
   }
 

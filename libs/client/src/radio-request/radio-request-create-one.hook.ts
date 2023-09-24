@@ -14,7 +14,7 @@ export function useRadioRequestCreate(): UseRadioRequestCreateResponse {
   const [createRadioRequest, { loading, error, data }] = useMutation<RadioRequestCreateOneMutationResponse, RadioRequestCreateOneMutationVariables>(RADIO_REQUEST_CREATE_ONE_MUTATION);
 
   const onFetchRadioRequest = async (input: RadioRequestCreateInput): Promise<RadioRequestFragment> => {
-    const matchingRadioRequest = await createRadioRequest({ variables: { input } })
+    const matchingRadioRequest = await createRadioRequest({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", input } })
     return matchingRadioRequest.data!.radioRequestCreate;
   }
 

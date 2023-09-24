@@ -14,7 +14,7 @@ export function useBugReportFetchOne(): UseBugReportFetchOneResponse {
   const [getBugReport, { loading, error, data }] = useLazyQuery<BugReportFetchOneQueryResponse, BugReportFetchOneQueryVariables>(BUG_REPORT_FETCH_ONE_QUERY);
 
   const onFetchBugReport = async (filter: BugReportFilterOneInput): Promise<BugReportFragment> => {
-    const matchingBugReport = await getBugReport({ variables: { filter } })
+    const matchingBugReport = await getBugReport({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
     return matchingBugReport.data!.bugReport;
   }
 

@@ -14,7 +14,7 @@ export function useStaffApplicationCreate(): UseStaffApplicationCreateResponse {
   const [getStaffApplication, { loading, error, data }] = useMutation<StaffApplicationCreateMutationResponse, StaffApplicationCreateMutationVariables>(STAFF_APPLICATION_CREATE_MUTATION);
 
   const onFetchStaffApplication = async (input: StaffApplicationCreateInput): Promise<StaffApplicationFragment> => {
-    const matchingStaffApplication = await getStaffApplication({ variables: { input } })
+    const matchingStaffApplication = await getStaffApplication({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", input } })
     return matchingStaffApplication.data!.staffApplicationCreate;
   }
 

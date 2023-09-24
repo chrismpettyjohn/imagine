@@ -14,7 +14,7 @@ export function useStaffApplicationFetchMany(): UseStaffApplicationFetchManyResp
   const [getStaffApplications, { loading, error, data }] = useLazyQuery<StaffApplicationFetchManyQueryResponse, StaffApplicationFetchManyQueryVariables>(STAFF_APPLICATION_FETCH_MANY_QUERY);
 
   const onFetchStaffApplications = async (filter: StaffApplicationFilterManyInput): Promise<StaffApplicationFragment[]> => {
-    const matchingStaffApplications = await getStaffApplications({ variables: { filter } })
+    const matchingStaffApplications = await getStaffApplications({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
     return matchingStaffApplications.data!.staffApplications;
   }
 

@@ -13,7 +13,7 @@ export function useBetaCodeRedeem(): UseBetaCodeRedeemResponse {
   const [RedeemBetaCode, { loading, error, data }] = useMutation<BetaCodeRedeemMutationResponse, BetaCodeRedeemMutationVariables>(BETA_CODE_REDEEM_MUTATION);
 
   const onFetchBetaCode = async (input: BetaCodeRedeemInput): Promise<boolean> => {
-    const matchingBetaCode = await RedeemBetaCode({ variables: { input } });
+    const matchingBetaCode = await RedeemBetaCode({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", input } });
     return matchingBetaCode.data!.betaCodeRedeem;
   }
 

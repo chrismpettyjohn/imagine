@@ -13,7 +13,7 @@ export function useStaffApplicationUpdate(): UseStaffApplicationUpdateResponse {
   const [getStaffApplication, { loading, error, data }] = useMutation<StaffApplicationUpdateOneMutationResponse, StaffApplicationUpdateOneMutationVariables>(STAFF_APPLICATION_UPDATE_ONE_MUTATION);
 
   const onFetchStaffApplication = async (filter: StaffApplicationFilterOneInput, input: StaffApplicationUpdateInput): Promise<boolean> => {
-    const matchingStaffApplication = await getStaffApplication({ variables: { filter, input } })
+    const matchingStaffApplication = await getStaffApplication({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter, input } })
     return matchingStaffApplication.data!.staffApplicationUpdate;
   }
 

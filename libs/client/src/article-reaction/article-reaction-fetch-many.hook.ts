@@ -14,7 +14,7 @@ export function useArticleReactionFetchMany(): UseArticleReactionFetchManyRespon
   const [getArticleReactions, { loading, error, data }] = useLazyQuery<ArticleReactionFetchManyQueryResponse, ArticleReactionFetchManyQueryVariables>(ARTICLE_REACTION_FETCH_MANY_QUERY);
 
   const onFetchArticleReactions = async (filter: ArticleReactionFilterManyInput): Promise<ArticleReactionFragment[]> => {
-    const matchingArticleReactions = await getArticleReactions({ variables: { filter } })
+    const matchingArticleReactions = await getArticleReactions({ fetchPolicy: "network-only", variables: { fetchPolicy: "network-only", filter } })
     return matchingArticleReactions.data!.articleReactions;
   }
 
