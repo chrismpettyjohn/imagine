@@ -1,13 +1,12 @@
-import {ConfigWire} from '@imagine-cms/types';
-import {configContext} from './ConfigContext';
-import React, {useEffect, useState} from 'react';
-import {useFetchConfig} from '../../hooks/fetch-config.hook';
-import {ConfigContextProviderProps} from './ConfigContext.types';
-import {LoadingScreen} from '../../components/loading-screen/LoadingScreen';
+import { ConfigWire } from '@imagine-cms/types';
+import { configContext } from './ConfigContext';
+import React, { useEffect, useState } from 'react';
+import { useFetchConfig } from '../../hooks/fetch-config.hook';
+import { ConfigContextProviderProps } from './ConfigContext.types';
 
-export function ConfigContextProvider({children}: ConfigContextProviderProps) {
+export function ConfigContextProvider({ children, loadingScreen }: ConfigContextProviderProps) {
   const [config, setConfig] = useState<ConfigWire>();
-  const {runQuery, data, loading} = useFetchConfig();
+  const { runQuery, data, loading } = useFetchConfig();
 
   useEffect(() => {
     runQuery();
@@ -18,12 +17,12 @@ export function ConfigContextProvider({children}: ConfigContextProviderProps) {
   }, [data]);
 
   const updateConfig = (changes: Partial<ConfigWire>) => {
-    setConfig(_ => ({..._, ...changes}));
+    setConfig(_ => ({ ..._!, ...changes }));
   };
 
   if (loading) {
-    return <LoadingScreen />
+    return loadingScreen
   }
 
-  return <configContext.Provider value={{config, setConfig: updateConfig}}>{children}</configContext.Provider>;
+  return <configContext.Provider value={{ config, setConfig: updateConfig as any }}>{children}</configContext.Provider>;
 }

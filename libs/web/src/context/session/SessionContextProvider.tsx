@@ -1,12 +1,12 @@
+import { UserWire } from '@imagine-cms/types';
 import { sessionContext } from './SessionContext';
 import React, { useEffect, useState } from 'react';
 import { useUserFetchOne } from '@imagine-cms/client';
-import { SessionWire, UserWire } from '@imagine-cms/types';
 import { SessionContextProviderProps } from './SessionContext.types';
 import { localStorageService } from '../../service/local-storage.service';
 import { useFetchSessionByJwt } from '../../hooks/fetch-session-by-jwt.hook';
 
-export function SessionContextProvider({ children }: SessionContextProviderProps) {
+export function SessionContextProvider({ children, loadingScreen }: SessionContextProviderProps) {
   const existingJwt = localStorageService.get('SESSION', true);
   const [loading, setIsLoading] = useState(true);
   const [session, _setSessionState] = useState<any>();
@@ -56,5 +56,9 @@ export function SessionContextProvider({ children }: SessionContextProviderProps
     }))
   }
 
-  return <sessionContext.Provider value={{ session, _setSession, setSession }}>{loading ? '' : children}</sessionContext.Provider>;
+  if (loading) {
+    return loadingScreen;
+  }
+
+  return <sessionContext.Provider value={{ session, _setSession, setSession }}>{children}</sessionContext.Provider>;
 }

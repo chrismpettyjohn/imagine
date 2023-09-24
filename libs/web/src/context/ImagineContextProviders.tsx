@@ -5,11 +5,11 @@ import { GraphQLContextProvider } from './graphql/GraphQLContextProvider';
 import { SessionContextProvider } from './session/SessionContextProvider';
 import { ImagineContextProvidersProps } from './ImagineContextProviders.types';
 
-export function ImagineContextProviders({ children }: ImagineContextProvidersProps) {
+export function ImagineContextProviders({ children, loadingScreen }: ImagineContextProvidersProps) {
   return (
     <GraphQLContextProvider>
-      <ConfigContextProvider>
-        <SessionContextProvider>
+      <ConfigContextProvider loadingScreen={loadingScreen}>
+        <SessionContextProvider loadingScreen={loadingScreen}>
           <ThemeContextProvider>
             {children}
           </ThemeContextProvider>

@@ -15,4 +15,5 @@ export const defaultSessionContext: SessionContext = {
 
 export interface SessionContextProviderProps {
   children: ReactNode;
+  loadingScreen: ReactNode;
 }

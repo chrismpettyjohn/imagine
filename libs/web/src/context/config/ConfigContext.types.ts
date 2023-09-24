@@ -1,5 +1,5 @@
-import {ReactNode} from 'react';
-import {ConfigWire} from '@imagine-cms/types';
+import { ReactNode } from 'react';
+import { ConfigWire } from '@imagine-cms/types';
 
 export interface ConfigContext {
   config?: ConfigWire;
@@ -8,9 +8,10 @@ export interface ConfigContext {
 
 export const defaultConfigContext: ConfigContext = {
   config: undefined,
-  setConfig(updatedConfigWire?: ConfigWire) {},
+  setConfig(updatedConfigWire?: ConfigWire) { },
 };
 
 export interface ConfigContextProviderProps {
   children: ReactNode;
+  loadingScreen: ReactNode;
 }
