@@ -30,6 +30,9 @@ export class RankScopesInterface implements RankScopesWire {
 
   @Field({nullable: true})
   manageRadioRequests!: boolean;
+
+  @Field({nullable: true})
+  manageBugReports!: boolean;
 }
 
 @InputType('RankFlagsInput')

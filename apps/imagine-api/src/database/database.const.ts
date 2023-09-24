@@ -50,6 +50,8 @@ import {UserTradeLogEntity} from './user-trade-log.entity';
 import {UserTradeLogRepository} from './user-trade-log.repository';
 import {RadioRequestEntity} from './radio-request.entity';
 import {RadioRequestRepository} from './radio-request.repository';
+import {BugReportEntity} from './bug-report.entity';
+import {BugReportRepository} from './bug-report.repository';
 
 export const databaseEntities = [
   ArticleEntity,
@@ -78,6 +80,7 @@ export const databaseEntities = [
   RoomEnterLogEntity,
   UserTradeLogEntity,
   RadioRequestEntity,
+  BugReportEntity,
 ];
 
 export const databaseRepositories = [
@@ -107,4 +110,5 @@ export const databaseRepositories = [
   RoomEnterLogRepository,
   UserTradeLogRepository,
   RadioRequestRepository,
+  BugReportRepository,
 ];

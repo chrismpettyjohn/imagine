@@ -90,6 +90,7 @@ type RankScopesModel implements RankScopesInterface {
   manageSupportTickets: Boolean
   manageStaffApplications: Boolean
   manageRadioRequests: Boolean
+  manageBugReports: Boolean
 }
 
 interface RankScopesInterface {
@@ -102,6 +103,7 @@ interface RankScopesInterface {
   manageSupportTickets: Boolean
   manageStaffApplications: Boolean
   manageRadioRequests: Boolean
+  manageBugReports: Boolean
 }
 
 type RankFlagsModel implements RankFlagsInterface {
@@ -368,6 +370,17 @@ enum RadioRequestStatus {
   Rejected
 }
 
+type BugReportModel {
+  id: Float
+  reportingUserID: Float
+  content: String
+  severity: Float
+  createdAt: Float
+  updatedAt: Float
+  resolvedAt: Float
+  resolvingUserID: Float
+}
+
 type Query {
   sessionSSOCreate: SessionSSOModel!
   sessionByJWT(jwt: String!): SessionModel!
@@ -417,6 +430,8 @@ type Query {
   staffApplications(filter: StaffApplicationFilterManyInput!): [StaffApplicationModel!]!
   radioRequest(filter: RadioRequestFilterOneInput!): RadioRequestModel!
   radioRequests(filter: RadioRequestFilterManyInput!): [RadioRequestModel!]!
+  bugReport(filter: BugReportFilterOneInput!): BugReportModel!
+  bugReports(filter: BugReportFilterManyInput!): [BugReportModel!]!
 }
 
 input ExtraArgs {
@@ -618,6 +633,19 @@ input RadioRequestFilterManyInput {
   limit: Float
 }
 
+input BugReportFilterOneInput {
+  id: Float!
+}
+
+input BugReportFilterManyInput {
+  ids: [Float!]
+  isOpen: Boolean
+  severity: [Float!]
+  reportingUserIDs: [Float!]
+  resolvingUserIDs: [Float!]
+  limit: Float
+}
+
 type Mutation {
   sessionCreate(username: String!, password: String!): SessionCreatedModel!
   sessionUpdateEmail(input: SessionUpdateEmailInput!): SessionUpdateEmailModel!
@@ -675,6 +703,9 @@ type Mutation {
   radioRequestCreate(input: RadioRequestCreateInput!): RadioRequestModel!
   radioRequestUpdate(filter: RadioRequestFilterOneInput!, input: RadioRequestCreateInput!): Boolean!
   radioRequestReview(filter: RadioRequestFilterOneInput!, input: RadioRequestReviewInput!): Boolean!
+  bugReportCreate(input: BugReportCreateInput!): BugReportModel!
+  bugReportUpdate(filter: BugReportFilterOneInput!, input: BugReportUpdateInput!): Boolean!
+  bugReportDelete(filter: BugReportFilterOneInput!): Boolean!
 }
 
 input SessionUpdateEmailInput {
@@ -727,6 +758,7 @@ input RankScopesInput {
   manageSupportTickets: Boolean
   manageStaffApplications: Boolean
   manageRadioRequests: Boolean
+  manageBugReports: Boolean
 }
 
 input RankFlagsInput {
@@ -864,6 +896,15 @@ input RadioRequestCreateInput {
 
 input RadioRequestReviewInput {
   status: RadioRequestStatus!
+}
+
+input BugReportCreateInput {
+  content: String!
+}
+
+input BugReportUpdateInput {
+  content: String
+  severity: Float
 }
 
 type Subscription {

@@ -35,6 +35,7 @@ export class RankModel {
         manageStaffApplications:
           entity.scopes?.manageStaffApplications ?? false,
         manageRadioRequests: entity.scopes?.manageRadioRequests ?? false,
+        manageBugReports: entity.scopes?.manageBugReports ?? false,
       },
       flags: {
         showOnStaffPage: entity.flags?.showOnStaffPage ?? false,

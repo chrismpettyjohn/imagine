@@ -8,6 +8,7 @@ export interface RankScopesWire {
   manageSupportTickets: boolean;
   manageStaffApplications: boolean;
   manageRadioRequests: boolean;
+  manageBugReports: boolean;
 }
 
 export interface RankFlagsWire {
@@ -25,6 +26,7 @@ export const exampleRankScopesWire: RankScopesWire = {
   manageSupportTickets: false,
   manageStaffApplications: false,
   manageRadioRequests: false,
+  manageBugReports: false,
 };
 
 export const rankScopesLabels: Record<keyof RankScopesWire, string> = {
@@ -37,6 +39,7 @@ export const rankScopesLabels: Record<keyof RankScopesWire, string> = {
   manageSupportTickets: 'Manage Support Tickets',
   manageStaffApplications: 'Manage Staff Applications',
   manageRadioRequests: 'Manage Radio Requests',
+  manageBugReports: 'Manage Bug Reports',
 };
 
 export const rankFlagsLabels: Record<keyof RankFlagsWire, string> = {
