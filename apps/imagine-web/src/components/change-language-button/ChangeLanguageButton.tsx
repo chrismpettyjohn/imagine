@@ -7,6 +7,8 @@ import { FIVE_SECONDS_IN_MS, GOOGLE_TRANSLATE_COOKIE, GOOGLE_TRANSLATE_ELEMENT, 
 export function ChangeLanguageButton() {
   const { config } = useContext(configContext);
   const { session, setSession } = useContext(sessionContext);
+  const allowedLanguages = config?.allowedLanguages ?? ['en'];
+  console.log(allowedLanguages)
   const userLanguage = session?.language ?? config?.defaultLanguage ?? 'en';
   const [syncInterval, setSyncInterval] = useState<any>();
   const sessionChangeLanguage = useSessionUpdateLanguage();
@@ -30,7 +32,7 @@ export function ChangeLanguageButton() {
       setCookie(GOOGLE_TRANSLATE_COOKIE, userLanguage);
     }
     // @ts-ignore - google is a global dep imported in the index.html
-    new google.translate.TranslateElement({ layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, pageLanguage: 'en', }, GOOGLE_TRANSLATE_ELEMENT);
+    new google.translate.TranslateElement({ layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, pageLanguage: 'en', includedLanguages: allowedLanguages.toString(',') }, GOOGLE_TRANSLATE_ELEMENT);
     const newInterval = setInterval(syncGoogleAndProfileLanguage, FIVE_SECONDS_IN_MS);
     setSyncInterval(newInterval);
     return (() => {

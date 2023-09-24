@@ -23,7 +23,10 @@ export class ConfigResolver {
   async configUpdate(
     @Args('configUpdateInput') configUpdateInput: ConfigUpdateInput
   ) {
-    await this.configRepo.update({id: 1}, configUpdateInput);
+    await this.configRepo.update(
+      {id: 1},
+      ConfigUpdateInput.toEntity(configUpdateInput)
+    );
     this.configDataLoader.clearByID(1);
     pubSub.publish('configUpdated', {configUpdated: configUpdateInput});
     return true;

@@ -212,6 +212,7 @@ type ConfigModel {
   dateFormat: String
   softwareVersion: String
   defaultLanguage: String
+  allowedLanguages: [String!]
 }
 
 type ArticleModel {
@@ -780,6 +781,7 @@ input ConfigUpdateInput {
   snapchatURL: String
   dateFormat: String
   defaultLanguage: String
+  allowedLanguages: [String!]
 }
 
 input BanCreateInput {

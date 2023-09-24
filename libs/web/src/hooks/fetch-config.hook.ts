@@ -21,6 +21,7 @@ const FETCH_SITE_CONFIG = gql`
             dateFormat  
             softwareVersion
             defaultLanguage
+            allowedLanguages
         }
     }
 `;

@@ -49,4 +49,7 @@ export class ConfigEntity {
 
   @Column({name: 'default_language'})
   defaultLanguage!: string;
+
+  @Column({name: 'allowed_languages'})
+  allowedLanguages!: string;
 }
