@@ -610,7 +610,6 @@ input BetaCodeFilterManyInput {
 
 input BetaCodeFilterOneInput {
   id: Float
-  betaCode: String
 }
 
 input StaffApplicationFilterOneInput {

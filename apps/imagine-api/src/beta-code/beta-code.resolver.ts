@@ -63,12 +63,8 @@ export class BetaCodeResolver {
     @Args('filter', {type: () => BetaCodeFilterOneInput})
     filter: BetaCodeFilterOneInput
   ): Promise<BetaCodeModel> {
-    if (!filter.id && !filter.betaCode) {
-      throw new BadRequestException();
-    }
     const matchingBetaCode = await this.betaCodeRepo.findOneOrFail({
       id: filter.id,
-      betaCode: filter.betaCode,
     });
     return BetaCodeModel.fromEntity(matchingBetaCode);
   }
@@ -90,8 +86,7 @@ export class BetaCodeResolver {
     filter: BetaCodeFilterOneInput
   ): Promise<boolean> {
     await this.betaCodeRepo.delete({
-      id: filter.id,
-      betaCode: filter.betaCode,
+      id: filter.id && filter.id,
     });
     return true;
   }

@@ -28,9 +28,4 @@ export class BetaCodeFilterManyInput {
 export class BetaCodeFilterOneInput {
   @Field(() => Number, {nullable: true})
   id?: number;
-
-  @Field(() => String, {nullable: true})
-  @IsUUID('4')
-  @IsOptional()
-  betaCode?: string;
 }

@@ -3,8 +3,7 @@ export interface BetaCodeRedeemInput {
 }
 
 export interface BetaCodeFilterOneInput {
-  id?: number;
-  betaCode?: number;
+  id!: number;
 }
 
 export interface BetaCodeFilterManyInput {

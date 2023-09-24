@@ -1,11 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import DataTable from 'react-data-table-component';
 import { useBetaCodeFetchMany } from '@imagine-cms/client';
-import { BETA_CODES_TABLE_COLUMNS } from './BetaCodesTable.const';
+import { generateBetaCodesTableColumns } from './BetaCodesTable.const';
 
 
 export function BetaCodesTable() {
   const fetchBetaCodes = useBetaCodeFetchMany();
+
+  const onFetchBetaCodes = async () => {
+    await fetchBetaCodes.fetch({ limit: 25 });
+  }
+
+  const columns = useMemo(() => {
+    return generateBetaCodesTableColumns(onFetchBetaCodes);
+  }, [onFetchBetaCodes]);
 
   useEffect(() => {
     fetchBetaCodes.fetch({ limit: 25 });
@@ -13,7 +21,7 @@ export function BetaCodesTable() {
 
   return (
     <DataTable
-      columns={BETA_CODES_TABLE_COLUMNS}
+      columns={columns}
       data={fetchBetaCodes.data ?? []}
     />
   );
