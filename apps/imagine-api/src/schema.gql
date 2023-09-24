@@ -67,6 +67,7 @@ type UserModel {
   facebookID: String
   googleID: String
   language: String
+  hasBetaCode: Boolean!
   rank: RankModel
 }
 
@@ -215,6 +216,7 @@ type ConfigModel {
   softwareVersion: String
   defaultLanguage: String
   allowedLanguages: [String!]
+  betaCodesRequired: Boolean
 }
 
 type ArticleModel {
@@ -735,6 +737,7 @@ input UserCreateInput {
   username: String!
   password: String!
   email: String!
+  betaCode: String
   gender: String
   look: String
 }
@@ -819,6 +822,7 @@ input ConfigUpdateInput {
   dateFormat: String
   defaultLanguage: String
   allowedLanguages: [String!]
+  betaCodesRequired: Boolean
 }
 
 input BanCreateInput {

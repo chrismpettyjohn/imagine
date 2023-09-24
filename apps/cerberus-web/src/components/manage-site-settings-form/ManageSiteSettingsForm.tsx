@@ -1,10 +1,10 @@
 import { Form } from '../../blocks/form/Form';
+import { Badge } from '../../blocks/badge/Badge';
 import { Input } from '../../blocks/input/Input';
 import { configContext } from '@imagine-cms/web';
 import { ConfigUpdateInputDTO } from '@imagine-cms/types';
 import { ButtonPrimary } from '../../blocks/button/Button.remix';
 import React, { ChangeEvent, useCallback, useContext, useState } from 'react';
-import { Badge } from '../../blocks/badge/Badge';
 
 export function ManageSiteSettingsForm() {
   const { config } = useContext(configContext);
@@ -24,10 +24,17 @@ export function ManageSiteSettingsForm() {
     snapchatURL: config?.snapchatURL,
     dateFormat: config?.dateFormat,
     softwareVersion: config?.softwareVersion,
+    betaCodesRequired: config?.betaCodesRequired,
   })
 
+  const onToggleBetaCodesRequired = () => {
+    setConfigDTO(_ => ({
+      ..._,
+      betaCodesRequired: !_.betaCodesRequired,
+    }))
+  }
+
   const onChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.name)
     setConfigDTO(_ => ({
       ..._,
       [event.target.name]: event.target.value ?? '',
@@ -68,6 +75,11 @@ export function ManageSiteSettingsForm() {
 
       <label>Date Format</label>
       <Input name="dateFormat" value={configDTO.dateFormat} onChange={onChange} />
+
+      <div style={{ display: 'block' }}>
+        <label>Require Beta Codes</label>
+        <Input type="checkbox" checked={configDTO.betaCodesRequired} onChange={onToggleBetaCodesRequired} />
+      </div>
 
       <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
         <ButtonPrimary type="submit">Save</ButtonPrimary>

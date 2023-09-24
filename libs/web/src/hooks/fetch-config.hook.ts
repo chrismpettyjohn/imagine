@@ -22,6 +22,7 @@ const FETCH_SITE_CONFIG = gql`
             softwareVersion
             defaultLanguage
             allowedLanguages
+            betaCodesRequired
         }
     }
 `;

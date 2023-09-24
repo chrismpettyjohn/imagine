@@ -21,6 +21,7 @@ export interface UserFragment {
   ipLast?: string;
   ipRegistered?: string;
   machineAddress?: string;
+  hasBetaCode?: boolean;
   rank: RankFragment;
 }
 
@@ -46,6 +47,7 @@ export const USER_FRAGMENT: any = gql`
     ipLast
     ipRegistered
     machineAddress
+    hasBetaCode
     rank {
       ...RankFragment
     }

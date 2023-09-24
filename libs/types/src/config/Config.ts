@@ -16,4 +16,5 @@ export interface ConfigWire {
   softwareVersion: string;
   defaultLanguage: string;
   allowedLanguages: string[];
+  betaCodesRequired: boolean;
 }

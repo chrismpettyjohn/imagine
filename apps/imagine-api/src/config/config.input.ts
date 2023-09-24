@@ -79,6 +79,9 @@ export class ConfigUpdateInput implements ConfigUpdateInputDTO {
   @Field(() => [String!], {nullable: true})
   allowedLanguages?: string[];
 
+  @Field(() => Boolean, {nullable: true})
+  betaCodesRequired?: boolean;
+
   static toEntity(model: ConfigUpdateInput): Partial<ConfigEntity> {
     return {
       siteName: model?.siteName && model.siteName,
@@ -98,6 +101,8 @@ export class ConfigUpdateInput implements ConfigUpdateInputDTO {
       defaultLanguage: model?.defaultLanguage && model.defaultLanguage,
       allowedLanguages:
         model?.allowedLanguages && JSON.stringify(model.allowedLanguages),
+      betaCodesRequired:
+        model?.betaCodesRequired && model.betaCodesRequired ? 1 : 0,
     };
   }
 }

@@ -33,6 +33,7 @@ export interface UserWire {
   facebookID?: string;
   googleID?: string;
   language?: string;
+  hasBetaCode?: boolean;
   rank?: RankWire;
   sessions?: SessionWire[];
   articles?: ArticleWire[];

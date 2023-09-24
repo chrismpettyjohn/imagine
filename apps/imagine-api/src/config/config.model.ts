@@ -55,6 +55,9 @@ export class ConfigModel implements ConfigWire {
   @Field(() => [String!], {nullable: true})
   allowedLanguages!: string[];
 
+  @Field(() => Boolean, {nullable: true})
+  betaCodesRequired!: boolean;
+
   static fromEntity(
     entity: ConfigEntity,
     softwareVersion: string
@@ -77,6 +80,7 @@ export class ConfigModel implements ConfigWire {
       dateFormat: entity.dateFormat,
       defaultLanguage: entity.defaultLanguage,
       allowedLanguages: JSON.parse(entity.allowedLanguages),
+      betaCodesRequired: entity.betaCodesRequired === 1,
     };
   }
 }

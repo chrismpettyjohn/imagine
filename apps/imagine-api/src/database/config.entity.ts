@@ -52,4 +52,7 @@ export class ConfigEntity {
 
   @Column({name: 'allowed_languages'})
   allowedLanguages!: string;
+
+  @Column({name: 'beta_codes_required', type: 'tinyint'})
+  betaCodesRequired!: 1 | 0;
 }

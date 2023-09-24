@@ -1,7 +1,8 @@
 import {now} from 'lodash';
-import {FindOptionsOrder, In} from 'typeorm';
 import {UserModel} from './user.model';
+import {FindOptionsOrder, In} from 'typeorm';
 import {RankModel} from '../rank/rank.model';
+import {BadRequestException} from '@nestjs/common';
 import {UserEntity} from '../database/user.entity';
 import {DEFAULT_USER_VALUES} from './user.constant';
 import {UserOnlineStatus} from '@imagine-cms/types';
@@ -9,7 +10,9 @@ import {GetUser} from '../session/get-user.decorator';
 import {UserRepository} from '../database/user.repository';
 import {RankRepository} from '../database/rank.repository';
 import {HasSession} from '../session/has-session.decorator';
-import {BadRequestException, forwardRef, Inject} from '@nestjs/common';
+import {BetaCodeEntity} from '../database/beta-code.entity';
+import {ConfigRepository} from '../database/config.repository';
+import {BetaCodeRepository} from '../database/beta-code.repository';
 import {
   UserCreateInput,
   UserFilterManyInput,
@@ -30,9 +33,20 @@ import {
 export class UserResolver {
   constructor(
     private readonly userRepo: UserRepository,
-    @Inject(forwardRef(() => RankRepository))
-    private readonly rankRepo: RankRepository
+    private readonly rankRepo: RankRepository,
+    private readonly configRepo: ConfigRepository,
+    private readonly betaCodeRepo: BetaCodeRepository
   ) {}
+
+  @ResolveField(() => Boolean)
+  async hasBetaCode(@Parent() {id}: UserEntity): Promise<boolean> {
+    const matchingBetaCode = await this.betaCodeRepo.findOne({
+      where: {
+        userID: id,
+      },
+    });
+    return !!matchingBetaCode;
+  }
 
   @ResolveField()
   @HasSession()
@@ -172,6 +186,16 @@ export class UserResolver {
   async userCreate(
     @Args('newUser') userCreateInput: UserCreateInput
   ): Promise<UserEntity> {
+    const config = await this.configRepo.findOneOrFail();
+
+    let matchingBetaCode: BetaCodeEntity;
+
+    if (config.betaCodesRequired) {
+      matchingBetaCode = await this.betaCodeRepo.findOneOrFail({
+        betaCode: userCreateInput.betaCode,
+      });
+    }
+
     const secondsSinceEpoch = parseInt(`${now() / 1000}`);
     const newUser = await this.userRepo.create({
       ...DEFAULT_USER_VALUES,
@@ -182,6 +206,13 @@ export class UserResolver {
       ipRegistered: '', // TODO: Add support for IPs
       machineAddress: '', // TODO: Add support for machine addresses
     });
+
+    if (config.betaCodesRequired) {
+      await this.betaCodeRepo.update(
+        {id: matchingBetaCode!.id!},
+        {userID: newUser.id!}
+      );
+    }
     return newUser;
   }
 

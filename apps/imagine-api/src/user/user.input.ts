@@ -12,6 +12,7 @@ import {
   IsOptional,
   IsEnum,
   Max,
+  IsString,
 } from 'class-validator';
 import {GLOBAL_MAX_RESOURCE_LIMIT} from '../imagine.constant';
 
@@ -30,6 +31,11 @@ export class UserCreateInput implements UserCreateInputDTO {
   @Field()
   @IsEmail()
   email!: string;
+
+  @Field({nullable: true})
+  @IsString()
+  @IsOptional()
+  betaCode?: string;
 
   @Field(() => String, {nullable: true})
   @IsEnum(UserGender)
