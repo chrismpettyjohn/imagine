@@ -71,4 +71,7 @@ export class ConfigUpdateInput implements ConfigUpdateInputDTO {
   @Field({nullable: true})
   @IsOptional()
   dateFormat?: string;
+
+  @Field({nullable: true})
+  defaultLanguage?: string;
 }

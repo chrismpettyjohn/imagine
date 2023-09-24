@@ -7,7 +7,7 @@ import { useDiscordUserAuthenticate, useUserFetchOne } from '@imagine-cms/client
 
 export function LoginWithDiscordScreen() {
   const [, setLocation] = useLocation();
-  const { setSession } = useContext(sessionContext);
+  const { _setSession } = useContext(sessionContext);
   const discordUserAuthenticate = useDiscordUserAuthenticate();
   const fetchUser = useUserFetchOne();
 
@@ -21,7 +21,7 @@ export function LoginWithDiscordScreen() {
       localStorageService.set('SESSION', session.sessionToken);
       const matchingUser = await fetchUser.fetch({ id: discordUserAuthenticate.data!.userID })
       toast.success(`Welcome back, ${matchingUser.username}`);
-      setSession(matchingUser as any);
+      _setSession(matchingUser as any);
       setLocation('/me');
     } catch (e: any) {
       toast.error('There was a problem logging in');

@@ -37,6 +37,10 @@ type SessionUpdatePasswordModel {
   success: Boolean!
 }
 
+type SessionUpdateLanguageModel {
+  success: Boolean!
+}
+
 type SessionDisconnectAccountModel {
   success: Boolean!
 }
@@ -62,6 +66,7 @@ type UserModel {
   discordID: String
   facebookID: String
   googleID: String
+  language: String
   rank: RankModel
 }
 
@@ -206,6 +211,7 @@ type ConfigModel {
   snapchatURL: String
   dateFormat: String
   softwareVersion: String
+  defaultLanguage: String
 }
 
 type ArticleModel {
@@ -615,6 +621,7 @@ type Mutation {
   sessionCreate(username: String!, password: String!): SessionCreatedModel!
   sessionUpdateEmail(input: SessionUpdateEmailInput!): SessionUpdateEmailModel!
   sessionUpdatePassword(input: SessionUpdatePasswordInput!): SessionUpdatePasswordModel!
+  sessionUpdateLanguage(input: SessionUpdateLanguageInput!): SessionUpdateLanguageModel!
   sessionDisconnectDiscord(input: SessionDisconnectAccountInput!): SessionDisconnectAccountModel!
   sessionDisconnectFacebook(input: SessionDisconnectAccountInput!): SessionDisconnectAccountModel!
   sessionDisconnectGoogle(input: SessionDisconnectAccountInput!): SessionDisconnectAccountModel!
@@ -677,6 +684,10 @@ input SessionUpdateEmailInput {
 input SessionUpdatePasswordInput {
   currentPassword: String!
   newPassword: String!
+}
+
+input SessionUpdateLanguageInput {
+  language: String!
 }
 
 input SessionDisconnectAccountInput {
@@ -768,6 +779,7 @@ input ConfigUpdateInput {
   twitterURL: String
   snapchatURL: String
   dateFormat: String
+  defaultLanguage: String
 }
 
 input BanCreateInput {

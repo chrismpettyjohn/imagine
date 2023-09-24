@@ -6,7 +6,7 @@ import { localStorageService, sessionContext, useSessionCreate } from '@imagine-
 
 export function useSignInWithUsernameAndPassword(username: string, password: string): { tryLogin(): void } {
   const [, setLocation] = useLocation();
-  const { setSession } = useContext(sessionContext);
+  const { _setSession } = useContext(sessionContext);
   const createSession = useSessionCreate(username, password);
   const fetchUser = useUserFetchOne();
 
@@ -24,7 +24,7 @@ export function useSignInWithUsernameAndPassword(username: string, password: str
         localStorageService.delete('SESSION');
         return;
       }
-      setSession(fetchUser.data as any);
+      _setSession(fetchUser.data as any);
       toast.success(`Welcome back, ${fetchUser.data.username}!`);
       setLocation('/me');
     }

@@ -13,26 +13,26 @@ export enum UserOnlineStatus {
 }
 
 export interface UserWire {
-  id?: number;
-  username?: string;
-  password?: string;
-  email?: string;
-  gameSSO?: string;
-  rankID?: number;
-  credits?: number;
-  vipPoints?: number;
-  activityPoints?: number;
-  look?: string;
-  gender?: UserGender;
-  motto?: string;
-  accountCreatedAt?: number;
-  onlineStatus?: UserOnlineStatus;
-  ipLast?: string;
-  ipRegistered?: string;
-  homeRoomID?: number;
+  id: number;
+  username: string;
+  email: string;
+  gameSSO: string;
+  rankID: number;
+  credits: number;
+  vipPoints: number;
+  activityPoints: number;
+  look: string;
+  gender: UserGender;
+  motto: string;
+  accountCreatedAt: number;
+  onlineStatus: UserOnlineStatus;
+  ipLast: string;
+  ipRegistered: string;
+  homeRoomID: number;
   discordID?: string;
   facebookID?: string;
   googleID?: string;
+  language?: string;
   rank?: RankWire;
   sessions?: SessionWire[];
   articles?: ArticleWire[];

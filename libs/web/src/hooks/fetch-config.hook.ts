@@ -18,8 +18,9 @@ const FETCH_SITE_CONFIG = gql`
             facebookURL
             instagramURL
             snapchatURL,
-            dateFormat
+            dateFormat  
             softwareVersion
+            defaultLanguage
         }
     }
 `;

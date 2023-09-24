@@ -11,3 +11,7 @@ export interface SessionUpdatePasswordInput {
 export interface SessionDisconnectAccountInput {
   confirm: boolean;
 }
+
+export interface SessionUpdateLanguageInput {
+  language: string;
+}

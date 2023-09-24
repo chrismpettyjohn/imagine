@@ -179,6 +179,8 @@ export * from './session/session-disconnect-google.hook';
 export * from './session/session-disconnect-google.mutation';
 export * from './session/session-update-email.hook';
 export * from './session/session-update-email.mutation';
+export * from './session/session-update-language.hook';
+export * from './session/session-update-language.mutation';
 export * from './session/session-update-password.hook';
 export * from './session/session-update-password.mutation';
 export * from './session/session.input';

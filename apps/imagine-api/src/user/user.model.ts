@@ -4,57 +4,57 @@ import {UserGender, UserOnlineStatus, UserWire} from '@imagine-cms/types';
 @ObjectType()
 export class UserModel implements UserWire {
   @Field({nullable: true})
-  id?: number;
+  id!: number;
 
   @Field(() => String, {nullable: true})
-  username?: string;
+  username!: string;
 
   // TODO: Add Privacy Guard
   @Field({nullable: true})
-  email?: string;
+  email!: string;
 
   // TODO: Add Privacy Guard
   @Field(() => String, {nullable: true})
-  gameSSO?: string;
+  gameSSO!: string;
 
   @Field({nullable: true})
-  rankID?: number;
+  rankID!: number;
 
   @Field(() => Number, {nullable: true})
-  credits?: number;
+  credits!: number;
 
   @Field(() => Number, {nullable: true})
-  vipPoints?: number;
+  vipPoints!: number;
 
   @Field(() => Number, {nullable: true})
-  activityPoints?: number;
+  activityPoints!: number;
 
   @Field(() => String, {nullable: true})
-  look?: string;
+  look!: string;
 
   @Field(() => UserGender, {nullable: true})
-  gender?: UserGender;
+  gender!: UserGender;
 
   @Field(() => String, {nullable: true})
-  motto?: string;
+  motto!: string;
 
   @Field(() => Number, {nullable: true})
-  accountCreatedAt?: number;
+  accountCreatedAt!: number;
 
   @Field(() => UserOnlineStatus, {nullable: true})
-  onlineStatus?: UserOnlineStatus;
+  onlineStatus!: UserOnlineStatus;
 
   @Field(() => String, {nullable: true})
-  ipLast?: string;
+  ipLast!: string;
 
   @Field(() => String, {nullable: true})
-  ipRegistered?: string;
+  ipRegistered!: string;
 
   @Field(() => String, {nullable: true})
   machineAddress?: string;
 
   @Field(() => Number, {nullable: true})
-  homeRoomID?: number;
+  homeRoomID!: number;
 
   @Field(() => String, {nullable: true})
   discordID?: string;
@@ -64,4 +64,7 @@ export class UserModel implements UserWire {
 
   @Field(() => String, {nullable: true})
   googleID?: string;
+
+  @Field(() => String, {nullable: true})
+  language?: string;
 }

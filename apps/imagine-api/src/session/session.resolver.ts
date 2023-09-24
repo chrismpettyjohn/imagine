@@ -14,6 +14,7 @@ import {BadRequestException, UnauthorizedException} from '@nestjs/common';
 import {
   SessionDisconnectAccountInput,
   SessionUpdateEmailInput,
+  SessionUpdateLanguageInput,
   SessionUpdatePasswordInput,
 } from './session.input';
 import {
@@ -22,6 +23,7 @@ import {
   SessionModel,
   SessionSSOModel,
   SessionUpdateEmailModel,
+  SessionUpdateLanguageModel,
   SessionUpdatePasswordModel,
 } from './session.model';
 
@@ -122,6 +124,18 @@ export class SessionResolver {
       throw new UnauthorizedException();
     }
     await this.userRepo.update({id: user.id!}, {password: input.newPassword});
+    return {
+      success: true,
+    };
+  }
+  @Mutation(() => SessionUpdateLanguageModel)
+  @HasSession()
+  async sessionUpdateLanguage(
+    @Args('input', {type: () => SessionUpdateLanguageInput})
+    input: SessionUpdateLanguageInput,
+    @GetUser() user: UserEntity
+  ): Promise<SessionUpdateLanguageModel> {
+    await this.userRepo.update({id: user.id!}, {language: input.language});
     return {
       success: true,
     };

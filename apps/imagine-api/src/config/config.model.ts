@@ -47,4 +47,7 @@ export class ConfigModel implements ConfigWire {
 
   @Field({nullable: true})
   softwareVersion?: string;
+
+  @Field({nullable: true})
+  defaultLanguage?: string;
 }

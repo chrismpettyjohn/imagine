@@ -82,4 +82,7 @@ export class UserEntity implements UserWire {
 
   @Column({name: 'discord_id', type: 'varchar', nullable: true})
   discordID?: string;
+
+  @Column({name: 'lang', type: 'varchar', nullable: true})
+  language?: string;
 }

@@ -7,7 +7,7 @@ import { useFacebookUserAuthenticate, useUserFetchOne } from '@imagine-cms/clien
 
 export function LoginWithFacebookScreen() {
   const [, setLocation] = useLocation();
-  const { setSession } = useContext(sessionContext);
+  const { _setSession } = useContext(sessionContext);
   const facebookUserAuthenticate = useFacebookUserAuthenticate();
   const fetchUser = useUserFetchOne();
 
@@ -22,7 +22,7 @@ export function LoginWithFacebookScreen() {
       localStorageService.set('SESSION', session.sessionToken);
       const matchingUser = await fetchUser.fetch({ id: facebookUserAuthenticate.data!.userID })
       toast.success(`Welcome back, ${matchingUser.username}`);
-      setSession(matchingUser as any);
+      _setSession(matchingUser as any);
       setLocation('/me');
     } catch (e: any) {
       toast.error('There was a problem logging in');

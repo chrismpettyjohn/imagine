@@ -7,7 +7,7 @@ import { useGoogleUserAuthenticate, useUserFetchOne } from '@imagine-cms/client'
 
 export function LoginWithGoogleScreen() {
   const [, setLocation] = useLocation();
-  const { setSession } = useContext(sessionContext);
+  const { _setSession } = useContext(sessionContext);
   const googleUserAuthenticate = useGoogleUserAuthenticate();
   const fetchUser = useUserFetchOne();
 
@@ -21,7 +21,7 @@ export function LoginWithGoogleScreen() {
       localStorageService.set('SESSION', session.sessionToken);
       const matchingUser = await fetchUser.fetch({ id: googleUserAuthenticate.data!.userID });
       toast.success(`Welcome back, ${matchingUser.username}`);
-      setSession(matchingUser as any);
+      _setSession(matchingUser as any);
       setLocation('/me');
     } catch (e: any) {
       toast.error('There was a problem logging in');

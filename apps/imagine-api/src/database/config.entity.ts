@@ -46,4 +46,7 @@ export class ConfigEntity {
 
   @Column({name: 'date_format'})
   dateFormat!: string;
+
+  @Column({name: 'default_language'})
+  defaultLanguage!: string;
 }

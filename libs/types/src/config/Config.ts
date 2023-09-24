@@ -14,4 +14,5 @@ export interface ConfigWire {
   snapchatURL?: string;
   dateFormat?: string;
   softwareVersion?: string;
+  defaultLanguage?: string;
 }

@@ -47,6 +47,12 @@ export class SessionUpdatePasswordModel {
 }
 
 @ObjectType()
+export class SessionUpdateLanguageModel {
+  @Field(() => Boolean)
+  success!: boolean;
+}
+
+@ObjectType()
 export class SessionDisconnectAccountModel {
   @Field(() => Boolean)
   success!: boolean;

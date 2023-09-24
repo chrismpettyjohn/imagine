@@ -24,6 +24,12 @@ export class SessionUpdatePasswordInput {
 }
 
 @InputType()
+export class SessionUpdateLanguageInput {
+  @Field(() => String)
+  language!: string;
+}
+
+@InputType()
 export class SessionDisconnectAccountInput {
   @Field(() => Boolean)
   confirm!: boolean;
