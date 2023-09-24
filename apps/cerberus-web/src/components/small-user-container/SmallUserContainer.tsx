@@ -9,7 +9,7 @@ export function SmallUserContainer({ user, ...props }: SmallUserContainerProps) 
     <Link href={`/users/${user.username}`}>
       <Button  {...props as any} style={{ display: 'flex', justifyContent: 'center', height: 64, alignContent: 'center', ...props?.style }}>
         <Avatar look={user.look} headOnly style={{ height: 80, marginTop: -20 }} />
-        <b style={{ marginTop: 5 }}> {user.username}</b>
+        <b className="notranslate" style={{ marginTop: 5 }}> {user.username}</b>
       </Button>
     </Link>
   )

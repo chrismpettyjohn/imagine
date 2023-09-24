@@ -1,0 +1,25 @@
+.goog-te-gadget {
+  color: transparent;
+  display: block;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  height: 10px;
+}
+
+.goog-te-gadget img {
+  display: none;
+
+}
+
+.goog-te-gadget a {
+  display: none;
+}
+
+body {
+  top: 0px !important;
+}
+
+.skiptranslate iframe {
+  visibility: hidden !important;
+}

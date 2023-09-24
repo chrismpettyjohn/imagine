@@ -12,7 +12,7 @@ export function LongUserContainer({ user }: LongUserContainerProps) {
         <Avatar look={user.look ?? '-'} headOnly size="l" direction={2} headDirection={2} />
         <LongUserContainerInformation>
 
-          <h3>{user.username}</h3>
+          <h3 className="notranslate">{user.username}</h3>
           <Badge badge={{ code: user.rank?.badgeCode }} />
         </LongUserContainerInformation>
       </LongUserContainerElement>

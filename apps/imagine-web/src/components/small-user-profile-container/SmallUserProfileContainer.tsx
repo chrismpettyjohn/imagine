@@ -17,7 +17,7 @@ export function SmallUserProfileContainer({ user, showOnlineStatus = true }: Sma
             {
               showOnlineStatus && <SmallUserProfileContainerOnlineIndicator $online={user.onlineStatus === UserOnlineStatus.Online} />
             }
-            <h3>{user.username}</h3>
+            <h3 className="notranslate">{user.username}</h3>
           </SmallUserProfileContainerInformationContainer>
         </SmallUserProfileContainerInformationWrapper>
       </SmallUserProfileContainerUserContainer>

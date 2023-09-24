@@ -10,7 +10,7 @@ export function CommentContainer({ comment, id, user }: CommentContainerProps) {
         <Link to={`/profile/${user.username}`}>
           <CommentContainerUser>
             <CommentContainerAvatar src={`https://imager.habboon.pw/?figure=${user.look}&headonly=1`} />
-            <h2>{user.username}</h2>
+            <h2 className="notranslate">{user.username}</h2>
           </CommentContainerUser>
         </Link>
         <CommentContainerMessage>

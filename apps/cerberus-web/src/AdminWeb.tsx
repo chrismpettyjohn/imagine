@@ -5,6 +5,7 @@ import { ThemeProvider } from './theme/ThemeProvider';
 import { ImagineContextProviders } from '@imagine-cms/web';
 import { SiteSidebar } from './components/site-sidebar/SiteSidebar';
 import { PageContainerElement, SiteContainerElement } from './AdminWeb.styled';
+import { ChangeLanguageButton } from './components/change-language-button/ChangeLanguageButton';
 
 export function ImagineWeb() {
 
@@ -15,6 +16,7 @@ export function ImagineWeb() {
           <ToastContainer />
           <SiteSidebar />
           <PageContainerElement>
+            <ChangeLanguageButton />
             <Router />
           </PageContainerElement>
         </SiteContainerElement>

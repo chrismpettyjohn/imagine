@@ -33,7 +33,7 @@ export function LeaderboardsCard({ title, value, query }: LeaderboardsCardProps)
                 </td>
                 <td width="75%">
                   <Link to={`/profile/${user.username}`}>
-                    <b>{user.username}</b>
+                    <b className="notranslate">{user.username}</b>
                   </Link>
                   <b /> <br />{value(user)}
                 </td>

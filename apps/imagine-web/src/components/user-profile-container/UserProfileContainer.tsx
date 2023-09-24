@@ -10,8 +10,8 @@ export function UserProfileContainer({ user }: UserProfileContainerProps) {
         <AvatarContainer src={`https://imager.habboon.pw/?figure=${user.look}&direction=2&head_direction=3&gesture=sml&action=wav&size=l`} />
         <InformationContainer>
           <div>
-            <h2>{user.username}</h2>
-            {user.motto && <span>"{user.motto}"</span>}
+            <h2 className="notranslate">{user.username}</h2>
+            {user.motto && <span className="notranslate">"{user.motto}"</span>}
           </div>
           <br />
           <UserBadgeContainerGrid user={user as any} />

@@ -1,0 +1,22 @@
+.goog-te-gadget {
+  color: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.goog-te-gadget img {
+  display: none;
+
+}
+
+.goog-te-gadget a {
+  display: none;
+}
+
+body {
+  top: 0px !important;
+}
+
+.skiptranslate iframe {
+  visibility: hidden !important;
+}
