@@ -41,6 +41,7 @@ export class BugReportResolver {
         reportingUserID: filter.reportingUserIDs && In(filter.reportingUserIDs),
         resolvingUserID: filter.resolvingUserIDs && In(filter.resolvingUserIDs),
         severity: filter.severity && In(filter.severity),
+        url: filter.urls && In(filter.urls),
         resolvedAt:
           filter.isOpen !== undefined
             ? filter.isOpen
@@ -61,6 +62,7 @@ export class BugReportResolver {
   ): Promise<BugReportModel> {
     const currentTime = DayJS().unix();
     const newBugReport = await this.bugReportRepo.create({
+      url: input.url,
       content: input.content,
       severity: 1,
       reportingUserID: session.id!,

@@ -21,7 +21,7 @@ export function CreateBugReportCard({ onCreate }: CreateBugReportCardProps) {
       if (isDisabled) {
         return;
       }
-      const newBugReport = await createBugReport.execute({ content });
+      const newBugReport = await createBugReport.execute({ content, url });
       toast.success(`Successfully created bug report ${newBugReport.id}`)
       setURL('');
       setContent('');

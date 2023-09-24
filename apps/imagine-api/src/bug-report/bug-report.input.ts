@@ -17,6 +17,9 @@ export class BugReportFilterManyInput {
   @Field(() => [Number], {nullable: true})
   severity?: number[];
 
+  @Field(() => [String], {nullable: true})
+  urls?: string[];
+
   @Field(() => [Number], {nullable: true})
   reportingUserIDs?: number[];
 
@@ -31,11 +34,17 @@ export class BugReportFilterManyInput {
 export class BugReportCreateInput {
   @Field(() => String)
   content!: string;
+
+  @Field(() => String)
+  url!: string;
 }
 @InputType()
 export class BugReportUpdateInput {
   @Field(() => String, {nullable: true})
   content?: string;
+
+  @Field(() => String, {nullable: true})
+  url?: string;
 
   @Field(() => Number, {nullable: true})
   severity?: number;

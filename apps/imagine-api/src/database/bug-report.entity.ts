@@ -11,6 +11,9 @@ export class BugReportEntity {
   @Column({type: 'text'})
   content!: string;
 
+  @Column()
+  url!: string;
+
   @Column({type: 'int'})
   severity!: number;
 
@@ -23,6 +26,6 @@ export class BugReportEntity {
   @Column({name: 'resolved_at', type: 'int', nullable: true})
   resolvedAt?: number;
 
-  @Column({type: 'int', nullable: true})
+  @Column({name: 'resolving_user_id', type: 'int', nullable: true})
   resolvingUserID?: number;
 }

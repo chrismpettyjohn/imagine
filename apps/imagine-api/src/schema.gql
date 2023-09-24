@@ -374,6 +374,7 @@ type BugReportModel {
   id: Float
   reportingUserID: Float
   content: String
+  url: String
   severity: Float
   createdAt: Float
   updatedAt: Float
@@ -641,6 +642,7 @@ input BugReportFilterManyInput {
   ids: [Float!]
   isOpen: Boolean
   severity: [Float!]
+  urls: [String!]
   reportingUserIDs: [Float!]
   resolvingUserIDs: [Float!]
   limit: Float
@@ -900,10 +902,12 @@ input RadioRequestReviewInput {
 
 input BugReportCreateInput {
   content: String!
+  url: String!
 }
 
 input BugReportUpdateInput {
   content: String
+  url: String
   severity: Float
 }
 

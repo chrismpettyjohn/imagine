@@ -7,15 +7,18 @@ export interface BugReportFilterManyInput {
   reportingUserIDs?: number[];
   resolvingUserIDs?: number[];
   severity?: number[];
+  urls?: string[];
   isOpen?: boolean;
   limit?: number;
 }
 
 export interface BugReportCreateInput {
   content: string;
+  url: string;
 }
 
 export interface BugReportUpdateInput {
   content?: string;
+  url?: string;
   severity?: number;
 }
