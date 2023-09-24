@@ -49,6 +49,20 @@ export * from './beta-code/beta-code-redeem.mutation';
 export * from './beta-code/beta-code.fragment';
 export * from './beta-code/beta-code.input';
 
+// Bug Report
+export * from './bug-report/bug-report-create.hook';
+export * from './bug-report/bug-report-create.mutation';
+export * from './bug-report/bug-report-delete.hook';
+export * from './bug-report/bug-report-delete.mutation';
+export * from './bug-report/bug-report-fetch-many.hook';
+export * from './bug-report/bug-report-fetch-many.query';
+export * from './bug-report/bug-report-fetch-one.hook';
+export * from './bug-report/bug-report-fetch-one.query';
+export * from './bug-report/bug-report-update.hook';
+export * from './bug-report/bug-report-update.mutation';
+export * from './bug-report/bug-report.fragment';
+export * from './bug-report/bug-report.input';
+
 // Discord
 export * from './discord/discord-user-authenticate.hook';
 export * from './discord/discord-user-authenticate.mutation';
