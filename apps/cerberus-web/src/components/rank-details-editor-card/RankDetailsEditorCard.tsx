@@ -4,10 +4,10 @@ import { Form } from '../../blocks/form/Form';
 import { Input } from '../../blocks/input/Input';
 import { Badge } from '../../blocks/badge/Badge';
 import { RankUpdateInput } from '@imagine-cms/client';
-import { RankCreateInputDTO, RankFlagsWire, rankFlagsLabels } from '@imagine-cms/types';
 import React, { SyntheticEvent, useState } from 'react';
 import { RankScopesWire, rankScopesLabels } from '@imagine-cms/types';
 import { RankDetailsEditorCardProps } from './RankDetailsEditorCard.types';
+import { RankCreateInputDTO, RankFlagsWire, rankFlagsLabels } from '@imagine-cms/types';
 import { RankDetailsEditorCardPermissionsContainer } from './RankDetailsEditorCard.styled';
 import { ButtonDanger, ButtonPrimary, ButtonSuccess } from '../../blocks/button/Button.remix';
 
@@ -25,6 +25,7 @@ export function RankDetailsEditorCard({ defaultRank, onSave }: RankDetailsEditor
       manageRadioRequests: defaultRank?.scopes?.manageRadioRequests ?? false,
       manageBetaCodes: defaultRank?.scopes?.manageBetaCodes ?? false,
       manageStaffApplications: defaultRank?.scopes?.manageStaffApplications ?? false,
+      manageBugReports: defaultRank?.scopes?.manageBugReports ?? false,
     },
     flags: {
       showOnStaffPage: defaultRank?.flags?.showOnStaffPage ?? false,
