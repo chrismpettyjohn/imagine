@@ -57,7 +57,7 @@ export function SessionContextProvider({ children, loadingScreen }: SessionConte
   }
 
   if (loading) {
-    return loadingScreen;
+    return <>{loadingScreen}</>;
   }
 
   return <sessionContext.Provider value={{ session, _setSession, setSession }}>{children}</sessionContext.Provider>;

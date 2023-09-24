@@ -21,7 +21,7 @@ export function ConfigContextProvider({ children, loadingScreen }: ConfigContext
   };
 
   if (loading) {
-    return loadingScreen
+    return <>{loadingScreen}</>
   }
 
   return <configContext.Provider value={{ config, setConfig: updateConfig as any }}>{children}</configContext.Provider>;
