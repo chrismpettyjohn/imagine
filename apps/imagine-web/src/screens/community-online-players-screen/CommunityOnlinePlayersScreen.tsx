@@ -8,7 +8,7 @@ export function CommunityOnlinePlayersScreen() {
   const { data, fetch, loading } = useUserFetchMany();
 
   useEffect(() => {
-    fetch({ online: true });
+    fetch({ online: true, limit: 1000 });
   }, []);
 
   if (loading) {
