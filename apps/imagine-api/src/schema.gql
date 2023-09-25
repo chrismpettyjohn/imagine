@@ -92,6 +92,13 @@ type RankScopesModel implements RankScopesInterface {
   manageStaffApplications: Boolean
   manageRadioRequests: Boolean
   manageBugReports: Boolean
+  manageBans: Boolean
+  manageChatlogs: Boolean
+  manageGroups: Boolean
+  manageLanguages: Boolean
+  manageRanks: Boolean
+  manageSite: Boolean
+  manageWordFilter: Boolean
 }
 
 interface RankScopesInterface {
@@ -105,6 +112,13 @@ interface RankScopesInterface {
   manageStaffApplications: Boolean
   manageRadioRequests: Boolean
   manageBugReports: Boolean
+  manageBans: Boolean
+  manageChatlogs: Boolean
+  manageGroups: Boolean
+  manageLanguages: Boolean
+  manageRanks: Boolean
+  manageSite: Boolean
+  manageWordFilter: Boolean
 }
 
 type RankFlagsModel implements RankFlagsInterface {
@@ -769,6 +783,13 @@ input RankScopesInput {
   manageStaffApplications: Boolean
   manageRadioRequests: Boolean
   manageBugReports: Boolean
+  manageBans: Boolean
+  manageChatlogs: Boolean
+  manageGroups: Boolean
+  manageLanguages: Boolean
+  manageRanks: Boolean
+  manageSite: Boolean
+  manageWordFilter: Boolean
 }
 
 input RankFlagsInput {
@@ -918,8 +939,4 @@ input BugReportUpdateInput {
   content: String
   url: String
   severity: Float
-}
-
-type Subscription {
-  configUpdated: ConfigModel!
 }

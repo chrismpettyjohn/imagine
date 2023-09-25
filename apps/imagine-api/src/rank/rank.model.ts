@@ -36,6 +36,13 @@ export class RankModel {
           entity.scopes?.manageStaffApplications ?? false,
         manageRadioRequests: entity.scopes?.manageRadioRequests ?? false,
         manageBugReports: entity.scopes?.manageBugReports ?? false,
+        manageBans: entity.scopes?.manageBans ?? false,
+        manageChatlogs: entity.scopes?.manageChatlogs ?? false,
+        manageGroups: entity.scopes?.manageGroups ?? false,
+        manageLanguages: entity.scopes?.manageLanguages ?? false,
+        manageRanks: entity.scopes?.manageRanks ?? false,
+        manageSite: entity.scopes?.manageSite ?? false,
+        manageWordFilter: entity.scopes?.manageWordFilter ?? false,
       },
       flags: {
         showOnStaffPage: entity.flags?.showOnStaffPage ?? false,
