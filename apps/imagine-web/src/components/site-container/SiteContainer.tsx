@@ -7,6 +7,7 @@ import { SiteHeader } from '../site-header/SiteHeader';
 import { SiteFooter } from '../site-footer/SiteFooter';
 import { PageContainerElement, SiteContainerElement } from './SiteContainer.styled';
 import { ChangeLanguageButton } from '../change-language-button/ChangeLanguageButton';
+import { OnlineUserCount } from '../online-user-count/OnlineUserCount';
 
 export function SiteContainer() {
   const { showClient } = useContext(themeContext);
@@ -19,7 +20,10 @@ export function SiteContainer() {
         !showClient && (
           <>
             <PageContainerElement>
-              <ChangeLanguageButton />
+              <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+                <OnlineUserCount />
+                <ChangeLanguageButton />
+              </div>
               <SiteHeader />
               <Router />
             </PageContainerElement>

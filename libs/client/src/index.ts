@@ -234,6 +234,8 @@ export * from './user/user-fetch-many.query';
 export * from './user/user-fetch-one.hook';
 export * from './user/user.fragment';
 export * from './user/user.input';
+export * from './user/users-online-count.hook';
+export * from './user/users-online-count.query';
 
 
 // User Badge

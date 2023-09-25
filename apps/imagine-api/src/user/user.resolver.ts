@@ -124,6 +124,14 @@ export class UserResolver {
     return RankModel.fromEntity(matchingRank);
   }
 
+  @Query(() => Number)
+  async usersOnlineCount(): Promise<number> {
+    const onlineUsers: [{online_users: number}] = await this.userRepo
+      .getInstance()
+      .query("SELECT COUNT(*) AS online_users FROM users WHERE online = '1'");
+    return onlineUsers[0].online_users;
+  }
+
   @Query(() => UserModel)
   async user(
     @Args('filter', {type: () => UserFilterOneInput}) filter: UserFilterOneInput

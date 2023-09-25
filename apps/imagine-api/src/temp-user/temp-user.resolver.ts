@@ -37,7 +37,6 @@ export class TempUserResolver {
         accessToken: newSession.accessToken,
       };
     }
-
     const newSession = await this.sessionService.generateSession(
       matchingUser.id!
     );

@@ -391,6 +391,7 @@ type Query {
   sessionByJWT(jwt: String!): SessionModel!
   session(id: Float!): SessionModel!
   sessions(other: ExtraArgs): [SessionModel!]!
+  usersOnlineCount: Float!
   user(filter: UserFilterOneInput!): UserModel!
   users(filter: UserFilterManyInput!): [UserModel!]!
   rank(filter: RankFilterOneInput!): RankModel!

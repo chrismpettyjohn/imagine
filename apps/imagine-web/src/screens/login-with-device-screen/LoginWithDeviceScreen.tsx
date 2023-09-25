@@ -15,13 +15,11 @@ export function LoginWithDeviceScreen() {
   const onAttemptDeviceLogin = async () => {
     try {
       const newSession = await tempUserLogin.execute();
-      console.log(newSession)
       const matchingUser = await fetchUser.fetch({ id: newSession.userID });
       toast.success(`Welcome back, ${matchingUser.username}`)
       _setSession(matchingUser as any);
       setLocation('/me');
     } catch (e: any) {
-      console.log(e);
       toast.error('There was a problem logging in');
     }
   }

@@ -41,8 +41,7 @@ export function ChangeLanguageButton() {
   }, []);
 
   return (
-    <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
-      <div id={GOOGLE_TRANSLATE_ELEMENT} />
-    </div>
+    <div id={GOOGLE_TRANSLATE_ELEMENT} />
+
   )
 }

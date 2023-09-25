@@ -1,15 +1,12 @@
+import React from 'react';
 import { Link } from 'wouter';
-import React, { useContext } from 'react';
 import { SiteLogo } from '../site-logo/SiteLogo';
 import { GuestGuard } from '../guest-guard/GuestGuard';
+import { ADMIN_URL, ScopeGuard, UserGuard } from '@imagine-cms/web';
 import { ButtonPrimary, ButtonDanger, ButtonNoBorder } from '../button/Button.remix';
-import { ADMIN_URL, ScopeGuard, UserGuard, configContext, sessionContext } from '@imagine-cms/web';
 import { SiteHeaderActions, SiteHeaderContent, SiteHeaderElement, SiteHeaderNavigation } from './SiteHeader.styled';
 
 export function SiteHeader() {
-  const { config } = useContext(configContext);
-  const { session } = useContext(sessionContext);
-
   return (
     <SiteHeaderElement>
       <SiteHeaderContent>
