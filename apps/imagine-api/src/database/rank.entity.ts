@@ -14,6 +14,9 @@ export class RankEntity {
   @Column({name: 'badge'})
   badgeCode!: string;
 
+  @Column({name: 'staff_color'})
+  backgroundColor!: string;
+
   @Column({type: 'json'})
   scopes!: RankScopesWire;
 

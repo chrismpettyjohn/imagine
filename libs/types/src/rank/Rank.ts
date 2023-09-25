@@ -5,6 +5,7 @@ export interface RankWire {
   id: number;
   name: string;
   badgeCode: string;
+  backgroundColor: string;
   users?: UserWire[];
   scopes: RankScopesWire;
   flags: RankFlagsWire;

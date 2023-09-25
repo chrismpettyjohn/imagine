@@ -9,7 +9,7 @@ export function SmallUserProfileContainer({ children, user, showOnlineStatus = t
   return (
     <div>
       <Link to={`/profile/${user.username}`}>
-        <SmallUserProfileContainerUserContainer>
+        <SmallUserProfileContainerUserContainer style={{ background: user.rank?.backgroundColor }}>
           <SmallUserProfileContainerAvatarContainer>
             <Avatar look={user.look ?? '-'} />
           </SmallUserProfileContainerAvatarContainer>

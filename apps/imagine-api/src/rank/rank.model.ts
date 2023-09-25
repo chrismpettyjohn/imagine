@@ -13,6 +13,9 @@ export class RankModel {
   @Field({nullable: true})
   badgeCode!: string;
 
+  @Field({nullable: true})
+  backgroundColor!: string;
+
   @Field(() => RankScopesModel, {nullable: true})
   scopes!: RankScopesModel;
 
@@ -24,6 +27,7 @@ export class RankModel {
       id: entity.id!,
       name: entity.name,
       badgeCode: entity.badgeCode,
+      backgroundColor: entity.backgroundColor,
       scopes: {
         accessAdminPanel: entity.scopes?.accessAdminPanel ?? false,
         manageArticles: entity.scopes?.manageArticles ?? false,

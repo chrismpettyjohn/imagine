@@ -30,6 +30,10 @@ export class RankCreateInput implements RankCreateInputDTO {
   @IsAlphanumeric()
   badgeCode!: string;
 
+  @Field()
+  @IsNotEmpty()
+  backgroundColor!: string;
+
   @Field(() => RankScopesInterface)
   @IsObject()
   scopes!: RankScopesInterface;
@@ -54,6 +58,11 @@ export class RankUpdateInput implements RankUpdateInputDTO {
   @IsAlphanumeric()
   @IsOptional()
   badgeCode?: string;
+
+  @Field()
+  @IsNotEmpty()
+  @IsOptional()
+  backgroundColor?: string;
 
   @Field(() => RankScopesInterface, {nullable: true})
   @IsObject()

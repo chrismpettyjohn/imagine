@@ -135,6 +135,7 @@ type RankModel {
   id: Float
   name: String
   badgeCode: String
+  backgroundColor: String
   scopes: RankScopesModel
   flags: RankFlagsModel
   users: [UserModel!]
@@ -768,6 +769,7 @@ input UserUpdateInput {
 input RankCreateInput {
   name: String!
   badgeCode: String!
+  backgroundColor: String!
   scopes: RankScopesInput!
   flags: RankFlagsInput!
 }
@@ -800,6 +802,7 @@ input RankFlagsInput {
 input RankUpdateInput {
   name: String
   badgeCode: String
+  backgroundColor: String!
   scopes: RankScopesInput
   flags: RankFlagsInput
 }

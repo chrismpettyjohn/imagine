@@ -13,12 +13,20 @@ export const QUERIED_SCOPES: Record<keyof RankScopesWire, false> = {
   manageStaffApplications: false,
   manageRadioRequests: false,
   manageBugReports: false,
+  manageBans: false,
+  manageChatlogs: false,
+  manageGroups: false,
+  manageLanguages: false,
+  manageRanks: false,
+  manageSite: false,
+  manageWordFilter: false,
 }
 
 export interface RankFragment {
   id: number;
   name: string;
   badgeCode: string;
+  backgroundColor: string;
   scopes: RankScopesWire;
   flags: RankFlagsWire;
 }
@@ -28,6 +36,7 @@ export const RANK_FRAGMENT: any = gql`
     id
     name
     badgeCode
+    backgroundColor
     scopes {
       accessAdminPanel
       manageArticles
@@ -38,6 +47,12 @@ export const RANK_FRAGMENT: any = gql`
       manageSupportTickets
       manageStaffApplications
       manageBugReports
+      manageBans
+      manageChatlogs
+      manageGroups
+      manageLanguages
+      manageSite
+      manageWordFilter
     }
     flags {
       showOnStaffPage
