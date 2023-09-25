@@ -8,12 +8,13 @@ export function UserPossibleAltsCard({ user }: UserPossibleAltsCardProps) {
   const fetchUsers = useUserFetchMany();
 
   useEffect(() => {
-    fetchUsers.fetch({
-      ipLast: user.ipLast ? [user.ipLast] : undefined,
-      ipRegistered: user.ipRegistered ? [user.ipRegistered] : undefined,
-      machineAddress: user.machineAddress ? [user.machineAddress] : undefined,
-      limit: 10
-    })
+    // TODO: Add programtic way to optionally request ipLast, etc
+    // fetchUsers.fetch({
+    //   ipLast: user.ipLast ? [user.ipLast] : undefined,
+    //   ipRegistered: user.ipRegistered ? [user.ipRegistered] : undefined,
+    //   machineAddress: user.machineAddress ? [user.machineAddress] : undefined,
+    //   limit: 10
+    // })
   }, [user]);
 
   const matchingUsers = useMemo(() => {
