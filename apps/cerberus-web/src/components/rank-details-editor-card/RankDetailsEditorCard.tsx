@@ -15,6 +15,7 @@ export function RankDetailsEditorCard({ defaultRank, onSave }: RankDetailsEditor
   const [rankDTO, setRankDTO] = useState<RankUpdateInput>({
     name: defaultRank?.name ?? '',
     badgeCode: defaultRank?.badgeCode ?? '',
+    backgroundColor: defaultRank?.backgroundColor ?? '',
     scopes: {
       accessAdminPanel: defaultRank?.scopes?.accessAdminPanel ?? false,
       manageArticles: defaultRank?.scopes?.manageArticles ?? false,
@@ -26,6 +27,13 @@ export function RankDetailsEditorCard({ defaultRank, onSave }: RankDetailsEditor
       manageBetaCodes: defaultRank?.scopes?.manageBetaCodes ?? false,
       manageStaffApplications: defaultRank?.scopes?.manageStaffApplications ?? false,
       manageBugReports: defaultRank?.scopes?.manageBugReports ?? false,
+      manageBans: defaultRank?.scopes?.manageBans ?? false,
+      manageChatlogs: defaultRank?.scopes?.manageChatlogs ?? false,
+      manageGroups: defaultRank?.scopes?.manageGroups ?? false,
+      manageLanguages: defaultRank?.scopes?.manageLanguages ?? false,
+      manageRanks: defaultRank?.scopes?.manageRanks ?? false,
+      manageSite: defaultRank?.scopes?.manageSite ?? false,
+      manageWordFilter: defaultRank?.scopes?.manageWordFilter ?? false,
     },
     flags: {
       showOnStaffPage: defaultRank?.flags?.showOnStaffPage ?? false,
@@ -78,6 +86,8 @@ export function RankDetailsEditorCard({ defaultRank, onSave }: RankDetailsEditor
       <Form onSubmit={onSaveChanges}>
         <label>Name</label>
         <Input value={rankDTO.name} onChange={e => onChanges({ name: e.currentTarget?.value ?? '' })} />
+        <label>Background Color</label>
+        <Input value={rankDTO.backgroundColor} onChange={e => onChanges({ backgroundColor: e.currentTarget?.value ?? '' })} type="color" />
         <label>Badge</label>
         <div style={{ display: 'flex', flex: 1, gap: 16 }}>
           <Badge badge={{ code: rankDTO.badgeCode } as any} height={45} />

@@ -1,16 +1,11 @@
 import {Field, InputType} from '@nestjs/graphql';
-import {
-  RankCreateInputDTO,
-  RankScopesWire,
-  RankUpdateInputDTO,
-} from '@imagine-cms/types';
+import {RankCreateInputDTO, RankUpdateInputDTO} from '@imagine-cms/types';
 import {
   MaxLength,
   IsAlphanumeric,
   IsNotEmpty,
   IsObject,
   IsOptional,
-  IsBoolean,
   Max,
 } from 'class-validator';
 import {GLOBAL_MAX_RESOURCE_LIMIT} from '../imagine.constant';
@@ -31,7 +26,6 @@ export class RankCreateInput implements RankCreateInputDTO {
   badgeCode!: string;
 
   @Field()
-  @IsNotEmpty()
   backgroundColor!: string;
 
   @Field(() => RankScopesInterface)
@@ -59,8 +53,7 @@ export class RankUpdateInput implements RankUpdateInputDTO {
   @IsOptional()
   badgeCode?: string;
 
-  @Field()
-  @IsNotEmpty()
+  @Field(() => String)
   @IsOptional()
   backgroundColor?: string;
 

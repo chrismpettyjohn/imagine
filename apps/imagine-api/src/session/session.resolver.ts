@@ -51,6 +51,9 @@ export class SessionResolver {
   @Query(() => SessionModel)
   async sessionByJWT(@Args('jwt') jwt: string): Promise<SessionEntity> {
     const parsedJWT: {sessionID: number} = this.jwtService.decode(jwt) as any;
+    if (!parsedJWT) {
+      throw new UnauthorizedException();
+    }
     return this.sessionRepo.findOneOrFail({id: parsedJWT.sessionID});
   }
 

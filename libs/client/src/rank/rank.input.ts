@@ -13,6 +13,7 @@ export interface RankFilterOneInput {
 export interface RankCreateOneInput {
   name: string;
   badgeCode: string;
+  backgroundColor: string;
   scopes: RankScopesWire;
   flags: RankFlagsWire;
 }
