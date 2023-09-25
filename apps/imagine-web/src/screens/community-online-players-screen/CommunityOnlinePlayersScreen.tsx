@@ -3,6 +3,7 @@ import { Card } from '../../components/card/Card';
 import { useUserFetchMany } from '@imagine-cms/client';
 import { CommunityOnlinePlayersScreenUsersContainer } from './CommunityOnlinePlayersScreen.styled';
 import { SmallUserProfileContainer } from '../../components/small-user-profile-container/SmallUserProfileContainer';
+import { LoadingMessage } from '../../components/loading-message/LoadingMessage';
 
 export function CommunityOnlinePlayersScreen() {
   const { data, fetch, loading } = useUserFetchMany();
@@ -11,15 +12,14 @@ export function CommunityOnlinePlayersScreen() {
     fetch({ online: true, limit: 1000 });
   }, []);
 
-  if (loading) {
-    return <i className="fa fa-spinner fa-spin" />
-  }
-
   return (
-    <Card>
-      <h1>Online Users ({data?.length})</h1>
+    <Card header="Online Users">
       {
-        loading && <i className="fa fa-spinner fa-spin" />
+        loading && (
+          <LoadingMessage>
+            Loading online players
+          </LoadingMessage>
+        )
       }
       <CommunityOnlinePlayersScreenUsersContainer>
         {
