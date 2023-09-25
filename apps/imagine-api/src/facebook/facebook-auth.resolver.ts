@@ -14,7 +14,10 @@ export class FacebookAuthResolver {
     const facebookService = new FacebookService(input.facebookAuthToken);
     const facebookUser = await facebookService.getUser();
     const sessionToken =
-      await this.facebookAuthService.facebookUserAuthenticate(facebookUser);
+      await this.facebookAuthService.facebookUserAuthenticate(
+        facebookUser,
+        '127.0.0.1'
+      );
     return {
       sessionID: sessionToken.session.id!,
       userID: sessionToken.session.userID,

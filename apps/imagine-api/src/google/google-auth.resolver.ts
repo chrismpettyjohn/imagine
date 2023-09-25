@@ -1,8 +1,8 @@
 import {GoogleService} from './google.service';
 import {GoogleAuthModel} from './google-auth.model';
 import {GoogleAuthInput} from './google-auth.input';
-import {Args, Mutation, Resolver} from '@nestjs/graphql';
 import {GoogleAuthService} from './google-auth.service';
+import {Args, Mutation, Resolver} from '@nestjs/graphql';
 
 @Resolver(() => GoogleAuthModel)
 export class GoogleAuthResolver {
@@ -15,7 +15,8 @@ export class GoogleAuthResolver {
       const googleService = new GoogleService(input.googleAuthToken);
       const googleUser = await googleService.getUser();
       const sessionToken = await this.googleAuthService.googleUserAuthenticate(
-        googleUser
+        googleUser,
+        '127.0.0.1'
       );
       return {
         sessionID: sessionToken.session.id!,

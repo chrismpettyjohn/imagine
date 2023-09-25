@@ -1,19 +1,21 @@
+import {Injectable} from '@nestjs/common';
+import {UserService} from '../user/user.service';
 import {FacebookUserWire} from './facebook.types';
-import {UserRepository} from '../database/user.repository';
-import {SessionService} from '../session/session.service';
-import {Injectable, UnauthorizedException} from '@nestjs/common';
 import {SessionEntity} from '../database/session.entity';
-import {match} from 'assert';
+import {SessionService} from '../session/session.service';
+import {UserRepository} from '../database/user.repository';
 
 @Injectable()
 export class FacebookAuthService {
   constructor(
     private readonly userRepo: UserRepository,
+    private readonly userService: UserService,
     private readonly sessionService: SessionService
   ) {}
 
   async facebookUserAuthenticate(
-    facebookUser: FacebookUserWire
+    facebookUser: FacebookUserWire,
+    ipAddress: string
   ): Promise<{accessToken: string; session: SessionEntity}> {
     const matchingUser = await this.userRepo.findOne({
       where: [
@@ -27,8 +29,11 @@ export class FacebookAuthService {
     });
 
     if (!matchingUser) {
-      // TODO: Automatically generate new account
-      throw new UnauthorizedException();
+      const newUser = await this.userService.createQuickUser(ipAddress, {
+        facebookID: facebookUser.id,
+        email: facebookUser.email,
+      });
+      return this.sessionService.generateSession(newUser.id!);
     }
 
     if (!matchingUser?.facebookID) {
