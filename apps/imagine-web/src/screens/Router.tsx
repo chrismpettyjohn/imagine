@@ -18,6 +18,7 @@ import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
 import { BugReportViewScreen } from './bug-report-view-screen/BugReportViewScreen';
 import { ForgotPasswordScreen } from './forgot-password-screen/ForgotPasswordScreen';
 import { CommunityStaffScreen } from './community-staff-screen/CommunityStaffScreen';
+import { LoginWithDeviceScreen } from './login-with-device-screen/LoginWithDeviceScreen';
 import { LoginWithGoogleScreen } from './login-with-google-screen/LoginWithGoogleScreen';
 import { LoginWithDiscordScreen } from './login-with-discord-screen/LoginWithDiscordScreen';
 import { ProfileViewPhotoScreen } from './profile-view-photo-screen/ProfileViewPhotoScreen';
@@ -50,6 +51,10 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/login/facebook',
     view: LoginWithFacebookScreen,
+  },
+  {
+    path: '/login/device',
+    view: LoginWithDeviceScreen,
   },
   {
     path: '/login/google',

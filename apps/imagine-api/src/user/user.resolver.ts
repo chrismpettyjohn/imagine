@@ -202,6 +202,7 @@ export class UserResolver {
       ...userCreateInput,
       gameSSO: '',
       accountCreatedAt: secondsSinceEpoch,
+      tempUser: 0,
       ipLast: '', // TODO: Add support for IPs,
       ipRegistered: '', // TODO: Add support for IPs
       machineAddress: '', // TODO: Add support for machine addresses

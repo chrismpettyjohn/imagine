@@ -51,6 +51,11 @@ export function LoginScreen() {
         <DiscordLoginButton />
         <FacebookLoginButton />
         <GoogleLoginButton />
+        <Link to="/login/device">
+          <ButtonPrimary>
+            <i className="fa fa-phone" /> Device
+          </ButtonPrimary>
+        </Link>
       </div>
     </GuestGuard>
   )

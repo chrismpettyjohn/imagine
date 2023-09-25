@@ -37,6 +37,7 @@ import {BetaCodeModule} from './beta-code/beta-code.module';
 import {StaffApplicationModule} from './staff-application/staff-application.module';
 import {RadioRequestModule} from './radio-request/radio-request.module';
 import {BugReportModule} from './bug-report/bug-report.module';
+import {TempUserModule} from './temp-user/temp-user.module';
 
 @Module({
   imports: [
@@ -96,6 +97,7 @@ import {BugReportModule} from './bug-report/bug-report.module';
     StaffApplicationModule,
     RadioRequestModule,
     BugReportModule,
+    TempUserModule,
   ],
 })
 export class ImagineModule {}

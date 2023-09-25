@@ -223,6 +223,10 @@ export * from './support-ticket/support-ticket-fetch-many.query';
 export * from './support-ticket/support-ticket.fragment';
 export * from './support-ticket/support-ticket.input';
 
+// Temp User
+export * from './temp-user/temp-user-login.hook';
+export * from './temp-user/temp-user-login.mutation';
+
 // User
 export * from './user/use-fetch-one.query';
 export * from './user/user-fetch-many.hook';

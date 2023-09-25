@@ -713,6 +713,7 @@ type Mutation {
   bugReportResolve(filter: BugReportFilterOneInput!): Boolean!
   bugReportOpen(filter: BugReportFilterOneInput!): Boolean!
   bugReportDelete(filter: BugReportFilterOneInput!): Boolean!
+  tempUserLogin: SessionCreatedModel!
 }
 
 input SessionUpdateEmailInput {

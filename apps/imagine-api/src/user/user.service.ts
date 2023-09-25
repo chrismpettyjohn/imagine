@@ -23,6 +23,7 @@ export class UserService {
       ipLast: ipAddress,
       ipRegistered: ipAddress,
       accountCreatedAt: currentDate,
+      tempUser: 0,
       ...override,
     });
   }
