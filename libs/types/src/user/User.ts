@@ -15,8 +15,7 @@ export enum UserOnlineStatus {
 export interface UserWire {
   id: number;
   username: string;
-  email: string;
-  gameSSO: string;
+  email?: string;
   rankID: number;
   credits: number;
   vipPoints: number;
@@ -26,8 +25,6 @@ export interface UserWire {
   motto: string;
   accountCreatedAt: number;
   onlineStatus: UserOnlineStatus;
-  ipLast: string;
-  ipRegistered: string;
   homeRoomID: number;
   discordID?: string;
   facebookID?: string;

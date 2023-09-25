@@ -1,5 +1,4 @@
 import {UserEntity} from './user.entity';
-import {RoomWire} from '@imagine-cms/types';
 import {
   Column,
   Entity,
@@ -9,7 +8,7 @@ import {
 } from 'typeorm';
 
 @Entity('rooms')
-export class RoomEntity implements RoomWire {
+export class RoomEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 

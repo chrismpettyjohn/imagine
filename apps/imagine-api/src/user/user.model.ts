@@ -11,11 +11,7 @@ export class UserModel implements UserWire {
 
   // TODO: Add Privacy Guard
   @Field({nullable: true})
-  email!: string;
-
-  // TODO: Add Privacy Guard
-  @Field(() => String, {nullable: true})
-  gameSSO!: string;
+  email?: string;
 
   @Field({nullable: true})
   rankID!: number;
@@ -43,15 +39,6 @@ export class UserModel implements UserWire {
 
   @Field(() => UserOnlineStatus, {nullable: true})
   onlineStatus!: UserOnlineStatus;
-
-  @Field(() => String, {nullable: true})
-  ipLast!: string;
-
-  @Field(() => String, {nullable: true})
-  ipRegistered!: string;
-
-  @Field(() => String, {nullable: true})
-  machineAddress?: string;
 
   @Field(() => Number, {nullable: true})
   homeRoomID!: number;

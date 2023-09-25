@@ -96,6 +96,9 @@ export class SessionResolver {
     input: SessionUpdateEmailInput,
     @GetUser() user: UserEntity
   ): Promise<SessionUpdateEmailModel> {
+    if (!user.password) {
+      throw new UnauthorizedException();
+    }
     const doesPasswordMatch = this.hashService.compare(
       user.password,
       input.password
@@ -116,6 +119,9 @@ export class SessionResolver {
     input: SessionUpdatePasswordInput,
     @GetUser() user: UserEntity
   ): Promise<SessionUpdatePasswordModel> {
+    if (!user.password) {
+      throw new UnauthorizedException();
+    }
     const doesPasswordMatch = this.hashService.compare(
       user.password,
       input.currentPassword

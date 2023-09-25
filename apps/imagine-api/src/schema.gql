@@ -49,7 +49,6 @@ type UserModel {
   id: Float
   username: String
   email: String
-  gameSSO: String
   rankID: Float
   credits: Float
   vipPoints: Float
@@ -59,15 +58,16 @@ type UserModel {
   motto: String
   accountCreatedAt: Float
   onlineStatus: UserOnlineStatus
-  ipLast: String
-  ipRegistered: String
-  machineAddress: String
   homeRoomID: Float
   discordID: String
   facebookID: String
   googleID: String
   language: String
   hasBetaCode: Boolean!
+  gameSSO: String
+  ipLast: String
+  ipRegistered: String
+  machineAddress: String
   rank: RankModel
 }
 

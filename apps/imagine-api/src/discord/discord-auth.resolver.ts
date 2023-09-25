@@ -15,14 +15,16 @@ export class DiscordAuthResolver {
       const discordService = new DiscordService(input.discordAuthToken);
       const discordUser = await discordService.getUser();
       const sessionToken =
-        await this.discordAuthService.discordUserAuthenticate(discordUser);
+        await this.discordAuthService.discordUserAuthenticate(
+          discordUser,
+          '127.0.0.1'
+        );
       return {
         sessionID: sessionToken.session.id!,
         userID: sessionToken.session.userID,
         sessionToken: sessionToken.accessToken,
       };
     } catch (e: any) {
-      console.log(e);
       throw e;
     }
   }

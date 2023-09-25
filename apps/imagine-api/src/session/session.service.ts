@@ -1,6 +1,8 @@
 import {JwtService} from '@nestjs/jwt';
 import {SessionContents} from './session.types';
 import {HashService} from '../common/hash.service';
+import {SessionCreatedModel} from './session.model';
+import {SessionEntity} from '../database/session.entity';
 import {UserRepository} from '../database/user.repository';
 import {SessionRepository} from '../database/session.repository';
 import {
@@ -9,8 +11,6 @@ import {
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
-import {SessionCreatedModel} from './session.model';
-import {SessionEntity} from '../database/session.entity';
 
 @Injectable()
 export class SessionService {
@@ -27,6 +27,10 @@ export class SessionService {
     password: string
   ): Promise<SessionCreatedModel> {
     const user = await this.userRepo.findOneOrFail({username});
+
+    if (!user.password) {
+      throw new UnauthorizedException();
+    }
 
     const isCorrectPassword = this.hashService.compare(password, user.password);
 

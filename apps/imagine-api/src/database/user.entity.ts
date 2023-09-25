@@ -1,6 +1,6 @@
 import {registerEnumType} from '@nestjs/graphql';
+import {UserGender, UserOnlineStatus} from '@imagine-cms/types';
 import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
-import {UserWire, UserGender, UserOnlineStatus} from '@imagine-cms/types';
 import {
   IMAGINE_DEFAULT_ACTIVITY_POINTS,
   IMAGINE_DEFAULT_CREDITS,
@@ -19,21 +19,21 @@ registerEnumType(UserOnlineStatus, {
 });
 
 @Entity('users')
-export class UserEntity implements UserWire {
+export class UserEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Column({unique: true})
   username!: string;
 
-  @Column()
-  password!: string;
+  @Column({nullable: true})
+  password?: string;
 
-  @Column({name: 'mail'})
-  email!: string;
+  @Column({name: 'mail', nullable: true})
+  email?: string;
 
-  @Column({name: 'auth_ticket'})
-  gameSSO!: string;
+  @Column({name: 'auth_ticket', nullable: true})
+  gameSSO?: string;
 
   @Column({name: 'rank', type: 'int'})
   rankID: number = 1;
@@ -68,8 +68,8 @@ export class UserEntity implements UserWire {
   @Column({name: 'ip_register'})
   ipRegistered!: string;
 
-  @Column({name: 'machine_id'})
-  machineAddress!: string;
+  @Column({name: 'machine_id', nullable: true})
+  machineAddress?: string;
 
   @Column({name: 'home_room'})
   homeRoomID: number = IMAGINE_DEFAULT_HOME_ROOM;

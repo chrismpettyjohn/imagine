@@ -18,7 +18,8 @@ export class UserRepository extends BaseRepository<UserEntity> {
   async create(newEntity: Omit<UserEntity, 'id'>): Promise<UserEntity> {
     return super.create({
       ...newEntity,
-      password: this.hashService.generate(newEntity.password),
+      password:
+        newEntity.password && this.hashService.generate(newEntity.password),
     });
   }
 

@@ -48,7 +48,7 @@ export class UserResolver {
     return !!matchingBetaCode;
   }
 
-  @ResolveField()
+  @ResolveField(() => String, {nullable: true})
   @HasSession()
   async email(
     @Parent() {id, email}: UserEntity,
@@ -58,10 +58,10 @@ export class UserResolver {
     if (!canAccess) {
       return null;
     }
-    return email;
+    return email ?? null;
   }
 
-  @ResolveField()
+  @ResolveField(() => String, {nullable: true})
   @HasSession()
   async gameSSO(
     @Parent() {id, gameSSO}: UserEntity,
@@ -71,10 +71,10 @@ export class UserResolver {
     if (!canAccess) {
       return null;
     }
-    return gameSSO;
+    return gameSSO ?? null;
   }
 
-  @ResolveField()
+  @ResolveField(() => String, {nullable: true})
   @HasSession()
   async ipLast(
     @Parent() {id, ipLast}: UserEntity,
@@ -87,7 +87,7 @@ export class UserResolver {
     return ipLast;
   }
 
-  @ResolveField()
+  @ResolveField(() => String, {nullable: true})
   @HasSession()
   async ipRegistered(
     @Parent() {id, ipRegistered: ipRegisteredWith}: UserEntity,
@@ -100,7 +100,7 @@ export class UserResolver {
     return ipRegisteredWith;
   }
 
-  @ResolveField()
+  @ResolveField(() => String, {nullable: true})
   @HasSession()
   async machineAddress(
     @Parent() {id, machineAddress}: UserEntity,
@@ -110,7 +110,7 @@ export class UserResolver {
     if (!canAccess) {
       return null;
     }
-    return machineAddress;
+    return machineAddress ?? null;
   }
 
   @ResolveField('onlineStatus')

@@ -31,6 +31,9 @@ export class ForgotPasswordService {
       requestCode,
     });
     const matchingUser = await this.userRepo.findOneOrFail({id: userID});
+    if (!matchingUser.email) {
+      throw new BadRequestException();
+    }
     const forgotPasswordRequestEmailBody =
       forgotPasswordRequestSentTemplate(requestCode);
     await this.emailService.sendEmail({
@@ -69,6 +72,9 @@ export class ForgotPasswordService {
     const matchingUser = await this.userRepo.findOneOrFail({
       id: matchingForgotPasswordRequest.userID,
     });
+    if (!matchingUser.email) {
+      throw new BadRequestException();
+    }
     const forgotPasswordRequestEmailBody =
       forgotPasswordRequestConfirmationTemplate();
     await this.emailService.sendEmail({
