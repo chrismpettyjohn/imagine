@@ -1,11 +1,9 @@
 import {ConfigModel} from './config.model';
-import {PubSub} from 'graphql-subscriptions';
 import {ConfigUpdateInput} from './config.input';
+import {HasScope} from '../session/has-scope.decorator';
 import {ConfigDataloaderService} from './config.dataloader';
 import {ConfigRepository} from '../database/config.repository';
-import {Args, Mutation, Query, Resolver, Subscription} from '@nestjs/graphql';
-
-const pubSub = new PubSub();
+import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
 
 @Resolver(() => ConfigModel)
 export class ConfigResolver {
@@ -20,6 +18,7 @@ export class ConfigResolver {
   }
 
   @Mutation(() => Boolean)
+  @HasScope('manageSite')
   async configUpdate(
     @Args('configUpdateInput') configUpdateInput: ConfigUpdateInput
   ) {
@@ -28,12 +27,6 @@ export class ConfigResolver {
       ConfigUpdateInput.toEntity(configUpdateInput)
     );
     this.configDataLoader.clearByID(1);
-    pubSub.publish('configUpdated', {configUpdated: configUpdateInput});
     return true;
-  }
-
-  @Subscription(() => ConfigModel)
-  configUpdated() {
-    return pubSub.asyncIterator('configUpdated');
   }
 }

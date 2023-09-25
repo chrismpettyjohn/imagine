@@ -19,6 +19,7 @@ import {
   ResolveField,
   Parent,
 } from '@nestjs/graphql';
+import {HasScope} from '../session/has-scope.decorator';
 
 @Resolver(() => RankModel)
 export class RankResolver {
@@ -59,6 +60,7 @@ export class RankResolver {
   }
 
   @Mutation(() => RankModel)
+  @HasScope('manageRanks')
   async rankCreate(
     @Args('newRank') rankCreateInput: RankCreateInput
   ): Promise<RankModel> {
@@ -69,6 +71,7 @@ export class RankResolver {
   }
 
   @Mutation(() => Boolean)
+  @HasScope('manageRanks')
   async rankUpdate(
     @Args('filter', {type: () => RankFilterOneInput})
     filter: RankFilterOneInput,
@@ -90,6 +93,7 @@ export class RankResolver {
   }
 
   @Mutation(() => Boolean)
+  @HasScope('manageRanks')
   async rankDelete(@Args('id') id: number) {
     await this.rankRepo.delete({id});
     return true;

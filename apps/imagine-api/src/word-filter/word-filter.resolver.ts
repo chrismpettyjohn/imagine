@@ -3,7 +3,7 @@ import {WordFilterArgs} from './word-filter.args';
 import {WordFilterModel} from './word-filter.model';
 import {UserEntity} from '../database/user.entity';
 import {GetUser} from '../session/get-user.decorator';
-import {HasSession} from '../session/has-session.decorator';
+import {HasScope} from '../session/has-scope.decorator';
 import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
 import {WordFilterEntity} from '../database/word-filter.entity';
 import {WordFilterRepository} from '../database/word-filter.repository';
@@ -17,11 +17,13 @@ export class WordFilterResolver {
   constructor(private readonly wordFilterRepo: WordFilterRepository) {}
 
   @Query(() => WordFilterModel)
+  @HasScope('manageWordFilter')
   async wordFilter(@Args('id') id: number): Promise<WordFilterEntity> {
     return this.wordFilterRepo.findOneOrFail({id});
   }
 
   @Query(() => [WordFilterModel])
+  @HasScope('manageWordFilter')
   wordFilters(
     @Args() wordFilterArgs: WordFilterArgs
   ): Promise<WordFilterEntity[]> {
@@ -32,7 +34,7 @@ export class WordFilterResolver {
   }
 
   @Mutation(() => WordFilterModel)
-  @HasSession()
+  @HasScope('manageWordFilter')
   async wordFilterCreate(
     @Args('newWordFilter') wordFilterCreateInput: WordFilterCreateInput,
     @GetUser() user: UserEntity
@@ -44,6 +46,7 @@ export class WordFilterResolver {
   }
 
   @Mutation(() => Boolean)
+  @HasScope('manageWordFilter')
   async wordFilterUpdate(
     @Args('id') id: number,
     @Args('wordFilterChanges') wordFilterChanges: WordFilterUpdateInput
@@ -53,6 +56,7 @@ export class WordFilterResolver {
   }
 
   @Mutation(() => Boolean)
+  @HasScope('manageWordFilter')
   async wordFilterDelete(@Args('id') id: number) {
     await this.wordFilterRepo.delete({id});
     return true;

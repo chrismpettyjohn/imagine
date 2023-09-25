@@ -33,6 +33,27 @@ export class RankScopesInterface implements RankScopesWire {
 
   @Field({nullable: true})
   manageBugReports!: boolean;
+
+  @Field({nullable: true})
+  manageBans!: boolean;
+
+  @Field({nullable: true})
+  manageChatlogs!: boolean;
+
+  @Field({nullable: true})
+  manageGroups!: boolean;
+
+  @Field({nullable: true})
+  manageLanguages!: boolean;
+
+  @Field({nullable: true})
+  manageRanks!: boolean;
+
+  @Field({nullable: true})
+  manageSite!: boolean;
+
+  @Field({nullable: true})
+  manageWordFilter!: boolean;
 }
 
 @InputType('RankFlagsInput')

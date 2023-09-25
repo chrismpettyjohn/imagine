@@ -5,6 +5,7 @@ import {UserModel} from '../user/user.model';
 import {RoomModel} from '../room/room.model';
 import {Inject, forwardRef} from '@nestjs/common';
 import {RoomEntity} from '../database/room.entity';
+import {HasScope} from '../session/has-scope.decorator';
 import {ChatlogEntity} from '../database/chatlog.entity';
 import {UserRepository} from '../database/user.repository';
 import {RoomRepository} from '../database/room.repository';
@@ -40,11 +41,13 @@ export class ChatlogResolver {
   }
 
   @Query(() => ChatlogModel)
+  @HasScope('manageChatlogs')
   async chatlog(@Args('id') id: number): Promise<ChatlogEntity> {
     return this.chatlogRepo.findOneOrFail({id});
   }
 
   @Query(() => [ChatlogModel])
+  @HasScope('manageChatlogs')
   chatlogs(@Args() chatlogArgs: ChatlogArgs): Promise<ChatlogEntity[]> {
     return this.chatlogRepo._find(
       omit(chatlogArgs, 'other'),
@@ -53,6 +56,7 @@ export class ChatlogResolver {
   }
 
   @Mutation(() => Boolean)
+  @HasScope('manageChatlogs')
   async chatlogDelete(@Args('id') id: number) {
     await this.chatlogRepo.delete({id});
     return true;

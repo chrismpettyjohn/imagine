@@ -108,8 +108,8 @@ export class RadioRequestResolver {
     const matchingRadioRequest = await this.radioRequestRepo.findOneOrFail({
       id: filter.id,
     });
-    const userOwnsRadiORequest = matchingRadioRequest.userID === user.id!;
-    if (!userOwnsRadiORequest) {
+    const userOwnsRadioRequest = matchingRadioRequest.userID === user.id!;
+    if (!userOwnsRadioRequest) {
       throw new UnauthorizedException();
     }
     const currentDate = Dayjs().unix();

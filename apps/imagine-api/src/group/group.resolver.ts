@@ -1,6 +1,7 @@
 import {In} from 'typeorm';
 import {GroupModel} from './group.model';
 import {UserModel} from '../user/user.model';
+import {HasScope} from '../session/has-scope.decorator';
 import {UserRepository} from '../database/user.repository';
 import {GroupRepository} from '../database/group.repository';
 import {GroupFilterManyInput, GroupFilterOneInput} from './group.input';
@@ -51,6 +52,7 @@ export class GroupResolver {
   }
 
   @Mutation(() => Boolean)
+  @HasScope('manageGroups')
   async groupDelete(@Args('id') id: number) {
     await this.groupRepo.delete({id});
     return true;

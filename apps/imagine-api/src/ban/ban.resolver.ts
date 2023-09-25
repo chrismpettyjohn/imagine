@@ -4,9 +4,9 @@ import {BanModel} from './ban.model';
 import {BanEntity} from '../database/ban.entity';
 import {UserEntity} from '../database/user.entity';
 import {GetUser} from '../session/get-user.decorator';
-import {BanCreateInput, BanUpdateInput} from './ban.input';
 import {BanRepository} from '../database/ban.repository';
-import {HasSession} from '../session/has-session.decorator';
+import {HasScope} from '../session/has-scope.decorator';
+import {BanCreateInput, BanUpdateInput} from './ban.input';
 import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
 
 @Resolver(() => BanModel)
@@ -14,17 +14,19 @@ export class BanResolver {
   constructor(private readonly banRepo: BanRepository) {}
 
   @Query(() => BanModel)
+  @HasScope('manageBans')
   async ban(@Args('id') id: number): Promise<BanEntity> {
     return this.banRepo.findOneOrFail({id});
   }
 
   @Query(() => [BanModel])
+  @HasScope('manageBans')
   bans(@Args() banArgs: BanArgs): Promise<BanEntity[]> {
     return this.banRepo._find(omit(banArgs, 'other'), banArgs.other);
   }
 
   @Mutation(() => BanModel)
-  @HasSession()
+  @HasScope('manageBans')
   async banCreate(
     @Args('newBan') banCreateInput: BanCreateInput,
     @GetUser() user: UserEntity
@@ -38,6 +40,7 @@ export class BanResolver {
   }
 
   @Mutation(() => Boolean)
+  @HasScope('manageBans')
   async banUpdate(
     @Args('id') id: number,
     @Args('banChanges') banChanges: BanUpdateInput
@@ -47,6 +50,7 @@ export class BanResolver {
   }
 
   @Mutation(() => Boolean)
+  @HasScope('manageBans')
   async banDelete(@Args('id') id: number) {
     await this.banRepo.delete({id});
     return true;

@@ -1,4 +1,5 @@
 import {PubSub} from 'graphql-subscriptions';
+import {HasScope} from '../session/has-scope.decorator';
 import {LanguagePhraseInput} from './language-phrase.input';
 import {LanguagePhraseModel} from './language-phrase.model';
 import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
@@ -12,16 +13,19 @@ export class LanguagePhraseResolver {
   constructor(private readonly languagePhraseRepo: LanguagePhraseRepository) {}
 
   @Query(() => LanguagePhraseModel)
+  @HasScope('manageLanguages')
   async languagePhrase(@Args('id') id: number): Promise<LanguagePhraseEntity> {
     return this.languagePhraseRepo.findOneOrFail({id});
   }
 
   @Query(() => [LanguagePhraseModel])
+  @HasScope('manageLanguages')
   languagePhrases(): Promise<LanguagePhraseEntity[]> {
     return this.languagePhraseRepo._find();
   }
 
   @Mutation(() => LanguagePhraseModel)
+  @HasScope('manageLanguages')
   languagePhraseCreate(
     @Args('input') input: LanguagePhraseInput
   ): Promise<LanguagePhraseEntity> {
@@ -32,6 +36,7 @@ export class LanguagePhraseResolver {
   }
 
   @Mutation(() => LanguagePhraseModel)
+  @HasScope('manageLanguages')
   async languagePhraseUpdate(
     @Args('id') languagePhraseID: number,
     @Args('input') input: LanguagePhraseInput
@@ -41,6 +46,7 @@ export class LanguagePhraseResolver {
   }
 
   @Mutation(() => Boolean)
+  @HasScope('manageLanguages')
   async languagePhraseDelete(@Args('id') languageID: number): Promise<Boolean> {
     await this.languagePhraseRepo.delete({id: languageID});
     return true;

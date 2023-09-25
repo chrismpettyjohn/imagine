@@ -1,5 +1,6 @@
 export interface RankScopesWire {
   accessAdminPanel: boolean;
+  manageSite: boolean;
   manageArticles: boolean;
   manageUsers: boolean;
   manageRooms: boolean;
@@ -9,6 +10,12 @@ export interface RankScopesWire {
   manageStaffApplications: boolean;
   manageRadioRequests: boolean;
   manageBugReports: boolean;
+  manageBans: boolean;
+  manageChatlogs: boolean;
+  manageGroups: boolean;
+  manageLanguages: boolean;
+  manageRanks: boolean;
+  manageWordFilter: boolean;
 }
 
 export interface RankFlagsWire {
@@ -18,6 +25,7 @@ export interface RankFlagsWire {
 
 export const exampleRankScopesWire: RankScopesWire = {
   accessAdminPanel: false,
+  manageSite: false,
   manageArticles: false,
   manageUsers: false,
   manageRooms: false,
@@ -27,10 +35,17 @@ export const exampleRankScopesWire: RankScopesWire = {
   manageStaffApplications: false,
   manageRadioRequests: false,
   manageBugReports: false,
+  manageBans: false,
+  manageChatlogs: false,
+  manageGroups: false,
+  manageLanguages: false,
+  manageRanks: false,
+  manageWordFilter: false,
 };
 
 export const rankScopesLabels: Record<keyof RankScopesWire, string> = {
   accessAdminPanel: 'Access Admin Panel',
+  manageSite: 'Manage Site',
   manageArticles: 'Manage Articles',
   manageUsers: 'Manage Users',
   manageRooms: 'Manage Rooms',
@@ -40,6 +55,12 @@ export const rankScopesLabels: Record<keyof RankScopesWire, string> = {
   manageStaffApplications: 'Manage Staff Applications',
   manageRadioRequests: 'Manage Radio Requests',
   manageBugReports: 'Manage Bug Reports',
+  manageBans: 'Manage Bans',
+  manageChatlogs: 'Manage Chatlogs',
+  manageGroups: 'Manage Groups',
+  manageLanguages: 'Manage Languages',
+  manageRanks: 'Manage Ranks',
+  manageWordFilter: 'Manage Wordfilter',
 };
 
 export const rankFlagsLabels: Record<keyof RankFlagsWire, string> = {

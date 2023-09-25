@@ -14,6 +14,7 @@ import {
   ResolveField,
   Parent,
 } from '@nestjs/graphql';
+import {HasScope} from '../session/has-scope.decorator';
 
 @Resolver(() => RoomModel)
 export class RoomResolver {
@@ -53,6 +54,7 @@ export class RoomResolver {
   }
 
   @Mutation(() => Boolean)
+  @HasScope('manageRooms')
   async roomDelete(@Args('id') id: number) {
     await this.roomRepo.delete({id});
     return true;

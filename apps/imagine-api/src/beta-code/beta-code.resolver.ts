@@ -1,9 +1,19 @@
 import {In} from 'typeorm';
 import {v4 as uuidv4} from 'uuid';
+import {UserModel} from '../user/user.model';
 import {BetaCodeModel} from './beta-code.model';
 import {UserEntity} from '../database/user.entity';
-import {BadRequestException} from '@nestjs/common';
+import {GetUser} from '../session/get-user.decorator';
+import {HasScope} from '../session/has-scope.decorator';
+import {UserRepository} from '../database/user.repository';
+import {BetaCodeEntity} from '../database/beta-code.entity';
 import {HasSession} from '../session/has-session.decorator';
+import {BetaCodeRepository} from '../database/beta-code.repository';
+import {
+  BetaCodeFilterManyInput,
+  BetaCodeFilterOneInput,
+  BetaCodeRedeemInput,
+} from './beta-code.input';
 import {
   Args,
   Mutation,
@@ -12,17 +22,6 @@ import {
   ResolveField,
   Parent,
 } from '@nestjs/graphql';
-import {BetaCodeRepository} from '../database/beta-code.repository';
-import {
-  BetaCodeFilterManyInput,
-  BetaCodeFilterOneInput,
-  BetaCodeRedeemInput,
-} from './beta-code.input';
-import {HasScope} from '../session/has-scope.decorator';
-import {UserRepository} from '../database/user.repository';
-import {UserModel} from '../user/user.model';
-import {BetaCodeEntity} from '../database/beta-code.entity';
-import {GetUser} from '../session/get-user.decorator';
 
 @Resolver(() => BetaCodeModel)
 @HasSession()
@@ -43,6 +42,7 @@ export class BetaCodeResolver {
   }
 
   @Query(() => [BetaCodeModel])
+  @HasScope('manageBetaCodes')
   async betaCodes(
     @Args('filter', {type: () => BetaCodeFilterManyInput})
     filter: BetaCodeFilterManyInput
@@ -59,6 +59,7 @@ export class BetaCodeResolver {
   }
 
   @Query(() => BetaCodeModel)
+  @HasScope('manageBetaCodes')
   async betaCode(
     @Args('filter', {type: () => BetaCodeFilterOneInput})
     filter: BetaCodeFilterOneInput

@@ -89,6 +89,7 @@ export class BugReportResolver {
   }
 
   @Mutation(() => BugReportModel)
+  @HasSession()
   async bugReportCreate(
     @Args({name: 'input', type: () => BugReportCreateInput})
     input: BugReportCreateInput,
