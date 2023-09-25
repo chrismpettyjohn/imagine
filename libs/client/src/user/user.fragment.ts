@@ -18,9 +18,6 @@ export interface UserFragment {
   facebookID?: string;
   googleID?: string;
   language?: string;
-  ipLast?: string;
-  ipRegistered?: string;
-  machineAddress?: string;
   hasBetaCode?: boolean;
   rank: RankFragment;
 }
@@ -44,9 +41,6 @@ export const USER_FRAGMENT: any = gql`
     facebookID
     googleID
     language
-    ipLast
-    ipRegistered
-    machineAddress
     hasBetaCode
     rank {
       ...RankFragment

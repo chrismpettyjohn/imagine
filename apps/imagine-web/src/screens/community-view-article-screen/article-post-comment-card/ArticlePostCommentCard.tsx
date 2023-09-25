@@ -1,7 +1,10 @@
+import { Link } from 'wouter';
 import { toast } from 'react-toastify';
+import { UserGuard } from '@imagine-cms/web';
 import { Card } from '../../../components/card/Card';
 import React, { SyntheticEvent, useState } from 'react';
 import { useArticleCommentCreate } from '@imagine-cms/client';
+import { GuestGuard } from '../../../components/guest-guard/GuestGuard';
 import { ArticlePostCommentCardForm } from './ArticlePostCommentCard.styled';
 import { ArticlePostCommentCardProps } from './ArticlePostCommentCard.types';
 
@@ -24,13 +27,18 @@ export function ArticlePostCommentCard({ articleID, onPost }: ArticlePostComment
   return (
     <Card header="Post Comment">
       <ArticlePostCommentCardForm onSubmit={onSubmit}>
-        <div className="form-group">
-          <label htmlFor="comment" className="sr-only">Comment</label>
-          <textarea rows={8} id="comment" className="form-control" value={comment} onChange={e => setComment(e?.target?.value ?? '')} />
-        </div>
-        <div className="form-group mb-0">
-          <button className="btn btn-primary btn-block" type="submit">Post</button>
-        </div>
+        <GuestGuard redirect={false}>
+          <p><Link to="/login">Login</Link> to post comments</p>
+        </GuestGuard>
+        <UserGuard redirect={false}>
+          <div className="form-group">
+            <label htmlFor="comment" className="sr-only">Comment</label>
+            <textarea rows={8} id="comment" className="form-control" value={comment} onChange={e => setComment(e?.target?.value ?? '')} />
+          </div>
+          <div className="form-group mb-0">
+            <button className="btn btn-primary btn-block" type="submit">Post</button>
+          </div>
+        </UserGuard>
       </ArticlePostCommentCardForm>
     </Card>
   )

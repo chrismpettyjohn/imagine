@@ -1,7 +1,10 @@
+import { Link } from 'wouter';
 import { Card } from '../card/Card';
 import { Form } from '../form/Form';
 import { toast } from 'react-toastify';
 import { Input } from '../input/Input';
+import { UserGuard } from '@imagine-cms/web';
+import { GuestGuard } from '../guest-guard/GuestGuard';
 import { ButtonPrimary } from '../button/Button.remix';
 import { useRadioRequestCreate } from '@imagine-cms/client';
 import React, { ChangeEvent, SyntheticEvent, useState } from 'react';
@@ -36,13 +39,18 @@ export function CreateRadioRequestCard({ onCreation }: CreateRadioRequestCardPro
 
   return (
     <Card header="Request Song">
-      <Form disabled={isDisabled} onSubmit={onCreateRadioRequest}>
-        <label>Request</label>
-        <Input type="text" value={content} onChange={onChangeContent} />
-        <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
-          <ButtonPrimary disabled={isDisabled} type="submit">Save</ButtonPrimary>
-        </div>
-      </Form>
+      <GuestGuard redirect={false}>
+        <p><Link to="/login">Login</Link> to send a request to the DJ</p>
+      </GuestGuard>
+      <UserGuard redirect={false}>
+        <Form disabled={isDisabled} onSubmit={onCreateRadioRequest}>
+          <label>Request</label>
+          <Input type="text" value={content} onChange={onChangeContent} />
+          <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
+            <ButtonPrimary disabled={isDisabled} type="submit">Save</ButtonPrimary>
+          </div>
+        </Form>
+      </UserGuard>
     </Card>
   )
 }

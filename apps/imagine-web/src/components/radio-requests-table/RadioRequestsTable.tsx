@@ -1,22 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import DataTable from 'react-data-table-component';
-import { useRadioRequestFetchMany } from '@imagine-cms/client';
+import { RadioRequestsTableProps } from './RadioRequestsTable.types';
 import { RADIO_REQUEST_TABLE_COLUMNS } from './RadioRequestsTable.const';
 
 
-export function RadioRequestsTable() {
-  const fetchRadioRequests = useRadioRequestFetchMany();
-
-  useEffect(() => {
-    fetchRadioRequests.fetch({ limit: 25 });
-  }, []);
-
+export function RadioRequestsTable({ radioRequests }: RadioRequestsTableProps) {
   return (
     <DataTable
       columns={RADIO_REQUEST_TABLE_COLUMNS}
-      data={fetchRadioRequests.data ?? []}
+      data={radioRequests}
     />
   );
 };
-
-export default RadioRequestsTable;

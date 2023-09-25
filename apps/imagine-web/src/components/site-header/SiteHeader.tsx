@@ -82,11 +82,25 @@ export function SiteHeader() {
               </ButtonDanger>
             </a>
           </ScopeGuard>
-          <Link to="/play">
-            <ButtonPrimary>
-              Play Game
-            </ButtonPrimary>
-          </Link>
+          <UserGuard redirect={false}>
+            <Link to="/play">
+              <ButtonPrimary>
+                Play Game
+              </ButtonPrimary>
+            </Link>
+          </UserGuard>
+          <GuestGuard redirect={false}>
+            <Link to="/login">
+              <ButtonPrimary>
+                Login
+              </ButtonPrimary>
+            </Link>
+            <Link to="/register">
+              <ButtonPrimary>
+                Create Account
+              </ButtonPrimary>
+            </Link>
+          </GuestGuard>
         </SiteHeaderActions>
       </SiteHeaderContent>
     </SiteHeaderElement >
