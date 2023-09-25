@@ -11,15 +11,19 @@ export class DiscordAuthResolver {
   async discordUserAuthenticate(
     @Args('input', {type: () => DiscordAuthInput}) input: DiscordAuthInput
   ): Promise<DiscordAuthModel> {
-    const discordService = new DiscordService(input.discordAuthToken);
-    const discordUser = await discordService.getUser();
-    const sessionToken = await this.discordAuthService.discordUserAuthenticate(
-      discordUser
-    );
-    return {
-      sessionID: sessionToken.session.id!,
-      userID: sessionToken.session.userID,
-      sessionToken: sessionToken.accessToken,
-    };
+    try {
+      const discordService = new DiscordService(input.discordAuthToken);
+      const discordUser = await discordService.getUser();
+      const sessionToken =
+        await this.discordAuthService.discordUserAuthenticate(discordUser);
+      return {
+        sessionID: sessionToken.session.id!,
+        userID: sessionToken.session.userID,
+        sessionToken: sessionToken.accessToken,
+      };
+    } catch (e: any) {
+      console.log(e);
+      throw e;
+    }
   }
 }
