@@ -4,6 +4,7 @@ import { Card } from '../../components/card/Card';
 import React, { useContext, useEffect, useMemo } from 'react';
 import { localStorageService, sessionContext } from '@imagine-cms/web';
 import { useDiscordUserAuthenticate, useUserFetchOne } from '@imagine-cms/client';
+import { LoadingMessage } from '../../components/loading-message/LoadingMessage';
 
 export function LoginWithDiscordScreen() {
   const [, setLocation] = useLocation();
@@ -19,10 +20,10 @@ export function LoginWithDiscordScreen() {
     try {
       const session = await discordUserAuthenticate.execute({ discordAuthToken: authCode });
       localStorageService.set('SESSION', session.sessionToken);
-      const matchingUser = await fetchUser.fetch({ id: discordUserAuthenticate.data!.userID })
-      toast.success(`Welcome back, ${matchingUser.username}`);
+      const matchingUser = await fetchUser.fetch({ id: session.userID })
       _setSession(matchingUser as any);
       setLocation('/me');
+      toast.success(`Welcome back, ${matchingUser.username}`);
     } catch (e: any) {
       toast.error('There was a problem logging in');
     }
@@ -40,7 +41,9 @@ export function LoginWithDiscordScreen() {
 
   return (
     <Card header="Discord Login">
-      logging in with token <b>{discordAuthCode}</b>
+      <LoadingMessage>
+        Logging in via Discord
+      </LoadingMessage>
     </Card>
   )
 }

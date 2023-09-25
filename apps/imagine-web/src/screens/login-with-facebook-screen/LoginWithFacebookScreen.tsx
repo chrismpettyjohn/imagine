@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { Card } from '../../components/card/Card';
 import React, { useContext, useEffect, useMemo } from 'react';
 import { localStorageService, sessionContext } from '@imagine-cms/web';
+import { LoadingMessage } from '../../components/loading-message/LoadingMessage';
 import { useFacebookUserAuthenticate, useUserFetchOne } from '@imagine-cms/client';
 
 export function LoginWithFacebookScreen() {
@@ -20,7 +21,7 @@ export function LoginWithFacebookScreen() {
     try {
       const session = await facebookUserAuthenticate.execute({ facebookAuthToken: authCode });
       localStorageService.set('SESSION', session.sessionToken);
-      const matchingUser = await fetchUser.fetch({ id: facebookUserAuthenticate.data!.userID })
+      const matchingUser = await fetchUser.fetch({ id: session.userID })
       toast.success(`Welcome back, ${matchingUser.username}`);
       _setSession(matchingUser as any);
       setLocation('/me');
@@ -41,7 +42,9 @@ export function LoginWithFacebookScreen() {
 
   return (
     <Card header="Facebook Login">
-      logging in with token <b>{facebookAuthCode}</b>
+      <LoadingMessage>
+        Logging in via Facebook
+      </LoadingMessage>
     </Card>
   )
 }

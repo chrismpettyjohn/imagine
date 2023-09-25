@@ -4,6 +4,7 @@ import { Card } from '../../components/card/Card';
 import React, { useContext, useEffect, useMemo } from 'react';
 import { localStorageService, sessionContext } from '@imagine-cms/web';
 import { useGoogleUserAuthenticate, useUserFetchOne } from '@imagine-cms/client';
+import { LoadingMessage } from '../../components/loading-message/LoadingMessage';
 
 export function LoginWithGoogleScreen() {
   const [, setLocation] = useLocation();
@@ -19,7 +20,7 @@ export function LoginWithGoogleScreen() {
     try {
       const session = await googleUserAuthenticate.execute({ googleAuthToken: authCode });
       localStorageService.set('SESSION', session.sessionToken);
-      const matchingUser = await fetchUser.fetch({ id: googleUserAuthenticate.data!.userID });
+      const matchingUser = await fetchUser.fetch({ id: session.userID });
       toast.success(`Welcome back, ${matchingUser.username}`);
       _setSession(matchingUser as any);
       setLocation('/me');
@@ -40,7 +41,9 @@ export function LoginWithGoogleScreen() {
 
   return (
     <Card header="Google Login">
-      logging in with token <b>{googleAuthCode}</b>
+      <LoadingMessage>
+        Logging in via Google
+      </LoadingMessage>
     </Card>
   )
 }
