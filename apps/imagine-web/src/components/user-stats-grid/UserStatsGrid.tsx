@@ -24,7 +24,7 @@ export function UserStatsGrid({ user }: UserStatsGridProps) {
         Pixels
       </PixelStatsContainerElement>
       <Link to={`/ranks/${user.rank?.id}`}>
-        <HabboClubStatsContainerElement>
+        <HabboClubStatsContainerElement style={{ cursor: 'pointer' }}>
           <Badge badge={{ code: user.rank?.badgeCode }} />
           <b>{user.rank?.name}</b>
         </HabboClubStatsContainerElement>
