@@ -4,7 +4,7 @@ export const SmallUserProfileContainerUserContainer = styled.div`
   background: ${({ theme }) => theme.color.s30};
   border:${({ theme }) => `2px solid ${theme.color.s40}`};
   border-radius: ${({ theme }) => theme.radius.oneUnit};
-  color: ${({ theme }) => theme.color.s60};
+  color: ${({ theme }) => theme.color.s20};
   cursor: pointer;
   display: flex;
   flex-direction: column;

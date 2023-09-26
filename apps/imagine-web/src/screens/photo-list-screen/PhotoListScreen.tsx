@@ -29,7 +29,7 @@ export function PhotoListScreen() {
         }
         {
           data?.map(_ => (
-            <PhotoContainer key={`photo_${_.id}`} story={_} style={{ height: 250, width: 250 }} />
+            <PhotoContainer key={`photo_${_.id}`} story={_} style={{ height: '100%', width: '100%' }} />
           ))
         }
       </Grid>
