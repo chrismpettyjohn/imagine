@@ -29,7 +29,7 @@ export function SiteHeader() {
             </UserGuard>
             <li>
               <Link to="/community/articles">
-                News Articles
+                News
               </Link>
             </li>
             <li>
@@ -49,7 +49,7 @@ export function SiteHeader() {
             </li>
             <li>
               <Link to="/community/online-players">
-                Online Players
+                Online Users
               </Link>
             </li>
             <li>
@@ -57,15 +57,15 @@ export function SiteHeader() {
                 High Scores
               </Link>
             </li>
-            <li>
-              <Link to="/bug-reports">
-                Bug Reports
-              </Link>
-            </li>
           </ul>
         </SiteHeaderNavigation>
         <SiteHeaderActions>
           <UserGuard>
+            <Link to="/bug-reports">
+              <ButtonNoBorder style={{ padding: 0 }}>
+                <i className="fa fa-bug fa-2x" />
+              </ButtonNoBorder>
+            </Link>
             <Link to="/settings">
               <ButtonNoBorder style={{ padding: 0 }}>
                 <i className="fa fa-cog fa-2x" />
@@ -80,14 +80,14 @@ export function SiteHeader() {
           <ScopeGuard scope="accessAdminPanel" redirect={false}>
             <a href={ADMIN_URL}>
               <ButtonDanger>
-                Admin Panel
+                Admin
               </ButtonDanger>
             </a>
           </ScopeGuard>
           <UserGuard redirect={false}>
             <Link to="/play">
               <ButtonPrimary>
-                Play Game
+                Play
               </ButtonPrimary>
             </Link>
           </UserGuard>
