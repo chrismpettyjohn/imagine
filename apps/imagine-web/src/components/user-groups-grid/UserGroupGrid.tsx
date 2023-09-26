@@ -4,6 +4,7 @@ import { UserGroupGridProps } from './UserGroupGrid.types';
 import { UserGroupGridElement } from './UserGroupGrid.styled';
 import { useGroupMembershipFetchMany } from '@imagine-cms/client';
 import { GroupGridContainer } from '../group-grid-container/GroupGridContainer';
+import { GroupGridContainerMock } from '../group-grid-container/GroupGridContainerMock';
 
 export function UserGroupsGrid({ user }: UserGroupGridProps) {
   const groupMemberships = useGroupMembershipFetchMany();
@@ -16,7 +17,11 @@ export function UserGroupsGrid({ user }: UserGroupGridProps) {
     <Card header="My Groups">
       <UserGroupGridElement>
         {
-          groupMemberships.loading && <i className="fa fa-spinner fa-spin" />
+          groupMemberships.loading && (
+            <>
+              <GroupGridContainerMock />
+            </>
+          )
         }
         {
           groupMemberships.data?.length === 0 && <p>You're not in any groups</p>

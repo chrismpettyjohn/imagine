@@ -4,6 +4,7 @@ import { useFriendshipFetchMany } from '@imagine-cms/client';
 import { UserFriendsGridProps } from './UserFriendsGrid.types';
 import { UserFriendsGridContainer } from './UserFriendsGrid.styled';
 import { SmallUserProfileContainer } from '../small-user-profile-container/SmallUserProfileContainer';
+import { SmallUserProfileContainerMock } from '../small-user-profile-container/SmallUserProfileContainerMock';
 
 export function UserFriendsGrid({ user }: UserFriendsGridProps) {
   const friendshipFetch = useFriendshipFetchMany();
@@ -15,7 +16,11 @@ export function UserFriendsGrid({ user }: UserFriendsGridProps) {
   return (
     <Card header="My Friends">
       {
-        friendshipFetch.loading && <i className="fa fa-spinner fa-spin" />
+        friendshipFetch.loading && (
+          <>
+            <SmallUserProfileContainerMock />
+          </>
+        )
       }
       {
         friendshipFetch.data?.length === 0 && <p>You don't have any friends</p>

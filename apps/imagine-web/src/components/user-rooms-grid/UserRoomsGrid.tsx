@@ -4,6 +4,7 @@ import { useRoomFetchMany } from '@imagine-cms/client';
 import { UserRoomsGridProps } from './UserRoomsGrid.types';
 import { UserRoomContainerGridElement } from './UserRoomsGrid.styled';
 import { RoomGridContainer } from '../room-grid-container/RoomGridContainer';
+import { RoomGridContainerMock } from '../room-grid-container/RoomGridContainerMock';
 
 export function UserRoomsGrid({ user }: UserRoomsGridProps) {
   const fetchRooms = useRoomFetchMany();
@@ -15,7 +16,11 @@ export function UserRoomsGrid({ user }: UserRoomsGridProps) {
   return (
     <Card header="My Rooms">
       {
-        fetchRooms.loading && <i className="fa fa-spinner fa-spin" />
+        fetchRooms.loading && (
+          <>
+            <RoomGridContainerMock />
+          </>
+        )
       }
       {
         fetchRooms.data?.length === 0 && <p>You don't own any rooms</p>
