@@ -12,6 +12,11 @@ export function SmallUserProfileContainerLazy({ userID }: { userID: number }) {
     onFetchUser();
   }, [userID]);
 
+  if (fetchUser.error) {
+    console.log(`Failed to display user ${userID}`)
+    return null;
+  }
+
   if (!fetchUser.data) {
     return <SmallUserProfileContainerMock />
   }
