@@ -39,7 +39,7 @@ export function SiteHeader() {
               </Link>
             </li>
             <li>
-              <Link to="/community/staff">
+              <Link to="/ranks">
                 Staff Team
               </Link>
             </li>

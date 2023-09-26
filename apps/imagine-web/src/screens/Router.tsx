@@ -10,8 +10,10 @@ import { ProfileScreen } from './profile-screen/ProfileScreen';
 import { LandingScreen } from './landing-screen/LandingScreen';
 import { SettingsScreen } from './settings-screen/SettingsScreen';
 import { RegisterScreen } from './register-screen/RegisterScreen';
+import { RankViewScreen } from './rank-view-screen/RankViewScreen';
 import { PlayGameScreen } from './play-game-screen/PlayGameScreen';
 import { RoomViewScreen } from './room-view-screen/RoomViewScreen';
+import { RankListScreen } from './rank-list-screen/RankListScreen';
 import { PhotoListScreen } from './photo-list-screen/PhotoListScreen';
 import { GroupViewScreen } from './group-view-screen/GroupViewScreen';
 import { BugReportsScreen } from './bug-reports-screen/BugReportsScreen';
@@ -19,7 +21,6 @@ import { ProfileViewScreen } from './profile-view-screen/ProfileViewScreen';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
 import { BugReportViewScreen } from './bug-report-view-screen/BugReportViewScreen';
 import { ForgotPasswordScreen } from './forgot-password-screen/ForgotPasswordScreen';
-import { CommunityStaffScreen } from './community-staff-screen/CommunityStaffScreen';
 import { LoginWithDeviceScreen } from './login-with-device-screen/LoginWithDeviceScreen';
 import { LoginWithGoogleScreen } from './login-with-google-screen/LoginWithGoogleScreen';
 import { LoginWithDiscordScreen } from './login-with-discord-screen/LoginWithDiscordScreen';
@@ -114,8 +115,12 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     view: RadioScreen,
   },
   {
-    path: '/community/staff',
-    view: CommunityStaffScreen,
+    path: '/ranks',
+    view: RankListScreen,
+  },
+  {
+    path: '/ranks/:rankID',
+    view: RankViewScreen,
   },
   {
     path: '/community/staff/:rankID/apply',

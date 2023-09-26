@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'wouter';
 import { Badge } from '../badge/Badge';
 import { UserStatsGridProps } from './UserStatsGrid.types';
 import { UserStatsGridElement } from './UserStatsGrid.styled';
@@ -22,10 +23,12 @@ export function UserStatsGrid({ user }: UserStatsGridProps) {
         <b> {user.activityPoints?.toLocaleString()}</b>
         Pixels
       </PixelStatsContainerElement>
-      <HabboClubStatsContainerElement>
-        <Badge badge={{ code: user.rank?.badgeCode }} />
-        <b>{user.rank?.name}</b>
-      </HabboClubStatsContainerElement>
+      <Link to={`/ranks/${user.rank?.id}`}>
+        <HabboClubStatsContainerElement>
+          <Badge badge={{ code: user.rank?.badgeCode }} />
+          <b>{user.rank?.name}</b>
+        </HabboClubStatsContainerElement>
+      </Link>
     </UserStatsGridElement >
   )
 }
