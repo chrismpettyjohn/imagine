@@ -12,14 +12,18 @@ export function RankListContainer({ rank }: RankListContainerProps) {
   const fetchRankUsers = useRankFetchOneWithUsers();
 
   useEffect(() => {
-    fetchRankUsers.fetch({ id: rank.id })
+    fetchRankUsers.fetch({ id: rank.id, })
   }, [rank.id]);
 
   return (
     <Card>
       <RankListContainerHeader>
-        <h1>{rank.name}</h1>
-        <Badge badge={{ code: rank.badgeCode }} />
+        <Link to={`/ranks/${rank.id}`}>
+          <h1 style={{ cursor: 'pointer' }}>{rank.name}</h1>
+        </Link>
+        <Link to={`/ranks/${rank.id}`}>
+          <Badge badge={{ code: rank.badgeCode }} style={{ cursor: 'pointer' }} />
+        </Link>
       </RankListContainerHeader>
       {
         rank.flags?.acceptingApplications && (
