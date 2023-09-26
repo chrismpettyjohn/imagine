@@ -7,6 +7,7 @@ export const GROUP_FRAGMENT: any = gql`
     badge
     description
     userID
+    roomID
   }
 `
 
@@ -16,4 +17,5 @@ export interface GroupFragment {
   badge: string;
   description: string;
   userID: number;
+  roomID: number;
 }

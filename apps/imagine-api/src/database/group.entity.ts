@@ -25,6 +25,9 @@ export class GroupEntity implements GroupWire {
   @Column({name: 'user_id'})
   userID!: number;
 
+  @Column({name: 'room_id'})
+  roomID!: number;
+
   @ManyToOne(() => UserEntity)
   @JoinColumn({name: 'user_id'})
   user?: UserEntity;

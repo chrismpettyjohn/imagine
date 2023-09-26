@@ -201,6 +201,7 @@ type GroupModel {
   description: String
   badge: String
   userID: Float
+  roomID: Float
   user: UserModel
 }
 
