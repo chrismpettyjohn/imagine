@@ -39,7 +39,7 @@ export const ArticleHeaderBackground = styled.img`
 `
 
 export const ArticleHeaderOverlay = styled.div`
-  background: black;
+  background: ${({ theme }) => theme.color.s30};
   opacity: 0.65;
   position: absolute;
   top: 0;

@@ -34,7 +34,7 @@ export const ConnectedAccountCardInformationContainer = styled.div<{ $connected:
 
 export const ConnectedAccountCardStatusContainer = styled.div`
   align-items: center;
-  background: black;
+  background: ${({ theme }) => theme.color.s30};
   display: flex;
   flex: 1;
   justify-content: center;

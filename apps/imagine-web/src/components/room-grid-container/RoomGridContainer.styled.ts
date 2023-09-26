@@ -27,7 +27,7 @@ export const RoomGridContainerInformationWrapper = styled.div`
 
 export const RoomGridContainerInformationContainer = styled.div`
   align-items: center;
-  background: black;
+  background: ${({ theme }) => theme.color.s30};
   display: flex;
   flex: 1;
   font-size: ${({ theme }) => theme.fontSize.oneUnit};

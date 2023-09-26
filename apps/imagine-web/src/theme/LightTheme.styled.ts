@@ -13,11 +13,11 @@ export const lightTheme: ImagineTheme = {
   color: {
     black: '#000000',
     brand: '#005E97',
-    s10: '#EAEAEA',
+    s10: '#FFFFFF',
     s20: '#FFFFFF',
-    s30: '#197AA0',
+    s30: '#6C6F78',
     s40: '#BDBCBC',
-    s50: '#BDBCBC',
+    s50: '#23272A',
     s60: 'black',
   },
   space: {
