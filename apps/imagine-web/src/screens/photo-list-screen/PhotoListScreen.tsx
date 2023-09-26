@@ -12,7 +12,7 @@ export function PhotoListScreen() {
 
   return (
     <>
-      <h1>Photos</h1>
+      <h1>{loading && <i className="fa fa-spinner fa-spin" style={{ marginRight: 8 }} />}Photos</h1>
       <br />
       <div style={{ display: 'flex', flex: 1, flexBasis: '100%', flexWrap: 'wrap', gap: 16, width: '100%' }}>
         {
