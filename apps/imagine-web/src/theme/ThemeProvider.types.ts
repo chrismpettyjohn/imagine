@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export type GridSizes = 'small' | 'normal' | 'large';
+export type GridSizes = 'small' | 'normal' | 'large' | 'extraLarge';
 
 export interface ImagineTheme {
   name: string;

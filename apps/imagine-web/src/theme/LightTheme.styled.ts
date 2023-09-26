@@ -41,6 +41,7 @@ export const lightTheme: ImagineTheme = {
     small: 'repeat(auto-fit, minmax(150px, 1fr))',
     normal: 'repeat(auto-fit, minmax(300px, 1fr))',
     large: 'repeat(auto-fit, minmax(450px, 1fr))',
+    extraLarge: 'repeat(auto-fit, minmax(600px, 1fr))',
   },
   maxWidth: '1500px'
 }
