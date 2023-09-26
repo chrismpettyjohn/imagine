@@ -23,7 +23,7 @@ export function SiteContainer() {
           !showClient && (
             <>
               <PageContainerElement>
-                <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between', marginBottom: 16 }}>
                   <OnlineUserCount />
                   <ChangeLanguageButton />
                 </div>

@@ -1,8 +1,8 @@
-import { Grid } from '../grid/Grid';
 import React, { useEffect } from 'react';
 import { useUserBadgeFetchMany } from '@imagine-cms/client';
 import { BadgeContainer } from '../badge-container/BadgeContainer';
 import { UserBadgeContainerGridProps } from './UserBadgeContainerGrid.types';
+import { UserBadgeContainerGridElement } from './UserBadgeContainerGrid.styled';
 
 export function UserBadgeContainerGrid({ user }: UserBadgeContainerGridProps) {
   const fetchUserBadges = useUserBadgeFetchMany();
@@ -12,7 +12,7 @@ export function UserBadgeContainerGrid({ user }: UserBadgeContainerGridProps) {
   }, [user.id]);
 
   return (
-    <Grid>
+    <UserBadgeContainerGridElement>
       {
         fetchUserBadges.loading && <i className="fa fa-spinner fa-spin" />
       }
@@ -21,6 +21,6 @@ export function UserBadgeContainerGrid({ user }: UserBadgeContainerGridProps) {
           <BadgeContainer key={`user_badge_${_.id}`} badge={{ code: _.badgeCode } as any} />
         ))
       }
-    </Grid>
+    </UserBadgeContainerGridElement>
   )
 }

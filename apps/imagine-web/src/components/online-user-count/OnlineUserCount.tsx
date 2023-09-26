@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useUsersOnlineCount } from '@imagine-cms/client';
+import { OnlineUserCountElement } from './OnlineUserCount.styled';
 
 const ONE_SECOND = 1000;
 
@@ -13,5 +14,5 @@ export function OnlineUserCount() {
     })
   })
 
-  return <div><b>{usersOnlineCount.data ? Number(usersOnlineCount.data).toLocaleString() : <i className="fa fa-spinner fa-spin" />}</b> users online</div>
+  return <OnlineUserCountElement><b>{usersOnlineCount.data ? Number(usersOnlineCount.data).toLocaleString() : <i className="fa fa-spinner fa-spin" />}</b> users online</OnlineUserCountElement>
 }

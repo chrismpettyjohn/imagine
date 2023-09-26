@@ -3,7 +3,7 @@ import { ImagineTheme } from "./ThemeProvider.types";
 export const lightTheme: ImagineTheme = {
   name: 'Light',
   fontFamily: {
-    primary: 'Maven Pro'
+    primary: `Dosis', sans-serif`
   },
   fontSize: {
     halfUnit: '.8rem',
@@ -12,7 +12,7 @@ export const lightTheme: ImagineTheme = {
   },
   color: {
     black: '#000000',
-    brand: '#711b1eff',
+    brand: '#005E97',
     s10: '#EAEAEA',
     s20: '#FFFFFF',
     s30: '#197AA0',

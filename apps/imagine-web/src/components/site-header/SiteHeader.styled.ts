@@ -33,7 +33,7 @@ export const SiteHeaderContent = styled.div`
       text-decoration: none;
 
       &:hover {
-        color: ${({ theme }) => theme.color.s30};
+        color: ${({ theme }) => theme.color.brand};
       }
     }
   }
@@ -41,6 +41,8 @@ export const SiteHeaderContent = styled.div`
 
 export const SiteHeaderNavigation = styled.div`
   display: flex;
+  object-align: center;
+  align-items: center;
   flex: 1;
 `
 

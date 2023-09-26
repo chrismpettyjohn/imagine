@@ -1,10 +1,10 @@
 import React from 'react';
-import { LatestArticlesList } from '../../components/latest-articles-list/LatestArticlesList';
+import { LatestArticlesGrid } from '../../components/latest-articles-grid/LatestArticlesGrid';
 
 export function CommunityListArticlesScreen() {
   return (
     <>
-      <LatestArticlesList />
+      <LatestArticlesGrid />
     </>
   )
 }
