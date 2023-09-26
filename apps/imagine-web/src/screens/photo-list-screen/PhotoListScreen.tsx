@@ -14,7 +14,7 @@ export function PhotoListScreen() {
     <>
       <h1>Photos</h1>
       <br />
-      <div style={{ display: 'flex', flexBasis: '100%', flexWrap: 'wrap', gap: 16 }}>
+      <div style={{ display: 'flex', flex: 1, flexBasis: '100%', flexWrap: 'wrap', gap: 16, width: '100%' }}>
         {
           loading && (
             <>

@@ -1,6 +1,8 @@
+import { Link } from 'wouter';
 import { toast } from 'react-toastify';
 import { Card } from '../../../components/card/Card';
 import React, { SyntheticEvent, useState } from 'react';
+import { GuestGuard, UserGuard } from '@imagine-cms/web';
 import { Button } from '../../../components/button/Button';
 import { usePhotoCommentCreate } from '@imagine-cms/client';
 import { Textarea } from '../../../components/textarea/Textarea';
@@ -24,12 +26,17 @@ export function PhotoCreateCommentCard({ photoID, onCreation }: PhotoCreateComme
 
   return (
     <Card header="Post Comment">
-      <PhotoCreateCommentCardForm onSubmit={onCreate}>
-        <Textarea value={comment} onChange={setComment} rows={10} />
-        <PhotoCreateCommentCardActions>
-          <Button type="submit">Post</Button>
-        </PhotoCreateCommentCardActions>
-      </PhotoCreateCommentCardForm>
+      <GuestGuard redirect={false}>
+        <p><Link to="/login">Login</Link> to post comments</p>
+      </GuestGuard>
+      <UserGuard redirect={false}>
+        <PhotoCreateCommentCardForm onSubmit={onCreate}>
+          <Textarea value={comment} onChange={setComment} rows={10} />
+          <PhotoCreateCommentCardActions>
+            <Button type="submit">Post</Button>
+          </PhotoCreateCommentCardActions>
+        </PhotoCreateCommentCardForm>
+      </UserGuard>
     </Card>
   )
 }
