@@ -12,6 +12,7 @@ import { SettingsScreen } from './settings-screen/SettingsScreen';
 import { RegisterScreen } from './register-screen/RegisterScreen';
 import { PlayGameScreen } from './play-game-screen/PlayGameScreen';
 import { RoomViewScreen } from './room-view-screen/RoomViewScreen';
+import { PhotoListScreen } from './photo-list-screen/PhotoListScreen';
 import { GroupViewScreen } from './group-view-screen/GroupViewScreen';
 import { BugReportsScreen } from './bug-reports-screen/BugReportsScreen';
 import { ProfileViewScreen } from './profile-view-screen/ProfileViewScreen';
@@ -95,6 +96,10 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/profile/:username',
     view: ProfileScreen,
+  },
+  {
+    path: '/photos',
+    view: PhotoListScreen,
   },
   {
     path: '/photos/:photoID',

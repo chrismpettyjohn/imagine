@@ -3,11 +3,11 @@ import { Link } from 'wouter';
 import { PhotoContainerProps } from './PhotoContainer.types';
 import { PhotoContainerElement } from './PhotoContainer.styled';
 
-export function PhotoContainer({ story }: PhotoContainerProps) {
+export function PhotoContainer({ story, ...props }: PhotoContainerProps) {
   return (
     <Link to={`/photos/${story.id}`}>
       <PhotoContainerElement>
-        <img src={story.photoURL} loading="lazy" />
+        <img src={story.photoURL} loading="lazy" {...props} />
       </PhotoContainerElement>
     </Link>
 

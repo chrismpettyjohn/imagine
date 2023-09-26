@@ -1,5 +1,5 @@
 import DayJS from 'dayjs';
-import { useRoute } from 'wouter';
+import { Link, useRoute } from 'wouter';
 import { configContext } from '@imagine-cms/web';
 import { usePhotoFetchOne } from '@imagine-cms/client';
 import React, { useContext, useEffect, useState } from 'react';
@@ -25,7 +25,7 @@ export function ProfileViewScreen() {
 
   return (
     <>
-      <h1>View Photo</h1>
+      <h1><Link to="/photos"><i className="fa fa-caret-left" style={{ marginRight: 8 }} /></Link>Photos - #{photoID}</h1>
       <br />
       {
         data && (

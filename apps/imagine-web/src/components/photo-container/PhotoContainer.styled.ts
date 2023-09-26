@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PhotoContainerElement = styled.div`
-  img {
+  img, .mock {
     border:${({ theme }) => `2px solid ${theme.color.s40}`};
     border-radius: ${({ theme }) => theme.space.oneUnit};
     cursor: pointer;

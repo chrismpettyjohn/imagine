@@ -33,6 +33,11 @@ export function SiteHeader() {
               </Link>
             </li>
             <li>
+              <Link to="/photos">
+                Photos
+              </Link>
+            </li>
+            <li>
               <Link to="/community/staff">
                 Staff Team
               </Link>
