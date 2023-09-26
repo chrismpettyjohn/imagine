@@ -1,8 +1,7 @@
 import { HTMLProps, ReactNode } from "react";
-
-export type GridSize = 'normal' | 'wide';
+import { GridSizes } from "../../theme/ThemeProvider.types";
 
 export interface GridProps extends Omit<HTMLProps<HTMLDivElement>, 'size'> {
   children: ReactNode;
-  size?: GridSize;
+  size?: GridSizes;
 }

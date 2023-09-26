@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 
+export type GridSizes = 'small' | 'normal' | 'large';
+
 export interface ImagineTheme {
   name: string;
   fontFamily: {
@@ -37,10 +39,7 @@ export interface ImagineTheme {
     twoUnits: string;
     threeUnits: string;
   };
-  grid: {
-    normal: string;
-    extra: string;
-  }
+  grid: Record<GridSizes, string>;
   maxWidth: string;
 }
 

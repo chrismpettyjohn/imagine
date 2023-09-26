@@ -10,7 +10,7 @@ export function UserRoomsGrid({ user }: UserRoomsGridProps) {
   const fetchRooms = useRoomFetchMany();
 
   useEffect(() => {
-    fetchRooms.fetch({ userIDs: [user.id], limit: 8 })
+    fetchRooms.fetch({ userIDs: [user.id], limit: 4 })
   }, [user.id]);
 
   return (

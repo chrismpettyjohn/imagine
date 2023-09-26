@@ -38,8 +38,9 @@ export const darkTheme: ImagineTheme = {
     threeUnits: '2.4rem',
   },
   grid: {
+    small: 'repeat(auto-fit, minmax(150px, 1fr))',
     normal: 'repeat(auto-fit, minmax(300px, 1fr))',
-    extra: '1fr 1fr 1fr 1fr 1fr',
+    large: 'repeat(auto-fit, minmax(450px, 1fr))',
   },
   maxWidth: '1500px'
 }

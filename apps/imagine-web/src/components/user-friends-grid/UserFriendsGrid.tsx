@@ -10,7 +10,7 @@ export function UserFriendsGrid({ user }: UserFriendsGridProps) {
   const friendshipFetch = useFriendshipFetchMany();
 
   useEffect(() => {
-    friendshipFetch.fetch({ userID: user.id, limit: 8 })
+    friendshipFetch.fetch({ userID: user.id, limit: 4 })
   }, [user.id]);
 
   return (
