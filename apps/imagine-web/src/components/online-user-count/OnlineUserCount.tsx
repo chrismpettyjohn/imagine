@@ -13,5 +13,5 @@ export function OnlineUserCount() {
     })
   })
 
-  return <div>{Number(usersOnlineCount.data).toLocaleString() ?? <i className="fa fa-spinner fa-spin" />} users online</div>
+  return <div>{usersOnlineCount.data ? Number(usersOnlineCount.data).toLocaleString() : <i className="fa fa-spinner fa-spin" />} users online</div>
 }
