@@ -37,5 +37,9 @@ export const lightTheme: ImagineTheme = {
     twoUnits: '1.8rem',
     threeUnits: '2.4rem',
   },
+  grid: {
+    normal: '1fr 1fr 1fr 1fr',
+    extra: '1fr 1fr 1fr 1fr 1fr',
+  },
   maxWidth: '1500px'
 }

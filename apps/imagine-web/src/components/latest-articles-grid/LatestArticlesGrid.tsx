@@ -1,6 +1,6 @@
+import { Grid } from '../grid/Grid';
 import React, { useEffect } from 'react';
 import { useArticleFetchMany } from '@imagine-cms/client';
-import { LatestArticlesGridElement } from './LatestArticlesGrid.styled';
 import { LatestArticleContainer } from '../latest-article-grid-container/LatestArticleGridContainer';
 
 export function LatestArticlesGrid() {
@@ -13,13 +13,13 @@ export function LatestArticlesGrid() {
   return (
     <>
       <h1>News Articles</h1>
-      <LatestArticlesGridElement>
+      <Grid>
         {
           fetchArticles.data?.map(_ => (
             <LatestArticleContainer article={_} key={`latest_article_${_.id}`} />
           ))
         }
-      </LatestArticlesGridElement>
+      </Grid>
     </>
   )
 }

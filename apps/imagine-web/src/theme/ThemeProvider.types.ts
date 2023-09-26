@@ -36,6 +36,10 @@ export interface ImagineTheme {
     oneUnit: string;
     twoUnits: string;
     threeUnits: string;
+  };
+  grid: {
+    normal: string;
+    extra: string;
   }
   maxWidth: string;
 }

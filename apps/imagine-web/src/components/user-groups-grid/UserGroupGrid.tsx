@@ -1,7 +1,7 @@
 import { Card } from '../card/Card';
+import { Grid } from '../grid/Grid';
 import React, { useEffect } from 'react';
 import { UserGroupGridProps } from './UserGroupGrid.types';
-import { UserGroupGridElement } from './UserGroupGrid.styled';
 import { useGroupMembershipFetchMany } from '@imagine-cms/client';
 import { GroupGridContainer } from '../group-grid-container/GroupGridContainer';
 import { GroupGridContainerMock } from '../group-grid-container/GroupGridContainerMock';
@@ -15,7 +15,7 @@ export function UserGroupsGrid({ user }: UserGroupGridProps) {
 
   return (
     <Card header="My Groups">
-      <UserGroupGridElement>
+      <Grid>
         {
           groupMemberships.loading && (
             <>
@@ -31,7 +31,7 @@ export function UserGroupsGrid({ user }: UserGroupGridProps) {
             <GroupGridContainer key={`group_memberships_${_.id}`} group={_.group} />
           ))
         }
-      </UserGroupGridElement>
+      </Grid>
     </Card>
   )
 }

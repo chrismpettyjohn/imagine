@@ -1,8 +1,8 @@
 import { Card } from '../card/Card';
+import { Grid } from '../grid/Grid';
 import React, { useEffect } from 'react';
 import { useRoomFetchMany } from '@imagine-cms/client';
 import { UserRoomsGridProps } from './UserRoomsGrid.types';
-import { UserRoomContainerGridElement } from './UserRoomsGrid.styled';
 import { RoomGridContainer } from '../room-grid-container/RoomGridContainer';
 import { RoomGridContainerMock } from '../room-grid-container/RoomGridContainerMock';
 
@@ -15,24 +15,24 @@ export function UserRoomsGrid({ user }: UserRoomsGridProps) {
 
   return (
     <Card header="My Rooms">
-      {
-        fetchRooms.loading && (
-          <>
-            <RoomGridContainerMock />
-          </>
-        )
-      }
-      {
-        fetchRooms.data?.length === 0 && <p>You don't own any rooms</p>
-      }
-      <UserRoomContainerGridElement>
+      <Grid>
+        {
+          fetchRooms.loading && (
+            <>
+              <RoomGridContainerMock />
+            </>
+          )
+        }
+        {
+          fetchRooms.data?.length === 0 && <p>You don't own any rooms</p>
+        }
 
         {
           fetchRooms.data?.map(_ => (
             <RoomGridContainer key={`my_rooms_${_.id}`} room={_} />
           ))
         }
-      </UserRoomContainerGridElement>
+      </Grid>
     </Card>
   )
 }

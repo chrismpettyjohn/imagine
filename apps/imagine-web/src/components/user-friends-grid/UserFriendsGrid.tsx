@@ -1,8 +1,8 @@
 import { Card } from '../card/Card';
+import { Grid } from '../grid/Grid';
 import React, { useEffect } from 'react';
 import { useFriendshipFetchMany } from '@imagine-cms/client';
 import { UserFriendsGridProps } from './UserFriendsGrid.types';
-import { UserFriendsGridContainer } from './UserFriendsGrid.styled';
 import { SmallUserProfileContainer } from '../small-user-profile-container/SmallUserProfileContainer';
 import { SmallUserProfileContainerMock } from '../small-user-profile-container/SmallUserProfileContainerMock';
 
@@ -25,13 +25,13 @@ export function UserFriendsGrid({ user }: UserFriendsGridProps) {
       {
         friendshipFetch.data?.length === 0 && <p>You don't have any friends</p>
       }
-      <UserFriendsGridContainer>
+      <Grid>
         {
           friendshipFetch.data?.map(_ => (
             <SmallUserProfileContainer key={`friendship_${_.friendID}`} user={_.friend as any} />
           ))
         }
-      </UserFriendsGridContainer>
+      </Grid>
     </Card>
   )
 }
