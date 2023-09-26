@@ -21,7 +21,7 @@ export const ProfileViewScreenInfoContainer = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.space.halfUnit};
   .blue {
-   color: ${({ theme }) => theme.color.s30};
+   color: ${({ theme }) => theme.color.s50};
   }
   .red {
    color: red;

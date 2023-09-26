@@ -5,6 +5,7 @@ import { GuestGuard } from '../guest-guard/GuestGuard';
 import { ADMIN_URL, ScopeGuard, UserGuard } from '@imagine-cms/web';
 import { ButtonPrimary, ButtonDanger, ButtonNoBorder } from '../button/Button.remix';
 import { SiteHeaderActions, SiteHeaderContent, SiteHeaderElement, SiteHeaderNavigation } from './SiteHeader.styled';
+import { ToggleThemeButton } from '../toggle-theme-button/ToggleThemeButton';
 
 export function SiteHeader() {
   return (
@@ -60,6 +61,7 @@ export function SiteHeader() {
           </ul>
         </SiteHeaderNavigation>
         <SiteHeaderActions>
+          <ToggleThemeButton />
           <UserGuard>
             <Link to="/bug-reports">
               <ButtonNoBorder style={{ padding: 0 }}>

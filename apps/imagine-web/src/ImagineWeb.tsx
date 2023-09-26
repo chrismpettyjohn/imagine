@@ -17,10 +17,10 @@ export function LoadingScreen() {
 export function ImagineWeb() {
 
   return (
-    <ThemeProvider>
-      <ImagineContextProviders loadingScreen={<LoadingScreen />}>
+    <ImagineContextProviders loadingScreen={<LoadingScreen />}>
+      <ThemeProvider>
         <SiteContainer />
-      </ImagineContextProviders>
-    </ThemeProvider >
+      </ThemeProvider >
+    </ImagineContextProviders>
   )
 }
