@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
-export const ProfileViewPhotoScreenContainer = styled.div`
+export const ProfileViewScreenContainer = styled.div`
   display: flex;
   flex: 1;
   gap: ${({ theme }) => theme.space.oneUnit};
 `
 
-export const ProfileViewPhotoScreenImagePreview = styled.img`
+export const ProfileViewScreenImagePreview = styled.img`
   border:${({ theme }) => `2px solid ${theme.color.s40}`};
   border-radius:  ${({ theme }) => theme.radius.oneUnit};
   height: 576px;
 `
 
-export const ProfileViewPhotoScreenInfoContainer = styled.div`
+export const ProfileViewScreenInfoContainer = styled.div`
   background: ${({ theme }) => theme.color.s20};
   border:${({ theme }) => `2px solid ${theme.color.s40}`};
   border-radius:  ${({ theme }) => theme.radius.oneUnit};
@@ -22,5 +22,8 @@ export const ProfileViewPhotoScreenInfoContainer = styled.div`
   gap: ${({ theme }) => theme.space.halfUnit};
   .blue {
    color: ${({ theme }) => theme.color.s30};
+  }
+  .red {
+   color: red;
   }
 `

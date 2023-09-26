@@ -14,6 +14,7 @@ import { PlayGameScreen } from './play-game-screen/PlayGameScreen';
 import { RoomViewScreen } from './room-view-screen/RoomViewScreen';
 import { GroupViewScreen } from './group-view-screen/GroupViewScreen';
 import { BugReportsScreen } from './bug-reports-screen/BugReportsScreen';
+import { ProfileViewScreen } from './profile-view-screen/ProfileViewScreen';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
 import { BugReportViewScreen } from './bug-report-view-screen/BugReportViewScreen';
 import { ForgotPasswordScreen } from './forgot-password-screen/ForgotPasswordScreen';
@@ -21,7 +22,6 @@ import { CommunityStaffScreen } from './community-staff-screen/CommunityStaffScr
 import { LoginWithDeviceScreen } from './login-with-device-screen/LoginWithDeviceScreen';
 import { LoginWithGoogleScreen } from './login-with-google-screen/LoginWithGoogleScreen';
 import { LoginWithDiscordScreen } from './login-with-discord-screen/LoginWithDiscordScreen';
-import { ProfileViewPhotoScreen } from './profile-view-photo-screen/ProfileViewPhotoScreen';
 import { LoginWithFacebookScreen } from './login-with-facebook-screen/LoginWithFacebookScreen';
 import { CommunityHighScoresScreen } from './community-high-scores-screen/CommunityHighScoresScreen';
 import { CommunityViewArticleScreen } from './community-view-article-screen/CommunityViewArticleScreen';
@@ -98,7 +98,7 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   },
   {
     path: '/photos/:photoID',
-    view: ProfileViewPhotoScreen,
+    view: ProfileViewScreen,
   },
   {
     path: '/play',

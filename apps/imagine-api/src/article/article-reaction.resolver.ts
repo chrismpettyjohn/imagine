@@ -56,6 +56,7 @@ export class ArticleReactionResolver {
   ): Promise<ArticleReactionModel[]> {
     return this.articleReactionService.findMany({
       id: filter?.ids && In(filter.ids),
+      resourceID: filter.articleIDs && In(filter.articleIDs),
       userID: filter?.userIDs && In(filter.userIDs),
     });
   }

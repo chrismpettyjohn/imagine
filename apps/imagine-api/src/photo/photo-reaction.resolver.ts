@@ -52,6 +52,7 @@ export class PhotoReactionResolver {
   ): Promise<PhotoReactionModel[]> {
     return this.photoReactionService.findMany({
       id: filter?.ids && In(filter.ids),
+      resourceID: filter.photoIDs && In(filter.photoIDs),
       userID: filter?.userIDs && In(filter.userIDs),
     });
   }

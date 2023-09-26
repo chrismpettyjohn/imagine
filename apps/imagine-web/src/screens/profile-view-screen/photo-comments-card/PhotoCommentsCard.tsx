@@ -6,7 +6,7 @@ import { PhotoCommentsContainer } from './PhotoCommentsCard.styled';
 import { CommentContainer } from '../../../components/comment-container/CommentContainer';
 
 export function PhotoCommentsCard({ photo }: PhotoCommentsCardProps) {
-  const { data, error, fetch, loading } = usePhotoCommentFetchMany();
+  const { data, fetch, loading } = usePhotoCommentFetchMany();
 
   useEffect(() => {
     fetch({ photoIDs: [photo.id] });
@@ -21,7 +21,7 @@ export function PhotoCommentsCard({ photo }: PhotoCommentsCardProps) {
   }, [data?.length]);
 
   return (
-    <Card header={header}>
+    <Card header={header} style={{ height: '100%' }}>
       {
         loading && (
           <i className="fa fa-spinner fa-spin" />

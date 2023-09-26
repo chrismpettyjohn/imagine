@@ -52,6 +52,7 @@ export class PhotoCommentResolver {
   ): Promise<PhotoCommentModel[]> {
     return this.photoCommentService.findMany({
       id: filter?.ids && In(filter.ids),
+      resourceID: filter.photoIDs && In(filter.photoIDs),
       userID: filter?.userIDs && In(filter.userIDs),
     });
   }

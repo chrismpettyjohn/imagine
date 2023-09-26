@@ -54,6 +54,7 @@ export class ArticleCommentResolver {
   ): Promise<ArticleCommentModel[]> {
     return this.articleCommentService.findMany({
       id: filter?.ids && In(filter.ids),
+      resourceID: filter.articleIDs && In(filter.articleIDs),
       userID: filter?.userIDs && In(filter.userIDs),
     });
   }
