@@ -8,7 +8,6 @@ export function ChangeLanguageButton() {
   const { config } = useContext(configContext);
   const { session, setSession } = useContext(sessionContext);
   const allowedLanguages = config?.allowedLanguages ?? ['en'];
-  console.log(allowedLanguages)
   const userLanguage = session?.language ?? config?.defaultLanguage ?? 'en';
   const [syncInterval, setSyncInterval] = useState<any>();
   const sessionChangeLanguage = useSessionUpdateLanguage();

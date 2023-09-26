@@ -21,7 +21,6 @@ export function ForgotPasswordScreen() {
       toast.success('Check your email for instructions on how to reset your password!');
       setLocation('/forgot-password/confirmation');
     } catch (e: any) {
-      console.log(e);
       toast.error('There was a problem resetting your password');
     }
   }

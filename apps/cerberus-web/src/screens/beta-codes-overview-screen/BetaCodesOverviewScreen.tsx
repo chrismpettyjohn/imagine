@@ -27,7 +27,6 @@ export function BetaCodesOverviewScreen() {
       toast.success(`Successfully added beta code ${newBetaCode.betaCode}`)
       await onFetchBetaCodes();
     } catch (e: any) {
-      console.log(e);
       toast.error('Beta code could not be created at this time')
     }
   }

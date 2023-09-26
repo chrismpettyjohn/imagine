@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useUserFetchOne } from '@imagine-cms/client';
-import { LoadingMessage } from '../loading-message/LoadingMessage';
 import { SmallUserProfileContainer } from './SmallUserProfileContainer';
+import { SmallUserProfileContainerMock } from './SmallUserProfileContainerMock';
 
 export function SmallUserProfileContainerLazy({ userID }: { userID: number }) {
   const fetchUser = useUserFetchOne();
@@ -13,11 +13,7 @@ export function SmallUserProfileContainerLazy({ userID }: { userID: number }) {
   }, [userID]);
 
   if (!fetchUser.data) {
-    return (
-      <LoadingMessage>
-        Loading user
-      </LoadingMessage>
-    )
+    return <SmallUserProfileContainerMock />
   }
 
   return <SmallUserProfileContainer user={fetchUser.data as any} />

@@ -3,10 +3,10 @@ import React, { useEffect } from 'react';
 import { Card } from '../../components/card/Card';
 import { useGroupFetchOne } from '@imagine-cms/client';
 import { LoadingMessage } from '../../components/loading-message/LoadingMessage';
-import { GroupMembersGrid } from '../../components/group-members-grid/GroupMembersGrid';
+import { GroupMembersCard } from '../../components/group-members-card/GroupMembersCard';
 import { LargeGroupContainer } from '../../components/large-group-container/LargeGroupContainer';
-import { SmallUserProfileContainerLazy } from '../../components/small-user-profile-container/SmallUserProfileContainerLazy';
 import { RoomGridContainerLazy } from '../../components/room-grid-container/RoomGridContainerLazy';
+import { SmallUserProfileContainerLazy } from '../../components/small-user-profile-container/SmallUserProfileContainerLazy';
 
 export function GroupViewScreen() {
   const [_, params] = useRoute<{ groupID: string }>('/groups/:groupID');
@@ -48,9 +48,7 @@ export function GroupViewScreen() {
             }
           </Card>
         </div>
-        <Card header="Members">
-          <GroupMembersGrid groupID={groupID} />
-        </Card>
+        <GroupMembersCard groupID={groupID} />
       </div>
     </>
   )

@@ -5,7 +5,7 @@ import {GLOBAL_MAX_RESOURCE_LIMIT} from '../imagine.constant';
 @InputType()
 export class GroupMembershipFilterManyInput {
   @Field(() => [Number], {nullable: true})
-  groupIDS?: number[];
+  groupIDs?: number[];
 
   @Field(() => [Number], {nullable: true})
   userIDs?: number[];

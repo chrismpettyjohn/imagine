@@ -38,7 +38,7 @@ export class GroupMembershipResolver {
   ): Promise<GroupMembershipModel[]> {
     const matchingGroups = await this.groupMembershipRepo.find({
       where: {
-        groupID: filter.groupIDS && In(filter.groupIDS),
+        groupID: filter.groupIDs && In(filter.groupIDs),
         userID: filter.userIDs && In(filter.userIDs),
       },
       take: filter.limit ?? 25,

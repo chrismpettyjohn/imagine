@@ -563,7 +563,7 @@ input GroupFilterManyInput {
 }
 
 input GroupMembershipFilterManyInput {
-  groupIDS: [Float!]
+  groupIDs: [Float!]
   userIDs: [Float!]
   limit: Float
 }

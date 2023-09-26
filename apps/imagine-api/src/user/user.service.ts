@@ -13,8 +13,6 @@ export class UserService {
     ipAddress: string,
     override?: Partial<UserEntity>
   ): Promise<UserEntity> {
-    console.log(ipAddress);
-    console.log('LOL');
     const currentDate = DayJS().unix();
     const username = Random.generate(15);
     return this.userRepo.create({

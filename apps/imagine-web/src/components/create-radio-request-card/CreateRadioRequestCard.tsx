@@ -32,7 +32,6 @@ export function CreateRadioRequestCard({ onCreation }: CreateRadioRequestCardPro
       setContent('');
       onCreation(newRadioRequest);
     } catch (e: any) {
-      console.log(e);
       toast.error('Failed to create request')
     }
   }

@@ -76,7 +76,6 @@ export function RankDetailsEditorCard({ defaultRank, onSave }: RankDetailsEditor
       await onSave(rankDTO);
       toast.success(`Changes to ${rankDTO.name} saved`);
     } catch (e) {
-      console.log(e)
       toast.error(`Failed to update ${defaultRank?.name}`);
     }
   }

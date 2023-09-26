@@ -30,7 +30,6 @@ export function CreateBugReportCard({ onCreate }: CreateBugReportCardProps) {
       setContent('');
       onCreate(newBugReport);
     } catch (e: any) {
-      console.log(e);
       toast.error('Failed to create bug report due to an error');
     }
   }

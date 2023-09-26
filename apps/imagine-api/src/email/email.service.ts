@@ -18,7 +18,6 @@ export class EmailService {
           if (err) {
             return reject(err);
           }
-          console.log(`${EmailService.name}: ${reply}`);
           return resolve();
         }
       );

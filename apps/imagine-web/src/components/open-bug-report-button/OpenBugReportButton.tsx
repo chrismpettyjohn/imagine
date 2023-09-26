@@ -14,7 +14,6 @@ export function OpenBugReportButton({ bugReport, onOpen }: OpenBugReportButtonPr
       toast.success(`Successfully resolved bug report #{${bugReport.id}}`)
       onOpen();
     } catch (e: any) {
-      console.log(e);
       toast.error(`Failed to resolve bug report #${bugReport.id}`)
     }
   }
