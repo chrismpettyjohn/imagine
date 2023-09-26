@@ -11,6 +11,7 @@ import { GuestGuard } from '../../components/guest-guard/GuestGuard';
 import { GoogleLoginButton } from '../../components/google-login-button/GoogleLoginButton';
 import { DiscordLoginButton } from '../../components/discord-login-button/DiscordLoginButton';
 import { FacebookLoginButton } from '../../components/facebook-login-button/FacebookLoginButton';
+import { Grid } from '../../components/grid/Grid';
 
 export function LoginScreen() {
   const [username, setUsername] = useState('');
@@ -27,36 +28,39 @@ export function LoginScreen() {
 
   return (
     <GuestGuard redirect>
-      <Card header="Login">
-        <Form onSubmit={onLogin}>
-          <label>Username</label>
-          <Input type="text" name="username" placeholder="Username" value={username} onChange={e => setUsername(e.currentTarget.value ?? '')} />
-          <label>Password</label>
-          <Input type="password" name="password" placeholder="Password" required value={password} onChange={(e: any) => setPassword(e?.currentTarget?.value ?? '')} />
-          <div style={{ display: 'flex', flex: 1, gap: 16, justifyContent: 'space-between', alignItems: 'center' }}>
-            <Link to="/forgot-password">
-              Forgot Password?
-            </Link>
-            <div style={{ display: 'flex', flex: 1, gap: 16, justifyContent: 'flex-end' }}>
-              <Link to="/register">
-                <ButtonPrimary type="button">Create Account</ButtonPrimary>
+      <img src="https://pbs.twimg.com/media/DjcTjDmXgAArv6j.jpg:large" style={{ height: 250, width: '100%', objectFit: 'cover', borderRadius: 8 }} />
+      <br /><br />
+      <Grid>
+        <Card header="Already have an account?">
+          <Form onSubmit={onLogin}>
+            <label>Username</label>
+            <Input type="text" name="username" placeholder="Username" value={username} onChange={e => setUsername(e.currentTarget.value ?? '')} />
+            <label>Password</label>
+            <Input type="password" name="password" placeholder="Password" required value={password} onChange={(e: any) => setPassword(e?.currentTarget?.value ?? '')} />
+            <div style={{ display: 'flex', flex: 1, gap: 16, justifyContent: 'space-between', alignItems: 'center' }}>
+              <Link to="/forgot-password">
+                Forgot Password?
               </Link>
-              <Button type="submit">Login</Button>
+              <div style={{ display: 'flex', flex: 1, gap: 16, justifyContent: 'flex-end' }}>
+                <Link to="/register">
+                  <ButtonPrimary type="button">Create Account</ButtonPrimary>
+                </Link>
+                <Button type="submit">Login</Button>
+              </div>
             </div>
-          </div>
-
-        </Form>
-      </Card>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginTop: 16 }}>
-        <DiscordLoginButton />
-        <FacebookLoginButton />
-        <GoogleLoginButton />
-        <Link to="/login/device">
-          <ButtonPrimary>
-            <i className="fa fa-phone" /> Device
-          </ButtonPrimary>
-        </Link>
-      </div>
+          </Form>
+        </Card>
+        <Card header="Connect with Social Media">
+          <DiscordLoginButton />
+          <FacebookLoginButton />
+          <GoogleLoginButton />
+          <Link to="/login/device">
+            <ButtonPrimary>
+              <i className="fa fa-phone" /> Device
+            </ButtonPrimary>
+          </Link>
+        </Card>
+      </Grid>
     </GuestGuard>
   )
 }
