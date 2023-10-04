@@ -16,9 +16,9 @@ export function MeScreen() {
 
   return (
     <>
-      <UserStatsGrid user={user} />
-      <br />
       <UserProfileContainer user={user} />
+      <br />
+      <UserStatsGrid user={user} />
       <br />
       <UserFriendsGrid user={user} />
       <br />

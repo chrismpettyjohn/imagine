@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'wouter';
 import { Badge } from '../badge/Badge';
+import { GridLarge } from '../grid/Grid.remix';
 import { UserStatsGridProps } from './UserStatsGrid.types';
-import { UserStatsGridElement } from './UserStatsGrid.styled';
 import { CreditStatsContainerElement, DiamondStatsContainerElement, HabboClubStatsContainerElement, PixelStatsContainerElement } from './stats-container/StatsContainer.styled';
 
 export function UserStatsGrid({ user }: UserStatsGridProps) {
   return (
-    <UserStatsGridElement>
+    <GridLarge>
       <CreditStatsContainerElement>
         <img src="/img/credits.svg" loading="lazy" />
         <b>{user.credits?.toLocaleString()}</b>
@@ -29,6 +29,6 @@ export function UserStatsGrid({ user }: UserStatsGridProps) {
           <b>{user.rank?.name}</b>
         </HabboClubStatsContainerElement>
       </Link>
-    </UserStatsGridElement >
+    </GridLarge>
   )
 }
