@@ -35,8 +35,8 @@ export function SiteMobileHeader() {
                 </li>
               </UserGuard>
               <li>
-                <Link to="/community/articles">
-                  News
+                <Link to="/community">
+                  Community
                 </Link>
               </li>
               <li>

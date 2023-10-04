@@ -27,11 +27,11 @@ import { LoginWithDiscordScreen } from './login-with-discord-screen/LoginWithDis
 import { LoginWithFacebookScreen } from './login-with-facebook-screen/LoginWithFacebookScreen';
 import { CommunityHighScoresScreen } from './community-high-scores-screen/CommunityHighScoresScreen';
 import { CommunityViewArticleScreen } from './community-view-article-screen/CommunityViewArticleScreen';
-import { CommunityListArticlesScreen } from './community-list-articles-screen/CommunityListArticlesScreen';
 import { CommunityOnlinePlayersScreen } from './community-online-players-screen/CommunityOnlinePlayersScreen';
 import { ForgotPasswordLinkSentScreen } from './forgot-password-link-sent-screen/ForgotPasswordLinkSentScreen';
 import { ForgotPasswordRedeemCodeScreen } from './forgot-password-redeem-code-screen/ForgotPasswordRedeemCodeScreen';
 import { CommunityStaffApplicationScreen } from './community-staff-application-screen/CommunityStaffApplicationScreen';
+import { CommunityScreen } from './community-screen/CommunityScreen';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -131,8 +131,8 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     view: CommunityOnlinePlayersScreen,
   },
   {
-    path: '/community/articles',
-    view: CommunityListArticlesScreen,
+    path: '/community',
+    view: CommunityScreen,
   },
   {
     path: '/community/articles/:articleID',
