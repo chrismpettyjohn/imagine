@@ -1,11 +1,12 @@
 import { useRoute } from 'wouter';
 import React, { useEffect } from 'react';
-import { UserStatsGrid } from '../../components/user-stats-grid/UserStatsGrid';
-import { UserProfileContainer } from '../../components/user-profile-container/UserProfileContainer';
 import { useUserFetchOne } from '@imagine-cms/client';
-import { UserFriendsGrid } from '../../components/user-friends-grid/UserFriendsGrid';
-import { UserGroupsGrid } from '../../components/user-groups-grid/UserGroupGrid';
+import { GridLarge } from '../../components/grid/Grid.remix';
 import { UserRoomsGrid } from '../../components/user-rooms-grid/UserRoomsGrid';
+import { UserStatsGrid } from '../../components/user-stats-grid/UserStatsGrid';
+import { UserGroupsGrid } from '../../components/user-groups-grid/UserGroupGrid';
+import { UserFriendsGrid } from '../../components/user-friends-grid/UserFriendsGrid';
+import { UserProfileContainer } from '../../components/user-profile-container/UserProfileContainer';
 
 export function ProfileScreen() {
   const [_, params] = useRoute<{ username: string }>('/profile/:username');
@@ -36,12 +37,11 @@ export function ProfileScreen() {
             <br />
             <UserStatsGrid user={matchingProfile} />
             <br />
-            <UserFriendsGrid user={matchingProfile} />
-            <br />
-            <UserGroupsGrid user={matchingProfile} />
-            <br />
-            <UserRoomsGrid user={matchingProfile} />
-            <br />
+            <GridLarge>
+              <UserFriendsGrid user={matchingProfile} />
+              <UserGroupsGrid user={matchingProfile} />
+              <UserRoomsGrid user={matchingProfile} />
+            </GridLarge>
           </>
         )
       }
