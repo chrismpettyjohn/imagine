@@ -4,8 +4,13 @@ export const SmallUserProfileContainerUserContainer = styled.div`
   background-color: ${({ theme }) => theme.color.s40};
   border-radius: 2em;
   min-height: 17em;
-   text-decoration: unset;
+  text-decoration: unset;
   color: #000;  
+  cursor: pointer;
+  opacity: 0.9;
+  &:hover {
+    opacity: 1;
+  }
 `
 
 export const SmallUserProfileContainerBanner = styled.div`
@@ -15,7 +20,8 @@ export const SmallUserProfileContainerBanner = styled.div`
   background-size: auto;
   position: relative;
   margin-bottom: 2.25em;
-  background-position: center;  
+  background-position: center; 
+   
 `
 
 export const SmallUserProfileContainerAvatarContainer = styled.div`
@@ -54,7 +60,7 @@ export const SmallUserProfileUsernameContainer = styled.div`
   text-align: center;
   font-weight: 700;
   font-size: 16px;
-  color: #373750;
+  color: ${({ theme }) => theme.color.brand};
   margin-top: 0.5em;
 `
 
@@ -63,7 +69,6 @@ export const SmallUserProfileRankContainer = styled.div`
   height: 2.5em;
   display: flex;
   align-items: center;
-  cursor: pointer;
   justify-content: center;
   text-align: center;
 `

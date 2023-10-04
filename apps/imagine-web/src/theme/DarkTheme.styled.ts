@@ -14,7 +14,7 @@ export const darkTheme: ImagineTheme = {
     green: '#588E84',
     red: '#1B5E20',
     black: 'white',
-    brand: '#005E97',
+    brand: '#FFC000',
     s10: '#202225',
     s20: '#1E1E1E',
     s30: '#3B3B3B',

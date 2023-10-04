@@ -14,7 +14,7 @@ export const lightTheme: ImagineTheme = {
     green: '#588E84',
     red: '#1B5E20',
     black: '#000000',
-    brand: '#005E97',
+    brand: '#FFC000',
     s10: '#FFFFFF',
     s20: '#FFFFFF',
     s30: '#6C6F78',
