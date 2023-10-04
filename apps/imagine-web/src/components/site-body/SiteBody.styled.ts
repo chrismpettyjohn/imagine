@@ -12,4 +12,32 @@ export const SiteBody = createGlobalStyle`
     margin: 0;
     padding: 0;
  }
+
+ .goog-te-combo {
+   background: ${({ theme }) => theme.color.s30};
+   border-radius: ${({ theme }) => theme.radius.oneUnit};
+ }
+
+ .goog-te-gadget {
+  color: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.goog-te-gadget img {
+  display: none;
+
+}
+
+.goog-te-gadget a {
+  display: none;
+}
+
+body {
+  top: 0px !important;
+}
+
+.skiptranslate iframe {
+  visibility: hidden !important;
+}
 `

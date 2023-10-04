@@ -1,4 +1,3 @@
-import './ChangeLanguageButton.css';
 import React, { useContext, useEffect, useState } from 'react';
 import { useSessionUpdateLanguage } from '@imagine-cms/client';
 import { configContext, sessionContext } from '@imagine-cms/web';

@@ -1,14 +1,24 @@
 import styled from "styled-components";
 
+
 export const SiteHeaderElement = styled.div`
   align-items: center;
   background: ${({ theme }) => theme.color.s20};
-  border:${({ theme }) => `2px solid ${theme.color.s40}`};
-  border-radius: ${({ theme }) => theme.radius.oneUnit};
+  border-bottom:${({ theme }) => `2px solid ${theme.color.s40}`};
   display: flex;
-  justify-content: space-between;
+  
   flex: 1;
   margin-bottom: ${({ theme }) => theme.space.twoUnits};
+  width: 100%;
+`
+
+export const SiteHeaderImage = styled.div`
+  align-items: center;
+  background-image: url(https://kubbo.city/assets/images/kasja_mepage_header.png);
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+  min-height: 125px;
   width: 100%;
 `
 
@@ -16,11 +26,22 @@ export const SiteHeaderContent = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
-  flex: 1;
-  padding: ${({ theme }) => theme.space.twoUnits};
+  gap: ${({ theme }) => theme.space.oneUnit};
+  padding: ${({ theme }) => theme.space.oneUnit};
+  max-width: ${({ theme }) => theme.maxWidth};
+  margin: 0 auto;
   width: 100%;
+`
 
-  ul {
+export const SiteHeaderTools = styled.div`
+  background: ${({ theme }) => theme.color.s20}; 
+  border-radius: ${({ theme }) => theme.radius.twoUnits}; 
+  display: flex;
+  gap: ${({ theme }) => theme.space.oneUnit};
+  padding: ${({ theme }) => theme.space.halfUnit};
+`
+
+export const SiteHeaderNav = styled.div`
     display: flex;
     font-size: ${({ theme }) => theme.fontSize.oneUnit};
     font-weight: 500;
@@ -36,18 +57,15 @@ export const SiteHeaderContent = styled.div`
         color: ${({ theme }) => theme.color.brand};
       }
     }
-  }
 `
 
 export const SiteHeaderNavigation = styled.div`
   display: flex;
   object-align: center;
   align-items: center;
-  flex: 1;
 `
 
 export const SiteHeaderActions = styled.div`
   display: flex;
-  justify-content: flex-end;
   gap: ${({ theme }) => theme.space.oneUnit};
 `

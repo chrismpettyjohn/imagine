@@ -17,8 +17,6 @@ export function MeScreen() {
 
   return (
     <>
-      <LatestPhotosContainer />
-      <br />
       <UserStatsGrid user={user} />
       <br />
       <UserProfileContainer user={user} />
@@ -31,6 +29,8 @@ export function MeScreen() {
       <Grid size="large">
         <UserRoomsGrid user={user} />
       </Grid>
+      <br />
+      <LatestPhotosContainer />
       <br />
       <LatestArticlesGrid />
     </>

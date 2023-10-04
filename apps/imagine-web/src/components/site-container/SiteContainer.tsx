@@ -6,9 +6,7 @@ import { GameClient } from '../game-client/GameClient';
 import { SiteHeader } from '../site-header/SiteHeader';
 import { SiteFooter } from '../site-footer/SiteFooter';
 import { SiteBody } from '../site-body/SiteBody.styled';
-import { OnlineUserCount } from '../online-user-count/OnlineUserCount';
 import { PageContainerElement, SiteContainerElement } from './SiteContainer.styled';
-import { ChangeLanguageButton } from '../change-language-button/ChangeLanguageButton';
 
 export function SiteContainer() {
   const { showClient } = useContext(themeContext);
@@ -22,12 +20,8 @@ export function SiteContainer() {
         {
           !showClient && (
             <>
+              <SiteHeader />
               <PageContainerElement>
-                <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between', marginBottom: 16 }}>
-                  <OnlineUserCount />
-                  <ChangeLanguageButton />
-                </div>
-                <SiteHeader />
                 <Router />
               </PageContainerElement>
               <SiteFooter />
