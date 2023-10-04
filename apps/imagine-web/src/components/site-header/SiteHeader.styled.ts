@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const SiteHeaderWrapper = styled.div`
+  @media (max-width: 1200px) {
+    display: none;
+  }
+`
 
 export const SiteHeaderElement = styled.div`
   align-items: center;

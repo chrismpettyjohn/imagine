@@ -6,11 +6,11 @@ import { ADMIN_URL, ScopeGuard, UserGuard } from '@imagine-cms/web';
 import { OnlineUserCount } from '../online-user-count/OnlineUserCount';
 import { ToggleThemeButton } from '../toggle-theme-button/ToggleThemeButton';
 import { ButtonPrimary, ButtonDanger, ButtonNoBorder } from '../button/Button.remix';
-import { SiteHeaderActions, SiteHeaderContent, SiteHeaderElement, SiteHeaderImage, SiteHeaderNav, SiteHeaderNavigation, SiteHeaderTools } from './SiteHeader.styled';
+import { SiteHeaderActions, SiteHeaderContent, SiteHeaderElement, SiteHeaderImage, SiteHeaderNav, SiteHeaderNavigation, SiteHeaderTools, SiteHeaderWrapper } from './SiteHeader.styled';
 
 export function SiteHeader() {
   return (
-    <>
+    <SiteHeaderWrapper>
       <SiteHeaderImage>
         <SiteHeaderContent>
           <SiteLogo />
@@ -117,6 +117,6 @@ export function SiteHeader() {
           </SiteHeaderActions>
         </SiteHeaderContent>
       </SiteHeaderElement >
-    </>
+    </SiteHeaderWrapper>
   )
 }
