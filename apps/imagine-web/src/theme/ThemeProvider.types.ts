@@ -13,6 +13,8 @@ export interface ImagineTheme {
     twoUnits: string;
   }
   color: {
+    green: string;
+    red: string;
     black: string;
     brand: string;
     s10: string;

@@ -1,6 +1,5 @@
 import { MOCK_USER } from '../../const';
 import React, { useContext } from 'react';
-import { Grid } from '../../components/grid/Grid';
 import { sessionContext } from '@imagine-cms/web';
 import { UserRoomsGrid } from '../../components/user-rooms-grid/UserRoomsGrid';
 import { UserStatsGrid } from '../../components/user-stats-grid/UserStatsGrid';
@@ -21,14 +20,11 @@ export function MeScreen() {
       <br />
       <UserProfileContainer user={user} />
       <br />
-      <Grid size="large">
-        <UserFriendsGrid user={user} />
-        <UserGroupsGrid user={user} />
-      </Grid>
+      <UserFriendsGrid user={user} />
       <br />
-      <Grid size="large">
-        <UserRoomsGrid user={user} />
-      </Grid>
+      <UserGroupsGrid user={user} />
+      <br />
+      <UserRoomsGrid user={user} />
       <br />
       <LatestPhotosContainer />
       <br />

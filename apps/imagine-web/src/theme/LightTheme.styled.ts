@@ -11,6 +11,8 @@ export const lightTheme: ImagineTheme = {
     twoUnits: '1.53rem',
   },
   color: {
+    green: '#588E84',
+    red: '#1B5E20',
     black: '#000000',
     brand: '#005E97',
     s10: '#FFFFFF',
