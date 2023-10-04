@@ -1,9 +1,9 @@
 import { Link } from 'wouter';
-import { Grid } from '../../components/grid/Grid';
 import { Card } from '../../components/card/Card';
 import { Form } from '../../components/form/Form';
 import { Input } from '../../components/input/Input';
 import { Button } from '../../components/button/Button';
+import { GridLarge } from '../../components/grid/Grid.remix';
 import { ButtonPrimary } from '../../components/button/Button.remix';
 import { GuestGuard } from '../../components/guest-guard/GuestGuard';
 import React, { SyntheticEvent, useContext, useEffect, useState } from 'react';
@@ -47,7 +47,7 @@ export function RegisterScreen() {
     <GuestGuard>
       <img src="https://pbs.twimg.com/media/DjcTjDmXgAArv6j.jpg:large" style={{ height: 250, width: '100%', objectFit: 'cover', borderRadius: 8 }} />
       <br /><br />
-      <Grid>
+      <GridLarge>
         <Card header="Register">
           <Form onSubmit={onCreateUser}>
             <label htmlFor="username">Username</label>
@@ -85,7 +85,7 @@ export function RegisterScreen() {
             </ButtonPrimary>
           </Link>
         </Card>
-      </Grid>
+      </GridLarge>
     </GuestGuard>
   )
 }

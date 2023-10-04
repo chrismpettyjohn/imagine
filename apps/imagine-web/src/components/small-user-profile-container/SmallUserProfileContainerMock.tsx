@@ -1,18 +1,23 @@
 import React from 'react';
 import { Avatar } from '../avatar/Avatar';
-import { SmallUserProfileContainerAvatarContainer, SmallUserProfileContainerInformationContainer, SmallUserProfileContainerOnlineIndicator, SmallUserProfileContainerUserContainer } from './SmallUserProfileContainer.styled';
+import { SmallUserProfileContainerAvatarContainer, SmallUserProfileContainerBanner, SmallUserProfileContainerInformationContainer, SmallUserProfileContainerOnlineIndicator, SmallUserProfileContainerUserContainer, SmallUserProfileRankContainer, SmallUserProfileUsernameContainer } from './SmallUserProfileContainer.styled';
 
 export function SmallUserProfileContainerMock() {
   return (
     <SmallUserProfileContainerUserContainer>
-      <SmallUserProfileContainerAvatarContainer>
-        <Avatar look="-" />
-      </SmallUserProfileContainerAvatarContainer>
+      <SmallUserProfileContainerBanner>
+        <SmallUserProfileContainerAvatarContainer>
+          <Avatar look="-" headDirection={3} size="l" />
+        </SmallUserProfileContainerAvatarContainer>
+      </SmallUserProfileContainerBanner>
       <SmallUserProfileContainerInformationContainer>
-        <SmallUserProfileContainerOnlineIndicator $online={false} />
-        <h3 className="notranslate">
+        <SmallUserProfileUsernameContainer className="notranslate">
           -
-        </h3>
+          <SmallUserProfileContainerOnlineIndicator $online={false} />
+        </SmallUserProfileUsernameContainer>
+        <SmallUserProfileRankContainer className="notranslate">
+          -
+        </SmallUserProfileRankContainer>
       </SmallUserProfileContainerInformationContainer>
     </SmallUserProfileContainerUserContainer>
   )

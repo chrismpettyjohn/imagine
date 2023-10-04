@@ -9,6 +9,6 @@ export const GridElement = styled.div <{ $size: GridSizes }>`
     grid-template-columns: 1fr 1fr;
   }
   @media (min-width: 1800px) {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 `

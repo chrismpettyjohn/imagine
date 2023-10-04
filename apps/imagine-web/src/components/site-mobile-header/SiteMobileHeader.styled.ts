@@ -6,12 +6,13 @@ export const SiteMobileHeaderElement = styled.div`
   flex: 1;
   flex-direction: column;
   gap: ${({ theme }) => theme.space.oneUnit};
-  padding: 16px;
+  margin: 0 auto;
+  max-width: ${({ theme }) => theme.maxWidth};
 
-  @media (min-width: 1200px) {
-    display: none;
+  @media only screen and (min-width: 1200px) {
+    display: none !important;
   }
-  
+
   ul {
     list-style-type: none;
   }

@@ -5,13 +5,13 @@ import { Card } from '../../components/card/Card';
 import { Input } from '../../components/input/Input';
 import React, { SyntheticEvent, useState } from 'react';
 import { Button } from '../../components/button/Button';
+import { GridLarge } from '../../components/grid/Grid.remix';
 import { useSignInWithUsernameAndPassword } from '@imagine-cms/web';
 import { ButtonPrimary } from '../../components/button/Button.remix';
 import { GuestGuard } from '../../components/guest-guard/GuestGuard';
 import { GoogleLoginButton } from '../../components/google-login-button/GoogleLoginButton';
 import { DiscordLoginButton } from '../../components/discord-login-button/DiscordLoginButton';
 import { FacebookLoginButton } from '../../components/facebook-login-button/FacebookLoginButton';
-import { Grid } from '../../components/grid/Grid';
 
 export function LoginScreen() {
   const [username, setUsername] = useState('');
@@ -30,7 +30,7 @@ export function LoginScreen() {
     <GuestGuard redirect>
       <img src="https://pbs.twimg.com/media/DjcTjDmXgAArv6j.jpg:large" style={{ height: 250, width: '100%', objectFit: 'cover', borderRadius: 8 }} />
       <br /><br />
-      <Grid>
+      <GridLarge>
         <Card header="Already have an account?">
           <Form onSubmit={onLogin}>
             <label>Username</label>
@@ -60,7 +60,7 @@ export function LoginScreen() {
             </ButtonPrimary>
           </Link>
         </Card>
-      </Grid>
+      </GridLarge>
     </GuestGuard>
   )
 }

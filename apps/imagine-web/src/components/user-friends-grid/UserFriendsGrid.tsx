@@ -15,17 +15,21 @@ export function UserFriendsGrid({ user }: UserFriendsGridProps) {
 
   return (
     <Card header="My Friends" headerImage="https://www.habboassets.com/assets/images/catalog/icons/icon_61.png">
-      {
-        friendshipFetch.loading && (
-          <>
-            <SmallUserProfileContainerMock />
-          </>
-        )
-      }
-      {
-        friendshipFetch.data?.length === 0 && <p>You don't have any friends</p>
-      }
       <Grid>
+        {
+          friendshipFetch.data?.length === 0 && <p>You don't have any friends</p>
+        }
+
+        {
+          friendshipFetch.loading && (
+            <>
+              <SmallUserProfileContainerMock />
+              <SmallUserProfileContainerMock />
+              <SmallUserProfileContainerMock />
+              <SmallUserProfileContainerMock />
+            </>
+          )
+        }
         {
           friendshipFetch.data?.map(_ => (
             <SmallUserProfileContainer key={`friendship_${_.friendID}`} user={_.friend as any} />
