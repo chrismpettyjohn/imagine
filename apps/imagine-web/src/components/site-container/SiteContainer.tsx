@@ -7,6 +7,7 @@ import { SiteHeader } from '../site-header/SiteHeader';
 import { SiteFooter } from '../site-footer/SiteFooter';
 import { SiteBody } from '../site-body/SiteBody.styled';
 import { PageContainerElement, SiteContainerElement } from './SiteContainer.styled';
+import { ChangeLanguageButton } from '../change-language-button/ChangeLanguageButton';
 
 export function SiteContainer() {
   const { showClient } = useContext(themeContext);
@@ -22,6 +23,7 @@ export function SiteContainer() {
             <>
               <SiteHeader />
               <PageContainerElement>
+                <ChangeLanguageButton />
                 <Router />
               </PageContainerElement>
               <SiteFooter />

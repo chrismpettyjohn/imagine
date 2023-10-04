@@ -14,5 +14,5 @@ export function OnlineUserCount() {
     })
   })
 
-  return <OnlineUserCountElement><b>{usersOnlineCount.data ? Number(usersOnlineCount.data).toLocaleString() : <i className="fa fa-spinner fa-spin" />}</b> users online</OnlineUserCountElement>
+  return <OnlineUserCountElement><i className="fa fa-users" style={{ marginRight: 8 }} /><b>{usersOnlineCount.data ? Number(usersOnlineCount.data).toLocaleString() : <i className="fa fa-spinner fa-spin" />}</b> users online</OnlineUserCountElement>
 }

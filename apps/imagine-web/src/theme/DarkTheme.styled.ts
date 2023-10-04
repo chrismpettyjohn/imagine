@@ -3,7 +3,7 @@ import { ImagineTheme } from "./ThemeProvider.types";
 export const darkTheme: ImagineTheme = {
   name: 'Light',
   fontFamily: {
-    primary: `Dosis', sans-serif`
+    primary: `Raleway', sans-serif`
   },
   fontSize: {
     halfUnit: '.8rem',
@@ -14,8 +14,8 @@ export const darkTheme: ImagineTheme = {
     black: 'white',
     brand: '#005E97',
     s10: '#202225',
-    s20: '#292B2F',
-    s30: '#2F3136',
+    s20: '#1E1E1E',
+    s30: '#3B3B3B',
     s40: '#40444B',
     s50: '#BDBCBC',
     s60: 'white',
@@ -28,6 +28,7 @@ export const darkTheme: ImagineTheme = {
     threeUnits: '48px',
   },
   radius: {
+    halfUnit: '4px',
     oneUnit: '8px',
     twoUnits: '16px',
     threeUnits: '100%',

@@ -16,6 +16,7 @@ export const SiteBody = createGlobalStyle`
  .goog-te-combo {
    background: ${({ theme }) => theme.color.s30};
    border-radius: ${({ theme }) => theme.radius.oneUnit};
+   padding: ${({ theme }) => theme.space.halfUnit};
  }
 
  .goog-te-gadget {

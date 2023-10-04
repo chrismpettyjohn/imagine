@@ -3,7 +3,7 @@ import { ImagineTheme } from "./ThemeProvider.types";
 export const lightTheme: ImagineTheme = {
   name: 'Light',
   fontFamily: {
-    primary: `Dosis', sans-serif`
+    primary: `Raleway', sans-serif`
   },
   fontSize: {
     halfUnit: '.8rem',
@@ -28,6 +28,7 @@ export const lightTheme: ImagineTheme = {
     threeUnits: '48px',
   },
   radius: {
+    halfUnit: '4px',
     oneUnit: '8px',
     twoUnits: '16px',
     threeUnits: '100%',

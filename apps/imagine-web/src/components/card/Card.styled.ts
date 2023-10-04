@@ -5,6 +5,7 @@ export const CardElement = styled.div`
   border:${({ theme }) => `2px solid ${theme.color.s40}`};
   border-radius: ${({ theme }) => theme.radius.oneUnit};
   width: 100%;
+  overflow: hidden;
 `
 
 export const CardContent = styled.div`
@@ -21,6 +22,9 @@ export const CardContent = styled.div`
 `
 
 export const CardHeader = styled.div`
-    font-size: ${({ theme }) => theme.fontSize.twoUnits};
-    font-weight: 700;
+  background: ${({ theme }) => theme.color.s30};
+  font-size: ${({ theme }) => theme.fontSize.twoUnits};
+  font-weight: 700;
+  padding: ${({ theme }) => theme.space.oneUnit};
+  width: 100%;
 `

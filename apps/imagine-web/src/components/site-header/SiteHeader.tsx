@@ -5,7 +5,6 @@ import { GuestGuard } from '../guest-guard/GuestGuard';
 import { ADMIN_URL, ScopeGuard, UserGuard } from '@imagine-cms/web';
 import { OnlineUserCount } from '../online-user-count/OnlineUserCount';
 import { ToggleThemeButton } from '../toggle-theme-button/ToggleThemeButton';
-import { ChangeLanguageButton } from '../change-language-button/ChangeLanguageButton';
 import { ButtonPrimary, ButtonDanger, ButtonNoBorder } from '../button/Button.remix';
 import { SiteHeaderActions, SiteHeaderContent, SiteHeaderElement, SiteHeaderImage, SiteHeaderNav, SiteHeaderNavigation, SiteHeaderTools } from './SiteHeader.styled';
 
@@ -16,7 +15,6 @@ export function SiteHeader() {
         <SiteHeaderContent>
           <SiteLogo />
           <SiteHeaderTools>
-            <ChangeLanguageButton />
             <OnlineUserCount />
           </SiteHeaderTools>
         </SiteHeaderContent>

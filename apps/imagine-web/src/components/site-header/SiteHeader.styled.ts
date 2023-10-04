@@ -6,7 +6,6 @@ export const SiteHeaderElement = styled.div`
   background: ${({ theme }) => theme.color.s20};
   border-bottom:${({ theme }) => `2px solid ${theme.color.s40}`};
   display: flex;
-  
   flex: 1;
   margin-bottom: ${({ theme }) => theme.space.twoUnits};
   width: 100%;
@@ -34,9 +33,11 @@ export const SiteHeaderContent = styled.div`
 `
 
 export const SiteHeaderTools = styled.div`
+  align-items: center;
   background: ${({ theme }) => theme.color.s20}; 
   border-radius: ${({ theme }) => theme.radius.twoUnits}; 
   display: flex;
+  object-align: center;
   gap: ${({ theme }) => theme.space.oneUnit};
   padding: ${({ theme }) => theme.space.halfUnit};
 `

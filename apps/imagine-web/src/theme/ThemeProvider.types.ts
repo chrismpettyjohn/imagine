@@ -30,6 +30,7 @@ export interface ImagineTheme {
     threeUnits: string;
   };
   radius: {
+    halfUnit: string;
     oneUnit: string;
     twoUnits: string;
     threeUnits: string;
