@@ -14,7 +14,7 @@ export function UserFriendsGrid({ user }: UserFriendsGridProps) {
   }, [user.id]);
 
   return (
-    <Card header="My Friends">
+    <Card header="My Friends" headerImage="https://www.habboassets.com/assets/images/catalog/icons/icon_61.png">
       {
         friendshipFetch.loading && (
           <>

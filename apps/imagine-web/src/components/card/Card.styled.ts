@@ -22,9 +22,12 @@ export const CardContent = styled.div`
 `
 
 export const CardHeader = styled.div`
+  align-items: center;
   background: ${({ theme }) => theme.color.s30};
+  display: flex;
   font-size: ${({ theme }) => theme.fontSize.twoUnits};
   font-weight: 700;
+  flex: 1;
+  justify-content: space-between;
   padding: ${({ theme }) => theme.space.oneUnit};
-  width: 100%;
 `

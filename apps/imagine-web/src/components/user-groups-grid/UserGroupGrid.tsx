@@ -14,7 +14,7 @@ export function UserGroupsGrid({ user }: UserGroupGridProps) {
   }, [user.id]);
 
   return (
-    <Card header="My Groups">
+    <Card header="My Groups" headerImage="https://www.habboassets.com/assets/images/catalog/icons/icon_203.png">
       <Grid>
         {
           groupMemberships.loading && (
