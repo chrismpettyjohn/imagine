@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const SiteHeaderWrapper = styled.div`
-  @media (max-width: 1200px) {
+  ${({ theme }) => `
+    @media (max-width: ${theme.breakPoints.tablet}) {
     display: none;
-  }
+    }
+  `}
 `
 
 export const SiteHeaderElement = styled.div`

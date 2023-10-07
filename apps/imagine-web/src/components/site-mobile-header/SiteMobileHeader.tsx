@@ -1,21 +1,30 @@
-import { Link } from 'wouter';
-import React, { useState } from 'react';
+import { Link, useLocation } from 'wouter';
+import React, { useEffect, useState } from 'react';
 import { SiteMobileHeaderElement } from './SiteMobileHeader.styled';
 import { ADMIN_URL, GuestGuard, ScopeGuard, UserGuard } from '@imagine-cms/web';
 import { ButtonDanger, ButtonNoBorder, ButtonPrimary } from '../button/Button.remix';
+import { SiteLogo } from '../site-logo/SiteLogo';
+import { GridLarge } from '../grid/Grid.remix';
 
 export function SiteMobileHeader() {
+  const [location] = useLocation();
   const [showOnMobile, setShowOnMobile] = useState(false);
 
   const toggleMobile = () => {
     setShowOnMobile(_ => !_);
   }
 
+  useEffect(() => {
+    if (showOnMobile) {
+      setShowOnMobile(false);
+    }
+  }, [location]);
+
   return (
     <SiteMobileHeaderElement>
       <ul>
         <li onClick={toggleMobile}>
-          <i className={`fa fa-${showOnMobile ? 'times' : 'bars'}`} />
+          <SiteLogo />
         </li>
         {
           showOnMobile && (
@@ -106,16 +115,18 @@ export function SiteMobileHeader() {
                 </li>
               </UserGuard>
               <GuestGuard redirect={false}>
-                <Link to="/login">
-                  <ButtonPrimary>
-                    Login
-                  </ButtonPrimary>
-                </Link>
-                <Link to="/register">
-                  <ButtonPrimary>
-                    Create Account
-                  </ButtonPrimary>
-                </Link>
+                <GridLarge style={{ marginTop: 16 }}>
+                  <Link to="/login">
+                    <ButtonPrimary>
+                      Login
+                    </ButtonPrimary>
+                  </Link>
+                  <Link to="/register">
+                    <ButtonDanger>
+                      Create Account
+                    </ButtonDanger>
+                  </Link>
+                </GridLarge>
               </GuestGuard>
             </>
           )

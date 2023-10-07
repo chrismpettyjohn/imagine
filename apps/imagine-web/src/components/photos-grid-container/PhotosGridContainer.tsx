@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'wouter';
 import { PhotosGridContainerProps } from './PhotosGridContainer.types';
 import { PhotosGridContainerChild, PhotosGridContainerContent, PhotosGridContainerElement, PhotosGridContainerPagination } from './PhotosGridContainer.styled';
-import { Link } from 'wouter';
 
 export function PhotosGridContainer({ photos: stories }: PhotosGridContainerProps) {
   return (

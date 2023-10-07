@@ -1,39 +1,40 @@
 import styled from "styled-components";
 
 export const SiteMobileHeaderElement = styled.div`
-  background: ${({ theme }) => theme.color.s20};
+  align-items: center;
+  background: ${({ theme }) => theme.color.s40};
+  border-bottom:${({ theme }) => `2px solid ${theme.color.s30}`};
   display: flex;
   flex: 1;
-  flex-direction: column;
-  gap: ${({ theme }) => theme.space.oneUnit};
-  margin: 0 auto;
-  max-width: ${({ theme }) => theme.maxWidth};
+  margin-bottom: ${({ theme }) => theme.space.twoUnits};
+  overflow: hidden;
+  padding: ${({ theme }) => theme.space.oneUnit};
 
-  @media only screen and (min-width: 1200px) {
-    display: none !important;
-  }
+
+  ${({ theme }) => `
+    @media (min-width: ${theme.breakPoints.desktop}) {
+      display: none !important;
+    }
+  `}
 
   ul {
+    flex: 1;
     list-style-type: none;
   }
 
   li {
     background: ${({ theme }) => theme.color.s40};
-    border: ${({ theme }) => `2px solid ${theme.color.s40}`};
-    border-radus: ${({ theme }) => theme.radius.twoUnits};
+    border: ${({ theme }) => `2px solid ${theme.color.s30}`};
     cursor: pointer;
-    margin-bottom: ${({ theme }) => theme.space.oneUnit};
     padding: ${({ theme }) => theme.space.oneUnit};
 
     a {
+      display: flex;
+      flex: 1;
       color: ${({ theme }) => theme.color.s60};
-     text-decoration: none;
-    }
-
-    &:hover {
-      border-color: ${({ theme }) => theme.color.brand};
-      a {
-        color: ${({ theme }) => theme.color.brand};
+      text-decoration: none;
+      &:hover {
+        background:${({ theme }) => theme.color.brand};
       }
     }
   }

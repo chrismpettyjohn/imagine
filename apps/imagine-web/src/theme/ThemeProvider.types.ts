@@ -43,6 +43,11 @@ export interface ImagineTheme {
     threeUnits: string;
   };
   grid: Record<GridSizes, string>;
+  breakPoints: {
+    phone: string;
+    tablet: string;
+    desktop: string;
+  }
   maxWidth: string;
 }
 
