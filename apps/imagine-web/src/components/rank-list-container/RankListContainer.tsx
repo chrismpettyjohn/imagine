@@ -8,6 +8,7 @@ import { RankListContainerProps } from './RankListContainer.types';
 import { RankListContainerHeader } from './RankListContainer.styled';
 import { SmallUserProfileContainer } from '../small-user-profile-container/SmallUserProfileContainer';
 import { useRankFetchOneWithUsers } from './rank-fetch-one-with-users/rank-fetch-one-with-users.hook';
+import { SmallUserProfileContainerMock } from '../small-user-profile-container/SmallUserProfileContainerMock';
 
 export function RankListContainer({ rank }: RankListContainerProps) {
   const fetchRankUsers = useRankFetchOneWithUsers();
@@ -27,18 +28,19 @@ export function RankListContainer({ rank }: RankListContainerProps) {
         </Link>
       </RankListContainerHeader>
       {
-        fetchRankUsers.loading && (
-          <>
-            <i className="fa fa-spinner fa-spin" />
-            Loading users...
-          </>
-        )
-      }
-      {
         fetchRankUsers.data && (
-          <Grid>
+          <Grid>      {
+            fetchRankUsers.loading && (
+              <>
+                <SmallUserProfileContainerMock />
+                <SmallUserProfileContainerMock />
+                <SmallUserProfileContainerMock />
+                <SmallUserProfileContainerMock />
+              </>
+            )
+          }
             {
-              fetchRankUsers.data.users.map(_ => (
+              fetchRankUsers.data?.users.map(_ => (
                 <SmallUserProfileContainer key={`rank_${rank.id}_user_${_.id}`} user={_ as any} />
               ))
             }

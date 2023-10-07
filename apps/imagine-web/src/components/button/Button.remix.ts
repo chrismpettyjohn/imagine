@@ -17,4 +17,9 @@ export const ButtonDanger = styled(Button)`
 
 export const ButtonNoBorder = styled(Button)`
   border-color: transparent;
+  color: ${({ theme }) => theme.color.brand};
+  opacity: 0.9;
+  &:hover {
+    opacity: 1;
+  }
 `

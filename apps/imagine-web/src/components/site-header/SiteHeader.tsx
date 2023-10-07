@@ -15,7 +15,11 @@ export function SiteHeader() {
         <SiteHeaderContent>
           <SiteLogo />
           <SiteHeaderTools>
-            <OnlineUserCount />
+            <Link to="/play">
+              <ButtonNoBorder>
+                <b><OnlineUserCount /></b> users online
+              </ButtonNoBorder>
+            </Link>
           </SiteHeaderTools>
         </SiteHeaderContent>
       </SiteHeaderImage>
