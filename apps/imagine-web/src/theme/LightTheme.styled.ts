@@ -51,5 +51,5 @@ export const lightTheme: ImagineTheme = {
     tablet: '1350px',
     desktop: '1800px',
   },
-  maxWidth: '1800px'
+  maxWidth: '1500px'
 }

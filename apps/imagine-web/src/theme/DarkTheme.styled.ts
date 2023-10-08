@@ -46,5 +46,10 @@ export const darkTheme: ImagineTheme = {
     large: 'repeat(auto-fit, minmax(450px, 1fr))',
     extraLarge: 'repeat(auto-fit, minmax(600px, 1fr))',
   },
+  breakPoints: {
+    phone: '800px',
+    tablet: '1350px',
+    desktop: '1800px',
+  },
   maxWidth: '1500px'
 }
