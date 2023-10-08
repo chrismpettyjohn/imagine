@@ -5,8 +5,9 @@ import { LatestArticlesGridProps } from './LatestArticlesGrid.types';
 import { LatestArticleContainer } from '../latest-article-grid-container/LatestArticleGridContainer';
 import { GridLarge } from '../grid/Grid.remix';
 import { ButtonNoBorder } from '../button/Button.remix';
+import { LatestArticleContainerMock } from '../latest-article-grid-container/LatestArticleContainer.mock';
 
-const ARTICLES_PAGE_SIZE = 6;
+const ARTICLES_PAGE_SIZE = 8;
 
 export function LatestArticlesGrid({ showHeader = true }: LatestArticlesGridProps) {
   const [page, setPage] = useState(0)
@@ -30,7 +31,7 @@ export function LatestArticlesGrid({ showHeader = true }: LatestArticlesGridProp
   }
 
   useEffect(() => {
-    fetchArticles.fetch({ limit: ARTICLES_PAGE_SIZE });
+    fetchArticles.fetch({ skip: page * ARTICLES_PAGE_SIZE, limit: ARTICLES_PAGE_SIZE });
   }, [page]);
 
   return (
@@ -43,6 +44,20 @@ export function LatestArticlesGrid({ showHeader = true }: LatestArticlesGridProp
         </div>
       )}
       <Grid>
+        {
+          fetchArticles.loading && (
+            <>
+              <LatestArticleContainerMock />
+              <LatestArticleContainerMock />
+              <LatestArticleContainerMock />
+              <LatestArticleContainerMock />
+              <LatestArticleContainerMock />
+              <LatestArticleContainerMock />
+              <LatestArticleContainerMock />
+              <LatestArticleContainerMock />
+            </>
+          )
+        }
         {
           fetchArticles.data?.map(_ => (
             <LatestArticleContainer article={_} key={`latest_article_${_.id}`} />
