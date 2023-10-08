@@ -33,8 +33,11 @@ export function PhotoViewScreen() {
           <>
             <GridLarge>
               <PhotoViewScreenImagePreview src={data.photoURL} />
-              <PhotoCommentsCard photo={data} />
+              <div key={`photo_${photoID}_comments_${key}`}>
+                <PhotoCommentsCard photo={data} />
+              </div>
               {data.user ? <SmallUserProfileContainer user={data.user as any} /> : <SmallUserProfileContainerMock />}
+
               <PhotoCreateCommentCard photoID={data.id} onCreation={bumpKey} />
             </GridLarge>
           </>

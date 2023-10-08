@@ -40,8 +40,8 @@ export function ArticleViewScreen() {
           </ArticleContentContainer>
         </ArticleContentElement>
       </div>
-      <div style={{ display: 'flex', flex: 1, flexDirection: 'column', gap: 16 }}>
-        <ArticleCommentsCard articleID={articleID} key={`article_comments_${key}`} />
+      <div style={{ display: 'flex', flex: 1, flexDirection: 'column', gap: 16 }} key={`article_comments_${key}`}>
+        <ArticleCommentsCard articleID={articleID} />
         <ArticlePostCommentCard articleID={articleID} onPost={onReloadArticleResources} />
       </div>
     </GridLargeSmall>
