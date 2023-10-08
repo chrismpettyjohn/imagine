@@ -92,6 +92,14 @@ export * from './friendship/friendship-fetch-many.query';
 export * from './friendship/friendship.fragment';
 export * from './friendship/friendship.input';
 
+// Furniture
+export * from './furniture/furniture-fetch-many.hook';
+export * from './furniture/furniture-fetch-many.query';
+export * from './furniture/furniture-fetch-one.hook';
+export * from './furniture/furniture-fetch-one.query';
+export * from './furniture/furniture.fragment';
+export * from './furniture/furniture.input';
+
 // Group
 export * from './group/group-fetch-many.hook';
 export * from './group/group-fetch-many.query';
