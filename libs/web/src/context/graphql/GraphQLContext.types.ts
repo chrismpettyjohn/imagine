@@ -11,4 +11,5 @@ export const defaultGraphQLContext: GraphQLContext = {
 
 export interface GraphQLContextProviderProps {
   children: ReactNode;
+  loadingScreen: ReactNode;
 }

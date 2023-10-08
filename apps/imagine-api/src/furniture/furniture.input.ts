@@ -1,7 +1,7 @@
-import {Max} from 'class-validator';
-import {Field, InputType} from '@nestjs/graphql';
-import {FurnitureValueType} from '../database/furniture.entity';
-import {GLOBAL_MAX_RESOURCE_LIMIT} from '../imagine.constant';
+import { Max } from 'class-validator';
+import { Field, InputType } from '@nestjs/graphql';
+import { FurnitureValueType } from '../database/furniture.entity';
+import { GLOBAL_MAX_RESOURCE_LIMIT } from '../imagine.constant';
 
 export enum FurnitureOrderBy {
   GREATEST_VALUE_TYPE = 'GREATEST_VALUE_TYPE',
@@ -16,25 +16,25 @@ export class FurnitureFilterOneInput {
 
 @InputType()
 export class FurnitureFilterManyInput {
-  @Field(() => [Number], {nullable: true})
+  @Field(() => [Number], { nullable: true })
   ids?: number[];
 
-  @Field(() => String, {nullable: true})
+  @Field(() => String, { nullable: true })
   publicName?: string;
 
-  @Field(() => String, {nullable: true})
+  @Field(() => String, { nullable: true })
   itemName?: string;
 
-  @Field(() => [FurnitureValueType], {nullable: true})
+  @Field(() => [FurnitureValueType], { nullable: true })
   valueTypes?: FurnitureValueType[];
 
-  @Field(() => Number, {nullable: true})
+  @Field(() => Number, { nullable: true })
   skip?: number;
 
-  @Field(() => Number, {nullable: true})
+  @Field(() => Number, { nullable: true })
   @Max(GLOBAL_MAX_RESOURCE_LIMIT)
   limit?: number;
 
-  @Field(() => [FurnitureOrderBy], {nullable: true})
+  @Field(() => [FurnitureOrderBy], { nullable: true })
   orderBy?: FurnitureOrderBy[];
 }

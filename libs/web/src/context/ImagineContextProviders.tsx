@@ -7,7 +7,7 @@ import { ImagineContextProvidersProps } from './ImagineContextProviders.types';
 
 export function ImagineContextProviders({ children, loadingScreen }: ImagineContextProvidersProps) {
   return (
-    <GraphQLContextProvider>
+    <GraphQLContextProvider loadingScreen={loadingScreen}>
       <ConfigContextProvider loadingScreen={loadingScreen}>
         <SessionContextProvider loadingScreen={loadingScreen}>
           <ThemeContextProvider>
