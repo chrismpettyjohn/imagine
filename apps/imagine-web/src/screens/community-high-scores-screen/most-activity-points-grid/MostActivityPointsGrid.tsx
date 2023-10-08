@@ -5,6 +5,7 @@ import { GridLarge } from '../../../components/grid/Grid.remix';
 import { UserOrderBy, useUserFetchMany } from '@imagine-cms/client';
 import { ButtonNoBorder } from '../../../components/button/Button.remix';
 import { SmallUserProfileContainer } from '../../../components/small-user-profile-container/SmallUserProfileContainer';
+import { SmallUserProfileContainerMock } from '../../../components/small-user-profile-container/SmallUserProfileContainerMock';
 
 const USER_PAGE_SIZE = 8;
 
@@ -42,7 +43,18 @@ export function MostActivityPointsGrid() {
     <Card header={<>Most Points <small>Page {page + 1}</small></>}>
       <Grid>
         {
-          fetchUsers.loading && <i className="fa fa-spinner fa-spin" />
+          fetchUsers.loading && (
+            <>
+              <SmallUserProfileContainerMock />
+              <SmallUserProfileContainerMock />
+              <SmallUserProfileContainerMock />
+              <SmallUserProfileContainerMock />
+              <SmallUserProfileContainerMock />
+              <SmallUserProfileContainerMock />
+              <SmallUserProfileContainerMock />
+              <SmallUserProfileContainerMock />
+            </>
+          )
         }
         {
           fetchUsers.data?.map(_ => (

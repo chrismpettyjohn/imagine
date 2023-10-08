@@ -25,6 +25,7 @@ export class FriendshipResolver {
       where: {
         userID: filter.userID,
       },
+      skip: filter.skip,
       take: filter.limit ?? 25,
     });
     return matchingFriendships.map(FriendshipModel.fromEntity);

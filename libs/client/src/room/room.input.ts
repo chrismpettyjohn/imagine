@@ -5,5 +5,6 @@ export interface RoomFilterOneInput {
 export interface RoomFilterManyInput {
   ids?: number[];
   userIDs?: number[];
+  skip?: number;
   limit?: number;
 }

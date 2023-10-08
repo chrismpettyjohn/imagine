@@ -567,6 +567,7 @@ input RoomFilterOneInput {
 input RoomFilterManyInput {
   ids: [Float!]
   userIDs: [Float!]
+  skip: Float
   limit: Float
 }
 
@@ -594,6 +595,7 @@ input GroupFilterManyInput {
 input GroupMembershipFilterManyInput {
   groupIDs: [Float!]
   userIDs: [Float!]
+  skip: Float
   limit: Float
 }
 
@@ -630,6 +632,7 @@ input PhotoReactionFilterManyInput {
 
 input FriendshipFilterManyInput {
   userID: Float!
+  skip: Float
   limit: Float
 }
 
