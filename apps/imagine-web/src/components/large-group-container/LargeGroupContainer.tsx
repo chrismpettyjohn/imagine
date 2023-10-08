@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'wouter';
+import { GroupBadge } from '../group-badge/GroupBadge';
 import { LargeGroupContainerProps } from './LargeGroupContainer.types';
 import { LargeGroupContainerElement, LargeGroupContainerInformation } from './LargeGroupContainer.styled';
 
@@ -7,7 +8,7 @@ export function LargeGroupContainer({ group }: LargeGroupContainerProps) {
   return (
     <Link to={`/groups/${group.id}`}>
       <LargeGroupContainerElement>
-        <img src="https://www.habborator.org/badges/badges/CY3.gif" />
+        <GroupBadge group={group} />
         <LargeGroupContainerInformation>
 
           <h3 className="notranslate">{group.name}</h3>

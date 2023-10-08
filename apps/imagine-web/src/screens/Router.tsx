@@ -19,6 +19,7 @@ import { PhotoListScreen } from './photo-list-screen/PhotoListScreen';
 import { GroupViewScreen } from './group-view-screen/GroupViewScreen';
 import { BadgeListScreen } from './badge-list-screen/BadgeListScreen';
 import { BadgeViewScreen } from './badge-view-screen/BadgeViewScreen';
+import { GroupListScreen } from './group-list-screen/GroupListScreen';
 import { BugReportsScreen } from './bug-reports-screen/BugReportsScreen';
 import { ArticleViewScreen } from './article-view-screen/ArticleViewScreen';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
@@ -146,6 +147,10 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/rooms/:roomID',
     view: RoomViewScreen,
+  },
+  {
+    path: '/groups',
+    view: GroupListScreen,
   },
   {
     path: '/groups/:groupID',

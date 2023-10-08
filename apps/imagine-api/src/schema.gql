@@ -204,6 +204,7 @@ type GroupModel {
   userID: Float
   roomID: Float
   user: UserModel
+  userCount: Float
 }
 
 type GroupMembershipModel {
@@ -590,6 +591,7 @@ input GroupFilterOneInput {
 input GroupFilterManyInput {
   ids: [Float!]
   userIDs: [Float!]
+  skip: Float
   limit: Float
 }
 

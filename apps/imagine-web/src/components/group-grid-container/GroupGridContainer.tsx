@@ -1,21 +1,27 @@
 import React from 'react';
 import { Link } from 'wouter';
-import { Badge } from '../badge/Badge';
+import { GroupBadge } from '../group-badge/GroupBadge';
 import { GroupGridContainerProps } from './GroupGridContainer.types';
-import { GroupGridContainerBadgeContainer, GroupGridContainerElement, GroupGridContainerInformationContainer, GroupGridContainerInformationWrapper } from './GroupGridContainer.styled';
+import { GroupGridContainerBadgeContainer, GroupGridContainerBanner, GroupGridContainerElement, GroupGridContainerInformationContainer, GroupGridUserCountContainer, GroupGridNameContainer } from './GroupGridContainer.styled';
 
 export function GroupGridContainer({ group }: GroupGridContainerProps) {
   return (
     <Link to={`/groups/${group.id}`}>
       <GroupGridContainerElement>
-        <GroupGridContainerBadgeContainer>
-          <Badge badge={{ code: group.badge } as any} />
-        </GroupGridContainerBadgeContainer>
-        <GroupGridContainerInformationWrapper>
-          <GroupGridContainerInformationContainer>
-            <h3>{group.name}</h3>
-          </GroupGridContainerInformationContainer>
-        </GroupGridContainerInformationWrapper>
+        <GroupGridContainerBanner>
+          <GroupGridContainerBadgeContainer>
+            <GroupBadge group={group} />
+          </GroupGridContainerBadgeContainer>
+        </GroupGridContainerBanner>
+        <GroupGridContainerInformationContainer>
+          <GroupGridNameContainer className="notranslate">
+            {group.name}
+          </GroupGridNameContainer>
+          <GroupGridUserCountContainer>
+            <i className="fa fa-users" style={{ marginRight: 8 }} />
+            {group.userCount} members
+          </GroupGridUserCountContainer>
+        </GroupGridContainerInformationContainer>
       </GroupGridContainerElement>
     </Link>
   )

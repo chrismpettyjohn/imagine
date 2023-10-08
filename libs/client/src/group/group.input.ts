@@ -5,5 +5,6 @@ export interface GroupFilterOneInput {
 export interface GroupFilterManyInput {
   ids?: number[];
   userIDs?: number[];
+  skip?: number;
   limit?: number;
 }

@@ -13,12 +13,14 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
+import {GroupMembershipRepository} from '../database/group-membership.repository';
 
 @Resolver(() => GroupModel)
 export class GroupResolver {
   constructor(
     private readonly userRepo: UserRepository,
-    private readonly groupRepo: GroupRepository
+    private readonly groupRepo: GroupRepository,
+    private readonly groupMembershipRepo: GroupMembershipRepository
   ) {}
 
   @ResolveField(() => UserModel, {nullable: true})
@@ -28,6 +30,17 @@ export class GroupResolver {
         id: group.userID,
       },
     });
+  }
+
+  @ResolveField(() => Number, {nullable: true})
+  async userCount(@Parent() group: GroupModel): Promise<number> {
+    const response: [{user_count: number}] = await this.groupMembershipRepo
+      .getInstance()
+      .createQueryBuilder('memberships')
+      .select('COUNT(*) AS user_count')
+      .where('guild_id = :groupID', {groupID: group.id})
+      .execute();
+    return response[0].user_count;
   }
 
   @Query(() => GroupModel)
@@ -46,6 +59,7 @@ export class GroupResolver {
         id: filter.ids && In(filter.ids),
         userID: filter.userIDs && In(filter.userIDs),
       },
+      skip: filter.skip,
       take: filter.limit ?? 25,
     });
     return matchingGroups.map(GroupModel.fromEntity);

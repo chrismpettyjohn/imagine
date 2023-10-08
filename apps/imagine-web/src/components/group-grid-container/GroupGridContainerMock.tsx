@@ -1,18 +1,24 @@
 import React from 'react';
 import { Badge } from '../badge/Badge';
-import { GroupGridContainerBadgeContainer, GroupGridContainerElement, GroupGridContainerInformationContainer, GroupGridContainerInformationWrapper } from './GroupGridContainer.styled';
+import { GroupGridContainerBadgeContainer, GroupGridContainerBanner, GroupGridContainerElement, GroupGridContainerInformationContainer, GroupGridUserCountContainer, GroupGridNameContainer } from './GroupGridContainer.styled';
 
 export function GroupGridContainerMock() {
   return (
     <GroupGridContainerElement>
-      <GroupGridContainerBadgeContainer>
-        <Badge badge={{ code: 'FAN' } as any} />
-      </GroupGridContainerBadgeContainer>
-      <GroupGridContainerInformationWrapper>
-        <GroupGridContainerInformationContainer>
-          <h3>-</h3>
-        </GroupGridContainerInformationContainer>
-      </GroupGridContainerInformationWrapper>
+      <GroupGridContainerBanner>
+        <GroupGridContainerBadgeContainer>
+          <Badge badge={{ code: 'FAN' } as any} />
+        </GroupGridContainerBadgeContainer>
+      </GroupGridContainerBanner>
+      <GroupGridContainerInformationContainer>
+        <GroupGridNameContainer className="notranslate">
+          -
+        </GroupGridNameContainer>
+        <GroupGridUserCountContainer>
+          <i className="fa fa-users" style={{ marginRight: 8 }} />
+          0
+        </GroupGridUserCountContainer>
+      </GroupGridContainerInformationContainer>
     </GroupGridContainerElement>
   )
 }

@@ -1,50 +1,80 @@
 import styled from "styled-components";
 
 export const GroupGridContainerElement = styled.div`
-  background: ${({ theme }) => theme.color.s40};
-  border:${({ theme }) => `2px solid ${theme.color.s40}`};
-  border-radius: ${({ theme }) => theme.radius.oneUnit};
-  color: ${({ theme }) => theme.color.s20};
+  background-color: ${({ theme }) => theme.color.s40};
+  border-radius: 2em;
+  min-height: 17em;
+  text-decoration: unset;
+  color: #000;  
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  height: 150px;
-  overflow: hidden;
-  width: 250px;
+  opacity: 0.9;
   &:hover {
-      border:${({ theme }) => `2px solid ${theme.color.s60}`};
+    opacity: 1;
   }
+`
+
+export const GroupGridContainerBanner = styled.div`
+  height: 5em;
+  border-radius: 2em 2em 0 0;
+  background: url(https://habbox.fr/assets/images/index/index.png);
+  background-size: auto;
+  position: relative;
+  margin-bottom: 2.25em;
+  background-position: center; 
+   
 `
 
 export const GroupGridContainerBadgeContainer = styled.div`
-  align-items: center;
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
+  background: #f0f0f0;
+  width: 6em;
+  height: 6em;
+  bottom: -2.5em;
+  box-shadow: 0 0 0 3pt rgba(255,255,255,.75);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2em;
+  overflow: hidden;
   img {
-    height: 180px;
+    position: absolute;
+    top: 45%;
+    left: 48%;
+    transform: translate(-50%,-50%);
+    height: 70px;
   }
 `
 
-export const GroupGridContainerInformationWrapper = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-`
 
 export const GroupGridContainerInformationContainer = styled.div`
-  align-items: center;
-  background: ${({ theme }) => theme.color.s30};
+  padding: 1em;
+`
+
+export const GroupGridNameContainer = styled.div`
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: ${({ theme }) => theme.color.brand};
+  margin-top: 0.5em;
+`
+
+export const GroupGridUserCountContainer = styled.div`
+  margin-top: 0.5em;
+  height: 2.5em;
   display: flex;
-  flex: 1;
-  font-size: ${({ theme }) => theme.fontSize.oneUnit};
-  gap: ${({ theme }) => theme.space.oneUnit};
+  align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  text-align: center;
+`
+
+export const GroupGridMottoContainer = styled.div`
+  font-weight: lighter;
+  font-style: italic;
+  word-break: break-word; 
+  margin-top: 0.5em;
+  height: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
 `
