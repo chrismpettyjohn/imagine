@@ -14,7 +14,6 @@ export const SiteHeaderElement = styled.div`
   border-bottom:${({ theme }) => `2px solid ${theme.color.s40}`};
   display: flex;
   flex: 1;
-  margin-bottom: ${({ theme }) => theme.space.twoUnits};
   width: 100%;
 `
 

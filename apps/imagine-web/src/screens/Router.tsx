@@ -13,10 +13,11 @@ import { RankViewScreen } from './rank-view-screen/RankViewScreen';
 import { PlayGameScreen } from './play-game-screen/PlayGameScreen';
 import { RoomViewScreen } from './room-view-screen/RoomViewScreen';
 import { RankListScreen } from './rank-list-screen/RankListScreen';
+import { CommunityScreen } from './community-screen/CommunityScreen';
+import { PhotoViewScreen } from './photo-view-screen/PhotoViewScreen';
 import { PhotoListScreen } from './photo-list-screen/PhotoListScreen';
 import { GroupViewScreen } from './group-view-screen/GroupViewScreen';
 import { BugReportsScreen } from './bug-reports-screen/BugReportsScreen';
-import { ProfileViewScreen } from './profile-view-screen/ProfileViewScreen';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
 import { BugReportViewScreen } from './bug-report-view-screen/BugReportViewScreen';
 import { ForgotPasswordScreen } from './forgot-password-screen/ForgotPasswordScreen';
@@ -30,7 +31,6 @@ import { CommunityOnlinePlayersScreen } from './community-online-players-screen/
 import { ForgotPasswordLinkSentScreen } from './forgot-password-link-sent-screen/ForgotPasswordLinkSentScreen';
 import { ForgotPasswordRedeemCodeScreen } from './forgot-password-redeem-code-screen/ForgotPasswordRedeemCodeScreen';
 import { CommunityStaffApplicationScreen } from './community-staff-application-screen/CommunityStaffApplicationScreen';
-import { CommunityScreen } from './community-screen/CommunityScreen';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -103,7 +103,7 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   },
   {
     path: '/photos/:photoID',
-    view: ProfileViewScreen,
+    view: PhotoViewScreen,
   },
   {
     path: '/play',

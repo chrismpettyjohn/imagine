@@ -1,18 +1,19 @@
 import styled from "styled-components";
 
-export const ProfileViewScreenContainer = styled.div`
+export const PhotoViewScreenContainer = styled.div`
   display: flex;
   flex: 1;
   gap: ${({ theme }) => theme.space.oneUnit};
 `
 
-export const ProfileViewScreenImagePreview = styled.img`
+export const PhotoViewScreenImagePreview = styled.img`
   border:${({ theme }) => `2px solid ${theme.color.s40}`};
   border-radius:  ${({ theme }) => theme.radius.oneUnit};
   height: 576px;
+  width: 100%;
 `
 
-export const ProfileViewScreenInfoContainer = styled.div`
+export const PhotoViewScreenInfoContainer = styled.div`
   background: ${({ theme }) => theme.color.s20};
   border:${({ theme }) => `2px solid ${theme.color.s40}`};
   border-radius:  ${({ theme }) => theme.radius.oneUnit};

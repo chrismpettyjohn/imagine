@@ -25,7 +25,6 @@ export function SiteContainer() {
               <SiteHeader />
               <SiteMobileHeader />
               <PageContainerElement>
-                <ChangeLanguageButton />
                 <Router />
               </PageContainerElement>
               <SiteFooter />
