@@ -37,7 +37,7 @@ export function UserRoomsGrid({ user }: UserRoomsGridProps) {
   }, [user.id, page]);
 
   return (
-    <Card header="My Rooms" headerImage='https://www.habboassets.com/assets/images/catalog/icons/icon_206.png'>
+    <Card header={<>My Rooms {page > 0 && <small>Page {page + 1}</small>}</>} headerImage='https://www.habboassets.com/assets/images/catalog/icons/icon_206.png'>
       <Grid>
         {
           fetchRooms.loading && (
@@ -59,13 +59,13 @@ export function UserRoomsGrid({ user }: UserRoomsGridProps) {
       <GridLarge>
         {canGoDown ?
           <ButtonNoBorder onClick={goBackOnePage}>
-            <i className={fetchUsers.loading ? 'fa fa-spinner fa-spin' : 'fa fa-arrow-left'} />
+            <i className={fetchRooms.loading ? 'fa fa-spinner fa-spin' : 'fa fa-arrow-left'} />
           </ButtonNoBorder>
           : <div />}
         {
           canGoUp && (
             <ButtonNoBorder onClick={goUpOnePage}>
-              <i className={fetchUsers.loading ? 'fa fa-spinner fa-spin' : 'fa fa-arrow-right'} />
+              <i className={fetchRooms.loading ? 'fa fa-spinner fa-spin' : 'fa fa-arrow-right'} />
             </ButtonNoBorder>
           )
         }

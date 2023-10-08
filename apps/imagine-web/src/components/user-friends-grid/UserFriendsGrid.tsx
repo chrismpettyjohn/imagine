@@ -38,7 +38,7 @@ export function UserFriendsGrid({ user }: UserFriendsGridProps) {
   }, [user.id, page]);
 
   return (
-    <Card header="My Friends" headerImage="https://www.habboassets.com/assets/images/catalog/icons/icon_61.png">
+    <Card header={<>My Friends {page > 0 && <small>Page {page + 1}</small>}</>} headerImage="https://www.habboassets.com/assets/images/catalog/icons/icon_61.png">
       <Grid>
         {
           friendshipFetch.data?.length === 0 && <p>You don't have any friends</p>

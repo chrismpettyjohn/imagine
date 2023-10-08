@@ -17,6 +17,8 @@ import { CommunityScreen } from './community-screen/CommunityScreen';
 import { PhotoViewScreen } from './photo-view-screen/PhotoViewScreen';
 import { PhotoListScreen } from './photo-list-screen/PhotoListScreen';
 import { GroupViewScreen } from './group-view-screen/GroupViewScreen';
+import { BadgeListScreen } from './badge-list-screen/BadgeListScreen';
+import { BadgeViewScreen } from './badge-view-screen/BadgeViewScreen';
 import { BugReportsScreen } from './bug-reports-screen/BugReportsScreen';
 import { ArticleViewScreen } from './article-view-screen/ArticleViewScreen';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
@@ -172,7 +174,15 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/values/:furnitureID',
     view: ValuesViewItemScreen,
-  }
+  },
+  {
+    path: '/badges',
+    view: BadgeListScreen,
+  },
+  {
+    path: '/badges/:badgeCode',
+    view: BadgeViewScreen,
+  },
 ]
 
 export function Router() {

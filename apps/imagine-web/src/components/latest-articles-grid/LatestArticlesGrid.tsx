@@ -35,7 +35,13 @@ export function LatestArticlesGrid({ showHeader = true }: LatestArticlesGridProp
 
   return (
     <>
-      {showHeader && <h1>News Articles</h1>}
+      {showHeader && (
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <h1>News Articles</h1>
+          {page > 0 &&
+            <h2>Page {page + 1}</h2>}
+        </div>
+      )}
       <Grid>
         {
           fetchArticles.data?.map(_ => (
