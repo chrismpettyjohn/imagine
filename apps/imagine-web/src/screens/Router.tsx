@@ -2,7 +2,6 @@ import React from 'react';
 import { Switch, Route } from 'wouter';
 import { UserGuard } from '@imagine-cms/web';
 import { MeScreen } from './me-screen/MeScreen';
-import { RadioScreen } from './radio-screen/RadioScreen';
 import { LoginScreen } from './login-screen/LoginScreen';
 import { LogoutScreen } from './logout-screen/LogoutScreen';
 import { ImagineScreen } from './imagine-screen/ImagineScreen';
@@ -109,10 +108,6 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/play',
     view: PlayGameScreen,
-  },
-  {
-    path: '/radio',
-    view: RadioScreen,
   },
   {
     path: '/ranks',

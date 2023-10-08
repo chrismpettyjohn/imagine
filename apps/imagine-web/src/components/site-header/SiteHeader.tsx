@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'wouter';
+import { SiteNav } from '../site-nav/SiteNav';
 import { SiteLogo } from '../site-logo/SiteLogo';
 import { GuestGuard } from '../guest-guard/GuestGuard';
 import { ADMIN_URL, ScopeGuard, UserGuard } from '@imagine-cms/web';
@@ -27,50 +28,7 @@ export function SiteHeader() {
         <SiteHeaderContent>
           <SiteHeaderNavigation>
             <SiteHeaderNav>
-              <GuestGuard>
-                <li>
-                  <Link to="/login">
-                    Login
-                  </Link>
-                </li>
-              </GuestGuard>
-              <UserGuard>
-                <li>
-                  <Link to="/me">
-                    Home
-                  </Link>
-                </li>
-              </UserGuard>
-              <li>
-                <Link to="/community">
-                  Community
-                </Link>
-              </li>
-              <li>
-                <Link to="/photos">
-                  Photos
-                </Link>
-              </li>
-              <li>
-                <Link to="/ranks">
-                  Staff Team
-                </Link>
-              </li>
-              <li>
-                <Link to="/radio">
-                  Radio
-                </Link>
-              </li>
-              <li>
-                <Link to="/community/online-players">
-                  Online Users
-                </Link>
-              </li>
-              <li>
-                <Link to="/community/high-scores">
-                  High Scores
-                </Link>
-              </li>
+              <SiteNav />
             </SiteHeaderNav>
           </SiteHeaderNavigation>
           <SiteHeaderActions>

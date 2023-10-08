@@ -1,10 +1,11 @@
 import { Link, useLocation } from 'wouter';
+import { SiteNav } from '../site-nav/SiteNav';
+import { GridLarge } from '../grid/Grid.remix';
+import { SiteLogo } from '../site-logo/SiteLogo';
 import React, { useEffect, useState } from 'react';
 import { SiteMobileHeaderElement } from './SiteMobileHeader.styled';
 import { ADMIN_URL, GuestGuard, ScopeGuard, UserGuard } from '@imagine-cms/web';
 import { ButtonDanger, ButtonNoBorder, ButtonPrimary } from '../button/Button.remix';
-import { SiteLogo } from '../site-logo/SiteLogo';
-import { GridLarge } from '../grid/Grid.remix';
 
 export function SiteMobileHeader() {
   const [location] = useLocation();
@@ -29,91 +30,39 @@ export function SiteMobileHeader() {
         {
           showOnMobile && (
             <>
-              <GuestGuard>
-                <li>
-                  <Link to="/login">
-                    Login
-                  </Link>
-                </li>
-              </GuestGuard>
-              <UserGuard>
-                <li>
-                  <Link to="/me">
-                    Home
-                  </Link>
-                </li>
-              </UserGuard>
-              <li>
-                <Link to="/community">
-                  Community
-                </Link>
-              </li>
-              <li>
-                <Link to="/photos">
-                  Photos
-                </Link>
-              </li>
-              <li>
-                <Link to="/ranks">
-                  Staff Team
-                </Link>
-              </li>
-              <li>
-                <Link to="/radio">
-                  Radio
-                </Link>
-              </li>
-              <li>
-                <Link to="/community/online-players">
-                  Online Users
-                </Link>
-              </li>
-              <li>
-                <Link to="/community/high-scores">
-                  High Scores
-                </Link>
-              </li>
-              <UserGuard>
-                <li>
+              <SiteNav />
+              <GridLarge style={{ marginTop: 16 }}>
+                <UserGuard>
                   <Link to="/bug-reports">
-                    <ButtonNoBorder style={{ padding: 0 }}>
-                      <i className="fa fa-bug fa-2x" />
+                    <ButtonNoBorder>
+                      <i className="fa fa-bug" style={{ marginRight: 8 }} />
+                      Bugs
                     </ButtonNoBorder>
                   </Link>
-                </li>
-                <li>
                   <Link to="/settings">
-                    <ButtonNoBorder style={{ padding: 0 }}>
-                      <i className="fa fa-cog fa-2x" />
+                    <ButtonNoBorder>
+                      <i className="fa fa-wrench" style={{ marginRight: 8 }} />
+                      Settings
                     </ButtonNoBorder>
                   </Link>
-                </li>
-                <li>
-                  <Link to="/logout">
-                    <ButtonNoBorder style={{ color: '#7C0F0F', padding: 0 }}>
-                      <i className="fa fa-sign-out fa-2x" />
-                    </ButtonNoBorder>
-                  </Link>
-                </li>
-              </UserGuard>
-              <ScopeGuard scope="accessAdminPanel" redirect={false}>
-                <li>
-                  <a href={ADMIN_URL}>
-                    <ButtonDanger>
+                </UserGuard>
+                <ScopeGuard scope="accessAdminPanel" redirect={false}>
+                  <a href={ADMIN_URL} style={{ width: '100%' }}>
+                    <ButtonDanger style={{ width: '100%' }}>
+                      <i className="fa fa-cog" style={{ marginRight: 8 }} />
                       Admin
                     </ButtonDanger>
                   </a>
-                </li>
-              </ScopeGuard>
-              <UserGuard redirect={false}>
-                <li>
+                </ScopeGuard>
+                <UserGuard>
                   <Link to="/play">
                     <ButtonPrimary>
+                      <i className="fa fa-users" style={{ marginRight: 8 }} />
                       Play
                     </ButtonPrimary>
                   </Link>
-                </li>
-              </UserGuard>
+                </UserGuard>
+              </GridLarge>
               <GuestGuard redirect={false}>
                 <GridLarge style={{ marginTop: 16 }}>
                   <Link to="/login">
@@ -132,6 +81,6 @@ export function SiteMobileHeader() {
           )
         }
       </ul>
-    </SiteMobileHeaderElement>
+    </SiteMobileHeaderElement >
   )
 }
