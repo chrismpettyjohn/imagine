@@ -15,7 +15,7 @@ export function generateGraphQLClient(userIPAddress: string): ApolloClient<any> 
           const accessToken = localStorage.getItem('SESSION');
           return {
             Authorization: `Bearer ${accessToken}`,
-            ['X-Forwarded-For']: userIPAddress,
+            'X-Forwarded-For': userIPAddress,
           }
         },
       },
