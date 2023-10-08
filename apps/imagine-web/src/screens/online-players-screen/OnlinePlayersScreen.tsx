@@ -9,7 +9,7 @@ import { SmallUserProfileContainerMock } from '../../components/small-user-profi
 
 const USERS_PAGE_SIZE = 12;
 
-export function CommunityOnlinePlayersScreen() {
+export function OnlinePlayersScreen() {
   const [page, setPage] = useState(0);
   const { data, fetch, loading } = useUserFetchMany();
 

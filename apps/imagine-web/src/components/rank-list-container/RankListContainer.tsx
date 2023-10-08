@@ -79,7 +79,7 @@ export function RankListContainer({ rank }: RankListContainerProps) {
       </GridLarge>
       {
         rank.flags?.acceptingApplications && (
-          <Link to={`/community/staff/${rank.id}/apply`}>
+          <Link to={`/community/staff/${rank.id}`}>
             <ButtonBrand>Apply for Role</ButtonBrand>
           </Link>
         )

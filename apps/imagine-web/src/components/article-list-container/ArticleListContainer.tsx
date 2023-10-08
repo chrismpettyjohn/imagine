@@ -6,7 +6,7 @@ import { ArticleListContainerCategory, ArticleListContainerDescription, ArticleL
 
 export function ArticleListContainer({ article }: ArticleListContainerProps) {
   return (
-    <Link to={`/community/articles/${article.id}`}>
+    <Link to={`/articles/${article.id}`}>
       <ArticleListContainerElement>
         <ArticleListContainerImage src={article.imageURL} />
         <ArticleListContainerInformation>

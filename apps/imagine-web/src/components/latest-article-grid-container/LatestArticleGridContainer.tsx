@@ -5,7 +5,7 @@ import { LatestArticleGridContainerElement, LatestArticleImage, LatestArticleInf
 
 export function LatestArticleContainer({ article }: LatestArticleContainerProps) {
   return (
-    <Link to={`/community/articles/${article.id}`}>
+    <Link to={`/articles/${article.id}`}>
       <LatestArticleGridContainerElement>
         <LatestArticleImage src={article.imageURL} />
         <LatestArticleInformation>

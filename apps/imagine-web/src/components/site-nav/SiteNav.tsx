@@ -34,13 +34,13 @@ export function SiteNav() {
         </Link>
       </li>
       <li>
-        <Link to="/community/online-players">
+        <Link to="/online-players">
           <i className="fa fa-signal-stream" style={{ marginRight: 8 }} />
           Online Users
         </Link>
       </li>
       <li>
-        <Link to="/community/high-scores">
+        <Link to="/high-scores">
           <i className="fa fa-trophy" style={{ marginRight: 8 }} />
           High Scores
         </Link>

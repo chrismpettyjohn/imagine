@@ -10,7 +10,7 @@ import { ArticleContentContainer, ArticleContentElement, ArticleHeaderBackground
 export function ArticleViewScreen() {
   const [key, setKey] = useState(0);
   const fetchArticle = useArticleFetchOne();
-  const [_, params] = useRoute<{ articleID: string }>('/community/articles/:articleID');
+  const [_, params] = useRoute<{ articleID: string }>('/articles/:articleID');
   const articleID = Number(params!.articleID);
 
   const onReloadArticleResources = () => {

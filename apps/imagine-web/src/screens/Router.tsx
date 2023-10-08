@@ -13,6 +13,7 @@ import { RankViewScreen } from './rank-view-screen/RankViewScreen';
 import { PlayGameScreen } from './play-game-screen/PlayGameScreen';
 import { RoomViewScreen } from './room-view-screen/RoomViewScreen';
 import { RankListScreen } from './rank-list-screen/RankListScreen';
+import { RoomListScreen } from './room-list-screen/RoomListScreen';
 import { CommunityScreen } from './community-screen/CommunityScreen';
 import { PhotoViewScreen } from './photo-view-screen/PhotoViewScreen';
 import { PhotoListScreen } from './photo-list-screen/PhotoListScreen';
@@ -20,10 +21,12 @@ import { GroupViewScreen } from './group-view-screen/GroupViewScreen';
 import { BadgeListScreen } from './badge-list-screen/BadgeListScreen';
 import { BadgeViewScreen } from './badge-view-screen/BadgeViewScreen';
 import { GroupListScreen } from './group-list-screen/GroupListScreen';
+import { HighScoresScreen } from './high-scores-screen/HighScoresScreen';
 import { BugReportsScreen } from './bug-reports-screen/BugReportsScreen';
 import { ArticleViewScreen } from './article-view-screen/ArticleViewScreen';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
 import { StorePurchaseScreen } from './store-purchase-screen/StorePurchaseScreen';
+import { OnlinePlayersScreen } from './online-players-screen/OnlinePlayersScreen';
 import { BugReportViewScreen } from './bug-report-view-screen/BugReportViewScreen';
 import { ForgotPasswordScreen } from './forgot-password-screen/ForgotPasswordScreen';
 import { ValuesOverviewScreen } from './values-overview-screen/ValuesOverviewScreen';
@@ -32,13 +35,9 @@ import { LoginWithDeviceScreen } from './login-with-device-screen/LoginWithDevic
 import { LoginWithGoogleScreen } from './login-with-google-screen/LoginWithGoogleScreen';
 import { LoginWithDiscordScreen } from './login-with-discord-screen/LoginWithDiscordScreen';
 import { LoginWithFacebookScreen } from './login-with-facebook-screen/LoginWithFacebookScreen';
-import { CommunityHighScoresScreen } from './community-high-scores-screen/CommunityHighScoresScreen';
 import { StoreConfirmPurchaseScreen } from './store-confirm-purchase-screen/StoreConfirmPurchaseScreen';
-import { CommunityOnlinePlayersScreen } from './community-online-players-screen/CommunityOnlinePlayersScreen';
 import { ForgotPasswordLinkSentScreen } from './forgot-password-link-sent-screen/ForgotPasswordLinkSentScreen';
 import { ForgotPasswordRedeemCodeScreen } from './forgot-password-redeem-code-screen/ForgotPasswordRedeemCodeScreen';
-import { CommunityStaffApplicationScreen } from './community-staff-application-screen/CommunityStaffApplicationScreen';
-import { RoomListScreen } from './room-list-screen/RoomListScreen';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -126,24 +125,20 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     view: RankViewScreen,
   },
   {
-    path: '/community/staff/:rankID/apply',
-    view: CommunityStaffApplicationScreen,
-  },
-  {
-    path: '/community/online-players',
-    view: CommunityOnlinePlayersScreen,
+    path: '/online-players',
+    view: OnlinePlayersScreen,
   },
   {
     path: '/community',
     view: CommunityScreen,
   },
   {
-    path: '/community/articles/:articleID',
+    path: '/articles/:articleID',
     view: ArticleViewScreen,
   },
   {
-    path: '/community/high-scores',
-    view: CommunityHighScoresScreen,
+    path: '/high-scores',
+    view: HighScoresScreen,
   },
   {
     path: '/rooms',
