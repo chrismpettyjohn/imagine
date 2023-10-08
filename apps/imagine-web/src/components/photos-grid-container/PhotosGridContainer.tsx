@@ -12,7 +12,6 @@ export function PhotosGridContainer() {
   const canGoDown = page > 0;
 
   const onFetchPhotos = () => {
-    console.log(page * PHOTOS_PER_PAGE)
     fetch({ skip: page * PHOTOS_PER_PAGE, limit: PHOTOS_PER_PAGE })
   }
 
