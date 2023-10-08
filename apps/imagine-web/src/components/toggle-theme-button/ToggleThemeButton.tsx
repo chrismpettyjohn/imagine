@@ -11,7 +11,7 @@ export function ToggleThemeButton() {
 
   return (
     <ButtonBrand type="button" onClick={onToggleTheme}>
-      <i className={`fa fa-${theme === 'dark' ? 'adjust' : 'adjust fa-flip'}`} />
+      <i className={`fa fa-${theme === 'dark' ? 'moon-stars' : 'sun'}`} />
     </ButtonBrand>
   )
 }
