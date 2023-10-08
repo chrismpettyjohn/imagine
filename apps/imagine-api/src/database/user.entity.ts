@@ -62,6 +62,9 @@ export class UserEntity {
   @Column({name: 'online', type: 'int'})
   onlineStatus: UserOnlineStatus = UserOnlineStatus.Offline;
 
+  @Column({name: 'last_online'})
+  lastOnlineAt!: number;
+
   @Column({name: 'ip_current'})
   ipLast!: string;
 

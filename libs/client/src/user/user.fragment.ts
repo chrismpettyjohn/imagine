@@ -12,6 +12,7 @@ export interface UserFragment {
   gender: string;
   motto: string;
   accountCreatedAt: number;
+  lastOnlineAt: number;
   onlineStatus: 0 | 1;
   homeRoomID: number;
   discordID?: string;
@@ -35,6 +36,7 @@ export const USER_FRAGMENT: any = gql`
     gender
     motto
     accountCreatedAt
+    lastOnlineAt
     onlineStatus
     homeRoomID
     discordID

@@ -9,6 +9,8 @@ import {
 } from '../imagine.constant';
 import {UserGender, UserOnlineStatus} from '@imagine-cms/types';
 
+const currentTime = +new Date();
+
 export const DEFAULT_USER_VALUES = {
   gameSSO: '',
   rankID: IMAGINE_DEFAULT_RANK,
@@ -20,4 +22,5 @@ export const DEFAULT_USER_VALUES = {
   motto: IMAGINE_DEFAULT_MOTTO,
   onlineStatus: UserOnlineStatus.Offline,
   homeRoomID: IMAGINE_DEFAULT_HOME_ROOM,
+  lastOnlineAt: currentTime,
 };

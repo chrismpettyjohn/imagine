@@ -1,10 +1,22 @@
-import React from 'react';
+import DayJS from 'dayjs';
+import { Badge } from '../badge/Badge';
+import { configContext } from '@imagine-cms/web';
+import React, { useContext, useMemo } from 'react';
 import { UserProfileContainerProps } from './UserProfileContainer.types';
 import { UserBadgeContainerGrid } from '../user-badge-container-grid/UserBadgeContainerGrid';
-import { AvatarContainer, InformationContainer, UserProfileContainerContent, UserProfileContainerElement } from './UserProfileContainer.styled';
-import { Badge } from '../badge/Badge';
+import { AvatarContainer, InformationContainer, UserProfileContainerContent, UserProfileContainerElement, UserProfileStat } from './UserProfileContainer.styled';
 
 export function UserProfileContainer({ user }: UserProfileContainerProps) {
+  const { config } = useContext(configContext);
+
+  const joinedOn = useMemo(() => {
+    return DayJS.unix(user.accountCreatedAt).format(config!.dateFormat);
+  }, [user.accountCreatedAt, config!.dateFormat]);
+
+  const lastVisit = useMemo(() => {
+    return DayJS.unix(user.lastOnlineAt).format(config!.dateFormat);
+  }, [user.lastOnlineAt, config!.dateFormat]);
+
   return (
     <UserProfileContainerElement>
       <UserProfileContainerContent>
@@ -23,7 +35,18 @@ export function UserProfileContainer({ user }: UserProfileContainerProps) {
           <br />
           <UserBadgeContainerGrid user={user as any} />
         </InformationContainer>
+        <div style={{ display: 'flex', flex: 1, flexDirection: 'column', gap: 8 }}>
+          <UserProfileStat>
+            <div>Joined On</div>
+            <b>{joinedOn}</b>
+          </UserProfileStat>
+
+          <UserProfileStat>
+            <div>Last Visit</div>
+            <b>{lastVisit}</b>
+          </UserProfileStat>
+        </div>
       </UserProfileContainerContent>
-    </UserProfileContainerElement>
+    </UserProfileContainerElement >
   )
 }

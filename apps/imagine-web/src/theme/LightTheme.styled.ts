@@ -20,7 +20,7 @@ export const lightTheme: ImagineTheme = {
     s20: '#FFFFFF',
     s30: '#F6F6F6',
     s40: '#BDBCBC',
-    s50: '#23272A',
+    s50: '#7B7B7B',
     s60: 'black',
   },
   space: {

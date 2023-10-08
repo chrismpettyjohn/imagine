@@ -41,6 +41,9 @@ export class UserModel implements UserWire {
   onlineStatus!: UserOnlineStatus;
 
   @Field(() => Number, {nullable: true})
+  lastOnlineAt!: number;
+
+  @Field(() => Number, {nullable: true})
   homeRoomID!: number;
 
   @Field(() => String, {nullable: true})

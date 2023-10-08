@@ -58,6 +58,7 @@ type UserModel {
   motto: String
   accountCreatedAt: Float
   onlineStatus: UserOnlineStatus
+  lastOnlineAt: Float
   homeRoomID: Float
   discordID: String
   facebookID: String

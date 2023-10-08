@@ -11,20 +11,17 @@ export function UserStatsGrid({ user }: UserStatsGridProps) {
       <CreditStatsContainerElement>
         <img src="/img/credits.svg" loading="lazy" />
         <b>{user.credits?.toLocaleString()}</b>
-        Credits
       </CreditStatsContainerElement>
       <DiamondStatsContainerElement>
         <img src="/img/diamonds.svg" loading="lazy" />
         <b>{user.vipPoints?.toLocaleString()}</b>
-        Diamonds
       </DiamondStatsContainerElement>
       <PixelStatsContainerElement>
         <img src="/img/duckets.svg" loading="lazy" />
         <b> {user.activityPoints?.toLocaleString()}</b>
-        Pixels
       </PixelStatsContainerElement>
       <Link to={`/ranks/${user.rank?.id}`}>
-        <HabboClubStatsContainerElement style={{ cursor: 'pointer' }}>
+        <HabboClubStatsContainerElement style={{ background: user.rank.backgroundColor, cursor: 'pointer' }}>
           <Badge badge={{ code: user.rank?.badgeCode }} />
           <b>{user.rank?.name}</b>
         </HabboClubStatsContainerElement>

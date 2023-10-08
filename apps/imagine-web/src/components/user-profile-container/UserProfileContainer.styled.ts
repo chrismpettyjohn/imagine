@@ -36,3 +36,16 @@ export const InformationContainer = styled.div`
   flex-direction: column;
   z-index: 3;
 `
+
+
+export const UserProfileStat = styled.div`
+  align-items: center;
+  background: ${({ theme }) => theme.color.s20};
+  border: ${({ theme }) => `2px solid ${theme.color.s30}`};
+  color: ${({ theme }) => theme.color.s60};
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  padding: ${({ theme }) => theme.space.oneUnit};
+  object-align: center;
+`
