@@ -1,11 +1,11 @@
 import React from 'react';
 import { LatestArticlesGrid } from '../../components/latest-articles-grid/LatestArticlesGrid';
-import { LatestPhotosContainer } from '../../components/latest-photos-container/LatestPhotosContainer';
+import { PhotosGridContainer } from '../../components/photos-grid-container/PhotosGridContainer';
 
 export function CommunityScreen() {
   return (
     <>
-      <LatestPhotosContainer />
+      <PhotosGridContainer />
       <br />
       <LatestArticlesGrid />
     </>

@@ -576,6 +576,7 @@ input PhotoFilterOneInput {
 input PhotoFilterManyInput {
   ids: [Float!]
   userIDs: [Float!]
+  skip: Float
   limit: Float
 }
 
