@@ -2,7 +2,6 @@ import React, { useEffect, useMemo } from 'react';
 import { Card } from '../../../components/card/Card';
 import { usePhotoCommentFetchMany } from '@imagine-cms/client';
 import { PhotoCommentsCardProps } from './PhotoCommentsCard.types';
-import { PhotoCommentsContainer } from './PhotoCommentsCard.styled';
 import { CommentContainer } from '../../../components/comment-container/CommentContainer';
 
 export function PhotoCommentsCard({ photo }: PhotoCommentsCardProps) {
@@ -21,19 +20,19 @@ export function PhotoCommentsCard({ photo }: PhotoCommentsCardProps) {
   }, [data?.length]);
 
   return (
-    <Card header={header} style={{ height: '100%' }}>
+    <Card header={header} style={{ maxHeight: 576 }}>
       {
         loading && (
           <i className="fa fa-spinner fa-spin" />
         )
       }
-      <PhotoCommentsContainer>
+      <div style={{ maxHeight: 500, overflowY: 'scroll' }}>
         {
           data?.map(_ => (
             <CommentContainer key={`comment_${_.id}`} id={_.id} comment={_.comment} user={_.user} />
           ))
         }
-      </PhotoCommentsContainer>
+      </div>
     </Card>
   )
 }

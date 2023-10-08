@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
 export const TextareaElement = styled.textarea`
-  color: ${({ theme }) => theme.color.s60};
-  background: ${({ theme }) => theme.color.s20};
+  background: ${({ theme }) => theme.color.s30};
+  border:${({ theme }) => `2px solid ${theme.color.s40}`};
   border-radius: ${({ theme }) => theme.radius.oneUnit};
-  border: ${({ theme }) => `1px solid ${theme.color.s40}`};
   box-sizing: border-box;
+  color: ${({ theme }) => theme.color.brand};
   padding: ${({ theme }) => theme.space.oneUnit};
   width: 100%;
+  &::placeholder {
+    color: ${({ theme }) => theme.color.brand};
+  }
 `

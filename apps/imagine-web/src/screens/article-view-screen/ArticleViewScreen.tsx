@@ -24,7 +24,7 @@ export function ArticleViewScreen() {
 
   return (
     <GridLargeSmall>
-      <div>
+      <div style={{ height: '100%' }}>
         <ArticleHeaderContainer>
           <ArticleHeaderBackground src={fetchArticle.data?.imageURL} />
           <ArticleHeaderOverlay />

@@ -23,6 +23,7 @@ export const CommentContainerUser = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 100%;
   h2 {
     color:${({ theme }) => theme.color.s60};
     margin-top: 0;

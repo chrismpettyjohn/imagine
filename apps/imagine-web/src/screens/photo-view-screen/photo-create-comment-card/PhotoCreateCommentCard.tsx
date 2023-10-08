@@ -3,7 +3,6 @@ import { toast } from 'react-toastify';
 import { Card } from '../../../components/card/Card';
 import React, { SyntheticEvent, useState } from 'react';
 import { GuestGuard, UserGuard } from '@imagine-cms/web';
-import { Button } from '../../../components/button/Button';
 import { usePhotoCommentCreate } from '@imagine-cms/client';
 import { Textarea } from '../../../components/textarea/Textarea';
 import { ButtonBrand } from '../../../components/button/Button.remix';
@@ -34,7 +33,7 @@ export function PhotoCreateCommentCard({ photoID, onCreation }: PhotoCreateComme
         <PhotoCreateCommentCardForm onSubmit={onCreate}>
           <Textarea value={comment} onChange={setComment} rows={10} />
           <PhotoCreateCommentCardActions>
-            <Button type="submit">Post</Button>
+            <ButtonBrand type="submit">Post</ButtonBrand>
           </PhotoCreateCommentCardActions>
         </PhotoCreateCommentCardForm>
       </UserGuard>

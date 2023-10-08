@@ -57,7 +57,7 @@ export const ArticleContentElement = styled.div`
   border-bottom-left-radius: ${({ theme }) => theme.radius.oneUnit};
   border-bottom-right-radius: ${({ theme }) => theme.radius.oneUnit};
   width: 100%;
-  min-height: 250px;
+  height: calc(100% - 250px);
 `
 
 export const ArticleContentContainer = styled.div`
