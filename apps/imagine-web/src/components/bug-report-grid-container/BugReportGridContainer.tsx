@@ -14,8 +14,11 @@ export function BugReportGridContainer({ bugReport }: BugReportGridContainerProp
       <SmallUserProfileContainer user={bugReport.reportingUser as any} showOnlineStatus={false} showMotto={false} style={{ minHeight: 200 }} />
       <div>
         <Link to={`/bug-reports/${bugReport.id}`}>
-          <h1>#{bugReport.id} - {bugReport.url}</h1>
+          <h1>#{bugReport.id} - {bugReport.title}</h1>
         </Link>
+        <a href={bugReport.url} target="_blank" rel="noreferrer">
+          <h6>{bugReport.url}</h6>
+        </a>
         <h4>{bugReport.content.slice(0, 255)}</h4>
         <Link to={`/bug-reports/${bugReport.id}`}>
           {

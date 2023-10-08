@@ -36,6 +36,9 @@ export class BugReportFilterManyInput {
 @InputType()
 export class BugReportCreateInput {
   @Field(() => String)
+  title!: string;
+
+  @Field(() => String)
   content!: string;
 
   @Field(() => String)
@@ -43,6 +46,9 @@ export class BugReportCreateInput {
 }
 @InputType()
 export class BugReportUpdateInput {
+  @Field(() => String, {nullable: true})
+  title?: string;
+
   @Field(() => String, {nullable: true})
   content?: string;
 

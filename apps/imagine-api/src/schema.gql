@@ -393,6 +393,7 @@ enum RadioRequestStatus {
 type BugReportModel {
   id: Float
   reportingUserID: Float
+  title: String
   content: String
   url: String
   severity: Float
@@ -1006,11 +1007,13 @@ input RadioRequestReviewInput {
 }
 
 input BugReportCreateInput {
+  title: String!
   content: String!
   url: String!
 }
 
 input BugReportUpdateInput {
+  title: String
   content: String
   url: String
   severity: Float

@@ -99,6 +99,7 @@ export class BugReportResolver {
     const currentTime = DayJS().unix();
     const newBugReport = await this.bugReportRepo.create({
       url: input.url,
+      title: input.title,
       content: input.content,
       severity: 1,
       reportingUserID: session.id!,

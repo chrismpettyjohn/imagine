@@ -1,7 +1,7 @@
 import { Card } from '../../components/card/Card';
 import React, { useEffect, useMemo, useState } from 'react';
 import { useBugReportFetchMany } from '@imagine-cms/client';
-import { GridLarge } from '../../components/grid/Grid.remix';
+import { GridLarge, GridLargeSmall, GridSmallLarge } from '../../components/grid/Grid.remix';
 import { ButtonNoBorder } from '../../components/button/Button.remix';
 import { CreateBugReportCard } from '../../components/create-bug-report-card/CreateBugReportCard';
 import { BugReportGridContainer } from '../../components/bug-report-grid-container/BugReportGridContainer';
@@ -49,46 +49,47 @@ export function BugReportsScreen() {
 
   return (
     <>
-      <CreateBugReportCard onCreate={onFetchBugReports} />
-      <br />
-      <Card header={bugReportsHeader}>
-        {
-          fetchBugReports.data?.length === 0 && (
-            <p>No bug reports found</p>
-          )
-        }
-        <GridLarge>
+      <GridSmallLarge>
+        <CreateBugReportCard onCreate={onFetchBugReports} />
+        <Card header={bugReportsHeader}>
           {
-            fetchBugReports.loading && (
-              <>
-                <BugReportGridContainerMock />
-                <BugReportGridContainerMock />
-                <BugReportGridContainerMock />
-                <BugReportGridContainerMock />
-              </>
+            fetchBugReports.data?.length === 0 && (
+              <p>No bug reports found</p>
             )
           }
-          {
-            fetchBugReports.data?.map(_ => (
-              <BugReportGridContainer bugReport={_} key={`bug_report_${_.id}`} />
-            ))
-          }
-        </GridLarge>
-        <GridLarge>
-          {canGoDown ?
-            <ButtonNoBorder onClick={goBackOnePage}>
-              <i className={fetchBugReports.loading ? 'fa fa-spinner fa-spin' : 'fa fa-arrow-left'} />
-            </ButtonNoBorder>
-            : <div />}
-          {
-            canGoUp && (
-              <ButtonNoBorder onClick={goUpOnePage}>
-                <i className={fetchBugReports.loading ? 'fa fa-spinner fa-spin' : 'fa fa-arrow-right'} />
+          <GridLarge>
+            {
+              fetchBugReports.loading && (
+                <>
+                  <BugReportGridContainerMock style={{ minHeight: 200 }} />
+                  <BugReportGridContainerMock style={{ minHeight: 200 }} />
+                  <BugReportGridContainerMock style={{ minHeight: 200 }} />
+                  <BugReportGridContainerMock style={{ minHeight: 200 }} />
+                </>
+              )
+            }
+            {
+              fetchBugReports.data?.map(_ => (
+                <BugReportGridContainer bugReport={_} key={`bug_report_${_.id}`} />
+              ))
+            }
+          </GridLarge>
+          <GridLarge>
+            {canGoDown ?
+              <ButtonNoBorder onClick={goBackOnePage}>
+                <i className={fetchBugReports.loading ? 'fa fa-spinner fa-spin' : 'fa fa-arrow-left'} />
               </ButtonNoBorder>
-            )
-          }
-        </GridLarge>
-      </Card>
+              : <div />}
+            {
+              canGoUp && (
+                <ButtonNoBorder onClick={goUpOnePage}>
+                  <i className={fetchBugReports.loading ? 'fa fa-spinner fa-spin' : 'fa fa-arrow-right'} />
+                </ButtonNoBorder>
+              )
+            }
+          </GridLarge>
+        </Card>
+      </GridSmallLarge>
     </>
   )
 }

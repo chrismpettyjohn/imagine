@@ -10,6 +10,9 @@ export class BugReportModel {
   reportingUserID!: number;
 
   @Field(() => String, {nullable: true})
+  title!: string;
+
+  @Field(() => String, {nullable: true})
   content!: string;
 
   @Field(() => String, {nullable: true})
@@ -34,6 +37,7 @@ export class BugReportModel {
     return {
       id: entity.id!,
       reportingUserID: entity.reportingUserID,
+      title: entity.title,
       content: entity.content,
       url: entity.url,
       severity: entity.severity,

@@ -13,10 +13,11 @@ import { CreateBugReportCardProps } from './CreateBugReportCard.types';
 
 export function CreateBugReportCard({ onCreate }: CreateBugReportCardProps) {
   const [url, setURL] = useState('');
+  const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const createBugReport = useBugReportCreate();
 
-  const isDisabled = !url || !content;
+  const isDisabled = !url || !content || !title;
 
   const onCreateBugReport = async (event?: SyntheticEvent) => {
     event?.preventDefault();
@@ -24,10 +25,11 @@ export function CreateBugReportCard({ onCreate }: CreateBugReportCardProps) {
       if (isDisabled) {
         return;
       }
-      const newBugReport = await createBugReport.execute({ content, url });
+      const newBugReport = await createBugReport.execute({ content, title, url });
       toast.success(`Successfully created bug report ${newBugReport.id}`)
       setURL('');
       setContent('');
+      setTitle('')
       onCreate(newBugReport);
     } catch (e: any) {
       toast.error('Failed to create bug report due to an error');
@@ -41,6 +43,8 @@ export function CreateBugReportCard({ onCreate }: CreateBugReportCardProps) {
       </GuestGuard>
       <UserGuard redirect={false}>
         <Form onSubmit={onCreateBugReport} disabled={isDisabled}>
+          <label>Describe the problem in a few short words</label>
+          <Input type="text" value={title} onChange={e => setTitle(e.currentTarget.value ?? '')} />
           <label>Paste the URL of where you encounter the bug</label>
           <Input type="text" value={url} onChange={e => setURL(e.currentTarget.value ?? '')} />
           <label>Describe the issue</label>

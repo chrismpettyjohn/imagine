@@ -24,7 +24,8 @@ export function OpenBugReportButton({ bugReport, onOpen }: OpenBugReportButtonPr
 
   return (
     <ScopeGuard scope="manageBugReports" redirect={false}>
-      <ButtonDanger type="button" onClick={onResolveBug} disabled={openBug.loading}>
+      <ButtonDanger type="button" onClick={onResolveBug} disabled={openBug.loading} style={{ width: 250, height: 'fit-content' }}>
+        <i className="fa fa-times-circle" style={{ marginRight: 8 }} />
         Reopen Bug
       </ButtonDanger>
     </ScopeGuard>

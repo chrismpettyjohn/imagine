@@ -24,7 +24,8 @@ export function ResolveBugReportButton({ bugReport, onResolved }: ResolveBugRepo
 
   return (
     <ScopeGuard scope="manageBugReports" redirect={false}>
-      <ButtonBrand type="button" onClick={onResolveBug} disabled={resolveBug.loading}>
+      <ButtonBrand type="button" onClick={onResolveBug} disabled={resolveBug.loading} style={{ width: 250, height: 'fit-content' }}>
+        <i className="fa fa-check-circle" style={{ marginRight: 8 }} />
         Close as Resolved
       </ButtonBrand>
     </ScopeGuard>

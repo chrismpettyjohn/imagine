@@ -8,6 +8,9 @@ export class BugReportEntity {
   @Column({name: 'reporting_user_id'})
   reportingUserID!: number;
 
+  @Column()
+  title!: string;
+
   @Column({type: 'text'})
   content!: string;
 

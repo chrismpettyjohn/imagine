@@ -9,6 +9,7 @@ export const BUG_REPORT_FRAGMENT: any = gql`
     reportingUser {
       ...UserFragment
     }
+    title
     content
     url
     severity
@@ -26,6 +27,7 @@ export interface BugReportFragment {
   id: number;
   reportingUserID: number;
   reportingUser: UserFragment;
+  title: string;
   content: string;
   url: string;
   severity: number;
