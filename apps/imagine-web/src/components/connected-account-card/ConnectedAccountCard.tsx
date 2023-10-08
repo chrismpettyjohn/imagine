@@ -1,5 +1,5 @@
 import React, { SyntheticEvent } from 'react';
-import { ButtonDanger, ButtonPrimary } from '../button/Button.remix';
+import { ButtonDanger, ButtonBrand } from '../button/Button.remix';
 import { ConnectedAccountCardProps } from './ConnectedAccountCard.types';
 import { ConnectedAccountCardContainer, ConnectedAccountCardInformationContainer, ConnectedAccountCardStatusContainer } from './ConnectedAccountCard.styled';
 
@@ -22,9 +22,9 @@ export function ConnectedAccountCard({ connected, icon, onToggle, ...props }: Co
               </ButtonDanger>
             )
             : (
-              <ButtonPrimary style={{ width: '90%', fontWeight: 'bold' }} onClick={onToggleConnection}>
+              <ButtonBrand style={{ width: '90%', fontWeight: 'bold' }} onClick={onToggleConnection}>
                 Connect
-              </ButtonPrimary>
+              </ButtonBrand>
             )
         }
       </ConnectedAccountCardStatusContainer>

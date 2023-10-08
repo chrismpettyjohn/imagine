@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { Input } from '../input/Input';
 import { UserGuard } from '@imagine-cms/web';
 import { GuestGuard } from '../guest-guard/GuestGuard';
-import { ButtonPrimary } from '../button/Button.remix';
+import { ButtonBrand } from '../button/Button.remix';
 import { useRadioRequestCreate } from '@imagine-cms/client';
 import React, { ChangeEvent, SyntheticEvent, useState } from 'react';
 import { CreateRadioRequestCardProps } from './CreateRadioRequestCard.types';
@@ -46,7 +46,7 @@ export function CreateRadioRequestCard({ onCreation }: CreateRadioRequestCardPro
           <label>Request</label>
           <Input type="text" value={content} onChange={onChangeContent} />
           <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
-            <ButtonPrimary disabled={isDisabled} type="submit">Save</ButtonPrimary>
+            <ButtonBrand disabled={isDisabled} type="submit">Save</ButtonBrand>
           </div>
         </Form>
       </UserGuard>

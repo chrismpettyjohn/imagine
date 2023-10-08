@@ -6,7 +6,7 @@ import { GuestGuard } from '../guest-guard/GuestGuard';
 import { ADMIN_URL, ScopeGuard, UserGuard } from '@imagine-cms/web';
 import { OnlineUserCount } from '../online-user-count/OnlineUserCount';
 import { ToggleThemeButton } from '../toggle-theme-button/ToggleThemeButton';
-import { ButtonPrimary, ButtonDanger, ButtonNoBorder } from '../button/Button.remix';
+import { ButtonBrand, ButtonDanger, ButtonNoBorder } from '../button/Button.remix';
 import { SiteHeaderActions, SiteHeaderContent, SiteHeaderElement, SiteHeaderImage, SiteHeaderNav, SiteHeaderNavigation, SiteHeaderTools, SiteHeaderWrapper } from './SiteHeader.styled';
 
 export function SiteHeader() {
@@ -59,21 +59,21 @@ export function SiteHeader() {
             </ScopeGuard>
             <UserGuard redirect={false}>
               <Link to="/play">
-                <ButtonPrimary>
+                <ButtonBrand>
                   Play
-                </ButtonPrimary>
+                </ButtonBrand>
               </Link>
             </UserGuard>
             <GuestGuard redirect={false}>
               <Link to="/login">
-                <ButtonPrimary>
+                <ButtonBrand>
                   Login
-                </ButtonPrimary>
+                </ButtonBrand>
               </Link>
               <Link to="/register">
-                <ButtonPrimary>
+                <ButtonBrand>
                   Create Account
-                </ButtonPrimary>
+                </ButtonBrand>
               </Link>
             </GuestGuard>
           </SiteHeaderActions>

@@ -1,11 +1,11 @@
 import { toast } from 'react-toastify';
 import { useLocation, useRoute } from 'wouter';
-import { Card } from '../../components/card/Card';
 import { Form } from '../../components/form/Form';
 import { Input } from '../../components/input/Input';
 import React, { SyntheticEvent, useState } from 'react';
-import { ButtonPrimary } from '../../components/button/Button.remix';
+import { ButtonBrand } from '../../components/button/Button.remix';
 import { useForgotPasswordRequestRedeem } from '@imagine-cms/client';
+import { GuestContainer } from '../../components/guest-container/GuestContainer';
 
 export function ForgotPasswordRedeemCodeScreen() {
   const [, setLocation] = useLocation();
@@ -26,14 +26,15 @@ export function ForgotPasswordRedeemCodeScreen() {
     }
   }
   return (
-    <Card header="Forgot Password?">
+    <GuestContainer>
+      <h1>Forgot Password</h1>
       <Form onSubmit={onConfirmPasswordChange}>
         <label>New Password</label>
         <Input type="password" value={newPassword} onChange={e => setNewPassword(e.currentTarget.value ?? '')} />
         <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
-          <ButtonPrimary>Change Password</ButtonPrimary>
+          <ButtonBrand>Change Password</ButtonBrand>
         </div>
       </Form>
-    </Card>
+    </GuestContainer>
   )
 }

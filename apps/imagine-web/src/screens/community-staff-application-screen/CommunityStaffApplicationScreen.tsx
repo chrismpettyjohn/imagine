@@ -5,7 +5,7 @@ import { Form } from '../../components/form/Form';
 import { Badge } from '../../components/badge/Badge';
 import { Textarea } from '../../components/textarea/Textarea';
 import React, { SyntheticEvent, useEffect, useState } from 'react';
-import { ButtonPrimary } from '../../components/button/Button.remix';
+import { ButtonBrand } from '../../components/button/Button.remix';
 import { useRankFetchOne, useStaffApplicationCreate } from '@imagine-cms/client';
 
 
@@ -49,7 +49,7 @@ export function CommunityStaffApplicationScreen() {
           <label>Why should we consider you for this role?</label>
           <Textarea value={content} rows={10} onChange={setContent} />
           <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
-            <ButtonPrimary disabled={isDisabled} type="submit">Submit Application</ButtonPrimary>
+            <ButtonBrand disabled={isDisabled} type="submit">Submit Application</ButtonBrand>
           </div>
         </Form>
       </Card>

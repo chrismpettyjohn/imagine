@@ -5,7 +5,7 @@ import { SiteLogo } from '../site-logo/SiteLogo';
 import React, { useEffect, useState } from 'react';
 import { SiteMobileHeaderElement } from './SiteMobileHeader.styled';
 import { ADMIN_URL, GuestGuard, ScopeGuard, UserGuard } from '@imagine-cms/web';
-import { ButtonDanger, ButtonNoBorder, ButtonPrimary } from '../button/Button.remix';
+import { ButtonDanger, ButtonNoBorder, ButtonBrand } from '../button/Button.remix';
 
 export function SiteMobileHeader() {
   const [location] = useLocation();
@@ -56,19 +56,19 @@ export function SiteMobileHeader() {
                 </ScopeGuard>
                 <UserGuard>
                   <Link to="/play">
-                    <ButtonPrimary>
+                    <ButtonBrand>
                       <i className="fa fa-users" style={{ marginRight: 8 }} />
                       Play
-                    </ButtonPrimary>
+                    </ButtonBrand>
                   </Link>
                 </UserGuard>
               </GridLarge>
               <GuestGuard redirect={false}>
                 <GridLarge style={{ marginTop: 16 }}>
                   <Link to="/login">
-                    <ButtonPrimary>
+                    <ButtonBrand>
                       Login
-                    </ButtonPrimary>
+                    </ButtonBrand>
                   </Link>
                   <Link to="/register">
                     <ButtonDanger>

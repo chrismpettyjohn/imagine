@@ -13,6 +13,7 @@ export interface ImagineTheme {
     twoUnits: string;
   }
   color: {
+    primary: string;
     green: string;
     red: string;
     black: string;

@@ -4,7 +4,7 @@ import { Input } from '../../../components/input/Input';
 import { useSessionUpdatePassword } from '@imagine-cms/client';
 import { Accordion } from '../../../components/accordion/Accordion';
 import React, { ChangeEvent, SyntheticEvent, useState } from 'react';
-import { ButtonPrimary } from '../../../components/button/Button.remix';
+import { ButtonBrand } from '../../../components/button/Button.remix';
 
 export function ChangePasswordForm() {
   const sessionUpdatePassword = useSessionUpdatePassword();
@@ -49,9 +49,9 @@ export function ChangePasswordForm() {
         <label>New Password Again</label>
         <Input onChange={onChangeNewPasswordAgain} type="password" value={newPasswordAgain} />
         <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
-          <ButtonPrimary disabled={isDisabled} type="submit">
+          <ButtonBrand disabled={isDisabled} type="submit">
             Update Password
-          </ButtonPrimary>
+          </ButtonBrand>
         </div>
       </Form>
     </Accordion>

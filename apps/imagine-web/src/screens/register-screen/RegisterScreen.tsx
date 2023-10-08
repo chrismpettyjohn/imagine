@@ -1,15 +1,10 @@
 import { Link } from 'wouter';
-import { Card } from '../../components/card/Card';
 import { Form } from '../../components/form/Form';
 import { Input } from '../../components/input/Input';
 import { Button } from '../../components/button/Button';
-import { GridLarge } from '../../components/grid/Grid.remix';
-import { ButtonPrimary } from '../../components/button/Button.remix';
-import { GuestGuard } from '../../components/guest-guard/GuestGuard';
+import { ButtonBrand } from '../../components/button/Button.remix';
 import React, { SyntheticEvent, useContext, useEffect, useState } from 'react';
-import { GoogleLoginButton } from '../../components/google-login-button/GoogleLoginButton';
-import { DiscordLoginButton } from '../../components/discord-login-button/DiscordLoginButton';
-import { FacebookLoginButton } from '../../components/facebook-login-button/FacebookLoginButton';
+import { GuestContainer } from '../../components/guest-container/GuestContainer';
 import { configContext, useSignInWithUsernameAndPassword, useUserCreateMutation } from '@imagine-cms/web';
 
 export function RegisterScreen() {
@@ -44,48 +39,32 @@ export function RegisterScreen() {
   }
 
   return (
-    <GuestGuard>
-      <img src="https://pbs.twimg.com/media/DjcTjDmXgAArv6j.jpg:large" style={{ height: 250, width: '100%', objectFit: 'cover', borderRadius: 8 }} />
-      <br /><br />
-      <GridLarge>
-        <Card header="Register">
-          <Form onSubmit={onCreateUser}>
-            <label htmlFor="username">Username</label>
-            <Input type="text" name="username" value={username} onChange={e => setUsername(e?.currentTarget?.value ?? '')} id="username" placeholder="Username" />
-            <label htmlFor="email">Email</label>
-            <Input type="text" name="email" value={email} onChange={e => setEmail(e?.currentTarget?.value ?? '')} id="email" placeholder="Email" />
-            <label htmlFor="password">Password</label>
-            <Input type="password" name="password" value={password} onChange={e => setPassword(e?.currentTarget?.value ?? '')} placeholder="Password" id="password" />
-            <label htmlFor="password-confirmation">Confirm Password</label>
-            <Input type="password" name="password_confirmation" value={passwordAgain} onChange={e => setPasswordAgain(e?.currentTarget?.value ?? '')} id="password-confirmation" placeholder="Password again" />
-            {
-              config?.betaCodesRequired && (
-                <>
+    <GuestContainer>
+      <Form onSubmit={onCreateUser}>
+        <label htmlFor="username">Username</label>
+        <Input type="text" name="username" value={username} onChange={e => setUsername(e?.currentTarget?.value ?? '')} id="username" placeholder="Username" />
+        <label htmlFor="email">Email</label>
+        <Input type="text" name="email" value={email} onChange={e => setEmail(e?.currentTarget?.value ?? '')} id="email" placeholder="Email" />
+        <label htmlFor="password">Password</label>
+        <Input type="password" name="password" value={password} onChange={e => setPassword(e?.currentTarget?.value ?? '')} placeholder="Password" id="password" />
+        <label htmlFor="password-confirmation">Confirm Password</label>
+        <Input type="password" name="password_confirmation" value={passwordAgain} onChange={e => setPasswordAgain(e?.currentTarget?.value ?? '')} id="password-confirmation" placeholder="Password again" />
+        {
+          config?.betaCodesRequired && (
+            <>
 
-                  <label htmlFor="username">Beta Code</label>
-                  <Input type="text" name="betaCode" value={betaCode} onChange={e => setBetaCode(e?.currentTarget?.value ?? '')} id="betaCode" placeholder="Beta Code" />
-                </>
-              )
-            }
-            <div style={{ display: 'flex', flex: 1, gap: 16, justifyContent: 'flex-end' }}>
-              <Link to="/login">
-                <ButtonPrimary>Login</ButtonPrimary>
-              </Link>
-              <Button className="btn btn-primary btn-block" disabled={!canCreateUser} type="submit">Join now</Button>
-            </div>
-          </Form>
-        </Card>
-        <Card header="Connect with Social Media">
-          <DiscordLoginButton />
-          <FacebookLoginButton />
-          <GoogleLoginButton />
-          <Link to="/login/device">
-            <ButtonPrimary>
-              <i className="fa fa-phone" /> Device
-            </ButtonPrimary>
+              <label htmlFor="username">Beta Code</label>
+              <Input type="text" name="betaCode" value={betaCode} onChange={e => setBetaCode(e?.currentTarget?.value ?? '')} id="betaCode" placeholder="Beta Code" />
+            </>
+          )
+        }
+        <div style={{ display: 'flex', flex: 1, gap: 16, justifyContent: 'flex-end' }}>
+          <Link to="/login">
+            <ButtonBrand>Login</ButtonBrand>
           </Link>
-        </Card>
-      </GridLarge>
-    </GuestGuard>
+          <Button className="btn btn-primary btn-block" disabled={!canCreateUser} type="submit">Join now</Button>
+        </div>
+      </Form>
+    </GuestContainer>
   )
 }

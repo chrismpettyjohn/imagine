@@ -5,7 +5,7 @@ import { Input } from '../../../components/input/Input';
 import { useSessionUpdateEmail } from '@imagine-cms/client';
 import React, { ChangeEvent, SyntheticEvent, useContext, useState } from 'react';
 import { Accordion } from '../../../components/accordion/Accordion';
-import { ButtonPrimary } from '../../../components/button/Button.remix';
+import { ButtonBrand } from '../../../components/button/Button.remix';
 
 export function ChangeEmailAddressForm() {
   const { session } = useContext(sessionContext);
@@ -44,9 +44,9 @@ export function ChangeEmailAddressForm() {
         <label>Password</label>
         <Input onChange={onChangePassword} type="password" />
         <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
-          <ButtonPrimary disabled={isDisabled} type="submit">
+          <ButtonBrand disabled={isDisabled} type="submit">
             Update Email
-          </ButtonPrimary>
+          </ButtonBrand>
         </div>
       </Form>
     </Accordion>

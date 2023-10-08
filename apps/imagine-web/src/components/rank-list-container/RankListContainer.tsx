@@ -3,7 +3,7 @@ import { Grid } from '../grid/Grid';
 import { Card } from '../card/Card';
 import { Badge } from '../badge/Badge';
 import React, { useEffect } from 'react';
-import { ButtonPrimary } from '../button/Button.remix';
+import { ButtonBrand } from '../button/Button.remix';
 import { RankListContainerProps } from './RankListContainer.types';
 import { RankListContainerHeader } from './RankListContainer.styled';
 import { SmallUserProfileContainer } from '../small-user-profile-container/SmallUserProfileContainer';
@@ -50,7 +50,7 @@ export function RankListContainer({ rank }: RankListContainerProps) {
       {
         rank.flags?.acceptingApplications && (
           <Link to={`/community/staff/${rank.id}/apply`}>
-            <ButtonPrimary>Apply for Role</ButtonPrimary>
+            <ButtonBrand>Apply for Role</ButtonBrand>
           </Link>
         )
       }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 import { ScopeGuard } from '@imagine-cms/web';
-import { ButtonPrimary } from '../button/Button.remix';
+import { ButtonBrand } from '../button/Button.remix';
 import { useBugReportResolve } from '@imagine-cms/client';
 import { ResolveBugReportButtonProps } from './ResolveBugReportButton.types';
 
@@ -24,9 +24,9 @@ export function ResolveBugReportButton({ bugReport, onResolved }: ResolveBugRepo
 
   return (
     <ScopeGuard scope="manageBugReports" redirect={false}>
-      <ButtonPrimary type="button" onClick={onResolveBug} disabled={resolveBug.loading}>
+      <ButtonBrand type="button" onClick={onResolveBug} disabled={resolveBug.loading}>
         Close as Resolved
-      </ButtonPrimary>
+      </ButtonBrand>
     </ScopeGuard>
   )
 }

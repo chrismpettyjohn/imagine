@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { themeContext } from '@imagine-cms/web';
-import { ButtonPrimary } from '../button/Button.remix';
+import { ButtonBrand } from '../button/Button.remix';
 
 export function ToggleThemeButton() {
   const { theme, setTheme } = useContext(themeContext);
@@ -10,8 +10,8 @@ export function ToggleThemeButton() {
   }
 
   return (
-    <ButtonPrimary type="button" onClick={onToggleTheme}>
+    <ButtonBrand type="button" onClick={onToggleTheme}>
       <i className={`fa fa-${theme === 'dark' ? 'adjust' : 'adjust fa-flip'}`} />
-    </ButtonPrimary>
+    </ButtonBrand>
   )
 }

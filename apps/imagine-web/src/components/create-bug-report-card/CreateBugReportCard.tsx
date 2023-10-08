@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { UserGuard } from '@imagine-cms/web';
 import { Textarea } from '../textarea/Textarea';
 import { GuestGuard } from '../guest-guard/GuestGuard';
-import { ButtonPrimary } from '../button/Button.remix';
+import { ButtonBrand } from '../button/Button.remix';
 import React, { SyntheticEvent, useState } from 'react';
 import { useBugReportCreate } from '@imagine-cms/client';
 import { CreateBugReportCardProps } from './CreateBugReportCard.types';
@@ -46,7 +46,7 @@ export function CreateBugReportCard({ onCreate }: CreateBugReportCardProps) {
           <label>Describe the issue</label>
           <Textarea rows={10} value={content} onChange={setContent} />
           <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
-            <ButtonPrimary type="submit" disabled={isDisabled}>Save</ButtonPrimary>
+            <ButtonBrand type="submit" disabled={isDisabled}>Save</ButtonBrand>
           </div>
         </Form>
       </UserGuard>

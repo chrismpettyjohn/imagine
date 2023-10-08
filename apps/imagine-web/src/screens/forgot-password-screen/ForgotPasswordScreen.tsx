@@ -1,11 +1,11 @@
 import { useLocation } from 'wouter';
 import { toast } from 'react-toastify';
-import { Card } from '../../components/card/Card';
 import { Form } from '../../components/form/Form';
 import { Input } from '../../components/input/Input';
 import React, { SyntheticEvent, useState } from 'react';
-import { ButtonPrimary } from '../../components/button/Button.remix';
+import { ButtonBrand } from '../../components/button/Button.remix';
 import { useForgotPasswordRequestCreate } from '@imagine-cms/client';
+import { GuestContainer } from '../../components/guest-container/GuestContainer';
 
 export function ForgotPasswordScreen() {
   const [, setLocation] = useLocation();
@@ -26,14 +26,15 @@ export function ForgotPasswordScreen() {
   }
 
   return (
-    <Card header="Forgot Password?">
+    <GuestContainer>
+      <h1>Forgot Password</h1>
       <Form disabled={isDisabled} onSubmit={onSubmitPasswordReset}>
         <label>Email Address</label>
         <Input type="email" value={emailAddress} onChange={e => setEmailAddress(e.currentTarget.value ?? '')} />
         <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
-          <ButtonPrimary disabled={isDisabled} type="submit">Send Reset Link</ButtonPrimary>
+          <ButtonBrand disabled={isDisabled} type="submit">Send Reset Link</ButtonBrand>
         </div>
       </Form>
-    </Card>
+    </GuestContainer>
   )
 }

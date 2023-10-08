@@ -1,5 +1,5 @@
-import { themeContext } from '@imagine-cms/web';
 import React, { useContext, useEffect } from 'react';
+import { GuestGuard, themeContext } from '@imagine-cms/web';
 
 export function PlayGameScreen() {
   const { setTheme } = useContext(themeContext);
@@ -8,5 +8,7 @@ export function PlayGameScreen() {
     setTheme({ showClient: true });
   }, []);
 
-  return null;
+  return (
+    <GuestGuard redirect>&nbsp;</GuestGuard>
+  );
 }
