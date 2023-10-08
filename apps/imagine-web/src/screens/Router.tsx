@@ -19,6 +19,7 @@ import { PhotoListScreen } from './photo-list-screen/PhotoListScreen';
 import { GroupViewScreen } from './group-view-screen/GroupViewScreen';
 import { BugReportsScreen } from './bug-reports-screen/BugReportsScreen';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
+import { StorePurchaseScreen } from './store-purchase-screen/StorePurchaseScreen';
 import { BugReportViewScreen } from './bug-report-view-screen/BugReportViewScreen';
 import { ForgotPasswordScreen } from './forgot-password-screen/ForgotPasswordScreen';
 import { LoginWithDeviceScreen } from './login-with-device-screen/LoginWithDeviceScreen';
@@ -152,6 +153,10 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/bug-reports/:bugReportID',
     view: BugReportViewScreen,
+  },
+  {
+    path: '/store/:category?',
+    view: StorePurchaseScreen,
   }
 ]
 

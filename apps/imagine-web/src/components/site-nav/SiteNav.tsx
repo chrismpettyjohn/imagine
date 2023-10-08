@@ -51,6 +51,14 @@ export function SiteNav() {
           High Scores
         </Link>
       </li>
+      <UserGuard>
+        <li>
+          <Link to="/store">
+            <i className="fa fa-shopping-cart" style={{ marginRight: 8 }} />
+            Store
+          </Link>
+        </li>
+      </UserGuard>
     </>
   )
 }

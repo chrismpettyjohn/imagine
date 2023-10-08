@@ -5,6 +5,7 @@ const StatsContainerElement = styled.div`
   border:${({ theme }) => `4px solid ${theme.color.s40}`};
   border-radius: ${({ theme }) => theme.radius.oneUnit};
   color: ${({ theme }) => theme.color.s50};
+  cursor: pointer;
   display: flex;
   flex: 1;
   font-weight: 500;
@@ -14,7 +15,7 @@ const StatsContainerElement = styled.div`
 
   b {
     font-weight: 800;
-  color: ${({ theme }) => theme.color.s60};
+    color: ${({ theme }) => theme.color.s60};
   }
 
   img {
