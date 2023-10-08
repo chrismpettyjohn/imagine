@@ -100,6 +100,14 @@ export * from './furniture/furniture-fetch-one.query';
 export * from './furniture/furniture.fragment';
 export * from './furniture/furniture.input';
 
+// Furniture Purchase Log
+export * from './furniture-purchase-log/furniture-purchase-log-fetch-many.hook';
+export * from './furniture-purchase-log/furniture-purchase-log-fetch-many.query';
+export * from './furniture-purchase-log/furniture-purchase-log-fetch-one.hook';
+export * from './furniture-purchase-log/furniture-purchase-log-fetch-one.query';
+export * from './furniture-purchase-log/furniture-purchase-log.fragment';
+export * from './furniture-purchase-log/furniture-purchase-log.input';
+
 // Group
 export * from './group/group-fetch-many.hook';
 export * from './group/group-fetch-many.query';
