@@ -47,26 +47,22 @@ export function RankListContainer({ rank }: RankListContainerProps) {
           <Badge badge={{ code: rank.badgeCode }} style={{ cursor: 'pointer' }} />
         </Link>
       </RankListContainerHeader>
-      {
-        fetchRankUsers.data && (
-          <Grid>      {
-            fetchRankUsers.loading && (
-              <>
-                <SmallUserProfileContainerMock />
-                <SmallUserProfileContainerMock />
-                <SmallUserProfileContainerMock />
-                <SmallUserProfileContainerMock />
-              </>
-            )
-          }
-            {
-              fetchRankUsers.data?.map(_ => (
-                <SmallUserProfileContainer key={`rank_${rank.id}_user_${_.id}`} user={_ as any} />
-              ))
-            }
-          </Grid>
+      <Grid>      {
+        fetchRankUsers.loading && (
+          <>
+            <SmallUserProfileContainerMock />
+            <SmallUserProfileContainerMock />
+            <SmallUserProfileContainerMock />
+            <SmallUserProfileContainerMock />
+          </>
         )
       }
+        {
+          fetchRankUsers.data?.map(_ => (
+            <SmallUserProfileContainer key={`rank_${rank.id}_user_${_.id}`} user={_ as any} />
+          ))
+        }
+      </Grid>
       <GridLarge>
         {canGoDown ?
           <ButtonNoBorder onClick={goBackOnePage}>

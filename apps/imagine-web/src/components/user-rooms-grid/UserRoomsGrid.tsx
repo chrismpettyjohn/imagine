@@ -37,7 +37,7 @@ export function UserRoomsGrid({ user }: UserRoomsGridProps) {
   }, [user.id, page]);
 
   return (
-    <Card header={<>My Rooms {page > 0 && <small>Page {page + 1}</small>}</>} headerImage='https://www.habboassets.com/assets/images/catalog/icons/icon_206.png'>
+    <Card header={<>My Rooms {page > 0 && <small>Page {page + 1}</small>}</>} headerImage='/img/room-icon.png'>
       <Grid>
         {
           fetchRooms.loading && (

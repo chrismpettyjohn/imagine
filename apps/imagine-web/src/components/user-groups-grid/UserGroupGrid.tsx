@@ -38,7 +38,7 @@ export function UserGroupsGrid({ user }: UserGroupGridProps) {
   }, [user.id, page]);
 
   return (
-    <Card header={<>My Groups {page > 0 && <small>Page {page + 1}</small>}</>} headerImage="https://www.habboassets.com/assets/images/catalog/icons/icon_203.png">
+    <Card header={<>My Groups {page > 0 && <small>Page {page + 1}</small>}</>} headerImage="/img/group-icon.png">
       <Grid>
         {
           groupMemberships.loading && (
