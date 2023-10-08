@@ -703,6 +703,7 @@ input BugReportFilterManyInput {
   urls: [String!]
   reportingUserIDs: [Float!]
   resolvingUserIDs: [Float!]
+  skip: Float
   limit: Float
 }
 

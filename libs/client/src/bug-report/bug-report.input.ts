@@ -9,6 +9,7 @@ export interface BugReportFilterManyInput {
   severity?: number[];
   urls?: string[];
   isOpen?: boolean;
+  skip?: number;
   limit?: number;
 }
 

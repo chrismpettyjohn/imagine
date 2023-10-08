@@ -83,6 +83,7 @@ export class BugReportResolver {
               : IsNull()
             : undefined,
       },
+      skip: filter?.skip,
       take: filter?.limit ?? 25,
     });
     return matchingBugReports.map(BugReportModel.fromEntity);

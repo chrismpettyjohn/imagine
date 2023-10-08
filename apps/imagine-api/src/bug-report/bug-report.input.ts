@@ -27,6 +27,9 @@ export class BugReportFilterManyInput {
   resolvingUserIDs?: number[];
 
   @Field(() => Number, {nullable: true})
+  skip?: number;
+
+  @Field(() => Number, {nullable: true})
   limit?: number;
 }
 

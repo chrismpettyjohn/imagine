@@ -1,8 +1,9 @@
 import React from 'react';
 import { Avatar } from '../avatar/Avatar';
 import { SmallUserProfileContainerAvatarContainer, SmallUserProfileContainerBanner, SmallUserProfileContainerInformationContainer, SmallUserProfileContainerOnlineIndicator, SmallUserProfileContainerUserContainer, SmallUserProfileRankContainer, SmallUserProfileUsernameContainer } from './SmallUserProfileContainer.styled';
+import { SmallUserProfileContainerProps } from './SmallUserProfileContainer.types';
 
-export function SmallUserProfileContainerMock() {
+export function SmallUserProfileContainerMock({ showOnlineStatus = true }: Partial<SmallUserProfileContainerProps>) {
   return (
     <SmallUserProfileContainerUserContainer>
       <SmallUserProfileContainerBanner>
@@ -13,7 +14,7 @@ export function SmallUserProfileContainerMock() {
       <SmallUserProfileContainerInformationContainer>
         <SmallUserProfileUsernameContainer className="notranslate">
           -
-          <SmallUserProfileContainerOnlineIndicator $online={false} />
+          {showOnlineStatus && <SmallUserProfileContainerOnlineIndicator $online={false} />}
         </SmallUserProfileUsernameContainer>
         <SmallUserProfileRankContainer className="notranslate">
           -

@@ -5,11 +5,11 @@ import { UserOnlineStatus } from '@imagine-cms/types';
 import { SmallUserProfileContainerProps } from './SmallUserProfileContainer.types';
 import { SmallUserProfileContainerAvatarContainer, SmallUserProfileContainerBanner, SmallUserProfileContainerInformationContainer, SmallUserProfileContainerOnlineIndicator, SmallUserProfileContainerUserContainer, SmallUserProfileMottoContainer, SmallUserProfileRankContainer, SmallUserProfileUsernameContainer } from './SmallUserProfileContainer.styled';
 
-export function SmallUserProfileContainer({ children, user, showOnlineStatus = true }: SmallUserProfileContainerProps) {
+export function SmallUserProfileContainer({ children, user, showOnlineStatus = true, showMotto = true, showRank = true, ...props }: SmallUserProfileContainerProps) {
   return (
     <div>
       <Link to={`/profile/${user.username}`}>
-        <SmallUserProfileContainerUserContainer>
+        <SmallUserProfileContainerUserContainer {...props}>
           <SmallUserProfileContainerBanner>
             <SmallUserProfileContainerAvatarContainer style={{ background: user.rank?.backgroundColor }}>
               <Avatar look={user.look ?? '-'} headDirection={3} size="l" />
@@ -22,23 +22,31 @@ export function SmallUserProfileContainer({ children, user, showOnlineStatus = t
                 showOnlineStatus && <SmallUserProfileContainerOnlineIndicator $online={user.onlineStatus === UserOnlineStatus.Online} />
               }
             </SmallUserProfileUsernameContainer>
-            <Link to={`/ranks/${user.rank!.id}`}>
-              <SmallUserProfileRankContainer className="notranslate">
-                {user.rank!.name}
-              </SmallUserProfileRankContainer>
-            </Link>
-            {user.motto && !children && (
-              <SmallUserProfileMottoContainer className="notranslate">
-                "{user.motto}"
-              </SmallUserProfileMottoContainer>
-            )}
             {
-              children && (
-                <SmallUserProfileMottoContainer>
-                  {children}
-                </SmallUserProfileMottoContainer>
+              showRank && (
+                <Link to={`/ranks/${user.rank!.id}`}>
+                  <SmallUserProfileRankContainer className="notranslate">
+                    {user.rank!.name}
+                  </SmallUserProfileRankContainer>
+                </Link>
               )
             }
+            {showMotto && (
+              <>
+                {user.motto && !children && (
+                  <SmallUserProfileMottoContainer className="notranslate">
+                    "{user.motto}"
+                  </SmallUserProfileMottoContainer>
+                )}
+                {
+                  children && (
+                    <SmallUserProfileMottoContainer>
+                      {children}
+                    </SmallUserProfileMottoContainer>
+                  )
+                }
+              </>
+            )}
           </SmallUserProfileContainerInformationContainer>
         </SmallUserProfileContainerUserContainer>
       </Link>
