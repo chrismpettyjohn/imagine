@@ -1,17 +1,21 @@
 import { useRoute } from 'wouter';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useArticleFetchOne } from '@imagine-cms/client';
 import { ArticleCommentsCard } from './article-comments-card/ArticleCommentsCard';
 import { LongUserContainer } from '../../components/long-user-container/LongUserContainer';
 import { ArticlePostCommentCard } from './article-post-comment-card/ArticlePostCommentCard';
-import { ArticleContentContainer, ArticleContentElement, ArticleHeaderBackground, ArticleHeaderContainer, ArticleHeaderContent, ArticleHeaderOverlay } from './CommunityViewArticleScreen.styled';
+import { ArticleContentContainer, ArticleContentElement, ArticleHeaderBackground, ArticleHeaderContainer, ArticleHeaderContent, ArticleHeaderOverlay } from './ArticleViewScreen.styled';
 
-export function CommunityViewArticleScreen() {
+export function ArticleViewScreen() {
+  const [key, setKey] = useState(0);
+  const fetchArticle = useArticleFetchOne();
   const [_, params] = useRoute<{ articleID: string }>('/community/articles/:articleID');
-
   const articleID = Number(params!.articleID);
 
-  const fetchArticle = useArticleFetchOne();
+  const onReloadArticleResources = () => {
+    setKey(_ => _ + 1);
+  }
+
 
   useEffect(() => {
     fetchArticle.fetch({ id: articleID });
@@ -34,9 +38,9 @@ export function CommunityViewArticleScreen() {
         </ArticleContentContainer>
       </ArticleContentElement>
       <br />
-      <ArticleCommentsCard articleID={articleID} />
+      <ArticleCommentsCard articleID={articleID} key={`article_comments_${key}`} />
       <br />
-      <ArticlePostCommentCard articleID={articleID} onPost={() => console.log('todo')} />
+      <ArticlePostCommentCard articleID={articleID} onPost={onReloadArticleResources} />
     </>
   )
 }

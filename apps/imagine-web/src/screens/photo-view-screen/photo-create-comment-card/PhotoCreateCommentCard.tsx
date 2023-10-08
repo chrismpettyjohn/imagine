@@ -6,6 +6,7 @@ import { GuestGuard, UserGuard } from '@imagine-cms/web';
 import { Button } from '../../../components/button/Button';
 import { usePhotoCommentCreate } from '@imagine-cms/client';
 import { Textarea } from '../../../components/textarea/Textarea';
+import { ButtonBrand } from '../../../components/button/Button.remix';
 import { PhotoCreateCommentCardProps } from './PhotoCreateCommentCard.types';
 import { PhotoCreateCommentCardActions, PhotoCreateCommentCardForm } from './PhotoCreateCommentCard.styled';
 
@@ -27,7 +28,7 @@ export function PhotoCreateCommentCard({ photoID, onCreation }: PhotoCreateComme
   return (
     <Card header="Post Comment">
       <GuestGuard redirect={false}>
-        <p><Link to="/login">Login</Link> to post comments</p>
+        <Link to="/login"><ButtonBrand>Login or create an account to post comments</ButtonBrand></Link>
       </GuestGuard>
       <UserGuard redirect={false}>
         <PhotoCreateCommentCardForm onSubmit={onCreate}>

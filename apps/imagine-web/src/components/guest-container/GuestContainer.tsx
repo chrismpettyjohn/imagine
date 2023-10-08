@@ -9,6 +9,7 @@ import { GoogleLoginButton } from '../google-login-button/GoogleLoginButton';
 import { DiscordLoginButton } from '../discord-login-button/DiscordLoginButton';
 import { FacebookLoginButton } from '../facebook-login-button/FacebookLoginButton';
 import { GridLarge } from '../grid/Grid.remix';
+import { LatestArticlesGrid } from '../latest-articles-grid/LatestArticlesGrid';
 
 export function GuestContainer({ children }: GuestContainerProps) {
   return (
@@ -36,6 +37,8 @@ export function GuestContainer({ children }: GuestContainerProps) {
           </ButtonBrand>
         </Link>
       </Grid>
+      <br />
+      <LatestArticlesGrid showHeader={false} />
     </GuestGuard>
   )
 }

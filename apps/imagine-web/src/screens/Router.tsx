@@ -18,6 +18,7 @@ import { PhotoViewScreen } from './photo-view-screen/PhotoViewScreen';
 import { PhotoListScreen } from './photo-list-screen/PhotoListScreen';
 import { GroupViewScreen } from './group-view-screen/GroupViewScreen';
 import { BugReportsScreen } from './bug-reports-screen/BugReportsScreen';
+import { ArticleViewScreen } from './article-view-screen/ArticleViewScreen';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
 import { StorePurchaseScreen } from './store-purchase-screen/StorePurchaseScreen';
 import { BugReportViewScreen } from './bug-report-view-screen/BugReportViewScreen';
@@ -30,7 +31,6 @@ import { LoginWithDiscordScreen } from './login-with-discord-screen/LoginWithDis
 import { LoginWithFacebookScreen } from './login-with-facebook-screen/LoginWithFacebookScreen';
 import { CommunityHighScoresScreen } from './community-high-scores-screen/CommunityHighScoresScreen';
 import { StoreConfirmPurchaseScreen } from './store-confirm-purchase-screen/StoreConfirmPurchaseScreen';
-import { CommunityViewArticleScreen } from './community-view-article-screen/CommunityViewArticleScreen';
 import { CommunityOnlinePlayersScreen } from './community-online-players-screen/CommunityOnlinePlayersScreen';
 import { ForgotPasswordLinkSentScreen } from './forgot-password-link-sent-screen/ForgotPasswordLinkSentScreen';
 import { ForgotPasswordRedeemCodeScreen } from './forgot-password-redeem-code-screen/ForgotPasswordRedeemCodeScreen';
@@ -135,7 +135,7 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   },
   {
     path: '/community/articles/:articleID',
-    view: CommunityViewArticleScreen,
+    view: ArticleViewScreen,
   },
   {
     path: '/community/high-scores',

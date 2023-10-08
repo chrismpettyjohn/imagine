@@ -91,7 +91,8 @@ export function StorePurchaseScreen() {
         </div>
         <div>
           <h2>My Stats</h2>
-          <UserStatsGrid user={session as any} />
+          {session && <UserStatsGrid user={session as any} />}
+          {!session && <Link to="/login"><ButtonBrand>Login or create an account to see your stats</ButtonBrand></Link>}
         </div>
       </GridLargeSmall>
     </>
