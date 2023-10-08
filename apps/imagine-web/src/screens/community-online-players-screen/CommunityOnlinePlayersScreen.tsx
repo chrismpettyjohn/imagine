@@ -44,6 +44,14 @@ export function CommunityOnlinePlayersScreen() {
               <SmallUserProfileContainerMock />
               <SmallUserProfileContainerMock />
               <SmallUserProfileContainerMock />
+              <SmallUserProfileContainerMock />
+              <SmallUserProfileContainerMock />
+              <SmallUserProfileContainerMock />
+              <SmallUserProfileContainerMock />
+              <SmallUserProfileContainerMock />
+              <SmallUserProfileContainerMock />
+              <SmallUserProfileContainerMock />
+              <SmallUserProfileContainerMock />
             </>
           )
         }
