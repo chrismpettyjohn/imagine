@@ -54,6 +54,8 @@ import {BugReportEntity} from './bug-report.entity';
 import {BugReportRepository} from './bug-report.repository';
 import {FurnitureEntity} from './furniture.entity';
 import {FurnitureRepository} from './furniture.repository';
+import {PinnedFurnitureRepository} from './pinned-furniture.repository';
+import {PinnedFurnitureEntity} from './pinned-furniture.entity';
 
 export const databaseEntities = [
   ArticleEntity,
@@ -84,6 +86,7 @@ export const databaseEntities = [
   RadioRequestEntity,
   BugReportEntity,
   FurnitureEntity,
+  PinnedFurnitureEntity,
 ];
 
 export const databaseRepositories = [
@@ -115,4 +118,5 @@ export const databaseRepositories = [
   RadioRequestRepository,
   BugReportRepository,
   FurnitureRepository,
+  PinnedFurnitureRepository,
 ];

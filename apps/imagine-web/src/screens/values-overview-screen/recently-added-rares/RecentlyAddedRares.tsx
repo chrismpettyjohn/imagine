@@ -1,6 +1,7 @@
 import { FurnitureOrderBy, FurnitureValueType, useFurnitureFetchMany } from '@imagine-cms/client';
 import React, { useEffect } from 'react';
 import { LoadingMessage } from '../../../components/loading-message/LoadingMessage';
+import { Link } from 'wouter';
 
 export function RecentlyAddedRares() {
   const fetchFurniture = useFurnitureFetchMany();
@@ -25,11 +26,13 @@ export function RecentlyAddedRares() {
       }
       {
         fetchFurniture.data?.map(_ => (
-          <div key={`recently_added_${_.id}`}>
-            {_.publicName}
-            <br />
-            {_.valueType}
-          </div>
+          <Link key={`recently_added_${_.id}`} to={`/values/${_.id}`}>
+            <div >
+              {_.publicName}
+              <br />
+              {_.valueType}
+            </div>
+          </Link>
         ))
       }
     </div>

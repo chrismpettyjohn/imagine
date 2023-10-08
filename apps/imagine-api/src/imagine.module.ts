@@ -40,6 +40,7 @@ import {BugReportModule} from './bug-report/bug-report.module';
 import {TempUserModule} from './temp-user/temp-user.module';
 import {RareValuesModule} from './rare-values/rare-values.module';
 import {FurnitureModule} from './furniture/furniture.module';
+import {UserPinnedFurnitureModule} from './user-pinned-furniture/user-pinned-furniture.module';
 
 @Module({
   imports: [
@@ -103,6 +104,7 @@ import {FurnitureModule} from './furniture/furniture.module';
     TempUserModule,
     RareValuesModule,
     FurnitureModule,
+    UserPinnedFurnitureModule,
   ],
 })
 export class ImagineModule {}

@@ -23,6 +23,7 @@ import { StorePurchaseScreen } from './store-purchase-screen/StorePurchaseScreen
 import { BugReportViewScreen } from './bug-report-view-screen/BugReportViewScreen';
 import { ForgotPasswordScreen } from './forgot-password-screen/ForgotPasswordScreen';
 import { ValuesOverviewScreen } from './values-overview-screen/ValuesOverviewScreen';
+import { ValuesViewItemScreen } from './values-view-item-screen/ValuesViewItemScreen';
 import { LoginWithDeviceScreen } from './login-with-device-screen/LoginWithDeviceScreen';
 import { LoginWithGoogleScreen } from './login-with-google-screen/LoginWithGoogleScreen';
 import { LoginWithDiscordScreen } from './login-with-discord-screen/LoginWithDiscordScreen';
@@ -167,6 +168,10 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/values',
     view: ValuesOverviewScreen
+  },
+  {
+    path: '/values/:furnitureID',
+    view: ValuesViewItemScreen,
   }
 ]
 
