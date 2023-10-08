@@ -418,6 +418,14 @@ enum FurnitureValueType {
   LEGENDARY
 }
 
+type UserPinnedFurnitureModel {
+  id: Float
+  userID: Float
+  furnitureID: Float
+  createdAt: Float
+  updatedAt: Float
+}
+
 type Query {
   sessionSSOCreate: SessionSSOModel!
   sessionByJWT(jwt: String!): SessionModel!
@@ -472,6 +480,8 @@ type Query {
   bugReports(filter: BugReportFilterManyInput!): [BugReportModel!]!
   furniture(filter: FurnitureFilterOneInput!): FurnitureModel!
   furnitures(filter: FurnitureFilterManyInput!): [FurnitureModel!]!
+  userPinnedFurniture(filter: UserPinnedFurnitureFilterOneInput!): UserPinnedFurnitureModel!
+  userPinnedFurnitures(filter: UserPinnedFurnitureFilterManyInput!): [UserPinnedFurnitureModel!]!
 }
 
 input ExtraArgs {
@@ -693,6 +703,8 @@ input FurnitureFilterOneInput {
 
 input FurnitureFilterManyInput {
   ids: [Float!]
+  publicName: String
+  itemName: String
   valueTypes: [FurnitureValueType!]
   skip: Float
   limit: Float
@@ -702,6 +714,17 @@ input FurnitureFilterManyInput {
 enum FurnitureOrderBy {
   GREATEST_VALUE_TYPE
   RECENTLY_ADDED
+}
+
+input UserPinnedFurnitureFilterOneInput {
+  id: Float!
+}
+
+input UserPinnedFurnitureFilterManyInput {
+  ids: [Float!]
+  furnitureIDs: [Float!]
+  skip: Float
+  limit: Float
 }
 
 type Mutation {
@@ -767,6 +790,8 @@ type Mutation {
   bugReportOpen(filter: BugReportFilterOneInput!): Boolean!
   bugReportDelete(filter: BugReportFilterOneInput!): Boolean!
   tempUserLogin: SessionCreatedModel!
+  userPinnedFurnitureCreate(input: UserPinnedFurnitureCreateInput!): UserPinnedFurnitureModel!
+  userPinnedFurnitureDelete(input: UserPinnedFurnitureFilterOneInput!): Boolean!
 }
 
 input SessionUpdateEmailInput {
@@ -979,4 +1004,8 @@ input BugReportUpdateInput {
   content: String
   url: String
   severity: Float
+}
+
+input UserPinnedFurnitureCreateInput {
+  furnitureID: Float!
 }

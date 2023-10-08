@@ -1,13 +1,13 @@
-import {Args, Query, Resolver} from '@nestjs/graphql';
+import {FindOptionsOrder, ILike, In, Like} from 'typeorm';
 import {FurnitureModel} from './furniture.model';
+import {Args, Query, Resolver} from '@nestjs/graphql';
+import {FurnitureEntity} from '../database/furniture.entity';
 import {FurnitureRepository} from '../database/furniture.repository';
 import {
   FurnitureFilterManyInput,
   FurnitureFilterOneInput,
   FurnitureOrderBy,
 } from './furniture.input';
-import {FindOptionsOrder, In} from 'typeorm';
-import {FurnitureEntity} from '../database/furniture.entity';
 
 @Resolver(() => FurnitureModel)
 export class FurnitureResolver {
@@ -38,11 +38,11 @@ export class FurnitureResolver {
       orderBy.createdAt = 'DESC';
     }
 
-    console.log(filter.valueTypes);
-
     const matchingFurniture = await this.furnitureRepo.find({
       where: {
         id: filter.ids && In(filter.ids),
+        publicName: filter.publicName && Like(filter.publicName),
+        itemName: filter.itemName && ILike(filter.itemName),
         valueType: filter.valueTypes && In(filter.valueTypes),
       },
       order: orderBy,

@@ -7,6 +7,8 @@ export enum FurnitureOrderBy {
 
 export interface FurnitureFilterManyInput {
   ids?: number[];
+  publicName?: string;
+  itemName?: string;
   valueTypes?: FurnitureValueType[];
   orderBy?: FurnitureOrderBy[];
   limit?: number;

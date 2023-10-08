@@ -19,6 +19,12 @@ export class FurnitureFilterManyInput {
   @Field(() => [Number], {nullable: true})
   ids?: number[];
 
+  @Field(() => String, {nullable: true})
+  publicName?: string;
+
+  @Field(() => String, {nullable: true})
+  itemName?: string;
+
   @Field(() => [FurnitureValueType], {nullable: true})
   valueTypes?: FurnitureValueType[];
 

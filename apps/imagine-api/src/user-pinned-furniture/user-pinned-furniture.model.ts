@@ -7,6 +7,12 @@ export class UserPinnedFurnitureModel {
   id!: number;
 
   @Field(() => Number, {nullable: true})
+  userID!: number;
+
+  @Field(() => Number, {nullable: true})
+  furnitureID!: number;
+
+  @Field(() => Number, {nullable: true})
   createdAt!: number;
 
   @Field(() => Number, {nullable: true})
@@ -15,6 +21,8 @@ export class UserPinnedFurnitureModel {
   static fromEntity(entity: PinnedFurnitureEntity): UserPinnedFurnitureModel {
     return {
       id: entity.id!,
+      userID: entity.userID,
+      furnitureID: entity.furnitureID,
       createdAt: entity.createdAt,
       updatedAt: entity.updatedAt,
     };
