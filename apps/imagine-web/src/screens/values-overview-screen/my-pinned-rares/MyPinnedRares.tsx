@@ -20,7 +20,7 @@ export function MyPinnedRares() {
   return (
     <>
       <h2>My Pins</h2>
-      <Grid style={{ gap: 18 }}>
+      <Grid>
         {
           fetchPinnedFurniture.loading && (
             <LoadingMessage>

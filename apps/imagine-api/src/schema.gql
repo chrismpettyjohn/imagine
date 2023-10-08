@@ -441,6 +441,13 @@ type FurniturePurchaseLogModel {
   averageCostPoints: Float
 }
 
+type FurniturePurchaseLogOverviewModel {
+  furnitureID: Float
+  averageCostCredits: Float
+  averageCostPoints: Float
+  totalSells: Float
+}
+
 type Query {
   sessionSSOCreate: SessionSSOModel!
   sessionByJWT(jwt: String!): SessionModel!
@@ -499,6 +506,13 @@ type Query {
   userPinnedFurnitures(filter: UserPinnedFurnitureFilterManyInput!): [UserPinnedFurnitureModel!]!
   furniturePurchaseLog(filter: FurniturePurchaseLogFilterOneInput!): FurniturePurchaseLogModel!
   furniturePurchaseLogs(filter: FurniturePurchaseLogFilterManyInput!): [FurniturePurchaseLogModel!]!
+  furniturePurchaseLogsOverviewRecentlyAdded(filter: FurniturePurchaseLogOverviewFilterManyInput!): [FurniturePurchaseLogOverviewModel!]!
+  furniturePurchaseLogsOverviewTrending(filter: FurniturePurchaseLogOverviewFilterManyInput!): [FurniturePurchaseLogOverviewModel!]!
+  furniturePurchaseLogsOverviewTopCostCredits(filter: FurniturePurchaseLogOverviewFilterManyInput!): [FurniturePurchaseLogOverviewModel!]!
+  furniturePurchaseLogsOverviewTopCostPoints(filter: FurniturePurchaseLogOverviewFilterManyInput!): [FurniturePurchaseLogOverviewModel!]!
+  furniturePurchaseLogsOverviewLeastSells(filter: FurniturePurchaseLogOverviewFilterManyInput!): [FurniturePurchaseLogOverviewModel!]!
+  furniturePurchaseLogsOverviewTopSells(filter: FurniturePurchaseLogOverviewFilterManyInput!): [FurniturePurchaseLogOverviewModel!]!
+  furniturePurhaseLogsOverview(filter: FurniturePurchaseLogOverviewFilterOneInput!): FurniturePurchaseLogOverviewModel!
 }
 
 input ExtraArgs {
@@ -764,6 +778,15 @@ input FurniturePurchaseLogFilterManyInput {
   itemIDs: [Float!]
   skip: Float
   limit: Float
+}
+
+input FurniturePurchaseLogOverviewFilterManyInput {
+  skip: Float
+  limit: Float
+}
+
+input FurniturePurchaseLogOverviewFilterOneInput {
+  furnitureID: Float!
 }
 
 type Mutation {
