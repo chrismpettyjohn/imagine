@@ -22,6 +22,7 @@ import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
 import { StorePurchaseScreen } from './store-purchase-screen/StorePurchaseScreen';
 import { BugReportViewScreen } from './bug-report-view-screen/BugReportViewScreen';
 import { ForgotPasswordScreen } from './forgot-password-screen/ForgotPasswordScreen';
+import { ValuesOverviewScreen } from './values-overview-screen/ValuesOverviewScreen';
 import { LoginWithDeviceScreen } from './login-with-device-screen/LoginWithDeviceScreen';
 import { LoginWithGoogleScreen } from './login-with-google-screen/LoginWithGoogleScreen';
 import { LoginWithDiscordScreen } from './login-with-discord-screen/LoginWithDiscordScreen';
@@ -163,6 +164,10 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     path: '/store/:category?',
     view: StorePurchaseScreen,
   },
+  {
+    path: '/values',
+    view: ValuesOverviewScreen
+  }
 ]
 
 export function Router() {

@@ -12,7 +12,7 @@ export const darkTheme: ImagineTheme = {
   },
   color: {
     primary: '#5D6F80',
-    green: '#588E84',
+    success: '#588E84',
     red: '#1B5E20',
     black: 'white',
     brand: '#FFC000',

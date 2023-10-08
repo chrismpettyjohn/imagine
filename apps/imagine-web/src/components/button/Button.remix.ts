@@ -10,6 +10,11 @@ export const ButtonDanger = styled(Button)`
   color: #7C0F0F;
 `
 
+export const ButtonSuccess = styled(Button)`
+  background: ${({ theme }) => theme.color.success};
+
+`
+
 export const ButtonNoBorder = styled(Button)`
   border-color: transparent;
   color: ${({ theme }) => theme.color.brand};

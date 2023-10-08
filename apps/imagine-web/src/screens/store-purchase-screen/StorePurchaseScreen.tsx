@@ -4,7 +4,7 @@ import { sessionContext } from '@imagine-cms/web';
 import { Badge } from '../../components/badge/Badge';
 import { GridLarge, GridLargeSmall } from '../../components/grid/Grid.remix';
 import { UserStatsGrid } from '../../components/user-stats-grid/UserStatsGrid';
-import { ButtonBrand, ButtonNoBorder } from '../../components/button/Button.remix';
+import { ButtonBrand, ButtonSuccess } from '../../components/button/Button.remix';
 
 export function StorePurchaseScreen() {
   const { session } = useContext(sessionContext);
@@ -22,9 +22,9 @@ export function StorePurchaseScreen() {
                 <img src="/img/duckets.svg" loading="lazy" height={55} />
                 <div>x10</div>
                 <Link to="/store/confirm-purchase/1">
-                  <ButtonNoBorder style={{ width: 200 }}>
+                  <ButtonSuccess style={{ width: 200 }}>
                     <i className="fa fa-shopping-cart" style={{ marginRight: 8 }} /> Buy Now - $5
-                  </ButtonNoBorder>
+                  </ButtonSuccess>
                 </Link>
               </div>
             </ButtonBrand>
@@ -33,9 +33,9 @@ export function StorePurchaseScreen() {
                 <img src="/img/credits.svg" loading="lazy" height={55} />
                 <div>x1,000</div>
                 <Link to="/store/confirm-purchase/1">
-                  <ButtonNoBorder style={{ width: 200 }}>
+                  <ButtonSuccess style={{ width: 200 }}>
                     <i className="fa fa-shopping-cart" style={{ marginRight: 8 }} /> Buy Now - $5
-                  </ButtonNoBorder>
+                  </ButtonSuccess>
                 </Link>
               </div>
             </ButtonBrand>
@@ -44,9 +44,9 @@ export function StorePurchaseScreen() {
                 <img src="/img/diamonds.svg" loading="lazy" height={55} />
                 <div>x10,000</div>
                 <Link to="/store/confirm-purchase/1">
-                  <ButtonNoBorder style={{ width: 200 }}>
+                  <ButtonSuccess style={{ width: 200 }}>
                     <i className="fa fa-shopping-cart" style={{ marginRight: 8 }} /> Buy Now - $5
-                  </ButtonNoBorder>
+                  </ButtonSuccess>
                 </Link>
               </div>
             </ButtonBrand>
@@ -59,9 +59,9 @@ export function StorePurchaseScreen() {
                 <Badge badge={{ code: 'FAN' }} height={55} />
                 <div>Gold User</div>
                 <Link to="/store/confirm-purchase/1">
-                  <ButtonNoBorder style={{ width: 200 }}>
+                  <ButtonSuccess style={{ width: 200 }}>
                     <i className="fa fa-shopping-cart" style={{ marginRight: 8 }} /> Buy Now - $5
-                  </ButtonNoBorder>
+                  </ButtonSuccess>
                 </Link>
               </div>
             </ButtonBrand>
@@ -70,9 +70,9 @@ export function StorePurchaseScreen() {
                 <Badge badge={{ code: 'VIP' }} height={55} />
                 <div>VIP Membership</div>
                 <Link to="/store/confirm-purchase/1">
-                  <ButtonNoBorder style={{ width: 200 }}>
+                  <ButtonSuccess style={{ width: 200 }}>
                     <i className="fa fa-shopping-cart" style={{ marginRight: 8 }} /> Buy Now - $5
-                  </ButtonNoBorder>
+                  </ButtonSuccess>
                 </Link>
               </div>
             </ButtonBrand>
@@ -81,9 +81,9 @@ export function StorePurchaseScreen() {
                 <Badge badge={{ code: 'MOD' }} height={55} />
                 <div>Moderator</div>
                 <Link to="/store/confirm-purchase/1">
-                  <ButtonNoBorder style={{ width: 200 }}>
+                  <ButtonSuccess style={{ width: 200 }}>
                     <i className="fa fa-shopping-cart" style={{ marginRight: 8 }} /> Buy Now - $5
-                  </ButtonNoBorder>
+                  </ButtonSuccess>
                 </Link>
               </div>
             </ButtonBrand>

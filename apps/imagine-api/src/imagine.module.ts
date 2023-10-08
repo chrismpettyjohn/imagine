@@ -38,6 +38,7 @@ import {StaffApplicationModule} from './staff-application/staff-application.modu
 import {RadioRequestModule} from './radio-request/radio-request.module';
 import {BugReportModule} from './bug-report/bug-report.module';
 import {TempUserModule} from './temp-user/temp-user.module';
+import {RareValuesModule} from './rare-values/rare-values.module';
 
 @Module({
   imports: [
@@ -99,6 +100,7 @@ import {TempUserModule} from './temp-user/temp-user.module';
     RadioRequestModule,
     BugReportModule,
     TempUserModule,
+    RareValuesModule,
   ],
 })
 export class ImagineModule {}

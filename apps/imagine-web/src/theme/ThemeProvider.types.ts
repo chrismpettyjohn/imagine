@@ -14,7 +14,7 @@ export interface ImagineTheme {
   }
   color: {
     primary: string;
-    green: string;
+    success: string;
     red: string;
     black: string;
     brand: string;

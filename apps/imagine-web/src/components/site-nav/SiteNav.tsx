@@ -28,12 +28,6 @@ export function SiteNav() {
         </Link>
       </li>
       <li>
-        <Link to="/photos">
-          <i className="fa fa-camera" style={{ marginRight: 8 }} />
-          Photos
-        </Link>
-      </li>
-      <li>
         <Link to="/ranks">
           <i className="fa fa-shield" style={{ marginRight: 8 }} />
           Staff Team
@@ -49,6 +43,12 @@ export function SiteNav() {
         <Link to="/community/high-scores">
           <i className="fa fa-trophy" style={{ marginRight: 8 }} />
           High Scores
+        </Link>
+      </li>
+      <li>
+        <Link to="/values">
+          <i className="fa fa-analytics" style={{ marginRight: 8 }} />
+          Values
         </Link>
       </li>
       <UserGuard>
