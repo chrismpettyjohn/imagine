@@ -408,6 +408,7 @@ type FurnitureModel {
   valueType: FurnitureValueType
   publicName: String
   itemName: String
+  createdAt: Float
 }
 
 enum FurnitureValueType {
@@ -700,6 +701,7 @@ input FurnitureFilterManyInput {
 
 enum FurnitureOrderBy {
   GREATEST_VALUE_TYPE
+  RECENTLY_ADDED
 }
 
 type Mutation {

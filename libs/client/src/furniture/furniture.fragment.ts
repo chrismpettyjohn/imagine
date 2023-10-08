@@ -10,10 +10,10 @@ export const FURNITURE_FRAGMENT: any = gql`
 `
 
 export enum FurnitureValueType {
-  COMMON = 1,
-  RARE = 2,
-  EPIC = 3,
-  LEGENDARY = 4,
+  COMMON = 'COMMON',
+  RARE = 'RARE',
+  EPIC = 'EPIC',
+  LEGENDARY = 'LEGENDARY',
 }
 
 

@@ -34,6 +34,12 @@ export class FurnitureResolver {
       orderBy.valueType = 'DESC';
     }
 
+    if (filter.orderBy?.includes(FurnitureOrderBy.RECENTLY_ADDED)) {
+      orderBy.createdAt = 'DESC';
+    }
+
+    console.log(filter.valueTypes);
+
     const matchingFurniture = await this.furnitureRepo.find({
       where: {
         id: filter.ids && In(filter.ids),

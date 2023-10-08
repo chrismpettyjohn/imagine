@@ -1,5 +1,6 @@
 import React from 'react';
 import { GridLarge } from '../../components/grid/Grid.remix';
+import { RecentlyAddedRares } from './recently-added-rares/RecentlyAddedRares';
 
 export function ValuesOverviewScreen() {
   return (
@@ -13,7 +14,7 @@ export function ValuesOverviewScreen() {
         </div>
         <div>
           <h2>Pinned</h2>
-          <h2>Recently Added</h2>
+          <RecentlyAddedRares />
         </div>
       </GridLarge>
     </>

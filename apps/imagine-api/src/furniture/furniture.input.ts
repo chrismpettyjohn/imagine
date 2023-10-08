@@ -5,6 +5,7 @@ import {GLOBAL_MAX_RESOURCE_LIMIT} from '../imagine.constant';
 
 export enum FurnitureOrderBy {
   GREATEST_VALUE_TYPE = 'GREATEST_VALUE_TYPE',
+  RECENTLY_ADDED = 'RECENTLY_ADDED',
 }
 
 @InputType()

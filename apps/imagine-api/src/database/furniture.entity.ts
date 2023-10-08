@@ -1,10 +1,10 @@
 import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 
 export enum FurnitureValueType {
-  COMMON = 1,
-  RARE = 2,
-  EPIC = 3,
-  LEGENDARY = 4,
+  COMMON = 'COMMON',
+  RARE = 'RARE',
+  EPIC = 'EPIC',
+  LEGENDARY = 'LEGENDARY',
 }
 
 @Entity('items_base')
@@ -12,7 +12,7 @@ export class FurnitureEntity {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @Column({name: 'value_type', type: 'tinyint'})
+  @Column({name: 'value_type', type: 'varchar'})
   valueType!: FurnitureValueType;
 
   @Column({name: 'public_name'})
@@ -20,4 +20,7 @@ export class FurnitureEntity {
 
   @Column({name: 'item_name'})
   itemName!: string;
+
+  @Column({name: 'created_at', type: 'tinyint'})
+  createdAt?: number;
 }

@@ -18,12 +18,16 @@ export class FurnitureModel {
   @Field(() => String, {nullable: true})
   itemName!: string;
 
+  @Field(() => Number, {nullable: true})
+  createdAt!: number;
+
   static fromEntity(entity: FurnitureEntity): FurnitureModel {
     return {
       id: entity.id!,
       valueType: entity.valueType,
       publicName: entity.publicName,
       itemName: entity.itemName,
+      createdAt: entity.createdAt!,
     };
   }
 }
