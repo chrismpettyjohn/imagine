@@ -7,7 +7,7 @@ export function SiteSidebar() {
   return (
     <SiteSidebarElement>
       <div className="logo">
-        <img src="https://i.imgur.com/WmUQW5O.png" />
+        <img src="/img/cerberus.png" />
       </div>
       <ul>
         <Link href="/dashboard">

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const UserProfileContainerElement = styled.div`
-  background: url('https://i.imgur.com/bcSKOml.png');
+  background: url('/img/alt-user-header.png');
   background-size: cover;
   background-position: bottom left;
   border-radius:  ${({ theme }) => theme.radius.oneUnit};
