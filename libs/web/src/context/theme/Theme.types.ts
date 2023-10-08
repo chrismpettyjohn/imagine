@@ -12,7 +12,7 @@ export interface ThemeContext {
 }
 
 export const defaultThemeContextInterface: ThemeContext = {
-  theme: 'light',
+  theme: window.matchMedia("(prefers-color-scheme: dark)") ? 'dark' : 'light',
   showClient: false,
   showFooter: true,
   showModalOverlay: true,
