@@ -8,3 +8,10 @@ export const GridLarge = styled(Grid)`
     }
   `}
 `
+export const GridLargeSmall = styled(Grid)`
+  ${({ theme }) => `
+    @media (min-width: ${theme.breakPoints.desktop}) {
+      grid-template-columns: 2fr 1fr;
+    }
+  `}
+`

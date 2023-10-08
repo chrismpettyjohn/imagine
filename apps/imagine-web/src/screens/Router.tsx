@@ -27,6 +27,7 @@ import { LoginWithGoogleScreen } from './login-with-google-screen/LoginWithGoogl
 import { LoginWithDiscordScreen } from './login-with-discord-screen/LoginWithDiscordScreen';
 import { LoginWithFacebookScreen } from './login-with-facebook-screen/LoginWithFacebookScreen';
 import { CommunityHighScoresScreen } from './community-high-scores-screen/CommunityHighScoresScreen';
+import { StoreConfirmPurchaseScreen } from './store-confirm-purchase-screen/StoreConfirmPurchaseScreen';
 import { CommunityViewArticleScreen } from './community-view-article-screen/CommunityViewArticleScreen';
 import { CommunityOnlinePlayersScreen } from './community-online-players-screen/CommunityOnlinePlayersScreen';
 import { ForgotPasswordLinkSentScreen } from './forgot-password-link-sent-screen/ForgotPasswordLinkSentScreen';
@@ -155,9 +156,13 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     view: BugReportViewScreen,
   },
   {
+    path: '/store/confirm-purchase/:itemID',
+    view: StoreConfirmPurchaseScreen,
+  },
+  {
     path: '/store/:category?',
     view: StorePurchaseScreen,
-  }
+  },
 ]
 
 export function Router() {
