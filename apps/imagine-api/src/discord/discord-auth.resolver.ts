@@ -1,15 +1,17 @@
-import {DiscordService} from './discord.service';
-import {DiscordAuthModel} from './discord-auth.model';
-import {DiscordAuthInput} from './discord-auth.input';
-import {Args, Mutation, Resolver} from '@nestjs/graphql';
-import {DiscordAuthService} from './discord-auth.service';
+import { DiscordService } from './discord.service';
+import { DiscordAuthModel } from './discord-auth.model';
+import { DiscordAuthInput } from './discord-auth.input';
+import { GetIpAddress } from '../utility/get-ip-address';
+import { Args, Mutation, Resolver } from '@nestjs/graphql';
+import { DiscordAuthService } from './discord-auth.service';
 
 @Resolver(() => DiscordAuthModel)
 export class DiscordAuthResolver {
-  constructor(private readonly discordAuthService: DiscordAuthService) {}
+  constructor(private readonly discordAuthService: DiscordAuthService) { }
   @Mutation(() => DiscordAuthModel)
   async discordUserAuthenticate(
-    @Args('input', {type: () => DiscordAuthInput}) input: DiscordAuthInput
+    @Args('input', { type: () => DiscordAuthInput }) input: DiscordAuthInput,
+    @GetIpAddress() ipAddress: string
   ): Promise<DiscordAuthModel> {
     try {
       const discordService = new DiscordService(input.discordAuthToken);
@@ -17,7 +19,7 @@ export class DiscordAuthResolver {
       const sessionToken =
         await this.discordAuthService.discordUserAuthenticate(
           discordUser,
-          '127.0.0.1'
+          ipAddress
         );
       return {
         sessionID: sessionToken.session.id!,
