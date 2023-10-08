@@ -83,4 +83,5 @@ export const SmallUserProfileMottoContainer = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
+  overflow: hidden;
 `

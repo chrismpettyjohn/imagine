@@ -35,18 +35,18 @@ export function SiteHeader() {
             <ToggleThemeButton />
             <UserGuard>
               <Link to="/bug-reports">
-                <ButtonNoBorder style={{ padding: 0 }}>
-                  <i className="fa fa-bug fa-2x" />
+                <ButtonNoBorder style={{ padding: 0, fontSize: '1.4rem', width: 45 }}>
+                  <i className="fa fa-bug" />
                 </ButtonNoBorder>
               </Link>
               <Link to="/settings">
-                <ButtonNoBorder style={{ padding: 0 }}>
-                  <i className="fa fa-cog fa-2x" />
+                <ButtonNoBorder style={{ padding: 0, fontSize: '1.4rem', width: 45 }}>
+                  <i className="fa fa-cog" />
                 </ButtonNoBorder>
               </Link>
               <Link to="/logout">
-                <ButtonNoBorder style={{ color: '#7C0F0F', padding: 0 }}>
-                  <i className="fa fa-sign-out fa-2x" />
+                <ButtonNoBorder style={{ color: '#7C0F0F', padding: 0, fontSize: '1.4rem', width: 45 }}>
+                  <i className="fa fa-sign-out" />
                 </ButtonNoBorder>
               </Link>
             </UserGuard>

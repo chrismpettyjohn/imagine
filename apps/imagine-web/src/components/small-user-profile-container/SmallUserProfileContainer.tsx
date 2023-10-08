@@ -27,15 +27,21 @@ export function SmallUserProfileContainer({ children, user, showOnlineStatus = t
                 {user.rank!.name}
               </SmallUserProfileRankContainer>
             </Link>
-            {user.motto && (
+            {user.motto && !children && (
               <SmallUserProfileMottoContainer className="notranslate">
                 "{user.motto}"
               </SmallUserProfileMottoContainer>
             )}
+            {
+              children && (
+                <SmallUserProfileMottoContainer>
+                  {children}
+                </SmallUserProfileMottoContainer>
+              )
+            }
           </SmallUserProfileContainerInformationContainer>
         </SmallUserProfileContainerUserContainer>
       </Link>
-      {children}
     </div>
   )
 }

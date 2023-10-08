@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Grid } from '../../../components/grid/Grid';
 import { Card } from '../../../components/card/Card';
 import { UserOrderBy, useUserFetchMany } from '@imagine-cms/client';
 import { SmallUserProfileContainer } from '../../../components/small-user-profile-container/SmallUserProfileContainer';
@@ -9,13 +10,13 @@ export function MostCreditsGrid() {
   useEffect(() => {
     fetchUsers.fetch({
       orderBy: [UserOrderBy.CREDITS_ASC],
-      limit: 5,
+      limit: 8,
     })
   }, []);
 
   return (
     <Card header="Most Credits">
-      <div style={{ display: 'flex', flex: 1, gap: 16 }}>
+      <Grid>
         {
           fetchUsers.loading && <i className="fa fa-spinner fa-spin" />
         }
@@ -29,7 +30,7 @@ export function MostCreditsGrid() {
             </SmallUserProfileContainer>
           ))
         }
-      </div>
+      </Grid>
     </Card >
   )
 }
