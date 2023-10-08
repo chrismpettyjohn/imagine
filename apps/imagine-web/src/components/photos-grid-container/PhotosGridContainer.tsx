@@ -28,7 +28,7 @@ export function PhotosGridContainer() {
 
   useEffect(() => {
     onFetchPhotos();
-  }, [page, loading]);
+  }, [page]);
 
   const stories = useMemo(() => data ?? [], [data]);
 
@@ -41,8 +41,21 @@ export function PhotosGridContainer() {
           )
         }
       </PhotosGridContainerPagination>
-
       <PhotosGridContainerContent>
+        {
+          loading && (
+            <>
+              <PhotosGridContainerChild />
+              <PhotosGridContainerChild />
+              <PhotosGridContainerChild />
+              <PhotosGridContainerChild />
+              <PhotosGridContainerChild />
+              <PhotosGridContainerChild />
+              <PhotosGridContainerChild />
+              <PhotosGridContainerChild />
+            </>
+          )
+        }
         {
           stories.map(_ => (
             <Link key={`photo_${_.id}`} to={`/photos/${_.id}`}>

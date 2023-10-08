@@ -14,6 +14,7 @@ export const PhotosGridContainerPagination = styled.div`
     margin: auto;
     border: 3px solid #f2f2f2;
     cursor: pointer;
+    color: ${({ theme }) => theme.color.brand};
     display: flex;
     justify-content: center;
     align-items: center;
