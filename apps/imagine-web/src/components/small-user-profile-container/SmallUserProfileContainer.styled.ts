@@ -16,7 +16,7 @@ export const SmallUserProfileContainerUserContainer = styled.div`
 export const SmallUserProfileContainerBanner = styled.div`
   height: 5em;
   border-radius: 2em 2em 0 0;
-  background: url(https://habbox.fr/assets/images/index/index.png);
+  background: url(/img/user-header.png);
   background-size: auto;
   position: relative;
   margin-bottom: 2.25em;
