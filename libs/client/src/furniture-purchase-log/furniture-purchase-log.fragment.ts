@@ -6,7 +6,9 @@ export const FURNITURE_PURCHASE_LOG_FRAGMENT: any = gql`
     userID
     itemIDs
     costCredits
-    costPixels
+    costPoints
+    averageCostCredits
+    averageCostPoints
     createdAt
   }
 `
@@ -16,6 +18,8 @@ export interface FurniturePurchaseLogFragment {
   userID: number;
   itemIDs: number[];
   costCredits: number;
-  costPixels: number;
+  costPoints: number;
+  averageCostCredits: number;
+  averageCostPoints: number;
   createdAt: number;
 }

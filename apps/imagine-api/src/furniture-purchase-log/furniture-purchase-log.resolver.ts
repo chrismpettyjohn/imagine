@@ -1,5 +1,5 @@
 import {In} from 'typeorm';
-import {Args, Query, Resolver} from '@nestjs/graphql';
+import {Args, Parent, Query, ResolveField, Resolver} from '@nestjs/graphql';
 import {FurniturePurchaseLogModel} from './furniture-purchase-log.model';
 import {FurniturePurchaseLogRepository} from '../database/furniture-purchase-log.repository';
 import {
@@ -12,6 +12,37 @@ export class FurniturePurchaseLogResolver {
   constructor(
     private readonly furniturePurchaseLogRepo: FurniturePurchaseLogRepository
   ) {}
+
+  @ResolveField(() => Number, {nullable: true})
+  async averageCostCredits(
+    @Parent() model: FurniturePurchaseLogModel
+  ): Promise<number> {
+    const response: [{average_cost_credits: number}] =
+      await this.furniturePurchaseLogRepo
+        .getInstance()
+        .createQueryBuilder()
+        .select('AVG(cost_credits) AS average_cost_credits')
+        .where('catalog_item_id = :catalogItemID', {
+          catalogItemID: model.furnitureID,
+        })
+        .execute();
+    return response[0].average_cost_credits;
+  }
+  @ResolveField(() => Number, {nullable: true})
+  async averageCostPoints(
+    @Parent() model: FurniturePurchaseLogModel
+  ): Promise<number> {
+    const response: [{average_cost_points: number}] =
+      await this.furniturePurchaseLogRepo
+        .getInstance()
+        .createQueryBuilder()
+        .select('AVG(cost_points) AS average_cost_points')
+        .where('catalog_item_id = :catalogItemID', {
+          catalogItemID: model.furnitureID,
+        })
+        .execute();
+    return response[0].average_cost_points;
+  }
 
   @Query(() => FurniturePurchaseLogModel)
   async furniturePurchaseLog(

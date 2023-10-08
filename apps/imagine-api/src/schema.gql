@@ -437,6 +437,8 @@ type FurniturePurchaseLogModel {
   costPoints: Float
   quantity: Float
   createdAt: Float
+  averageCostCredits: Float
+  averageCostPoints: Float
 }
 
 type Query {

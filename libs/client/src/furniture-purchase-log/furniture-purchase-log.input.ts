@@ -4,6 +4,9 @@ export interface FurniturePurchaseLogFilterOneInput {
 
 export interface FurniturePurchaseLogFilterManyInput {
   ids?: number[];
+  furnitureIDs?: number[];
   itemIDs?: number[];
   userIDs?: number[];
+  skip?: number;
+  limit?: number;
 }
