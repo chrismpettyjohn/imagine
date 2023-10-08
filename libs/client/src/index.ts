@@ -252,6 +252,19 @@ export * from './user-badge/user-badge-fetch-many.query';
 export * from './user-badge/user-badge.fragment';
 export * from './user-badge/user-badge.input';
 
+// User Pinned Furniture
+export * from './user-pinned-furniture/user-pinned-furniture-create.hook';
+export * from './user-pinned-furniture/user-pinned-furniture-create.mutation';
+export * from './user-pinned-furniture/user-pinned-furniture-delete.hook';
+export * from './user-pinned-furniture/user-pinned-furniture-delete.mutation';
+export * from './user-pinned-furniture/user-pinned-furniture-fetch-many.hook';
+export * from './user-pinned-furniture/user-pinned-furniture-fetch-many.query';
+export * from './user-pinned-furniture/user-pinned-furniture-fetch-one.hook';
+export * from './user-pinned-furniture/user-pinned-furniture-fetch-one.query';
+export * from './user-pinned-furniture/user-pinned-furniture.fragment';
+export * from './user-pinned-furniture/user-pinned-furniture.input';
+
+
 // User Trade Log
 export * from './user-trade-log/user-trade-log-fetch-many.hook';
 export * from './user-trade-log/user-trade-log-fetch-many.query';
