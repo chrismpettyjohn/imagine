@@ -1,3 +1,3 @@
 export interface LatestArticlesGridProps {
-  showHeader: boolean;
+  showHeader?: boolean;
 }

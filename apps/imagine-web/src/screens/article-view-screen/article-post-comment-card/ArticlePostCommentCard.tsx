@@ -35,7 +35,7 @@ export function ArticlePostCommentCard({ articleID, onPost }: ArticlePostComment
         <UserGuard redirect={false}>
           <div className="form-group">
             <label htmlFor="comment" className="sr-only">Comment</label>
-            <Textarea rows={8} id="comment" value={comment} onChange={e => setComment(e?.target?.value ?? '')} />
+            <Textarea rows={8} id="comment" value={comment} onChange={setComment} />
           </div>
           <div style={{ display: 'flex', flex: 1, justifyContent: 'flex-end' }}>
             <ButtonBrand type="submit">Post</ButtonBrand>
