@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useRoute } from 'wouter';
+import { Link, useRoute } from 'wouter';
 import { Card } from '../../components/card/Card';
 import { useRoomFetchOne } from '@imagine-cms/client';
 
@@ -17,7 +17,7 @@ export function RoomViewScreen() {
 
   return (
     <>
-      <h1>Viewing Room:</h1>
+      <h1><Link to="/rooms"><i className="fa fa-caret-left" style={{ marginRight: 8 }} /></Link>Viewing Room:</h1>
       <br />
       <Card header={room?.name}>
         {

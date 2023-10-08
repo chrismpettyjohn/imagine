@@ -38,6 +38,7 @@ import { CommunityOnlinePlayersScreen } from './community-online-players-screen/
 import { ForgotPasswordLinkSentScreen } from './forgot-password-link-sent-screen/ForgotPasswordLinkSentScreen';
 import { ForgotPasswordRedeemCodeScreen } from './forgot-password-redeem-code-screen/ForgotPasswordRedeemCodeScreen';
 import { CommunityStaffApplicationScreen } from './community-staff-application-screen/CommunityStaffApplicationScreen';
+import { RoomListScreen } from './room-list-screen/RoomListScreen';
 
 const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
@@ -143,6 +144,10 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
   {
     path: '/community/high-scores',
     view: CommunityHighScoresScreen,
+  },
+  {
+    path: '/rooms',
+    view: RoomListScreen,
   },
   {
     path: '/rooms/:roomID',
