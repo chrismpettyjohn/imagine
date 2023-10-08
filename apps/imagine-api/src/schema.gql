@@ -428,6 +428,17 @@ type UserPinnedFurnitureModel {
   updatedAt: Float
 }
 
+type FurniturePurchaseLogModel {
+  id: Float
+  furnitureID: Float
+  userID: Float
+  itemIDs: [Float!]
+  costCredits: Float
+  costPoints: Float
+  quantity: Float
+  createdAt: Float
+}
+
 type Query {
   sessionSSOCreate: SessionSSOModel!
   sessionByJWT(jwt: String!): SessionModel!
@@ -484,6 +495,8 @@ type Query {
   furnitures(filter: FurnitureFilterManyInput!): [FurnitureModel!]!
   userPinnedFurniture(filter: UserPinnedFurnitureFilterOneInput!): UserPinnedFurnitureModel!
   userPinnedFurnitures(filter: UserPinnedFurnitureFilterManyInput!): [UserPinnedFurnitureModel!]!
+  furniturePurchaseLog(filter: FurniturePurchaseLogFilterOneInput!): FurniturePurchaseLogModel!
+  furniturePurchaseLogs(filter: FurniturePurchaseLogFilterManyInput!): [FurniturePurchaseLogModel!]!
 }
 
 input ExtraArgs {
@@ -734,6 +747,19 @@ input UserPinnedFurnitureFilterOneInput {
 input UserPinnedFurnitureFilterManyInput {
   ids: [Float!]
   furnitureIDs: [Float!]
+  skip: Float
+  limit: Float
+}
+
+input FurniturePurchaseLogFilterOneInput {
+  id: Float!
+}
+
+input FurniturePurchaseLogFilterManyInput {
+  ids: [Float!]
+  furnitureIDs: [Float!]
+  userIDs: [Float!]
+  itemIDs: [Float!]
   skip: Float
   limit: Float
 }

@@ -56,6 +56,8 @@ import {FurnitureEntity} from './furniture.entity';
 import {FurnitureRepository} from './furniture.repository';
 import {PinnedFurnitureRepository} from './pinned-furniture.repository';
 import {PinnedFurnitureEntity} from './pinned-furniture.entity';
+import {FurniturePurchaseLogRepository} from './furniture-purchase-log.repository';
+import {FurniturePurchaseLogEntity} from './furniture-purchase-log.entity';
 
 export const databaseEntities = [
   ArticleEntity,
@@ -87,6 +89,7 @@ export const databaseEntities = [
   BugReportEntity,
   FurnitureEntity,
   PinnedFurnitureEntity,
+  FurniturePurchaseLogEntity,
 ];
 
 export const databaseRepositories = [
@@ -119,4 +122,5 @@ export const databaseRepositories = [
   BugReportRepository,
   FurnitureRepository,
   PinnedFurnitureRepository,
+  FurniturePurchaseLogRepository,
 ];

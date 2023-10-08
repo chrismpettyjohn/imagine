@@ -41,6 +41,7 @@ import {TempUserModule} from './temp-user/temp-user.module';
 import {RareValuesModule} from './rare-values/rare-values.module';
 import {FurnitureModule} from './furniture/furniture.module';
 import {UserPinnedFurnitureModule} from './user-pinned-furniture/user-pinned-furniture.module';
+import {FurniturePurchaseLogModule} from './furniture-purchase-log/furniture-purchase-log.module';
 
 @Module({
   imports: [
@@ -105,6 +106,7 @@ import {UserPinnedFurnitureModule} from './user-pinned-furniture/user-pinned-fur
     RareValuesModule,
     FurnitureModule,
     UserPinnedFurnitureModule,
+    FurniturePurchaseLogModule,
   ],
 })
 export class ImagineModule {}
