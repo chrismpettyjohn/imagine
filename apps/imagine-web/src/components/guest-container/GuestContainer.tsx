@@ -21,7 +21,7 @@ export function GuestContainer({ children }: GuestContainerProps) {
             {children}
           </div>
           <div>
-            <img className="guest-pic" src="/img/user-header.png" width="100%" />
+            <img className="guest-pic" src="/img/user-header.png" width="100%" loading="lazy" />
           </div>
         </GridLarge>
       </GuestContainerElement>

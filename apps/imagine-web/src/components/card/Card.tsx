@@ -10,7 +10,7 @@ export function Card({ children, header, headerImage, ...props }: CardProps) {
 
           <CardHeader>
             {header}
-            {headerImage && <img src={headerImage} height={30} width={30} style={{ objectFit: 'cover' }} />}
+            {headerImage && <img src={headerImage} height={30} width={30} style={{ objectFit: 'cover' }} loading="lazy" />}
           </CardHeader>
         )
       }

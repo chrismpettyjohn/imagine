@@ -61,7 +61,7 @@ export function MostCreditsGrid() {
           fetchUsers.data?.map(_ => (
             <SmallUserProfileContainer key={`most_credits_${_.id}`} user={_ as any}>
               <div style={{ display: 'flex', flex: 1, gap: 8, justifyContent: 'center', alignContent: 'center' }}>
-                <img src="/img/credits.svg" />
+                <img src="/img/credits.svg" loading="lazy" />
                 <b>{Number(_.credits).toLocaleString()} Credits</b>
               </div>
             </SmallUserProfileContainer>

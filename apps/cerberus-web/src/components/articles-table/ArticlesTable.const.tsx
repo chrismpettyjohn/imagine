@@ -10,7 +10,7 @@ export const ARTICLES_TABLE_COLUMNS: TableColumn<ArticleFragment>[] = [
     name: '',
     cell: article => (
       <div style={{ padding: 8 }}>
-        <img src={article.imageURL} height={100} style={{ borderRadius: 8 }} />
+        <img src={article.imageURL} height={100} style={{ borderRadius: 8 }} loading="lazy" />
       </div>
     )
   },
