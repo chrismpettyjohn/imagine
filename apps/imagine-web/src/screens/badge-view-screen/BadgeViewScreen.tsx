@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useRoute } from 'wouter';
 import { Card } from '../../components/card/Card';
 import { GridSmallLarge } from '../../components/grid/Grid.remix';
+import { UsersWithBadge } from './users-with-badge/UsersWithBadge';
 import { BadgeContainer } from '../../components/badge-container/BadgeContainer';
 
 export function BadgeViewScreen() {
@@ -19,9 +20,7 @@ export function BadgeViewScreen() {
             <h4>{badgeCode}</h4>
           </div>
         </Card>
-        <Card header="Users who have this badge">
-          test
-        </Card>
+        <UsersWithBadge badgeCode={badgeCode} />
       </GridSmallLarge>
     </>
   )

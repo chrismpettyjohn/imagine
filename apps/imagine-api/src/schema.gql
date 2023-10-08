@@ -640,7 +640,9 @@ input FriendshipFilterManyInput {
 }
 
 input UserBadgeFilterManyInput {
+  badgeCodes: [String!]
   userIDs: [Float!]
+  skip: Float
   limit: Float
 }
 
