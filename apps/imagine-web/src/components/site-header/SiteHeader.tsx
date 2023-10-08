@@ -14,7 +14,9 @@ export function SiteHeader() {
     <SiteHeaderWrapper>
       <SiteHeaderImage>
         <SiteHeaderContent>
-          <SiteLogo />
+          <Link to="/login">
+            <SiteLogo />
+          </Link>
           <SiteHeaderTools>
             <Link to="/play">
               <ButtonNoBorder>

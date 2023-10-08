@@ -509,6 +509,7 @@ input UserFilterManyInput {
   machineAddress: [String!]
   rankIDs: [Float!]
   orderBy: [UserOrderBy!]
+  skip: Float
   limit: Float
 }
 

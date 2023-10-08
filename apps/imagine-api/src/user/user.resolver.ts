@@ -186,6 +186,7 @@ export class UserResolver {
       order: {
         id: 'DESC',
       },
+      skip: filter.skip,
       take: filter.limit ?? 25,
     });
   }

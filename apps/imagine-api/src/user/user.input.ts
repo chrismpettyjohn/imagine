@@ -103,6 +103,9 @@ export class UserFilterManyInput {
   orderBy?: UserOrderBy[];
 
   @Field(() => Number, {nullable: true})
+  skip?: number;
+
+  @Field(() => Number, {nullable: true})
   @Max(GLOBAL_MAX_RESOURCE_LIMIT)
   limit?: number;
 }

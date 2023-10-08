@@ -14,6 +14,7 @@ export interface UserFilterManyInput {
   machineAddress?: string[];
   orderBy?: UserOrderBy[];
   rankIDs?: number[];
+  skip?: number;
   limit?: number;
 }
 

@@ -1,10 +1,12 @@
 import DayJS from 'dayjs';
+import { Link } from 'wouter';
 import { Badge } from '../badge/Badge';
+import { Avatar } from '../avatar/Avatar';
 import { configContext } from '@imagine-cms/web';
 import React, { useContext, useMemo } from 'react';
 import { UserProfileContainerProps } from './UserProfileContainer.types';
 import { UserBadgeContainerGrid } from '../user-badge-container-grid/UserBadgeContainerGrid';
-import { AvatarContainer, InformationContainer, UserProfileContainerContent, UserProfileContainerElement, UserProfileStat } from './UserProfileContainer.styled';
+import { InformationContainer, UserProfileContainerContent, UserProfileContainerElement, UserProfileStat } from './UserProfileContainer.styled';
 
 export function UserProfileContainer({ user }: UserProfileContainerProps) {
   const { config } = useContext(configContext);
@@ -20,12 +22,14 @@ export function UserProfileContainer({ user }: UserProfileContainerProps) {
   return (
     <UserProfileContainerElement>
       <UserProfileContainerContent>
-        <AvatarContainer src={`https://imager.habboon.pw/?figure=${user.look}&direction=2&head_direction=3&gesture=sml&action=wav&size=l`} />
+        <Avatar look={user.look} direction={2} headDirection={3} gesture="sml" action="wav" size="l" />
         <InformationContainer>
           <div>
 
             <div style={{ display: 'flex', gap: 8 }}>
-              <Badge badge={{ code: user.rank.badgeCode }} style={{ height: 45, marginTop: 10 }} />
+              <Link to={`/ranks/${user.rank.id}`}>
+                <Badge badge={{ code: user.rank.badgeCode }} style={{ height: 45, marginTop: 10 }} />
+              </Link>
               <h2 className="notranslate" style={{ color: user.rank.backgroundColor }}>
                 {user.username}
               </h2>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card } from '../../components/card/Card';
 import { GoogleAccountCard } from './google-account-card/GoogleAccountCard';
+import { DeviceAccountCard } from './device-account-card/DeviceAccountCard';
 import { ChangePasswordForm } from './change-password-form/ChangePasswordForm';
 import { DiscordAccountCard } from './discord-account-card/DiscordAccountCard';
 import { FacebookAccountCard } from './facebook-account-card/FacebookAccountCard';
@@ -26,6 +27,7 @@ export function SettingsScreen() {
           <DiscordAccountCard />
           <FacebookAccountCard />
           <GoogleAccountCard />
+          <DeviceAccountCard />
         </div>
       </Card>
     </>
