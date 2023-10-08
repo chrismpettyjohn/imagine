@@ -403,6 +403,20 @@ type BugReportModel {
   resolvingUser: UserModel
 }
 
+type FurnitureModel {
+  id: Float
+  valueType: FurnitureValueType
+  publicName: String
+  itemName: String
+}
+
+enum FurnitureValueType {
+  COMMON
+  RARE
+  EPIC
+  LEGENDARY
+}
+
 type Query {
   sessionSSOCreate: SessionSSOModel!
   sessionByJWT(jwt: String!): SessionModel!
@@ -455,6 +469,8 @@ type Query {
   radioRequests(filter: RadioRequestFilterManyInput!): [RadioRequestModel!]!
   bugReport(filter: BugReportFilterOneInput!): BugReportModel!
   bugReports(filter: BugReportFilterManyInput!): [BugReportModel!]!
+  furniture(filter: FurnitureFilterOneInput!): FurnitureModel!
+  furnitures(filter: FurnitureFilterManyInput!): [FurnitureModel!]!
 }
 
 input ExtraArgs {
@@ -668,6 +684,22 @@ input BugReportFilterManyInput {
   reportingUserIDs: [Float!]
   resolvingUserIDs: [Float!]
   limit: Float
+}
+
+input FurnitureFilterOneInput {
+  id: Float!
+}
+
+input FurnitureFilterManyInput {
+  ids: [Float!]
+  valueTypes: [FurnitureValueType!]
+  skip: Float
+  limit: Float
+  orderBy: [FurnitureOrderBy!]
+}
+
+enum FurnitureOrderBy {
+  GREATEST_VALUE_TYPE
 }
 
 type Mutation {

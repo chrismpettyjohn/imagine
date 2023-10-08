@@ -52,6 +52,8 @@ import {RadioRequestEntity} from './radio-request.entity';
 import {RadioRequestRepository} from './radio-request.repository';
 import {BugReportEntity} from './bug-report.entity';
 import {BugReportRepository} from './bug-report.repository';
+import {FurnitureEntity} from './furniture.entity';
+import {FurnitureRepository} from './furniture.repository';
 
 export const databaseEntities = [
   ArticleEntity,
@@ -81,6 +83,7 @@ export const databaseEntities = [
   UserTradeLogEntity,
   RadioRequestEntity,
   BugReportEntity,
+  FurnitureEntity,
 ];
 
 export const databaseRepositories = [
@@ -111,4 +114,5 @@ export const databaseRepositories = [
   UserTradeLogRepository,
   RadioRequestRepository,
   BugReportRepository,
+  FurnitureRepository,
 ];
