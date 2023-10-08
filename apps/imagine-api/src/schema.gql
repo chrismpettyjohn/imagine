@@ -537,6 +537,7 @@ input ArticleFilterOneInput {
 input ArticleFilterManyInput {
   ids: [Float!]
   userIDs: [Float!]
+  skip: Float
   limit: Float
 }
 

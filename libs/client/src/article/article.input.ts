@@ -1,6 +1,7 @@
 export interface ArticleFilterManyInput {
   ids?: number[];
   userIDs?: number[];
+  skip?: number;
   limit?: number;
 }
 

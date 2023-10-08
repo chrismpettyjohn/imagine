@@ -61,6 +61,7 @@ export class ArticleResolver {
         id: filter.ids && In(filter.ids),
         userID: filter.userIDs && In(filter.userIDs),
       },
+      skip: filter.skip,
       take: filter.limit ?? 25,
     });
     return matchingArticles.map(ArticleModel.fromEntity);
