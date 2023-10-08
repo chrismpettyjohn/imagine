@@ -1,6 +1,7 @@
 import { Grid } from '../../components/grid/Grid';
-import React, { useEffect, useState } from 'react';
+import { Card } from '../../components/card/Card';
 import { useGroupFetchMany } from '@imagine-cms/client';
+import React, { useEffect, useMemo, useState } from 'react';
 import { GridLarge } from '../../components/grid/Grid.remix';
 import { ButtonNoBorder } from '../../components/button/Button.remix';
 import { GroupGridContainer } from '../../components/group-grid-container/GroupGridContainer';
@@ -11,6 +12,19 @@ const GROUP_PAGE_SIZE = 16;
 export function GroupListScreen() {
   const [page, setPage] = useState(0)
   const fetchGroups = useGroupFetchMany();
+
+  const groupHeader = useMemo(() => {
+    return (
+      <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+        <div>Groups</div>
+        {
+          page > 0 && (
+            <small>Page {page + 1}</small>
+          )
+        }
+      </div>
+    )
+  }, [page]);
 
   const canGoUp = (fetchGroups?.data?.length ?? 0) >= GROUP_PAGE_SIZE
 
@@ -35,15 +49,7 @@ export function GroupListScreen() {
   }, [page])
 
   return (
-    <>
-      <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-        <h1>Groups</h1>
-        {
-          page > 0 && (
-            <h2>Page {page + 1}</h2>
-          )
-        }
-      </div>
+    <Card header={groupHeader}>
       <Grid>
         {
           fetchGroups.loading && (
@@ -87,6 +93,6 @@ export function GroupListScreen() {
           )
         }
       </GridLarge>
-    </>
+    </Card>
   )
 }

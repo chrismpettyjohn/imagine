@@ -1,6 +1,7 @@
 import { Grid } from '../../components/grid/Grid';
-import React, { useEffect, useState } from 'react';
+import { Card } from '../../components/card/Card';
 import { useRoomFetchMany } from '@imagine-cms/client';
+import React, { useEffect, useMemo, useState } from 'react';
 import { GridLarge } from '../../components/grid/Grid.remix';
 import { ButtonNoBorder } from '../../components/button/Button.remix';
 import { RoomGridContainer } from '../../components/room-grid-container/RoomGridContainer';
@@ -11,6 +12,19 @@ const ROOM_PAGE_SIZE = 16;
 export function RoomListScreen() {
   const [page, setPage] = useState(0)
   const fetchRooms = useRoomFetchMany();
+
+  const roomsHeader = useMemo(() => {
+    return (
+      <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+        <div>Rooms</div>
+        {
+          page > 0 && (
+            <small>Page {page + 1}</small>
+          )
+        }
+      </div>
+    )
+  }, [page]);
 
   const canGoUp = (fetchRooms?.data?.length ?? 0) >= ROOM_PAGE_SIZE
 
@@ -35,15 +49,7 @@ export function RoomListScreen() {
   }, [page])
 
   return (
-    <>
-      <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-        <h1>Rooms</h1>
-        {
-          page > 0 && (
-            <h2>Page {page + 1}</h2>
-          )
-        }
-      </div>
+    <Card header={roomsHeader}>
       <Grid>
         {
           fetchRooms.loading && (
@@ -87,6 +93,6 @@ export function RoomListScreen() {
           )
         }
       </GridLarge>
-    </>
+    </Card>
   )
 }
