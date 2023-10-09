@@ -58,6 +58,8 @@ import {PinnedFurnitureRepository} from './pinned-furniture.repository';
 import {PinnedFurnitureEntity} from './pinned-furniture.entity';
 import {FurniturePurchaseLogRepository} from './furniture-purchase-log.repository';
 import {FurniturePurchaseLogEntity} from './furniture-purchase-log.entity';
+import {UserFurnitureEntity} from './user-furniture.entity';
+import {UserFurnitureRepository} from './user-furniture.repository';
 
 export const databaseEntities = [
   ArticleEntity,
@@ -90,6 +92,7 @@ export const databaseEntities = [
   FurnitureEntity,
   PinnedFurnitureEntity,
   FurniturePurchaseLogEntity,
+  UserFurnitureEntity,
 ];
 
 export const databaseRepositories = [
@@ -123,4 +126,5 @@ export const databaseRepositories = [
   FurnitureRepository,
   PinnedFurnitureRepository,
   FurniturePurchaseLogRepository,
+  UserFurnitureRepository,
 ];
