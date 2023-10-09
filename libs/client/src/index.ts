@@ -269,12 +269,19 @@ export * from './user/user.input';
 export * from './user/users-online-count.hook';
 export * from './user/users-online-count.query';
 
-
 // User Badge
 export * from './user-badge/user-badge-fetch-many.hook';
 export * from './user-badge/user-badge-fetch-many.query';
 export * from './user-badge/user-badge.fragment';
 export * from './user-badge/user-badge.input';
+
+// User Furniture
+export * from './user-furniture/user-furniture-fetch-many.hook';
+export * from './user-furniture/user-furniture-fetch-many.query';
+export * from './user-furniture/user-furniture-fetch-one.hook';
+export * from './user-furniture/user-furniture-fetch-one.query';
+export * from './user-furniture/user-furniture.fragment';
+export * from './user-furniture/user-furniture.input';
 
 // User Pinned Furniture
 export * from './user-pinned-furniture/user-pinned-furniture-create.hook';
