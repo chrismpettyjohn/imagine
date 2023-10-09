@@ -41,7 +41,7 @@ export class FurnitureResolver {
     const matchingFurniture = await this.furnitureRepo.find({
       where: {
         id: filter.ids && In(filter.ids),
-        publicName: filter.publicName && Like(filter.publicName),
+        publicName: filter.publicName && ILike(filter.publicName),
         itemName: filter.itemName && ILike(filter.itemName),
         valueType: filter.valueTypes && In(filter.valueTypes),
       },

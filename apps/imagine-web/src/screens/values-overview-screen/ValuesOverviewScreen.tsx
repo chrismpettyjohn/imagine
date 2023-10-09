@@ -1,5 +1,6 @@
 import React from 'react';
 import { MyRares } from './my-rares/MyRares';
+import { SearchRares } from './search-rares/SearchRares';
 import { GridLarge } from '../../components/grid/Grid.remix';
 import { TrendingRares } from './trending-rares/TrendingRares';
 import { MyPinnedRares } from './my-pinned-rares/MyPinnedRares';
@@ -12,7 +13,10 @@ import { MostCostByCreditsRares } from './most-cost-by-credits-rares/MostCostByC
 export function ValuesOverviewScreen() {
   return (
     <>
-      <h1>Rare Values</h1>
+      <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+        <h1>Rare Values</h1>
+        <SearchRares />
+      </div>
       <br />
       <GridLarge>
         <TrendingRares />
