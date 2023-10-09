@@ -175,6 +175,8 @@ export class FurniturePurchaseLogOverviewResolver {
         .getInstance()
         .createQueryBuilder()
         .select('catalog_item_id, COUNT(*) AS total_sells')
+        .leftJoin('items_base', 'items_base.id = catalog_item_id')
+        .where("NOT items_base.value_type  = 'COMMON'")
         .groupBy('catalog_item_id')
         .orderBy('total_sells', 'ASC')
         .skip(filter?.skip ?? 0)

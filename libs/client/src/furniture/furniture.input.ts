@@ -11,6 +11,7 @@ export interface FurnitureFilterManyInput {
   itemName?: string;
   valueTypes?: FurnitureValueType[];
   orderBy?: FurnitureOrderBy[];
+  skip?: number;
   limit?: number;
 }
 
