@@ -7,7 +7,7 @@ import { ButtonNoBorder } from '../../components/button/Button.remix';
 import { SmallUserProfileContainer } from '../../components/small-user-profile-container/SmallUserProfileContainer';
 import { SmallUserProfileContainerMock } from '../../components/small-user-profile-container/SmallUserProfileContainerMock';
 
-const USERS_PAGE_SIZE = 12;
+const USERS_PAGE_SIZE = 8;
 
 export function OnlinePlayersScreen() {
   const [page, setPage] = useState(0);

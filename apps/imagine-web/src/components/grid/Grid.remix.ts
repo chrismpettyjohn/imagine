@@ -23,3 +23,10 @@ export const GridSmallLarge = styled(Grid)`
     }
   `}
 `
+export const GridMedium = styled(Grid)`
+  ${({ theme }) => `
+    @media (min-width: ${theme.breakPoints.desktop}) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  `}
+`

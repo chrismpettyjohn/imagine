@@ -7,7 +7,7 @@ import { LoadingMessage } from '../../../components/loading-message/LoadingMessa
 import { FurnitureOrderBy, FurnitureValueType, useFurnitureFetchMany } from '@imagine-cms/client';
 import { FurnitureValueGridContainer } from '../../../components/furniture-value-grid-container/FurnitureValueGridContainer';
 
-const FURNITURE_PAGE_SIZE = 4;
+const FURNITURE_PAGE_SIZE = 2;
 
 export function RecentlyAddedRares() {
   const [page, setPage] = useState(0);

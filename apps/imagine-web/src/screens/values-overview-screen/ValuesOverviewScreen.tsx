@@ -1,7 +1,7 @@
 import React from 'react';
 import { MyRares } from './my-rares/MyRares';
 import { SearchRares } from './search-rares/SearchRares';
-import { GridLarge } from '../../components/grid/Grid.remix';
+import { GridMedium } from '../../components/grid/Grid.remix';
 import { TrendingRares } from './trending-rares/TrendingRares';
 import { MyPinnedRares } from './my-pinned-rares/MyPinnedRares';
 import { TopSellingRares } from './top-selling-rares/TopSellingRares';
@@ -18,25 +18,16 @@ export function ValuesOverviewScreen() {
         <SearchRares />
       </div>
       <br />
-      <GridLarge>
+      <GridMedium>
         <TrendingRares />
         <MyPinnedRares />
-      </GridLarge>
-      <br />
-      <GridLarge>
         <LeastSellingRares />
         <MyRares />
-      </GridLarge>
-      <br />
-      <GridLarge>
         <TopSellingRares />
         <RecentlyAddedRares />
-      </GridLarge>
-      <br />
-      <GridLarge>
         <MostCostByCreditsRares />
         <MostCostByPointsRares />
-      </GridLarge>
+      </GridMedium>
     </>
   )
 }

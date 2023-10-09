@@ -8,7 +8,7 @@ import { ButtonNoBorder } from '../../../components/button/Button.remix';
 import { LoadingMessage } from '../../../components/loading-message/LoadingMessage';
 import { FurnitureValueGridContainerLazy } from '../../../components/furniture-value-grid-container/FurnitureValueGridContainer.lazy';
 
-const FURNITURE_PAGE_SIZE = 4;
+const FURNITURE_PAGE_SIZE = 2;
 
 export function MyPinnedRares() {
   const [page, setPage] = useState(0);
