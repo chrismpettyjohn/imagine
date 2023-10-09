@@ -1,5 +1,5 @@
 export interface FurniturePurchaseLogOverviewFilterOneInput {
-  id: number;
+  furnitureID: number;
 }
 
 export interface FurniturePurchaseLogOverviewFilterManyInput {

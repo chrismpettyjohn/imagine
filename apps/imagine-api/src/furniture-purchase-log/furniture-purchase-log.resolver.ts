@@ -65,7 +65,7 @@ export class FurniturePurchaseLogResolver {
     })
     filter: FurniturePurchaseLogFilterManyInput
   ): Promise<FurniturePurchaseLogModel[]> {
-    const matchingFurniturePurchaseLogs =
+    const matchingfurniturePurchaseLog =
       await this.furniturePurchaseLogRepo.find({
         where: {
           id: filter.ids && In(filter.ids),
@@ -76,7 +76,7 @@ export class FurniturePurchaseLogResolver {
         skip: filter?.skip,
         take: filter?.limit ?? 25,
       });
-    return matchingFurniturePurchaseLogs.map(
+    return matchingfurniturePurchaseLog.map(
       FurniturePurchaseLogModel.fromEntity
     );
   }

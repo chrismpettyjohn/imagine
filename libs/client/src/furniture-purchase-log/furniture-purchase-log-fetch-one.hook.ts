@@ -11,15 +11,15 @@ export interface UseFurniturePurchaseLogFetchOneResponse {
 }
 
 export function useFurniturePurchaseLogFetchOne(): UseFurniturePurchaseLogFetchOneResponse {
-  const [getFurniturePurchaseLogs, { loading, error, data }] = useLazyQuery<FurniturePurchaseLogFetchOneQueryResponse, FurniturePurchaseLogFetchOneQueryVariables>(FURNITURE_PURCHASE_LOG_FETCH_ONE_QUERY);
+  const [getfurniturePurchaseLog, { loading, error, data }] = useLazyQuery<FurniturePurchaseLogFetchOneQueryResponse, FurniturePurchaseLogFetchOneQueryVariables>(FURNITURE_PURCHASE_LOG_FETCH_ONE_QUERY);
 
-  const onFetchFurniturePurchaseLogs = async (filter: FurniturePurchaseLogFilterOneInput): Promise<FurniturePurchaseLogFragment> => {
-    const matchingFurniturePurchaseLogs = await getFurniturePurchaseLogs({ fetchPolicy: "network-only", variables: { filter } })
-    return matchingFurniturePurchaseLogs.data!.furniturePurchaseLog;
+  const onFetchfurniturePurchaseLog = async (filter: FurniturePurchaseLogFilterOneInput): Promise<FurniturePurchaseLogFragment> => {
+    const matchingfurniturePurchaseLog = await getfurniturePurchaseLog({ fetchPolicy: "network-only", variables: { filter } })
+    return matchingfurniturePurchaseLog.data!.furniturePurchaseLog;
   }
 
   return {
-    fetch: onFetchFurniturePurchaseLogs,
+    fetch: onFetchfurniturePurchaseLog,
     error,
     loading,
     data: data?.furniturePurchaseLog,

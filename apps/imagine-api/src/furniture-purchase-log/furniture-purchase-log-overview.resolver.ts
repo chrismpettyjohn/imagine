@@ -1,3 +1,4 @@
+import DayJS from 'dayjs';
 import {Resolver, Query, ResolveField, Args, Parent} from '@nestjs/graphql';
 import {FurniturePurchaseLogOverviewModel} from './furniture-purchase-log-overview.model';
 import {FurniturePurchaseLogRepository} from '../database/furniture-purchase-log.repository';
@@ -98,24 +99,30 @@ export class FurniturePurchaseLogOverviewResolver {
     })
     filter: FurniturePurchaseLogOverviewFilterManyInput
   ): Promise<FurniturePurchaseLogOverviewModel[]> {
-    const response: Array<{catalog_item_id: number; avg_cost_credits: number}> =
-      await this.furniturePurchaseLogRepo
-        .getInstance()
-        .createQueryBuilder()
-        .select('catalog_item_id, AVG(cost_credits) AS avg_cost_credits')
-        .groupBy('catalog_item_id')
-        .orderBy('avg_cost_credits', 'DESC')
-        .skip(filter?.skip ?? 0)
-        .limit(filter?.limit ?? 25)
-        .execute();
+    const [currentDate, oneMonthAgo] = [
+      DayJS().unix(),
+      DayJS().subtract(1, 'month').unix(),
+    ];
+    const response: Array<{catalog_item_id: number; total_sells: number}> =
+      await this.furniturePurchaseLogRepo.getInstance().query(`
+        SELECT catalog_item_id, COUNT(*) AS total_sells
+        FROM logs_shop_purchases
+        LEFT JOIN items_base ON items_base.id = catalog_item_id
+        WHERE NOT items_base.value_type  = 'COMMON'
+        AND timestamp >= ${oneMonthAgo}
+        AND timestamp <= ${currentDate}
+        GROUP BY catalog_item_id
+        ORDER BY COUNT(*) DESC
+        LIMIT ${filter?.limit ?? 25}
+      `);
     return response.map(_ => ({
       furnitureID: _.catalog_item_id,
-      averageCostCredits: _.avg_cost_credits,
+      totalSells: _.total_sells,
     }));
   }
 
   @Query(() => [FurniturePurchaseLogOverviewModel])
-  async furniturePurchaseLogsOverviewTopCostCredits(
+  async furniturePurchaseLogsOverviewTopCredits(
     @Args('filter', {
       nullable: true,
       type: () => FurniturePurchaseLogOverviewFilterManyInput,
@@ -123,15 +130,15 @@ export class FurniturePurchaseLogOverviewResolver {
     filter: FurniturePurchaseLogOverviewFilterManyInput
   ): Promise<FurniturePurchaseLogOverviewModel[]> {
     const response: Array<{catalog_item_id: number; avg_cost_credits: number}> =
-      await this.furniturePurchaseLogRepo
-        .getInstance()
-        .createQueryBuilder()
-        .select('catalog_item_id, AVG(cost_credits) AS avg_cost_credits')
-        .groupBy('catalog_item_id')
-        .orderBy('avg_cost_credits', 'DESC')
-        .skip(filter?.skip ?? 0)
-        .limit(filter?.limit ?? 25)
-        .execute();
+      await this.furniturePurchaseLogRepo.getInstance().query(`
+        SELECT catalog_item_id, AVG(cost_credits) AS avg_cost_credits
+        FROM logs_shop_purchases
+        LEFT JOIN items_base ON items_base.id = catalog_item_id
+        WHERE NOT items_base.value_type  = 'COMMON'
+        GROUP BY catalog_item_id
+        ORDER BY avg_cost_credits DESC
+        LIMIT ${filter?.limit ?? 25}
+      `);
     return response.map(_ => ({
       furnitureID: _.catalog_item_id,
       averageCostCredits: _.avg_cost_credits,
@@ -147,15 +154,15 @@ export class FurniturePurchaseLogOverviewResolver {
     filter: FurniturePurchaseLogOverviewFilterManyInput
   ): Promise<FurniturePurchaseLogOverviewModel[]> {
     const response: Array<{catalog_item_id: number; avg_cost_points: number}> =
-      await this.furniturePurchaseLogRepo
-        .getInstance()
-        .createQueryBuilder()
-        .select('catalog_item_id, AVG(cost_points) AS avg_cost_points')
-        .groupBy('catalog_item_id')
-        .orderBy('avg_cost_points', 'DESC')
-        .skip(filter?.skip ?? 0)
-        .limit(filter?.limit ?? 25)
-        .execute();
+      await this.furniturePurchaseLogRepo.getInstance().query(`
+        SELECT catalog_item_id, AVG(cost_points) AS avg_cost_points
+        FROM logs_shop_purchases
+        LEFT JOIN items_base ON items_base.id = catalog_item_id
+        WHERE NOT items_base.value_type  = 'COMMON'
+        GROUP BY catalog_item_id
+        ORDER BY avg_cost_points DESC
+        LIMIT ${filter?.limit ?? 25}
+      `);
     return response.map(_ => ({
       furnitureID: _.catalog_item_id,
       averageCostPoints: _.avg_cost_points,
@@ -177,8 +184,8 @@ export class FurniturePurchaseLogOverviewResolver {
         LEFT JOIN items_base ON items_base.id = catalog_item_id
         WHERE NOT items_base.value_type  = 'COMMON'
         GROUP BY catalog_item_id
-        ORDER BY COUNT(*) DESC
-        LIMIT ${filter.limit ?? 25}
+        ORDER BY COUNT(*) ASC
+        LIMIT ${filter?.limit ?? 25}
       `);
     return response.map(_ => ({
       furnitureID: _.catalog_item_id,
@@ -195,15 +202,15 @@ export class FurniturePurchaseLogOverviewResolver {
     filter: FurniturePurchaseLogOverviewFilterManyInput
   ): Promise<FurniturePurchaseLogOverviewModel[]> {
     const response: Array<{catalog_item_id: number; total_sells: number}> =
-      await this.furniturePurchaseLogRepo
-        .getInstance()
-        .createQueryBuilder()
-        .select('catalog_item_id, COUNT(*) AS total_sells')
-        .groupBy('catalog_item_id')
-        .orderBy('total_sells', 'DESC')
-        .skip(filter?.skip ?? 0)
-        .limit(filter?.limit ?? 25)
-        .execute();
+      await this.furniturePurchaseLogRepo.getInstance().query(`
+        SELECT catalog_item_id, COUNT(*) AS total_sells
+        FROM logs_shop_purchases
+        LEFT JOIN items_base ON items_base.id = catalog_item_id
+        WHERE NOT items_base.value_type  = 'COMMON'
+        GROUP BY catalog_item_id
+        ORDER BY COUNT(*) DESC
+        LIMIT ${filter?.limit ?? 25}
+      `);
     return response.map(_ => ({
       furnitureID: _.catalog_item_id,
       totalSells: _.total_sells,
@@ -211,7 +218,7 @@ export class FurniturePurchaseLogOverviewResolver {
   }
 
   @Query(() => FurniturePurchaseLogOverviewModel)
-  async furniturePurhaseLogsOverview(
+  async furniturePurchaseLogOverview(
     @Args('filter', {
       nullable: true,
       type: () => FurniturePurchaseLogOverviewFilterOneInput,

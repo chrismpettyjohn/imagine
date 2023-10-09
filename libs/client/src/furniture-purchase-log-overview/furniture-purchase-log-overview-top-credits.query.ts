@@ -5,15 +5,15 @@ import { FURNITURE_PURCHASE_LOG_OVERVIEW_FRAGMMENT, FurniturePurchaseLogOverview
 export const FURNITURE_PURCHASE_LOG_OVERVIEW_TOP_CREDITS_QUERY: any = gql`
   ${FURNITURE_PURCHASE_LOG_OVERVIEW_FRAGMMENT}
   query($filter: FurniturePurchaseLogOverviewFilterManyInput!) {
-    furniturePurchaseLogOverviewTopCredits(filter: $filter) {
+    furniturePurchaseLogsOverviewTopCredits(filter: $filter) {
       ...FurniturePurchaseLogOverviewFragment
     }
   }
 `
-export interface FurniturePurchaseLogOverviewTopCreditsQueryVariables {
+export interface furniturePurchaseLogsOverviewTopCreditsQueryVariables {
   filter: FurniturePurchaseLogOverviewFilterManyInput;
 }
 
-export interface FurniturePurchaseLogOverviewTopCreditsQueryResponse {
-  furniturePurchaseLogOverviewTopCredits: FurniturePurchaseLogOverviewFragment[];
+export interface furniturePurchaseLogsOverviewTopCreditsQueryResponse {
+  furniturePurchaseLogsOverviewTopCredits: FurniturePurchaseLogOverviewFragment[];
 }

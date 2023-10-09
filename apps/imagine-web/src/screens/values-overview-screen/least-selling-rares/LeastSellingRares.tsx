@@ -44,7 +44,7 @@ export function LeastSellingRares() {
 
   return (
     <Card header={cardHeader} style={{ height: '100%' }}>
-      <Grid>
+      <GridLarge>
         {
           fetchLeastSelling.loading && (
             <>
@@ -60,7 +60,7 @@ export function LeastSellingRares() {
             <FurnitureValueGridContainerLazy key={`least_selling_furni_${_.furnitureID}`} furnitureID={_.furnitureID} />
           ))
         }
-      </Grid>
+      </GridLarge>
       <GridLarge>
         {canGoDown ?
           <ButtonNoBorder onClick={goBackOnePage}>

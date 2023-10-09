@@ -48,7 +48,7 @@ export function RecentlyAddedRares() {
 
   return (
     <Card header={cardHeader} style={{ height: '100%' }}>
-      <Grid>
+      <GridLarge>
         {
           fetchFurniture.loading && (
             <LoadingMessage>
@@ -61,7 +61,7 @@ export function RecentlyAddedRares() {
             <FurnitureValueGridContainer key={`recently_added_${_.id}`} furniture={_} />
           ))
         }
-      </Grid>
+      </GridLarge>
       <GridLarge>
         {canGoDown ?
           <ButtonNoBorder onClick={goBackOnePage}>

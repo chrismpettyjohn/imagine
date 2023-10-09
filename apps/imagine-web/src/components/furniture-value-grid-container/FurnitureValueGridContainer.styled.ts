@@ -9,4 +9,5 @@ export const FurnitureValueGridContainerElement = styled.div`
   flex-direction: column;
   overflow: hidden;
   padding: ${({ theme }) => theme.space.oneUnit};
+  height: 350px;
 `

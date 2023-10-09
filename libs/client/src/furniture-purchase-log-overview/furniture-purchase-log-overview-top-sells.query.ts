@@ -5,15 +5,15 @@ import { FURNITURE_PURCHASE_LOG_OVERVIEW_FRAGMMENT, FurniturePurchaseLogOverview
 export const FURNITURE_PURCHASE_LOG_OVERVIEW_TOP_SELLS_QUERY: any = gql`
   ${FURNITURE_PURCHASE_LOG_OVERVIEW_FRAGMMENT}
   query($filter: FurniturePurchaseLogOverviewFilterManyInput!) {
-    furniturePurchaseLogOverviewTopSells(filter: $filter) {
+    furniturePurchaseLogsOverviewTopSells(filter: $filter) {
       ...FurniturePurchaseLogOverviewFragment
     }
   }
 `
-export interface FurniturePurchaseLogOverviewTopSellsQueryVariables {
+export interface furniturePurchaseLogsOverviewTopSellsQueryVariables {
   filter: FurniturePurchaseLogOverviewFilterManyInput;
 }
 
-export interface FurniturePurchaseLogOverviewTopSellsQueryResponse {
-  furniturePurchaseLogOverviewTopSells: FurniturePurchaseLogOverviewFragment[];
+export interface furniturePurchaseLogsOverviewTopSellsQueryResponse {
+  furniturePurchaseLogsOverviewTopSells: FurniturePurchaseLogOverviewFragment[];
 }

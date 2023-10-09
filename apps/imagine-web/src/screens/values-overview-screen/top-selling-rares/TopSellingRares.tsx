@@ -1,9 +1,8 @@
 import { Card } from '../../../components/card/Card';
-import { Grid } from '../../../components/grid/Grid';
 import React, { useEffect, useMemo, useState } from 'react';
 import { GridLarge } from '../../../components/grid/Grid.remix';
 import { ButtonNoBorder } from '../../../components/button/Button.remix';
-import { useFurniturePurchaseLogOverviewTopSells } from '@imagine-cms/client';
+import { usefurniturePurchaseLogsOverviewTopSells } from '@imagine-cms/client';
 import { FurnitureValueGridContainerLazy } from '../../../components/furniture-value-grid-container/FurnitureValueGridContainer.lazy';
 import { FurnitureValueGridContainerMock } from '../../../components/furniture-value-grid-container/FurnitureValueGridContainer.mock';
 
@@ -11,7 +10,7 @@ const FURNITURE_PAGE_SIZE = 4;
 
 export function TopSellingRares() {
   const [page, setPage] = useState(0);
-  const fetchTopSelling = useFurniturePurchaseLogOverviewTopSells();
+  const fetchTopSelling = usefurniturePurchaseLogsOverviewTopSells();
 
   const cardHeader = useMemo(() => (
     <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
@@ -44,7 +43,7 @@ export function TopSellingRares() {
 
   return (
     <Card header={cardHeader} style={{ height: '100%' }}>
-      <Grid>
+      <GridLarge>
         {
           fetchTopSelling.loading && (
             <>
@@ -60,7 +59,7 @@ export function TopSellingRares() {
             <FurnitureValueGridContainerLazy key={`least_selling_furni_${_.furnitureID}`} furnitureID={_.furnitureID} />
           ))
         }
-      </Grid>
+      </GridLarge>
       <GridLarge>
         {canGoDown ?
           <ButtonNoBorder onClick={goBackOnePage}>

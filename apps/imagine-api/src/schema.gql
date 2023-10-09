@@ -508,11 +508,11 @@ type Query {
   furniturePurchaseLogs(filter: FurniturePurchaseLogFilterManyInput): [FurniturePurchaseLogModel!]!
   furniturePurchaseLogsOverviewRecentlyAdded(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
   furniturePurchaseLogsOverviewTrending(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
-  furniturePurchaseLogsOverviewTopCostCredits(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
+  furniturePurchaseLogsOverviewTopCredits(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
   furniturePurchaseLogsOverviewTopCostPoints(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
   furniturePurchaseLogOverviewLeastSells(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
   furniturePurchaseLogsOverviewTopSells(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
-  furniturePurhaseLogsOverview(filter: FurniturePurchaseLogOverviewFilterOneInput): FurniturePurchaseLogOverviewModel!
+  furniturePurchaseLogOverview(filter: FurniturePurchaseLogOverviewFilterOneInput): FurniturePurchaseLogOverviewModel!
 }
 
 input ExtraArgs {

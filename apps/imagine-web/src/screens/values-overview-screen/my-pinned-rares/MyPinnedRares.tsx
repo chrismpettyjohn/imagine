@@ -49,7 +49,7 @@ export function MyPinnedRares() {
 
   return (
     <Card header={cardHeader} style={{ height: '100%' }}>
-      <Grid>
+      <GridLarge>
         {
           fetchPinnedFurniture.loading && (
             <LoadingMessage>
@@ -67,7 +67,7 @@ export function MyPinnedRares() {
         <ButtonNoBorder>
           <i className="fa fa-plus" />
         </ButtonNoBorder>
-      </Grid>
+      </GridLarge>
       <GridLarge>
         {canGoDown ?
           <ButtonNoBorder onClick={goBackOnePage}>
