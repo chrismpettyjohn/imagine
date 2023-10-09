@@ -16,10 +16,8 @@ export function useGroupMembershipFetchMany(): UseGroupMembershipFetchManyRespon
   const onFetchGroupMemberships = async (filter: GroupMembershipFilterManyInput): Promise<GroupMembershipFragment[]> => {
     try {
       const matchingGroupMemberships = await getGroupMemberships({ fetchPolicy: "network-only", variables: { filter } })
-      console.log(matchingGroupMemberships)
       return matchingGroupMemberships.data!.groupMemberships;
     } catch (e: any) {
-      console.log(e);
       throw e;
     }
   }

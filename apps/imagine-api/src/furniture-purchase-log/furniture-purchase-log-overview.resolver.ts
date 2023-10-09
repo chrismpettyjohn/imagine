@@ -163,7 +163,7 @@ export class FurniturePurchaseLogOverviewResolver {
   }
 
   @Query(() => [FurniturePurchaseLogOverviewModel])
-  async furniturePurchaseLogsOverviewLeastSells(
+  async furniturePurchaseLogOverviewLeastSells(
     @Args('filter', {
       nullable: true,
       type: () => FurniturePurchaseLogOverviewFilterManyInput,

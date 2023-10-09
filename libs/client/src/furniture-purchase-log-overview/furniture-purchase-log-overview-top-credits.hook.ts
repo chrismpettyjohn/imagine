@@ -1,8 +1,7 @@
 import { useLazyQuery } from "@apollo/client";
 import { FurniturePurchaseLogOverviewFragment } from "./furniture-purchase-log-overview.fragment";
 import { FurniturePurchaseLogOverviewFilterManyInput } from "./furniture-purchase-log-overview.input";
-import { FURNITURE_PURCHASE_LOG_FETCH_MANY_QUERY } from "../furniture-purchase-log/furniture-purchase-log-fetch-many.query";
-import { FurniturePurchaseLogOverviewTopCreditsQueryResponse, FurniturePurchaseLogOverviewTopCreditsQueryVariables } from "./furniture-purchase-log-overview-top-credits.query";
+import { FURNITURE_PURCHASE_LOG_OVERVIEW_TOP_CREDITS_QUERY, FurniturePurchaseLogOverviewTopCreditsQueryResponse, FurniturePurchaseLogOverviewTopCreditsQueryVariables } from "./furniture-purchase-log-overview-top-credits.query";
 
 export interface UseFurniturePurchaseLogOverviewTopCreditsResponse {
   fetch(filter: FurniturePurchaseLogOverviewFilterManyInput): Promise<FurniturePurchaseLogOverviewFragment[]>;
@@ -12,7 +11,7 @@ export interface UseFurniturePurchaseLogOverviewTopCreditsResponse {
 }
 
 export function useFurniturePurchaseLogOverviewTopCredits(): UseFurniturePurchaseLogOverviewTopCreditsResponse {
-  const [getFurniturePurchaseLogOverviews, { loading, error, data }] = useLazyQuery<FurniturePurchaseLogOverviewTopCreditsQueryResponse, FurniturePurchaseLogOverviewTopCreditsQueryVariables>(FURNITURE_PURCHASE_LOG_FETCH_MANY_QUERY);
+  const [getFurniturePurchaseLogOverviews, { loading, error, data }] = useLazyQuery<FurniturePurchaseLogOverviewTopCreditsQueryResponse, FurniturePurchaseLogOverviewTopCreditsQueryVariables>(FURNITURE_PURCHASE_LOG_OVERVIEW_TOP_CREDITS_QUERY);
 
   const onFetchFurniturePurchaseLogOverviews = async (filter: FurniturePurchaseLogOverviewFilterManyInput): Promise<FurniturePurchaseLogOverviewFragment[]> => {
     const matchingFurniturePurchaseLogOverviews = await getFurniturePurchaseLogOverviews({ fetchPolicy: "network-only", variables: { filter } })

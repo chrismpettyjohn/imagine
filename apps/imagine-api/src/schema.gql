@@ -510,7 +510,7 @@ type Query {
   furniturePurchaseLogsOverviewTrending(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
   furniturePurchaseLogsOverviewTopCostCredits(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
   furniturePurchaseLogsOverviewTopCostPoints(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
-  furniturePurchaseLogsOverviewLeastSells(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
+  furniturePurchaseLogOverviewLeastSells(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
   furniturePurchaseLogsOverviewTopSells(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
   furniturePurhaseLogsOverview(filter: FurniturePurchaseLogOverviewFilterOneInput): FurniturePurchaseLogOverviewModel!
 }

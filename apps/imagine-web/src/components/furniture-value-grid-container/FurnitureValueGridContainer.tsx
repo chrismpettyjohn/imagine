@@ -10,8 +10,6 @@ export function FurnitureValueGridContainer({ furniture }: FurnitureValueGridCon
     fetchPurchaseLogs.fetch({ furnitureIDs: [furniture.id], limit: 1 });
   }, [furniture.id]);
 
-  console.log(fetchPurchaseLogs)
-
   return (
     <FurnitureValueGridContainerElement>
       <h2>Name</h2>

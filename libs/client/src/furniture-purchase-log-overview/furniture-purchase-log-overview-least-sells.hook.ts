@@ -1,8 +1,7 @@
 import { useLazyQuery } from "@apollo/client";
 import { FurniturePurchaseLogOverviewFragment } from "./furniture-purchase-log-overview.fragment";
 import { FurniturePurchaseLogOverviewFilterManyInput } from "./furniture-purchase-log-overview.input";
-import { FURNITURE_PURCHASE_LOG_FETCH_MANY_QUERY } from "../furniture-purchase-log/furniture-purchase-log-fetch-many.query";
-import { FurniturePurchaseLogOverviewLeastSellsQueryResponse, FurniturePurchaseLogOverviewLeastSellsQueryVariables } from "./furniture-purchase-log-overview-least-sells.query";
+import { FURNITURE_PURCHASE_LOG_OVERVIEW_LEAST_SELLS_QUERY, FurniturePurchaseLogOverviewLeastSellsQueryResponse, FurniturePurchaseLogOverviewLeastSellsQueryVariables } from "./furniture-purchase-log-overview-least-sells.query";
 
 export interface UseFurniturePurchaseLogOverviewLeastSellsResponse {
   fetch(filter: FurniturePurchaseLogOverviewFilterManyInput): Promise<FurniturePurchaseLogOverviewFragment[]>;
@@ -12,7 +11,7 @@ export interface UseFurniturePurchaseLogOverviewLeastSellsResponse {
 }
 
 export function useFurniturePurchaseLogOverviewLeastSells(): UseFurniturePurchaseLogOverviewLeastSellsResponse {
-  const [getFurniturePurchaseLogOverviews, { loading, error, data }] = useLazyQuery<FurniturePurchaseLogOverviewLeastSellsQueryResponse, FurniturePurchaseLogOverviewLeastSellsQueryVariables>(FURNITURE_PURCHASE_LOG_FETCH_MANY_QUERY);
+  const [getFurniturePurchaseLogOverviews, { loading, error, data }] = useLazyQuery<FurniturePurchaseLogOverviewLeastSellsQueryResponse, FurniturePurchaseLogOverviewLeastSellsQueryVariables>(FURNITURE_PURCHASE_LOG_OVERVIEW_LEAST_SELLS_QUERY);
 
   const onFetchFurniturePurchaseLogOverviews = async (filter: FurniturePurchaseLogOverviewFilterManyInput): Promise<FurniturePurchaseLogOverviewFragment[]> => {
     const matchingFurniturePurchaseLogOverviews = await getFurniturePurchaseLogOverviews({ fetchPolicy: "network-only", variables: { filter } })
