@@ -2,7 +2,7 @@ import { useLocation } from 'wouter';
 import { toast } from 'react-toastify';
 import { Card } from '../../components/card/Card';
 import React, { useContext, useEffect, useMemo } from 'react';
-import { localStorageService, sessionContext } from '@imagine-cms/web';
+import { graphQLContext, localStorageService, sessionContext } from '@imagine-cms/web';
 import { LoadingMessage } from '../../components/loading-message/LoadingMessage';
 import { useFacebookUserAuthenticate, useUserFetchOne } from '@imagine-cms/client';
 
@@ -11,6 +11,7 @@ export function LoginWithFacebookScreen() {
   const { _setSession } = useContext(sessionContext);
   const facebookUserAuthenticate = useFacebookUserAuthenticate();
   const fetchUser = useUserFetchOne();
+  const { refreshClient } = useContext(graphQLContext);
 
   const facebookAuthCode = useMemo(() => {
     return window.location.hash.split('#access_token=')[1].split('&data_access_expiration_time')[0]
@@ -21,6 +22,7 @@ export function LoginWithFacebookScreen() {
     try {
       const session = await facebookUserAuthenticate.execute({ facebookAuthToken: authCode });
       localStorageService.set('SESSION', session.sessionToken);
+      refreshClient();
       const matchingUser = await fetchUser.fetch({ id: session.userID })
       toast.success(`Welcome back, ${matchingUser.username}`);
       _setSession(matchingUser as any);

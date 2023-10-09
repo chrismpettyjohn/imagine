@@ -1,8 +1,8 @@
+import { Link } from 'wouter';
 import { GameClientElement } from './GameClient.styled';
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { GameClientActions } from './game-client-actions/GameClientActions';
 import { configContext, sessionContext, themeContext, useSSOCreate } from '@imagine-cms/web';
-import { Link } from 'wouter';
 
 export function GameClient() {
   const generateSSO = useSSOCreate();
@@ -14,16 +14,12 @@ export function GameClient() {
   const togglePreview = () => setShowPreview(_ => !_);
 
   useEffect(() => {
-    if (session) {
-      generateSSO.runQuery();
-    }
-  }, []);
+    generateSSO.runQuery();
+  }, [session]);
 
-  const ssoToken = useMemo(() => {
-    return generateSSO.data?.sessionSSOCreate?.ssoToken
-  }, [generateSSO.data?.sessionSSOCreate?.ssoToken]);
+  const ssoToken = generateSSO.data?.sessionSSOCreate?.ssoToken
 
-  if (!session || !ssoToken || generateSSO.loading) {
+  if (!session || !ssoToken) {
     return null;
   }
 

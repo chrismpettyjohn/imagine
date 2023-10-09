@@ -9,6 +9,11 @@ export function GraphQLContextProvider({ children, loadingScreen }: GraphQLConte
   const { ipAddress } = useIPAddress();
   const [graphQLClient, setGraphQlClient] = useState<any | undefined>(undefined);
 
+  const onRefreshClient = () => {
+    const newGraphQLClient = generateGraphQLClient(ipAddress);
+    setGraphQlClient(newGraphQLClient);
+  }
+
   useEffect(() => {
     if (graphQLClient) {
       return;
@@ -16,8 +21,7 @@ export function GraphQLContextProvider({ children, loadingScreen }: GraphQLConte
     if (!ipAddress) {
       return;
     }
-    const newGraphQLClient = generateGraphQLClient(ipAddress);
-    setGraphQlClient(newGraphQLClient);
+    onRefreshClient();
   }, [graphQLClient, ipAddress]);
 
   if (!graphQLClient) {
@@ -28,7 +32,7 @@ export function GraphQLContextProvider({ children, loadingScreen }: GraphQLConte
 
   return (
     <ApolloProvider client={graphQLClient}>
-      <graphQLContext.Provider value={{ graphQLClient }}>
+      <graphQLContext.Provider value={{ graphQLClient, refreshClient: onRefreshClient }}>
         {children}
       </graphQLContext.Provider>
     </ApolloProvider>

@@ -1,5 +1,6 @@
 import { useLocation } from 'wouter';
 import { toast } from 'react-toastify';
+import { graphQLContext } from '../context';
 import { useContext, useEffect } from 'react';
 import { useUserFetchOne } from '@imagine-cms/client';
 import { useSessionCreate } from './session-create.hook';
@@ -11,6 +12,7 @@ export function useSignInWithUsernameAndPassword(username: string, password: str
   const { _setSession } = useContext(sessionContext);
   const createSession = useSessionCreate(username, password);
   const fetchUser = useUserFetchOne();
+  const { refreshClient } = useContext(graphQLContext);
 
   useEffect(() => {
     if (createSession.data) {
@@ -22,6 +24,7 @@ export function useSignInWithUsernameAndPassword(username: string, password: str
   useEffect(() => {
     if (fetchUser?.data) {
       _setSession(fetchUser.data as any);
+      refreshClient();
       toast.success(`Welcome back, ${fetchUser.data.username}!`);
       setLocation('/me');
     }
