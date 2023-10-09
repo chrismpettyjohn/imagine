@@ -32,7 +32,7 @@ export function ValuesViewItemScreen() {
         <FurnitureCommentListCard />
       </GridLarge>
       <br />
-      <UsersWithFurniCard />
+      <UsersWithFurniCard furnitureID={furnitureID} />
       <br />
       <GridLarge>
         <FurniturePriceTrendsCard />

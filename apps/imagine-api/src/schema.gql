@@ -448,6 +448,14 @@ type FurniturePurchaseLogOverviewModel {
   totalSells: Float
 }
 
+type UserFurnitureModel {
+  id: Float
+  userID: Float
+  roomID: Float
+  itemID: Float
+  createdAt: Float
+}
+
 type Query {
   sessionSSOCreate: SessionSSOModel!
   sessionByJWT(jwt: String!): SessionModel!
@@ -513,6 +521,8 @@ type Query {
   furniturePurchaseLogOverviewLeastSells(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
   furniturePurchaseLogsOverviewTopSells(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
   furniturePurchaseLogOverview(filter: FurniturePurchaseLogOverviewFilterOneInput): FurniturePurchaseLogOverviewModel!
+  userFurniture(filter: UserFurnitureFilterOneInput!): UserFurnitureModel!
+  userFurnitures(filter: UserFurnitureFilterManyInput): [UserFurnitureModel!]!
 }
 
 input ExtraArgs {
@@ -787,6 +797,19 @@ input FurniturePurchaseLogOverviewFilterManyInput {
 
 input FurniturePurchaseLogOverviewFilterOneInput {
   furnitureID: Float!
+}
+
+input UserFurnitureFilterOneInput {
+  id: Float!
+}
+
+input UserFurnitureFilterManyInput {
+  ids: [Float!]
+  userIDs: [Float!]
+  roomIDs: [Float!]
+  itemIDs: [Float!]
+  skip: Float
+  limit: Float
 }
 
 type Mutation {

@@ -44,6 +44,7 @@ import {UserPinnedFurnitureModule} from './user-pinned-furniture/user-pinned-fur
 import {FurniturePurchaseLogModule} from './furniture-purchase-log/furniture-purchase-log.module';
 import {FurnitureCommentModule} from './furniture-comment/furniture-comment.module';
 import {FurnitureReactionModule} from './furniture-reaction/furniture-reaction.module';
+import {UserFurnitureModule} from './user-furniture/user-furniture.module';
 
 @Module({
   imports: [
@@ -111,6 +112,7 @@ import {FurnitureReactionModule} from './furniture-reaction/furniture-reaction.m
     FurniturePurchaseLogModule,
     FurnitureCommentModule,
     FurnitureReactionModule,
+    UserFurnitureModule,
   ],
 })
 export class ImagineModule {}
