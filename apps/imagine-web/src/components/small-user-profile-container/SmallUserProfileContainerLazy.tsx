@@ -13,7 +13,6 @@ export function SmallUserProfileContainerLazy({ userID }: { userID: number }) {
   }, [userID]);
 
   if (fetchUser.error) {
-    console.log(`Failed to display user ${userID}`)
     return null;
   }
 

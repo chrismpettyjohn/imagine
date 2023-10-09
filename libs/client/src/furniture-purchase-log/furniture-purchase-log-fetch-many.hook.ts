@@ -15,7 +15,6 @@ export function useFurniturePurchaseLogFetchMany(): UseFurniturePurchaseLogFetch
 
   const onFetchFurniturePurchaseLogs = async (filter: FurniturePurchaseLogFilterManyInput): Promise<FurniturePurchaseLogFragment[]> => {
     const matchingFurniturePurchaseLogs = await getFurniturePurchaseLogs({ fetchPolicy: "network-only", variables: { filter } })
-    console.log(matchingFurniturePurchaseLogs)
     return matchingFurniturePurchaseLogs.data!.furniturePurchaseLogs;
   }
 

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
 import { Card } from '../../../components/card/Card';
 import { Grid } from '../../../components/grid/Grid';
+import React, { useEffect, useMemo, useState } from 'react';
 import { GridLarge } from '../../../components/grid/Grid.remix';
 import { ButtonNoBorder } from '../../../components/button/Button.remix';
 import { useFurniturePurchaseLogOverviewLeastSells } from '@imagine-cms/client';
@@ -12,6 +12,13 @@ const FURNITURE_PAGE_SIZE = 4;
 export function LeastSellingRares() {
   const [page, setPage] = useState(0);
   const fetchLeastSelling = useFurniturePurchaseLogOverviewLeastSells();
+
+  const cardHeader = useMemo(() => (
+    <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+      <div>Least sells</div>
+      {page > 0 && <small>Page {page + 1}</small>}
+    </div>
+  ), [page]);
 
   const canGoUp = (fetchLeastSelling?.data?.length ?? 0) >= FURNITURE_PAGE_SIZE
 
@@ -36,7 +43,7 @@ export function LeastSellingRares() {
   }, [page]);
 
   return (
-    <Card header="Least Selling">
+    <Card header={cardHeader}>
       <Grid>
         {
           fetchLeastSelling.loading && (

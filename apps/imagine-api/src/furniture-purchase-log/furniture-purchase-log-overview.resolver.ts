@@ -171,17 +171,15 @@ export class FurniturePurchaseLogOverviewResolver {
     filter: FurniturePurchaseLogOverviewFilterManyInput
   ): Promise<FurniturePurchaseLogOverviewModel[]> {
     const response: Array<{catalog_item_id: number; total_sells: number}> =
-      await this.furniturePurchaseLogRepo
-        .getInstance()
-        .createQueryBuilder()
-        .select('catalog_item_id, COUNT(*) AS total_sells')
-        .leftJoin('items_base', 'items_base.id = catalog_item_id')
-        .where("NOT items_base.value_type  = 'COMMON'")
-        .groupBy('catalog_item_id')
-        .orderBy('total_sells', 'ASC')
-        .skip(filter?.skip ?? 0)
-        .limit(filter?.limit ?? 25)
-        .execute();
+      await this.furniturePurchaseLogRepo.getInstance().query(`
+        SELECT catalog_item_id, COUNT(*) AS total_sells
+        FROM logs_shop_purchases
+        LEFT JOIN items_base ON items_base.id = catalog_item_id
+        WHERE NOT items_base.value_type  = 'COMMON'
+        GROUP BY catalog_item_id
+        ORDER BY COUNT(*) DESC
+        LIMIT ${filter.limit ?? 25}
+      `);
     return response.map(_ => ({
       furnitureID: _.catalog_item_id,
       totalSells: _.total_sells,
