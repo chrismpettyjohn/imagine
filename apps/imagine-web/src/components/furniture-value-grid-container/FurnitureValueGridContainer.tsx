@@ -1,4 +1,6 @@
+import { Link } from 'wouter';
 import React, { useEffect } from 'react';
+import { ButtonBrand } from '../button/Button.remix';
 import { useFurniturePurchaseLogFetchMany } from '@imagine-cms/client';
 import { FurnitureValueGridContainerProps } from './FurnitureValueGridContainer.types';
 import { FurnitureValueGridContainerElement } from './FurnitureValueGridContainer.styled';
@@ -18,6 +20,12 @@ export function FurnitureValueGridContainer({ furniture }: FurnitureValueGridCon
       {fetchPurchaseLogs.data?.[0]?.averageCostCredits ?? <i className="fa fa-spinner fa-spin" />}
       <h2>Average Cost Points</h2>
       {fetchPurchaseLogs.data?.[0]?.averageCostPoints ?? <i className="fa fa-spinner fa-spin" />}
+      <Link to={`/values/${furniture.id}`}>
+        <ButtonBrand>
+          <i className="fa fa-eye" style={{ marginRight: 8 }} />
+          View More
+        </ButtonBrand>
+      </Link>
     </FurnitureValueGridContainerElement>
   )
 }
