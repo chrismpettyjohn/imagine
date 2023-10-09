@@ -28,7 +28,7 @@ export function ValuesViewItemScreen() {
       </div>
       <br />
       <GridLarge>
-        {fetchFurniture.data ? <FurnitureValueGridContainer furniture={fetchFurniture.data} showViewMore={false} /> : <FurnitureValueGridContainerMock showViewMore={false} />}
+        {fetchFurniture.data ? <FurnitureValueGridContainer furniture={fetchFurniture.data} /> : <FurnitureValueGridContainerMock />}
         <FurnitureCommentListCard />
       </GridLarge>
       <br />

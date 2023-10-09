@@ -19,7 +19,7 @@ export function FurnitureValueGridContainer({ furniture }: FurnitureValueGridCon
         <h2>{furniture.publicName}</h2>
         <br />
         <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
-          <FurnitureIcon furniture={furniture} />
+          <FurnitureIcon furniture={furniture} style={{ maxHeight: 75, objectFit: 'contain' }} />
         </div>
         <br />
         <GridLarge style={{ height: 150 }}>

@@ -14,6 +14,12 @@ export const FurnitureValueGridContainerElement = styled.div`
   &:hover {
     border-color: ${({ theme }) => theme.color.s50};
   }
+  img {
+    opacity: 0.9;
+    &:hover {
+      opacity: 1;
+    }
+  }
 `
 
 export const FurnitureValueGridContainerStatElement = styled.div`
