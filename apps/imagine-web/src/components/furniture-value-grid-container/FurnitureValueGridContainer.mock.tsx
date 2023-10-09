@@ -1,11 +1,9 @@
 import React from 'react';
 import { GridLarge } from '../grid/Grid.remix';
-import { ButtonBrand } from '../button/Button.remix';
 import { FurnitureIcon } from '../furniture-icon/FurnitureIcon';
-import { FurnitureValueGridContainerProps } from './FurnitureValueGridContainer.types';
 import { FurnitureValueGridContainerElement } from './FurnitureValueGridContainer.styled';
 
-export function FurnitureValueGridContainerMock({ showViewMore = true }: Partial<FurnitureValueGridContainerProps>) {
+export function FurnitureValueGridContainerMock() {
   return (
     <FurnitureValueGridContainerElement>
       <h2>Name</h2>
@@ -20,14 +18,6 @@ export function FurnitureValueGridContainerMock({ showViewMore = true }: Partial
         </div>
       </GridLarge>
       <br />
-      {
-        showViewMore && (
-          <ButtonBrand disabled>
-            <i className="fa fa-eye" style={{ marginRight: 8 }} />
-            View More
-          </ButtonBrand>
-        )
-      }
     </FurnitureValueGridContainerElement>
   )
 }
