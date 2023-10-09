@@ -68,7 +68,10 @@ export class FurniturePurchaseLogOverviewResolver {
 
   @Query(() => [FurniturePurchaseLogOverviewModel])
   async furniturePurchaseLogsOverviewRecentlyAdded(
-    @Args('filter', {type: () => FurniturePurchaseLogOverviewFilterManyInput})
+    @Args('filter', {
+      nullable: true,
+      type: () => FurniturePurchaseLogOverviewFilterManyInput,
+    })
     filter: FurniturePurchaseLogOverviewFilterManyInput
   ): Promise<FurniturePurchaseLogOverviewModel[]> {
     const response: Array<{catalog_item_id: number; avg_cost_credits: number}> =
@@ -78,8 +81,8 @@ export class FurniturePurchaseLogOverviewResolver {
         .select('catalog_item_id, timestamp')
         .groupBy('catalog_item_id')
         .orderBy('timestamp', 'DESC')
-        .skip(filter.skip ?? 0)
-        .limit(filter.limit ?? 25)
+        .skip(filter?.skip ?? 0)
+        .limit(filter?.limit ?? 25)
         .execute();
     return response.map(_ => ({
       furnitureID: _.catalog_item_id,
@@ -89,7 +92,10 @@ export class FurniturePurchaseLogOverviewResolver {
 
   @Query(() => [FurniturePurchaseLogOverviewModel])
   async furniturePurchaseLogsOverviewTrending(
-    @Args('filter', {type: () => FurniturePurchaseLogOverviewFilterManyInput})
+    @Args('filter', {
+      nullable: true,
+      type: () => FurniturePurchaseLogOverviewFilterManyInput,
+    })
     filter: FurniturePurchaseLogOverviewFilterManyInput
   ): Promise<FurniturePurchaseLogOverviewModel[]> {
     const response: Array<{catalog_item_id: number; avg_cost_credits: number}> =
@@ -99,8 +105,8 @@ export class FurniturePurchaseLogOverviewResolver {
         .select('catalog_item_id, AVG(cost_credits) AS avg_cost_credits')
         .groupBy('catalog_item_id')
         .orderBy('avg_cost_credits', 'DESC')
-        .skip(filter.skip ?? 0)
-        .limit(filter.limit ?? 25)
+        .skip(filter?.skip ?? 0)
+        .limit(filter?.limit ?? 25)
         .execute();
     return response.map(_ => ({
       furnitureID: _.catalog_item_id,
@@ -110,7 +116,10 @@ export class FurniturePurchaseLogOverviewResolver {
 
   @Query(() => [FurniturePurchaseLogOverviewModel])
   async furniturePurchaseLogsOverviewTopCostCredits(
-    @Args('filter', {type: () => FurniturePurchaseLogOverviewFilterManyInput})
+    @Args('filter', {
+      nullable: true,
+      type: () => FurniturePurchaseLogOverviewFilterManyInput,
+    })
     filter: FurniturePurchaseLogOverviewFilterManyInput
   ): Promise<FurniturePurchaseLogOverviewModel[]> {
     const response: Array<{catalog_item_id: number; avg_cost_credits: number}> =
@@ -120,8 +129,8 @@ export class FurniturePurchaseLogOverviewResolver {
         .select('catalog_item_id, AVG(cost_credits) AS avg_cost_credits')
         .groupBy('catalog_item_id')
         .orderBy('avg_cost_credits', 'DESC')
-        .skip(filter.skip ?? 0)
-        .limit(filter.limit ?? 25)
+        .skip(filter?.skip ?? 0)
+        .limit(filter?.limit ?? 25)
         .execute();
     return response.map(_ => ({
       furnitureID: _.catalog_item_id,
@@ -131,7 +140,10 @@ export class FurniturePurchaseLogOverviewResolver {
 
   @Query(() => [FurniturePurchaseLogOverviewModel])
   async furniturePurchaseLogsOverviewTopCostPoints(
-    @Args('filter', {type: () => FurniturePurchaseLogOverviewFilterManyInput})
+    @Args('filter', {
+      nullable: true,
+      type: () => FurniturePurchaseLogOverviewFilterManyInput,
+    })
     filter: FurniturePurchaseLogOverviewFilterManyInput
   ): Promise<FurniturePurchaseLogOverviewModel[]> {
     const response: Array<{catalog_item_id: number; avg_cost_points: number}> =
@@ -141,8 +153,8 @@ export class FurniturePurchaseLogOverviewResolver {
         .select('catalog_item_id, AVG(cost_points) AS avg_cost_points')
         .groupBy('catalog_item_id')
         .orderBy('avg_cost_points', 'DESC')
-        .skip(filter.skip ?? 0)
-        .limit(filter.limit ?? 25)
+        .skip(filter?.skip ?? 0)
+        .limit(filter?.limit ?? 25)
         .execute();
     return response.map(_ => ({
       furnitureID: _.catalog_item_id,
@@ -152,7 +164,10 @@ export class FurniturePurchaseLogOverviewResolver {
 
   @Query(() => [FurniturePurchaseLogOverviewModel])
   async furniturePurchaseLogsOverviewLeastSells(
-    @Args('filter', {type: () => FurniturePurchaseLogOverviewFilterManyInput})
+    @Args('filter', {
+      nullable: true,
+      type: () => FurniturePurchaseLogOverviewFilterManyInput,
+    })
     filter: FurniturePurchaseLogOverviewFilterManyInput
   ): Promise<FurniturePurchaseLogOverviewModel[]> {
     const response: Array<{catalog_item_id: number; total_sells: number}> =
@@ -162,8 +177,8 @@ export class FurniturePurchaseLogOverviewResolver {
         .select('catalog_item_id, COUNT(*) AS total_sells')
         .groupBy('catalog_item_id')
         .orderBy('total_sells', 'ASC')
-        .skip(filter.skip ?? 0)
-        .limit(filter.limit ?? 25)
+        .skip(filter?.skip ?? 0)
+        .limit(filter?.limit ?? 25)
         .execute();
     return response.map(_ => ({
       furnitureID: _.catalog_item_id,
@@ -173,7 +188,10 @@ export class FurniturePurchaseLogOverviewResolver {
 
   @Query(() => [FurniturePurchaseLogOverviewModel])
   async furniturePurchaseLogsOverviewTopSells(
-    @Args('filter', {type: () => FurniturePurchaseLogOverviewFilterManyInput})
+    @Args('filter', {
+      nullable: true,
+      type: () => FurniturePurchaseLogOverviewFilterManyInput,
+    })
     filter: FurniturePurchaseLogOverviewFilterManyInput
   ): Promise<FurniturePurchaseLogOverviewModel[]> {
     const response: Array<{catalog_item_id: number; total_sells: number}> =
@@ -183,8 +201,8 @@ export class FurniturePurchaseLogOverviewResolver {
         .select('catalog_item_id, COUNT(*) AS total_sells')
         .groupBy('catalog_item_id')
         .orderBy('total_sells', 'DESC')
-        .skip(filter.skip ?? 0)
-        .limit(filter.limit ?? 25)
+        .skip(filter?.skip ?? 0)
+        .limit(filter?.limit ?? 25)
         .execute();
     return response.map(_ => ({
       furnitureID: _.catalog_item_id,
@@ -194,7 +212,10 @@ export class FurniturePurchaseLogOverviewResolver {
 
   @Query(() => FurniturePurchaseLogOverviewModel)
   async furniturePurhaseLogsOverview(
-    @Args('filter', {type: () => FurniturePurchaseLogOverviewFilterOneInput})
+    @Args('filter', {
+      nullable: true,
+      type: () => FurniturePurchaseLogOverviewFilterOneInput,
+    })
     filter: FurniturePurchaseLogOverviewFilterOneInput
   ): Promise<FurniturePurchaseLogOverviewModel> {
     return {

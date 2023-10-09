@@ -36,7 +36,8 @@ export class RankResolver {
 
   @Query(() => RankModel)
   async rank(
-    @Args('filter', {type: () => RankFilterOneInput}) filter: RankFilterOneInput
+    @Args('filter', {nullable: true, type: () => RankFilterOneInput})
+    filter: RankFilterOneInput
   ): Promise<RankModel> {
     const matchingRank = await this.rankRepo.findOneOrFail({id: filter.id});
     return RankModel.fromEntity(matchingRank);
@@ -54,7 +55,7 @@ export class RankResolver {
       order: {
         id: 'DESC',
       },
-      take: filter.limit ?? 25,
+      take: filter?.limit ?? 25,
     });
     return matchingRanks.map(RankModel.fromEntity);
   }
@@ -73,7 +74,7 @@ export class RankResolver {
   @Mutation(() => Boolean)
   @HasScope('manageRanks')
   async rankUpdate(
-    @Args('filter', {type: () => RankFilterOneInput})
+    @Args('filter', {nullable: true, type: () => RankFilterOneInput})
     filter: RankFilterOneInput,
     @Args('input', {type: () => RankUpdateInput}) input: RankUpdateInput
   ) {

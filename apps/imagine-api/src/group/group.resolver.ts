@@ -59,8 +59,8 @@ export class GroupResolver {
         id: filter.ids && In(filter.ids),
         userID: filter.userIDs && In(filter.userIDs),
       },
-      skip: filter.skip,
-      take: filter.limit ?? 25,
+      skip: filter?.skip,
+      take: filter?.limit ?? 25,
     });
     return matchingGroups.map(GroupModel.fromEntity);
   }

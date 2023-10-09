@@ -47,7 +47,7 @@ export class PhotoReactionResolver {
 
   @Query(() => [PhotoReactionModel])
   photoReactions(
-    @Args('filter', {type: () => PhotoReactionFilterManyInput, nullable: true})
+    @Args('filter', {nullable: true, type: () => PhotoReactionFilterManyInput})
     filter: PhotoReactionFilterManyInput
   ): Promise<PhotoReactionModel[]> {
     return this.photoReactionService.findMany({
@@ -60,7 +60,7 @@ export class PhotoReactionResolver {
   @Mutation(() => PhotoReactionModel)
   @HasSession()
   async photoReactionUpdate(
-    @Args('filter', {type: () => PhotoReactionFilterOneInput})
+    @Args('filter', {nullable: true, type: () => PhotoReactionFilterOneInput})
     filter: PhotoReactionFilterOneInput,
     @Args('input', {type: () => PhotoReactionCreateInput})
     input: PhotoReactionCreateInput,

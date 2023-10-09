@@ -47,7 +47,7 @@ export class RoomEnterLogResolver {
         userID: filter.userIDs && In(filter.userIDs),
         roomID: filter.roomIDs && In(filter.roomIDs),
       },
-      take: filter.limit ?? 25,
+      take: filter?.limit ?? 25,
     });
     return matchingRoomEnterLogs.map(RoomEnterLogModel.fromEntity);
   }

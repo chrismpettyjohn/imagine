@@ -73,7 +73,7 @@ export class RadioRequestResolver {
         status: filter.statuses && In(filter.statuses),
         reviewingUserID: filter.reviewingUserIDs && In(filter.reviewingUserIDs),
       },
-      take: filter.limit,
+      take: filter?.limit,
     });
     return matchingRadioRequests.map(RadioRequestModel.fromEntity);
   }

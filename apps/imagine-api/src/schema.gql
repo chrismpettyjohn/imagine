@@ -454,12 +454,12 @@ type Query {
   session(id: Float!): SessionModel!
   sessions(other: ExtraArgs): [SessionModel!]!
   usersOnlineCount: Float!
-  user(filter: UserFilterOneInput!): UserModel!
+  user(filter: UserFilterOneInput): UserModel!
   users(filter: UserFilterManyInput!): [UserModel!]!
-  rank(filter: RankFilterOneInput!): RankModel!
+  rank(filter: RankFilterOneInput): RankModel!
   ranks(filter: RankFilterManyInput!): [RankModel!]!
-  article(filter: ArticleFilterOneInput!): ArticleModel!
-  articles(filter: ArticleFilterManyInput!): [ArticleModel!]!
+  article(filter: ArticleFilterOneInput): ArticleModel!
+  articles(filter: ArticleFilterManyInput): [ArticleModel!]!
   articleComment(filter: ArticleCommentFilterOneInput!): ArticleCommentModel!
   articleComments(filter: ArticleCommentFilterManyInput): [ArticleCommentModel!]!
   articleReaction(filter: ArticleReactionFilterOneInput!): ArticleReactionModel!
@@ -490,29 +490,29 @@ type Query {
   languagePhrases: [LanguagePhraseModel!]!
   friendships(filter: FriendshipFilterManyInput!): [FriendshipModel!]!
   userBadges(filter: UserBadgeFilterManyInput!): [UserBadgeModel!]!
-  supportTickets(filter: SupportTicketFilterManyInput!): [SupportTicketModel!]!
-  supportTicket(filter: SupportTicketFilterOneInput!): SupportTicketModel!
-  betaCodes(filter: BetaCodeFilterManyInput!): [BetaCodeModel!]!
-  betaCode(filter: BetaCodeFilterOneInput!): BetaCodeModel!
+  supportTickets(filter: SupportTicketFilterManyInput): [SupportTicketModel!]!
+  supportTicket(filter: SupportTicketFilterOneInput): SupportTicketModel!
+  betaCodes(filter: BetaCodeFilterManyInput): [BetaCodeModel!]!
+  betaCode(filter: BetaCodeFilterOneInput): BetaCodeModel!
   staffApplication(filter: StaffApplicationFilterOneInput!): StaffApplicationModel!
   staffApplications(filter: StaffApplicationFilterManyInput!): [StaffApplicationModel!]!
   radioRequest(filter: RadioRequestFilterOneInput!): RadioRequestModel!
   radioRequests(filter: RadioRequestFilterManyInput!): [RadioRequestModel!]!
   bugReport(filter: BugReportFilterOneInput!): BugReportModel!
   bugReports(filter: BugReportFilterManyInput!): [BugReportModel!]!
-  furniture(filter: FurnitureFilterOneInput!): FurnitureModel!
-  furnitures(filter: FurnitureFilterManyInput!): [FurnitureModel!]!
-  userPinnedFurniture(filter: UserPinnedFurnitureFilterOneInput!): UserPinnedFurnitureModel!
-  userPinnedFurnitures(filter: UserPinnedFurnitureFilterManyInput!): [UserPinnedFurnitureModel!]!
-  furniturePurchaseLog(filter: FurniturePurchaseLogFilterOneInput!): FurniturePurchaseLogModel!
-  furniturePurchaseLogs(filter: FurniturePurchaseLogFilterManyInput!): [FurniturePurchaseLogModel!]!
-  furniturePurchaseLogsOverviewRecentlyAdded(filter: FurniturePurchaseLogOverviewFilterManyInput!): [FurniturePurchaseLogOverviewModel!]!
-  furniturePurchaseLogsOverviewTrending(filter: FurniturePurchaseLogOverviewFilterManyInput!): [FurniturePurchaseLogOverviewModel!]!
-  furniturePurchaseLogsOverviewTopCostCredits(filter: FurniturePurchaseLogOverviewFilterManyInput!): [FurniturePurchaseLogOverviewModel!]!
-  furniturePurchaseLogsOverviewTopCostPoints(filter: FurniturePurchaseLogOverviewFilterManyInput!): [FurniturePurchaseLogOverviewModel!]!
-  furniturePurchaseLogsOverviewLeastSells(filter: FurniturePurchaseLogOverviewFilterManyInput!): [FurniturePurchaseLogOverviewModel!]!
-  furniturePurchaseLogsOverviewTopSells(filter: FurniturePurchaseLogOverviewFilterManyInput!): [FurniturePurchaseLogOverviewModel!]!
-  furniturePurhaseLogsOverview(filter: FurniturePurchaseLogOverviewFilterOneInput!): FurniturePurchaseLogOverviewModel!
+  furniture(filter: FurnitureFilterOneInput): FurnitureModel!
+  furnitures(filter: FurnitureFilterManyInput): [FurnitureModel!]!
+  userPinnedFurniture(filter: UserPinnedFurnitureFilterOneInput): UserPinnedFurnitureModel!
+  userPinnedFurnitures(filter: UserPinnedFurnitureFilterManyInput): [UserPinnedFurnitureModel!]!
+  furniturePurchaseLog(filter: FurniturePurchaseLogFilterOneInput): FurniturePurchaseLogModel!
+  furniturePurchaseLogs(filter: FurniturePurchaseLogFilterManyInput): [FurniturePurchaseLogModel!]!
+  furniturePurchaseLogsOverviewRecentlyAdded(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
+  furniturePurchaseLogsOverviewTrending(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
+  furniturePurchaseLogsOverviewTopCostCredits(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
+  furniturePurchaseLogsOverviewTopCostPoints(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
+  furniturePurchaseLogsOverviewLeastSells(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
+  furniturePurchaseLogsOverviewTopSells(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
+  furniturePurhaseLogsOverview(filter: FurniturePurchaseLogOverviewFilterOneInput): FurniturePurchaseLogOverviewModel!
 }
 
 input ExtraArgs {
@@ -801,15 +801,15 @@ type Mutation {
   userUpdate(id: Float!, userChanges: UserUpdateInput!): Boolean!
   userDelete(id: Float!): Boolean!
   rankCreate(newRank: RankCreateInput!): RankModel!
-  rankUpdate(filter: RankFilterOneInput!, input: RankUpdateInput!): Boolean!
+  rankUpdate(filter: RankFilterOneInput, input: RankUpdateInput!): Boolean!
   rankDelete(id: Float!): Boolean!
   articleCreate(newArticle: ArticleCreateInput!): ArticleModel!
   articleUpdate(id: Float!, articleChanges: ArticleUpdateInput!): Boolean!
   articleDelete(id: Float!): Boolean!
   articleCommentCreate(input: ArticleCommentCreateInput!): ArticleCommentModel!
-  articleCommentUpdate(filter: ArticleCommentFilterOneInput!, input: ArticleCommentCreateInput!): ArticleCommentModel!
+  articleCommentUpdate(filter: ArticleCommentFilterOneInput, input: ArticleCommentCreateInput!): ArticleCommentModel!
   articleCommentDelete(id: Float!): Boolean!
-  articleReactionUpdate(filter: ArticleReactionFilterOneInput!, input: ArticleReactionCreateInput!): ArticleReactionModel!
+  articleReactionUpdate(filter: ArticleReactionFilterOneInput, input: ArticleReactionCreateInput!): ArticleReactionModel!
   articleReactionDelete(id: Float!): Boolean!
   configUpdate(configUpdateInput: ConfigUpdateInput!): Boolean!
   banCreate(newBan: BanCreateInput!): BanModel!
@@ -823,9 +823,9 @@ type Mutation {
   groupDelete(id: Float!): Boolean!
   photoDelete(id: Float!): Boolean!
   photoCommentCreate(input: PhotoCommentCreateInput!): PhotoCommentModel!
-  photoCommentUpdate(filter: PhotoCommentFilterOneInput!, input: PhotoCommentCreateInput!): PhotoCommentModel!
+  photoCommentUpdate(filter: PhotoCommentFilterOneInput, input: PhotoCommentCreateInput!): PhotoCommentModel!
   photoCommentDelete(id: Float!): Boolean!
-  photoReactionUpdate(filter: PhotoReactionFilterOneInput!, input: PhotoReactionCreateInput!): PhotoReactionModel!
+  photoReactionUpdate(filter: PhotoReactionFilterOneInput, input: PhotoReactionCreateInput!): PhotoReactionModel!
   photoReactionDelete(id: Float!): Boolean!
   languageCreate(input: LanguageInput!): LanguageModel!
   languageUpdate(id: Float!, input: LanguageInput!): LanguageModel!
@@ -839,7 +839,7 @@ type Mutation {
   forgotPasswordRequestCreate(input: ForgotPasswordRequestCreateInput!): Boolean!
   forgotPasswordRequestRedeem(input: ForgotPasswordRequestRedeemInput!): Boolean!
   betaCodeCreate: BetaCodeModel!
-  betaCodeDelete(filter: BetaCodeFilterOneInput!): Boolean!
+  betaCodeDelete(filter: BetaCodeFilterOneInput): Boolean!
   staffApplicationCreate(input: StaffApplicationCreateInput!): StaffApplicationModel!
   staffApplicationReview(filter: StaffApplicationFilterOneInput!, input: StaffApplicationReviewInput!): Boolean!
   staffApplicationDelete(filter: StaffApplicationFilterOneInput!): Boolean!

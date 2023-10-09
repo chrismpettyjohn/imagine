@@ -44,7 +44,7 @@ export class BetaCodeResolver {
   @Query(() => [BetaCodeModel])
   @HasScope('manageBetaCodes')
   async betaCodes(
-    @Args('filter', {type: () => BetaCodeFilterManyInput})
+    @Args('filter', {nullable: true, type: () => BetaCodeFilterManyInput})
     filter: BetaCodeFilterManyInput
   ): Promise<BetaCodeModel[]> {
     const matchingBetaCodes = await this.betaCodeRepo.find({
@@ -53,7 +53,7 @@ export class BetaCodeResolver {
         betaCode: filter.betaCodes && In(filter.betaCodes),
         userID: filter.userIDs && In(filter.userIDs),
       },
-      take: filter.limit ?? 25,
+      take: filter?.limit ?? 25,
     });
     return matchingBetaCodes.map(BetaCodeModel.fromEntity);
   }
@@ -61,7 +61,7 @@ export class BetaCodeResolver {
   @Query(() => BetaCodeModel)
   @HasScope('manageBetaCodes')
   async betaCode(
-    @Args('filter', {type: () => BetaCodeFilterOneInput})
+    @Args('filter', {nullable: true, type: () => BetaCodeFilterOneInput})
     filter: BetaCodeFilterOneInput
   ): Promise<BetaCodeModel> {
     const matchingBetaCode = await this.betaCodeRepo.findOneOrFail({
@@ -83,7 +83,7 @@ export class BetaCodeResolver {
   @Mutation(() => Boolean)
   @HasScope('manageBetaCodes')
   async betaCodeDelete(
-    @Args('filter', {type: () => BetaCodeFilterOneInput})
+    @Args('filter', {nullable: true, type: () => BetaCodeFilterOneInput})
     filter: BetaCodeFilterOneInput
   ): Promise<boolean> {
     await this.betaCodeRepo.delete({

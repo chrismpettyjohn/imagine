@@ -17,8 +17,8 @@ export class UserBadgeResolver {
         badgeCode: filter.badgeCodes && In(filter.badgeCodes),
         userID: filter.userIDs && In(filter.userIDs),
       },
-      skip: filter.skip,
-      take: filter.limit ?? 25,
+      skip: filter?.skip,
+      take: filter?.limit ?? 25,
     });
     return matchingBadges.map(UserBadgeModel.fromEntity);
   }

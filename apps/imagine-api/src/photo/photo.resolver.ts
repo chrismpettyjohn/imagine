@@ -64,8 +64,8 @@ export class PhotoResolver {
       order: {
         id: 'DESC',
       },
-      skip: filter.skip,
-      take: filter.limit ?? 25,
+      skip: filter?.skip,
+      take: filter?.limit ?? 25,
     });
   }
 

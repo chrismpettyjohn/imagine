@@ -15,7 +15,7 @@ export class SupportTicketResolver {
   @Query(() => [SupportTicketModel])
   @HasScope('manageSupportTickets')
   async supportTickets(
-    @Args('filter', {type: () => SupportTicketFilterManyInput})
+    @Args('filter', {nullable: true, type: () => SupportTicketFilterManyInput})
     filter: SupportTicketFilterManyInput
   ): Promise<SupportTicketModel[]> {
     const matchingSupports = await this.supportTicketRepo.find({
@@ -25,7 +25,7 @@ export class SupportTicketResolver {
         reportedID: filter.offendingUserIDs && In(filter.offendingUserIDs),
         modID: filter.staffUserIDs && In(filter.staffUserIDs),
       },
-      take: filter.limit ?? 25,
+      take: filter?.limit ?? 25,
     });
     return matchingSupports.map(SupportTicketModel.fromEntity);
   }
@@ -33,7 +33,7 @@ export class SupportTicketResolver {
   @Query(() => SupportTicketModel)
   @HasScope('manageSupportTickets')
   async supportTicket(
-    @Args('filter', {type: () => SupportTicketFilterOneInput})
+    @Args('filter', {nullable: true, type: () => SupportTicketFilterOneInput})
     filter: SupportTicketFilterOneInput
   ): Promise<SupportTicketModel> {
     const matchingSupportTicket = await this.supportTicketRepo.findOneOrFail({

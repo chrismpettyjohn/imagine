@@ -134,7 +134,8 @@ export class UserResolver {
 
   @Query(() => UserModel)
   async user(
-    @Args('filter', {type: () => UserFilterOneInput}) filter: UserFilterOneInput
+    @Args('filter', {nullable: true, type: () => UserFilterOneInput})
+    filter: UserFilterOneInput
   ): Promise<UserEntity> {
     if (!filter.id && !filter.username) {
       throw new BadRequestException();
@@ -186,8 +187,8 @@ export class UserResolver {
       order: {
         id: 'DESC',
       },
-      skip: filter.skip,
-      take: filter.limit ?? 25,
+      skip: filter?.skip,
+      take: filter?.limit ?? 25,
     });
   }
 

@@ -21,7 +21,10 @@ export class UserPinnedFurnitureResolver {
   @Query(() => UserPinnedFurnitureModel)
   @HasSession()
   async userPinnedFurniture(
-    @Args('filter', {type: () => UserPinnedFurnitureFilterOneInput})
+    @Args('filter', {
+      nullable: true,
+      type: () => UserPinnedFurnitureFilterOneInput,
+    })
     filter: UserPinnedFurnitureFilterOneInput,
     @GetUser() session: UserEntity
   ): Promise<UserPinnedFurnitureModel> {
@@ -35,7 +38,10 @@ export class UserPinnedFurnitureResolver {
   @Query(() => [UserPinnedFurnitureModel])
   @HasSession()
   async userPinnedFurnitures(
-    @Args('filter', {type: () => UserPinnedFurnitureFilterManyInput})
+    @Args('filter', {
+      nullable: true,
+      type: () => UserPinnedFurnitureFilterManyInput,
+    })
     filter: UserPinnedFurnitureFilterManyInput,
     @GetUser() session: UserEntity
   ): Promise<UserPinnedFurnitureModel[]> {
@@ -45,8 +51,8 @@ export class UserPinnedFurnitureResolver {
         userID: session.id!,
         furnitureID: filter.furnitureIDs && In(filter.furnitureIDs),
       },
-      skip: filter.skip,
-      take: filter.limit ?? 25,
+      skip: filter?.skip,
+      take: filter?.limit ?? 25,
     });
     return matchingPinnedFurnitures.map(UserPinnedFurnitureModel.fromEntity);
   }

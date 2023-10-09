@@ -47,7 +47,7 @@ export class PhotoCommentResolver {
 
   @Query(() => [PhotoCommentModel])
   photoComments(
-    @Args('filter', {type: () => PhotoCommentFilterManyInput, nullable: true})
+    @Args('filter', {nullable: true, type: () => PhotoCommentFilterManyInput})
     filter: PhotoCommentFilterManyInput
   ): Promise<PhotoCommentModel[]> {
     return this.photoCommentService.findMany({
@@ -74,7 +74,7 @@ export class PhotoCommentResolver {
   @Mutation(() => PhotoCommentModel)
   @HasSession()
   async photoCommentUpdate(
-    @Args('filter', {type: () => PhotoCommentFilterOneInput})
+    @Args('filter', {nullable: true, type: () => PhotoCommentFilterOneInput})
     filter: PhotoCommentFilterOneInput,
     @Args('input', {type: () => PhotoCommentCreateInput})
     input: PhotoCommentCreateInput,

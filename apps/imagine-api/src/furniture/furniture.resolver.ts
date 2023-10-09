@@ -15,7 +15,7 @@ export class FurnitureResolver {
 
   @Query(() => FurnitureModel)
   async furniture(
-    @Args('filter', {type: () => FurnitureFilterOneInput})
+    @Args('filter', {nullable: true, type: () => FurnitureFilterOneInput})
     filter: FurnitureFilterOneInput
   ): Promise<FurnitureModel> {
     const matchingFurniture = await this.furnitureRepo.findOneOrFail({
@@ -25,7 +25,7 @@ export class FurnitureResolver {
   }
   @Query(() => [FurnitureModel])
   async furnitures(
-    @Args('filter', {type: () => FurnitureFilterManyInput})
+    @Args('filter', {nullable: true, type: () => FurnitureFilterManyInput})
     filter: FurnitureFilterManyInput
   ): Promise<FurnitureModel[]> {
     const orderBy: FindOptionsOrder<FurnitureEntity> = {};
@@ -46,8 +46,8 @@ export class FurnitureResolver {
         valueType: filter.valueTypes && In(filter.valueTypes),
       },
       order: orderBy,
-      skip: filter.skip ?? 0,
-      take: filter.limit ?? 25,
+      skip: filter?.skip ?? 0,
+      take: filter?.limit ?? 25,
     });
     return matchingFurniture.map(FurnitureModel.fromEntity);
   }

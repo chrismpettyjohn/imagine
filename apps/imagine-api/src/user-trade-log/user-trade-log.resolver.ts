@@ -34,7 +34,7 @@ export class UserTradeLogResolver {
         userOneID: filter.userOneIDs && In(filter.userOneIDs),
         userTwoID: filter.userTwoIDs && In(filter.userTwoIDs),
       },
-      take: filter.limit ?? 25,
+      take: filter?.limit ?? 25,
     });
   }
 }

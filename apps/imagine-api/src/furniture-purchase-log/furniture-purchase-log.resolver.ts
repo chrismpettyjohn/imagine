@@ -46,7 +46,10 @@ export class FurniturePurchaseLogResolver {
 
   @Query(() => FurniturePurchaseLogModel)
   async furniturePurchaseLog(
-    @Args('filter', {type: () => FurniturePurchaseLogFilterOneInput})
+    @Args('filter', {
+      nullable: true,
+      type: () => FurniturePurchaseLogFilterOneInput,
+    })
     filter: FurniturePurchaseLogFilterOneInput
   ): Promise<FurniturePurchaseLogModel> {
     const matchingFurniturePurchaseLog =
@@ -56,7 +59,10 @@ export class FurniturePurchaseLogResolver {
 
   @Query(() => [FurniturePurchaseLogModel])
   async furniturePurchaseLogs(
-    @Args('filter', {type: () => FurniturePurchaseLogFilterManyInput})
+    @Args('filter', {
+      nullable: true,
+      type: () => FurniturePurchaseLogFilterManyInput,
+    })
     filter: FurniturePurchaseLogFilterManyInput
   ): Promise<FurniturePurchaseLogModel[]> {
     const matchingFurniturePurchaseLogs =
@@ -67,8 +73,8 @@ export class FurniturePurchaseLogResolver {
           userID: filter.userIDs && In(filter.userIDs),
           itemIDs: filter.itemIDs && In(filter.itemIDs),
         },
-        skip: filter.skip,
-        take: filter.limit ?? 25,
+        skip: filter?.skip,
+        take: filter?.limit ?? 25,
       });
     return matchingFurniturePurchaseLogs.map(
       FurniturePurchaseLogModel.fromEntity

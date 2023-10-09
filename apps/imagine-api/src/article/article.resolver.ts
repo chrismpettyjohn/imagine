@@ -42,7 +42,7 @@ export class ArticleResolver {
 
   @Query(() => ArticleModel)
   async article(
-    @Args('filter', {type: () => ArticleFilterOneInput})
+    @Args('filter', {nullable: true, type: () => ArticleFilterOneInput})
     filter: ArticleFilterOneInput
   ): Promise<ArticleModel> {
     const matchingArticle = await this.articleRepo.findOneOrFail({
@@ -53,7 +53,7 @@ export class ArticleResolver {
 
   @Query(() => [ArticleModel])
   async articles(
-    @Args('filter', {type: () => ArticleFilterManyInput})
+    @Args('filter', {nullable: true, type: () => ArticleFilterManyInput})
     filter: ArticleFilterManyInput
   ): Promise<ArticleModel[]> {
     const matchingArticles = await this.articleRepo.find({
@@ -61,8 +61,8 @@ export class ArticleResolver {
         id: filter.ids && In(filter.ids),
         userID: filter.userIDs && In(filter.userIDs),
       },
-      skip: filter.skip,
-      take: filter.limit ?? 25,
+      skip: filter?.skip,
+      take: filter?.limit ?? 25,
     });
     return matchingArticles.map(ArticleModel.fromEntity);
   }

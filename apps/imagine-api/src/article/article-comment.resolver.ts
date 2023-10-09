@@ -49,7 +49,7 @@ export class ArticleCommentResolver {
 
   @Query(() => [ArticleCommentModel])
   articleComments(
-    @Args('filter', {type: () => ArticleCommentFilterManyInput, nullable: true})
+    @Args('filter', {nullable: true, type: () => ArticleCommentFilterManyInput})
     filter: ArticleCommentFilterManyInput
   ): Promise<ArticleCommentModel[]> {
     return this.articleCommentService.findMany({
@@ -76,7 +76,7 @@ export class ArticleCommentResolver {
   @Mutation(() => ArticleCommentModel)
   @HasSession()
   async articleCommentUpdate(
-    @Args('filter', {type: () => ArticleCommentFilterOneInput})
+    @Args('filter', {nullable: true, type: () => ArticleCommentFilterOneInput})
     filter: ArticleCommentFilterOneInput,
     @Args('input', {type: () => ArticleCommentCreateInput})
     input: ArticleCommentCreateInput,

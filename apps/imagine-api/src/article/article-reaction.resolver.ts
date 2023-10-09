@@ -64,7 +64,7 @@ export class ArticleReactionResolver {
   @Mutation(() => ArticleReactionModel)
   @HasSession()
   async articleReactionUpdate(
-    @Args('filter', {type: () => ArticleReactionFilterOneInput})
+    @Args('filter', {nullable: true, type: () => ArticleReactionFilterOneInput})
     filter: ArticleReactionFilterOneInput,
     @Args('input', {type: () => ArticleReactionCreateInput})
     input: ArticleReactionCreateInput,
