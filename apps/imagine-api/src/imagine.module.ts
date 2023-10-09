@@ -42,6 +42,8 @@ import {RareValuesModule} from './rare-values/rare-values.module';
 import {FurnitureModule} from './furniture/furniture.module';
 import {UserPinnedFurnitureModule} from './user-pinned-furniture/user-pinned-furniture.module';
 import {FurniturePurchaseLogModule} from './furniture-purchase-log/furniture-purchase-log.module';
+import {FurnitureCommentModule} from './furniture-comment/furniture-comment.module';
+import {FurnitureReactionModule} from './furniture-reaction/furniture-reaction.module';
 
 @Module({
   imports: [
@@ -107,6 +109,8 @@ import {FurniturePurchaseLogModule} from './furniture-purchase-log/furniture-pur
     FurnitureModule,
     UserPinnedFurnitureModule,
     FurniturePurchaseLogModule,
+    FurnitureCommentModule,
+    FurnitureReactionModule,
   ],
 })
 export class ImagineModule {}

@@ -7,7 +7,7 @@ import { useFurniturePurchaseLogOverviewFetchOne } from '@imagine-cms/client';
 import { FurnitureValueGridContainerProps } from './FurnitureValueGridContainer.types';
 import { FurnitureValueGridContainerElement } from './FurnitureValueGridContainer.styled';
 
-export function FurnitureValueGridContainer({ furniture }: FurnitureValueGridContainerProps) {
+export function FurnitureValueGridContainer({ furniture, showViewMore = true }: FurnitureValueGridContainerProps) {
   const fetchPurchaseLogOverview = useFurniturePurchaseLogOverviewFetchOne();
 
   console.log(fetchPurchaseLogOverview.data, fetchPurchaseLogOverview.error);
@@ -30,12 +30,14 @@ export function FurnitureValueGridContainer({ furniture }: FurnitureValueGridCon
         </div>
       </GridLarge>
       <br />
-      <Link to={`/values/${furniture.id}`}>
-        <ButtonBrand>
-          <i className="fa fa-eye" style={{ marginRight: 8 }} />
-          View More
-        </ButtonBrand>
-      </Link>
+      {showViewMore && (
+        <Link to={`/values/${furniture.id}`}>
+          <ButtonBrand>
+            <i className="fa fa-eye" style={{ marginRight: 8 }} />
+            View More
+          </ButtonBrand>
+        </Link>
+      )}
     </FurnitureValueGridContainerElement>
   )
 }

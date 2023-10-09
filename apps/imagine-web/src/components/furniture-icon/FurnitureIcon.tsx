@@ -5,7 +5,7 @@ const ICON_URL = 'https://swf.kubbo.city/dcr/hof_furni/icons';
 
 const ICON_SUFFIX = '_icon.png'
 
-const FALLBACK_IMAGE_NAME = 'dng_throne';
+const FALLBACK_IMAGE_URL = 'https://pbs.twimg.com/profile_images/3623084142/0ec240332aad4aa482534d083fa8a772_400x400.png';
 
 export function FurnitureIcon({ furniture }: FurnitureIconProps) {
   const [source, setSource] = useState(`${ICON_URL}/${furniture?.itemName}${ICON_SUFFIX}`);
@@ -13,7 +13,7 @@ export function FurnitureIcon({ furniture }: FurnitureIconProps) {
   console.log(source)
 
   const onUseFallbackImage = () => {
-    setSource(`${ICON_URL}/${FALLBACK_IMAGE_NAME}${ICON_SUFFIX}`)
+    setSource(FALLBACK_IMAGE_URL);
   }
 
   return <img src={source} width={80} style={{ objectFit: 'cover' }} loading="lazy" onError={onUseFallbackImage} />
