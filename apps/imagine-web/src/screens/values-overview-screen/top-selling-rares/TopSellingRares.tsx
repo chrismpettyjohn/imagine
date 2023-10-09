@@ -43,7 +43,7 @@ export function TopSellingRares() {
   }, [page]);
 
   return (
-    <Card header={cardHeader}>
+    <Card header={cardHeader} style={{ height: '100%' }}>
       <Grid>
         {
           fetchTopSelling.loading && (

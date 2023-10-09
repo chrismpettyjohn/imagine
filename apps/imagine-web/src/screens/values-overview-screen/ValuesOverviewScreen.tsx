@@ -14,17 +14,22 @@ export function ValuesOverviewScreen() {
       <h1>Rare Values</h1>
       <br />
       <GridLarge>
-        <div style={{ display: 'flex', flexDirection: 'column', flex: 1, gap: 16 }}>
-          <LeastSellingRares />
-          <TopSellingRares />
-          <MostCostByCreditsRares />
-          <MostCostByPointsRares />
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', flex: 1, gap: 16 }}>
-          <MyPinnedRares />
-          <RecentlyAddedRares />
-          <TrendingRares />
-        </div>
+        <LeastSellingRares />
+        <MyPinnedRares />
+      </GridLarge>
+      <br />
+      <GridLarge>
+        <TopSellingRares />
+        <RecentlyAddedRares />
+      </GridLarge>
+      <br />
+      <GridLarge>
+        <MostCostByCreditsRares />
+        <MostCostByPointsRares />
+      </GridLarge>
+      <br />
+      <GridLarge>
+        <TrendingRares />
       </GridLarge>
     </>
   )

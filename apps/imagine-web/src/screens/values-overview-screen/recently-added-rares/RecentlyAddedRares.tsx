@@ -47,7 +47,7 @@ export function RecentlyAddedRares() {
   }, [page]);
 
   return (
-    <Card header={cardHeader}>
+    <Card header={cardHeader} style={{ height: '100%' }}>
       <Grid>
         {
           fetchFurniture.loading && (
