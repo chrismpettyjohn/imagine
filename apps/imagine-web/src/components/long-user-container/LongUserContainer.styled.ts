@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const LongUserContainerElement = styled.div`
   align-items: center;
-  background:  ${({ theme }) => theme.color.s30};
-  border:${({ theme }) => `2px solid ${theme.color.s40}`};
+  background:  ${({ theme }) => theme.color.s40};
+  border:${({ theme }) => `2px solid ${theme.color.s50}`};
   border-radius:  ${({ theme }) => theme.radius.oneUnit};
-  color:  ${({ theme }) => theme.color.s20};
+  color:  ${({ theme }) => theme.color.s60};
   cursor: pointer;
   display: flex;
   flex: 1;
@@ -13,7 +13,7 @@ export const LongUserContainerElement = styled.div`
   padding: ${({ theme }) => theme.space.oneUnit};
   gap: ${({ theme }) => theme.space.oneUnit};
   &:hover {
-      border:${({ theme }) => `2px solid ${theme.color.s60}`};
+    border-color:  ${({ theme }) => theme.color.s60};
   }
   img {
   height: 64px;

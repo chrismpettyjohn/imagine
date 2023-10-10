@@ -28,8 +28,7 @@ export const LatestArticleGridContainerElement = styled.div`
 
 
 export const LatestArticleImage = styled.img`
-    min-width: 125px;
-    width: 100%;
+    width: 125px;
     height: 100%;
     border-radius: 1em;
     background-position: center;

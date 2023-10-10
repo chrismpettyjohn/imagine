@@ -6,7 +6,6 @@ const MOCK_IMAGE_URL = 'https://kubbo.city/assets/images/articles/RaumlayoutFS.p
 export function LatestArticleContainerMock() {
   return (
     <LatestArticleGridContainerElement>
-      <LatestArticleImage src={MOCK_IMAGE_URL} />
       <div style={{ flex: 1 }}>
         <LatestArticleImage src="https://kubbo.city/assets/images/articles/RaumlayoutFS.png" />
       </div>

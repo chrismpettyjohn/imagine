@@ -7,7 +7,7 @@ import { GridLarge } from '../../../components/grid/Grid.remix';
 import { ButtonNoBorder } from '../../../components/button/Button.remix';
 import { SmallUserProfileContainerMock } from '../../../components/small-user-profile-container/SmallUserProfileContainerMock';
 
-const USER_PAGE_SIZE = 8;
+const USER_PAGE_SIZE = 4;
 
 export function MostCreditsGrid() {
   const [page, setPage] = useState(0);

@@ -7,7 +7,7 @@ import { ButtonNoBorder } from '../../../components/button/Button.remix';
 import { SmallUserProfileContainer } from '../../../components/small-user-profile-container/SmallUserProfileContainer';
 import { SmallUserProfileContainerMock } from '../../../components/small-user-profile-container/SmallUserProfileContainerMock';
 
-const USER_PAGE_SIZE = 8;
+const USER_PAGE_SIZE = 4;
 
 export function MostVIPPointsGrid() {
   const [page, setPage] = useState(0);
