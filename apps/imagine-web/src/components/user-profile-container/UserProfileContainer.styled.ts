@@ -44,8 +44,8 @@ export const UserProfileStat = styled.div`
   border: ${({ theme }) => `2px solid ${theme.color.s30}`};
   color: ${({ theme }) => theme.color.s60};
   display: flex;
-  flex: 1;
   justify-content: space-between;
   padding: ${({ theme }) => theme.space.oneUnit};
+  width: 300px;;
   object-align: center;
 `

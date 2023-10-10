@@ -25,7 +25,6 @@ export function UserProfileContainer({ user }: UserProfileContainerProps) {
         <Avatar look={user.look} direction={2} headDirection={3} gesture="sml" action="wav" size="l" />
         <InformationContainer>
           <div>
-
             <div style={{ display: 'flex', gap: 8 }}>
               <Link to={`/ranks/${user.rank.id}`}>
                 <Badge badge={{ code: user.rank.badgeCode }} style={{ height: 45, marginTop: 10 }} />
@@ -39,7 +38,7 @@ export function UserProfileContainer({ user }: UserProfileContainerProps) {
           <br />
           <UserBadgeContainerGrid user={user as any} />
         </InformationContainer>
-        <div style={{ display: 'flex', flex: 1, flexDirection: 'column', gap: 8 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <UserProfileStat>
             <div>Joined On</div>
             <b>{joinedOn}</b>

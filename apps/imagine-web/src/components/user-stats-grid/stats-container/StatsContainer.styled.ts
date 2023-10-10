@@ -10,8 +10,8 @@ const StatsContainerElement = styled.div`
   flex: 1;
   font-weight: 500;
   font-size:  ${({ theme }) => theme.fontSize.oneUnit};
-  gap: ${({ theme }) => theme.space.twoUnits};
-  padding: ${({ theme }) => theme.space.twoUnits};
+  gap: ${({ theme }) => theme.space.oneUnit};
+  padding: ${({ theme }) => theme.space.oneUnit};
 
   b {
     font-weight: 800;
