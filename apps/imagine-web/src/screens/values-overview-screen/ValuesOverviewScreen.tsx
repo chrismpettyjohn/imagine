@@ -19,12 +19,12 @@ export function ValuesOverviewScreen() {
       </div>
       <br />
       <GridMedium>
-        <TrendingRares />
         <MyPinnedRares />
-        <LeastSellingRares />
+        <TrendingRares />
         <MyRares />
         <TopSellingRares />
         <RecentlyAddedRares />
+        <LeastSellingRares />
         <MostCostByCreditsRares />
         <MostCostByPointsRares />
       </GridMedium>

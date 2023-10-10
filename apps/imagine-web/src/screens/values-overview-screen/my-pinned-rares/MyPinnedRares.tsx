@@ -7,6 +7,7 @@ import { useUserPinnedFurnitureFetchMany } from '@imagine-cms/client';
 import { ButtonNoBorder } from '../../../components/button/Button.remix';
 import { LoadingMessage } from '../../../components/loading-message/LoadingMessage';
 import { FurnitureValueGridContainerLazy } from '../../../components/furniture-value-grid-container/FurnitureValueGridContainer.lazy';
+import { AddFurniturePin } from './add-furniture-pin/AddFurniturePin';
 
 const FURNITURE_PAGE_SIZE = 2;
 
@@ -64,9 +65,7 @@ export function MyPinnedRares() {
             </Link>
           ))
         }
-        <ButtonNoBorder>
-          <i className="fa fa-plus" />
-        </ButtonNoBorder>
+        <AddFurniturePin onPinAdded={onFetchPinnedFurniture} />
       </GridLarge>
       <GridLarge>
         {canGoDown ?
