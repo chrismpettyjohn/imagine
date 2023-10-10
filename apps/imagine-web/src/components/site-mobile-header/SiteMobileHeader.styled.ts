@@ -12,7 +12,7 @@ export const SiteMobileHeaderElement = styled.div`
 
 
   ${({ theme }) => `
-    @media (min-width: ${theme.breakPoints.desktop}) {
+    @media (min-width: ${theme.breakPoints.tablet}) {
       display: none !important;
     }
   `}
