@@ -38,7 +38,7 @@ export function UserRoomsGrid({ user }: UserRoomsGridProps) {
 
   return (
     <Card header={<>My Rooms {page > 0 && <small>Page {page + 1}</small>}</>} headerImage='/img/room-icon.png'>
-      <Grid>
+      <GridLarge>
         {
           fetchRooms.loading && (
             <>
@@ -55,7 +55,7 @@ export function UserRoomsGrid({ user }: UserRoomsGridProps) {
             <RoomGridContainer key={`my_rooms_${_.id}`} room={_} />
           ))
         }
-      </Grid>
+      </GridLarge>
       <GridLarge>
         {canGoDown ?
           <ButtonNoBorder onClick={goBackOnePage}>
