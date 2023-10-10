@@ -2,8 +2,8 @@ import { Link } from 'wouter';
 import { sessionContext } from '@imagine-cms/web';
 import { Card } from '../../../components/card/Card';
 import { GridLarge } from '../../../components/grid/Grid.remix';
-import { useUserFurnitureFetchMany } from '@imagine-cms/client';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
+import { FurnitureValueType, useUserFurnitureFetchMany } from '@imagine-cms/client';
 import { ButtonBrand, ButtonNoBorder } from '../../../components/button/Button.remix';
 import { FurnitureValueGridContainerMock } from '../../../components/furniture-value-grid-container/FurnitureValueGridContainer.mock';
 import { FurnitureValueGridContainerLazy } from '../../../components/furniture-value-grid-container/FurnitureValueGridContainer.lazy';
@@ -14,8 +14,6 @@ export function MyRares() {
   const [page, setPage] = useState(0);
   const { session } = useContext(sessionContext);
   const fetchFurni = useUserFurnitureFetchMany();
-
-  console.log(fetchFurni.data, fetchFurni.error)
 
   const cardHeader = useMemo(() => {
     return (
@@ -52,7 +50,7 @@ export function MyRares() {
     if (!session?.id) {
       return;
     }
-    fetchFurni.fetch({ skip: page * FURNITURE_PAGE_SIZE, limit: FURNITURE_PAGE_SIZE, userIDs: [session.id] })
+    fetchFurni.fetch({ skip: page * FURNITURE_PAGE_SIZE, limit: FURNITURE_PAGE_SIZE, userIDs: [session.id], valueTypes: [FurnitureValueType.RARE, FurnitureValueType.EPIC, FurnitureValueType.LEGENDARY] })
   }, [session?.id, page]);
 
   return (

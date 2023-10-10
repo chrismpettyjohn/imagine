@@ -1,3 +1,5 @@
+import { FurnitureValueType } from "../furniture/furniture.fragment";
+
 export interface UserPinnedFurnitureFilterOneInput {
   id: number;
 }

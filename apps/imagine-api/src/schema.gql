@@ -808,6 +808,7 @@ input UserFurnitureFilterManyInput {
   userIDs: [Float!]
   roomIDs: [Float!]
   itemIDs: [Float!]
+  valueTypes: [FurnitureValueType!]
   skip: Float
   limit: Float
 }
