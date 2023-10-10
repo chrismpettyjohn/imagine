@@ -45,6 +45,7 @@ import {FurniturePurchaseLogModule} from './furniture-purchase-log/furniture-pur
 import {FurnitureCommentModule} from './furniture-comment/furniture-comment.module';
 import {FurnitureReactionModule} from './furniture-reaction/furniture-reaction.module';
 import {UserFurnitureModule} from './user-furniture/user-furniture.module';
+import {DatabaseCleanupModule} from './database-cleanup/database-cleanup.module';
 
 @Module({
   imports: [
@@ -113,6 +114,7 @@ import {UserFurnitureModule} from './user-furniture/user-furniture.module';
     FurnitureCommentModule,
     FurnitureReactionModule,
     UserFurnitureModule,
+    DatabaseCleanupModule,
   ],
 })
 export class ImagineModule {}

@@ -9,7 +9,7 @@ export const PhotoViewScreenContainer = styled.div`
 export const PhotoViewScreenImagePreview = styled.img`
   border:${({ theme }) => `2px solid ${theme.color.s40}`};
   border-radius:  ${({ theme }) => theme.radius.oneUnit};
-  height: 576px;
+  height: 480px;
   width: 100%;
 `
 

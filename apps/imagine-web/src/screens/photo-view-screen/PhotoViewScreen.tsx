@@ -1,13 +1,14 @@
 import { Link, useRoute } from 'wouter';
 import { configContext } from '@imagine-cms/web';
 import { usePhotoFetchOne } from '@imagine-cms/client';
-import { GridLarge } from '../../components/grid/Grid.remix';
 import React, { useContext, useEffect, useState } from 'react';
 import { PhotoViewScreenImagePreview } from './PhotoViewScreen.styled';
 import { PhotoCommentsCard } from './photo-comments-card/PhotoCommentsCard';
 import { PhotoCreateCommentCard } from './photo-create-comment-card/PhotoCreateCommentCard';
 import { SmallUserProfileContainer } from '../../components/small-user-profile-container/SmallUserProfileContainer';
 import { SmallUserProfileContainerMock } from '../../components/small-user-profile-container/SmallUserProfileContainerMock';
+import { Grid } from '../../components/grid/Grid';
+import { GridMedium, GridSmallLarge } from '../../components/grid/Grid.remix';
 
 export function PhotoViewScreen() {
   const [key, setKey] = useState(0);
@@ -30,16 +31,16 @@ export function PhotoViewScreen() {
       <br />
       {
         data && (
-          <>
-            <GridLarge>
+          <GridMedium>
+            <div>
               <PhotoViewScreenImagePreview src={data.photoURL} />
-              <div key={`photo_${photoID}_comments_${key}`}>
-                <PhotoCommentsCard photo={data} />
-              </div>
               {data.user ? <SmallUserProfileContainer user={data.user as any} /> : <SmallUserProfileContainerMock />}
-              <PhotoCreateCommentCard photoID={data.id} onCreation={bumpKey} />
-            </GridLarge>
-          </>
+            </div>
+            <div key={`photo_${photoID}_comments_${key}`}>
+              <PhotoCommentsCard photo={data} />
+            </div>
+            <PhotoCreateCommentCard photoID={data.id} onCreation={bumpKey} />
+          </GridMedium>
         )
       }
     </>

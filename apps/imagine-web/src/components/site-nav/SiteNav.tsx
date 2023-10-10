@@ -51,12 +51,6 @@ export function SiteNav() {
           Values
         </Link>
       </li>
-      <li>
-        <Link to="/store">
-          <i className="fa fa-shopping-cart" style={{ marginRight: 8 }} />
-          Store
-        </Link>
-      </li>
     </>
   )
 }
