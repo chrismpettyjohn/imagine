@@ -38,7 +38,7 @@ export function RecentlyAddedRares() {
   }
 
   const onFetchFurniture = async () => {
-    fetchFurniture.fetch({ orderBy: [FurnitureOrderBy.RECENTLY_ADDED], skip: page * FURNITURE_PAGE_SIZE, limit: FURNITURE_PAGE_SIZE, valueTypes: [FurnitureValueType.RARE, FurnitureValueType.EPIC, FurnitureValueType.LEGENDARY] });
+    fetchFurniture.fetch({ orderBy: [FurnitureOrderBy.RECENTLY_ADDED], skip: page * FURNITURE_PAGE_SIZE, limit: FURNITURE_PAGE_SIZE });
   }
 
   useEffect(() => {
