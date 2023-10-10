@@ -521,6 +521,7 @@ type Query {
   furniturePurchaseLogOverviewLeastSells(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
   furniturePurchaseLogsOverviewTopSells(filter: FurniturePurchaseLogOverviewFilterManyInput): [FurniturePurchaseLogOverviewModel!]!
   furniturePurchaseLogOverview(filter: FurniturePurchaseLogOverviewFilterOneInput): FurniturePurchaseLogOverviewModel!
+  furniturePurchaseLogOverviewTotalSellsForTimeRange(filter: FurniturePurchaseLogOverviewAverageSellsForTimeRangeInput!): Float
   userFurniture(filter: UserFurnitureFilterOneInput!): UserFurnitureModel!
   userFurnitures(filter: UserFurnitureFilterManyInput): [UserFurnitureModel!]!
 }
@@ -797,6 +798,12 @@ input FurniturePurchaseLogOverviewFilterManyInput {
 
 input FurniturePurchaseLogOverviewFilterOneInput {
   furnitureID: Float!
+}
+
+input FurniturePurchaseLogOverviewAverageSellsForTimeRangeInput {
+  furnitureID: Float!
+  startDate: Float!
+  endDate: Float!
 }
 
 input UserFurnitureFilterOneInput {

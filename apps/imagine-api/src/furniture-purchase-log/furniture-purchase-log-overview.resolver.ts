@@ -1,8 +1,9 @@
 import DayJS from 'dayjs';
-import { Resolver, Query, ResolveField, Args, Parent } from '@nestjs/graphql';
-import { FurniturePurchaseLogOverviewModel } from './furniture-purchase-log-overview.model';
-import { FurniturePurchaseLogRepository } from '../database/furniture-purchase-log.repository';
+import {Resolver, Query, ResolveField, Args, Parent} from '@nestjs/graphql';
+import {FurniturePurchaseLogOverviewModel} from './furniture-purchase-log-overview.model';
+import {FurniturePurchaseLogRepository} from '../database/furniture-purchase-log.repository';
 import {
+  FurniturePurchaseLogOverviewAverageSellsForTimeRangeInput,
   FurniturePurchaseLogOverviewFilterManyInput,
   FurniturePurchaseLogOverviewFilterOneInput,
 } from './furniture-purchase-log-overview.input';
@@ -11,13 +12,13 @@ import {
 export class FurniturePurchaseLogOverviewResolver {
   constructor(
     private readonly furniturePurchaseLogRepo: FurniturePurchaseLogRepository
-  ) { }
+  ) {}
 
-  @ResolveField(() => Number, { nullable: true })
+  @ResolveField(() => Number, {nullable: true})
   async totalSells(
     @Parent() model: FurniturePurchaseLogOverviewModel
   ): Promise<number> {
-    const response: [{ total_sells: number }] =
+    const response: [{total_sells: number}] =
       await this.furniturePurchaseLogRepo
         .getInstance()
         .createQueryBuilder()
@@ -29,14 +30,14 @@ export class FurniturePurchaseLogOverviewResolver {
     return response[0].total_sells;
   }
 
-  @ResolveField(() => Number, { nullable: true })
+  @ResolveField(() => Number, {nullable: true})
   async averageCostCredits(
     @Parent() model: FurniturePurchaseLogOverviewModel
   ): Promise<number> {
     if (model.averageCostCredits !== undefined) {
       return model.averageCostCredits;
     }
-    const response: [{ avg_cost_credits: number }] =
+    const response: [{avg_cost_credits: number}] =
       await this.furniturePurchaseLogRepo
         .getInstance()
         .createQueryBuilder()
@@ -48,14 +49,14 @@ export class FurniturePurchaseLogOverviewResolver {
     return response[0].avg_cost_credits;
   }
 
-  @ResolveField(() => Number, { nullable: true })
+  @ResolveField(() => Number, {nullable: true})
   async averageCostPoints(
     @Parent() model: FurniturePurchaseLogOverviewModel
   ): Promise<number> {
     if (model.averageCostPoints !== undefined) {
       return model.averageCostPoints;
     }
-    const response: [{ avg_cost_points: number }] =
+    const response: [{avg_cost_points: number}] =
       await this.furniturePurchaseLogRepo
         .getInstance()
         .createQueryBuilder()
@@ -75,7 +76,7 @@ export class FurniturePurchaseLogOverviewResolver {
     })
     filter: FurniturePurchaseLogOverviewFilterManyInput
   ): Promise<FurniturePurchaseLogOverviewModel[]> {
-    const response: Array<{ catalog_item_id: number; avg_cost_credits: number }> =
+    const response: Array<{catalog_item_id: number; avg_cost_credits: number}> =
       await this.furniturePurchaseLogRepo
         .getInstance()
         .createQueryBuilder()
@@ -104,7 +105,7 @@ export class FurniturePurchaseLogOverviewResolver {
       DayJS().subtract(1, 'month').unix(),
     ];
     // TODO: Add support for offset
-    const response: Array<{ catalog_item_id: number; total_sells: number }> =
+    const response: Array<{catalog_item_id: number; total_sells: number}> =
       await this.furniturePurchaseLogRepo.getInstance().query(`
         SELECT catalog_item_id, COUNT(*) AS total_sells
         FROM logs_shop_purchases
@@ -131,7 +132,7 @@ export class FurniturePurchaseLogOverviewResolver {
     filter: FurniturePurchaseLogOverviewFilterManyInput
   ): Promise<FurniturePurchaseLogOverviewModel[]> {
     // TODO: Add support for offset
-    const response: Array<{ catalog_item_id: number; avg_cost_credits: number }> =
+    const response: Array<{catalog_item_id: number; avg_cost_credits: number}> =
       await this.furniturePurchaseLogRepo.getInstance().query(`
         SELECT catalog_item_id, AVG(cost_credits) AS avg_cost_credits
         FROM logs_shop_purchases
@@ -156,7 +157,7 @@ export class FurniturePurchaseLogOverviewResolver {
     filter: FurniturePurchaseLogOverviewFilterManyInput
   ): Promise<FurniturePurchaseLogOverviewModel[]> {
     // TODO: Add support for offset
-    const response: Array<{ catalog_item_id: number; avg_cost_points: number }> =
+    const response: Array<{catalog_item_id: number; avg_cost_points: number}> =
       await this.furniturePurchaseLogRepo.getInstance().query(`
         SELECT catalog_item_id, AVG(cost_points) AS avg_cost_points
         FROM logs_shop_purchases
@@ -181,7 +182,7 @@ export class FurniturePurchaseLogOverviewResolver {
     filter: FurniturePurchaseLogOverviewFilterManyInput
   ): Promise<FurniturePurchaseLogOverviewModel[]> {
     // TODO: Add support for offset
-    const response: Array<{ catalog_item_id: number; total_sells: number }> =
+    const response: Array<{catalog_item_id: number; total_sells: number}> =
       await this.furniturePurchaseLogRepo.getInstance().query(`
         SELECT catalog_item_id, COUNT(*) AS total_sells
         FROM logs_shop_purchases
@@ -206,7 +207,7 @@ export class FurniturePurchaseLogOverviewResolver {
     filter: FurniturePurchaseLogOverviewFilterManyInput
   ): Promise<FurniturePurchaseLogOverviewModel[]> {
     // TODO: Add support for offset
-    const response: Array<{ catalog_item_id: number; total_sells: number }> =
+    const response: Array<{catalog_item_id: number; total_sells: number}> =
       await this.furniturePurchaseLogRepo.getInstance().query(`
         SELECT catalog_item_id, COUNT(*) AS total_sells
         FROM logs_shop_purchases
@@ -233,5 +234,23 @@ export class FurniturePurchaseLogOverviewResolver {
     return {
       furnitureID: filter.furnitureID,
     };
+  }
+
+  @Query(() => Number, {nullable: true})
+  async furniturePurchaseLogOverviewTotalSellsForTimeRange(
+    @Args('filter', {
+      type: () => FurniturePurchaseLogOverviewAverageSellsForTimeRangeInput,
+    })
+    filter: FurniturePurchaseLogOverviewAverageSellsForTimeRangeInput
+  ): Promise<number> {
+    const response: [{total_sells: number}] =
+      await this.furniturePurchaseLogRepo.getInstance().query(`
+      SELECT COUNT(*) AS total_sells
+      FROM logs_shop_purchases
+      WHERE catalog_item_id = ${filter.furnitureID}
+      AND timestamp >= ${filter.startDate}
+      AND timestamp <= ${filter.endDate}
+    `);
+    return response[0].total_sells;
   }
 }

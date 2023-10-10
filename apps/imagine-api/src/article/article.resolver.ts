@@ -1,12 +1,12 @@
-import { ArticleModel } from './article.model';
-import { UserModel } from '../user/user.model';
-import { Inject, forwardRef } from '@nestjs/common';
-import { UserEntity } from '../database/user.entity';
-import { GetUser } from '../session/get-user.decorator';
-import { HasScope } from '../session/has-scope.decorator';
-import { ArticleEntity } from '../database/article.entity';
-import { UserRepository } from '../database/user.repository';
-import { ArticleRepository } from '../database/article.repository';
+import {ArticleModel} from './article.model';
+import {UserModel} from '../user/user.model';
+import {Inject, forwardRef} from '@nestjs/common';
+import {UserEntity} from '../database/user.entity';
+import {GetUser} from '../session/get-user.decorator';
+import {HasScope} from '../session/has-scope.decorator';
+import {ArticleEntity} from '../database/article.entity';
+import {UserRepository} from '../database/user.repository';
+import {ArticleRepository} from '../database/article.repository';
 import {
   ArticleCreateInput,
   ArticleFilterManyInput,
@@ -21,7 +21,7 @@ import {
   ResolveField,
   Parent,
 } from '@nestjs/graphql';
-import { In } from 'typeorm';
+import {In} from 'typeorm';
 
 @Resolver(() => ArticleModel)
 export class ArticleResolver {
@@ -29,10 +29,10 @@ export class ArticleResolver {
     @Inject(forwardRef(() => UserRepository))
     private readonly userRepo: UserRepository,
     private readonly articleRepo: ArticleRepository
-  ) { }
+  ) {}
 
-  @ResolveField('user', () => UserModel, { nullable: true })
-  getUser(@Parent() { userID }: ArticleEntity): Promise<UserModel | null> {
+  @ResolveField('user', () => UserModel, {nullable: true})
+  getUser(@Parent() {userID}: ArticleEntity): Promise<UserModel | null> {
     return this.userRepo.findOne({
       where: {
         id: userID,
@@ -42,7 +42,7 @@ export class ArticleResolver {
 
   @Query(() => ArticleModel)
   async article(
-    @Args('filter', { nullable: true, type: () => ArticleFilterOneInput })
+    @Args('filter', {nullable: true, type: () => ArticleFilterOneInput})
     filter: ArticleFilterOneInput
   ): Promise<ArticleModel> {
     const matchingArticle = await this.articleRepo.findOneOrFail({
@@ -53,7 +53,7 @@ export class ArticleResolver {
 
   @Query(() => [ArticleModel])
   async articles(
-    @Args('filter', { nullable: true, type: () => ArticleFilterManyInput })
+    @Args('filter', {nullable: true, type: () => ArticleFilterManyInput})
     filter: ArticleFilterManyInput
   ): Promise<ArticleModel[]> {
     const matchingArticles = await this.articleRepo.find({
@@ -92,14 +92,14 @@ export class ArticleResolver {
     @Args('id') id: number,
     @Args('articleChanges') articleChanges: ArticleUpdateInput
   ) {
-    await this.articleRepo.update({ id }, articleChanges);
+    await this.articleRepo.update({id}, articleChanges);
     return true;
   }
 
   @Mutation(() => Boolean)
   @HasScope('manageArticles')
   async articleDelete(@Args('id') id: number) {
-    await this.articleRepo.delete({ id });
+    await this.articleRepo.delete({id});
     return true;
   }
 }

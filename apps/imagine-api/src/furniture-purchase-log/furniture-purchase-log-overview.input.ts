@@ -17,3 +17,15 @@ export class FurniturePurchaseLogOverviewFilterManyInput {
   @Max(GLOBAL_MAX_RESOURCE_LIMIT)
   limit?: number;
 }
+
+@InputType()
+export class FurniturePurchaseLogOverviewAverageSellsForTimeRangeInput {
+  @Field(() => Number)
+  furnitureID?: number;
+
+  @Field(() => Number)
+  startDate!: number;
+
+  @Field(() => Number)
+  endDate!: number;
+}

@@ -119,6 +119,8 @@ export * from './furniture-purchase-log-overview/furniture-purchase-log-overview
 export * from './furniture-purchase-log-overview/furniture-purchase-log-overview-top-points.query';
 export * from './furniture-purchase-log-overview/furniture-purchase-log-overview-top-sells.hook';
 export * from './furniture-purchase-log-overview/furniture-purchase-log-overview-top-sells.query';
+export * from './furniture-purchase-log-overview/furniture-purchase-log-overview-total-sells-for-time-range.hook';
+export * from './furniture-purchase-log-overview/furniture-purchase-log-overview-total-sells-for-time-range.query';
 export * from './furniture-purchase-log-overview/furniture-purchase-log-overview-trending.hook';
 export * from './furniture-purchase-log-overview/furniture-purchase-log-overview-trending.query';
 export * from './furniture-purchase-log-overview/furniture-purchase-log-overview.fragment';

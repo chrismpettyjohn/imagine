@@ -1,16 +1,43 @@
+import DayJS from 'dayjs';
 import { Link } from 'wouter';
-import React, { useEffect } from 'react';
 import { GridLarge } from '../grid/Grid.remix';
+import React, { useEffect, useState } from 'react';
 import { FurnitureIcon } from '../furniture-icon/FurnitureIcon';
-import { useFurniturePurchaseLogOverviewFetchOne } from '@imagine-cms/client';
-import { FurnitureValueGridContainerProps } from './FurnitureValueGridContainer.types';
+import { FurnitureValueGridContainerProps, FurnitureValueSales } from './FurnitureValueGridContainer.types';
+import { useFurniturePurchaseLogOverviewFetchOne, usefurniturePurchaseLogsOverviewTotalSellsForTimeRange } from '@imagine-cms/client';
 import { FurnitureValueGridContainerElement, FurnitureValueGridContainerStatElement } from './FurnitureValueGridContainer.styled';
 
+const THIS_WEEKS_START_DATE = DayJS().unix();
+const THIS_WEEKS_END_DATE = DayJS().subtract(1, 'week').unix();
+
+const LAST_WEEKS_START_DATE = DayJS(THIS_WEEKS_END_DATE).subtract(1, 'week').unix();
+const LAST_WEEKS_END_DATE = THIS_WEEKS_END_DATE
+
+
+const TODAYS_DATE = DayJS().unix();
+const LAST_WEEKS_DATE = DayJS().subtract(1, 'week').unix();
+
 export function FurnitureValueGridContainer({ furniture }: FurnitureValueGridContainerProps) {
+  const [sellsChange, setSellsChange] = useState<FurnitureValueSales>();
   const fetchPurchaseLogOverview = useFurniturePurchaseLogOverviewFetchOne();
+  const fetchTotalSells = usefurniturePurchaseLogsOverviewTotalSellsForTimeRange();
+
+  const onFetchFurniValue = async () => {
+    await fetchPurchaseLogOverview.fetch({ furnitureID: furniture.id });
+    const thisWeeksSells = await fetchTotalSells.fetch({ furnitureID: furniture.id, startDate: THIS_WEEKS_START_DATE, endDate: THIS_WEEKS_END_DATE })
+    const lastWeeksSells = await fetchTotalSells.fetch({ furnitureID: furniture.id, startDate: LAST_WEEKS_START_DATE, endDate: LAST_WEEKS_END_DATE })
+    const difference = Number(thisWeeksSells - lastWeeksSells)
+    const differencePercent = Number(thisWeeksSells / lastWeeksSells).toFixed(2)
+    setSellsChange({
+      lastWeek: lastWeeksSells,
+      thisWeek: thisWeeksSells,
+      difference,
+      differencePercent,
+    })
+  }
 
   useEffect(() => {
-    fetchPurchaseLogOverview.fetch({ furnitureID: furniture.id });
+    onFetchFurniValue();
   }, [furniture.id]);
 
   return (
@@ -34,6 +61,10 @@ export function FurnitureValueGridContainer({ furniture }: FurnitureValueGridCon
           <FurnitureValueGridContainerStatElement>
             <i className="fa fa-shopping-cart" style={{ marginRight: 8 }} />
             {Number(fetchPurchaseLogOverview.data?.totalSells ?? 0).toLocaleString()}
+          </FurnitureValueGridContainerStatElement>
+          <FurnitureValueGridContainerStatElement>
+            <i className="fa fa-percent" style={{ marginRight: 8 }} />
+            {Number(sellsChange?.differencePercent ?? 0).toLocaleString()}
           </FurnitureValueGridContainerStatElement>
           <div></div>
         </GridLarge>
