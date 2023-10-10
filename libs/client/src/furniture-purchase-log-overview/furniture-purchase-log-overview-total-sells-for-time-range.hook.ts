@@ -14,13 +14,14 @@ export function usefurniturePurchaseLogsOverviewTotalSellsForTimeRange(): Usefur
 
   const onFetchFurniturePurchaseLogOverviews = async (filter: FurniturePurchaseLogOverviewAverageSellsForTimeRangeInput): Promise<number> => {
     const matchingFurniturePurchaseLogOverviews = await getFurniturePurchaseLogOverviews({ fetchPolicy: "network-only", variables: { filter } })
-    return matchingFurniturePurchaseLogOverviews.data!.furniturePurchaseLogsOverviewTotalSellsForTimeRange;
+    console.log(matchingFurniturePurchaseLogOverviews)
+    return matchingFurniturePurchaseLogOverviews.data!.furniturePurchaseLogOverviewTotalSellsForTimeRange;
   }
 
   return {
     fetch: onFetchFurniturePurchaseLogOverviews,
     error,
     loading,
-    data: data?.furniturePurchaseLogsOverviewTotalSellsForTimeRange,
+    data: data?.furniturePurchaseLogOverviewTotalSellsForTimeRange,
   }
 }

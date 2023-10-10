@@ -4,18 +4,14 @@ import { GridLarge } from '../grid/Grid.remix';
 import React, { useEffect, useState } from 'react';
 import { FurnitureIcon } from '../furniture-icon/FurnitureIcon';
 import { FurnitureValueGridContainerProps, FurnitureValueSales } from './FurnitureValueGridContainer.types';
-import { useFurniturePurchaseLogOverviewFetchOne, usefurniturePurchaseLogsOverviewTotalSellsForTimeRange } from '@imagine-cms/client';
 import { FurnitureValueGridContainerElement, FurnitureValueGridContainerStatElement } from './FurnitureValueGridContainer.styled';
+import { useFurniturePurchaseLogOverviewFetchOne, usefurniturePurchaseLogsOverviewTotalSellsForTimeRange } from '@imagine-cms/client';
 
 const THIS_WEEKS_START_DATE = DayJS().unix();
 const THIS_WEEKS_END_DATE = DayJS().subtract(1, 'week').unix();
 
 const LAST_WEEKS_START_DATE = DayJS(THIS_WEEKS_END_DATE).subtract(1, 'week').unix();
 const LAST_WEEKS_END_DATE = THIS_WEEKS_END_DATE
-
-
-const TODAYS_DATE = DayJS().unix();
-const LAST_WEEKS_DATE = DayJS().subtract(1, 'week').unix();
 
 export function FurnitureValueGridContainer({ furniture }: FurnitureValueGridContainerProps) {
   const [sellsChange, setSellsChange] = useState<FurnitureValueSales>();
@@ -62,9 +58,9 @@ export function FurnitureValueGridContainer({ furniture }: FurnitureValueGridCon
             <i className="fa fa-shopping-cart" style={{ marginRight: 8 }} />
             {Number(fetchPurchaseLogOverview.data?.totalSells ?? 0).toLocaleString()}
           </FurnitureValueGridContainerStatElement>
-          <FurnitureValueGridContainerStatElement>
+          <FurnitureValueGridContainerStatElement style={{ color: sellsChange?.difference ? sellsChange.difference > 0 ? 'green' : 'red' : 'initial' }}>
             <i className="fa fa-percent" style={{ marginRight: 8 }} />
-            {Number(sellsChange?.differencePercent ?? 0).toLocaleString()}
+            {Number(sellsChange?.difference ?? 0).toLocaleString()}
           </FurnitureValueGridContainerStatElement>
           <div></div>
         </GridLarge>
