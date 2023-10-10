@@ -1,15 +1,14 @@
 import { Link } from 'wouter';
-import { Grid } from '../../../components/grid/Grid';
 import { Card } from '../../../components/card/Card';
 import React, { useEffect, useMemo, useState } from 'react';
 import { GridLarge } from '../../../components/grid/Grid.remix';
+import { AddFurniturePin } from './add-furniture-pin/AddFurniturePin';
 import { useUserPinnedFurnitureFetchMany } from '@imagine-cms/client';
 import { ButtonNoBorder } from '../../../components/button/Button.remix';
 import { LoadingMessage } from '../../../components/loading-message/LoadingMessage';
 import { FurnitureValueGridContainerLazy } from '../../../components/furniture-value-grid-container/FurnitureValueGridContainer.lazy';
-import { AddFurniturePin } from './add-furniture-pin/AddFurniturePin';
 
-const FURNITURE_PAGE_SIZE = 2;
+const FURNITURE_PAGE_SIZE = 3;
 
 export function MyPinnedRares() {
   const [page, setPage] = useState(0);

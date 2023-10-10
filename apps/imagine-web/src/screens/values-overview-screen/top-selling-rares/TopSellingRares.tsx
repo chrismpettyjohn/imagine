@@ -6,7 +6,7 @@ import { usefurniturePurchaseLogsOverviewTopSells } from '@imagine-cms/client';
 import { FurnitureValueGridContainerLazy } from '../../../components/furniture-value-grid-container/FurnitureValueGridContainer.lazy';
 import { FurnitureValueGridContainerMock } from '../../../components/furniture-value-grid-container/FurnitureValueGridContainer.mock';
 
-const FURNITURE_PAGE_SIZE = 2;
+const FURNITURE_PAGE_SIZE = 4;
 
 export function TopSellingRares() {
   const [page, setPage] = useState(0);

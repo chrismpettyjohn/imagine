@@ -27,6 +27,7 @@ export function AddFurniturePin({ onPinAdded }: AddFurniturePinProps) {
       setIsAddingPin(false);
       setFurnitureID(undefined);
       await toast.success(`Successfully pinned furni ${furnitureID}`);
+      onPinAdded();
     } catch (e: any) {
       toast.error(`Failed to pin furni #${furnitureID}`);
     }
