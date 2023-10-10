@@ -1,5 +1,4 @@
 import { Card } from '../../../components/card/Card';
-import { Grid } from '../../../components/grid/Grid';
 import React, { useEffect, useMemo, useState } from 'react';
 import { GridLarge } from '../../../components/grid/Grid.remix';
 import { ButtonNoBorder } from '../../../components/button/Button.remix';
@@ -54,6 +53,11 @@ export function RecentlyAddedRares() {
             <LoadingMessage>
               Loading furniture...
             </LoadingMessage>
+          )
+        }
+        {
+          fetchFurniture.data?.length === 0 && (
+            <p>No results to display</p>
           )
         }
         {

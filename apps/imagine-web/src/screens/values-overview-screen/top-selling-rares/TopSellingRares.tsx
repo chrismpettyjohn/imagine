@@ -55,6 +55,11 @@ export function TopSellingRares() {
           )
         }
         {
+          fetchTopSelling.data?.length === 0 && (
+            <p>No results to display</p>
+          )
+        }
+        {
           fetchTopSelling.data?.map(_ => (
             <FurnitureValueGridContainerLazy key={`least_selling_furni_${_.furnitureID}`} furnitureID={_.furnitureID} />
           ))
