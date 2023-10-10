@@ -1,12 +1,9 @@
 import styled from "styled-components";
 
 export const ArticleHeaderContainer = styled.div`
-  border-left:${({ theme }) => `2px solid ${theme.color.s40}`};
-  border-right:${({ theme }) => `2px solid ${theme.color.s40}`};
-  border-top:${({ theme }) => `2px solid ${theme.color.s40}`};
-  border-top-left-radius: ${({ theme }) => theme.radius.oneUnit};
-  border-top-right-radius: ${({ theme }) => theme.radius.oneUnit};
-  height: 250px;
+  border:${({ theme }) => `2px solid ${theme.color.s40}`};
+  border-radius: ${({ theme }) => theme.radius.oneUnit};
+  height: 150px;
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -52,12 +49,10 @@ export const ArticleHeaderOverlay = styled.div`
 export const ArticleContentElement = styled.div`
   background: ${({ theme }) => theme.color.s20};
   border-left:${({ theme }) => `2px solid ${theme.color.s40}`};
-  border-right:${({ theme }) => `2px solid ${theme.color.s40}`};
-  border-bottom:${({ theme }) => `2px solid ${theme.color.s40}`};
-  border-bottom-left-radius: ${({ theme }) => theme.radius.oneUnit};
-  border-bottom-right-radius: ${({ theme }) => theme.radius.oneUnit};
-  width: 100%;
-  height: calc(100% - 250px);
+  border:${({ theme }) => `2px solid ${theme.color.s40}`};
+  border-radius: ${({ theme }) => theme.radius.oneUnit};
+  display: flex;
+  flex: 1;
 `
 
 export const ArticleContentContainer = styled.div`

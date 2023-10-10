@@ -23,27 +23,30 @@ export function ArticleViewScreen() {
   }, [articleID]);
 
   return (
-    <GridLargeSmall>
-      <div style={{ height: '100%' }}>
-        <ArticleHeaderContainer>
-          <ArticleHeaderBackground src={fetchArticle.data?.imageURL} />
-          <ArticleHeaderOverlay />
-          <ArticleHeaderContent>
-            <h1>{fetchArticle.data?.name}</h1>
-            <p>{fetchArticle.data?.description}</p>
-          </ArticleHeaderContent>
-        </ArticleHeaderContainer>
+    <>
+      <ArticleHeaderContainer>
+        <ArticleHeaderBackground src={fetchArticle.data?.imageURL} />
+        <ArticleHeaderOverlay />
+        <ArticleHeaderContent>
+          <h1>{fetchArticle.data?.name}</h1>
+          <p>{fetchArticle.data?.description}</p>
+        </ArticleHeaderContent>
+      </ArticleHeaderContainer >
+      <br />
+      <GridLargeSmall>
         <ArticleContentElement>
           <ArticleContentContainer>
-            <div dangerouslySetInnerHTML={{ __html: fetchArticle.data?.content ?? '' }} />
+            <div style={{ height: '100%' }}>
+              <div dangerouslySetInnerHTML={{ __html: fetchArticle.data?.content ?? '' }} />
+            </div>
             {fetchArticle.data?.user && <LongUserContainer user={fetchArticle.data.user as any} />}
           </ArticleContentContainer>
         </ArticleContentElement>
-      </div>
-      <div style={{ display: 'flex', flex: 1, flexDirection: 'column', gap: 16 }} key={`article_comments_${key}`}>
-        <ArticleCommentsCard articleID={articleID} />
-        <ArticlePostCommentCard articleID={articleID} onPost={onReloadArticleResources} />
-      </div>
-    </GridLargeSmall>
+        <div style={{ display: 'flex', flex: 1, flexDirection: 'column', gap: 16 }} key={`article_comments_${key}`}>
+          <ArticleCommentsCard articleID={articleID} />
+          <ArticlePostCommentCard articleID={articleID} onPost={onReloadArticleResources} />
+        </div>
+      </GridLargeSmall>
+    </>
   )
 }
