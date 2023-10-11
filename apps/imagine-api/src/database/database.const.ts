@@ -66,6 +66,8 @@ import {StoreTransactionLogRepository} from './store-transactions-log.repository
 import {StorePackageEntity} from './store-package.entity';
 import {StoreTransactionEntity} from './store-transaction.entity';
 import {StoreTransactionLogEntity} from './store-transactions-log.entity';
+import {StoreCategoryEntity} from './store-category.entity';
+import {StoreCategoryRepository} from './store-category.repository';
 
 export const databaseEntities = [
   ArticleEntity,
@@ -102,6 +104,7 @@ export const databaseEntities = [
   StorePackageEntity,
   StoreTransactionEntity,
   StoreTransactionLogEntity,
+  StoreCategoryEntity,
 ];
 
 export const databaseRepositories = [
@@ -139,4 +142,5 @@ export const databaseRepositories = [
   StorePackageRepository,
   StoreTransactionRepository,
   StoreTransactionLogRepository,
+  StoreCategoryRepository,
 ];
