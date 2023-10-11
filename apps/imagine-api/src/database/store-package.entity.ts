@@ -6,6 +6,7 @@ export interface StorePackageBenefits {
   points: number;
   rankID: number;
   itemIDs: number[];
+  badgeCodes: string[];
 }
 
 @Entity('imagine_store_packages')

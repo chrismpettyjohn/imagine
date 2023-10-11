@@ -16,6 +16,7 @@ export interface RankScopesWire {
   manageLanguages: boolean;
   manageRanks: boolean;
   manageWordFilter: boolean;
+  manageStore: boolean;
 }
 
 export interface RankFlagsWire {
@@ -41,6 +42,7 @@ export const exampleRankScopesWire: RankScopesWire = {
   manageLanguages: false,
   manageRanks: false,
   manageWordFilter: false,
+  manageStore: false,
 };
 
 export const rankScopesLabels: Record<keyof RankScopesWire, string> = {
@@ -61,6 +63,7 @@ export const rankScopesLabels: Record<keyof RankScopesWire, string> = {
   manageLanguages: 'Manage Languages',
   manageRanks: 'Manage Ranks',
   manageWordFilter: 'Manage Wordfilter',
+  manageStore: 'Manage Store',
 };
 
 export const rankFlagsLabels: Record<keyof RankFlagsWire, string> = {

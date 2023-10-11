@@ -100,6 +100,7 @@ type RankScopesModel implements RankScopesInterface {
   manageRanks: Boolean
   manageSite: Boolean
   manageWordFilter: Boolean
+  manageStore: Boolean
 }
 
 interface RankScopesInterface {
@@ -120,6 +121,7 @@ interface RankScopesInterface {
   manageRanks: Boolean
   manageSite: Boolean
   manageWordFilter: Boolean
+  manageStore: Boolean
 }
 
 type RankFlagsModel implements RankFlagsInterface {
@@ -456,6 +458,29 @@ type UserFurnitureModel {
   createdAt: Float
 }
 
+type StorePackageBenefitsModel {
+  credits: Float
+  pixels: Float
+  points: Float
+  rankID: Float
+  itemIDs: [Float!]
+  badgeCodes: [String!]
+}
+
+type StorePackageModel {
+  id: Float
+  title: String
+  description: String
+  content: String
+  imageURL: String
+  isRecurring: Boolean
+  totalCost: String
+  currency: String
+  benefits: StorePackageBenefitsModel
+  createdAt: Float
+  updatedAt: Float
+}
+
 type Query {
   sessionSSOCreate: SessionSSOModel!
   sessionByJWT(jwt: String!): SessionModel!
@@ -524,6 +549,8 @@ type Query {
   furniturePurchaseLogOverviewTotalSellsForTimeRange(filter: FurniturePurchaseLogOverviewAverageSellsForTimeRangeInput!): Float
   userFurniture(filter: UserFurnitureFilterOneInput!): UserFurnitureModel!
   userFurnitures(filter: UserFurnitureFilterManyInput): [UserFurnitureModel!]!
+  storePackage(filter: StorePackageFilterOneInput!): StorePackageModel!
+  storePackages(filter: StorePackageFilterManyInput): [StorePackageModel!]!
 }
 
 input ExtraArgs {
@@ -820,6 +847,16 @@ input UserFurnitureFilterManyInput {
   limit: Float
 }
 
+input StorePackageFilterOneInput {
+  id: Float!
+}
+
+input StorePackageFilterManyInput {
+  ids: [Float!]
+  skip: Float
+  limit: Float
+}
+
 type Mutation {
   sessionCreate(username: String!, password: String!): SessionCreatedModel!
   sessionUpdateEmail(input: SessionUpdateEmailInput!): SessionUpdateEmailModel!
@@ -885,6 +922,7 @@ type Mutation {
   tempUserLogin: SessionCreatedModel!
   userPinnedFurnitureCreate(input: UserPinnedFurnitureCreateInput!): UserPinnedFurnitureModel!
   userPinnedFurnitureDelete(input: UserPinnedFurnitureFilterOneInput!): Boolean!
+  storePackageCreate(input: StorePackageCreateInput!): StorePackageModel!
 }
 
 input SessionUpdateEmailInput {
@@ -947,6 +985,7 @@ input RankScopesInput {
   manageRanks: Boolean
   manageSite: Boolean
   manageWordFilter: Boolean
+  manageStore: Boolean
 }
 
 input RankFlagsInput {
@@ -1103,4 +1142,24 @@ input BugReportUpdateInput {
 
 input UserPinnedFurnitureCreateInput {
   furnitureID: Float!
+}
+
+input StorePackageCreateInput {
+  title: String!
+  description: String!
+  content: String!
+  imageURL: String!
+  isRecurring: Boolean!
+  totalCost: String!
+  currency: String!
+  benefits: StorePackageBenefitsInput!
+}
+
+input StorePackageBenefitsInput {
+  credits: Float!
+  pixels: Float!
+  points: Float!
+  rankID: Float!
+  itemIDs: [Float!]!
+  badgeCodes: [String!]
 }

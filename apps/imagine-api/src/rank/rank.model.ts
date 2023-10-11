@@ -47,6 +47,7 @@ export class RankModel {
         manageRanks: entity.scopes?.manageRanks ?? false,
         manageSite: entity.scopes?.manageSite ?? false,
         manageWordFilter: entity.scopes?.manageWordFilter ?? false,
+        manageStore: entity.scopes?.manageStore ?? false,
       },
       flags: {
         showOnStaffPage: entity.flags?.showOnStaffPage ?? false,

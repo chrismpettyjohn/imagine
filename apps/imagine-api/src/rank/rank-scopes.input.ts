@@ -34,6 +34,46 @@ export class RankWireScopesCreateInput implements RankScopesWire {
   @Field()
   @IsBoolean()
   manageStaffApplications!: boolean;
+
+  @Field()
+  @IsBoolean()
+  manageSite!: boolean;
+
+  @Field()
+  @IsBoolean()
+  manageRadioRequests!: boolean;
+
+  @Field()
+  @IsBoolean()
+  manageBugReports!: boolean;
+
+  @Field()
+  @IsBoolean()
+  manageBans!: boolean;
+
+  @Field()
+  @IsBoolean()
+  manageChatlogs!: boolean;
+
+  @Field()
+  @IsBoolean()
+  manageGroups!: boolean;
+
+  @Field()
+  @IsBoolean()
+  manageLanguages!: boolean;
+
+  @Field()
+  @IsBoolean()
+  manageRanks!: boolean;
+
+  @Field()
+  @IsBoolean()
+  manageWordFilter!: boolean;
+
+  @Field()
+  @IsBoolean()
+  manageStore!: boolean;
 }
 
 @InputType()
@@ -69,10 +109,60 @@ export class RankWireScopesUpdateInput implements Partial<RankScopesWire> {
   @Field({nullable: true})
   @IsBoolean()
   @IsOptional()
-  manageSupportTickets!: boolean;
+  manageSupportTickets?: boolean;
 
   @Field({nullable: true})
   @IsBoolean()
   @IsOptional()
-  manageStaffApplications!: boolean;
+  manageStaffApplications?: boolean;
+
+  @Field()
+  @IsBoolean()
+  @IsOptional()
+  manageStore?: boolean;
+
+  @Field()
+  @IsBoolean()
+  @IsOptional()
+  manageSite?: boolean;
+
+  @Field()
+  @IsBoolean()
+  @IsOptional()
+  manageRadioRequests?: boolean;
+
+  @Field()
+  @IsBoolean()
+  @IsOptional()
+  manageBugReports?: boolean;
+
+  @Field()
+  @IsBoolean()
+  @IsOptional()
+  manageBans!: boolean;
+
+  @Field()
+  @IsBoolean()
+  @IsOptional()
+  manageChatlogs?: boolean;
+
+  @Field()
+  @IsBoolean()
+  @IsOptional()
+  manageGroups?: boolean;
+
+  @Field()
+  @IsBoolean()
+  @IsOptional()
+  manageLanguages?: boolean;
+
+  @Field()
+  @IsBoolean()
+  @IsOptional()
+  manageRanks?: boolean;
+
+  @Field()
+  @IsBoolean()
+  @IsOptional()
+  manageWordFilter?: boolean;
 }

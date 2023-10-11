@@ -54,6 +54,9 @@ export class RankScopesInterface implements RankScopesWire {
 
   @Field({nullable: true})
   manageWordFilter!: boolean;
+
+  @Field({nullable: true})
+  manageStore!: boolean;
 }
 
 @InputType('RankFlagsInput')
