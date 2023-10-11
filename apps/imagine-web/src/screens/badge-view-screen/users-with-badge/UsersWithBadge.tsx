@@ -1,15 +1,14 @@
 import { Card } from '../../../components/card/Card';
+import { Grid } from '../../../components/grid/Grid';
 import { useUserBadgeFetchMany } from '@imagine-cms/client';
 import React, { useEffect, useMemo, useState } from 'react';
 import { UsersWithBadgeProps } from './UsersWithBadge.types';
 import { GridLarge } from '../../../components/grid/Grid.remix';
 import { ButtonNoBorder } from '../../../components/button/Button.remix';
-import { Grid } from '../../../components/grid/Grid';
 import { SmallUserProfileContainerMock } from '../../../components/small-user-profile-container/SmallUserProfileContainerMock';
-import { SmallUserProfileContainer } from '../../../components/small-user-profile-container/SmallUserProfileContainer';
 import { SmallUserProfileContainerLazy } from '../../../components/small-user-profile-container/SmallUserProfileContainerLazy';
 
-const USERS_PAGE_SIZE = 12;
+const USERS_PAGE_SIZE = 8;
 
 export function UsersWithBadge({ badgeCode }: UsersWithBadgeProps) {
   const [page, setPage] = useState(0);
