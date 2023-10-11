@@ -26,15 +26,16 @@ import { BugReportsScreen } from './bug-reports-screen/BugReportsScreen';
 import { ArticleViewScreen } from './article-view-screen/ArticleViewScreen';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
 import { StorePurchaseScreen } from './store-purchase-screen/StorePurchaseScreen';
-import { OnlinePlayersScreen } from './online-players-screen/OnlinePlayersScreen';
 import { BugReportViewScreen } from './bug-report-view-screen/BugReportViewScreen';
 import { ForgotPasswordScreen } from './forgot-password-screen/ForgotPasswordScreen';
 import { ValuesOverviewScreen } from './values-overview-screen/ValuesOverviewScreen';
 import { ValuesViewItemScreen } from './values-view-item-screen/ValuesViewItemScreen';
+import { MarketplaceViewScreen } from './marketplace-view-screen/MarketplaceViewScreen';
 import { LoginWithDeviceScreen } from './login-with-device-screen/LoginWithDeviceScreen';
 import { LoginWithGoogleScreen } from './login-with-google-screen/LoginWithGoogleScreen';
 import { LoginWithDiscordScreen } from './login-with-discord-screen/LoginWithDiscordScreen';
 import { LoginWithFacebookScreen } from './login-with-facebook-screen/LoginWithFacebookScreen';
+import { MarketplaceOverviewScreen } from './marketplace-overview-screen/MarketplaceOverviewScreen';
 import { StoreConfirmPurchaseScreen } from './store-confirm-purchase-screen/StoreConfirmPurchaseScreen';
 import { ForgotPasswordLinkSentScreen } from './forgot-password-link-sent-screen/ForgotPasswordLinkSentScreen';
 import { ForgotPasswordRedeemCodeScreen } from './forgot-password-redeem-code-screen/ForgotPasswordRedeemCodeScreen';
@@ -125,10 +126,6 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     view: RankViewScreen,
   },
   {
-    path: '/online-players',
-    view: OnlinePlayersScreen,
-  },
-  {
     path: '/community',
     view: CommunityScreen,
   },
@@ -188,6 +185,14 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     path: '/badges/:badgeCode',
     view: BadgeViewScreen,
   },
+  {
+    path: '/marketplace',
+    view: MarketplaceOverviewScreen,
+  },
+  {
+    path: '/marketplace/:listingID',
+    view: MarketplaceViewScreen,
+  }
 ]
 
 export function Router() {

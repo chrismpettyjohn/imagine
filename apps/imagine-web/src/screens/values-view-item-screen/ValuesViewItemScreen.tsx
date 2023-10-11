@@ -9,6 +9,7 @@ import { FurniturePriceTrendsCard } from './furniture-price-trends-card/Furnitur
 import { FurniturePurchaseTrendsCard } from './furniture-purchase-trends-card/FurniturePurchaseTrendsCard';
 import { FurnitureValueGridContainer } from '../../components/furniture-value-grid-container/FurnitureValueGridContainer';
 import { FurnitureValueGridContainerMock } from '../../components/furniture-value-grid-container/FurnitureValueGridContainer.mock';
+import { Card } from '../../components/card/Card';
 
 export function ValuesViewItemScreen() {
   const [, params] = useRoute<{ furnitureID: string }>('/values/:furnitureID');
@@ -33,6 +34,10 @@ export function ValuesViewItemScreen() {
       </GridLarge>
       <br />
       <UsersWithFurniCard furnitureID={furnitureID} />
+      <br />
+      <Card header="Marketplace Listings">
+        Coming soon
+      </Card>
       <br />
       <GridLarge>
         <FurniturePriceTrendsCard />

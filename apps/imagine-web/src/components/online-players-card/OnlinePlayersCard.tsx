@@ -1,15 +1,15 @@
+import { Card } from '../card/Card';
+import { Grid } from '../grid/Grid';
+import { GridLarge } from '../grid/Grid.remix';
 import React, { useEffect, useState } from 'react';
-import { Card } from '../../components/card/Card';
-import { Grid } from '../../components/grid/Grid';
 import { useUserFetchMany } from '@imagine-cms/client';
-import { GridLarge } from '../../components/grid/Grid.remix';
-import { ButtonNoBorder } from '../../components/button/Button.remix';
+import { ButtonNoBorder } from '../button/Button.remix';
 import { SmallUserProfileContainer } from '../../components/small-user-profile-container/SmallUserProfileContainer';
 import { SmallUserProfileContainerMock } from '../../components/small-user-profile-container/SmallUserProfileContainerMock';
 
 const USERS_PAGE_SIZE = 8;
 
-export function OnlinePlayersScreen() {
+export function OnlinePlayersCard() {
   const [page, setPage] = useState(0);
   const { data, fetch, loading } = useUserFetchMany();
 

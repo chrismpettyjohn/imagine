@@ -30,13 +30,7 @@ export function SiteNav() {
       <li>
         <Link to="/ranks">
           <i className="fa fa-shield" style={{ marginRight: 8 }} />
-          Staff Team
-        </Link>
-      </li>
-      <li>
-        <Link to="/online-players">
-          <i className="fa fa-signal-stream" style={{ marginRight: 8 }} />
-          Online Users
+          Staff
         </Link>
       </li>
       <li>
@@ -46,9 +40,15 @@ export function SiteNav() {
         </Link>
       </li>
       <li>
-        <Link to="/values">
-          <i className="fa fa-analytics" style={{ marginRight: 8 }} />
-          Values
+        <Link to="/marketplace">
+          <i className="fa fa-store" style={{ marginRight: 8 }} />
+          Marketplace
+        </Link>
+      </li>
+      <li>
+        <Link to="/store">
+          <i className="fa fa-shopping-cart" style={{ marginRight: 8 }} />
+          Store
         </Link>
       </li>
     </>

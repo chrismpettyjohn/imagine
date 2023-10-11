@@ -64,6 +64,11 @@ export function UsersWithFurniCard({ furnitureID }: UsersWithFurniCardProps) {
           )
         }
         {
+          fetchUsers.data?.length === 0 && (
+            <p>There are no users with this furniture!</p>
+          )
+        }
+        {
           fetchUsers.data?.map(_ => (
             <SmallUserProfileContainerLazy key={`user_furni_${furnitureID}_${_.userID}`} userID={_.userID} />
           ))

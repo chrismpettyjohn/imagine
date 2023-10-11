@@ -13,7 +13,9 @@ export function SmallUserProfileContainerLazy({ userID }: { userID: number }) {
   }, [userID]);
 
   if (fetchUser.error) {
-    return null;
+    return (
+      <SmallUserProfileContainerMock />
+    )
   }
 
   if (!fetchUser.data) {

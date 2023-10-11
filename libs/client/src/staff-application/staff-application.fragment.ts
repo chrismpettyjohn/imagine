@@ -10,6 +10,7 @@ export const STAFF_APPLICATION_FRAGMENT: any = gql`
       ...UserFragment
     }
     rankID
+    content
     accepted
     reviewingUserID
     reviewingUser {
@@ -26,6 +27,7 @@ export interface StaffApplicationFragment {
   userID: number;
   user: UserFragment;
   rankID: number;
+  content: string;
   accepted: boolean;
   reviewingUserID?: number;
   reviewingUser?: UserFragment;

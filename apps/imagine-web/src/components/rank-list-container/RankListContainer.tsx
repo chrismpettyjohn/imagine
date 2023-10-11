@@ -13,7 +13,7 @@ import { SmallUserProfileContainerMock } from '../small-user-profile-container/S
 
 const USER_LIMIT = 25;
 
-export function RankListContainer({ rank }: RankListContainerProps) {
+export function RankListContainer({ rank, showApplicationsButton = true }: RankListContainerProps) {
   const [page, setPage] = useState(0);
   const fetchRankUsers = useUserFetchMany();
 
@@ -78,8 +78,8 @@ export function RankListContainer({ rank }: RankListContainerProps) {
         }
       </GridLarge>
       {
-        rank.flags?.acceptingApplications && (
-          <Link to={`/community/staff/${rank.id}`}>
+        rank.flags?.acceptingApplications && showApplicationsButton && (
+          <Link to={`/ranks/${rank.id}`}>
             <ButtonBrand>Apply for Role</ButtonBrand>
           </Link>
         )

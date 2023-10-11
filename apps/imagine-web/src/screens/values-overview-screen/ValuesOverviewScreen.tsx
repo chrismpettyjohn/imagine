@@ -14,8 +14,9 @@ export function ValuesOverviewScreen() {
   return (
     <>
       <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-        <h1>Rare Values</h1>
+        <h1>Values</h1>
         <SearchRares />
+
       </div>
       <br />
       <GridMedium>
