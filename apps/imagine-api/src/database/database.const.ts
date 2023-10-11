@@ -60,6 +60,12 @@ import {FurniturePurchaseLogRepository} from './furniture-purchase-log.repositor
 import {FurniturePurchaseLogEntity} from './furniture-purchase-log.entity';
 import {UserFurnitureEntity} from './user-furniture.entity';
 import {UserFurnitureRepository} from './user-furniture.repository';
+import {StorePackageRepository} from './store-package-repository';
+import {StoreTransactionRepository} from './store-transaction.repository';
+import {StoreTransactionLogRepository} from './store-transactions-log.repository';
+import {StorePackageEntity} from './store-package.entity';
+import {StoreTransactionEntity} from './store-transaction.entity';
+import {StoreTransactionLogEntity} from './store-transactions-log.entity';
 
 export const databaseEntities = [
   ArticleEntity,
@@ -93,6 +99,9 @@ export const databaseEntities = [
   PinnedFurnitureEntity,
   FurniturePurchaseLogEntity,
   UserFurnitureEntity,
+  StorePackageEntity,
+  StoreTransactionEntity,
+  StoreTransactionLogEntity,
 ];
 
 export const databaseRepositories = [
@@ -127,4 +136,7 @@ export const databaseRepositories = [
   PinnedFurnitureRepository,
   FurniturePurchaseLogRepository,
   UserFurnitureRepository,
+  StorePackageRepository,
+  StoreTransactionRepository,
+  StoreTransactionLogRepository,
 ];

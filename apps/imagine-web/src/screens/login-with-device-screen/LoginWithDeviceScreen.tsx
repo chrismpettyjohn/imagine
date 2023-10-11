@@ -1,10 +1,10 @@
 import { useLocation } from 'wouter';
 import { toast } from 'react-toastify';
-import { graphQLContext, localStorageService, sessionContext } from '@imagine-cms/web';
 import { Card } from '../../components/card/Card';
 import React, { useContext, useEffect } from 'react';
 import { useTempUserLogin, useUserFetchOne } from '@imagine-cms/client';
 import { LoadingMessage } from '../../components/loading-message/LoadingMessage';
+import { graphQLContext, localStorageService, sessionContext } from '@imagine-cms/web';
 
 export function LoginWithDeviceScreen() {
   const fetchUser = useUserFetchOne();
@@ -19,7 +19,6 @@ export function LoginWithDeviceScreen() {
       localStorageService.set('SESSION', session.accessToken);
       refreshClient();
       const matchingUser = await fetchUser.fetch({ id: session.userID });
-      toast.success(`Welcome back, ${matchingUser.username}`)
       _setSession(matchingUser as any);
       setLocation('/me');
     } catch (e: any) {

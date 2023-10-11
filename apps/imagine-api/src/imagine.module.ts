@@ -46,6 +46,9 @@ import {FurnitureCommentModule} from './furniture-comment/furniture-comment.modu
 import {FurnitureReactionModule} from './furniture-reaction/furniture-reaction.module';
 import {UserFurnitureModule} from './user-furniture/user-furniture.module';
 import {DatabaseCleanupModule} from './database-cleanup/database-cleanup.module';
+import {StorePackageModule} from './store-package/store-package.module';
+import {StoreTransactionModule} from './store-transaction/store-transaction.module';
+import {StoreTransactionLogModule} from './store-transaction-log/store-transaction-log.module';
 
 @Module({
   imports: [
@@ -115,6 +118,9 @@ import {DatabaseCleanupModule} from './database-cleanup/database-cleanup.module'
     FurnitureReactionModule,
     UserFurnitureModule,
     DatabaseCleanupModule,
+    StorePackageModule,
+    StoreTransactionModule,
+    StoreTransactionLogModule,
   ],
 })
 export class ImagineModule {}

@@ -1,5 +1,4 @@
 import { useLocation } from 'wouter';
-import { toast } from 'react-toastify';
 import { graphQLContext } from '../context';
 import { useContext, useEffect } from 'react';
 import { useUserFetchOne } from '@imagine-cms/client';
@@ -25,7 +24,6 @@ export function useSignInWithUsernameAndPassword(username: string, password: str
     if (fetchUser?.data) {
       _setSession(fetchUser.data as any);
       refreshClient();
-      toast.success(`Welcome back, ${fetchUser.data.username}!`);
       setLocation('/me');
     }
   }, [fetchUser.data]);

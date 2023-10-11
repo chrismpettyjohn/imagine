@@ -2,9 +2,9 @@ import { useLocation } from 'wouter';
 import { toast } from 'react-toastify';
 import { Card } from '../../components/card/Card';
 import React, { useContext, useEffect, useMemo } from 'react';
-import { graphQLContext, localStorageService, sessionContext } from '@imagine-cms/web';
-import { useDiscordUserAuthenticate, useUserFetchOne } from '@imagine-cms/client';
 import { LoadingMessage } from '../../components/loading-message/LoadingMessage';
+import { useDiscordUserAuthenticate, useUserFetchOne } from '@imagine-cms/client';
+import { graphQLContext, localStorageService, sessionContext } from '@imagine-cms/web';
 
 export function LoginWithDiscordScreen() {
   const [, setLocation] = useLocation();
@@ -25,11 +25,12 @@ export function LoginWithDiscordScreen() {
       const matchingUser = await fetchUser.fetch({ id: session.userID })
       _setSession(matchingUser as any);
       setLocation('/me');
-      toast.success(`Welcome back, ${matchingUser.username}`);
     } catch (e: any) {
       toast.error('There was a problem logging in');
     }
   }
+
+  console.log(discordAuthCode)
 
   useEffect(() => {
     if (!discordAuthCode) {

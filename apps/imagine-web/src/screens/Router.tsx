@@ -26,6 +26,7 @@ import { BugReportsScreen } from './bug-reports-screen/BugReportsScreen';
 import { ArticleViewScreen } from './article-view-screen/ArticleViewScreen';
 import { PageNotFoundScreen } from './page-not-found-screen/PageNotFoundScreen';
 import { StorePurchaseScreen } from './store-purchase-screen/StorePurchaseScreen';
+import { StoreOverviewScreen } from './store-overview-screen/StoreOverviewScreen';
 import { BugReportViewScreen } from './bug-report-view-screen/BugReportViewScreen';
 import { ForgotPasswordScreen } from './forgot-password-screen/ForgotPasswordScreen';
 import { ValuesOverviewScreen } from './values-overview-screen/ValuesOverviewScreen';
@@ -36,7 +37,6 @@ import { LoginWithGoogleScreen } from './login-with-google-screen/LoginWithGoogl
 import { LoginWithDiscordScreen } from './login-with-discord-screen/LoginWithDiscordScreen';
 import { LoginWithFacebookScreen } from './login-with-facebook-screen/LoginWithFacebookScreen';
 import { MarketplaceOverviewScreen } from './marketplace-overview-screen/MarketplaceOverviewScreen';
-import { StoreConfirmPurchaseScreen } from './store-confirm-purchase-screen/StoreConfirmPurchaseScreen';
 import { ForgotPasswordLinkSentScreen } from './forgot-password-link-sent-screen/ForgotPasswordLinkSentScreen';
 import { ForgotPasswordRedeemCodeScreen } from './forgot-password-redeem-code-screen/ForgotPasswordRedeemCodeScreen';
 
@@ -162,12 +162,12 @@ const SITE_ROUTES: Array<{ path: string, view: any, }> = [
     view: BugReportViewScreen,
   },
   {
-    path: '/store/confirm-purchase/:itemID',
-    view: StoreConfirmPurchaseScreen,
+    path: '/store/purchase/:itemID',
+    view: StorePurchaseScreen,
   },
   {
     path: '/store/:category?',
-    view: StorePurchaseScreen,
+    view: StoreOverviewScreen,
   },
   {
     path: '/values',

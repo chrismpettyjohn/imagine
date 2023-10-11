@@ -2,9 +2,9 @@ import { useLocation } from 'wouter';
 import { toast } from 'react-toastify';
 import { Card } from '../../components/card/Card';
 import React, { useContext, useEffect, useMemo } from 'react';
-import { graphQLContext, localStorageService, sessionContext } from '@imagine-cms/web';
 import { LoadingMessage } from '../../components/loading-message/LoadingMessage';
 import { useFacebookUserAuthenticate, useUserFetchOne } from '@imagine-cms/client';
+import { graphQLContext, localStorageService, sessionContext } from '@imagine-cms/web';
 
 export function LoginWithFacebookScreen() {
   const [, setLocation] = useLocation();
@@ -24,7 +24,6 @@ export function LoginWithFacebookScreen() {
       localStorageService.set('SESSION', session.sessionToken);
       refreshClient();
       const matchingUser = await fetchUser.fetch({ id: session.userID })
-      toast.success(`Welcome back, ${matchingUser.username}`);
       _setSession(matchingUser as any);
       setLocation('/me');
     } catch (e: any) {

@@ -25,7 +25,6 @@ export function useSignInWithUsernameAndPassword(username: string, password: str
         return;
       }
       _setSession(fetchUser.data as any);
-      toast.success(`Welcome back, ${fetchUser.data.username}!`);
       setLocation('/me');
     }
   }, [fetchUser.data]);
