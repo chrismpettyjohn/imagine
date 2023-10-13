@@ -1,4 +1,6 @@
+import {Max} from 'class-validator';
 import {Field, InputType} from '@nestjs/graphql';
+import {GLOBAL_MAX_RESOURCE_LIMIT} from '../imagine.constant';
 import {RadioRequestStatus} from '../database/radio-request.entity';
 
 @InputType()
@@ -22,6 +24,7 @@ export class RadioRequestFilterManyInput {
   statuses?: RadioRequestStatus[];
 
   @Field(() => Number, {nullable: true})
+  @Max(GLOBAL_MAX_RESOURCE_LIMIT)
   limit?: number;
 }
 
