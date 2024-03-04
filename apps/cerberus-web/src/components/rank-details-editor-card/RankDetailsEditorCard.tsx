@@ -34,6 +34,7 @@ export function RankDetailsEditorCard({ defaultRank, onSave }: RankDetailsEditor
       manageRanks: defaultRank?.scopes?.manageRanks ?? false,
       manageSite: defaultRank?.scopes?.manageSite ?? false,
       manageWordFilter: defaultRank?.scopes?.manageWordFilter ?? false,
+      manageStore: defaultRank?.scopes?.manageStore ?? false,
     },
     flags: {
       showOnStaffPage: defaultRank?.flags?.showOnStaffPage ?? false,
